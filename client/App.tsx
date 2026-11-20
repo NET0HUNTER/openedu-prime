@@ -20,7 +20,7 @@ const AppShell: React.FC = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center text-sm text-slate-500">
-        Initializing OpenEdu Prime Multi-Campus School ERP...
+        Initializing SabiEdu Multi-Campus School ERP...
       </div>
     );
   }

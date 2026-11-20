@@ -100,7 +100,7 @@ export function createApiRouter(): Router {
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>OpenEdu Prime — OpenAPI 3.1 Docs</title>
+  <title>SabiEdu — OpenAPI 3.1 Docs</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 0; background: #f8fafc; color: #0f172a; }
     header { background: #1e3f7c; color: #fff; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
@@ -115,7 +115,7 @@ export function createApiRouter(): Router {
 </head>
 <body>
   <header>
-    <div><strong>OpenEdu Prime — OpenAPI 3.1 Specification</strong><div style="font-size:12px;opacity:.85">53 Modules · Generic ORM RPC · Scheduled Intervals · M-Pesa / WhatsApp / CAIE EDI</div></div>
+    <div><strong>SabiEdu — OpenAPI 3.1 Specification</strong><div style="font-size:12px;opacity:.85">53 Modules · Generic ORM RPC · Scheduled Intervals · M-Pesa / WhatsApp / CAIE EDI</div></div>
     <div><a href="/openapi.json" target="_blank">Download /openapi.json</a></div>
   </header>
   <main>
@@ -1179,7 +1179,7 @@ export function createApiRouter(): Router {
       password_reset: {
         recipientName: 'Mrs. Jane Mwangi',
         title: 'Set Up Your Account Password',
-        bodyParagraphs: ['Click the button below to choose a private password and activate your OpenEdu Prime workspace login.'],
+        bodyParagraphs: ['Click the button below to choose a private password and activate your SabiEdu workspace login.'],
         summaryRows: [
           { label: 'Login Email', value: 'jmwangi@oshwalacademy.sc.ke' },
           { label: 'Expires In', value: '24 Hours' },
@@ -1225,7 +1225,7 @@ export function createApiRouter(): Router {
       smtp_test: {
         recipientName: 'System Administrator',
         title: 'SMTP Relay Connected & Verified',
-        bodyParagraphs: ['Your OpenEdu Prime SMTP configuration is active and rendering branded HTML emails.'],
+        bodyParagraphs: ['Your SabiEdu SMTP configuration is active and rendering branded HTML emails.'],
         summaryRows: [
           { label: 'Relay', value: 'smtp.gmail.com:587 (STARTTLS)' },
           { label: 'Status', value: 'Verified & Live' },

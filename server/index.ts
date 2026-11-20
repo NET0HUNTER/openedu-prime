@@ -51,7 +51,7 @@ if (isMain) {
   const port = Number(process.env.PORT ?? 4100);
   const app = createApp();
   app.listen(port, '0.0.0.0', () => {
-    console.log(`OpenEdu Prime ERP API listening on http://0.0.0.0:${port} (OpenAPI docs: http://localhost:${port}/api/docs)`);
+    console.log(`SabiEdu ERP API listening on http://0.0.0.0:${port} (OpenAPI docs: http://localhost:${port}/api/docs)`);
     startCronScheduler();
   });
 }

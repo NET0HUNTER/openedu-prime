@@ -48,26 +48,22 @@ function getCampusContext(companyId?: number): {
   email: string;
   website: string;
   primary: string;
-  accent: string;
-  gold: string;
   footer: string;
 } {
   const co: Rec | undefined =
     (companyId ? store.byId('res.company', companyId) : undefined) ??
     store.all('res.company')[0];
   return {
-    name: String(co?.name || 'OpenEdu Prime — Oshwal Academy'),
-    code: String(co?.code || 'OPENEDU'),
-    motto: String(co?.motto || 'Inspiring Excellence Across Every Campus'),
+    name: String(co?.name || 'SabiEdu — Oshwal Academy'),
+    code: String(co?.code || 'SABIEDU'),
+    motto: String(co?.motto || 'Multi-Campus Academic Administration'),
     street: String(co?.street || 'First Parklands Avenue, Off Mpaka Road'),
     city: String(co?.city || 'Nairobi'),
     phone: String(co?.phone || '+254 142 645 861'),
     email: String(co?.email || 'enquiries@oerb.org'),
     website: String(co?.website || 'https://www.oshwalacademy.sc.ke'),
-    primary: String(co?.theme_primary || '#1e3f7c'),
-    accent: String(co?.theme_accent || '#ec1c24'),
-    gold: String(co?.theme_gold || '#f4cb00'),
-    footer: String(co?.report_footer || 'OpenEdu Prime Multi-Campus ERP · Automated Official Communication'),
+    primary: String(co?.theme_primary || '#0F2342'),
+    footer: String(co?.report_footer || 'SabiEdu Multi-Campus ERP · Official Institutional Correspondence'),
   };
 }
 
@@ -76,89 +72,79 @@ function buildTemplatePreset(kind: EmailTemplateKind, ctx: EmailRenderContext): 
     case 'admission_confirmation':
       return {
         badge: 'ADMISSIONS',
-        badgeColor: '#0284c7',
         title: ctx.title || 'Admission Application Update',
-        subtitle: ctx.subtitle || 'Admissions & Enrolment Office',
+        subtitle: ctx.subtitle || 'Office of Admissions & Enrolment',
         calloutTone: 'info',
         ...ctx,
       };
     case 'student_enrollment':
       return {
         badge: 'OFFICIAL ENROLMENT',
-        badgeColor: '#059669',
-        title: ctx.title || 'Welcome to Your Academic Cohort',
-        subtitle: ctx.subtitle || 'Registrar & Student Information System',
+        title: ctx.title || 'Student Enrolment Confirmation',
+        subtitle: ctx.subtitle || 'Office of the Registrar',
         calloutTone: 'success',
         ...ctx,
       };
     case 'portal_credentials':
       return {
         badge: 'PORTAL ACCESS',
-        badgeColor: '#4f46e5',
-        title: ctx.title || 'Your OpenEdu Prime Account is Ready',
-        subtitle: ctx.subtitle || 'Digital Campus & Portal Identity',
+        title: ctx.title || 'SabiEdu Account Provisioned',
+        subtitle: ctx.subtitle || 'Digital Campus Identity',
         calloutTone: 'info',
         ...ctx,
       };
     case 'password_reset':
       return {
         badge: 'ACCOUNT SECURITY',
-        badgeColor: '#7c3aed',
-        title: ctx.title || 'Set Up / Reset Your Password',
-        subtitle: ctx.subtitle || 'OpenEdu Prime Identity & Access',
+        title: ctx.title || 'Account Password Setup',
+        subtitle: ctx.subtitle || 'SabiEdu Identity & Access Control',
         calloutTone: 'warning',
         ...ctx,
       };
     case 'fee_invoice':
       return {
-        badge: 'TUITION & BILLING',
-        badgeColor: '#d97706',
-        title: ctx.title || 'Fee Invoice & Payment Statement',
-        subtitle: ctx.subtitle || 'Bursar & Student Accounts Office',
+        badge: 'BURSAR STATEMENT',
+        title: ctx.title || 'Tuition & Fee Statement',
+        subtitle: ctx.subtitle || 'Student Accounts & Finance Office',
         calloutTone: 'info',
         ...ctx,
       };
     case 'absentee_alert':
       return {
-        badge: 'ATTENDANCE ALERT',
-        badgeColor: '#dc2626',
+        badge: 'ATTENDANCE NOTICE',
         title: ctx.title || 'Student Absence Notification',
-        subtitle: ctx.subtitle || 'Pastoral Care & Attendance Monitoring',
+        subtitle: ctx.subtitle || 'Pastoral Care & Attendance Office',
         calloutTone: 'warning',
         ...ctx,
       };
     case 'event_badge':
       return {
-        badge: 'EVENT PASS',
-        badgeColor: '#0f766e',
-        title: ctx.title || 'Confirmed Event Registration & Pass',
-        subtitle: ctx.subtitle || 'Campus Events & Community Relations',
+        badge: 'EVENT REGISTRATION',
+        title: ctx.title || 'Confirmed Event Pass',
+        subtitle: ctx.subtitle || 'Campus Events & External Relations',
         calloutTone: 'success',
         ...ctx,
       };
     case 'campaign_newsletter':
       return {
-        badge: 'CAMPUS CIRCULAR',
-        badgeColor: '#1e3f7c',
+        badge: 'INSTITUTIONAL CIRCULAR',
         title: ctx.title || 'Official School Circular',
-        subtitle: ctx.subtitle || 'Communications & Parent Relations',
+        subtitle: ctx.subtitle || 'Executive Administration',
         ...ctx,
       };
     case 'smtp_test':
       return {
-        badge: 'SMTP VERIFIED',
-        badgeColor: '#059669',
-        title: ctx.title || 'Live SMTP Email Relay Active',
-        subtitle: ctx.subtitle || 'System Integration Diagnostics',
+        badge: 'SYSTEM DIAGNOSTICS',
+        title: ctx.title || 'SMTP Mail Relay Verified',
+        subtitle: ctx.subtitle || 'SabiEdu Platform Infrastructure',
         calloutTone: 'success',
         ...ctx,
       };
     default:
       return {
-        badge: 'NOTIFICATION',
-        badgeColor: '#1e3f7c',
-        title: ctx.title || 'Official Notification',
-        subtitle: ctx.subtitle || 'OpenEdu Prime ERP',
+        badge: 'OFFICIAL NOTICE',
+        title: ctx.title || 'Official Communication',
+        subtitle: ctx.subtitle || 'SabiEdu Administration',
         ...ctx,
       };
   }
@@ -170,32 +156,34 @@ export function renderProfessionalEmail(
 ): { html: string; text: string } {
   const c = buildTemplatePreset(kind, rawCtx);
   const campus = getCampusContext(c.companyId);
+  const brandHex = '#0F2342';
+  const monogram = escapeHtml(campus.name.trim().charAt(0).toUpperCase() || 'S');
 
-  const greetingName = c.recipientName ? escapeHtml(c.recipientName) : 'Valued Member';
+  const greetingName = c.recipientName ? escapeHtml(c.recipientName) : 'Recipient';
   const paragraphsHtml = (c.bodyParagraphs ?? [])
     .map(
       (p) =>
-        `<p style="margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;">${escapeHtml(p)}</p>`,
+        `<p style="margin:0 0 14px 0;font-size:14.5px;line-height:1.65;color:#334155;">${escapeHtml(p)}</p>`,
     )
     .join('\n');
 
   const rawSectionHtml = c.rawHtmlBody
-    ? `<div style="margin:0 0 16px 0;font-size:15px;line-height:1.65;color:#334155;">${c.rawHtmlBody}</div>`
+    ? `<div style="margin:0 0 18px 0;font-size:14.5px;line-height:1.65;color:#334155;">${c.rawHtmlBody}</div>`
     : '';
 
   const summaryRowsHtml =
     c.summaryRows && c.summaryRows.length > 0
-      ? `<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:18px 0;border:1px solid #e2e8f0;border-radius:8px;border-collapse:separate;overflow:hidden;background:#f8fafc;">
+      ? `<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:22px 0;border-top:1px solid #CBD5E1;border-bottom:1px solid #CBD5E1;border-collapse:collapse;">
           <tbody>
             ${c.summaryRows
               .map(
                 (row, i) => `
               <tr>
-                <td style="padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:${
-                  i === c.summaryRows!.length - 1 ? 'none' : '1px solid #e2e8f0'
+                <td style="padding:10px 0;font-size:12.5px;font-weight:500;color:#64748B;width:40%;border-bottom:${
+                  i === c.summaryRows!.length - 1 ? 'none' : '1px solid #F1F5F9'
                 };">${escapeHtml(row.label)}</td>
-                <td style="padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:${
-                  i === c.summaryRows!.length - 1 ? 'none' : '1px solid #e2e8f0'
+                <td style="padding:10px 0;font-size:13px;font-weight:600;color:#0F172A;text-align:right;font-variant-numeric:tabular-nums;border-bottom:${
+                  i === c.summaryRows!.length - 1 ? 'none' : '1px solid #F1F5F9'
                 };">${escapeHtml(row.value)}</td>
               </tr>`,
               )
@@ -204,26 +192,22 @@ export function renderProfessionalEmail(
         </table>`
       : '';
 
-  const calloutColors =
-    c.calloutTone === 'warning'
-      ? { bg: '#fef2f2', border: '#ef4444', title: '#991b1b', text: '#7f1d1d' }
-      : c.calloutTone === 'success'
-      ? { bg: '#ecfdf5', border: '#10b981', title: '#065f46', text: '#064e3b' }
-      : { bg: '#eff6ff', border: '#2563eb', title: '#1e40af', text: '#1e3a8a' };
+  const calloutAccent =
+    c.calloutTone === 'warning' ? '#991B1B' : c.calloutTone === 'success' ? '#065F46' : brandHex;
 
   const calloutHtml =
     c.calloutTitle || c.calloutText
-      ? `<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:18px 0;background:${calloutColors.bg};border-left:4px solid ${calloutColors.border};border-radius:6px;">
+      ? `<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:20px 0;background-color:#F8FAFC;border:1px solid #E2E8F0;border-left:3px solid ${calloutAccent};border-radius:3px;">
           <tr>
             <td style="padding:14px 16px;">
               ${
                 c.calloutTitle
-                  ? `<div style="font-size:13px;font-weight:700;color:${calloutColors.title};margin-bottom:4px;">${escapeHtml(c.calloutTitle)}</div>`
+                  ? `<div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;color:#0F172A;margin-bottom:4px;">${escapeHtml(c.calloutTitle)}</div>`
                   : ''
               }
               ${
                 c.calloutText
-                  ? `<div style="font-size:13px;line-height:1.5;color:${calloutColors.text};">${escapeHtml(c.calloutText)}</div>`
+                  ? `<div style="font-size:13px;line-height:1.55;color:#475569;">${escapeHtml(c.calloutText)}</div>`
                   : ''
               }
             </td>
@@ -233,15 +217,18 @@ export function renderProfessionalEmail(
 
   const ctaHtml =
     c.ctaLabel && c.ctaUrl
-      ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:22px 0 8px 0;">
+      ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0 12px 0;">
           <tr>
-            <td align="center" bgcolor="${escapeHtml(campus.primary)}" style="border-radius:6px;">
-              <a href="${escapeHtml(c.ctaUrl)}" target="_blank" style="display:inline-block;padding:12px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:6px;">
-                ${escapeHtml(c.ctaLabel)} &rarr;
+            <td align="left" bgcolor="${brandHex}" style="border-radius:4px;">
+              <a href="${escapeHtml(c.ctaUrl)}" target="_blank" style="display:inline-block;padding:11px 22px;font-size:13.5px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:0.01em;border-radius:4px;">
+                ${escapeHtml(c.ctaLabel)}
               </a>
             </td>
           </tr>
-        </table>`
+        </table>
+        <div style="margin:0 0 18px 0;font-size:11.5px;line-height:1.5;color:#64748B;word-break:break-all;">
+          Direct link: <a href="${escapeHtml(c.ctaUrl)}" style="color:${brandHex};text-decoration:underline;">${escapeHtml(c.ctaUrl)}</a>
+        </div>`
       : '';
 
   const html = `<!DOCTYPE html>
@@ -251,24 +238,31 @@ export function renderProfessionalEmail(
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(c.title || campus.name)}</title>
 </head>
-<body style="margin:0;padding:0;background-color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased;">
-  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#f1f5f9;padding:28px 14px;">
+<body style="margin:0;padding:0;background-color:#F4F5F7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0F172A;-webkit-font-smoothing:antialiased;">
+  <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background-color:#F4F5F7;padding:32px 16px;">
     <tr>
       <td align="center">
-        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:640px;background-color:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(15,23,42,0.06);">
-          <!-- Institutional Brand Header -->
+        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:620px;background-color:#FFFFFF;border:1px solid #E2E6EC;border-top:3px solid ${brandHex};border-radius:4px;">
+          <!-- Executive Masthead -->
           <tr>
-            <td style="background-color:${escapeHtml(campus.primary)};padding:22px 28px;border-bottom:4px solid ${escapeHtml(campus.gold)};">
+            <td style="padding:24px 36px 20px 36px;border-bottom:1px solid #E5E7EB;">
               <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                   <td style="vertical-align:middle;">
-                    <div style="font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.2px;">${escapeHtml(campus.name)}</div>
-                    <div style="font-size:12px;color:#cbd5e1;margin-top:3px;">${escapeHtml(campus.motto)}</div>
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="width:30px;height:30px;background-color:${brandHex};border-radius:3px;text-align:center;vertical-align:middle;font-size:14px;font-weight:700;color:#FFFFFF;">
+                          ${monogram}
+                        </td>
+                        <td style="padding-left:12px;vertical-align:middle;">
+                          <div style="font-size:15px;font-weight:700;color:#0F172A;letter-spacing:-0.01em;">${escapeHtml(campus.name)}</div>
+                          <div style="font-size:11.5px;color:#64748B;margin-top:1px;">${escapeHtml(campus.city)} · Powered by SabiEdu</div>
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                   <td align="right" style="vertical-align:middle;">
-                    <span style="display:inline-block;padding:4px 10px;border-radius:999px;background-color:${escapeHtml(
-                      c.badgeColor || '#0284c7',
-                    )};color:#ffffff;font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;">
+                    <span style="font-size:10.5px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#64748B;">
                       ${escapeHtml(c.badge || 'OFFICIAL')}
                     </span>
                   </td>
@@ -277,22 +271,22 @@ export function renderProfessionalEmail(
             </td>
           </tr>
 
-          <!-- Email Title Banner -->
+          <!-- Document Heading -->
           <tr>
-            <td style="padding:26px 28px 10px 28px;">
-              <div style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:${escapeHtml(campus.primary)};margin-bottom:6px;">
+            <td style="padding:28px 36px 8px 36px;">
+              <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#475569;margin-bottom:6px;">
                 ${escapeHtml(c.subtitle || '')}
               </div>
-              <h1 style="margin:0;font-size:22px;font-weight:700;line-height:1.3;color:#0f172a;">
+              <h1 style="margin:0;font-size:21px;font-weight:600;line-height:1.3;letter-spacing:-0.02em;color:#0F172A;">
                 ${escapeHtml(c.title || 'Official Notice')}
               </h1>
             </td>
           </tr>
 
-          <!-- Main Content -->
+          <!-- Letter Body -->
           <tr>
-            <td style="padding:12px 28px 28px 28px;">
-              <p style="margin:0 0 14px 0;font-size:15px;font-weight:600;color:#1e293b;">
+            <td style="padding:14px 36px 30px 36px;">
+              <p style="margin:0 0 14px 0;font-size:14.5px;font-weight:600;color:#0F172A;">
                 Dear ${greetingName},
               </p>
               ${paragraphsHtml}
@@ -300,21 +294,25 @@ export function renderProfessionalEmail(
               ${summaryRowsHtml}
               ${calloutHtml}
               ${ctaHtml}
-              <p style="margin:24px 0 0 0;font-size:13px;line-height:1.6;color:#64748b;">
-                Warm regards,<br />
-                <strong style="color:#1e293b;">${escapeHtml(campus.name)}</strong><br />
-                ${escapeHtml(campus.street)}, ${escapeHtml(campus.city)} · Tel: ${escapeHtml(campus.phone)}
-              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin-top:26px;border-top:1px solid #F1F5F9;">
+                <tr>
+                  <td style="padding-top:16px;font-size:13px;line-height:1.6;color:#475569;">
+                    Sincerely,<br />
+                    <strong style="color:#0F172A;">${escapeHtml(campus.name)}</strong><br />
+                    <span style="font-size:12px;color:#64748B;">${escapeHtml(campus.street)}, ${escapeHtml(campus.city)} · Tel: ${escapeHtml(campus.phone)}</span>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
 
-          <!-- Legal / Footer Bar -->
+          <!-- Institutional Footer -->
           <tr>
-            <td style="background-color:#f8fafc;padding:16px 28px;border-top:1px solid #e2e8f0;text-align:center;">
-              <div style="font-size:11px;color:#64748b;line-height:1.5;">
+            <td style="background-color:#F8FAFC;padding:16px 36px;border-top:1px solid #E5E7EB;">
+              <div style="font-size:11px;color:#64748B;line-height:1.6;">
                 ${escapeHtml(campus.footer)}<br />
-                Contact: <a href="mailto:${escapeHtml(campus.email)}" style="color:${escapeHtml(campus.primary)};text-decoration:none;">${escapeHtml(campus.email)}</a> ·
-                <a href="${escapeHtml(campus.website)}" style="color:${escapeHtml(campus.primary)};text-decoration:none;">${escapeHtml(campus.website)}</a>
+                <a href="mailto:${escapeHtml(campus.email)}" style="color:#334155;text-decoration:none;">${escapeHtml(campus.email)}</a> ·
+                <a href="${escapeHtml(campus.website)}" style="color:#334155;text-decoration:none;">${escapeHtml(campus.website)}</a>
               </div>
             </td>
           </tr>
@@ -326,20 +324,20 @@ export function renderProfessionalEmail(
 </html>`;
 
   const textParts = [
-    `${campus.name} — ${c.title || 'Notification'}`,
+    `${campus.name} — ${c.title || 'Official Notice'}`,
     '',
-    `Dear ${c.recipientName || 'Valued Member'},`,
+    `Dear ${c.recipientName || 'Recipient'},`,
     '',
     ...(c.bodyParagraphs ?? []),
     ...(c.summaryRows?.length
       ? ['', 'Summary:', ...c.summaryRows.map((r) => `• ${r.label}: ${r.value}`)]
       : []),
     ...(c.calloutTitle || c.calloutText
-      ? ['', `${c.calloutTitle || 'Note'}: ${c.calloutText || ''}`]
+      ? ['', `${c.calloutTitle || 'Notice'}: ${c.calloutText || ''}`]
       : []),
     ...(c.ctaLabel && c.ctaUrl ? ['', `${c.ctaLabel}: ${c.ctaUrl}`] : []),
     '',
-    `Warm regards,`,
+    `Sincerely,`,
     `${campus.name} (${campus.phone} | ${campus.email})`,
   ];
 

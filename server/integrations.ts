@@ -53,8 +53,8 @@ export function resolveSmtpConfig(): SmtpConfig {
   ) as SmtpConfig['encryption'];
   const user = String(s.smtp_user || secrets.smtp_user || process.env.SMTP_USER || '').trim();
   const pass = String(secrets.smtp_pass || process.env.SMTP_PASS || '').trim();
-  const fromName = String(s.smtp_from_name || process.env.SMTP_FROM_NAME || 'OpenEdu Prime').trim();
-  const fromEmail = String(s.smtp_from_email || process.env.SMTP_FROM_EMAIL || user || 'noreply@openedu.local').trim();
+  const fromName = String(s.smtp_from_name || process.env.SMTP_FROM_NAME || 'SabiEdu').trim();
+  const fromEmail = String(s.smtp_from_email || process.env.SMTP_FROM_EMAIL || user || 'noreply@sabiedu.local').trim();
   const provider = String(s.email_provider || process.env.EMAIL_PROVIDER || 'simulate').trim();
   return { provider, host, port, encryption, user, pass, fromName, fromEmail };
 }
@@ -100,8 +100,8 @@ export async function testSmtpConnection(testTo?: string): Promise<{
         recipientName: 'System Administrator',
         title: 'SMTP Relay Connected & Verified',
         bodyParagraphs: [
-          'This automated verification email confirms that your OpenEdu Prime School ERP SMTP configuration is live and delivering branded HTML communications.',
-          'All admissions updates, student enrollments, tuition invoices, portal invitations, and absentee alerts will now be delivered using this relay.',
+          'This automated verification email confirms that your SabiEdu School ERP SMTP configuration is live and delivering executive HTML communications.',
+          'All admissions updates, student enrolments, tuition invoices, portal invitations, and attendance notices will now be delivered using this relay.',
         ],
         summaryRows: [
           { label: 'SMTP Server', value: `${cfg.host}:${cfg.port}` },
@@ -109,13 +109,13 @@ export async function testSmtpConnection(testTo?: string): Promise<{
           { label: 'Authenticated Account', value: cfg.user },
           { label: 'Sender Identity', value: `${cfg.fromName} <${cfg.fromEmail}>` },
         ],
-        calloutTitle: 'Ready for Production',
-        calloutText: 'No passwords are committed to source control; credentials are managed dynamically via your Settings configuration.',
+        calloutTitle: 'Production Ready',
+        calloutText: 'Credentials are stored strictly outside source control and managed dynamically through Settings configuration.',
       });
       const info = await transporter.sendMail({
         from: `"${cfg.fromName}" <${cfg.fromEmail}>`,
         to: testTo,
-        subject: 'OpenEdu Prime — SMTP Connection & HTML Template Verified',
+        subject: 'SabiEdu — SMTP Relay & HTML Correspondence Verified',
         html,
         text,
       });
@@ -123,7 +123,7 @@ export async function testSmtpConnection(testTo?: string): Promise<{
         to: testTo,
         recipient_name: 'SMTP Verification Test',
         channel: 'email',
-        subject: 'OpenEdu Prime — SMTP Connection & HTML Template Verified',
+        subject: 'SabiEdu — SMTP Relay & HTML Correspondence Verified',
         body: text,
         body_html: html,
         provider: 'smtp',

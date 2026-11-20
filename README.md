@@ -1,4 +1,4 @@
-# OpenEdu Prime — Next-Gen Multi-Campus School & Campus ERP
+# SabiEdu — Next-Gen Multi-Campus School & Campus ERP
 
 > **Intelligent, High-Performance School ERP** modeled on the OpenEduCat / Odoo 19 architecture with declarative metadata DSL, full Role-Based Access Control (RBAC), multi-campus scoping, integrated LMS, timetable auto-generation, QWeb PDF report engine, M-Pesa billing, and Kenya statutory compliance (Pupil's Pass, DCI Police Clearances, Oshwal Academy configurations).
 

@@ -1,9 +1,9 @@
 {
-  "name": "openedu-prime",
+  "name": "sabiedu",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "OpenEdu Prime — High-performance, metadata-driven multi-campus School ERP with full RBAC, live LMS, M-Pesa billing, timetable generation, and QWeb reporting.",
+  "description": "SabiEdu — High-performance, metadata-driven multi-campus School ERP with full RBAC, live LMS, M-Pesa billing, timetable generation, and QWeb reporting.",
   "scripts": {
     "dev": "concurrently -n API,WEB -c blue,magenta \"tsx watch server/index.ts\" \"vite --host 0.0.0.0\"",
     "dev:api": "tsx watch server/index.ts",

@@ -1818,13 +1818,13 @@ export function executeMethod(model: string, method: string, id: number | undefi
       dispatchEmailAsync({
         to: String(targetUser.login),
         recipientName: String(targetUser.name),
-        subject: 'Set Up / Reset Your OpenEdu Prime Password',
+        subject: 'Set Up Your SabiEdu Account Password',
         template: 'password_reset',
         context: {
-          title: 'Set Up Your Account Password',
+          title: 'Account Password Setup',
           bodyParagraphs: [
-            `An account password setup / reset link has been generated for your OpenEdu Prime account (${targetUser.login}).`,
-            'Click the button below to choose a private password and sign in.',
+            `A password setup and access link has been generated for your SabiEdu account (${targetUser.login}).`,
+            'Use the link below to establish your private password and sign in to your workspace.',
           ],
           summaryRows: [
             { label: 'User Account', value: String(targetUser.name) },

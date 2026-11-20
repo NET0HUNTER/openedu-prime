@@ -1023,7 +1023,7 @@ export const SettingsPanelView: React.FC = () => {
                     </div>
                     <div>
                       <label className="block text-[11px] font-medium text-slate-600 mb-0.5">Sender Display Name</label>
-                      <input value={form.smtp_from_name ?? ''} placeholder="OpenEdu Prime — Oshwal Academy" onChange={(e) => setForm({ ...form, smtp_from_name: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1" />
+                      <input value={form.smtp_from_name ?? ''} placeholder="SabiEdu — Oshwal Academy" onChange={(e) => setForm({ ...form, smtp_from_name: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1" />
                     </div>
                     <div>
                       <label className="block text-[11px] font-medium text-slate-600 mb-0.5">From / Reply-To Email</label>
