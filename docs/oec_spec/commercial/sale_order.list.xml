@@ -1,0 +1,30 @@
+<list class="o_sale_order" string="Sales Orders" sample="1" decoration-muted="state == 'cancel'">
+                <header>
+                    <button string="Create Invoices" name="964" type="action" class="btn-secondary"/>
+                </header>
+                <field name="message_needaction" column_invisible="True"/>
+                <field name="currency_id" column_invisible="True" on_change="1"/>
+
+                <field name="name" string="Number" readonly="1" decoration-bf="1"/>
+                <field name="date_order" optional="show" readonly="state in ['cancel', 'sale']" on_change="1"/>
+                <field name="commitment_date" optional="hide" decoration-danger="&#10;                    (&#10;                        (&#10;                            commitment_date &lt; effective_date&#10;                            or commitment_date &lt; datetime.datetime.combine(&#10;                                datetime.date.today(),&#10;                                datetime.time(0,0,0)&#10;                            ).to_utc().strftime('%Y-%m-%d %H:%M:%S')&#10;                        )&#10;                        and delivery_status in ['pending', 'started']&#10;                        and effective_date &lt;= commitment_date&#10;                        or delivery_status == 'partial'&#10;                    )&#10;                " on_change="1"/>
+                <field name="expected_date" optional="hide" on_change="1"/>
+                <field name="partner_id" readonly="1" on_change="1"/>
+                <field name="website_id" optional="show"/>
+                <field name="user_id" widget="many2one_avatar_user" optional="show" on_change="1"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="team_id" optional="hide" on_change="1"/>
+                
+                <field name="company_id" optional="show" readonly="1" on_change="1"/>
+                <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
+                <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
+                <field name="amount_total" sum="Total Tax Included" widget="monetary" decoration-bf="1" decoration-info="invoice_status == 'to invoice'" optional="show"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="hide"/>
+                
+                <field name="state" decoration-success="state == 'sale'" decoration-info="state == 'draft'" decoration-primary="state == 'sent'" widget="badge" optional="hide" on_change="1"/>
+                <field name="delivery_status" decoration-success="delivery_status == 'full'" decoration-warning="delivery_status == 'partial'" decoration-info="delivery_status in ['pending', 'started']" widget="badge" optional="hide"/>
+                <field name="invoice_status" decoration-success="invoice_status == 'invoiced'" decoration-info="invoice_status == 'to invoice'" decoration-warning="invoice_status == 'upselling'" widget="badge" optional="show"/>
+                <field name="client_order_ref" optional="hide"/>
+                <field name="validity_date" optional="hide"/>
+            <field name="effective_date" column_invisible="True" readonly="True" data-used-by="decoration-danger=&quot;\n                    (\n                        (\n                            commitment_date &lt; effective_date\n                            or commitment_date &lt; datetime.datetime.combine(\n                                datetime.date.today(),\n                                datetime.time(0,0,0)\n                            ).to_utc().strftime('%Y-%m-%d %H:%M:%S')\n                        )\n                        and delivery_status in ['pending', 'started']\n                        and effective_date &lt;= commitment_date\n                        or delivery_status == 'partial'\n                    )\n                &quot; (field,commitment_date)"/>
+</list>

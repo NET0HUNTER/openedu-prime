@@ -1,0 +1,42 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "size": 64,
+      "sortable": true,
+      "store": true,
+      "string": "Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    },
+    "route_type": {
+      "change_default": false,
+      "groupable": true,
+      "name": "route_type",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "selection": [
+        [
+          "pickup",
+          "Pickup"
+        ],
+        [
+          "drop",
+          "Drop"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Route Type",
+      "type": "selection"
+    }
+  },
+  "has_approval_rules": false
+}

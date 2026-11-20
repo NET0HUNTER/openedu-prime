@@ -1,0 +1,18 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "BCA-CC-Exam-001"
+    },
+    {
+        "id":  2,
+        "display_name":  "BA-Psy-Exam-001"
+    },
+    {
+        "id":  3,
+        "display_name":  "BCOM-AF-Exam-001"
+    },
+    {
+        "id":  4,
+        "display_name":  "CYBER-SECURITY-Exam-001"
+    }
+]

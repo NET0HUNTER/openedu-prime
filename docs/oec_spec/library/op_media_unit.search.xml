@@ -1,0 +1,14 @@
+<search string="media Units">
+                    <field name="name"/>
+                    <field name="barcode"/>
+                    <field name="media_id"/>
+                    <newline/>
+                    <group>
+                        <filter string="Media" name="group_by_lbr_media_unit_media" domain="[]" context="{'group_by':'media_id'}"/>
+                        <filter string="State" name="group_by_lbr_media_unit_state" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                    <searchpanel>
+                        <field name="media_id" icon="fa fa-file-video-o"/>
+                    </searchpanel>
+                </search>

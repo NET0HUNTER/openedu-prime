@@ -1,0 +1,10 @@
+<form string="Fees Elements">
+                    <sheet>
+                        <group>
+                            <field name="product_id" can_create="True" can_write="True"/>
+                            <field name="value"/>
+                            <field name="sequence"/>
+                            <field name="fees_terms_line_id" can_create="True" can_write="True"/>
+                        </group>
+                    </sheet>
+                </form>

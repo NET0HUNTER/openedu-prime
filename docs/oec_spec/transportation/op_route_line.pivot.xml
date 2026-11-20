@@ -1,0 +1,4 @@
+<pivot string="Trips">
+                    <field name="name" type="col"/>
+                    <field name="route_type" type="row"/>
+                </pivot>

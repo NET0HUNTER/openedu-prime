@@ -1,0 +1,36 @@
+﻿<form string="Grade Book Line">
+                    <header>
+                        <button name="action_final" invisible="state != 'draft'" string="Final" type="object" class="oe_highlight"/>
+                        <button name="action_in_review" invisible="state != 'final'" string="In Review" type="object" class="oe_highlight"/>
+                        <button name="action_publish" invisible="state != 'in_review'" string="Publish" type="object" class="oe_highlight"/>
+                        <button name="action_cancelled" invisible="state not in ('publish', 'in_review')" string="Cancelled" type="object" class="oe_highlight"/>
+                        <button name="action_draft" invisible="state != 'cancelled'" string="Draft" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="gradebook_id" can_create="True" can_write="True"/>
+                                <field name="academic_year_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="course_id" can_create="True" can_write="True"/>
+                                <field name="grade_assigment_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="grade_table_id" can_create="True" can_write="True"/>
+                                <field name="marks" invisible="hide != False" readonly="state_hide == True" on_change="1"/>
+                    <field name="obtained_marks"/>
+                                <field name="percentage" force_save="1"/>
+                            </group>
+                            <group>
+                                <field name="hide_sub" invisible="1"/>
+                                <field name="academic_term_id" can_create="True" can_write="True"/>
+                                <field name="subject_id" required="hide_sub == False" invisible="hide_sub == True" can_create="True" can_write="True"/>
+                                <field name="assignment_type_id" on_change="1" can_create="True" can_write="True"/>
+                    <field name="penalty"/>
+                                <field name="hide" invisible="1"/>
+                                <field name="grade_table_line_id" invisible="hide != True" readonly="state_hide == True" on_change="1" can_create="True" can_write="True"/>
+                                <field name="state_hide" invisible="1"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

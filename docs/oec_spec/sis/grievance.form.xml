@@ -1,0 +1,63 @@
+﻿<form string="Grievance Tree">
+                <header>
+                    <button string="In Review" type="object" name="inreview_progressbar" invisible="state != 'submitted'"/>
+                    <button string="Submit" type="object" name="submitted_progressbar" invisible="state != 'draft'"/>
+                    <button string="Cancel" type="object" name="cancel_progressbar" invisible="state != 'draft'"/>
+                    <button string="Reject" type="object" name="reject_progressbar" invisible="state != 'in_review'"/>
+                    <button string="Close" type="object" name="close_progressbar" invisible="state != 'resolve'"/>
+                    <button string="Resolve" type="object" name="resolve_progressbar" invisible="state != 'action'"/>
+                    <button string="Send mail" type="object" name="send_mail" class="btn-primary" invisible="state != 'submitted'"/>
+                    <button string="Take Action" type="action" name="1369" class="btn-primary" invisible="state in ['close','reject'] or state != 'in_review'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h2>
+                            <field name="name" readonly="1"/>
+                        </h2>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="grievance_for" readonly="state != 'draft'" on_change="1"/>
+                            <field name="is_academic" invisible="1"/>
+                            <field name="is_satisfied" invisible="1"/>
+                            <field name="is_appeal" invisible="1"/>
+                            <field name="is_read" invisible="1"/>
+                            <field name="subject" readonly="state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="parent_id" invisible="grievance_for != 'parent'" required="grievance_for == 'parent'" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                            <field name="student_id" invisible="grievance_for == 'faculty'" required="grievance_for != 'faculty'" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                            <field name="faculty_id" invisible="grievance_for != 'faculty'" required="grievance_for == 'faculty'" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                        </group>
+                        <group class="mt32">
+                            <field name="grievance_parent_id" invisible="is_appeal != True" readonly="state != 'draft'" options="{'no_create': True}" can_create="True" can_write="True"/>
+                            <field name="created_date" readonly="1" widget="date"/>
+                            <field name="attachment_ids" invisible="1"/>
+                        </group>
+                        <group class="mt32">
+                            <field name="grievance_category_id" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                            <field name="grievance_team_id" required="state == 'submitted'" readonly="state != 'draft' and grievance_team_id" force_save="1" can_create="True" can_write="True"/>
+                        </group>
+
+                        <group class="mt32">
+                            <field name="course_id" invisible="is_academic == False" required="is_academic == True" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                            <field name="batch_id" invisible="is_academic == False" required="is_academic == True" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                        </group>
+                        <group class="mt32">
+                            <field name="academic_year_id" invisible="is_academic == False" required="is_academic == True" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                            <field name="academic_term_id" invisible="is_academic == False" required="is_academic == True" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                        </group>
+
+                        <label class="fw-bold" for="description" string="Description"/>
+                        <field name="description" readonly="state != 'draft'"/>
+                    </group>
+                    <notebook invisible="state in ['submitted','draft','cancel','in_review','reject']">
+                        <page name="Resolution" string="Resolution">
+                            <label class="fw-bold" for="description" string="Action Taken"/>
+                            <field name="action_taken"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>

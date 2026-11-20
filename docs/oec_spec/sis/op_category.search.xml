@@ -1,0 +1,9 @@
+﻿<search string="Category">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <newline/>
+                    <group>
+                        <filter name="group_by_name" string="Name" domain="[]" context="{'group_by':'name'}"/>
+                        <filter name="group_by_code" string="Code" domain="[]" context="{'group_by':'code'}"/>
+                    </group>
+                </search>

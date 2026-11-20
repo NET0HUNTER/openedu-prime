@@ -1,0 +1,13 @@
+<search string="Course">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="evaluation_type"/>
+                    <field name="parent_id"/>
+                    <field name="department_id"/>
+                    <newline/>
+                    <group>
+                        <filter name="group_by_evaluation_type" string="Evaluation Type" domain="[]" context="{'group_by':'evaluation_type'}"/>
+                        <filter name="group_by_partner_course" string="Parent Course" domain="[]" context="{'group_by':'parent_id'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                </search>

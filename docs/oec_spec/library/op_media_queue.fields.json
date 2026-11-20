@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "media_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "media_id",
+      "readonly": false,
+      "relation": "op.media",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Media",
+      "type": "many2one"
+    },
+    "user_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "user_id",
+      "readonly": true,
+      "relation": "res.users",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "User",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

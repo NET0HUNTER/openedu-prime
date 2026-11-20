@@ -1,0 +1,321 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "message_is_follower":  {
+                                "readonly":  true,
+                                "required":  false,
+                                "string":  "Is Follower",
+                                "type":  "boolean"
+                            },
+    "message_follower_ids":  {
+                                 "readonly":  false,
+                                 "relation":  "mail.followers",
+                                 "required":  false,
+                                 "string":  "Followers",
+                                 "type":  "one2many"
+                             },
+    "message_partner_ids":  {
+                                "readonly":  false,
+                                "relation":  "res.partner",
+                                "required":  false,
+                                "string":  "Followers (Partners)",
+                                "type":  "many2many"
+                            },
+    "message_ids":  {
+                        "readonly":  false,
+                        "relation":  "mail.message",
+                        "required":  false,
+                        "string":  "Messages",
+                        "type":  "one2many"
+                    },
+    "has_message":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Has Message",
+                        "type":  "boolean"
+                    },
+    "message_needaction":  {
+                               "help":  "If checked, new messages require your attention.",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Action Needed",
+                               "type":  "boolean"
+                           },
+    "message_needaction_counter":  {
+                                       "help":  "Number of messages requiring action",
+                                       "readonly":  true,
+                                       "required":  false,
+                                       "string":  "Number of Actions",
+                                       "type":  "integer"
+                                   },
+    "message_has_error":  {
+                              "help":  "If checked, some messages have a delivery error.",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Message Delivery error",
+                              "type":  "boolean"
+                          },
+    "message_has_error_counter":  {
+                                      "help":  "Number of messages with delivery error",
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "Number of errors",
+                                      "type":  "integer"
+                                  },
+    "message_attachment_count":  {
+                                     "readonly":  true,
+                                     "required":  false,
+                                     "string":  "Attachment Count",
+                                     "type":  "integer"
+                                 },
+    "rating_ids":  {
+                       "readonly":  false,
+                       "relation":  "rating.rating",
+                       "required":  false,
+                       "string":  "Ratings",
+                       "type":  "one2many"
+                   },
+    "website_message_ids":  {
+                                "help":  "Website communication history",
+                                "readonly":  false,
+                                "relation":  "mail.message",
+                                "required":  false,
+                                "string":  "Website Messages",
+                                "type":  "one2many"
+                            },
+    "message_has_sms_error":  {
+                                  "help":  "If checked, some messages have a delivery error.",
+                                  "readonly":  true,
+                                  "required":  false,
+                                  "string":  "SMS Delivery error",
+                                  "type":  "boolean"
+                              },
+    "student_id":  {
+                       "readonly":  false,
+                       "relation":  "op.student",
+                       "required":  false,
+                       "string":  "Student",
+                       "type":  "many2one"
+                   },
+    "course_id":  {
+                      "readonly":  false,
+                      "relation":  "op.course",
+                      "required":  true,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  false,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "roll_number":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Roll Number",
+                        "type":  "char"
+                    },
+    "subject_ids":  {
+                        "readonly":  false,
+                        "relation":  "op.subject",
+                        "required":  false,
+                        "string":  "Subjects",
+                        "type":  "many2many"
+                    },
+    "academic_years_id":  {
+                              "readonly":  false,
+                              "relation":  "op.academic.year",
+                              "required":  false,
+                              "string":  "Academic Year",
+                              "type":  "many2one"
+                          },
+    "academic_term_id":  {
+                             "readonly":  false,
+                             "relation":  "op.academic.term",
+                             "required":  false,
+                             "string":  "Terms",
+                             "type":  "many2one"
+                         },
+    "state":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "selection":  [
+                                    [
+                                        "running",
+                                        "Running"
+                                    ],
+                                    [
+                                        "cancelled",
+                                        "Cancelled"
+                                    ],
+                                    [
+                                        "finished",
+                                        "Finished"
+                                    ],
+                                    [
+                                        "cancel",
+                                        "Cancel"
+                                    ]
+                                ],
+                  "string":  "Status",
+                  "type":  "selection"
+              },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "fees_term_id":  {
+                         "readonly":  false,
+                         "relation":  "op.fees.terms",
+                         "required":  false,
+                         "string":  "Fees Term",
+                         "type":  "many2one"
+                     },
+    "fees_start_date":  {
+                            "readonly":  false,
+                            "required":  false,
+                            "string":  "Fees Start Date",
+                            "type":  "date"
+                        },
+    "product_id":  {
+                       "readonly":  false,
+                       "relation":  "product.product",
+                       "required":  false,
+                       "string":  "Course Fees",
+                       "type":  "many2one"
+                   },
+    "faculty_advisor_id":  {
+                               "readonly":  false,
+                               "relation":  "op.faculty",
+                               "required":  false,
+                               "string":  "Faculty Advisor",
+                               "type":  "many2one"
+                           },
+    "academic_plan_id":  {
+                             "readonly":  false,
+                             "relation":  "op.academic.plan",
+                             "required":  false,
+                             "string":  "Academic Plan",
+                             "type":  "many2one"
+                         },
+    "intake_year_id":  {
+                           "readonly":  false,
+                           "relation":  "op.intake.year",
+                           "required":  false,
+                           "string":  "Intake Year",
+                           "type":  "many2one"
+                       },
+    "program_id":  {
+                       "readonly":  true,
+                       "relation":  "op.program",
+                       "required":  false,
+                       "string":  "Program",
+                       "type":  "many2one"
+                   },
+    "program_level_id":  {
+                             "readonly":  true,
+                             "relation":  "op.program.level",
+                             "required":  false,
+                             "string":  "Program Level",
+                             "type":  "many2one"
+                         },
+    "user_id":  {
+                    "readonly":  false,
+                    "relation":  "res.users",
+                    "required":  false,
+                    "string":  "User",
+                    "type":  "many2one"
+                },
+    "required_field":  {
+                           "readonly":  true,
+                           "required":  false,
+                           "string":  "Required Field",
+                           "type":  "boolean"
+                       },
+    "withdrawal_id":  {
+                          "readonly":  false,
+                          "relation":  "op.student.withdrawal",
+                          "required":  false,
+                          "string":  "Withdrawal Details",
+                          "type":  "many2one"
+                      },
+    "is_withdrawal":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Withdrawal",
+                          "type":  "boolean"
+                      },
+    "session_count":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Session Count",
+                          "type":  "integer"
+                      },
+    "fees_plan_id":  {
+                         "readonly":  false,
+                         "relation":  "op.fees.plan",
+                         "required":  false,
+                         "string":  "Fees Term Plan",
+                         "type":  "many2one"
+                     },
+    "expires_after":  {
+                          "help":  "Expires after number of Invoices",
+                          "readonly":  false,
+                          "required":  false,
+                          "string":  "Invoice Cycles",
+                          "type":  "integer"
+                      },
+    "generated_invoices":  {
+                               "help":  "Number of Invoices Generated",
+                               "readonly":  false,
+                               "required":  false,
+                               "string":  "Generated Invoices",
+                               "type":  "integer"
+                           },
+    "next_invoice_date":  {
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Next Invoice Date",
+                              "type":  "date"
+                          },
+    "prev_invoice_date":  {
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Previous Invoice Date",
+                              "type":  "date"
+                          }
+}

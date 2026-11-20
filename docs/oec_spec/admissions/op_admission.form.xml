@@ -1,0 +1,150 @@
+﻿<form string="Registration">
+                    <header>
+                        <button string="Submit" invisible="state != 'draft'" class="oe_highlight" type="object" name="submit_form"/>
+                        <button name="confirm_in_progress" invisible="state not in ('submit','online')" string="Confirm" type="object" class="oe_highlight"/>
+            <button name="admission_confirm" class="oe_highlight" invisible="state != 'sign_confirmed'" string="Admission Confirm" type="object"/>
+            <button name="enroll_student" invisible="state != 'admission'" string="Enroll" type="object" class="oe_highlight"/>
+                <button name="send_for_signature" class="oe_highlight" invisible="state not in ('confirm')" string="Send for Signature" type="object"/>
+                        <button name="confirm_rejected" invisible="state not in ('confirm','confirm_pending','sign_confirmed')" string="Reject" type="object"/>
+                        <button name="confirm_pending" invisible="state != 'submit'" string="Pending" type="object"/>
+                <button name="confirm_admin_signature" class="oe_highlight" invisible="state != 'sign_received'" string="Confirm Admin Signature" type="object"/>
+                        <button name="confirm_cancel" string="Cancel" type="object"/>
+                        <button name="confirm_to_draft" invisible="state not in ('pending','reject','cancel')" string="Set to Draft" type="object"/>
+                        <button name="open_student" invisible="state != 'done'" string="Open Student Profile" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" invisible="1" on_change="1"/>
+                <field name="stage_id" widget="statusbar_duration" domain="[('view_boolean', '=', True)]" on_change="1" can_create="True" can_write="True"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+
+                        <div class="row flex-column flex-sm-row align-items-center">
+                            <div class="d-md-flex">
+                                <div class="o_employee_avatar ms-2 p-0 h-100 mw-25 align-self-start align-self-sm-center">
+                                    <field name="image" widget="image" class="m-0" options="{&quot;size&quot;: [128,158], &quot;zoom&quot;: true}"/>
+                                </div>
+                                <div class="align-self-start o_employee_form_header_info ps-md-3">
+                                    <div class="oe_title ps-0 pe-2 mw-100">
+                                        <h5 class="d-flex align-items-baseline mb-0">
+                                            <field name="title" options="{'no_create': True}" placeholder="Title" can_create="True" can_write="True"/>
+                                        </h5>
+                                        <div class="d-flex student-name">
+                                            <div class="">
+                                                <h1 class="d-md-flex align-items-center gap-1 w-50">
+                                                    <field name="name" placeholder="Name" required="1" invisible="True"/>
+                                                    <field name="first_name" widget="inline_char" required="1" placeholder="First Name" on_change="1"/>
+                                                    <field name="middle_name" widget="inline_char" placeholder="Middle Name" on_change="1"/>
+                                                    <field name="last_name" widget="inline_char" placeholder="Last Name" on_change="1"/>
+            </h1>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-baseline">
+                                            <i class="fa fa-fw me-1 fa-envelope text-primary" title="Email"/>
+                                            <field name="email" readonly="state == 'done'" on_change="1"/>
+            </div>
+                                        <div class="d-flex align-items-baseline">
+                                            <i class="fa fa-fw me-1 fa-phone text-primary" title="Phone"/>
+                                            <field name="phone" class="w-100" widget="phone" placeholder="Phone" on_change="1"/>
+                                        </div>
+
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+
+                        <notebook>
+                            <page name="admission_detail" string="Admission Detail">
+                                <group>
+                                    <group>
+                                        <field name="register_id" readonly="state == 'done'" domain="[('state', 'in', ['application','admission'])]" widget="selection" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="application_date" readonly="state == 'done'" on_change="1"/>
+                                        <field name="course_ids" invisible="True"/>
+                                        <field name="course_id" readonly="state == 'done'" domain="[('id', 'in', course_ids)]" options="{'no_open': True, 'no_create': True}" on_change="1" can_create="True" can_write="True"/>
+                <field name="required_field" invisible="1"/>
+                <field name="user_id" invisible="1"/>
+                
+                                        <field name="discount"/>
+                                        <field name="due_date" readonly="state == 'done'"/>
+                                        <field name="is_student" on_change="1"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" can_create="True" can_write="True"/>
+                                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                        <field name="fees_start_date"/>
+                                    </group>
+                                    <group>
+                                        <field name="application_number"/>
+                                        <field name="admission_date" readonly="state == 'done'" on_change="1"/>
+                <field name="program_id" readonly="1"/>
+                
+                                        <field name="batch_id" context="{'course_id': course_id,'get_parent_batch':1}" readonly="state == 'done'" required="1" can_create="True" can_write="True"/>
+                                        <field name="fees" readonly="state == 'done'" required="state not in ('draft', 'submit')"/>
+                <field name="order_id" readonly="1"/>
+                                        <field name="fees_term_id" required="1" readonly="state not in ('draft', 'submit', 'confirm')"/>
+                                        <field name="partner_id" can_create="True" can_write="True"/>
+                                        <field name="student_id" placeholder="Student" readonly="state == 'done'" options="{'no_create_edit': True}" required="is_student == True" invisible="is_student == False" on_change="1" can_create="True" can_write="True"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="educational_detail" string="Educational Detail">
+                                <group>
+                                    <group>
+                                        <field name="prev_institute_id" readonly="state == 'done'"/>
+                                        <field name="prev_result" readonly="state == 'done'"/>
+                                    </group>
+                                    <group>
+                                        <field name="prev_course_id" readonly="state == 'done'"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="personal_detail" string="Personal Detail">
+                                <group>
+                                    <group>
+                                        <field name="gender" readonly="state == 'done'"/>
+            <field name="birth_date" readonly="state == 'done'"/>
+            <field name="family_income" readonly="state == 'done'"/>
+                                        <field name="family_business" readonly="state == 'done'"/>
+
+                                        <field name="nbr" invisible="True"/>
+                                    </group>
+                                    <group>
+                                        <label for="street" string="Address"/>
+                                        <div name="o_address_format">
+                                            <field name="street" placeholder="Street..."/>
+                                            <field name="street2" placeholder="Street2"/>
+                                            <div class="address_format d-md-flex">
+                                                <field name="city" placeholder="City"/>
+                                                <field name="state_id" class="oe_no_button" placeholder="State" options="{&quot;no_open&quot;: True}" can_create="True" can_write="True"/>
+                                                <field name="zip" placeholder="ZIP"/>
+                                            </div>
+                                            <field name="country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True}" can_create="True" can_write="True"/>
+                                        </div>
+                                    </group>
+                                </group>
+                            </page>
+                <page name="extra_nfo" string="Extra Information">
+                    <group>
+                        <group string="Marketing">
+                            <field name="campaign_id" options="{'create_name_field': 'title'}" can_create="True" can_write="True"/>
+                            <field name="medium_id" can_create="True" can_write="True"/>
+                            <field name="source_id" can_create="True" can_write="True"/>
+                            <field name="referred_by"/>
+                        </group>
+                        <group string="Tracking" name="Misc">
+                            <field name="team_id" options="{'no_open': True, 'no_create': True}" can_create="True" can_write="True"/>
+                            <field name="day_open"/>
+                            <field name="day_close"/>
+<!--                            <field name="type" invisible="1"/>-->
+                        </group>
+                    </group>
+                </page>
+                        </notebook>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_view_similar_admissions" type="object" class="oe_stat_button" icon="fa-star" string="Similar Admissions">
+                        <div class="o_stat_info">
+                            <field name="similar_admission_count" class="o_stat_value"/>
+                            <span class="o_stat_text">Similar Admissions</span>
+                        </div>
+                    </button>
+                </div>
+                    </sheet>
+                    <chatter/>
+                </form>

@@ -1,0 +1,26 @@
+<list string="Product Variants" multi_edit="1" duplicate="false" sample="1" default_order="is_favorite desc, default_code, name, id">
+                    <field name="is_favorite" widget="boolean_favorite" nolabel="1" readonly="1"/>
+                    <field name="default_code" optional="show" readonly="1" on_change="1"/>
+                    <field name="barcode" optional="hide" readonly="1"/>
+                    <field name="name" readonly="1" on_change="1"/>
+                <field name="website_id" optional="show" can_create="True" can_write="True"/>
+                <field name="is_published" string="Is Published" optional="hide" on_change="1"/>
+                    <field name="product_template_variant_value_ids" widget="many2many_tags" readonly="1"/>
+                    <field name="company_id" optional="hide" readonly="1" on_change="1"/>
+                    <field name="lst_price" optional="show" string="Sales Price" on_change="1"/>
+                    <field name="standard_price" optional="show" on_change="1"/>
+                    <field name="avg_cost" string="Unit Cost" optional="hide" options="{                         'currency_field': 'company_currency_id',                     }"/>
+                    <field name="total_value" string="Total Value" optional="hide" options="{                         'currency_field': 'company_currency_id',                     }" sum="Total Value"/>
+                    <field name="categ_id" optional="hide" on_change="1" can_create="True" can_write="True"/>
+                    <field name="product_tag_ids" widget="many2many_tags" readonly="1" optional="hide" on_change="1"/>
+                    <field name="additional_product_tag_ids" widget="many2many_tags" optional="hide" can_create="True" can_write="True"/>
+                <field name="website_ribbon_id" invisible="variant_ribbon_id" optional="hide" readonly="1" on_change="1"/>
+                <field name="variant_ribbon_id" options="{'no_quick_create': True}" optional="hide" can_create="True" can_write="True"/>
+                    <field name="type" optional="hide" readonly="1" on_change="1"/>
+                    <field name="qty_available" invisible="not is_storable" string="On Hand" optional="show" decoration-danger="virtual_available &lt; 0" decoration-warning="virtual_available == 0" decoration-bf="1" sum="Total On Hand"/>
+                    <field name="virtual_available" invisible="not is_storable" string="Forecasted" optional="show" decoration-danger="virtual_available &lt; 0" decoration-warning="virtual_available == 0" sum="Total Forecasted"/>
+                    
+                    <field name="product_tmpl_id" readonly="1" column_invisible="True" on_change="1"/>
+                    <field name="active" column_invisible="True"/>
+                <field name="is_storable" column_invisible="True" readonly="True" data-used-by="invisible='not is_storable' (field,virtual_available)" on_change="1"/>
+</list>

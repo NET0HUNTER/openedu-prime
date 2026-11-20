@@ -1,0 +1,32 @@
+<kanban js_class="im_livechat.livechat_channel_kanban" action="im_livechat.discuss_channel_action_from_livechat_channel" type="action">
+                    <field name="are_you_inside"/>
+                    <field name="rating_count"/>
+                    <templates>
+                        <t t-name="menu">
+                            <a type="open" class="dropdown-item" role="menuitem">
+                                <span>Configure Channel</span>
+                                
+                            </a>
+                        </t>
+                        <t t-name="card" class="p-0 row g-0">
+                            <main class="pe-4 py-2 ps-4 col" t-att-class="{'o-livechat-ChannelKanban-highlighted': record.available_operator_ids.raw_value.length &gt; 0}">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <field name="name" class="fs-4" style="word-wrap: break-word;"/>
+                                        <p class="fst-italic fs-5"><field name="nbr_channel"/> Sessions</p>
+                                    </div>
+                                    <div class="pe-1">
+                                        <button t-if="record.are_you_inside.raw_value" name="action_quit" type="object" class="btn btn-primary">Leave</button>
+                                        <button t-else="" name="action_join" type="object" class="btn btn-secondary">Join</button>
+                                    </div>
+                                </div>
+                                <footer class="pt-0">
+                                    <field name="available_operator_ids" widget="many2many_avatar_user" readonly="True"/>
+                                    <a t-if="record.rating_count.raw_value &gt; 0" name="action_view_rating" class="ms-auto fs-6" type="object" tabindex="10">
+                                        <i class="fa fa-smile-o text-success" title="Percentage of happy ratings" role="img" aria-label="Happy face"/> <field name="rating_percentage_satisfaction"/>%
+                                    </a>
+                                </footer>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>

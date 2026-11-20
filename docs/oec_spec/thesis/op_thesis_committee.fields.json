@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "faculty_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "faculty_id",
+      "readonly": false,
+      "relation": "op.faculty",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Faculty Member",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

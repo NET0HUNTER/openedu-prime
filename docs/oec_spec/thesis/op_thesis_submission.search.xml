@@ -1,0 +1,19 @@
+<search string="Thesis Submissions">
+                    <field name="name"/>
+                    <field name="title"/>
+                    <field name="student_id"/>
+                    <field name="registration_id"/>
+                    <filter string="Draft" name="draft_submissions" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Submitted" name="submitted_submissions" domain="[('state', '=', 'submitted')]"/>
+                    <filter string="Under Review" name="under_review_submissions" domain="[('state', '=', 'under_review')]"/>
+                    <filter string="Evaluated" name="evaluated_submissions" domain="[('state', '=', 'evaluated')]"/>
+                    <filter string="Approved" name="approved_submissions" domain="[('state', '=', 'approved')]"/>
+                    <filter string="Completed" name="completed_submissions" domain="[('state', '=', 'completed')]"/>
+                    <filter string="Rejected" name="rejected_submissions" domain="[('state', '=', 'rejected')]"/>
+                    <group>
+                        <filter string="Student" name="group_by_student" domain="[]" context="{'group_by':'student_id'}"/>
+                        <filter string="Registration" name="group_by_registration" domain="[]" context="{'group_by':'registration_id'}"/>
+                        <filter string="Submission Date" name="group_by_date" domain="[]" context="{'group_by':'submission_date'}"/>
+                        <filter string="Status" name="group_by_state" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>

@@ -1,0 +1,6 @@
+﻿<list default_order="sequence">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="fold"/>
+                <field name="company_id" optional="show"/>
+            </list>

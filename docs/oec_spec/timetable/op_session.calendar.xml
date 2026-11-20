@@ -1,0 +1,11 @@
+﻿<calendar string="Sessions" date_start="start_datetime" date_stop="end_datetime" color="course_id" event_open_popup="true" quick_create="true" quick_create_view_id="4849" js_class="op_session_calendar_with_timeoff" show_unusual_days="1">
+                    <field name="faculty_id"/>
+                    <field name="course_id"/>
+                    <field name="batch_id"/>
+                    <field name="start_datetime"/>
+                    <field name="end_datetime"/>
+                    <field name="subject_id"/>
+                    <field name="classroom_id"/>
+                    <field name="type"/>
+                    <field name="student_ids" domain="[('course_detail_ids.batch_id', '=', batch_id)]"/>
+                </calendar>

@@ -1,0 +1,48 @@
+﻿<form string="Course Registration">
+                    <header>
+                        <button name="action_submitted" string="Submit" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                        <button name="action_approve" string="Approve" type="object" class="oe_highlight" invisible="state != 'submitted'"/>
+                        <button name="action_reject" string="Reject" type="object" class="oe_highlight" invisible="state != 'submitted'"/>
+                <button name="action_reject_change" type="object" string="Reject Change Request" class="btn-warning" invisible="state != 'change_requested'"/>
+                        <button string="Reset to Draft" class="oe_highlight" invisible="state not in ('rejected', 'change_requested')" type="object" name="action_reset_draft"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,change_requested,approved,rejected"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group>
+                            <group>
+                                <field name="student_id" required="1" can_create="True" can_write="True"/>
+                                <field name="batch_id" domain="[('course_id', '=', course_id)]" required="1" can_create="True" can_write="True"/>
+                                <field name="max_unit_load"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="course_id" options="{'no_open': True, 'no_create': True}" on_change="1" can_create="True" can_write="True"/>
+                                <field name="min_unit_load"/>
+                <field name="required_field" invisible="1"/>
+                <field name="user_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                
+                <field name="cl_subject_ids" invisible="1"/>
+                <field name="el_subject_ids" invisible="1"/>
+                            </group>
+                        </group>
+                        <button name="get_subjects" type="object" string="Get Subjects" class="oe_highlight mt-3"/>
+                        <group>
+                            <separator string="Compulsory Subjects" colspan="2"/>
+                            <field name="compulsory_subject_ids" widget="many2many_tags" domain="&#10;                    [('id','in',cl_subject_ids)]&#10;                "/>
+                            <separator string="Elective Subjects" colspan="2"/>
+                            <field name="elective_subject_ids" widget="many2many_tags" domain="&#10;                    [('id','in',el_subject_ids)]&#10;                " readonly="state != 'draft'" can_create="True" can_write="True"/>
+                <group string="Portal Deadlines &amp; Requests" col="2">
+                    <field name="pick_deadline" on_change="1"/>
+                    <field name="is_pick_deadline_passed" invisible="1"/>
+                    <field name="change_requested_on" invisible="state != 'change_requested'"/>
+                    <field name="change_request_reason" nolabel="1" colspan="2" invisible="state != 'change_requested'"/>
+                    <field name="change_rejected_on" invisible="not change_rejection_reason"/>
+                    <field name="change_rejection_reason" nolabel="1" colspan="2" invisible="not change_rejection_reason"/>
+                </group>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

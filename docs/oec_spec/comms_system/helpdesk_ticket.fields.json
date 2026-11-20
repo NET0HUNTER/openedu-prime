@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "issue_name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "issue_name",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Subject",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

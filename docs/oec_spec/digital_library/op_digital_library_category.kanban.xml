@@ -1,0 +1,1 @@
+<kanban string="Category Of Material"><templates><t t-name="card"><field name="display_name"/></t></templates></kanban>

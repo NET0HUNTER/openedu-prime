@@ -1,0 +1,16 @@
+<list string="media Movement">
+                    <field name="library_card_id" on_change="1"/>
+                    <field name="partner_id"/>
+                    <field name="media_id" on_change="1"/>
+                    <field name="media_type_id" optional="hide"/>
+                    <field name="media_unit_id" on_change="1"/>
+                    <field name="issued_date" on_change="1"/>
+                    <field name="return_date"/>
+                    <field name="actual_return_date"/>
+                    <field name="penalty" widget="monetary" optional="hide"/>
+                    <field name="state"/>
+                    <field name="queue_count" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="invoice_id" invisible="True"/>
+                    <field name="type" optional="hide"/>
+                </list>

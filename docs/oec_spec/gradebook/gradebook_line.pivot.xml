@@ -1,0 +1,4 @@
+﻿<pivot string="Gradebook Line">
+                    <field name="gradebook_id" type="col"/>
+                    <field name="course_id" type="row"/>
+                </pivot>

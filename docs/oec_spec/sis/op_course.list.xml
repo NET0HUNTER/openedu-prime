@@ -1,0 +1,18 @@
+﻿<list string="Course">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="evaluation_type"/>
+                    <field name="fees_term_id" required="1"/>
+                    <field name="parent_id"/>
+                    <field name="min_unit_load" optional="hide"/>
+                    <field name="max_unit_load" optional="hide"/>
+                    <field name="subject_ids" widget="many2many_tags"/>
+                <field name="notice_group_id" optional="hide"/>
+                <field name="company_id" optional="show"/>
+                    <field name="department_id"/>
+                    <button name="open_grade_book_grid" type="object" class="btn btn-primary" string="GradeBook">
+                    </button>
+                    <field name="grade_template_ids" widget="many2many_tags" optional="hide"/>
+                    <field name="grade_scale_id" optional="hide"/>
+                    <field name="assignment_count" optional="hide"/>
+                </list>

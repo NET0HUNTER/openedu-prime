@@ -1,0 +1,8 @@
+﻿<list>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="skill_category_type_id"/>
+                    <field name="self_assessed" optional="hide"/>
+                    <field name="active" widget="boolean_toggle" optional="hide"/>
+<!--                    <field name="company_id" groups="base.group_multi_company" optional="show"/>-->
+                </list>

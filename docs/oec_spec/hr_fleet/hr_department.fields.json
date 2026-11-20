@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "complete_name": {
+      "change_default": false,
+      "groupable": false,
+      "name": "complete_name",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": false,
+      "store": false,
+      "string": "Complete Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

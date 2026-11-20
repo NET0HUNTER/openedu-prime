@@ -1,0 +1,57 @@
+﻿<form string="Attendance Sheet">
+                    <header>
+                    <button type="object" name="enable_kiosk" invisible="state !='draft'" string="Enable Kiosk" class="oe_highlight"/>
+                        <button type="object" name="attendance_start" invisible="state != 'draft'" string="Attendance Start" class="oe_highlight"/>
+                        <button type="object" name="attendance_done" invisible="state != 'start'" string="Attendance Taken" class="oe_highlight"/>
+                        <button type="object" name="attendance_cancel" invisible="state not in ('draft','start')" string="Cancel"/>
+                        <button type="object" name="attendance_draft" string="Draft" invisible="state not in ['done','cancel']" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,start,done"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <div name="button_box" class="oe_button_box">
+                <button class="btn oe_stat_button" type="object" name="total_present_count" style="border-right: 1px solid;" icon="fa-user-circle">
+                    <field string="Present" name="total_present" widget="statinfo"/>
+                </button>
+                <button class="btn oe_stat_button" type="object" name="total_absent_count" style="border-right: 1px solid;" icon="fa-user-circle">
+                    <field string="Absent" name="total_absent" widget="statinfo"/>
+                </button>
+                <button class="btn oe_stat_button" type="object" name="total_excused_count" style="border-right: 1px solid;" icon="fa-user-circle">
+                    <field string="Absent Excused" name="excused_count" widget="statinfo"/>
+                </button>
+                <button class="btn oe_stat_button" type="object" name="total_late_count" style="border-right: 1px solid;" icon="fa-user-circle">
+                    <field string="Late" name="late_count" widget="statinfo"/>
+                </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="register_id" readonly="state in ('done','cancel')" on_change="1" can_create="True" can_write="True"/>
+                                <field name="session_id" readonly="state in ('done','cancel')" domain="[('course_id','=',course_id),('batch_id','=',batch_id)]" invisible="attendance_option == 'generic'" on_change="1" can_create="True" can_write="True"/>
+                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                <field name="attendance_option" invisible="1"/>
+                
+                                <field name="course_id" invisible="1"/>
+                <field name="faculty_id" invisible="attendance_option == 'subject'" readonly="state in ('done','cancel')" can_create="True" can_write="True"/>
+                                <field name="batch_id" invisible="attendance_option == 'subject'"/>
+                            </group>
+                            <group>
+                                <field name="name" readonly="state in ('done','cancel')"/>
+                                <field name="attendance_date" readonly="state in ('done','cancel')"/>
+                            </group>
+                        </group>
+                        <group col="4" string="Students">
+                            <field name="attendance_line" colspan="4" nolabel="1" readonly="state in ('done','cancel')" on_change="1">
+                                <list string="Attendance Line" editable="top">
+                                    <field name="student_id" domain="[('course_detail_ids.course_id','=',parent.course_id),('course_detail_ids.batch_id','=',parent.batch_id),('course_detail_ids.state', '=', 'running')]" on_change="1" can_create="True" can_write="True"/>
+                                    <field name="present" on_change="1"/>
+                                    <field name="late" on_change="1"/>
+                                    <field name="excused" on_change="1"/>
+                                    <field name="absent" on_change="1"/>
+                                    <field name="remark"/>
+                                </list>
+                            </field>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

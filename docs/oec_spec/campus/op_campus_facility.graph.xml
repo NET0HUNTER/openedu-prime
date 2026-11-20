@@ -1,0 +1,5 @@
+<graph string="Campus Facility">
+                    <field name="name" type="row"/>
+                    <field name="parent_id"/>
+                    <field name="facility_type_id"/>
+                </graph>

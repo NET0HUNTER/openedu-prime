@@ -1,0 +1,7 @@
+<list string="Committee Members">
+                    <field name="faculty_id" on_change="1"/>
+                    <field name="registration_id"/>
+                    <field name="role"/>
+                    <field name="email" optional="hide"/>
+                    <field name="phone" optional="hide"/>
+                </list>

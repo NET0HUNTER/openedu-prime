@@ -1,0 +1,4 @@
+﻿<graph string="Attendance Line" type="bar">
+                    <field name="student_id"/>
+                    <field name="remark"/>
+                </graph>

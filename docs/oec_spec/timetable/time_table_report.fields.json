@@ -1,0 +1,89 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "state":  {
+                  "readonly":  false,
+                  "required":  true,
+                  "selection":  [
+                                    [
+                                        "faculty",
+                                        "Faculty"
+                                    ],
+                                    [
+                                        "student",
+                                        "Student"
+                                    ]
+                                ],
+                  "string":  "Select",
+                  "type":  "selection"
+              },
+    "course_id":  {
+                      "readonly":  false,
+                      "relation":  "op.course",
+                      "required":  false,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  false,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "faculty_id":  {
+                       "readonly":  false,
+                       "relation":  "op.faculty",
+                       "required":  false,
+                       "string":  "Faculty",
+                       "type":  "many2one"
+                   },
+    "start_date":  {
+                       "readonly":  false,
+                       "required":  true,
+                       "string":  "Start Date",
+                       "type":  "date"
+                   },
+    "end_date":  {
+                     "readonly":  false,
+                     "required":  true,
+                     "string":  "End Date",
+                     "type":  "date"
+                 },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   }
+}

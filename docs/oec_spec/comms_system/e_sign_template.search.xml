@@ -1,0 +1,9 @@
+<search>
+                    <field name="template_id" string="Document Name"/>
+                    <field name="tag_ids"/>
+                    <filter name="my_templates" string="My Templates" domain="[('user_id', '=', uid)]"/>
+                    <filter name="favorite" string="My Favorites" domain="[('is_favorite', '=', 'true')]"/>
+                    <searchpanel>
+                        <field name="tag_ids" select="multi" icon="fa-tag" enable_counters="1"/>
+                    </searchpanel>
+                </search>

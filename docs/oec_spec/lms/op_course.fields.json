@@ -1,0 +1,46 @@
+{
+  "fields": {
+    "forum_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "forum_id",
+      "readonly": false,
+      "relation": "forum.forum",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Forum",
+      "type": "many2one"
+    },
+    "forum_post_count": {
+      "aggregator": "sum",
+      "change_default": false,
+      "groupable": true,
+      "name": "forum_post_count",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Forum Post Count",
+      "type": "integer"
+    },
+    "forum_reply_count": {
+      "aggregator": "sum",
+      "change_default": false,
+      "groupable": true,
+      "name": "forum_reply_count",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Forum Reply Count",
+      "type": "integer"
+    }
+  },
+  "has_approval_rules": false
+}

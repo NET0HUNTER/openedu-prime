@@ -1,0 +1,6 @@
+﻿<list string="Specializations">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="area_id"/>
+                    <field name="company_id"/>
+                </list>

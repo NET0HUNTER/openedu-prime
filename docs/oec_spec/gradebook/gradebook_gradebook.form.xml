@@ -1,0 +1,77 @@
+﻿<form string="Grade Book">
+                    <header>
+                        <button name="student_Grade_override" string="Generate Final Grade" type="object" class="oe_highlight" invisible="override_hide == True or state in ['draft','inprogress','cancelled']"/>
+                        <button name="recompute_data" string="Recompute" type="object" class="oe_highlight" invisible="override_hide != True"/>
+                        <button name="action_inprogress" invisible="state != 'draft'" string="In Progress" type="object" class="oe_highlight"/>
+                        <button name="action_publish" invisible="state != 'inprogress'" string="Publish" type="object" class="oe_highlight"/>
+                        <button name="action_cancelled" invisible="state != 'publish'" string="Cancel" type="object" class="oe_highlight"/>
+                        <button name="action_draft" invisible="state != 'cancelled'" string="Draft" type="object" class="oe_highlight"/>
+                        <button name="1475" invisible="state != 'inprogress'" string="Initialize" type="action" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box" width="100%">
+                            <button icon="fa-bar-chart" class="oe_stat_button" type="object" name="action_view_student_statistics">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Statistics</span>
+                                </div>
+                            </button>
+
+                            <button name="student_grade_book_grid" class="btn oe_stat_button" icon="fa-book" type="object">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">GradeBook</span>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="course_id" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <field name="report_type" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="student_id" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <field name="academic_year_id" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="academic_year_ids" invisible="1" can_create="True" can_write="True"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <group class="mt32">
+                            <group>
+                                <field name="percentage" readonly="1" force_save="1" on_change="1"/>
+                            </group>
+                            <group>
+                                <field name="grade" readonly="1" force_save="1"/>
+                            </group>
+                        </group>
+                        <group class="mt32">
+                            <field name="gradebook" invisible="1"/>
+                            <field name="gradebook_line_id" readonly="1" on_change="1">
+                                <list decoration-danger="assignment_archived">
+                                    <field name="course_id"/>
+                                    <field name="academic_term_id"/>
+                                    <field name="subject_id"/>
+                                    <field name="grade_assigment_id" on_change="1"/>
+                                    <field name="assignment_type_id" on_change="1"/>
+                                <field name="assignment_archived" column_invisible="True" readonly="True" data-used-by="decoration-danger='assignment_archived' (list,None)"/>
+</list>
+                            </field>
+                            <field name="override_hide" invisible="1"/>
+                            <field name="grade_override" invisible="override_hide != True">
+                                <list editable="top" create="false">
+                                    <field name="year_hidden" column_invisible="1" can_create="True" can_write="True"/>
+                                    <field name="year" readonly="1"/>
+                                    <field name="term" readonly="1"/>
+                                    <field name="subject" readonly="1"/>
+                                    <field name="assignment_id" readonly="1"/>
+                                    <field name="calculated" readonly="1"/>
+                                    <field name="grade" readonly="1"/>
+                                    <field name="override" readonly="assignment_id != False"/>
+                                    <field name="final" readonly="assignment_id != False"/>
+                                    <field name="comment"/>
+                                </list>
+                            </field>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

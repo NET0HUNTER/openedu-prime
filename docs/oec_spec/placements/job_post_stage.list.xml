@@ -1,0 +1,7 @@
+<list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="fold"/>
+                <field name="post_id" widget="many2many_tags" optional="hide"/>
+                <field name="requirements" optional="hide"/>
+            </list>

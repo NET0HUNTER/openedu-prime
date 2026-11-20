@@ -1,0 +1,4 @@
+<list>
+                <field name="name" on_change="1"/>
+                <field name="user_ids"/>
+            </list>

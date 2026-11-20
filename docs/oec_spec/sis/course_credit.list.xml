@@ -1,0 +1,5 @@
+﻿<list>
+                <field name="course_id"/>
+                <field name="academic_year_id" optional="hide"/>
+                <field name="all_academic" optional="hide"/>
+            </list>

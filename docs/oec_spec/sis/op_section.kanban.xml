@@ -1,0 +1,68 @@
+﻿<kanban highlight_color="color" string="Section kanban" class="o_slide_kanban o_slide_channel_kanban" sample="1">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="color"/>
+                    <field name="subject_id"/>
+                    <field name="student_count"/>
+                    <templates>
+                        <t t-name="menu">
+                            <div class="container" role="menu">
+                            <div class="row my-2">
+                                    <div class="col-md-4 o_kanban_card_manage_section o_kanban_manage_view">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_views" class="o_kanban_card_manage_title">
+                                                <span>Views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_new" class="o_kanban_card_manage_title">
+                                                <span>New</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 o_kanban_card_manage_section o_kanban_manage_operations">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_reports" class="o_kanban_card_manage_title">
+                                                <span>Reports</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                    <div role="menuitem" aria-haspopup="true" class="col-8">
+                                        <field name="color" widget="kanban_color_picker"/>
+                                    </div>
+                                    <div role="menuitem" class="col-4">
+                                        <a type="open">Settings</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-name="card">
+                            <main class="d-flex flex-column h-100 gap-2 p-1">
+                                <div class="d-flex justify-content-between align-items-start gap-2">
+                                    <div class="flex-grow-1" style="min-width: 0;">
+                                        <h5 class="mb-0 fw-bold text-primary text-truncate" t-att-title="record.name.value" style="font-size: 1.15rem;">
+                                            <field name="name"/>
+                                        </h5>
+                                        <small t-if="record.subject_id.raw_value" class="text-muted text-truncate d-block">
+                                            <i class="fa fa-book me-1" role="img" aria-label="Subject" title="Subject"/>
+                                            <field name="subject_id"/>
+                                        </small>
+                                    </div>
+                                </div>
+                                <a name="action_view_students" type="object" class="d-flex align-items-center justify-content-between small text-decoration-none border rounded px-3 py-2 bg-light mt-auto">
+                                    <span class="d-flex align-items-center text-muted">
+                                        <i class="fa fa-users me-2" role="img" aria-label="Students" title="Students"/>
+                                        <t t-esc="student_label_plural"/>
+                                    </span>
+                                    <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0">
+                                        <field name="student_count"/>
+                                    </span>
+                                </a>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>

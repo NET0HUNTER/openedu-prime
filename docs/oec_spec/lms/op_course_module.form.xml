@@ -1,0 +1,71 @@
+<form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Course"/>
+                        </h1>
+                        <group>
+                            <field name="is_published" widget="boolean_toggle" string="Published" on_change="1"/>
+                            <field name="company_id" can_create="True" can_write="True"/>
+                        </group>
+                    </div>
+                    <notebook>
+                        <page name="document" string="Document">
+                            <group>
+                                <group>
+                                    <field name="module_category" on_change="1"/>
+                                    <label for="source_type" string="" invisible="module_category not in ['infographic', 'document']"/>
+                                    <field name="source_type" widget="radio" nolabel="1" invisible="module_category not in ['infographic', 'document']" on_change="1"/>
+                                    <field name="video_type" invisible="module_category != 'video'"/>
+                                    <field name="audio_type" invisible="module_category != 'audio'" on_change="1"/>
+                                    <field name="video_url" invisible="module_category != 'video' or video_type != 'url'" readonly="module_category != 'video'" required="module_category == 'video'" placeholder="e.g &quot;www.youtube.com/watch?v=ebBez6bcSEc&quot;" widget="url" on_change="1"/>
+                                    <field name="audio_url" invisible="module_category != 'audio' or audio_type != 'url'" readonly="module_category != 'audio'" required="module_category == 'audio' and audio_type == 'url'" placeholder="e.g &quot;https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3&quot;" widget="url" on_change="1"/>
+                                    <field name="document_google_url" invisible="source_type != 'external' or module_category != 'document'" readonly="source_type != 'external' or module_category != 'document'" placeholder="e.g &quot;https://drive.google.com/file/...&quot;" widget="url"/>
+                                    <field name="image_google_url" invisible="source_type != 'external' or module_category != 'infographic'" readonly="source_type != 'external' or module_category != 'infographic'" placeholder="e.g &quot;https://drive.google.com/file/...&quot;" widget="url"/>
+                                    <field name="document_name" string="Document Name" invisible="source_type == 'external' or module_category != 'document'" on_change="1"/>
+                                    <field name="document_binary_content" string="" options="{'accepted_file_extensions': '.pdf,.xlsx,.docx,.doc,.xls'}" invisible="source_type == 'external' or module_category != 'document'" readonly="source_type == 'external' or module_category != 'document'" filename="document_name" on_change="1"/>
+                                    <field name="document_binary_content" string="" options="{'accepted_file_extensions': '.mp4'}" invisible="module_category != 'video' or video_type != 'upload'" filename="document_name" on_change="1"/>
+                                    <field name="document_binary_content" string="Audio File" options="{'accepted_file_extensions': '.mp3,.wav,.ogg,.m4a'}" invisible="module_category != 'audio' or audio_type != 'upload'" filename="document_name" on_change="1"/>
+                                    <field name="file" invisible="1"/>
+                                    <field name="binary_content" invisible="1" on_change="1"/>
+                                    <field name="document_url" invisible="1"/>
+                                    <field name="document_binary_mimetype" invisible="1"/>
+                                    <field name="quiz_id" invisible="module_category != 'quiz'" required="module_category == 'quiz'" domain="[('lms', '=', True),('state','=','open')]" can_create="True" can_write="True"/>
+                                    <field name="image_binary_content" string="" options="{'accepted_file_extensions': 'image/*'}" invisible="source_type == 'external' or module_category != 'infographic'" readonly="source_type == 'external' or module_category != 'infographic'"/>
+                                </group>
+                                <group>
+                                    <field name="user_id" can_create="True" can_write="True"/>
+                                    <field name="embed_code"/>
+                                    <label for="completion_time"/>
+                                    <div>
+                                        <field name="completion_time" widget="float_time" class="oe_inline" on_change="1"/>
+                                        <span>hours</span>
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="quiz" string="Quiz" invisible="1">
+                            <group name="quiz_details">
+                                <group name="quiz_rewards" string="Points Rewards">
+                                    <group>
+                                        <field string="First Try" name="quiz_first_attempt_reward"/>
+                                        <field string="Second Try" name="quiz_second_attempt_reward"/>
+                                        <field string="Third Try" name="quiz_third_attempt_reward"/>
+                                        <field string="Fourth Try &amp; More" name="quiz_fourth_attempt_reward"/>
+                                    </group>
+                                </group>
+                                <group name="questions" string="Questions">
+                                    <field name="question_ids" nolabel="1">
+                                        <list>
+                                            <field name="sequence" widget="handle"/>
+                                            <field name="question" string="Question"/>
+                                            <field name="answer_ids" string="Answers" widget="many2many_tags"/>
+                                        </list>
+                                    </field>
+                                </group>
+                            </group>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>

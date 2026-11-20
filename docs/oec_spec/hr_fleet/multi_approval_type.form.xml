@@ -1,0 +1,114 @@
+<form>
+                    <header>
+                        <button name="action_configure" type="object" string="Configure" invisible="active == False or is_configured == True or apply_for_model == False" class="oe_highlight"/>
+                        <button name="create_request" type="object" string="Create New Request" class="oe_highlight" invisible="apply_for_model == True"/>
+                    </header>
+                    <div class="alert alert-info" role="alert" style="margin-bottom:0px;" invisible="is_configured == False">
+                        This type has been configured!
+                    </div>
+                    <sheet>
+                        <div>
+                            <field name="image" widget="image" class="oe_avatar" options="{'size': [80, 80]}"/>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" string="Approval Type"/>
+                            <h1>
+                                <field name="name" placeholder="e.g. Procurement" required="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="description"/>
+                            <field name="priority"/>
+                            <field name="apply_for_model"/>
+                            <field name="is_configured" invisible="1"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Options" name="options">
+                                <group string="Fields" name="option_settings" invisible="apply_for_model == True">
+                                    <group>
+                                        <field name="document_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="partner_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="date_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="period_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="product_opt" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                    <group>
+                                        <field name="quantity_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="amount_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="payment_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="reference_opt" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="location_opt" widget="radio" options="{'horizontal': true}"/>
+                                    </group>
+                                </group>
+                                <group string="Model Settings" name="model_settings" invisible="apply_for_model == False">
+                                    <field name="model_id" required="apply_for_model == True" readonly="is_configured == True" on_change="1" can_create="True" can_write="True"/>
+                                    <field name="model_name" invisible="1"/>
+                                    <field name="domain" widget="domain" options="{'model':'model_name'}" invisible="model_id == False" required="apply_for_model == True" readonly="is_configured == True"/>
+                                    <field name="hide_button"/>
+                                </group>
+                                <group>
+                                    <field name="approve_python_code" placeholder="Python code" widget="ace" options="{'mode': 'python'}" invisible="apply_for_model == False"/>
+                                </group>
+                                <group>
+                                    <field name="refuse_python_code" placeholder="Python code" widget="ace" options="{'mode': 'python'}" invisible="apply_for_model == False"/>
+                                </group>
+                                <group string="Approvers" name="approvers">
+                                    <group>
+                                        <field name="approval_minimum"/>
+                                    </group>
+                                    <field name="line_ids" on_change="1">
+                                        <list editable="bottom">
+                                            <field name="user_id" can_create="True" can_write="True"/>
+                                            <field name="require_opt" on_change="1"/>
+                                            <field name="approve_tmpl_id" can_create="True" can_write="True"/>
+                                            <field name="reject_tmpl_id" can_create="True" can_write="True"/>
+                                        </list>
+                                    </field>
+                                </group>
+                            </page>
+                            <page string="Help" invisible="apply_for_model == False">
+                                <group>
+                                    <div style="margin-top: 4px;">
+                                        <h3>Help with Python expressions</h3>
+                                        <p>Various fields may use Python code or Python expressions. The following
+                                            variables can be used:
+                                        </p>
+                                        <ul>
+                                            <li><code>env</code>: odoo Environment on which the action is triggered
+                                            </li>
+                                            <li><code>model</code>: odoo Model of the record on which the action is
+                                                triggered; is a void recordset
+                                            </li>
+                                            <li><code>record</code>: record on which the action is triggered; may be be
+                                                void
+                                            </li>
+                                            <li><code>records</code>: recordset of all records on which the action is
+                                                triggered in multi mode; may be void
+                                            </li>
+                                            <li><code>time</code>, <code>datetime</code>, <code>dateutil</code>, <code>
+                                                timezone</code>: useful Python libraries
+                                            </li>
+                                            <li><code>log(message, level='info')</code>:logging function to record debug
+                                                information in <code>ir.logging</code> table
+                                            </li>
+                                            <li><code>UserError</code>: Warning Exception to use with
+                                                <code>raise</code>
+                                            </li>
+                                            <li>To return an action, assign:
+                                                <code>action = {...}</code>
+                                            </li>
+                                        </ul>
+                                        <div>
+                                            <p>Example of Python code</p>
+                                            <code style="white-space: pre-wrap">
+                                                partner_name = record.name + '_code'
+                                                env['res.partner'].create({'name': partner_name})
+                                            </code>
+                                        </div>
+                                    </div>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>

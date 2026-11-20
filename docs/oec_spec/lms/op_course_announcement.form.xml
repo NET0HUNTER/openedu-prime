@@ -1,0 +1,1 @@
+<form><sheet string="Course Announcement"><group><group><field name="name"/><field name="user_id" can_create="True" can_write="True"/></group><group><field name="course_id" can_create="True" can_write="True"/></group></group><group><field name="announcement_html"/></group><group/><group><separator/></group></sheet></form>

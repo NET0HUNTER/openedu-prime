@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  2,
+        "display_name":  "Academic Transcript"
+    },
+    {
+        "id":  5,
+        "display_name":  "Convocation Invitation Letter"
+    },
+    {
+        "id":  1,
+        "display_name":  "Degree Certificate"
+    },
+    {
+        "id":  4,
+        "display_name":  "Digital Signature Certificate"
+    },
+    {
+        "id":  7,
+        "display_name":  "Driving License"
+    }
+]

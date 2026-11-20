@@ -1,0 +1,33 @@
+<kanban class="o_event_attendee_kanban_view" default_order="name, create_date desc" sample="1" js_class="registration_summary_dialog_kanban">
+                <field name="name"/>
+                <field name="state"/>
+                <field name="active"/>
+                <field name="barcode"/>
+                <templates>
+                    <t t-name="card" class="row g-0">
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                        <div class="col-8">
+                            <field class="d-block fw-bold fs-5" name="name"/>
+                            <field name="state" widget="badge" decoration-success="state == 'done'" class="position-absolute top-0 end-0 o_event_registration_kanban_badge"/>
+                            <div class="o_kanban_event_registration_event_name">
+                                <field class="text-truncate text-primary" name="event_id" invisible="context.get('default_event_id')" on_change="1"/>
+                            </div>
+                            <span class="text-truncate" invisible="not company_name">
+                                <i class="fa fa-building" title="Attendee Company"/> <field name="company_name"/>
+                            </span>
+                <field name="registration_answer_choice_ids" class="mt-1" widget="many2many_tags"/>
+                            <div id="event_ticket_id">
+                                <field name="registration_properties"/>
+                                <div t-if="record.event_slot_id.raw_value">
+                                    <i class="fa fa-calendar" title="Slot"/>
+                                    <field name="event_slot_id" class="fw-bold text-truncate ms-1"/>
+                                </div>
+                                <div t-if="record.event_ticket_id.raw_value">
+                                    <i class="fa fa-ticket" title="Ticket type"/>
+                                    <field name="event_ticket_id" class="fw-bold text-truncate ms-1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>

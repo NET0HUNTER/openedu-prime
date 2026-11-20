@@ -1,0 +1,1 @@
+<kanban string="Media Queue Request"><templates><t t-name="card"><field name="user_id" on_change="1"/></t></templates></kanban>

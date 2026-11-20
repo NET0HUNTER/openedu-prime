@@ -1,0 +1,16 @@
+﻿<form string="Tags">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="color" required="True" widget="color_picker"/>
+                            <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>

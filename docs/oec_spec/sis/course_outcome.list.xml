@@ -1,0 +1,7 @@
+﻿<list string="Course Outcome">
+                    <field name="name"/>
+                    <field name="co_code"/>
+                    <field name="course_id"/>
+                    <field name="academic_year_id"/>
+                    <field name="academic_term_id"/>
+                </list>

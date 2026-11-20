@@ -1,0 +1,15 @@
+﻿<list string="Subject">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                    <field name="subject_type"/>
+                    <button name="open_grade_book_grid" type="object" class="btn btn-primary" string="GradeBook">
+                    </button>
+          <field name="subject_credit"/>
+                    <field name="grade_weightage" invisible="1"/>
+                    <field name="course_id" optional="hide" on_change="1"/>
+                    <field name="credit_point" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="department_id"/>
+                    <field name="assignment_count" optional="hide"/>
+                </list>

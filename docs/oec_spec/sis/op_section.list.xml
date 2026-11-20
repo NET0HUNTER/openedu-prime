@@ -1,0 +1,8 @@
+﻿<list>
+                    <field name="name"/>
+                    <field name="subject_id"/>
+                    <field name="course_ids"/>
+                    <field name="batch_ids"/>
+                    <field name="student_course_ids" widget="many2many_tags"/>
+                    <field name="company_id" optional="show"/>
+                </list>

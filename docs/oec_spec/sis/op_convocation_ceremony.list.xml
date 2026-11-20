@@ -1,0 +1,9 @@
+﻿<list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="date"/>
+                <field name="address_id" context="{'show_address': 1}"/>
+                <field name="academic_year_id"/>
+                <field name="total_registrations"/>
+                <field name="total_guests"/>
+            </list>

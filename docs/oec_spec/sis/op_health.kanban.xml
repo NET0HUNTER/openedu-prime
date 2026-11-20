@@ -1,0 +1,1 @@
+﻿<kanban string="Health Detail for Students and Faculties"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

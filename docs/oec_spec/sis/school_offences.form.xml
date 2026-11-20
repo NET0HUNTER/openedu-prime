@@ -1,0 +1,14 @@
+﻿<form string="School Offences">
+                <header/>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <group>
+                        <group col="4" colspan="4">
+                            <field name="name"/>
+                            <field name="offences_type"/>
+                            <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>

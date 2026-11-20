@@ -1,0 +1,35 @@
+﻿<form string="Fees Plan Line">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="student_id" can_create="True" can_write="True"/>
+                                <field name="fees_plan_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="course_id" can_create="True" can_write="True"/>
+                                <field name="amount"/>
+                                <field name="invoice_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="fees_term_id"/>
+                            </group>
+                            <group>
+                                <field name="invoice_date"/>
+                                <field name="fees_factor"/>
+                                <field name="batch_id" can_create="True" can_write="True"/>
+                                <field name="paid_amount"/>
+                                <field name="state"/>
+                            </group>
+                        </group>
+                            <separator string="Lines" colspan="4"/>
+                            <field name="fees_element_line_ids" nolabel="1"><list>
+                    <field name="product_id"/>
+                    <field name="value"/>
+                </list></field>
+                            <separator string="Fees Reminder Lines" colspan="4"/>
+                            <field name="fees_reminder_line_ids" nolabel="1" can_create="True" can_write="True">
+                                <list>
+                                    <field name="days"/>
+                                    <field name="duration_type"/>
+                                    <field name="template_id"/>
+                                </list>
+                            </field>
+                    </sheet>
+                </form>

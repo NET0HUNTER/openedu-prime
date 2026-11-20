@@ -1,0 +1,4 @@
+﻿<pivot string="Achievement Pivot">
+                    <field name="student_id" type="row"/>
+                    <field name="achievement_type_id" type="col"/>
+                </pivot>

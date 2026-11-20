@@ -1,0 +1,1 @@
+﻿<kanban string="Attendance Type"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

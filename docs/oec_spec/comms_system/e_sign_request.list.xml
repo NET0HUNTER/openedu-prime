@@ -1,0 +1,7 @@
+<list>
+                    <field name="template_id"/>
+                    <field name="state"/>
+                    <field name="create_date" string="Request Date"/>
+                    <field name="signed_date" string="Signature Date"/>
+                    <field name="sign_with_key" invisible="1"/>
+                </list>

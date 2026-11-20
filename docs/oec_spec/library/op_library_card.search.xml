@@ -1,0 +1,11 @@
+<search string="Library Card">
+                    <field name="number"/>
+                    <field name="issue_date"/>
+                    <field name="partner_id"/>
+                    <field name="library_card_type_id"/>
+                    <newline/>
+                    <group>
+                        <filter string="Type" name="group_by_type" domain="[]" context="{'group_by': 'type'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                </search>

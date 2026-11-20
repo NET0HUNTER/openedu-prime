@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Present"
+    },
+    {
+        "id":  2,
+        "display_name":  "Late"
+    },
+    {
+        "id":  3,
+        "display_name":  "Absent"
+    },
+    {
+        "id":  4,
+        "display_name":  "Absent Excused"
+    },
+    {
+        "id":  5,
+        "display_name":  "Late Excused"
+    }
+]

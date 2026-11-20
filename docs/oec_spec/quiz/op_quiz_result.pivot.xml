@@ -1,0 +1,11 @@
+<pivot string="Results">
+                <field name="name"/>
+                <field name="quiz_id" type="row"/>
+                <field name="categ_id"/>
+                <field name="finish_date"/>
+                <field name="user_id" type="col"/>
+                <field name="total_question"/>
+                <field name="total_correct"/>
+                <field name="total_incorrect"/>
+                <field name="score" widget="float" options="{&quot;precision&quot;: 2}"/>
+            </pivot>

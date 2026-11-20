@@ -1,0 +1,85 @@
+﻿<form string="Student Course Detail">
+                    <header>
+                            <field name="state" widget="statusbar" on_change="1"/>
+                    </header>
+                    <sheet>
+                <field name="is_withdrawal" invisible="1"/>
+                <widget name="web_ribbon" title="Withdrawal" bg_color="bg-danger" invisible="is_withdrawal == False"/>
+                <widget name="web_ribbon" title="Completed" bg_color="bg-success" invisible="state != 'finished'"/>
+                <div class="oe_button_box" name="button_box"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="btn oe_stat_button" type="object" name="get_session" style="border-right: 1px solid;" icon="fa-clock-o">
+                            <field string="Session" name="session_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                        <group>
+                            <group>
+                                <field name="student_id" can_create="True" can_write="True"/>
+                                <field name="batch_id" domain="[('course_id', '=', course_id)]" required="0" can_create="True" can_write="True"/>
+                                <field name="academic_years_id" can_create="True" can_write="True"/>
+                
+                <field name="program_id" readonly="1"/>
+                    <field name="product_id" required="0" can_create="True" can_write="True"/>
+                    <field name="fees_term_id" required="1" can_create="True" can_write="True"/>
+                    <field name="fees_plan_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="course_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="roll_number"/>
+                                <field name="academic_term_id" can_create="True" can_write="True"/>
+                <field name="faculty_advisor_id" can_create="True" can_write="True"/>
+                <field name="required_field" invisible="1"/>
+                <field name="user_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                
+                    <field name="fees_start_date"/>
+                            </group>
+                        </group>
+                    <group string="Invoice Details">
+                            <group>
+                                <field name="expires_after"/>
+                                <field name="next_invoice_date"/>
+                            </group>
+                            <group>
+                                <field name="generated_invoices"/>
+                                <field name="prev_invoice_date"/>
+                            </group>
+                    </group>
+                        <notebook>
+                            <page string="Subjects" name="subjects" invisible="1">
+                                <field name="subject_ids" nolabel="1" can_create="True" can_write="True"><list string="Subject">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                    <field name="subject_type"/>
+                    <button name="open_grade_book_grid" type="object" class="btn btn-primary" string="GradeBook">
+                    </button>
+          <field name="subject_credit"/>
+                    <field name="grade_weightage" invisible="1"/>
+                    <field name="course_id" optional="hide" on_change="1"/>
+                    <field name="credit_point" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="department_id"/>
+                    <field name="assignment_count" optional="hide"/>
+                </list></field>
+                            </page>
+                <page name="subjects" string="Subjects">
+                    <field name="subject_ids" nolabel="1" domain="[('course_id', '=', course_id)]" can_create="True" can_write="True"><list string="Subject">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                    <field name="subject_type"/>
+                    <button name="open_grade_book_grid" type="object" class="btn btn-primary" string="GradeBook">
+                    </button>
+          <field name="subject_credit"/>
+                    <field name="grade_weightage" invisible="1"/>
+                    <field name="course_id" optional="hide" on_change="1"/>
+                    <field name="credit_point" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="department_id"/>
+                    <field name="assignment_count" optional="hide"/>
+                </list></field>
+                </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

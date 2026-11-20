@@ -1,0 +1,733 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "message_is_follower":  {
+                                "readonly":  true,
+                                "required":  false,
+                                "string":  "Is Follower",
+                                "type":  "boolean"
+                            },
+    "message_follower_ids":  {
+                                 "readonly":  false,
+                                 "relation":  "mail.followers",
+                                 "required":  false,
+                                 "string":  "Followers",
+                                 "type":  "one2many"
+                             },
+    "message_partner_ids":  {
+                                "readonly":  false,
+                                "relation":  "res.partner",
+                                "required":  false,
+                                "string":  "Followers (Partners)",
+                                "type":  "many2many"
+                            },
+    "message_ids":  {
+                        "readonly":  false,
+                        "relation":  "mail.message",
+                        "required":  false,
+                        "string":  "Messages",
+                        "type":  "one2many"
+                    },
+    "has_message":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Has Message",
+                        "type":  "boolean"
+                    },
+    "message_needaction":  {
+                               "help":  "If checked, new messages require your attention.",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Action Needed",
+                               "type":  "boolean"
+                           },
+    "message_needaction_counter":  {
+                                       "help":  "Number of messages requiring action",
+                                       "readonly":  true,
+                                       "required":  false,
+                                       "string":  "Number of Actions",
+                                       "type":  "integer"
+                                   },
+    "message_has_error":  {
+                              "help":  "If checked, some messages have a delivery error.",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Message Delivery error",
+                              "type":  "boolean"
+                          },
+    "message_has_error_counter":  {
+                                      "help":  "Number of messages with delivery error",
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "Number of errors",
+                                      "type":  "integer"
+                                  },
+    "message_attachment_count":  {
+                                     "readonly":  true,
+                                     "required":  false,
+                                     "string":  "Attachment Count",
+                                     "type":  "integer"
+                                 },
+    "rating_ids":  {
+                       "readonly":  false,
+                       "relation":  "rating.rating",
+                       "required":  false,
+                       "string":  "Ratings",
+                       "type":  "one2many"
+                   },
+    "website_message_ids":  {
+                                "help":  "Website communication history",
+                                "readonly":  false,
+                                "relation":  "mail.message",
+                                "required":  false,
+                                "string":  "Website Messages",
+                                "type":  "one2many"
+                            },
+    "message_has_sms_error":  {
+                                  "help":  "If checked, some messages have a delivery error.",
+                                  "readonly":  true,
+                                  "required":  false,
+                                  "string":  "SMS Delivery error",
+                                  "type":  "boolean"
+                              },
+    "duration_tracking":  {
+                              "help":  "JSON that maps ids from a many2one field to seconds spent",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Status time",
+                              "type":  "json"
+                          },
+    "rotting_days":  {
+                         "help":  "Day count since this resource was last updated",
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Days Rotting",
+                         "type":  "integer"
+                     },
+    "is_rotting":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Rotting",
+                       "type":  "boolean"
+                   },
+    "activity_ids":  {
+                         "readonly":  false,
+                         "relation":  "mail.activity",
+                         "required":  false,
+                         "string":  "Activities",
+                         "type":  "one2many"
+                     },
+    "activity_state":  {
+                           "help":  "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+                           "readonly":  true,
+                           "required":  false,
+                           "selection":  [
+                                             [
+                                                 "overdue",
+                                                 "Overdue"
+                                             ],
+                                             [
+                                                 "today",
+                                                 "Today"
+                                             ],
+                                             [
+                                                 "planned",
+                                                 "Planned"
+                                             ]
+                                         ],
+                           "string":  "Activity State",
+                           "type":  "selection"
+                       },
+    "activity_user_id":  {
+                             "readonly":  true,
+                             "relation":  "res.users",
+                             "required":  false,
+                             "string":  "Responsible User",
+                             "type":  "many2one"
+                         },
+    "activity_type_id":  {
+                             "readonly":  false,
+                             "relation":  "mail.activity.type",
+                             "required":  false,
+                             "string":  "Next Activity Type",
+                             "type":  "many2one"
+                         },
+    "activity_type_icon":  {
+                               "help":  "Font awesome icon e.g. fa-tasks",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Activity Type Icon",
+                               "type":  "char"
+                           },
+    "activity_date_deadline":  {
+                                   "readonly":  true,
+                                   "required":  false,
+                                   "string":  "Next Activity Deadline",
+                                   "type":  "date"
+                               },
+    "my_activity_date_deadline":  {
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "My Activity Deadline",
+                                      "type":  "date"
+                                  },
+    "activity_summary":  {
+                             "readonly":  false,
+                             "required":  false,
+                             "string":  "Next Activity Summary",
+                             "type":  "char"
+                         },
+    "activity_exception_decoration":  {
+                                          "help":  "Type of the exception activity on record.",
+                                          "readonly":  true,
+                                          "required":  false,
+                                          "selection":  [
+                                                            [
+                                                                "warning",
+                                                                "Alert"
+                                                            ],
+                                                            [
+                                                                "danger",
+                                                                "Error"
+                                                            ]
+                                                        ],
+                                          "string":  "Activity Exception Decoration",
+                                          "type":  "selection"
+                                      },
+    "activity_exception_icon":  {
+                                    "help":  "Icon to indicate an exception activity.",
+                                    "readonly":  true,
+                                    "required":  false,
+                                    "string":  "Icon",
+                                    "type":  "char"
+                                },
+    "activity_calendar_event_id":  {
+                                       "readonly":  true,
+                                       "relation":  "calendar.event",
+                                       "required":  false,
+                                       "string":  "Next Activity Calendar Event",
+                                       "type":  "many2one"
+                                   },
+    "name":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "Name",
+                 "type":  "char"
+             },
+    "first_name":  {
+                       "readonly":  false,
+                       "required":  false,
+                       "string":  "First Name",
+                       "type":  "char"
+                   },
+    "middle_name":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Middle Name",
+                        "type":  "char"
+                    },
+    "last_name":  {
+                      "readonly":  false,
+                      "required":  false,
+                      "string":  "Last Name",
+                      "type":  "char"
+                  },
+    "title":  {
+                  "readonly":  false,
+                  "relation":  "res.partner.title",
+                  "required":  false,
+                  "string":  "Title",
+                  "type":  "many2one"
+              },
+    "application_number":  {
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Application Number",
+                               "type":  "char"
+                           },
+    "admission_date":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Admission Date",
+                           "type":  "date"
+                       },
+    "application_date":  {
+                             "readonly":  false,
+                             "required":  true,
+                             "string":  "Application Date",
+                             "type":  "datetime"
+                         },
+    "birth_date":  {
+                       "readonly":  false,
+                       "required":  false,
+                       "string":  "Birth Date",
+                       "type":  "date"
+                   },
+    "course_id":  {
+                      "readonly":  false,
+                      "relation":  "op.course",
+                      "required":  true,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  false,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "street":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Street",
+                   "type":  "char"
+               },
+    "street2":  {
+                    "readonly":  false,
+                    "required":  false,
+                    "string":  "Street2",
+                    "type":  "char"
+                },
+    "phone":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "string":  "Phone",
+                  "type":  "char"
+              },
+    "mobile":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Mobile",
+                   "type":  "char"
+               },
+    "email":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "string":  "Email",
+                  "type":  "char"
+              },
+    "city":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "City",
+                 "type":  "char"
+             },
+    "zip":  {
+                "readonly":  false,
+                "required":  false,
+                "string":  "Zip",
+                "type":  "char"
+            },
+    "state_id":  {
+                     "readonly":  false,
+                     "relation":  "res.country.state",
+                     "required":  false,
+                     "string":  "States",
+                     "type":  "many2one"
+                 },
+    "country_id":  {
+                       "readonly":  false,
+                       "relation":  "res.country",
+                       "required":  false,
+                       "string":  "Country",
+                       "type":  "many2one"
+                   },
+    "fees":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "Fees",
+                 "type":  "float"
+             },
+    "image":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "string":  "image",
+                  "type":  "binary"
+              },
+    "state":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "selection":  [
+                                    [
+                                        "draft",
+                                        "Draft"
+                                    ],
+                                    [
+                                        "online",
+                                        "Online Admission"
+                                    ],
+                                    [
+                                        "submit",
+                                        "Submitted"
+                                    ],
+                                    [
+                                        "confirm",
+                                        "Confirmed"
+                                    ],
+                                    [
+                                        "pending",
+                                        "Pending"
+                                    ],
+                                    [
+                                        "cancel",
+                                        "Cancelled"
+                                    ],
+                                    [
+                                        "sent",
+                                        "Sent for Signature"
+                                    ],
+                                    [
+                                        "sign_received",
+                                        "Signature Received"
+                                    ],
+                                    [
+                                        "sign_confirmed",
+                                        "Signature Confirmed"
+                                    ],
+                                    [
+                                        "admission",
+                                        "Admission Confirm"
+                                    ],
+                                    [
+                                        "reject",
+                                        "Rejected"
+                                    ],
+                                    [
+                                        "done",
+                                        "Done"
+                                    ]
+                                ],
+                  "string":  "State",
+                  "type":  "selection"
+              },
+    "due_date":  {
+                     "readonly":  false,
+                     "required":  false,
+                     "string":  "Due Date",
+                     "type":  "date"
+                 },
+    "prev_institute_id":  {
+                              "readonly":  false,
+                              "required":  false,
+                              "string":  "Previous Institute",
+                              "type":  "char"
+                          },
+    "prev_course_id":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Previous Course",
+                           "type":  "char"
+                       },
+    "prev_result":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Previous Result",
+                        "type":  "char"
+                    },
+    "family_business":  {
+                            "readonly":  false,
+                            "required":  false,
+                            "string":  "Family Business",
+                            "type":  "char"
+                        },
+    "family_income":  {
+                          "readonly":  false,
+                          "required":  false,
+                          "string":  "Family Income",
+                          "type":  "float"
+                      },
+    "gender":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "selection":  [
+                                     [
+                                         "m",
+                                         "Male"
+                                     ],
+                                     [
+                                         "f",
+                                         "Female"
+                                     ]
+                                 ],
+                   "string":  "Gender",
+                   "type":  "selection"
+               },
+    "student_id":  {
+                       "readonly":  false,
+                       "relation":  "op.student",
+                       "required":  false,
+                       "string":  "Student",
+                       "type":  "many2one"
+                   },
+    "nbr":  {
+                "readonly":  true,
+                "required":  false,
+                "string":  "No of Admission",
+                "type":  "integer"
+            },
+    "register_id":  {
+                        "readonly":  false,
+                        "relation":  "op.admission.register",
+                        "required":  true,
+                        "string":  "Admission Register",
+                        "type":  "many2one"
+                    },
+    "partner_id":  {
+                       "readonly":  false,
+                       "relation":  "res.partner",
+                       "required":  false,
+                       "string":  "Partner",
+                       "type":  "many2one"
+                   },
+    "is_student":  {
+                       "readonly":  false,
+                       "required":  false,
+                       "string":  "Is Already Student",
+                       "type":  "boolean"
+                   },
+    "fees_term_id":  {
+                         "readonly":  true,
+                         "relation":  "op.fees.terms",
+                         "required":  false,
+                         "string":  "Fees Term",
+                         "type":  "many2one"
+                     },
+    "active":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Active",
+                   "type":  "boolean"
+               },
+    "discount":  {
+                     "readonly":  false,
+                     "required":  false,
+                     "string":  "Discount (%)",
+                     "type":  "float"
+                 },
+    "fees_start_date":  {
+                            "readonly":  false,
+                            "required":  false,
+                            "string":  "Fees Start Date",
+                            "type":  "date"
+                        },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "program_id":  {
+                       "readonly":  false,
+                       "relation":  "op.program",
+                       "required":  false,
+                       "string":  "Program",
+                       "type":  "many2one"
+                   },
+    "course_ids":  {
+                       "readonly":  true,
+                       "relation":  "op.course",
+                       "required":  false,
+                       "string":  "Courses",
+                       "type":  "many2many"
+                   },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "color":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "string":  "Color Index",
+                  "type":  "integer"
+              },
+    "stage_id":  {
+                     "readonly":  false,
+                     "relation":  "admission.stage",
+                     "required":  false,
+                     "string":  "Stage",
+                     "type":  "many2one"
+                 },
+    "tag_ids":  {
+                    "readonly":  false,
+                    "relation":  "admission.tag",
+                    "required":  false,
+                    "string":  "Tags",
+                    "type":  "many2many"
+                },
+    "similar_admission_count":  {
+                                    "readonly":  true,
+                                    "required":  false,
+                                    "string":  "Similar Admissions",
+                                    "type":  "integer"
+                                },
+    "academic_plan_id":  {
+                             "readonly":  false,
+                             "relation":  "op.academic.plan",
+                             "required":  false,
+                             "string":  "Academic Plan",
+                             "type":  "many2one"
+                         },
+    "intake_year_id":  {
+                           "readonly":  false,
+                           "relation":  "op.intake.year",
+                           "required":  false,
+                           "string":  "Intake Year",
+                           "type":  "many2one"
+                       },
+    "user_id":  {
+                    "readonly":  true,
+                    "relation":  "res.users",
+                    "required":  false,
+                    "string":  "User ID",
+                    "type":  "many2one"
+                },
+    "required_field":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Required Field",
+                           "type":  "boolean"
+                       },
+    "oe_wait_label":  {
+                          "help":  "How long this application has been waiting, as \u002711 days\u0027. Display only.",
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Waiting",
+                          "type":  "char"
+                      },
+    "attachment_ids":  {
+                           "readonly":  false,
+                           "relation":  "ir.attachment",
+                           "required":  false,
+                           "string":  "Attachments",
+                           "type":  "many2many"
+                       },
+    "e_sign_template_id":  {
+                               "readonly":  false,
+                               "relation":  "e.sign.template",
+                               "required":  false,
+                               "string":  "Esign Template",
+                               "type":  "many2one"
+                           },
+    "e_sign_request_id":  {
+                              "readonly":  false,
+                              "relation":  "e.sign.request",
+                              "required":  false,
+                              "string":  "Esign Request",
+                              "type":  "many2one"
+                          },
+    "esign_url":  {
+                      "readonly":  false,
+                      "required":  false,
+                      "string":  "E-sign URL",
+                      "type":  "char"
+                  },
+    "signed_document":  {
+                            "readonly":  false,
+                            "required":  false,
+                            "string":  "Signed Document",
+                            "type":  "binary"
+                        },
+    "source_id":  {
+                      "help":  "Source from where this admission came (e.g., Website, Referral, Advertisement)",
+                      "readonly":  false,
+                      "relation":  "utm.source",
+                      "required":  false,
+                      "string":  "Lead Source",
+                      "type":  "many2one"
+                  },
+    "campaign_id":  {
+                        "help":  "Marketing campaign that generated this admission",
+                        "readonly":  false,
+                        "relation":  "utm.campaign",
+                        "required":  false,
+                        "string":  "Marketing Campaign",
+                        "type":  "many2one"
+                    },
+    "medium_id":  {
+                      "help":  "Medium through which this application was received (e.g., Social Media, Email)",
+                      "readonly":  false,
+                      "relation":  "utm.medium",
+                      "required":  false,
+                      "string":  "Marketing Medium",
+                      "type":  "many2one"
+                  },
+    "referred_by":  {
+                        "help":  "Tracking identifier for referrals",
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Referred By",
+                        "type":  "char"
+                    },
+    "team_id":  {
+                    "readonly":  false,
+                    "relation":  "crm.team",
+                    "required":  false,
+                    "string":  "Sales Team",
+                    "type":  "many2one"
+                },
+    "day_open":  {
+                     "readonly":  true,
+                     "required":  false,
+                     "string":  "Days to Assign",
+                     "type":  "float"
+                 },
+    "day_close":  {
+                      "readonly":  true,
+                      "required":  false,
+                      "string":  "Days to Close",
+                      "type":  "float"
+                  },
+    "order_id":  {
+                     "readonly":  false,
+                     "relation":  "sale.order",
+                     "required":  false,
+                     "string":  "Registration Fees Ref",
+                     "type":  "many2one"
+                 },
+    "application":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Application",
+                        "type":  "char"
+                    },
+    "email2":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "HEllo",
+                   "type":  "char"
+               }
+}

@@ -1,0 +1,4 @@
+<graph string="Media" type="bar">
+                    <field name="name"/>
+                    <field name="media_type_id"/>
+                </graph>

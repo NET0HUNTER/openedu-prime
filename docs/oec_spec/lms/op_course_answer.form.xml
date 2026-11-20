@@ -1,0 +1,1 @@
+<form><sheet string="Slide Question's Answer"><group><group><field name="sequence"/><field name="text_value"/></group><group><field name="question_id" can_create="True" can_write="True"/><field name="is_correct"/></group></group><group><field name="comment"/></group><group/><group><separator/></group></sheet></form>

@@ -1,0 +1,8 @@
+<search string="Quiz">
+                <field name="name" select="True"/>
+                <field name="categ_id"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <searchpanel>
+                    <field name="categ_id"/>
+                </searchpanel>
+            </search>

@@ -1,0 +1,8 @@
+﻿<search>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="academic_year_id"/>
+                <group>
+                    <filter string="Academic Year" name="academic_year" context="{'group_by':'academic_year_id'}"/>
+                </group>
+            </search>

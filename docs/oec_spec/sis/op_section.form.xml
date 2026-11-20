@@ -1,0 +1,30 @@
+﻿<form string="Section">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="batch_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="course_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="subject_id" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Student" name="student">
+                                <field name="student_course_ids" nolabel="1" domain="[('course_id', '=', course_ids),('batch_id','=',batch_ids)]" can_create="True" can_write="True"><list string="Student Course Detail">
+                    <field name="student_id"/>
+                    <field name="course_id" on_change="1"/>
+                    <field name="batch_id"/>
+                    <field name="subject_ids" widget="many2many_tags"/>
+                    <field name="roll_number"/>
+                    <field name="academic_years_id" optional="hide"/>
+                    <field name="academic_term_id" optional="hide"/>
+                    <field name="state" on_change="1"/>
+                <field name="is_withdrawal" column_invisible="1"/>
+                </list></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>

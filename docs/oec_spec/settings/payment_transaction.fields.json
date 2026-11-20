@@ -1,0 +1,55 @@
+{
+  "fields": {
+    "state": {
+      "change_default": false,
+      "groupable": true,
+      "name": "state",
+      "readonly": true,
+      "required": true,
+      "searchable": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "pending",
+          "Pending"
+        ],
+        [
+          "authorized",
+          "Authorized"
+        ],
+        [
+          "done",
+          "Confirmed"
+        ],
+        [
+          "cancel",
+          "Canceled"
+        ],
+        [
+          "error",
+          "Error"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Status",
+      "type": "selection"
+    },
+    "create_date": {
+      "change_default": false,
+      "groupable": true,
+      "name": "create_date",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Created on",
+      "type": "datetime"
+    }
+  },
+  "has_approval_rules": false
+}

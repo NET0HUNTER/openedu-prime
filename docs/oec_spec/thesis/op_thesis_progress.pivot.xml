@@ -1,0 +1,5 @@
+<pivot string="Progress Reports Analysis">
+                    <field name="student_id" type="row"/>
+                    <field name="state" type="col"/>
+                    <field name="report_date" interval="month"/>
+                </pivot>

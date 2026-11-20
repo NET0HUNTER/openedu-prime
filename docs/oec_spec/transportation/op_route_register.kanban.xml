@@ -1,0 +1,81 @@
+<kanban highlight_color="color" string="Transportation kanban" class="o_slide_kanban o_slide_channel_kanban o_transportation_kanban" sample="1">
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="menu">
+                            <div class="container" role="menu">
+                            <div class="row my-2">
+                                    <div class="col-4 o_kanban_card_manage_section o_kanban_manage_view">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_views" class="o_kanban_card_manage_title">
+                                                <span>Views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_new" class="o_kanban_card_manage_title">
+                                                <span>New</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 o_kanban_card_manage_section o_kanban_manage_operations">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_reports" class="o_kanban_card_manage_title">
+                                                <span>Reports</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                        <div role="menuitem" aria-haspopup="true" class="col-8">
+                                            <field name="color" widget="kanban_color_picker"/>
+                                        </div>
+                                        <div role="menuitem" class="col-4">
+                                            <a type="open">Settings</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-name="card">
+                            <widget name="web_ribbon" title="Draft" bg_color="bg-info text-white" invisible="state != 'draft'"/>
+                            <widget name="web_ribbon" title="Confirm" bg_color="bg-primary text-white" invisible="state != 'confirm'"/>
+                            <widget name="web_ribbon" title="Published" bg_color="bg-success text-white" invisible="state != 'gathering'"/>
+                            <widget name="web_ribbon" title="Cancel" bg_color="bg-danger text-white" invisible="state != 'cancel'"/>
+                            
+                            <main class="d-flex flex-column gap-2 p-1 position-relative">
+                                <!-- Card Header: Title -->
+                                <div class="d-flex justify-content-between align-items-start gap-2 w-100 mb-2 pe-5">
+                                    <h5 class="fw-bold text-dark text-truncate mb-0 flex-grow-1" style="font-size: 1.15rem; min-width: 0;">
+                                        <field name="name"/>
+                                    </h5>
+                                </div>
+                                
+                                <div class="d-flex flex-column gap-1 mb-2">
+                                    <div t-if="record.cost.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-money me-2" role="img" aria-label="Cost" title="Cost"/>
+                                        <span>
+                                            <field name="cost"/>
+                                        </span>
+                                    </div>
+                                    <div t-if="record.route_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-bus me-2" title="Route"/>
+                                        <span><field name="route_id" on_change="1"/></span>
+                                    </div>
+                                    <div t-if="record.start_date.raw_value or record.end_date.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-calendar me-2" title="Dates"/>
+                                        <span>
+                                            <field name="start_date"/> - <field name="end_date"/>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex gap-2 mt-auto pt-2 border-top">
+                                    <button name="1304" type="action" class="btn btn-sm btn-primary w-100 py-2 fw-bold text-white d-flex justify-content-center align-items-center gap-2">
+                                        <i class="fa fa-users" title="Agreements"/> <field name="student_count"/> Agreements
+                                    </button>
+                                </div>
+                            </main>
+                        </t>
+                    </templates>
+                <field name="state" invisible="True" readonly="True" data-used-by="invisible=&quot;state != 'cancel'&quot; (widget,web_ribbon)"/>
+</kanban>

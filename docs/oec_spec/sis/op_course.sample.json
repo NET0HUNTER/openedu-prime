@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "BCA-CC-Semester-1"
+    },
+    {
+        "id":  2,
+        "display_name":  "MCA-BD-Semester-1"
+    },
+    {
+        "id":  3,
+        "display_name":  "MCA-BD-Semester-2"
+    },
+    {
+        "id":  4,
+        "display_name":  "BCA-CC-Semester-2"
+    },
+    {
+        "id":  5,
+        "display_name":  "BCOM-AF-Semester-1"
+    }
+]

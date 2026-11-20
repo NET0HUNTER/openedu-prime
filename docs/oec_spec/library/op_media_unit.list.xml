@@ -1,0 +1,7 @@
+<list string="Media Units">
+                    <field name="name"/>
+                    <field name="media_id"/>
+                    <field name="barcode"/>
+                    <field name="state" string="Status"/>
+                    <field name="company_id" optional="show"/>
+                </list>

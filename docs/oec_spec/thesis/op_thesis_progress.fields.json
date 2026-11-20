@@ -1,0 +1,67 @@
+{
+  "fields": {
+    "id": {
+      "change_default": false,
+      "groupable": true,
+      "name": "id",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "ID",
+      "type": "integer"
+    },
+    "student_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "student_id",
+      "readonly": true,
+      "related": "registration_id.student_id",
+      "relation": "op.student",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Student",
+      "type": "many2one"
+    },
+    "state": {
+      "change_default": false,
+      "groupable": true,
+      "name": "state",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "submitted",
+          "Submitted"
+        ],
+        [
+          "feedback",
+          "Feedback Received"
+        ],
+        [
+          "approved",
+          "Approved"
+        ],
+        [
+          "rejected",
+          "Revision"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Status",
+      "type": "selection"
+    }
+  },
+  "has_approval_rules": false
+}

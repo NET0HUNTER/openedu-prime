@@ -1,0 +1,16 @@
+<list js_class="website_pages_list" type="object" action="open_website_url" multi_edit="1">
+            <field name="active" column_invisible="True"/>
+            <field name="name"/>
+            <field name="website_url"/>
+
+            <field name="author_id" optional="show" can_create="True" can_write="True"/>
+            <field name="blog_id" optional="hide" on_change="1" can_create="True" can_write="True"/>
+            <field name="create_uid" optional="hide"/>
+            <field name="write_uid" optional="hide"/>
+            <field name="write_date" optional="hide"/>
+
+            <field name="is_seo_optimized"/>
+            <field name="is_published"/>
+
+            <field name="website_id"/>
+        </list>

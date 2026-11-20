@@ -1,0 +1,55 @@
+<form string="facility">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <div name="button_box" class="oe_button_box">
+                            <button class="oe_stat_button" name="1177" context="{'search_default_facility_id': id}" type="action" icon="fa-tasks">
+                                <span class="o_stat_text">Allocations</span>
+                            </button>
+                        </div>
+                        <h1>
+                            <field name="name" placeholder="Facility Name" nolabel="1" class="w-100 w-lg-50"/>
+                        </h1>
+                        <group class="pt-4">
+                            <group>
+                                <field name="facility_type_id" can_create="True" can_write="True"/>
+                                <field name="parent_id" domain="[('facility_type_id','=',facility_type_id)]" can_create="True" can_write="True"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="capacity"/>
+                                <field name="code"/>
+                            </group>
+                        </group>
+                        <group col="4" string="Sub Facilities" class="table-responsive">
+                            <field name="child_ids" colspan="4" nolabel="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="parent_id"/>
+                                    <field name="facility_type_id"/>
+                                    <field name="capacity"/>
+                                    <field name="child_ids" optional="hide"/>
+                                    <field name="facility_allocation_lines" optional="hide"/>
+                                    <field name="active" widget="boolean_toggle" optional="hide"/>
+                                    <field name="company_id" optional="show"/>
+                                </list>
+                            </field>
+                        </group>
+                        <group col="4" string="Facility Allocation" class="table-responsive">
+                            <field name="facility_allocation_lines" colspan="4" nolabel="1">
+                                <list>
+                                    <field name="partner_id"/>
+                                    <field name="facility_id"/>
+                                    <field name="product_id"/>
+                                    <field name="from_date"/>
+                                    <field name="to_date"/>
+                                    <field name="invoice_id" optional="hide"/>
+                                    <field name="active" widget="boolean_toggle" optional="hide"/>
+                                    <field name="company_id" optional="show"/>
+                                </list>
+                            </field>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

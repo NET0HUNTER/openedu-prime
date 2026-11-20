@@ -1,0 +1,21 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "help": "Currency Code (ISO 4217)",
+      "name": "name",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "size": 3,
+      "sortable": true,
+      "store": true,
+      "string": "Currency",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

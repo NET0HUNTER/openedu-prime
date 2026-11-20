@@ -1,0 +1,10 @@
+<list decoration-warning="not active" decoration-muted="(is_locked and not is_lock_editor)">
+                <field name="active" column_invisible="True"/>
+                <field name="is_locked"/>
+                <field name="is_lock_editor" column_invisible="True"/>
+                <field name="name" on_change="1"/>
+                <field name="write_date"/>
+                <field name="size" widget="integer"/>
+                <field name="mimetype"/>
+                <field name="path_names" widget="path_names" string="Path"/>
+            </list>

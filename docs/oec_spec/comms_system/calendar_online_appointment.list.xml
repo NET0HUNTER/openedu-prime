@@ -1,0 +1,25 @@
+<list>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="duration" on_change="1"/>
+                <field name="user_id"/>
+                <field name="is_cancel"/>
+                <field name="employee_ids" optional="hide"/>
+                <field name="resource_ids" optional="hide"/>
+                <field name="slots" optional="hide"/>
+                <field name="appointment_date" optional="hide"/>
+                <field name="min_appointment_hours" widget="float_time" optional="hide"/>
+                <field name="max_appointment_days" optional="hide"/>
+                <field name="not_after_type" optional="hide"/>
+                <field name="min_appointment_cancel_duration" invisible="is_cancel == False" optional="hide"/>
+                <field name="cancel_type" invisible="is_cancel == False" optional="hide"/>
+                <field name="assign_method" optional="hide"/>
+                <field name="default_timezone" optional="hide"/>
+                <field name="calendar_reminder_ids" widget="many2many_tags" optional="hide"/>
+                <field name="location" optional="hide"/>
+                <field name="questions" optional="hide"/>
+                <field name="company_id" optional="show"/>
+                <!--                <field name="count_appointment" optional="hide"/>-->
+                <field name="manual_confirm" optional="hide"/>
+                <field name="pending_request_count" string="Pending" decoration-warning="pending_request_count &gt; 0" optional="show"/>
+            </list>

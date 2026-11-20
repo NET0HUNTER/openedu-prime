@@ -1,0 +1,24 @@
+﻿<form string="Achievement">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="student_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="faculty_id" can_create="True" can_write="True"/>
+                                <field name="achievement_date"/>
+                            </group>
+                            <group>
+                                <field name="progression_id" readonly="1" force_save="1"/>
+                                <field name="achievement_type_id" can_create="True" can_write="True"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <div>
+                            <label for="description" string="Description" class="mt32"/>
+                            <field name="description" nolabel="1"/>
+                        </div>
+                    </sheet>
+                    <chatter/>
+                </form>

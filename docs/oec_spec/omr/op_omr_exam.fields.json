@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": true,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Exam Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

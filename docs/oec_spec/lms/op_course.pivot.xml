@@ -1,0 +1,6 @@
+<pivot string="Course">
+                    <field name="name" type="row"/>
+                    <field name="parent_id"/>
+                    <field name="max_unit_load"/>
+                    <field name="min_unit_load"/>
+                </pivot>

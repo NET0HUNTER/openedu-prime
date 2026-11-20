@@ -1,0 +1,40 @@
+﻿<form string="Parent">
+                    <header>
+                        <button type="object" name="create_parent_user" string="Create Parent User" class="oe_highlight" invisible="user_id != False"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name" placeholder="Parent Name" on_change="1" can_create="True" can_write="True"/>
+                                <field name="mobile"/>
+                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="user_id" readonly="1"/>
+                                <field name="relationship_id" required="1" can_create="True" can_write="True"/>
+                <field name="tag_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <separator colspan="4" string="Student(s)"/>
+                        <field name="student_ids" can_create="True" can_write="True"><list string="Student" decoration-danger="is_finished">
+                    <field name="title" optional="show" on_change="1"/>
+                    <field name="name" on_change="1"/>
+                <field name="is_finished" column_invisible="1"/>
+                    <field name="gender" optional="show"/>
+                    <field name="birth_date" optional="show"/>
+                    <field name="email" optional="show"/>
+                    <field name="nationality"/>
+                    <field name="lang" on_change="1"/>
+                    <field name="crm_lead_ids" optional="hide"/>
+                <field name="placement_line" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="blood_group"/>
+                    <field name="library_card_id"/>
+                    <field name="emergency_contact" optional="hide"/>
+                </list></field>
+                    </sheet>
+                <chatter/>
+                </form>

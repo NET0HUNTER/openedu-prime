@@ -1,0 +1,18 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Sports Club"
+    },
+    {
+        "id":  2,
+        "display_name":  "Cashier"
+    },
+    {
+        "id":  3,
+        "display_name":  "Security Service"
+    },
+    {
+        "id":  4,
+        "display_name":  "Den"
+    }
+]

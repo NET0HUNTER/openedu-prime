@@ -1,0 +1,54 @@
+﻿<kanban default_group_by="stage_id" highlight_color="color" sample="1" quick_create="false" class="o_admission_application_kanban">
+                <field name="stage_id" on_change="1"/>
+                <field name="color"/>
+                <field name="name"/>
+                <field name="application_number"/>
+                <field name="course_id" on_change="1"/>
+                <field name="email"/>
+                <templates>
+                    <t t-name="menu">
+                        <div role="menuitem" aria-haspopup="true">
+                            <field name="color" widget="kanban_color_picker"/>
+                        </div>
+                        <div class="o_kanban_slides_card_manage_pane">
+                            <a role="menuitem" type="open" class="dropdown-item">View</a>
+                            <t t-if="widget.editable">
+                                <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                            </t>
+                            <t t-if="widget.deletable">
+                                <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-name="card">
+                        <main class="d-flex flex-column gap-2 p-2 position-relative w-100">
+                            <!-- Title & Application Number -->
+                            <div class="pe-4" style="max-width: 85%;">
+                                <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.15rem; line-height: 1.2;" t-att-title="record.name.value">
+                                    <field name="name"/>
+                                </h5>
+                                <span class="text-muted small mt-1 d-block">
+                                    <field name="application_number"/>
+                                </span>
+                            </div>
+
+                            <!-- Metadata -->
+                            <div class="d-flex flex-column gap-1 mb-1">
+                                <div t-if="record.course_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-file-text-o me-2 text-muted" style="width: 14px;" title="Course"/>
+                                    <span class="text-truncate"><field name="course_id" on_change="1"/></span>
+                                </div>
+                                <div t-if="record.email.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-envelope me-2 text-muted" style="width: 14px;" title="Email"/>
+                                    <span class="text-truncate"><field name="email"/></span>
+                                </div>
+                            </div>
+
+                            <!-- Footer Activity -->
+                            <div class="d-flex align-items-center justify-content-end mt-auto pt-2 border-top">
+                                <field name="activity_ids" widget="kanban_activity"/>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

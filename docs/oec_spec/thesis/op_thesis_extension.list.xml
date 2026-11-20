@@ -1,0 +1,12 @@
+<list string="Extension Requests">
+                    <field name="name"/>
+                    <field name="registration_id" on_change="1"/>
+                    <field name="student_id"/>
+                    <field name="request_date" optional="hide"/>
+                    <field name="current_deadline" optional="hide" on_change="1"/>
+                    <field name="requested_deadline" optional="hide" on_change="1"/>
+                    <field name="extension_duration"/>
+                    <field name="supervisor_approval" optional="hide"/>
+                    <field name="hod_approval" optional="hide"/>
+                    <field name="state"/>
+                </list>

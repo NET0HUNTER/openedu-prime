@@ -1,0 +1,17 @@
+<search string="Progress Reports">
+                    <field name="name"/>
+                    <field name="student_id"/>
+                    <field name="registration_id"/>
+                    <field name="report_id"/>
+                    <filter string="Draft" name="draft_reports" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Submitted" name="submitted_reports" domain="[('state', '=', 'submitted')]"/>
+                    <filter string="Feedback Received" name="feedback_reports" domain="[('state', '=', 'feedback')]"/>
+                    <filter string="Approved" name="approved_reports" domain="[('state', '=', 'approved')]"/>
+                    <filter string="Needs Revision" name="revision_reports" domain="[('state', '=', 'rejected')]"/>
+                    <group>
+                        <filter string="Student" name="group_by_student" domain="[]" context="{'group_by':'student_id'}"/>
+                        <filter string="Thesis" name="group_by_thesis" domain="[]" context="{'group_by':'registration_id'}"/>
+                        <filter string="Report Type" name="group_by_type" domain="[]" context="{'group_by':'report_id'}"/>
+                        <filter string="Status" name="group_by_state" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>

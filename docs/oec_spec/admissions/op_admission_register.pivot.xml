@@ -1,0 +1,10 @@
+﻿<pivot string="Admission Register">
+                    <field name="name"/>
+                    <field name="course_id" type="row"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="min_count"/>
+                    <field name="max_count"/>
+                    <field name="product_id"/>
+                    <field name="state"/>
+                </pivot>

@@ -1,0 +1,23 @@
+<search string="Assignment Sub Line">
+                    <field name="assignment_id"/>
+                    <field name="student_id"/>
+                    <field name="description"/>
+                    <field name="state"/>
+                    <field name="submission_date"/>
+                    <field name="note"/>
+                    <filter string="Today" name="filter_submission_today" domain="[('submission_date', '&gt;=', time.strftime('%Y-%m-%d 00:00:00')),('submission_date', '&lt;=', time.strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="Week" name="filter_submission_week" domain="[('submission_date', '&gt;=',(context_today()+relativedelta(weeks=-1,days=1,weekday=0)).strftime('%Y-%m-%d 00:00:00')),                                     ('submission_date', '&lt;', (context_today()+relativedelta(weekday=6)).strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="Month" name="filter_submission_month" domain="[('submission_date', '&lt;=', (datetime.date.today()+relativedelta(day=31)).strftime('%Y-%m-%d')),                                     ('submission_date', '&gt;=', (datetime.date.today()-relativedelta(day=1)).strftime('%Y-%m-%d'))]"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+
+                    <group>
+                        <filter string="Assignment" domain="[]" name="group_by_assignment_id" context="{'group_by':'assignment_id'}"/>
+                        <filter string="Student" domain="[]" name="group_by_assignment_student_id" context="{'group_by':'student_id'}"/>
+                        <filter string="State" domain="[]" name="group_by_assignment_state" context="{'group_by':'state'}"/>
+                        <filter string="Submission Date" domain="[]" name="group_by_assignment_submission" context="{'group_by':'submission_date'}"/>
+                        <filter string="Marks" domain="[]" name="group_by_assignment_marks" context="{'group_by':'marks'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="assignment_id" icon="fa fa-file-text"/>
+                    </searchpanel>
+                </search>

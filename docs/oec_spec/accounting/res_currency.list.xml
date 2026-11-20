@@ -1,0 +1,9 @@
+<list string="Currencies" decoration-muted="(not active)">
+                    <field name="name"/>
+                    <field name="symbol"/>
+                    <field name="full_name" string="Name" optional="show"/>
+                    <field name="date" string="Last Update"/>
+                    <field name="rate" digits="[12,6]" string="Unit per USD"/>
+                    <field name="inverse_rate" digits="[12,6]" optional="hide" string="USD per Unit"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </list>

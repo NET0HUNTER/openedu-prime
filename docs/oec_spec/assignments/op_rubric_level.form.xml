@@ -1,0 +1,15 @@
+<form string="Rubric Level Configuration">
+                <header/>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="percentage"/>
+                        </group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="is_active"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>

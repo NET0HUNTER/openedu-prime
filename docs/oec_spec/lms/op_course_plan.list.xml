@@ -1,0 +1,6 @@
+<list string="Course Plan">
+                    <field name="name"/>
+                    <field name="course_id" on_change="1"/>
+                    <field name="academic_term_id"/>
+                    <field name="academic_plan_id" optional="show"/>
+                </list>

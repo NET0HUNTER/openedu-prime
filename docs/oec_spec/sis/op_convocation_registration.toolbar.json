@@ -1,0 +1,9 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1353,
+                      "name":  "Convocation Registration",
+                      "binding_view_types":  "list,form"
+                  }
+              ]
+}

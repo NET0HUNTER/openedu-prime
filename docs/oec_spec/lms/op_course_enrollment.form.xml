@@ -1,0 +1,27 @@
+<form>
+                <header>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id" can_create="True" can_write="True"/>
+                            <field name="enrollment_date"/>
+                            <field name="completion_date" invisible="state != 'done'"/>
+                            <field name="company_id" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="course_id" on_change="1" can_create="True" can_write="True"/>
+                            <field name="progress" widget="progressbar"/>
+                <field name="order_id" can_create="True" can_write="True"/>
+                        </group>
+                        <field name="enrollment_line" on_change="1">
+                            <list create="0">
+                                <field name="module_id"/>
+                                <field name="is_completed"/>
+                                <field name="completion_date"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>

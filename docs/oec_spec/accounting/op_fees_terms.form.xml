@@ -1,0 +1,63 @@
+<form string="Fees Reminder Terms">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                <field name="code"/>
+                                <field name="active"/>
+                                <field name="fees_terms" required="1"/>
+                    <label for="bill_selection" string="Bill Every" invisible="fees_terms != 'duration_based'"/>
+                    <div style="display: inline;" invisible="fees_terms != 'duration_based'">
+                        <field name="term_duration" class="oe_inline" invisible="fees_terms != 'duration_based'" required="fees_terms == 'duration_based'"/>
+                        -
+                        <field name="bill_selection" class="oe_inline" style="width: 100%;" invisible="fees_terms != 'duration_based'" required="fees_terms == 'duration_based'"/>
+                    </div>
+                    <field name="expires_after" invisible="fees_terms != 'duration_based'" required="fees_terms == 'duration_based'"/>
+                            </group>
+                            <group>
+                                <field name="discount"/>
+                            </group>
+                        </group>
+                        <field name="note" placeholder="Description..." class="mt32"/>
+                        <separator string="Terms" colspan="4"/>
+                        <field name="line_ids">
+                            <list>
+                                <field name="due_days" column_invisible="parent.fees_terms != 'fixed_days'" required="parent.fees_terms == 'fixed_days'"/>
+                                <field name="due_date" column_invisible="parent.fees_terms != 'fixed_date'" required="parent.fees_terms == 'fixed_date'"/>
+                                <field name="value" required="1"/>
+                                <field name="fees_element_line" required="1"/>
+                            </list>
+                            <form string="Fees Term Line">
+                                <group>
+                                    <group colspan="4">
+                                        <field name="due_days" invisible="parent.fees_terms != 'fixed_days'" required="parent.fees_terms == 'fixed_days'"/>
+                                        <field name="due_date" invisible="parent.fees_terms != 'fixed_date'" required="parent.fees_terms == 'fixed_date'"/>
+                                        <field name="value" required="1"/>
+                                    </group>
+                                   <separator string="Fees Elements" colspan="4"/>
+                                   <group colspan="4">
+                                       <field name="fees_element_line" nolabel="1">
+                                           <list string="Information" editable="top">
+                                               <field name="product_id" can_create="True" can_write="True"/>
+                                               <field name="value"/>
+                                           </list>
+                                       </field>
+                                   </group>
+                                </group>
+                    <separator string="Fees Reminder Lines" colspan="4"/>
+                    <field name="line_ids">
+                        <list editable="top">
+                            <field name="duration_type" required="1"/>
+                            <field name="days" required="1"/>
+                            <field name="template_id" required="1" can_create="True" can_write="True"/>
+                        </list>
+                    </field>
+                            </form>
+                        </field>
+                    </sheet>
+                    <chatter/>
+                </form>

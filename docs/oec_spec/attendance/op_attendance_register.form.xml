@@ -1,0 +1,31 @@
+﻿<form string="Attendance Register">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                <field name="course_id" invisible="section_id != False" required="section_id != False" can_create="True" can_write="True"/>
+                <field name="required_field" invisible="1"/>
+                <field name="user_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                
+                <field name="subject_id" invisible="attendance_option == 'generic'" required="attendance_option == 'subject'" domain="[('course_id', '=', course_id)]" on_change="1" can_create="True" can_write="True"/>
+                <field name="auto_create"/>
+                <field name="auto_create_type" invisible="auto_create == False" required="auto_create == True"/>
+                                <field name="course_id" invisible="1" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                <field name="attendance_option" invisible="1" widget="radio"/>
+                                <field name="code"/>
+                <field name="section_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                <field name="batch_id" context="{'course_id': course_id,'get_parent_batch':1}" invisible="section_id != False" required="section_id != False" can_create="True" can_write="True"/>
+                <field name="section_id" on_change="1" can_create="True" can_write="True"/>
+                <field name="auto_create_if_session"/>
+                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                <field name="batch_id" context="{'course_id': course_id,'get_parent_batch':1}" invisible="1" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

@@ -1,0 +1,5 @@
+<search string="Grades">
+                <field name="name" select="True"/>
+                <field name="value"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>

@@ -1,0 +1,1 @@
+<form><sheet string="Quiz Configuration"><group><group><field name="quiz_id" can_create="True" can_write="True"/><field name="no_of_question"/></group><group><field name="bank_id" can_create="True" can_write="True"/><field name="company_id" can_create="True" can_write="True"/></group></group><group><separator/></group></sheet></form>

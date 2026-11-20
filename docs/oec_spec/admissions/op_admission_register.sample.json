@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  13,
+        "display_name":  "Certificate in Fine Arts"
+    },
+    {
+        "id":  12,
+        "display_name":  "Data Science Fundamentals"
+    },
+    {
+        "id":  11,
+        "display_name":  "Project Management"
+    },
+    {
+        "id":  10,
+        "display_name":  "Learn Python"
+    },
+    {
+        "id":  9,
+        "display_name":  "Beginner German"
+    }
+]

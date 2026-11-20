@@ -1,0 +1,64 @@
+<form string="Template" create="false">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <field name="show_open_requests" invisible="1"/>
+                            <!-- <button class="oe_stat_button" name="open_requests" type="object" icon="fa-pencil-square-o"
+                            invisible="show_open_requests == False"> -->
+                            <button class="oe_stat_button" name="open_requests" type="object" icon="fa-pencil-square-o" invisible="show_open_requests == False">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="signed_count" on_change="1"/>
+                                    </span>
+                                    <span class="o_stat_text">Signed Document</span>
+                                </div>
+                            </button>
+                            <button name="edit_pdf" type="object" icon="fa-wrench" invisible="signed_count &gt; 0">
+                                Edit Fields
+                            </button>
+                        </div>
+
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="template_id" on_change="1" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="tag_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <!-- <field name="group_ids" widget="many2many_tags"/> -->
+                                <!-- <field name="redirect_url" widget="url"/> -->
+                                <field name="privacy"/>
+                                <field name="favorited_ids" widget="many2many_tags" invisible="privacy == 'employee'" can_create="True" can_write="True"/>
+                                <field name="user_id" domain="[('share', '=', False)]" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Document">
+                                <field name="data" widget="pdf_viewer"/>
+                            </page>
+                            <page string="Template Lines">
+                                <field name="template_lines"><list editable="bottom">
+                    <field name="type_id" can_create="True" can_write="True"/>
+                    <field name="is_position"/>
+                    <field name="page_number"/>
+                    <field name="x_position"/>
+                    <field name="y_position"/>
+                    <field name="x_offset"/>
+                    <field name="y_offset"/>
+                    <field name="responsible_id" can_create="True" can_write="True"/>
+                    <field name="option_ids" can_create="True" can_write="True"/>
+                    <field name="alignment"/>
+                    <field name="width"/>
+                    <field name="height"/>
+                    <field name="page_width"/>
+                    <field name="page_height"/>
+                    <field name="width_pix"/>
+                    <field name="height_pix"/>
+                    <field name="responsible_key" invisible="1"/>
+                </list></field>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                    <chatter/>
+
+                </form>

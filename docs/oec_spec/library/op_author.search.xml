@@ -1,0 +1,4 @@
+<search string="Author">
+                    <field name="name"/>
+                    <field name="media_ids"/>
+                </search>

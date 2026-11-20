@@ -1,0 +1,1 @@
+<kanban string="Campus Facility"><templates><t t-name="card"><field name="complete_name" on_change="1"/></t></templates></kanban>

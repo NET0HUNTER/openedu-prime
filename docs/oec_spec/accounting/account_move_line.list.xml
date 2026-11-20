@@ -1,0 +1,58 @@
+<list name="move_line_tree" string="Journal Items" decoration-info="parent_state == 'draft'" create="false" edit="true" expand="context.get('expand', False)" multi_edit="1" js_class="account_move_line_list">
+                    <field name="move_id" column_invisible="True" on_change="1"/>
+                    <field name="invoice_date" string="Invoice Date" optional="hide"/>
+                    <field name="date" readonly="1"/>
+                    <field name="company_id" column_invisible="True" on_change="1"/>
+                    <field name="company_id" readonly="1" optional="hide" on_change="1"/>
+                    <field name="journal_id" readonly="1" options="{&quot;no_open&quot;:True}" optional="hide"/>
+                    <field name="move_name" string="Journal Entry" widget="open_move_widget"/>
+                    <field name="account_id" options="{'no_open': True, 'no_create': True}" domain="[('company_ids', 'parent_of', company_id)]" on_change="1" can_create="True" can_write="True"/>
+                    <field name="partner_id" optional="show" readonly="move_type != 'entry'" on_change="1" can_create="True" can_write="True"/>
+                    <field name="ref" optional="hide" readonly="False"/>
+                    <field name="product_id" readonly="1" optional="hide" on_change="1"/>
+                    <field name="name" optional="show" on_change="1"/>
+                <field name="vehicle_id" optional="hidden" can_create="True" can_write="True"/>
+                <field name="deferred_start_date" string="Deferred Date" widget="daterange" options="{'end_date_field': 'deferred_end_date', 'always_range': True}" optional="hide" readonly="has_deferred_moves" on_change="1"/>
+                <field name="deferred_end_date" required="deferred_start_date" column_invisible="1" on_change="1"/>
+                    
+                    <field name="tax_ids" widget="many2many_tax_tags" optional="hide" readonly="1"/>
+                    
+                    
+                    <field name="debit" sum="Total Debit" readonly="1" decoration-muted="debit == 0" on_change="1"/>
+                    <field name="credit" sum="Total Credit" readonly="1" decoration-muted="credit == 0" on_change="1"/>
+                    <field name="tax_tag_ids" string="Tax Grids" options="{'no_create': True, 'no_create_edit': True}" domain="[('applicability', '=', 'taxes')]" widget="many2many_tags" optional="hide" can_create="True" can_write="True"/>
+                    <field name="discount_date" string="Discount Date" optional="hide"/>
+                    <field name="discount_amount_currency" string="Discount Amount" optional="hide"/>
+                    <field name="tax_line_id" string="Originator Tax" optional="hide" readonly="1"/>
+                    <field name="date_maturity" readonly="1" optional="hide" decoration-danger="not reconciled and date_maturity &lt; context_today().strftime('%Y-%m-%d')"/>
+                    <field name="balance" sum="Total Balance" optional="hide" readonly="1" on_change="1"/>
+                    <field name="matching_number" string="Matching" readonly="1" optional="show" widget="matching_link_widget"/>
+                    <field name="amount_residual" sum="Total Residual" string="Residual" optional="hide" readonly="1" invisible="not is_account_reconcile"/>
+                    
+                    <field name="move_type" column_invisible="True"/>
+                    <field name="parent_state" column_invisible="True"/>
+                    <field name="account_type" column_invisible="True"/>
+                    <field name="statement_line_id" column_invisible="True"/>
+                    <field name="company_currency_id" column_invisible="True" on_change="1"/>
+                    <field name="is_same_currency" column_invisible="True"/>
+                    <field name="is_account_reconcile" column_invisible="True"/>
+                    <field name="sequence" column_invisible="True"/>
+                    <field name="parent_state" column_invisible="True"/>
+                    <field name="deductible_amount" optional="hide"/>
+                    <groupby name="partner_id">
+                        <button name="edit" type="edit" icon="fa-edit" title="Edit"/>
+                    </groupby>
+                    <groupby name="move_id">
+                        <button name="action_post" type="object" string="Post" class="btn-primary" invisible="state != 'draft'"/>
+                        <button name="set_moves_checked" type="object" string="Review" class="btn-primary" invisible="state != 'posted' or checked"/>
+                        <button name="edit_move" type="edit" icon="fa-edit" string="Edit"/>
+                    <field name="state" invisible="True" readonly="True" data-used-by="invisible=&quot;state != 'posted' or checked&quot; (button,set_moves_checked)"/>
+<field name="checked" invisible="True" readonly="True" data-used-by="invisible=&quot;state != 'posted' or checked&quot; (button,set_moves_checked)"/>
+</groupby>
+                <header>
+                    <button name="action_reconcile" type="object" string="Reconcile" data-hotkey="r"/>
+                </header>
+                <field name="is_account_reconcile" column_invisible="True"/>
+                <field name="has_deferred_moves" column_invisible="True"/>
+                <field name="reconciled" column_invisible="True" readonly="True" data-used-by="decoration-danger=&quot;not reconciled and date_maturity &lt; context_today().strftime('%Y-%m-%d')&quot; (field,date_maturity)"/>
+</list>

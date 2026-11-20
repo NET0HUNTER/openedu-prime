@@ -1,0 +1,6 @@
+<list string="Fees Reminder Terms" js_class="fees_wizard_list">
+                    <field name="name"/>
+                    <field name="active"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="code"/>
+                </list>

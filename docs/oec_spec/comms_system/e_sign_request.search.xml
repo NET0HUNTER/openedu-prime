@@ -1,0 +1,22 @@
+<search>
+                <field name="doc_name" string="Document/Signer" filter_domain="['|', '|', ('doc_name', 'ilike', self), ('request_item_ids.partner_id.email', 'ilike', self), ('request_item_ids.partner_id.name', 'ilike', self)]"/>
+                <field name="template_id" string="Template or Tag" filter_domain="['|', ('template_id.name', 'ilike', self), ('template_id.tag_ids.name', 'ilike', self)]"/>
+                <separator/>
+                <filter name="favorite" string="My Favorites" domain="[('favorited_ids', 'in', uid)]"/>
+                <separator/>
+                <filter name="sent" string="Sent" domain="[('state', '=', 'sent')]"/>
+                <filter name="signed" string="Fully Signed" domain="[('state', '=', 'signed')]"/>
+                <filter name="canceled" string="Canceled" domain="[('state', '=', 'canceled')]"/>
+                <filter invisible="1" string="Late Activities" name="activities_overdue" domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]" help="Show all records which has next action date is before today"/>
+                <filter invisible="1" string="Today Activities" name="activities_today" domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter invisible="1" string="Future Activities" name="activities_upcoming_all" domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))                         ]"/>
+                <separator/>
+                <group>
+                    <filter name="group_by_template" string="Template" domain="[]" context="{'group_by': 'template_id'}"/>
+                    <filter name="group_by_state" string="State" domain="[]" context="{'group_by': 'state'}"/>
+                </group>
+                <searchpanel>
+                    <field name="state" select="multi" icon="fa-inbox" enable_counters="1"/>
+                    <field name="tag_ids" string="tags" select="multi" icon="fa-tag" enable_counters="1"/>
+                </searchpanel>
+            </search>

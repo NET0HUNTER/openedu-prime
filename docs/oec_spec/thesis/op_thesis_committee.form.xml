@@ -1,0 +1,15 @@
+<form string="Committee Member">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="registration_id" options="{'no_create': True}" can_create="True" can_write="True"/>
+                                <field name="faculty_id" options="{'no_create': True}" on_change="1" can_create="True" can_write="True"/>
+                                <field name="role" required="1"/>
+                            </group>
+                            <group>
+                                <field name="email"/>
+                                <field name="phone"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

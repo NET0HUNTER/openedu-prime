@@ -1,0 +1,19 @@
+﻿<form string="Program Outcome">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="academic_year_id" can_create="True" can_write="True"/>
+                                <field name="program_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="po_code"/>
+                                <field name="academic_term_id" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

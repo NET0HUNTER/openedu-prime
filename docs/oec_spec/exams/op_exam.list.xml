@@ -1,0 +1,13 @@
+﻿<list string="Exam">
+                    <field name="session_id"/>
+                    <field name="name"/>
+                    <field name="subject_id"/>
+                    <field name="exam_code"/>
+                    <field name="start_time"/>
+                    <field name="end_time"/>
+                    <field name="state"/>
+                    <field name="note" optional="hide"/>
+                    <field name="total_marks" optional="show"/>
+                    <field name="min_marks" optional="show"/>
+                    <field name="company_id" optional="show"/>
+                </list>

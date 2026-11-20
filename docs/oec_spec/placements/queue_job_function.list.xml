@@ -1,0 +1,5 @@
+<list>
+                <field name="name"/>
+                <field name="channel_id"/>
+                <field name="allow_commit"/>
+            </list>

@@ -1,0 +1,4 @@
+<graph string="Invoices Analysis" type="line" sample="1" create="False" delete="False" edit="False">
+                 <field name="product_categ_id"/>
+                 <field name="price_subtotal" type="measure"/>
+             </graph>

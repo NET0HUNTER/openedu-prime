@@ -1,0 +1,5 @@
+﻿<pivot string="Exam Attendees Pivot">
+                    <field name="student_id" type="row"/>
+                    <field name="status" type="col"/>
+                    <field name="marks" type="measure"/>
+                </pivot>

@@ -1,0 +1,1 @@
+﻿<kanban string="Grade Template"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

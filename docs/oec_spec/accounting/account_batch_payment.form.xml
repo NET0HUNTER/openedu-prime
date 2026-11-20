@@ -1,0 +1,54 @@
+<form string="Batch Payment">
+                <header>
+                    <field name="id" invisible="1"/>
+                    <field name="file_generation_enabled" invisible="1"/>
+                    <button id="print_button" name="print_batch_payment" string="Print" type="object" invisible="state != 'sent'"/>
+                    <button id="regenerate_file_button" name="validate_batch_button" string="Re-generate Export File" type="object" invisible="not file_generation_enabled or state != 'sent' or not payment_ids"/>
+                    <button id="validate_button" name="validate_batch_button" string="Validate" class="oe_highlight" type="object" invisible="state != 'draft' or not payment_ids"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+
+                <field name="invalid_sct_partners_ids" invisible="1"/>
+                <div class="alert alert-danger" role="alert" invisible="not invalid_sct_partners_ids">
+                    The country or city of
+                    <a type="object" name="action_invalid_partners_from_sct">these partners</a>
+                    is not set, which could cause the file to be refused by the bank.
+                </div>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="batch_type" force_save="1" readonly="payment_ids.length" on_change="1"/>
+                            <field name="journal_id" domain="[('type', '=', 'bank')]" options="{'no_open': True, 'no_create': True}" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="available_payment_method_ids" invisible="1"/>
+                            <field name="payment_method_id" options="{'no_create': True, 'no_open': True}" required="1" readonly="state != 'draft' or payment_ids" on_change="1" can_create="False" can_write="True"/>
+                            <field name="payment_method_code" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="date" readonly="state != 'draft'"/>
+                            <field name="name" placeholder="Leave empty to generate automatically..." required="0" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Batch Content" name="batch_content">
+                            <field name="payment_ids" widget="many2many" domain="payment_ids_domain" options="{'no_create': True}" readonly="state != 'draft'" force_save="1" on_change="1">
+                                <list string="Payments" create="false" editable="top" open_form_view="True" decoration-muted="state == 'draft'" decoration-danger="state in ('rejected', 'canceled')">
+                                    <field name="name" readonly="1"/>
+                                    <field name="date" readonly="1"/>
+                                    <field name="partner_id" readonly="1" on_change="1"/>
+                                    <field name="memo" readonly="1"/>
+                                    <field name="payment_method_name" string="Payment method" optional="hide" readonly="1"/>
+                                    <field name="amount_signed" string="Amount" sum="Total" readonly="1"/>
+                                    <field name="currency_id" column_invisible="True" on_change="1" can_create="True" can_write="True"/>
+                                    <field name="state" column_invisible="True" on_change="1"/>
+                                    <field name="payment_method_id" column_invisible="True"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            <field name="payment_ids_domain" invisible="True" readonly="True" data-used-by="domain='payment_ids_domain' (field,payment_ids)"/>
+</form>

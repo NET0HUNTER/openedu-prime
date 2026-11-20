@@ -1,0 +1,24 @@
+<form string="Cost Plan">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="plan_description"/>
+                            </group>
+                        </group>
+                        <group string="Bill and Accounts">
+                            <group>
+                                <field name="bill"/>
+                                <field name="expires_after"/>
+                            </group>
+                            <group>
+                                <field name="bill_selection"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

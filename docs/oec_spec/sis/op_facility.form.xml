@@ -1,0 +1,12 @@
+﻿<form string="Facility">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                    </sheet>
+                </form>

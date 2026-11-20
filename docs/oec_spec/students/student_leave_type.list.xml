@@ -1,0 +1,5 @@
+﻿<list>
+                    <field name="code" string="Code"/>
+                    <field name="name" string="Type"/>
+                    <field name="company_id" optional="show"/>
+                </list>

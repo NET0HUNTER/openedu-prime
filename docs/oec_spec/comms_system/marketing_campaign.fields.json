@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": false,
+      "related": "utm_campaign_id.name",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": false,
+      "string": "Campaign Identifier",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

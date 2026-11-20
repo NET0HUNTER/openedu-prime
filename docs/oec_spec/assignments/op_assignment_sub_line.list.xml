@@ -1,0 +1,15 @@
+<list string="Assignment Sub Line">
+                    <field name="assignment_id" on_change="1"/>
+                    <field name="student_id" on_change="1"/>
+                    <field name="submission_date"/>
+                    <field name="obtained_mark"/>
+                    <field name="late_submit"/>
+                    <field name="state"/>
+                    <field name="grades_id" optional="hide"/>
+                    <field name="evaluation_boolean" optional="hide"/>
+                    <field name="progression_id" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="marks" optional="hide" on_change="1"/>
+                    <button name="clear_attempt" type="object" class="oe_highlight" string="Clear Attempt" invisible="1"/>
+                    <button name="action_open_pdf_view" type="object" class="oe_highlight" invisible="state != 'to_assess'" string="Add Rubric Assessment"/>
+                </list>

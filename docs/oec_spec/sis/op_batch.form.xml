@@ -1,0 +1,28 @@
+﻿<form string="Batch">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group name="main">
+                                <field name="name"/>
+                                <field name="start_date"/>
+                                <field name="course_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="end_date"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="1084" type="action" icon="fa-users">
+                            <field string="Students" name="student_count" widget="statinfo"/>
+                        </button>
+                        <button class="oe_stat_button" name="1459" type="action" icon="fa-calendar">
+                            <field string="Sessions" name="lectures_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    </sheet>
+                    <chatter/>
+                </form>

@@ -1,0 +1,11 @@
+﻿<form string="Suspended Students">
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="student_id" can_create="True" can_write="True"/>
+                            <field name="suspend_from_date"/>
+                            <field name="suspend_to_date"/>
+                            <field name="misbehaviour_category_id" can_create="True" can_write="True"/>
+                            <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                    </sheet>
+                </form>

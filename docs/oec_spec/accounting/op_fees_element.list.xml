@@ -1,0 +1,4 @@
+<list string="Fees Elements" editable="top">
+                    <field name="product_id" can_create="True" can_write="True"/>
+                    <field name="value"/>
+                </list>

@@ -1,0 +1,15 @@
+﻿{
+    "action":  [
+                   {
+                       "id":  1295,
+                       "name":  "Confirmation",
+                       "binding_view_types":  "list,form"
+                   },
+                   {
+                       "id":  1296,
+                       "name":  "Backfill Students from Batch",
+                       "binding_view_types":  "list,form",
+                       "sequence":  5
+                   }
+               ]
+}

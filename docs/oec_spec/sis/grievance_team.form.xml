@@ -1,0 +1,56 @@
+﻿<form string="Grievance Team Form">
+                <header/>
+                <sheet>
+                    <h1>
+                        <field name="name" placeholder="Grievance Team name..."/>
+                    </h1>
+                    <group>
+                        <group class="pt-3">
+                            <field name="team_leader" can_create="True" can_write="True"/>
+                        </group>
+                        <group class="pt-3">
+                            <field name="grievance_category_id" options="{'no_create': True}" widget="many2many_tags" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Members" string="Team Members">
+                            <field name="member_ids" widget="many2many" options="{'not_delete': True}">
+                                <kanban quick_create="false" create="true" delete="true">
+                                    <field name="id"/>
+                                    <field name="name" on_change="1"/>
+                                    <field name="image_128" on_change="1"/>
+                                    <field name="email" on_change="1"/>
+                                    <field name="phone" on_change="1"/>
+                                    <field name="job_title"/>
+                                    <templates>
+                                        <t t-name="card">
+                                            <div class="oe_kanban_global_click o_kanban_card p-2">
+                                                <div class="d-flex align-items-start">
+                                                    <div class="me-3">
+                                                        <field name="image_128" widget="image" options="{'preview_image': 'image_128'}" class="rounded-circle" style="width:60px; height:60px;" on_change="1"/>
+                                                    </div>
+                                                    <div class="o_kanban_record_headings">
+                                                        <div>
+                                                            <i class="fa fa-envelope text-muted me-2 text-primary" title="Email"/>
+                                                            <field name="email" on_change="1"/>
+                                                        </div>
+                                                        <div>
+                                                            <i class="fa fa-phone text-muted me-2 text-primary" title="Phone"/>
+                                                            <field name="phone" on_change="1"/>
+                                                        </div>
+                                                        <div>
+                                                            <i class="fa fa-building text-muted me-2 text-primary" title="Company"/>
+                                                            <field name="company_id"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>

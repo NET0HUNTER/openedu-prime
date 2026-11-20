@@ -1,0 +1,7 @@
+<list>
+                    <field name="display_name"/>
+                    <field name="material_count"/>
+                    <field name="material_ids" on_change="1"/>
+                    <field name="company_id"/>
+                    <field name="parent_id" optional="hide" on_change="1"/>
+                </list>

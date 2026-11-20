@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "question": {
+      "change_default": false,
+      "groupable": true,
+      "name": "question",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Question Name",
+      "translate": true,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

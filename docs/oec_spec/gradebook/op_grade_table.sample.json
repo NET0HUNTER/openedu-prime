@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Check"
+    },
+    {
+        "id":  2,
+        "display_name":  "Complete/Incomplete"
+    },
+    {
+        "id":  3,
+        "display_name":  "Custom Grade Scale"
+    },
+    {
+        "id":  4,
+        "display_name":  "Custom Grade Scales"
+    },
+    {
+        "id":  5,
+        "display_name":  "Letter Grades"
+    }
+]

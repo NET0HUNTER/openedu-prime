@@ -1,0 +1,177 @@
+<form string="Calendar Online Appointment">
+                <header/>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                <button name="action_event_crm_leads" invisible="crm_lead_count == 0" type="object" class="oe_stat_button" icon="fa-star">
+                    <field string="Leads" name="crm_lead_count" widget="statinfo"/>
+                </button>
+                        <button class="btn oe_stat_button" name="calendar_appointment_schedule" type="object" icon="fa-calendar">
+                            <field name="count_appointment" widget="statinfo" string="Appointment"/>
+                        </button>
+                        <!--
+                            Pending-request smart button. Only visible
+                            when this appointment is configured for
+                            manual confirmation. `text-warning` puts
+                            the count in orange when > 0 so it stands
+                            out at a glance.
+                        -->
+                        <button class="btn oe_stat_button" name="action_open_pending_requests" type="object" icon="fa-hourglass-half" invisible="not manual_confirm">
+                            <field name="pending_request_count" widget="statinfo" string="Pending" class="text-warning"/>
+                        </button>
+                        <button class="btn oe_stat_button" name="open_website_url" type="object" icon="fa-globe">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">
+                                    Go To
+                                    <br/>
+                                    Website
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <!--
+                        In-form banner mirroring the smart button — one
+                        surface is easy to miss, both is not. Hidden
+                        when count = 0.
+                    -->
+                    <div class="alert alert-warning" role="alert" invisible="not manual_confirm or pending_request_count == 0">
+                        <strong>
+                            <field name="pending_request_count" readonly="1" class="oe_inline"/>
+                            pending booking request(s)
+                        </strong>
+                        awaiting your review.
+                        <button type="object" name="action_open_pending_requests" class="btn btn-sm btn-warning ms-2">
+                            Review now
+                        </button>
+                    </div>
+                    <div class="row w-100">
+                        <div class="pt-3 col-8 col-lg-10">
+                            <h1>
+                                <field name="name" placeholder="Appointment Name e.g. &quot;Technical Demo&quot;" widget="text" options="{'line_breaks': False}" required="1"/>
+                            </h1>
+                        </div>
+                        <div class="col-4 col-lg-2">
+                            <field name="image_1920" widget="image" class="oe_left oe_avatar"/>
+                        </div>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" can_create="True" can_write="True"/>
+                            <label for="duration" string="Duration"/>
+                            <div>
+                                <field name="duration" widget="float_time" required="1" class="me-1 oe_inline o_input_6ch" on_change="1"/>
+                                <span>hours</span>
+                            </div>
+                            <label for="min_appointment_hours" string="Pre-Booking Time"/>
+                            <div>
+                                <field name="min_appointment_hours" widget="float_time" required="1" class="me-1 oe_inline o_input_6ch"/>
+                                <span>hours</span>
+                            </div>
+                            <field name="appointment_schedule" widget="radio" options="{'horizontal': true}"/>
+                            <label for="max_appointment_days" string="Appointment Up to" invisible="appointment_schedule == 'punctual_time'"/>
+                            <div invisible="appointment_schedule == 'punctual_time'">
+                                <field name="max_appointment_days" class="oe_inline me-1 o_input_6ch"/>
+                                <span class="me-1 oe_inline">days in</span>
+                                <field name="not_after_type" class="oe_inline"/>
+                            </div>
+                            <label for="from_date" string="Date Between" invisible="appointment_schedule != 'punctual_time'"/>
+                            <div invisible="appointment_schedule != 'punctual_time'">
+                                <field name="from_date" class="oe_inline me-1" placeholder="From Date"/>
+                                <span class="me-2">To</span>
+                                <field name="end_date" placeholder="End Date" class="oe_inline"/>
+                            </div>
+                            <field name="company_id" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="code"/>
+                            <field name="is_published" widget="boolean_toggle"/>
+                            <field name="website_url" invisible="1" on_change="1"/>
+                            <field name="share_url" widget="CopyClipboardURL" placeholder="Save to generate share URL" readonly="1" invisible="not is_published or not id"/>
+                            <field name="is_cancel" widget="boolean_toggle"/>
+                            <label for="min_appointment_hours" string="Cancellation Up to" invisible="is_cancel == False"/>
+                            <div invisible="is_cancel == False">
+                                <field name="min_appointment_cancel_duration" class="oe_inline me-1 o_input_6ch" invisible="is_cancel ==  False" required="is_cancel == True"/>
+                                <field name="cancel_type" class="oe_inline me-1" invisible="is_cancel ==  False" required="is_cancel == True"/>
+                                <span class="oe_inline">Before Meeting</span>
+                            </div>
+                            <field name="short_description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Availabilities">
+                            <field name="appointment_based_on" widget="radio" options="{'horizontal': true}" required="1"/>
+                            <field name="employee_ids" class="mt-4" invisible="appointment_based_on == 'calendar_resource'" can_create="True" can_write="True">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="resource_calendar_id" on_change="1"/>
+                                    <field name="id" widget="appointment_booking_link_copy" string="Booking link" readonly="1"/>
+                                </list>
+                            </field>
+                            <field name="appointment_resource_ids" class="mt-4" invisible="appointment_based_on == 'employee'" can_create="True" can_write="True">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="resource_calendar_id" on_change="1"/>
+                                    <field name="resource_capacity"/>
+                                    <field name="id" widget="appointment_booking_link_copy" string="Booking link" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Options">
+                            <group>
+                                <group>
+                                    <field name="assign_method" widget="radio" options="{'horizontal': true}" required="1"/>
+                                    <!--
+                                        Restrict the picker to partners that
+                                        represent a physical location:
+                                          * type='other' / 'delivery' / 'private'
+                                            = child address records (Odoo's
+                                            convention for venues / meeting
+                                            rooms), OR
+                                          * is_company=True = a company/venue
+                                            in its own right.
+                                        Excludes contact-type persons and
+                                        invoice-only entries, which don't
+                                        represent a physical meeting spot.
+                                        `show_address` in context keeps the
+                                        formatted address in the dropdown so
+                                        admins can pick by street, not name.
+                                    -->
+                                    <field name="resource_location_id" context="{'show_address': 1}" domain="['|', ('is_company', '=', True),                                                    ('type', 'in', ['other', 'delivery', 'private'])]" can_create="True" can_write="True"/>
+                                    <field name="calendar_reminder_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                <field name="create_crm_lead"/>
+                                </group>
+                                <group>
+                                    <field name="default_timezone" required="1"/>
+                                    <field name="website_id" can_create="True" can_write="True"/>
+                                    <field name="manual_confirm" widget="boolean_toggle"/>
+                                    <field name="allow_other_members" widget="boolean_toggle"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Slots">
+                            <field name="slots" mode="list">
+                                <list editable="bottom">
+                                    <field name="week"/>
+                                    <field name="hour" widget="float_time"/>
+                                    <field name="appointment_id" optional="hide" can_create="True" can_write="True"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Message">
+                            <field name="description"/>
+                        </page>
+                        <page string="Question">
+                            <field name="question_ids"><list>
+                <field name="name"/>
+                <field name="question_type"/>
+                <field name="placeholder" optional="hide"/>
+                <field name="res_model_id" optional="hide" on_change="1"/>
+                <field name="res_model" optional="hide"/>
+                <field name="qna_id" optional="hide"/>
+                <field name="required_answer" widget="boolean_toggle" optional="hide"/>
+                <field name="answer_ids" widget="many2many_tags" optional="hide"/>
+            </list></field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>

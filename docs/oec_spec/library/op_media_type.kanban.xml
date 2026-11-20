@@ -1,0 +1,122 @@
+<kanban highlight_color="color" create="false" class="o_slide_kanban o_slide_channel_kanban o_library_kanban" sample="1">
+                    <field name="id"/>
+                    <field name="name"/>
+                    <field name="color"/>
+                    <field name="issued"/>
+                    <field name="available"/>
+                    <field name="due_media_today"/>
+                    <field name="due_media_month"/>
+                    <templates>
+                    <t t-name="menu">
+                        <div class="container" role="menu">
+                        <div class="row my-2">
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_view">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="library_views" class="o_kanban_card_manage_title">
+                                            <span>Views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="library_new" class="o_kanban_card_manage_title">
+                                            <span>New</span>
+                                        </div>
+                                        <div>
+                                            <a type="object" name="create_new_media_type">New <field name="name"/></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_operations">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="library_reports" class="o_kanban_card_manage_title">
+                                            <span>Reports</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                <div role="menuitem" aria-haspopup="true" class="col-8">
+                                    <field name="color" widget="kanban_color_picker"/>
+                                </div>
+                                <div role="menuitem" class="col-4">
+                                    <a type="open">Settings</a>
+                                </div>
+                            </div>
+                          </div>
+                        </t>
+                        <t t-name="card">
+                            <main class="d-flex flex-column gap-2 p-2 h-100">
+                                <!-- Header section -->
+                                <div class="d-flex align-items-center justify-content-between" style="min-width: 0;">
+                                    <div class="d-flex align-items-center gap-2 text-truncate">
+                                        <span class="text-dark fs-5" style="width: 20px;">
+                                            <t t-if="record.name.value == 'Book' or record.name.value == 'Books'"><i class="fa fa-book" title="Book"/></t>
+                                            <t t-elif="record.name.value == 'Journal' or record.name.value == 'Journals'"><i class="fa fa-bookmark" title="Journal"/></t>
+                                            <t t-elif="record.name.value == 'Magazine' or record.name.value == 'Magazines'"><i class="fa fa-newspaper-o" title="Magazine"/></t>
+                                            <t t-elif="record.name.value == 'CD/DVD' or record.name.value == 'CD' or record.name.value == 'DVD'"><i class="fa fa-play-circle-o" title="CD/DVD"/></t>
+                                            <t t-else=""><i class="fa fa-file-text-o" title="Media"/></t>
+                                        </span>
+                                        <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.15rem; letter-spacing: -0.01em;" t-att-title="record.name.value">
+                                            <t t-esc="record.name.value"/>
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <!-- Media Usage Section Header -->
+                                <div class="text-muted small fw-semibold" style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                                    <i class="fa fa-bar-chart me-1" title="Usage Chart"/>Media Usage
+                                </div>
+
+                                <!-- Body Stats / Actions -->
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center justify-content-between p-2 rounded border border-light-subtle bg-light">
+                                            <div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.9rem; color: #495057;">
+                                                <i class="fa fa-book text-muted" title="Issued" style="font-size: 0.95rem;"/>
+                                                <span>Issued</span>
+                                            </div>
+                                            <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold ms-1" style="font-size: 12px; padding: 4px 8px;">
+                                                <t t-esc="record.issued.value"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center justify-content-between p-2 rounded border border-light-subtle bg-light">
+                                            <div class="d-flex align-items-center gap-2 fw-medium" style="font-size: 0.9rem; color: #495057;">
+                                                <i class="fa fa-check-circle text-muted" title="Available" style="font-size: 0.95rem;"/>
+                                                <span>Available</span>
+                                            </div>
+                                            <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold ms-1" style="font-size: 12px; padding: 4px 8px;">
+                                                <t t-esc="record.available.value"/>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button type="object" name="create_new_media_type" class="btn bg-light rounded text-decoration-none p-2 d-flex align-items-center justify-content-center w-100 border border-light-subtle text-muted" style="font-size: 12px; font-weight: 500; box-shadow: none;">
+                                        <i class="fa fa-plus-circle text-dark me-1 flex-shrink-0" style="font-size: 0.8125rem;" title="New Media"/>
+                                        <span class="text-truncate">New Media</span>
+                                    </button>
+                                </div>
+
+                                <!-- Footer links -->
+                                <div class="row g-0 pt-2 mt-auto border-top text-center">
+                                    <a name="1208" type="action" class="col-6 text-decoration-none border-end py-1 d-flex flex-column align-items-center justify-content-center">
+                                        <div class="fw-bold fs-4 text-dark mb-0" style="line-height: 1.2;">
+                                            <t t-esc="record.due_media_today.value"/>
+                                        </div>
+                                        <small class="text-muted" style="font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em;">Due Today</small>
+                                    </a>
+                                    <a name="1209" type="action" class="col-6 text-decoration-none py-1 d-flex flex-column align-items-center justify-content-center">
+                                        <div class="fw-bold fs-4 text-dark mb-0" style="line-height: 1.2;">
+                                            <t t-esc="record.due_media_month.value"/>
+                                        </div>
+                                        <small class="text-muted" style="font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em;">Due This Month</small>
+                                    </a>
+                                </div>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>

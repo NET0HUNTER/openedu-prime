@@ -1,0 +1,1 @@
+﻿<kanban string="student withdrawal management"><templates><t t-name="card"><field name="student_id"/></t></templates></kanban>

@@ -1,0 +1,1 @@
+﻿<kanban string="Grading Wizard"><templates><t t-name="card"><field name="id"/></t></templates></kanban>

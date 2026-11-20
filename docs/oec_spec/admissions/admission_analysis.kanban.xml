@@ -1,0 +1,1 @@
+﻿<kanban string="Admission Analysis Wizard"><templates><t t-name="card"><field name="id"/></t></templates></kanban>

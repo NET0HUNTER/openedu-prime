@@ -1,0 +1,64 @@
+﻿<kanban class="o_event_kanban_view" sample="1">
+                <field name="date"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="address_id"/>
+                <field name="academic_year_id"/>
+                <field name="total_registrations"/>
+                <field name="total_guests"/>
+                <templates>
+                    <t t-name="card" class="p-0 row g-0 overflow-hidden">
+                        <aside class="col-4 bg-primary-subtle text-primary p-3 text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 140px;">
+                            <div t-esc="luxon.DateTime.fromISO(record.date.raw_value).toFormat('d')" class="fw-bold mb-1" style="font-size: 2.2rem; line-height: 1;"/>
+                            <div class="text-uppercase small fw-bold opacity-75">
+                                <t t-esc="luxon.DateTime.fromISO(record.date.raw_value).toFormat('MMM yyyy')"/>
+                            </div>
+                            <div class="small opacity-75 mt-2 fw-semibold text-nowrap">
+                                <i class="fa fa-clock-o me-1"/>
+                                <t t-esc="luxon.DateTime.fromISO(record.date.raw_value).toFormat('t')"/>
+                            </div>
+                        </aside>
+                        <main class="col-8 d-flex flex-column justify-content-between p-3 position-relative">
+                            <!-- Top Info Block -->
+                            <div class="d-flex flex-column gap-2">
+                                <!-- Title & Code -->
+                                <div class="pe-4" style="max-width: 95%;">
+                                    <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.15rem; line-height: 1.2;" t-att-title="record.name.value">
+                                        <field name="name"/>
+                                    </h5>
+                                    <span t-if="record.code.raw_value" class="text-muted small mt-1 d-block">
+                                        <field name="code"/>
+                                    </span>
+                                </div>
+
+                                <!-- Meta info -->
+                                <div class="d-flex flex-column gap-1">
+                                    <div t-if="record.academic_year_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-graduation-cap me-2 text-muted" style="width: 14px;" title="Academic Year"/>
+                                        <span class="text-truncate"><field name="academic_year_id"/></span>
+                                    </div>
+                                    <div t-if="record.address_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-map-marker me-2 text-muted" style="width: 14px;" title="Location"/>
+                                        <span class="text-truncate"><field name="address_id"/></span>
+                                    </div>
+                                    <div t-if="record.total_guests.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-users me-2 text-muted" style="width: 14px;" title="Guests"/>
+                                        <span class="text-truncate"><field name="total_guests"/> Guests</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Stat button -->
+                            <div class="d-flex mt-3 pt-2 border-top">
+                                <button name="action_view_convocation_register" type="object" class="btn btn-light rounded border d-flex align-items-center justify-content-between py-2 px-3 text-muted w-100" style="font-size: 12px; font-weight: 500; min-width: 0; white-space: nowrap; box-shadow: none;">
+                                    <div class="d-flex align-items-center gap-2" style="min-width: 0;">
+                                        <i class="fa fa-users text-dark flex-shrink-0" style="font-size: 0.85rem;" title="Registrations"/>
+                                        <span class="text-truncate">Registrations</span>
+                                    </div>
+                                    <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold ms-2" style="font-size: 10px; padding: 4px 8px;"><field name="total_registrations"/></span>
+                                </button>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

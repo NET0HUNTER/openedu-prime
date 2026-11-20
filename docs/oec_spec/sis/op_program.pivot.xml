@@ -1,0 +1,5 @@
+﻿<pivot string="Programs">
+                    <field name="name" type="row"/>
+                    <field name="min_unit_load"/>
+                    <field name="max_unit_load"/>
+                </pivot>

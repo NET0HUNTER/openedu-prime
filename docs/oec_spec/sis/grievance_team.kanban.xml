@@ -1,0 +1,55 @@
+﻿<kanban class="o_kanban_dashboard" sample="1">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="color"/>
+                <field name="grievance_count"/>
+                <field name="team_leader"/>
+                <templates>
+                    <t t-name="menu">
+                        <div role="menuitem" aria-haspopup="true">
+                            <field name="color" widget="kanban_color_picker"/>
+                        </div>
+                        <div class="o_kanban_slides_card_manage_pane">
+                            <t t-if="widget.editable">
+                                <a role="menuitem" type="edit" class="dropdown-item">Settings</a>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-name="card">
+                        <main class="d-flex flex-column gap-2 p-2 position-relative">
+
+                            <!-- Title -->
+                            <div>
+                                <h5 class="fw-bold text-primary mb-0 text-truncate" style="font-size: 1.2rem; line-height: 1.3;" t-att-title="record.name.value">
+                                    <i class="fa fa-shield me-1" role="img" aria-label="Team" title="Team"/>
+                                    <field name="name"/>
+                                </h5>
+                            </div>
+
+                            <!-- Team Leader -->
+                            <div t-if="record.team_leader.raw_value" class="d-flex align-items-center small text-muted">
+                                <i class="fa fa-user me-2 text-muted flex-shrink-0" style="width: 14px;" title="Team Leader"/>
+                                <span class="text-truncate"><field name="team_leader"/></span>
+                            </div>
+
+                            <!-- Stat button row -->
+                            <div class="d-flex gap-2 mt-auto">
+                                <a name="1372" type="action" role="button" class="btn bg-light rounded text-decoration-none p-2 align-items-center justify-content-between h-100 border border-light-subtle d-flex flex-grow-1 text-muted" style="font-size: 12px; min-width: 0; white-space: nowrap;">
+                                    <div class="d-flex align-items-center gap-1" style="min-width: 0;">
+                                        <i class="fa fa-exclamation-circle text-dark flex-shrink-0" style="font-size: 0.8125rem;" title="Grievances"/>
+                                        <span class="text-truncate">Grievances</span>
+                                    </div>
+                                    <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold ms-1" style="font-size: 10px; padding: 3px 6px;"><field name="grievance_count"/></span>
+                                </a>
+                            </div>
+
+                            <!-- View Grievances button -->
+                            <div class="d-flex mt-auto pt-2 border-top">
+                                <a name="1372" type="action" role="button" class="btn btn-primary w-100 fw-bold py-2">
+                                    View Grievances
+                                </a>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

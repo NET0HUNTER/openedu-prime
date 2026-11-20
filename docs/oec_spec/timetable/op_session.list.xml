@@ -1,0 +1,13 @@
+﻿<list string="Sessions">
+                    <field name="faculty_id" on_change="1"/>
+                    <field name="batch_id" on_change="1"/>
+                    <field name="subject_id" on_change="1"/>
+                    <field name="classroom_id"/>
+                    <field name="start_datetime" on_change="1"/>
+                    <field name="end_datetime" on_change="1"/>
+                <field name="lesson_ids" widget="many2many_tags" optional="hide"/>
+                    <field name="state"/>
+                <field name="company_id" optional="show"/>
+                    <field name="course_id" optional="hide" on_change="1"/>
+                    <field name="type" optional="hide"/>
+                </list>

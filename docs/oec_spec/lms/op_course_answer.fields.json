@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "text_value": {
+      "change_default": false,
+      "groupable": true,
+      "name": "text_value",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Answer",
+      "translate": true,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

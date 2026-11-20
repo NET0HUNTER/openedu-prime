@@ -1,0 +1,15 @@
+<list>
+                    <field name="name"/>
+                    <field name="request_for" on_change="1"/>
+                    <field name="student_id"/>
+                    <field name="faculty_id"/>
+                    <field name="request_date"/>
+                    <field name="approve_date"/>
+                    <field name="asset_id"/>
+                    <field name="allocate_date"/>
+                    <field name="company_id"/>
+                    <field name="return_date" optional="hide"/>
+                    <field name="reject_date" optional="hide"/>
+                    <field name="requested_asset" optional="hide"/>
+                    <field name="state" optional="hide"/>
+                </list>

@@ -1,0 +1,1 @@
+﻿<kanban string="Fees Plan for Student Fees"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

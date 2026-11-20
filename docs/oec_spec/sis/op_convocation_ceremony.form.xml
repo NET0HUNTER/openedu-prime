@@ -1,0 +1,80 @@
+﻿<form>
+                <header>
+                    <button name="action_view_event" string="View Event" type="object" class="oe_highlight" invisible="not event_id"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_view_convocation_register" type="object" icon="fa-folder-open-o">
+                            <field string="Registration" name="total_registrations" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="date"/>
+                            <field name="address_id" context="{'show_address': 1}" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="create_event"/>
+                            <field name="event_id" invisible="not create_event" readonly="True"/>
+                            <field name="academic_year_id" can_create="True" can_write="True"/>
+                            <field name="max_guests_per_student"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Registrations" name="registrations">
+                            <field name="registration_ids" context="{'default_ceremony_id': id}" on_change="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="student_id"/>
+                                    <field name="program_id"/>
+                                    <field name="registration_date"/>
+                                    <field name="state"/>
+                                    <field name="total_guests"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Programs" name="program">
+                            <field name="program_ids" can_create="True" can_write="True">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="program_level_id"/>
+                                    <field name="department_id"/>
+                                    <field name="min_unit_load"/>
+                                    <field name="max_unit_load"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Student Documents" name="student_documents">
+                            <field name="student_document_ids" can_create="True" can_write="True">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="document_type"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Guest Documents" name="guest_documents">
+                            <field name="guest_document_ids" can_create="True" can_write="True">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="document_type"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            <field name="company_id" invisible="True" readonly="True" data-used-by="domain=&quot;(company_id and ['|', ('company_id', '=', False), ('company_id', 'parent_of', [company_id])] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', '')]) + ([])&quot; (field,address_id)"/>
+</form>

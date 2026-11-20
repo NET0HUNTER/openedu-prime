@@ -1,0 +1,40 @@
+<form string="Progress Report">
+                    <header>
+                        <button name="action_submit" string="Submit" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                        <button name="action_provide_feedback" string="Provide Feedback" type="object" invisible="state != 'submitted'" class="oe_highlight"/>
+                        <button name="action_approve" string="Approve" type="object" invisible="state != 'submitted'"/>
+                        <button name="action_request_revision" string="Request Revision" type="object" invisible="state != 'submitted'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,rejected"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Report Title" readonly="state != 'draft'"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="registration_id" options="{'no_create': True}" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="student_id" readonly="1"/>
+                                <field name="report_id" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <field name="report_date" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="feedback_date" readonly="1" invisible="feedback_date == False"/>
+                                <field name="reviewer_ids" domain="[('registration_id', '=', registration_id)]" widget="many2many_tags" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Report Content" name="content">
+                                <field name="report_content" readonly="state != 'draft'"/>
+                            </page>
+                            <page string="Supervisor Feedback" name="feedback" invisible="state == 'draft'">
+                                <field name="supervisor_feedback" readonly="state in ['approved', 'rejected']"/>
+                            </page>
+                            <page string="Attachments" name="attachments">
+                                <field name="attachment_ids" widget="many2many_binary" can_create="True" can_write="True"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

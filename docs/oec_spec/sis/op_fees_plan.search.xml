@@ -1,0 +1,6 @@
+﻿<search string="Group By">
+                <group>
+                    <filter string="Course Fees" name="group_by_product_id" domain="[]" context="{'group_by': 'product_id'}"/>
+                    <filter string="Status" name="group_by_status" domain="[]" context="{'group_by': 'state'}"/>
+                </group>
+            </search>

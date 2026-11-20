@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "CHECK-PLUS"
+    },
+    {
+        "id":  2,
+        "display_name":  "CHECK"
+    },
+    {
+        "id":  3,
+        "display_name":  "CHECK-MINUS"
+    },
+    {
+        "id":  4,
+        "display_name":  "COMPLETE"
+    },
+    {
+        "id":  5,
+        "display_name":  "INCOMPLETE"
+    }
+]

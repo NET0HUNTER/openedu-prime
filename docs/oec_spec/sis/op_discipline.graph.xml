@@ -1,0 +1,4 @@
+﻿<graph string="Discipline Graph View" type="bar">
+                    <field name="student_id"/>
+                    <field name="misbehaviour_category_id"/>
+                </graph>

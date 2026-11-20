@@ -1,0 +1,36 @@
+<form string="Route Register">
+                    <header>
+                        <button name="close_register" invisible="state != 'draft'" type="object" string="Confirm" class="oe_highlight"/>
+                        <button name="cancel_register" invisible="state not in ('draft', 'confirm', 'gathering')" string="Cancel" type="object"/>
+                        <button name="set_to_draft" invisible="state != 'cancel'" string="Set to Draft" type="object"/>
+                        <button name="register_gathering" invisible="state != 'confirm'" string="Start Registration" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,cancel,gathering"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="start_date"/>
+                                <field name="product_id" can_create="True" can_write="True"/>
+                                <field name="plan_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="route_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="end_date"/>
+                                <field name="cost"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Agreement Applicants">
+                                <field name="transport_lines" nolabel="1">
+                                    <list editable="top">
+                                        <field name="partner_id" can_create="True" can_write="True"/>
+                                        <field name="stop_id" can_create="True" can_write="True"/>
+                                        <field name="date"/>
+                                        <field name="state"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>

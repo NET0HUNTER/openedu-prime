@@ -1,0 +1,7 @@
+﻿<pivot string="Exam Session Pivot">
+                    <field name="name" type="row"/>
+                    <field name="exam_code" string="exam Code"/>
+                    <field name="course_id" string="Course"/>
+                    <field name="batch_id" string="Batch"/>
+                    <field name="state" type="col"/>
+                </pivot>

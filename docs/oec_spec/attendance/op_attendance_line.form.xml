@@ -1,0 +1,29 @@
+﻿<form string="Attendance Line">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="attendance_id" widget="selection" on_change="1" can_create="True" can_write="True"/>
+                    <field name="progression_id" can_create="True" can_write="True"/>
+                                <field name="present" readonly="state == 'done'" on_change="1"/>
+                                <field name="excused" readonly="state == 'done'" on_change="1"/>
+                                <field name="remark"/>
+                                <field name="batch_id" widget="selection"/>
+                                <field name="attendance_date"/>
+                            </group>
+                            <group>
+                                <field name="student_id" domain="[('course_detail_ids.course_id','=',course_id),('course_detail_ids.batch_id','=',batch_id)]" on_change="1" can_create="True" can_write="True"/>
+                                <field name="attendance_type_id" options="{&quot;no_open&quot;: True}" on_change="1" can_create="True" can_write="True"/>
+                                <field name="absent" readonly="state == 'done'" on_change="1"/>
+                                <field name="late" readonly="state == 'done'" on_change="1"/>
+                                <field name="course_id" widget="selection"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                    <field name="check_in"/>
+                                <field name="state"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

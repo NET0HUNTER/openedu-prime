@@ -1,0 +1,1 @@
+<kanban string="Queue Job" create="False" delete="False"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

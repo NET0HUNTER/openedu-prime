@@ -1,0 +1,19 @@
+<list>
+                <field name="notice_number"/>
+                <field name="name"/>
+                <field name="subject"/>
+                <field name="academic_year_id"/>
+                <field name="academic_term_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="group_id"/>
+                <field name="created_by"/>
+                <field name="created_date"/>
+                <field name="notice_template_id" optional="hide"/>
+                <field name="high_priority" widget="priority" optional="hide"/>
+                <field name="state" optional="hide"/>
+                <button name="1235" type="action" string="Email" icon="fa-envelope" invisible="state != 'publish'"/>
+                <header>
+                    <button name="1235" type="action"/>
+                </header>
+            </list>

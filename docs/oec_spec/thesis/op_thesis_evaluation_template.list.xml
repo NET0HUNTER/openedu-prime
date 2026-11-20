@@ -1,0 +1,4 @@
+<list string="Thesis Evaluations">
+                <field name="name"/>
+                <field name="total_marks"/>
+            </list>

@@ -1,0 +1,218 @@
+<form string="AI Agent">
+                <header>
+                    <button name="action_activate" string="Active" type="object" class="oe_highlight" invisible="state == 'active'"/>
+                    <button name="action_deactivate" string="Inactive" type="object" invisible="state != 'active'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,active,inactive,error"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_guardrails" type="object" class="oe_stat_button" icon="fa-shield">
+                            <field name="guardrail_count" widget="statinfo" string="Guardrails"/>
+                        </button>
+                        <button name="action_export_config" type="object" class="oe_stat_button" icon="fa-download" title="Export agent configuration as JSON">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Export</span>
+                            </div>
+                        </button>
+                <button name="674" type="action" class="oe_stat_button" icon="fa-list" context="{'search_default_agent_id': id, 'default_agent_id': id}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Events</span>
+                    </div>
+                </button>
+                    </div>
+                   <div style="width:100%;" class="row align-items-center">
+                        <div class="mb16 col-8 col-lg-10 px-4">
+                            <h1>
+                                <field name="name" placeholder="Agent Name" readonly="state == 'active'"/>
+                            </h1>
+                            <h2>
+                                <field name="description" placeholder="Description" readonly="state == 'active'"/>
+                            </h2>
+                        </div>
+                        <div class="col-4 col-lg-2">
+                            <field name="icon" widget="image" class="oe_left oe_avatar" readonly="state == 'active'"/>
+                        </div>
+                    </div>
+                    <group>
+                        <group string="General Information">
+                            <field name="model_id" help="The Odoo model this agent operates on" readonly="state == 'active'" can_create="True" can_write="True"/>
+                            <field name="fallback_model_id" help="Used automatically when the primary model returns a rate-limit, timeout, or 5xx error" readonly="state == 'active'" can_create="True" can_write="True"/>
+                            <field name="collection_id" options="{'no_create': True}" help="Collection this agent belongs to" readonly="state == 'active'" can_create="True" can_write="True"/>
+                            <field name="vector_store" help="Vector store used for this agent" readonly="state == 'active'" can_create="True" can_write="True"/>
+                            <field name="agent_type" readonly="state == 'active'"/>
+                            <field name="model_name" readonly="state == 'active'"/>
+                            <field name="module_names" readonly="state == 'active'"/>
+                        </group>
+                        <group string="Status Version">
+                            <field name="version" readonly="state == 'active'"/>
+                            <field name="last_update" readonly="state == 'active'"/>
+                            <field name="structured_output" help="Enable if the agent should return structured output" readonly="state == 'active'"/>
+                            <field name="json_schema_id" invisible="not structured_output" readonly="state == 'active'" can_create="True" can_write="True"/>
+                            <field name="output_template_id" readonly="state == 'active'" options="{'no_create': True}" can_create="True" can_write="True"/>
+                            <field name="markdown_output" readonly="state == 'active'"/>
+                            <field name="is_email_agent" readonly="state == 'active'"/>
+                            <field name="available_in_portal" readonly="state == 'active'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Configuration" name="configuration">
+                            <group>
+                                <field name="max_retries" help="Maximum number of retries in case of failure" readonly="state == 'active'"/>
+                                <field name="instructions" placeholder="How should this agent behave?" readonly="state == 'active'"/>
+                            </group>
+                        </page>
+                        <page string="Tools" name="tools">
+                            <group>
+                                <field name="tool_ids" widget="many2many_tags" label="Tools" readonly="state == 'active'" can_create="True" can_write="True"/>
+                                <field name="server_action_tool_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                            </group>
+                        </page>
+
+                        <page string="Inputs" name="inputs">
+                            <field name="input_ids" readonly="state == 'active'">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="input_type"/>
+                                    <field name="depends_on_input_id" optional="show"/>
+                                    <field name="depends_on_field" optional="show"/>
+                                    <field name="required"/>
+                                </list>
+                            </field>
+                        </page>
+
+                        <page string="Guardrails" name="guardrails">
+                            <group>
+                                <field name="guardrail_ids" widget="many2many_tags" options="{'color_field': 'severity', 'no_create_edit': True}" help="Content safety and validation guardrails" on_change="1" can_create="True" can_write="True"/>
+                            </group>
+                            <div class="alert alert-info" role="alert">
+                                <h5>About Guardrails</h5>
+                                <p>
+                                    Guardrails protect your AI agents by validating and filtering content.
+                                    They can detect and block inappropriate content, PII, profanity, and more.
+                                </p>
+                                <ul>
+                                    <li><strong>Block:</strong> Prevents execution when violations are detected</li>
+                                    <li><strong>Warn:</strong> Allows execution but logs warnings</li>
+                                    <li><strong>Log:</strong> Silently logs violations without blocking</li>
+                                </ul>
+                            </div>
+                        </page>
+
+                        <page string="Multi Agents" name="multi_agent_id" invisible="agent_type == 'single_agent' and agent_type">
+                            <group>
+                                <field name="team_mode" readonly="state == 'active'"/>
+                                <field name="multi_agent_id" widget="many2many_tags" domain="[('id', '!=', id)]" readonly="state == 'active'" can_create="True" can_write="True"/>
+                            </group>
+                        </page>
+
+                        <page string="Reasoning Configuration" name="reasoning">
+                            <group>
+                                <group string="AI Safety &amp; Memory">
+                                    <field name="use_native_guardrails"/>
+                                    <field name="enable_user_memory"/>
+                                    <field name="session_state_mode"/>
+                                </group>
+                                <group string="Reasoning Settings">
+                                    <field name="reasoning_enabled" readonly="state == 'active'"/>
+                                    <field name="reasoning_effort" invisible="not reasoning_enabled" readonly="state == 'active'"/>
+                                    <field name="reasoning_budget" invisible="not reasoning_enabled" readonly="state == 'active'"/>
+                                </group>
+                                <group string="Information">
+                                    <div class="alert alert-info" role="alert" style="margin-bottom: 0;">
+                                        <h5>What is Extended Reasoning?</h5>
+                                        <p>
+                                            Extended reasoning enables the agent to engage in deeper analytical thinking before responding.
+                                            This is particularly useful for:
+                                        </p>
+                                        <ul>
+                                            <li>Complex problem-solving tasks</li>
+                                            <li>Multi-step logical reasoning</li>
+                                            <li>Strategic planning and decision-making</li>
+                                            <li>Detailed analysis and synthesis</li>
+                                        </ul>
+                                        <p>
+                                            <strong>Note:</strong> Enabling reasoning will increase response time but significantly
+                                            improve the quality of responses for complex tasks.
+                                        </p>
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Streaming Configuration" name="streaming">
+                            <group>
+                                <group string="Streaming Settings">
+                                    <field name="streaming_enabled"/>
+                <field name="enable_event_streaming"/>
+                <field name="event_streaming_detail_level" invisible="not enable_event_streaming"/>
+                                    <field name="streaming_chunk_size" invisible="not streaming_enabled"/>
+                                </group>
+                                <group string="Information">
+                                    <div class="alert alert-info" role="alert" style="margin-bottom: 0;">
+                                        <h5>What is Response Streaming?</h5>
+                                        <p>
+                                            Response streaming enables real-time delivery of AI responses as they are generated,
+                                            using Server-Sent Events (SSE). This provides:
+                                        </p>
+                                        <ul>
+                                            <li>Better user experience with progressive response display</li>
+                                            <li>Reduced perceived latency for long responses</li>
+                                            <li>Real-time feedback during generation</li>
+                                            <li>Ability to interrupt long-running requests</li>
+                                        </ul>
+                                        <p>
+                                            <strong>Chunk Size:</strong> Controls how frequently updates are sent to the client.
+                                            Smaller values (50-100) provide more frequent updates, larger values (200-500) reduce network overhead.
+                                        </p>
+                                        <p>
+                                            <strong>Note:</strong> Streaming is particularly beneficial for:
+                                        </p>
+                                        <ul>
+                                            <li>Interactive chat interfaces (Playground)</li>
+                                            <li>Long-form content generation</li>
+                                            <li>Real-time collaboration scenarios</li>
+                                        </ul>
+                                    </div>
+                                </group>
+                            </group>
+                        </page>
+
+                        <page string="Executions" name="executions">
+                            <field name="execution_ids" readonly="state == 'active'">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="state"/>
+                                    <field name="create_date" on_change="1"/>
+                                    <field name="token_usage"/>
+                                    <field name="duration" widget="float_time"/>
+                                    <field name="memory_usage"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Queue" name="queue">
+                            <field name="queue_ids" readonly="state == 'active'">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="priority"/>
+                                    <field name="state"/>
+                                    <field name="scheduled_time"/>
+                                    <field name="create_date" on_change="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Budget" name="budget">
+                            <group string="Monthly Token Budget">
+                                <field name="monthly_token_budget" help="Set to 0 for unlimited. Tokens are counted per calendar month."/>
+                                <field name="budget_alert_threshold" invisible="not monthly_token_budget"/>
+                                <field name="budget_exhausted_action" invisible="not monthly_token_budget"/>
+                            </group>
+                            <group string="Current Month Usage" invisible="not monthly_token_budget">
+                                <field name="monthly_token_usage" readonly="1"/>
+                                <field name="budget_usage_pct" readonly="1" widget="percentage"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter reload_on_attachment="True"/>
+            </form>

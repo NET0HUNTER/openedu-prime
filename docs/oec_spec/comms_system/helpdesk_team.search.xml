@@ -1,0 +1,3 @@
+<search string="Search for Helpdesk">
+                <field name="name" string="Team id" filter_domain="[('name','ilike',self)]"/>
+            </search>

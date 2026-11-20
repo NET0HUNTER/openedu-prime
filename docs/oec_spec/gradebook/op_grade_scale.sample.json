@@ -1,0 +1,10 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Letter Grades (default grading scale)"
+    },
+    {
+        "id":  2,
+        "display_name":  "Elementary School (custom grading scale)"
+    }
+]

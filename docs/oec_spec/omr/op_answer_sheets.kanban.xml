@@ -1,0 +1,1 @@
+<kanban string="Answer Sheets"><templates><t t-name="card"><field name="roll_number"/></t></templates></kanban>

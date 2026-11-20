@@ -1,0 +1,8 @@
+<list sample="1" create="true">
+                <field name="name" on_change="1"/>
+                <field name="model_id" string="Target" readonly="state != 'draft'" on_change="1"/>
+                <field name="state" readonly="True" decoration-info="state == 'draft'" decoration-success="state == 'running'" decoration-muted="state == 'stopped'" widget="badge"/>
+                <field name="mass_mailing_count"/>
+                <field name="link_tracker_click_count"/>
+                <field name="total_participant_count"/>
+            </list>

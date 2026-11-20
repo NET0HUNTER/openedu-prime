@@ -1,0 +1,47 @@
+<form string="Extension Request">
+                    <header>
+                        <button name="action_submit" string="Submit" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                        <button name="action_supervisor_approve" string="Approve as Supervisor" type="object" invisible="state != 'supervisor_review'" class="oe_highlight"/>
+                        <button name="action_supervisor_reject" string="Reject as Supervisor" type="object" invisible="state != 'supervisor_review'"/>
+                        <button name="action_hod_approve" string="Approve as HoD" type="object" invisible="state != 'hod_review'" class="oe_highlight"/>
+                        <button name="action_hod_reject" string="Reject as HoD" type="object" invisible="state != 'hod_review'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,supervisor_review,hod_review,approved,rejected"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="registration_id" options="{'no_create': True}" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="student_id" readonly="1"/>
+                                <field name="request_date" readonly="state != 'draft'"/>
+                                <field name="current_deadline" readonly="1" on_change="1"/>
+                            </group>
+                            <group>
+                                <field name="requested_deadline" readonly="state != 'draft'" on_change="1"/>
+                                <field name="extension_duration"/>
+                                <field name="reason_id" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <field name="supervisor_id" readonly="1"/>
+                                <field name="hod_id" readonly="1" invisible="hod_id == False"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Reason Details" name="reason">
+                                <field name="reason_details" readonly="state != 'draft'"/>
+                            </page>
+                            <page string="Supervisor Comment" name="supervisor_comment" invisible="state in ['draft', 'submitted']">
+                                <field name="supervisor_comment" readonly="state not in ['supervisor_review']"/>
+                            </page>
+                            <page string="HoD Comment" name="hod_comment" invisible="state not in ['hod_review', 'approved', 'rejected']">
+                                <field name="hod_comment" readonly="state not in ['hod_review']"/>
+                            </page>
+                            <page string="Supporting Documents" name="documents">
+                                <field name="attachment_ids" widget="many2many_binary" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

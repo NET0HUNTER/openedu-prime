@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Faculty of IT and Computer Science"
+    },
+    {
+        "id":  2,
+        "display_name":  "Faculty of Commerce"
+    },
+    {
+        "id":  3,
+        "display_name":  "Faculty of Engineering and Technology"
+    },
+    {
+        "id":  4,
+        "display_name":  "Faculty of Liberal Arts"
+    },
+    {
+        "id":  5,
+        "display_name":  "Department of Data Science \u0026 AI"
+    }
+]

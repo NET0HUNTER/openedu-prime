@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "grade": {
+      "change_default": false,
+      "groupable": true,
+      "name": "grade",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Grade",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

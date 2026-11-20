@@ -1,0 +1,10 @@
+﻿<search string="Tag">
+                    <field name="name"/>
+                    <field name="amount"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <newline/>
+                    <group>
+                        <filter string="Name" name="group_by_schol_type_name" domain="[]" context="{'group_by':'name'}"/>
+                        <filter string="Amount" name="group_by_schol_type_amount" domain="[]" context="{'group_by':'amount'}"/>
+                    </group>
+                </search>

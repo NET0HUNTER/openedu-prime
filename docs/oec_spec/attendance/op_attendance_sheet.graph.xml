@@ -1,0 +1,3 @@
+﻿<graph string="Attendance Sheet" type="pie">
+                    <field name="register_id"/>
+                </graph>

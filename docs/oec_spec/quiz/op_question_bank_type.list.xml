@@ -1,0 +1,6 @@
+<list>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active" widget="boolean_toggle" optional="hide"/>
+                <field name="company_id" optional="show"/>
+            </list>

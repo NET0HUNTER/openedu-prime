@@ -1,0 +1,2582 @@
+{
+  "id": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "id",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "ID",
+    "type": "integer"
+  },
+  "display_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "display_name",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Display Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "image_1920": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_1920",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image",
+    "type": "binary"
+  },
+  "image_1024": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_1024",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 1024",
+    "type": "binary"
+  },
+  "image_512": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_512",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 512",
+    "type": "binary"
+  },
+  "image_256": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_256",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 256",
+    "type": "binary"
+  },
+  "image_128": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id.image_128"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_128",
+    "readonly": true,
+    "related": "model_id.image_128",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 128",
+    "type": "binary"
+  },
+  "avatar_1920": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_1920",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar",
+    "type": "binary"
+  },
+  "avatar_1024": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "image_1024"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_1024",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 1024",
+    "type": "binary"
+  },
+  "avatar_512": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "image_512"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_512",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 512",
+    "type": "binary"
+  },
+  "avatar_256": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "image_256"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_256",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 256",
+    "type": "binary"
+  },
+  "avatar_128": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "image_128"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_128",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 128",
+    "type": "binary"
+  },
+  "activity_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'fleet.vehicle')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_ids",
+    "readonly": false,
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Activities",
+    "type": "one2many"
+  },
+  "activity_state": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.state"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "base.group_user",
+    "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+    "manual": false,
+    "name": "activity_state",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "overdue",
+        "Overdue"
+      ],
+      [
+        "today",
+        "Today"
+      ],
+      [
+        "planned",
+        "Planned"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Activity State",
+    "type": "selection"
+  },
+  "activity_user_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.user_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_user_id",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Responsible User",
+    "type": "many2one"
+  },
+  "activity_type_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_type_id",
+    "readonly": false,
+    "related": "activity_ids.activity_type_id",
+    "relation": "mail.activity.type",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Type",
+    "type": "many2one"
+  },
+  "activity_type_icon": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Font awesome icon e.g. fa-tasks",
+    "manual": false,
+    "name": "activity_type_icon",
+    "readonly": true,
+    "related": "activity_ids.icon",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Activity Type Icon",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_date_deadline": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.date_deadline"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_date_deadline",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Deadline",
+    "type": "date"
+  },
+  "my_activity_date_deadline": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.date_deadline",
+      "activity_ids.user_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "my_activity_date_deadline",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "My Activity Deadline",
+    "type": "date"
+  },
+  "activity_summary": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.summary"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_summary",
+    "readonly": false,
+    "related": "activity_ids.summary",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Summary",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_exception_decoration": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id.decoration_type",
+      "activity_ids.activity_type_id.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Type of the exception activity on record.",
+    "manual": false,
+    "name": "activity_exception_decoration",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "warning",
+        "Alert"
+      ],
+      [
+        "danger",
+        "Error"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Activity Exception Decoration",
+    "type": "selection"
+  },
+  "activity_exception_icon": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id.decoration_type",
+      "activity_ids.activity_type_id.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Icon to indicate an exception activity.",
+    "manual": false,
+    "name": "activity_exception_icon",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Icon",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_calendar_event_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.calendar_event_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_calendar_event_id",
+    "readonly": true,
+    "relation": "calendar.event",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Calendar Event",
+    "type": "many2one"
+  },
+  "message_is_follower": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_is_follower",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Is Follower",
+    "type": "boolean"
+  },
+  "message_follower_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'fleet.vehicle')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_follower_ids",
+    "readonly": false,
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Followers",
+    "type": "one2many"
+  },
+  "message_partner_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_partner_ids",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Followers (Partners)",
+    "type": "many2many"
+  },
+  "message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('message_type', '!=', 'user_notification')]) + ([('model', '=', 'fleet.vehicle')])",
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Messages",
+    "type": "one2many"
+  },
+  "has_message": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "has_message",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Has Message",
+    "type": "boolean"
+  },
+  "message_needaction": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, new messages require your attention.",
+    "manual": false,
+    "name": "message_needaction",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Action Needed",
+    "type": "boolean"
+  },
+  "message_needaction_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages requiring action",
+    "manual": false,
+    "name": "message_needaction_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of Actions",
+    "type": "integer"
+  },
+  "message_has_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Message Delivery error",
+    "type": "boolean"
+  },
+  "message_has_error_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages with delivery error",
+    "manual": false,
+    "name": "message_has_error_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of errors",
+    "type": "integer"
+  },
+  "message_attachment_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_attachment_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Attachment Count",
+    "type": "integer"
+  },
+  "rating_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('res_model', '=', 'fleet.vehicle')]) + ([('res_model', '=', 'fleet.vehicle')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "rating_ids",
+    "readonly": false,
+    "relation": "rating.rating",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Ratings",
+    "type": "one2many"
+  },
+  "website_message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('model', '=', 'fleet.vehicle'), ('message_type', 'in', ('comment', 'email', 'email_outgoing', 'auto_comment', 'out_of_office'))]) + ([('model', '=', 'fleet.vehicle')])",
+    "exportable": true,
+    "groupable": false,
+    "help": "Website communication history",
+    "manual": false,
+    "name": "website_message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Website Messages",
+    "type": "one2many"
+  },
+  "message_has_sms_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_sms_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "SMS Delivery error",
+    "type": "boolean"
+  },
+  "name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id.brand_id.name",
+      "model_id.name",
+      "license_plate"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "name",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "description": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "description",
+    "readonly": false,
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": true,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Vehicle Description",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": false,
+    "type": "html"
+  },
+  "active": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "active",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Active",
+    "type": "boolean"
+  },
+  "manager_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('share', '=', False), ('company_id', '=', company_id), ('all_group_ids', 'in', 20)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "manager_id",
+    "readonly": false,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Fleet Manager",
+    "type": "many2one"
+  },
+  "company_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "company_id",
+    "readonly": false,
+    "relation": "res.company",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company",
+    "type": "many2one"
+  },
+  "currency_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "company_id.currency_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "currency_id",
+    "readonly": true,
+    "related": "company_id.currency_id",
+    "relation": "res.currency",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Currency",
+    "type": "many2one"
+  },
+  "country_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "company_id.country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "country_id",
+    "readonly": true,
+    "related": "company_id.country_id",
+    "relation": "res.country",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Country",
+    "type": "many2one"
+  },
+  "country_code": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+    "manual": false,
+    "name": "country_code",
+    "readonly": true,
+    "related": "country_id.code",
+    "required": false,
+    "searchable": false,
+    "size": 2,
+    "sortable": false,
+    "store": false,
+    "string": "Country Code",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "license_plate": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "License plate number of the vehicle (i = plate number for a car)",
+    "manual": false,
+    "name": "license_plate",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "License Plate",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "vin_sn": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Unique number written on the vehicle motor (VIN/SN number)",
+    "manual": false,
+    "name": "vin_sn",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Chassis Number",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "trailer_hook": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "A trailer hitch is a device attached to a vehicle's chassis for towing purposes,             such as pulling trailers, boats, or other vehicles.",
+    "manual": false,
+    "name": "trailer_hook",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Trailer Hitch",
+    "type": "boolean"
+  },
+  "driver_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Driver address of the vehicle",
+    "manual": false,
+    "name": "driver_id",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Driver",
+    "type": "many2one"
+  },
+  "future_driver_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "(company_id and ['|', ('company_id', '=', False), ('company_id', 'parent_of', [company_id])] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', '')]) + ([])",
+    "exportable": true,
+    "groupable": true,
+    "help": "Next Driver Address of the vehicle",
+    "manual": false,
+    "name": "future_driver_id",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Future Driver",
+    "type": "many2one"
+  },
+  "model_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "model_id",
+    "readonly": false,
+    "relation": "fleet.vehicle.model",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Model",
+    "type": "many2one"
+  },
+  "brand_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "model_id.brand_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "brand_id",
+    "readonly": false,
+    "related": "model_id.brand_id",
+    "relation": "fleet.vehicle.model.brand",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Brand",
+    "type": "many2one"
+  },
+  "log_drivers": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "log_drivers",
+    "readonly": false,
+    "relation": "fleet.vehicle.assignation.log",
+    "relation_field": "vehicle_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Assignment Logs",
+    "type": "one2many"
+  },
+  "log_services": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "log_services",
+    "readonly": false,
+    "relation": "fleet.vehicle.log.services",
+    "relation_field": "vehicle_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Services Logs",
+    "type": "one2many"
+  },
+  "log_contracts": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "log_contracts",
+    "readonly": false,
+    "relation": "fleet.vehicle.log.contract",
+    "relation_field": "vehicle_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Contracts",
+    "type": "one2many"
+  },
+  "contract_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "contract_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Contract Count",
+    "type": "integer"
+  },
+  "service_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "service_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Services",
+    "type": "integer"
+  },
+  "odometer_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "odometer_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Odometer",
+    "type": "integer"
+  },
+  "history_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "history_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Drivers History Count",
+    "type": "integer"
+  },
+  "next_assignation_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "This is the date at which the car will be available, if not set it means available instantly",
+    "manual": false,
+    "name": "next_assignation_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Assignment Date",
+    "type": "date"
+  },
+  "order_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "order_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Order Date",
+    "type": "date"
+  },
+  "acquisition_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Date of vehicle registration",
+    "manual": false,
+    "name": "acquisition_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Registration Date",
+    "type": "date"
+  },
+  "write_off_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Date when the vehicle's license plate has been cancelled/removed.",
+    "manual": false,
+    "name": "write_off_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Cancellation Date",
+    "type": "date"
+  },
+  "contract_date_start": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "contract_date_start",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "First Contract Date",
+    "type": "date"
+  },
+  "color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Color of the vehicle",
+    "manual": false,
+    "name": "color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "state_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Current state of the vehicle",
+    "manual": false,
+    "name": "state_id",
+    "readonly": false,
+    "relation": "fleet.vehicle.state",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "State",
+    "type": "many2one"
+  },
+  "location": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Location of the vehicle (garage, ...)",
+    "manual": false,
+    "name": "location",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Location",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "seats": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Number of seats of the vehicle",
+    "manual": false,
+    "name": "seats",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Seating Capacity",
+    "type": "integer"
+  },
+  "model_year": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Year of the model",
+    "manual": false,
+    "name": "model_year",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "1970",
+        "1970"
+      ],
+      [
+        "1971",
+        "1971"
+      ],
+      [
+        "1972",
+        "1972"
+      ],
+      [
+        "1973",
+        "1973"
+      ],
+      [
+        "1974",
+        "1974"
+      ],
+      [
+        "1975",
+        "1975"
+      ],
+      [
+        "1976",
+        "1976"
+      ],
+      [
+        "1977",
+        "1977"
+      ],
+      [
+        "1978",
+        "1978"
+      ],
+      [
+        "1979",
+        "1979"
+      ],
+      [
+        "1980",
+        "1980"
+      ],
+      [
+        "1981",
+        "1981"
+      ],
+      [
+        "1982",
+        "1982"
+      ],
+      [
+        "1983",
+        "1983"
+      ],
+      [
+        "1984",
+        "1984"
+      ],
+      [
+        "1985",
+        "1985"
+      ],
+      [
+        "1986",
+        "1986"
+      ],
+      [
+        "1987",
+        "1987"
+      ],
+      [
+        "1988",
+        "1988"
+      ],
+      [
+        "1989",
+        "1989"
+      ],
+      [
+        "1990",
+        "1990"
+      ],
+      [
+        "1991",
+        "1991"
+      ],
+      [
+        "1992",
+        "1992"
+      ],
+      [
+        "1993",
+        "1993"
+      ],
+      [
+        "1994",
+        "1994"
+      ],
+      [
+        "1995",
+        "1995"
+      ],
+      [
+        "1996",
+        "1996"
+      ],
+      [
+        "1997",
+        "1997"
+      ],
+      [
+        "1998",
+        "1998"
+      ],
+      [
+        "1999",
+        "1999"
+      ],
+      [
+        "2000",
+        "2000"
+      ],
+      [
+        "2001",
+        "2001"
+      ],
+      [
+        "2002",
+        "2002"
+      ],
+      [
+        "2003",
+        "2003"
+      ],
+      [
+        "2004",
+        "2004"
+      ],
+      [
+        "2005",
+        "2005"
+      ],
+      [
+        "2006",
+        "2006"
+      ],
+      [
+        "2007",
+        "2007"
+      ],
+      [
+        "2008",
+        "2008"
+      ],
+      [
+        "2009",
+        "2009"
+      ],
+      [
+        "2010",
+        "2010"
+      ],
+      [
+        "2011",
+        "2011"
+      ],
+      [
+        "2012",
+        "2012"
+      ],
+      [
+        "2013",
+        "2013"
+      ],
+      [
+        "2014",
+        "2014"
+      ],
+      [
+        "2015",
+        "2015"
+      ],
+      [
+        "2016",
+        "2016"
+      ],
+      [
+        "2017",
+        "2017"
+      ],
+      [
+        "2018",
+        "2018"
+      ],
+      [
+        "2019",
+        "2019"
+      ],
+      [
+        "2020",
+        "2020"
+      ],
+      [
+        "2021",
+        "2021"
+      ],
+      [
+        "2022",
+        "2022"
+      ],
+      [
+        "2023",
+        "2023"
+      ],
+      [
+        "2024",
+        "2024"
+      ],
+      [
+        "2025",
+        "2025"
+      ],
+      [
+        "2026",
+        "2026"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Model Year",
+    "type": "selection"
+  },
+  "doors": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Number of doors of the vehicle",
+    "manual": false,
+    "name": "doors",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Number of Doors",
+    "type": "integer"
+  },
+  "tag_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "tag_ids",
+    "readonly": false,
+    "relation": "fleet.vehicle.tag",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Tags",
+    "type": "many2many"
+  },
+  "odometer": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Odometer measure of the vehicle at the moment of this log",
+    "manual": false,
+    "name": "odometer",
+    "readonly": false,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Last Odometer",
+    "type": "float"
+  },
+  "odometer_unit": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "odometer_unit",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "kilometers",
+        "km"
+      ],
+      [
+        "miles",
+        "mi"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Odometer Unit",
+    "type": "selection"
+  },
+  "transmission": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "transmission",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "manual",
+        "Manual"
+      ],
+      [
+        "automatic",
+        "Automatic"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Transmission",
+    "type": "selection"
+  },
+  "fuel_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "fuel_type",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "diesel",
+        "Diesel"
+      ],
+      [
+        "gasoline",
+        "Gasoline"
+      ],
+      [
+        "full_hybrid",
+        "Full Hybrid"
+      ],
+      [
+        "plug_in_hybrid_diesel",
+        "Plug-in Hybrid Diesel"
+      ],
+      [
+        "plug_in_hybrid_gasoline",
+        "Plug-in Hybrid Gasoline"
+      ],
+      [
+        "cng",
+        "CNG"
+      ],
+      [
+        "lpg",
+        "LPG"
+      ],
+      [
+        "hydrogen",
+        "Hydrogen"
+      ],
+      [
+        "electric",
+        "Electric"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Fuel Type",
+    "type": "selection"
+  },
+  "power_unit": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "power_unit",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "power",
+        "kW"
+      ],
+      [
+        "horsepower",
+        "Horsepower"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Power Unit",
+    "type": "selection"
+  },
+  "horsepower": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "horsepower",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Horsepower",
+    "type": "float"
+  },
+  "horsepower_tax": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "horsepower_tax",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Horsepower Taxation",
+    "type": "float"
+  },
+  "power": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Power in kW of the vehicle",
+    "manual": false,
+    "name": "power",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Power",
+    "type": "float"
+  },
+  "co2": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "CO2 emissions of the vehicle",
+    "manual": false,
+    "name": "co2",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "CO₂ Emissions",
+    "type": "float"
+  },
+  "co2_emission_unit": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "range_unit"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "co2_emission_unit",
+    "readonly": true,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "g/km",
+        "g/km"
+      ],
+      [
+        "g/mi",
+        "g/mi"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Co2 Emission Unit",
+    "type": "selection"
+  },
+  "co2_standard": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Emission Standard specifies the regulatory test procedure             or guideline under which a vehicle's emissions are measured.",
+    "manual": false,
+    "name": "co2_standard",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Emission Standard",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "category_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "category_id",
+    "readonly": false,
+    "relation": "fleet.vehicle.model.category",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Category",
+    "type": "many2one"
+  },
+  "contract_renewal_due_soon": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "log_contracts"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "contract_renewal_due_soon",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Has Contracts to renew",
+    "type": "boolean"
+  },
+  "contract_renewal_overdue": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "log_contracts"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "contract_renewal_overdue",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Has Contracts Overdue",
+    "type": "boolean"
+  },
+  "contract_state": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "log_contracts"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "contract_state",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "selection": [
+      [
+        "futur",
+        "Incoming"
+      ],
+      [
+        "open",
+        "In Progress"
+      ],
+      [
+        "expired",
+        "Expired"
+      ],
+      [
+        "closed",
+        "Closed"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Last Contract State",
+    "type": "selection"
+  },
+  "car_value": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "car_value",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Catalog Value (VAT Incl.)",
+    "type": "float"
+  },
+  "net_car_value": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "net_car_value",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Purchase Value",
+    "type": "float"
+  },
+  "residual_value": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "residual_value",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Residual Value",
+    "type": "float"
+  },
+  "plan_to_change_car": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "plan_to_change_car",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Plan To Change Car",
+    "type": "boolean"
+  },
+  "plan_to_change_bike": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "plan_to_change_bike",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Plan To Change Bike",
+    "type": "boolean"
+  },
+  "vehicle_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id.vehicle_type"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "vehicle_type",
+    "readonly": true,
+    "related": "model_id.vehicle_type",
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "car",
+        "Car"
+      ],
+      [
+        "bike",
+        "Bike"
+      ]
+    ],
+    "sortable": true,
+    "store": false,
+    "string": "Vehicle Type",
+    "type": "selection"
+  },
+  "frame_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "frame_type",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "diamant",
+        "Diamant"
+      ],
+      [
+        "trapez",
+        "Trapez"
+      ],
+      [
+        "wave",
+        "Wave"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Bike Frame Type",
+    "type": "selection"
+  },
+  "electric_assistance": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "electric_assistance",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Electric Assistance",
+    "type": "boolean"
+  },
+  "frame_size": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "frame_size",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Frame Size",
+    "type": "float"
+  },
+  "service_activity": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "log_services"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "service_activity",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "selection": [
+      [
+        "none",
+        "None"
+      ],
+      [
+        "overdue",
+        "Overdue"
+      ],
+      [
+        "today",
+        "Today"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Service Activity",
+    "type": "selection"
+  },
+  "vehicle_properties": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "definition_record": "model_id",
+    "definition_record_field": "vehicle_properties_definition",
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "vehicle_properties",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Properties",
+    "type": "properties"
+  },
+  "vehicle_range": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "vehicle_range",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Range",
+    "type": "integer"
+  },
+  "range_unit": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "model_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "range_unit",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "km",
+        "km"
+      ],
+      [
+        "mi",
+        "mi"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Range Unit",
+    "type": "selection"
+  },
+  "create_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created by",
+    "type": "many2one"
+  },
+  "create_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created on",
+    "type": "datetime"
+  },
+  "write_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated by",
+    "type": "many2one"
+  },
+  "write_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated on",
+    "type": "datetime"
+  },
+  "bill_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "bill_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Bills Count",
+    "type": "integer"
+  },
+  "account_move_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "account_move_ids",
+    "readonly": true,
+    "relation": "account.move",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Account Move",
+    "type": "one2many"
+  },
+  "mobility_card": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "driver_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "mobility_card",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Mobility Card",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "driver_employee_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "driver_id"
+    ],
+    "domain": "['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "driver_employee_id",
+    "readonly": true,
+    "relation": "hr.employee",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Driver (Employee)",
+    "type": "many2one"
+  },
+  "driver_employee_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "driver_employee_id.name"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "driver_employee_name",
+    "readonly": true,
+    "related": "driver_employee_id.name",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Employee Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "future_driver_employee_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "future_driver_id"
+    ],
+    "domain": "['|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "future_driver_employee_id",
+    "readonly": true,
+    "relation": "hr.employee",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Future Driver (Employee)",
+    "type": "many2one"
+  }
+}

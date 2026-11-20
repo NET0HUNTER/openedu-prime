@@ -1,0 +1,4 @@
+<pivot string="Transportation Agreements Pivot">
+                    <field name="partner_id" type="row"/>
+                    <field name="route_register_id" type="col"/>
+                </pivot>

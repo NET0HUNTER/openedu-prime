@@ -1,0 +1,4 @@
+<graph string="Course Summary" type="line" stacked="True">
+                <field name="course_id"/>
+                <field name="progress"/>
+            </graph>

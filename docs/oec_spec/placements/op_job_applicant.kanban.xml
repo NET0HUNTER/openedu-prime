@@ -1,0 +1,74 @@
+<kanban highlight_color="color" class="o_kanban_applicant o_placement_kanban">
+                <field name="stage_id" options="{&quot;group_by_tooltip&quot;: {&quot;requirements&quot;: &quot;Requirements&quot;}}" on_change="1"/>
+                <field name="color"/>
+                <field name="priority"/>
+                <field name="name"/>
+                <field name="user_id" on_change="1"/>
+                <field name="post_id" on_change="1"/>
+                <field name="mobile"/>
+                <field name="attachment_ids"/>
+                <field name="date"/>
+                <field name="attachment_number"/>
+                <field name="activity_ids" on_change="1"/>
+                <field name="activity_state"/>
+                <progressbar field="activity_state" colors="{&quot;planned&quot;: &quot;success&quot;, &quot;overdue&quot;: &quot;danger&quot;, &quot;today&quot;: &quot;warning&quot;}"/>
+                <templates>
+                    <t t-name="menu">
+                        <div t-if="widget.deletable">
+                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                        </div>
+                        <div role="menuitem" aria-haspopup="true">
+                            <field name="color" widget="kanban_color_picker"/>
+                        </div>
+                    </t>
+                    <t t-name="card" class="flex-row">
+                        <aside class="o_kanban_aside_full" style="width: 95px; min-width: 95px; flex-shrink: 0; align-self: stretch; position: relative;">
+                            <field name="user_id" alt="Applicant image" class="o_kanban_image_fill w-100" style="height: calc(100% + 16px) !important; margin-top: -8px; margin-bottom: -8px; margin-left: -8px;" widget="image" options="{'preview_image': 'image_1920', 'img_class': 'object-fit-cover h-100 w-100'}" on_change="1"/>
+                        </aside>
+
+                        <main class="col d-flex flex-column gap-1 p-2 p-lg-0 position-relative" style="min-width: 0;">
+                            <!-- Title & Subtitle -->
+                            <div class="d-flex flex-column" style="min-width: 0;">
+                                <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.15rem; line-height: 1.3;" t-att-title="record.user_id.value">
+                                    <t t-esc="record.user_id.value"/>
+                                </h5>
+                                <div class="text-muted small mt-1 text-truncate" style="font-size: 0.85rem;" t-att-title="record.post_id.value">
+                                    <t t-esc="record.post_id.value"/>
+                                </div>
+                            </div>
+
+                            <!-- Mobile & Date info -->
+                            <div class="d-flex flex-column gap-1 small text-muted">
+                                <t t-if="record.mobile.raw_value">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="fa fa-phone text-muted" style="width: 14px; font-size: 0.85rem;" title="Mobile"/>
+                                        <span class="text-truncate"><t t-esc="record.mobile.value"/></span>
+                                    </div>
+                                </t>
+                                <t t-if="record.date.raw_value">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="fa fa-calendar text-muted" style="width: 14px; font-size: 0.85rem;" title="Application Date"/>
+                                        <span class="text-truncate"><t t-esc="record.date.value"/></span>
+                                    </div>
+                                </t>
+                            </div>
+
+                            <!-- Footer priority / attachment / activity -->
+                            <div class="o_kanban_record_bottom d-flex justify-content-between align-items-center mt-auto pt-2 border-top">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div>
+                                        <field name="priority" widget="priority"/>
+                                    </div>
+                                    <a name="action_get_attachment_tree_view" type="object" role="button" class="btn btn-link btn-sm text-decoration-none text-muted p-0 d-flex align-items-center gap-1" style="font-size: 0.85rem;">
+                                        <i class="fa fa-paperclip text-muted" title="Documents" aria-label="Documents"/>
+                                        <span><t t-esc="record.attachment_number.raw_value"/></span>
+                                    </a>
+                                </div>
+                                <div class="ms-auto">
+                                    <field name="activity_ids" widget="kanban_activity" on_change="1"/>
+                                </div>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

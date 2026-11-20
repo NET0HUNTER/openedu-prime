@@ -1,0 +1,12 @@
+﻿<list>
+                <field name="request_number"/>
+                <field name="student_id" string="Student Name"/>
+                <field name="leave_type"/>
+                <field name="description"/>
+                <field name="start_date" widget="date" on_change="1"/>
+                <field name="end_date" widget="date" on_change="1"/>
+                <field name="duration"/>
+                <field name="approve_date"/>
+                <field name="company_id" optional="show"/>
+                <field name="state" widget="badge" decoration-info="state == 'confirm'" decoration-warning="state in ('validate','refuse')" decoration-success="state == 'approve'" decoration-danger="state in ('cancel','draft')"/>
+            </list>

@@ -1,0 +1,14 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1504,
+                      "name":  "Honor Roll Certificate",
+                      "binding_view_types":  "list,form"
+                  },
+                  {
+                      "id":  1505,
+                      "name":  "Honor Roll List",
+                      "binding_view_types":  "list,form"
+                  }
+              ]
+}

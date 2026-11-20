@@ -1,0 +1,64 @@
+<form create="false">
+                    <header>
+                        <button string="Resend" type="object" invisible="state != 'canceled'" name="action_resend" class="oe_highlight oe_read_only"/>
+                        <button string="Preview" type="object" name="open_preview" class="oe_highlight"/>
+                        <button name="719" string="Send a Copy" type="action"/>
+                        <button string="Cancel" type="object" invisible="state not in ['sent','signed']" name="action_canceled" class="oe_read_only" confirm="This will delete all the already completed documents of this request and disable every sent accesses, are you sure?"/>
+                        <field name="state" widget="statusbar" statusbar_visible="sent,signed"/>
+                    </header>
+
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button type="object" name="activity_logs" class="oe_read_only oe_stat_button" icon="fa-pencil">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Activity Logs</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <group>
+                            <widget name="web_ribbon" title="Fully Signed" bg_color="bg-info" invisible="state != 'signed'"/>
+                            <widget name="web_ribbon" title="Partially" bg_color="bg-info" invisible="state != 'partially_signed'"/>
+                            <group>
+                                <field name="template_id" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                <field name="company_id" can_create="True" can_write="True"/>
+                                <field name="access_url"/>
+                                <field name="url"/>
+                                <field name="status_url"/>
+                                <field name="sign_with_key" invisible="1"/>
+                            </group>
+
+                        </group>
+
+                        <group string="Signing Configuration">
+                <div class="mb-2">
+                    <label for="is_sign_order" class="form-check-label fw-bold">Sequential Signing Order (One at a time)</label>
+                </div>
+                            <field name="is_sign_order" widget="boolean" string="Sequential Signing Order (One at a time)" on_change="1"/>
+                <!-- Routing Order Setup Section (Only when is_sign_order=TRUE) -->
+                <group string="Routing Order Setup" invisible="not is_sign_order" colspan="4">
+                    <field name="routing_signer_ids" widget="many2many_tags" nolabel="1" options="{'no_create': True}" help="Select signers in the order they should sign. The first person gets email immediately, others after previous signer completes." on_change="1" can_create="True" can_write="True"/>
+                    <div class="mt-2">
+                        <button string="Setup Routing Order" type="object" name="setup_routing_order" class="btn btn-primary btn-sm" invisible="not is_sign_order" help="Auto-assign signing order to selected signers"/>
+                        <button string="Send Routing Emails" type="object" name="auto_send_routing_order" class="btn btn-success btn-sm" invisible="not is_sign_order or state != 'draft'" help="Send signature request - only first signer gets email initially"/>
+                    </div>
+                </group>
+
+                <!-- Routing Progress Display -->
+                <div invisible="not is_sign_order" class="mt-3" colspan="4">
+                    <h4 class="mb-2">Routing Progress</h4>
+                    <field name="routing_progress" nolabel="1"/>
+                </div>
+                            <field name="sign_with_key" widget="boolean"/>
+                        </group>
+
+                        <field name="request_item_ids" string="Signers (Edit Order to set sequence)" readonly="state != 'draft'" create="state == 'draft'" edit="state == 'draft'" delete="state == 'draft'" on_change="1"><list>
+                <field name="partner_id" on_change="1"/>
+                <field name="role_id"/>
+                <field name="sent_order" string="Order" on_change="1"/>
+                <field name="responsible_key" invisible="1"/>
+                <field name="state" on_change="1"/>
+            </list></field>
+                    </sheet>
+                    <chatter/>
+                </form>

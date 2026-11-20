@@ -1,0 +1,154 @@
+<form string="Pay">
+                    <header>
+                    <button name="print_checks" class="oe_highlight" invisible="payment_method_code != 'check_printing' or is_sent or not check_layout_available" string="Print Check" type="object" data-hotkey="g"/>
+                    <button name="unmark_as_sent" invisible="payment_method_code != 'check_printing' or not is_sent" string="Unmark Sent" type="object" data-hotkey="l"/>
+                    <button name="action_void_check" invisible="payment_method_code != 'check_printing' or state != 'in_process' or not is_sent" string="Void Check" type="object" data-hotkey="o"/>
+                        <button name="action_post" string="Confirm" type="object" class="oe_highlight" invisible="state != 'draft'" data-hotkey="q"/>
+                        <button name="action_validate" string="Validate" type="object" class="oe_highlight" invisible="state != 'in_process' or move_id" data-hotkey="q"/>
+                        <button name="action_reject" string="Reject" type="object" invisible="state != 'in_process' or not is_sent" data-hotkey="q"/>
+                        <button name="action_draft" string="Reset to Draft" type="object" class="btn btn-secondary" invisible="state in ('draft')" data-hotkey="w"/>
+                <field name="amount_available_for_refund" invisible="1"/>
+                <button name="action_refund_wizard" type="object" string="Refund" invisible="amount_available_for_refund &lt;= 0" class="btn-secondary"/>
+                        <button string="Request Cancel" name="button_request_cancel" type="object" invisible="state != 'in_process' or not move_id or not need_cancel_request" data-hotkey="w"/>
+                        <button name="mark_as_sent" string="Mark as Sent" type="object" data-hotkey="v" invisible="state != 'in_process' or is_sent or payment_method_code != 'manual'"/>
+                        <button name="unmark_as_sent" string="Unmark as Sent" type="object" data-hotkey="k" invisible="state != 'in_process' or not is_sent or payment_method_code != 'manual'"/>
+                        <button name="action_cancel" string="Cancel" type="object" invisible="not id or not (state == 'draft' or (state == 'in_process' and is_sent))" data-hotkey="x"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_process,paid" on_change="1"/>
+                    </header>
+                    <div class="alert alert-warning mb-2" role="alert" invisible="not duplicate_payment_ids or state!='draft'">
+                        <span>This payment has the same partner, amount and date as </span>
+                        <field name="duplicate_payment_ids" widget="x2many_buttons" string="Duplicated Payments"/>
+                    </div>
+                    <sheet>
+                        <!-- Invisible fields -->
+                        <field name="id" invisible="1"/>
+                        <field name="is_sent" invisible="1"/>
+                        <field name="need_cancel_request" invisible="1"/>
+                        <field name="is_reconciled" invisible="1"/>
+                        <field name="is_matched" invisible="1" on_change="1"/>
+                        <field name="payment_method_code" invisible="1" on_change="1"/>
+                        <field name="show_partner_bank_account" invisible="1"/>
+                        <field name="require_partner_bank_account" invisible="1"/>
+                        <field name="available_payment_method_line_ids" invisible="1" on_change="1"/>
+                        <field name="available_partner_bank_ids" invisible="1" on_change="1"/>
+                        <!-- <field name="suitable_journal_ids" invisible="1"/> -->
+                        <field name="country_code" invisible="1"/>
+                        <field name="partner_type" invisible="1"/>
+                        <field name="reconciled_invoices_type" invisible="1"/>
+                        <field name="company_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                        <field name="paired_internal_transfer_payment_id" invisible="1" can_create="True" can_write="True"/>
+                        <field name="available_journal_ids" invisible="1"/>
+                        <field name="currency_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+
+                        <div class="oe_button_box" name="button_box">
+                            <!-- Invoice stat button -->
+                            <button name="button_open_invoices" type="object" class="oe_stat_button" icon="fa-bars" invisible="reconciled_invoices_count == 0">
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_text">
+                                        <field name="reconciled_invoices_count"/>
+                                        <span invisible="reconciled_invoices_type != 'invoice'"> Invoice</span>
+                                        <span invisible="reconciled_invoices_type == 'invoice'"> Credit Note</span>
+                                    </span>
+                                </div>
+                            </button>
+
+                            <!-- Bill stat button -->
+                            <button name="button_open_bills" type="object" class="oe_stat_button" icon="fa-bars" invisible="reconciled_bills_count == 0">
+                                <div class="o_form_field o_stat_info">
+                                    <span class="o_stat_text">
+                                        <field name="reconciled_bills_count"/>
+                                        <span> Bill</span>
+                                    </span>
+                                </div>
+                            </button>
+
+                            <!-- Statement stat button -->
+                            <button name="button_open_statement_lines" type="object" class="oe_stat_button" icon="fa-bars" invisible="reconciled_statement_lines_count == 0">
+                                <div class="o_form_field o_stat_info">
+                                    <field name="reconciled_statement_lines_count"/>
+                                    <span class="o_stat_text">Transaction</span>
+                                </div>
+                            </button>
+
+                            <!-- Journal Entry  button -->
+                            <button name="button_open_journal_entry" type="object" class="oe_stat_button" icon="fa-bars" invisible="not move_id">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_text">Journal Entry</span>
+                                </div>
+                            </button>
+                <button name="action_open_manual_reconciliation_widget" type="object" string="Payment Matching" class="oe_stat_button" icon="fa-dollar" invisible="is_reconciled or not move_id or state not in ('in_process', 'paid')"/>
+                    <field name="batch_payment_id" invisible="1" can_create="True" can_write="True"/>
+                    <button name="button_open_batch_payment" type="object" class="oe_stat_button" icon="fa-bars" invisible="not batch_payment_id">
+                        <span>Batch Payment</span>
+                    </button>
+                <button name="action_view_refunds" type="object" class="oe_stat_button" icon="fa-money" invisible="refunds_count == 0">
+                    <field name="refunds_count" widget="statinfo" string="Refunds"/>
+                </button>
+                    <field name="expense_ids" invisible="1"/>
+                    <button name="action_open_expense" class="oe_stat_button" icon="fa-file-text-o" type="object" invisible="not expense_ids">
+                            <div class="o_stat_info">
+                                <span class="o_stat_text">Expense</span>
+                            </div>
+                    </button>
+                        </div>
+
+                        <widget name="web_ribbon" text="Invoicing App Legacy" bg_color="text-bg-info" invisible="state != 'invoicing_legacy'" tooltip="This payment has been generated through the Invoicing app, before installing Accounting. It has been disabled by the 'Invoicing Switch Threshold Date' setting so that it does not impact your accounting."/>
+
+                        <div class="oe_title">
+                            <h1 invisible="state != 'draft'"><span>Draft</span></h1>
+                            <h1 invisible="state == 'draft'">
+                    <widget name="web_ribbon" title="Sent" invisible="not is_sent or state in ('rejected', 'canceled')"/><field name="name" readonly="1"/></h1>
+                        </div>
+
+                        <group name="main_group">
+                            <group name="group1">
+                                <field name="payment_type" widget="radio" options="{'horizontal': True}" readonly="state != 'draft'" on_change="1"/>
+                                <field name="partner_id" context="{'default_is_company': True}" string="Customer" options="{'no_quick_create': True}" invisible="partner_type != 'customer'" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="partner_id" context="{'default_is_company': True}" string="Vendor" options="{'no_quick_create': True}" invisible="partner_type != 'supplier'" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <label for="amount"/>
+                                <div name="amount_div" class="o_row">
+                                    <field name="amount" readonly="state != 'draft'" on_change="1"/>
+                                    
+                                </div>
+                    <field name="check_amount_in_words" invisible="1" column_invisible="1"/>
+                                <field name="date" readonly="state != 'draft'" on_change="1"/>
+                                <field name="memo" string="Memo" on_change="1"/>
+                            </group>
+                            <group name="group2">
+                                <field name="journal_id" domain="[('id', 'in', available_journal_ids)]" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="payment_method_line_id" context="{'hide_payment_journal_id': 1}" options="{'no_create': True, 'no_open': True}" required="1" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                <field name="payment_method_code" invisible="1" on_change="1"/>
+                <field name="suitable_payment_token_ids" invisible="1"/>
+                <field name="use_electronic_payment_method" invisible="1"/>
+                <field name="payment_token_id" options="{'no_create': True}" invisible="not use_electronic_payment_method" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                    <field name="check_manual_sequencing" invisible="1"/>
+                    <field name="show_check_number" invisible="1"/>
+                    <field name="check_number" invisible="not show_check_number" on_change="1"/>
+
+                                <field name="partner_bank_id" string="Customer Bank Account" context="{'default_partner_id': partner_id, 'display_account_trust': True}" invisible="not show_partner_bank_account or partner_type != 'customer' or payment_type == 'inbound'" required="require_partner_bank_account" on_change="1" can_create="True" can_write="True"/>
+
+                                <field name="partner_bank_id" string="Vendor Bank Account" context="{'default_partner_id': partner_id, 'display_account_trust': True}" invisible="not show_partner_bank_account or partner_type != 'supplier' or payment_type == 'inbound'" required="require_partner_bank_account" on_change="1" can_create="True" can_write="True"/>
+
+                                <!-- This field should always be readonly but using readonly="1" overrides the other partner_bank_id
+                                fields readonly condition in the framework, preventing the modification of these fields -->
+                                <field name="partner_bank_id" string="Company Bank Account" context="{'default_partner_id': partner_id, 'display_account_trust': True}" invisible="not show_partner_bank_account or payment_type == 'outbound'" required="require_partner_bank_account" on_change="1" can_create="True" can_write="True"/>
+                <field name="source_payment_id" invisible="not source_payment_id"/>
+                <field name="payment_transaction_id" invisible="1" on_change="1" column_invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="qr_code" invisible="1"/>
+                                <div invisible="not qr_code" colspan="2" class="text-center">
+                                    <field name="qr_code" widget="html"/>
+                                </div>
+                            </group>
+                        </group>
+                        <group>
+                            <!-- To be used in localizations requiring to add a page -->
+                            <notebook name="payment_notebook" colspan="2"/>
+                        </group>
+                    </sheet>
+                    <div class="o_attachment_preview"/>
+                    <chatter/>
+                <field name="check_layout_available" invisible="True" readonly="True" data-used-by="invisible=&quot;payment_method_code != 'check_printing' or is_sent or not check_layout_available&quot; (button,print_checks)"/>
+<field name="move_id" invisible="True" readonly="True" data-used-by="invisible=&quot;state != 'in_process' or move_id&quot; (button,action_validate); invisible=&quot;state != 'in_process' or not move_id or not need_cancel_request&quot; (button,button_request_cancel); invisible=&quot;is_reconciled or not move_id or state not in ('in_process', 'paid')&quot; (button,action_open_manual_reconciliation_widget)" on_change="1"/>
+</form>

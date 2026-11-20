@@ -1,0 +1,74 @@
+<kanban>
+                <field name="code"/>
+                <field name="duration" on_change="1"/>
+                <field name="assign_method"/>
+                <field name="user_id"/>
+                <field name="location"/>
+                <field name="default_timezone"/>
+                <templates>
+                    <t t-name="menu">
+                        <div role="menuitem">
+                            <a t-if="widget.editable" class="dropdown-item" type="open">Edit</a>
+                        </div>
+                    </t>
+                    <t t-name="card">
+                        <main class="d-flex flex-column h-100 p-0 position-relative bg-white rounded">
+                            <!-- Premium Header -->
+                            <div class="d-flex align-items-start justify-content-between p-1 border-bottom" style="border-color: #f1f5f9 !important;">
+                                <div class="d-flex align-items-start gap-2 w-100">
+                                    <i class="fa fa-calendar-check-o text-primary mt-1 fs-5" title="Appointment" aria-hidden="true"/>
+                                    <div class="d-flex flex-column min-w-0">
+                                        <h5 class="fw-bolder text-truncate mb-0" style="color: #1e293b; font-size: 1.1rem;">
+                                            <field name="name"/>
+                                        </h5>
+                                        <span t-if="record.code.raw_value" class="fw-bold mt-1 text-uppercase" style="color: #64748b; font-size: 0.75rem;">
+                                            <field name="code"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Body Area -->
+                            <div class="d-flex flex-column gap-1 my-2 px-1">
+                                <div t-if="record.duration.raw_value" class="d-flex align-items-center text-truncate small text-muted" title="Duration">
+                                    <i class="fa fa-clock-o me-2" style="width: 14px;"/> 
+                                    <div class="d-flex align-items-center gap-1 text-truncate">
+                                        <field name="duration" widget="float_time" on_change="1"/>
+                                        <span>Hours</span>
+                                    </div>
+                                </div>
+                                <div t-if="record.assign_method.raw_value" class="d-flex align-items-center text-truncate small text-muted" title="Assignment Method">
+                                    <i class="fa fa-users me-2" style="width: 14px;"/> 
+                                    <span class="text-truncate"><field name="assign_method"/></span>
+                                </div>
+                                <div t-if="record.location.raw_value" class="d-flex align-items-center text-truncate small text-muted" title="Location">
+                                    <i class="fa fa-map-marker me-2" style="width: 14px;"/> 
+                                    <span class="text-truncate"><field name="location"/></span>
+                                </div>
+                                <div t-if="record.default_timezone.raw_value" class="d-flex align-items-center text-truncate small text-muted" title="Timezone">
+                                    <i class="fa fa-globe me-2" style="width: 14px;"/> 
+                                    <span class="text-truncate"><field name="default_timezone"/></span>
+                                </div>
+                            </div>
+                            
+                            <!-- Metrics Grid Button & Footer -->
+                            <div class="d-flex align-items-center justify-content-between mt-auto p-1 pt-2 border-top">
+                                <div class="col-6 p-0">
+                                    <button name="calendar_appointment_schedule" type="object" class="btn d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded border border-light-subtle w-100" style="background-color: #f8f9fa !important; box-shadow: none;">
+                                        <span class="d-flex align-items-center text-muted small">
+                                            <i class="fa fa-calendar me-2 text-dark" title="Schedule"/>
+                                            <span class="text-truncate">Schedule</span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 ms-2">
+                                            <field name="count_appointment" filter_domain="[('appointment_id', 'ilike', self)]"/>
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <field name="user_id" widget="many2one_avatar_user"/>
+                                </div>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

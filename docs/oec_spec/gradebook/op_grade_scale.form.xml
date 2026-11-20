@@ -1,0 +1,27 @@
+﻿<form string="Grade Scale">
+                    <header>
+                        <button name="action_set_active" invisible="state != 'draft'" string="Active" type="object" class="oe_highlight"/>
+                        <button name="action_draft" invisible="state != 'active'" string="Draft" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group col="4" colspan="4">
+                            <field name="name"/>
+                            <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="op_grade_type_ids"><list>
+                    <field name="name"/>
+                    <field name="gpa_value"/>
+                    <field name="min_percentage"/>
+                    <field name="max_percentage"/>
+                    <field name="earn_credits" optional="hide"/>
+                    <field name="include_gpa" optional="hide"/>
+                    <field name="op_grade_scale_id" optional="hide"/>
+                    <field name="form_factor" optional="hide"/>
+                    <field name="factor" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                </list></field>
+                        </group>
+                    </sheet>
+                </form>

@@ -1,0 +1,7 @@
+﻿<search string="Activity Log">
+                    <field name="student_id"/>
+                    <field name="faculty_id"/>
+                    <field name="type_id"/>
+                    <field name="date"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>

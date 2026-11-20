@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "subject": {
+      "change_default": false,
+      "groupable": true,
+      "name": "subject",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Subject",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

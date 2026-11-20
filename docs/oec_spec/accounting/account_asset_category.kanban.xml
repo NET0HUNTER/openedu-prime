@@ -1,0 +1,30 @@
+<kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="journal_id"/>
+                <field name="method"/>
+                <templates>
+                    <t t-name="card">
+                        <main class="oe_kanban_global_click d-flex flex-column gap-2 p-2 position-relative">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-start gap-2">
+                                <div class="d-flex flex-column gap-1 flex-grow-1" style="min-width: 0;">
+                                    <h5 class="mb-0 fw-bold text-primary text-truncate" t-att-title="record.name.value" style="font-size: 1.15rem;">
+                                        <field name="name"/>
+                                    </h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <span class="badge rounded-pill text-bg-info small fw-bold">
+                                        <field name="method"/>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <!-- Journal Info -->
+                            <div t-if="record.journal_id.raw_value" class="d-flex align-items-center small text-muted">
+                                <i class="fa fa-book me-2" role="img" aria-label="Journal" title="Journal"/>
+                                <field name="journal_id"/>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

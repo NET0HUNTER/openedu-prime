@@ -1,0 +1,1 @@
+<form><sheet string="Course Tag"><group><group><field name="name"/></group><group><field name="company_id" can_create="True" can_write="True"/></group></group><group><separator/></group></sheet></form>

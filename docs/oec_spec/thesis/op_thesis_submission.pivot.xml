@@ -1,0 +1,7 @@
+<pivot string="Thesis By Program">
+                    <field name="name"/>
+                    <field name="student_id" type="row"/>
+                    <field name="registration_id"/>
+                    <field name="title"/>
+                    <field name="state" type="col"/>
+                </pivot>

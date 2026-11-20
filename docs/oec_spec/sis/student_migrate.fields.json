@@ -1,0 +1,114 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "date":  {
+                 "readonly":  false,
+                 "required":  true,
+                 "string":  "Date",
+                 "type":  "date"
+             },
+    "course_from_id":  {
+                           "readonly":  false,
+                           "relation":  "op.course",
+                           "required":  true,
+                           "string":  "From Course",
+                           "type":  "many2one"
+                       },
+    "course_to_id":  {
+                         "readonly":  false,
+                         "relation":  "op.course",
+                         "required":  false,
+                         "string":  "To Course",
+                         "type":  "many2one"
+                     },
+    "batch_id":  {
+                     "readonly":  false,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "To Batch",
+                     "type":  "many2one"
+                 },
+    "optional_sub":  {
+                         "readonly":  false,
+                         "required":  false,
+                         "string":  "Optional Subjects",
+                         "type":  "boolean"
+                     },
+    "student_ids":  {
+                        "readonly":  false,
+                        "relation":  "op.student",
+                        "required":  true,
+                        "string":  "Student(s)",
+                        "type":  "many2many"
+                    },
+    "course_completed":  {
+                             "readonly":  false,
+                             "required":  false,
+                             "string":  "Course Completed?",
+                             "type":  "boolean"
+                         },
+    "valid_to_course_ids":  {
+                                "readonly":  true,
+                                "relation":  "op.course",
+                                "required":  false,
+                                "string":  "Valid To Courses",
+                                "type":  "many2many"
+                            },
+    "student_ids_domain":  {
+                               "readonly":  true,
+                               "relation":  "op.student",
+                               "required":  false,
+                               "string":  "Student Ids Domain",
+                               "type":  "many2many"
+                           },
+    "year_id":  {
+                    "readonly":  false,
+                    "relation":  "op.academic.year",
+                    "required":  false,
+                    "string":  "Academic Year",
+                    "type":  "many2one"
+                },
+    "term_id":  {
+                    "readonly":  false,
+                    "relation":  "op.academic.term",
+                    "required":  false,
+                    "string":  "Terms",
+                    "type":  "many2one"
+                },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   }
+}

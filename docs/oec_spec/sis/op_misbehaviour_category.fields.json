@@ -1,0 +1,108 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "name":  {
+                 "readonly":  false,
+                 "required":  true,
+                 "string":  "Name",
+                 "type":  "char"
+             },
+    "complete_name":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Complete Name",
+                          "type":  "char"
+                      },
+    "misbehaviour_type":  {
+                              "readonly":  false,
+                              "required":  true,
+                              "selection":  [
+                                                [
+                                                    "major",
+                                                    "Major"
+                                                ],
+                                                [
+                                                    "minor",
+                                                    "Minor"
+                                                ]
+                                            ],
+                              "string":  "Category Type",
+                              "type":  "selection"
+                          },
+    "parent_id":  {
+                      "readonly":  false,
+                      "relation":  "op.misbehaviour.category",
+                      "required":  false,
+                      "string":  "Parent Category",
+                      "type":  "many2one"
+                  },
+    "parent_path":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Parent Path",
+                        "type":  "char"
+                    },
+    "child_id":  {
+                     "readonly":  false,
+                     "relation":  "op.misbehaviour.category",
+                     "required":  false,
+                     "string":  "Child Categories",
+                     "type":  "one2many"
+                 },
+    "misbehaviour_template_id":  {
+                                     "readonly":  false,
+                                     "relation":  "mail.template",
+                                     "required":  true,
+                                     "string":  "Misbehaviour Template",
+                                     "type":  "many2one"
+                                 },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  true,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "active":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Active",
+                   "type":  "boolean"
+               },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   }
+}

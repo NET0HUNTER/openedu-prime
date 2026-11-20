@@ -1,0 +1,7 @@
+﻿<list string="Program Outcome">
+                    <field name="name"/>
+                    <field name="po_code"/>
+                    <field name="program_id"/>
+                    <field name="academic_year_id"/>
+                    <field name="academic_term_id"/>
+                </list>

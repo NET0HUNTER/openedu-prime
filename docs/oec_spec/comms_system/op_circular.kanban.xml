@@ -1,0 +1,79 @@
+<kanban class="op_circular_view_kanban o_notice_board_kanban" create="0" sample="1">
+                <field name="name"/>
+                <field name="subject"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="created_by"/>
+                <field name="state"/>
+                <field name="high_priority"/>
+                <field name="circular_type_id"/>
+                <templates>
+                    <t t-name="card">
+                        <!-- State Ribbons -->
+                        <widget name="web_ribbon" title="Draft" bg_color="bg-secondary text-white" invisible="state != 'draft'"/>
+                        <widget name="web_ribbon" title="In Progress" bg_color="bg-warning text-dark" invisible="state != 'in_progress'"/>
+                        <widget name="web_ribbon" title="Published" bg_color="bg-success text-white" invisible="state != 'publish'"/>
+                        <widget name="web_ribbon" title="Canceled" bg_color="bg-danger text-white" invisible="state != 'cancel'"/>
+                        <widget name="web_ribbon" title="Unpublished" bg_color="bg-dark text-white" invisible="state != 'unpublish'"/>
+
+                        <main class="d-flex flex-column gap-2 p-1 position-relative">
+                            <!-- Header: Title -->
+                            <div class="pe-5">
+                                <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.05rem; line-height: 1.35;" t-att-title="record.name.value">
+                                    <t t-esc="record.name.value"/>
+                                </h5>
+                            </div>
+
+                            <!-- Subject Row -->
+                            <div t-if="record.subject.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                <i class="fa fa-align-left me-2 text-muted" style="width: 14px;" title="Subject"/>
+                                <span class="text-truncate"><t t-esc="record.subject.value"/></span>
+                            </div>
+
+                            <!-- Meta: creator + type -->
+                            <div class="d-flex align-items-center gap-2 small text-muted">
+                                <span t-if="record.created_by.raw_value" class="d-flex align-items-center gap-1">
+                                    <i class="fa fa-user-circle-o" title="Created By"/>
+                                    <t t-esc="record.created_by.value"/>
+                                </span>
+                                <span t-if="record.circular_type_id.raw_value" class="d-flex align-items-center gap-1 ms-auto">
+                                    <i class="fa fa-tag" title="Type"/>
+                                    <t t-esc="record.circular_type_id.value"/>
+                                </span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="d-flex flex-wrap gap-1">
+                                <button t-if="record.state.raw_value == 'draft'" name="action_in_progress" type="object" class="btn btn-sm bg-light rounded border border-light-subtle d-flex align-items-center gap-1 flex-grow-1 text-muted px-2 py-1" style="font-size: 12px;">
+                                    <i class="fa fa-play text-dark" style="font-size: 12px;"/>In Progress
+                                </button>
+                                <button t-if="record.state.raw_value == 'in_progress'" name="action_publish" type="object" class="btn btn-sm bg-light rounded border border-light-subtle d-flex align-items-center gap-1 flex-grow-1 text-muted px-2 py-1" style="font-size: 12px;">
+                                    <i class="fa fa-globe text-dark" style="font-size: 12px;"/>Publish
+                                </button>
+                                <button t-if="record.state.raw_value == 'in_progress'" name="action_cancel" type="object" class="btn btn-sm bg-light rounded border border-light-subtle d-flex align-items-center gap-1 flex-grow-1 text-muted px-2 py-1" style="font-size: 12px;">
+                                    <i class="fa fa-times text-dark" style="font-size: 12px;"/>Cancel
+                                </button>
+                                <button t-if="record.state.raw_value == 'publish'" name="action_unpublish" type="object" class="btn btn-sm bg-light rounded border border-light-subtle d-flex align-items-center gap-1 flex-grow-1 text-muted px-2 py-1" style="font-size: 12px;">
+                                    <i class="fa fa-eye-slash text-dark" style="font-size: 12px;"/>Unpublish
+                                </button>
+                                <button t-if="record.state.raw_value == 'cancel'" name="action_draft" type="object" class="btn btn-sm bg-light rounded border border-light-subtle d-flex align-items-center gap-1 flex-grow-1 text-muted px-2 py-1" style="font-size: 12px;">
+                                    <i class="fa fa-undo text-dark" style="font-size: 12px;"/>Reset to Draft
+                                </button>
+                            </div>
+
+                            <!-- Date Footer -->
+                            <div class="d-flex align-items-center justify-content-between small text-muted pt-1 border-top mt-auto">
+                                <span class="d-flex align-items-center gap-1">
+                                    <i class="fa fa-calendar text-secondary" title="Date Range"/>
+                                    <t t-esc="record.start_date.value"/>
+                                    <span t-if="record.end_date.raw_value" class="mx-1">→</span>
+                                    <t t-if="record.end_date.raw_value" t-esc="record.end_date.value"/>
+                                </span>
+                                <span t-if="record.high_priority.raw_value == '1'" class="badge bg-warning-subtle text-warning-emphasis rounded-pill fw-semibold">
+                                    <i class="fa fa-star me-1"/>Priority
+                                </span>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

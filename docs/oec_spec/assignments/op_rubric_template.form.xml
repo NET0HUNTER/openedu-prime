@@ -1,0 +1,52 @@
+<form string="Rubrics Template Configuration">
+                    <header>
+                        <button name="act_re_open" type="object" string="Re-open" invisible="state != 'cancel'" class="oe_highlight"/>
+                        <button name="act_in_use" type="object" invisible="state != 'draft'" string="In Use" class="oe_highlight"/>
+                        <button name="act_cancel" type="object" invisible="state != 'draft' and state != 'in_use'" string="Cancel" class="oe_highlight"/>
+                        <button name="action_expire_template" type="object" string="Mark as Expired" class="btn-danger" invisible="template_expired != False or state not in ['draft', 'cancel']"/>
+
+                        <field name="state" widget="statusbar" statusbar_visible="draft,in_use,cancel,expire"/>
+                    </header>
+                    <sheet>
+                        <group colspan="4">
+                            <field name="name" readonly="state != 'draft'"/>
+                            <field name="rubrics_type" readonly="state != 'draft'" on_change="1"/>
+                            <field name="points_validation_status" widget="badge" decoration-success="points_validation_status == 'valid'" decoration-danger="points_validation_status == 'invalid'" decoration-info="points_validation_status == 'no_elements'" decoration-muted="points_validation_status == 'not_applicable'" invisible="rubrics_type != 'percent'"/>
+                            <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                        <notebook>
+                            <page string="Rubric Elements" name="rubric_element_line">
+                            <field name="rubric_element_line" readonly="state != 'draft'" on_change="1">
+                                <form>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="rubrics_template_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="rubrics_type" invisible="1" on_change="1"/>
+                                        <field name="rubrics_element_level_ids">
+                                            <list editable="top" create="false" delete="false">
+                                                <field name="level_id" can_create="True" can_write="True"/>
+                                                <field name="description"/>
+                                            </list>
+                                        </field>
+                                        <field name="point" invisible="rubrics_type != 'points'"/>
+                                        <field name="percentage" invisible="rubrics_type != 'percent'" on_change="1"/>
+                                    </group>
+                                </form>
+                                <list>
+                                    <field name="name"/>
+                                    <field name="rubrics_element_level_ids" widget="many2many_tags"/>
+                                    <field name="point" invisible="rubrics_type != 'points'"/>
+                                    <field name="percentage" invisible="rubrics_type != 'percent'" on_change="1"/>
+                                <field name="rubrics_type" column_invisible="True" readonly="True" data-used-by="invisible=&quot;rubrics_type != 'percent'&quot; (field,percentage)" on_change="1"/>
+</list>
+                            </field>
+                            </page>
+                        </notebook>
+                        <group string="Rubrics Template Expiration Details" invisible="state != 'expire'" colspan="4">
+                            <field name="template_expired" readonly="1"/>
+                            <field name="template_expired_by" readonly="1"/>
+                            <field name="template_expired_date" readonly="1"/>
+                        </group>
+                    </sheet>
+                    <chatter reload_on_post="True"/>
+                </form>

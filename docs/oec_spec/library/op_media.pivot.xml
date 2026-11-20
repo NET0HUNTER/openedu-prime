@@ -1,0 +1,4 @@
+<pivot string="Media">
+                    <field name="media_type_id" type="col"/>
+                    <field name="name" type="row"/>
+                </pivot>

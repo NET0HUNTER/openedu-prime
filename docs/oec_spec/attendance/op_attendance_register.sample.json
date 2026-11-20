@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  6,
+        "display_name":  "BCOM-AF-S1"
+    },
+    {
+        "id":  5,
+        "display_name":  "MCA-BD-S1"
+    },
+    {
+        "id":  4,
+        "display_name":  "BTECH-CE-S1"
+    },
+    {
+        "id":  3,
+        "display_name":  "DIPLOMA-AE-S1"
+    },
+    {
+        "id":  2,
+        "display_name":  "BA-PY-S1-REG"
+    }
+]

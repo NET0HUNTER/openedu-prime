@@ -1,0 +1,5 @@
+﻿<calendar mode="month" string="Parents Meeting" color="state" date_start="meeting_datetime">
+                    <field name="student_id"/>
+                    <field name="course_id"/>
+                    <field name="state"/>
+                </calendar>

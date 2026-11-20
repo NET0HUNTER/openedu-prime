@@ -1,0 +1,4 @@
+<graph type="pie">
+                <field name="directory_id" type="row"/>
+                <field name="size" type="measure"/>
+            </graph>

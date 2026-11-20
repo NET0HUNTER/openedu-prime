@@ -1,0 +1,4 @@
+<graph string="Trips" type="bar">
+                    <field name="name"/>
+                    <field name="route_type"/>
+                </graph>

@@ -1,0 +1,50 @@
+<form string="Season">
+                    <header>
+                        <button name="action_activate" string="Activate" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                        <button name="action_close" string="Close" type="object" invisible="state != 'active'"/>
+                        <button name="action_draft" string="Set to Draft" type="object" invisible="state != 'closed'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,active,closed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Session Name"/>
+                            </h1>
+                            <h2>
+                                <field name="code" placeholder="Session Code"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="partner_companies_ids" widget="many2many_tags" domain="[('is_company', '=', True)]" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="company_fee_applicable"/>
+                                <field name="student_fee_applicable"/>
+                            </group>
+                        </group>
+                        <notebook>
+
+                            <page string="Opportunities">
+                                <field name="opportunity_ids" context="{'default_season_id': id}">
+
+
+                                <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="job_post_id" widget="many2many_tags"/>
+                <field name="skill_id" widget="many2many_tags"/>
+                <field name="team_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="active" widget="boolean_toggle" optional="hide"/>
+                <field name="state" optional="hide" string="Status"/>
+                <field name="company_id" optional="show"/>
+            </list></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

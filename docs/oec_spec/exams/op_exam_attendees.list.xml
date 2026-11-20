@@ -1,0 +1,10 @@
+﻿<list string="Exam Attendees" editable="top">
+                    <field name="student_id" can_create="True" can_write="True"/>
+                    <field name="exam_id" on_change="1" can_create="True" can_write="True"/>
+                    <field name="status"/>
+                    <field name="marks" on_change="1"/>
+                    <field name="grade"/>
+                    <field name="room_id" can_create="True" can_write="True"/>
+                    <field name="note"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                </list>

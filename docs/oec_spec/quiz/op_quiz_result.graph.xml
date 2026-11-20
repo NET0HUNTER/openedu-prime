@@ -1,0 +1,5 @@
+<graph string="Quiz Result Stats" type="bar">
+                <field name="quiz_id" type="col"/>
+                <field name="id" type="measure"/>
+                <field name="state" type="row"/>
+            </graph>

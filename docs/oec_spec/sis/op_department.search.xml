@@ -1,0 +1,5 @@
+﻿<search string="Department">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="parent_id"/>
+                </search>

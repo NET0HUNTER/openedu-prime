@@ -1,0 +1,980 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "cover_properties":  {
+                             "readonly":  false,
+                             "required":  false,
+                             "string":  "Cover Properties",
+                             "type":  "text"
+                         },
+    "activity_ids":  {
+                         "readonly":  false,
+                         "relation":  "mail.activity",
+                         "required":  false,
+                         "string":  "Activities",
+                         "type":  "one2many"
+                     },
+    "activity_state":  {
+                           "help":  "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+                           "readonly":  true,
+                           "required":  false,
+                           "selection":  [
+                                             [
+                                                 "overdue",
+                                                 "Overdue"
+                                             ],
+                                             [
+                                                 "today",
+                                                 "Today"
+                                             ],
+                                             [
+                                                 "planned",
+                                                 "Planned"
+                                             ]
+                                         ],
+                           "string":  "Activity State",
+                           "type":  "selection"
+                       },
+    "activity_user_id":  {
+                             "readonly":  true,
+                             "relation":  "res.users",
+                             "required":  false,
+                             "string":  "Responsible User",
+                             "type":  "many2one"
+                         },
+    "activity_type_id":  {
+                             "readonly":  false,
+                             "relation":  "mail.activity.type",
+                             "required":  false,
+                             "string":  "Next Activity Type",
+                             "type":  "many2one"
+                         },
+    "activity_type_icon":  {
+                               "help":  "Font awesome icon e.g. fa-tasks",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Activity Type Icon",
+                               "type":  "char"
+                           },
+    "activity_date_deadline":  {
+                                   "readonly":  true,
+                                   "required":  false,
+                                   "string":  "Next Activity Deadline",
+                                   "type":  "date"
+                               },
+    "my_activity_date_deadline":  {
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "My Activity Deadline",
+                                      "type":  "date"
+                                  },
+    "activity_summary":  {
+                             "readonly":  false,
+                             "required":  false,
+                             "string":  "Next Activity Summary",
+                             "type":  "char"
+                         },
+    "activity_exception_decoration":  {
+                                          "help":  "Type of the exception activity on record.",
+                                          "readonly":  true,
+                                          "required":  false,
+                                          "selection":  [
+                                                            [
+                                                                "warning",
+                                                                "Alert"
+                                                            ],
+                                                            [
+                                                                "danger",
+                                                                "Error"
+                                                            ]
+                                                        ],
+                                          "string":  "Activity Exception Decoration",
+                                          "type":  "selection"
+                                      },
+    "activity_exception_icon":  {
+                                    "help":  "Icon to indicate an exception activity.",
+                                    "readonly":  true,
+                                    "required":  false,
+                                    "string":  "Icon",
+                                    "type":  "char"
+                                },
+    "activity_calendar_event_id":  {
+                                       "readonly":  true,
+                                       "relation":  "calendar.event",
+                                       "required":  false,
+                                       "string":  "Next Activity Calendar Event",
+                                       "type":  "many2one"
+                                   },
+    "image_1920":  {
+                       "readonly":  false,
+                       "required":  false,
+                       "string":  "Image",
+                       "type":  "binary"
+                   },
+    "image_1024":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Image 1024",
+                       "type":  "binary"
+                   },
+    "image_512":  {
+                      "readonly":  true,
+                      "required":  false,
+                      "string":  "Image 512",
+                      "type":  "binary"
+                  },
+    "image_256":  {
+                      "readonly":  true,
+                      "required":  false,
+                      "string":  "Image 256",
+                      "type":  "binary"
+                  },
+    "image_128":  {
+                      "readonly":  true,
+                      "required":  false,
+                      "string":  "Image 128",
+                      "type":  "binary"
+                  },
+    "website_id":  {
+                       "help":  "Restrict to a specific website.",
+                       "readonly":  false,
+                       "relation":  "website",
+                       "required":  false,
+                       "string":  "Website",
+                       "type":  "many2one"
+                   },
+    "website_published":  {
+                              "readonly":  false,
+                              "required":  false,
+                              "string":  "Visible on current website",
+                              "type":  "boolean"
+                          },
+    "is_published":  {
+                         "readonly":  false,
+                         "required":  false,
+                         "string":  "Is Published",
+                         "type":  "boolean"
+                     },
+    "can_publish":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Can Publish",
+                        "type":  "boolean"
+                    },
+    "website_url":  {
+                        "help":  "The full relative URL to access the document through the website.",
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Website URL",
+                        "type":  "char"
+                    },
+    "website_absolute_url":  {
+                                 "help":  "The full absolute URL to access the document through the website.",
+                                 "readonly":  true,
+                                 "required":  false,
+                                 "string":  "Website Absolute URL",
+                                 "type":  "char"
+                             },
+    "message_is_follower":  {
+                                "readonly":  true,
+                                "required":  false,
+                                "string":  "Is Follower",
+                                "type":  "boolean"
+                            },
+    "message_follower_ids":  {
+                                 "readonly":  false,
+                                 "relation":  "mail.followers",
+                                 "required":  false,
+                                 "string":  "Followers",
+                                 "type":  "one2many"
+                             },
+    "message_partner_ids":  {
+                                "readonly":  false,
+                                "relation":  "res.partner",
+                                "required":  false,
+                                "string":  "Followers (Partners)",
+                                "type":  "many2many"
+                            },
+    "message_ids":  {
+                        "readonly":  false,
+                        "relation":  "mail.message",
+                        "required":  false,
+                        "string":  "Messages",
+                        "type":  "one2many"
+                    },
+    "has_message":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Has Message",
+                        "type":  "boolean"
+                    },
+    "message_needaction":  {
+                               "help":  "If checked, new messages require your attention.",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Action Needed",
+                               "type":  "boolean"
+                           },
+    "message_needaction_counter":  {
+                                       "help":  "Number of messages requiring action",
+                                       "readonly":  true,
+                                       "required":  false,
+                                       "string":  "Number of Actions",
+                                       "type":  "integer"
+                                   },
+    "message_has_error":  {
+                              "help":  "If checked, some messages have a delivery error.",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Message Delivery error",
+                              "type":  "boolean"
+                          },
+    "message_has_error_counter":  {
+                                      "help":  "Number of messages with delivery error",
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "Number of errors",
+                                      "type":  "integer"
+                                  },
+    "message_attachment_count":  {
+                                     "readonly":  true,
+                                     "required":  false,
+                                     "string":  "Attachment Count",
+                                     "type":  "integer"
+                                 },
+    "rating_ids":  {
+                       "readonly":  false,
+                       "relation":  "rating.rating",
+                       "required":  false,
+                       "string":  "Ratings",
+                       "type":  "one2many"
+                   },
+    "website_message_ids":  {
+                                "help":  "Website communication history",
+                                "readonly":  false,
+                                "relation":  "mail.message",
+                                "required":  false,
+                                "string":  "Website Messages",
+                                "type":  "one2many"
+                            },
+    "message_has_sms_error":  {
+                                  "help":  "If checked, some messages have a delivery error.",
+                                  "readonly":  true,
+                                  "required":  false,
+                                  "string":  "SMS Delivery error",
+                                  "type":  "boolean"
+                              },
+    "rating_last_value":  {
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Rating Last Value",
+                              "type":  "float"
+                          },
+    "rating_last_feedback":  {
+                                 "readonly":  true,
+                                 "required":  false,
+                                 "string":  "Rating Last Feedback",
+                                 "type":  "text"
+                             },
+    "rating_last_image":  {
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Rating Last Image",
+                              "type":  "binary"
+                          },
+    "rating_count":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Rating count",
+                         "type":  "integer"
+                     },
+    "rating_avg":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Average Rating",
+                       "type":  "float"
+                   },
+    "rating_avg_text":  {
+                            "readonly":  true,
+                            "required":  false,
+                            "selection":  [
+                                              [
+                                                  "top",
+                                                  "Happy"
+                                              ],
+                                              [
+                                                  "ok",
+                                                  "Neutral"
+                                              ],
+                                              [
+                                                  "ko",
+                                                  "Unhappy"
+                                              ],
+                                              [
+                                                  "none",
+                                                  "Not Rated yet"
+                                              ]
+                                          ],
+                            "string":  "Rating Avg Text",
+                            "type":  "selection"
+                        },
+    "rating_percentage_satisfaction":  {
+                                           "readonly":  true,
+                                           "required":  false,
+                                           "string":  "Rating Satisfaction",
+                                           "type":  "float"
+                                       },
+    "rating_last_text":  {
+                             "readonly":  true,
+                             "required":  false,
+                             "selection":  [
+                                               [
+                                                   "top",
+                                                   "Happy"
+                                               ],
+                                               [
+                                                   "ok",
+                                                   "Neutral"
+                                               ],
+                                               [
+                                                   "ko",
+                                                   "Unhappy"
+                                               ],
+                                               [
+                                                   "none",
+                                                   "Not Rated yet"
+                                               ]
+                                           ],
+                             "string":  "Rating Text",
+                             "type":  "selection"
+                         },
+    "name":  {
+                 "readonly":  false,
+                 "required":  true,
+                 "string":  "Name",
+                 "type":  "char"
+             },
+    "code":  {
+                 "readonly":  false,
+                 "required":  true,
+                 "string":  "Code",
+                 "type":  "char"
+             },
+    "parent_id":  {
+                      "readonly":  false,
+                      "relation":  "op.course",
+                      "required":  false,
+                      "string":  "Parent Course",
+                      "type":  "many2one"
+                  },
+    "evaluation_type":  {
+                            "readonly":  false,
+                            "required":  true,
+                            "selection":  [
+                                              [
+                                                  "normal",
+                                                  "Normal"
+                                              ],
+                                              [
+                                                  "GPA",
+                                                  "GPA"
+                                              ],
+                                              [
+                                                  "CWA",
+                                                  "CWA"
+                                              ],
+                                              [
+                                                  "CCE",
+                                                  "CCE"
+                                              ]
+                                          ],
+                            "string":  "Evaluation Type",
+                            "type":  "selection"
+                        },
+    "subject_ids":  {
+                        "readonly":  false,
+                        "relation":  "op.subject",
+                        "required":  false,
+                        "string":  "Subject(s)",
+                        "type":  "many2many"
+                    },
+    "max_unit_load":  {
+                          "readonly":  false,
+                          "required":  false,
+                          "string":  "Maximum Unit Load",
+                          "type":  "float"
+                      },
+    "min_unit_load":  {
+                          "readonly":  false,
+                          "required":  false,
+                          "string":  "Minimum Unit Load",
+                          "type":  "float"
+                      },
+    "department_id":  {
+                          "readonly":  false,
+                          "relation":  "op.department",
+                          "required":  false,
+                          "string":  "Department",
+                          "type":  "many2one"
+                      },
+    "active":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Active",
+                   "type":  "boolean"
+               },
+    "program_id":  {
+                       "readonly":  false,
+                       "relation":  "op.program",
+                       "required":  false,
+                       "string":  "Program",
+                       "type":  "many2one"
+                   },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "fees_term_id":  {
+                         "readonly":  false,
+                         "relation":  "op.fees.terms",
+                         "required":  false,
+                         "string":  "Fees Term",
+                         "type":  "many2one"
+                     },
+    "faculty_ids":  {
+                        "help":  "Faculty members who teach this course.",
+                        "readonly":  false,
+                        "relation":  "op.faculty",
+                        "required":  false,
+                        "string":  "Instructor",
+                        "type":  "many2many"
+                    },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "color":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "string":  "Color Index",
+                  "type":  "integer"
+              },
+    "student_count":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Student Count",
+                          "type":  "integer"
+                      },
+    "batch_count":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Batch Count",
+                        "type":  "integer"
+                    },
+    "subject_count":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Subject Count",
+                          "type":  "integer"
+                      },
+    "child_course_count":  {
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Child Course Count",
+                               "type":  "integer"
+                           },
+    "faculty_count":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Faculty Count",
+                          "type":  "integer"
+                      },
+    "course_image":  {
+                         "readonly":  false,
+                         "required":  false,
+                         "string":  "Course Image",
+                         "type":  "binary"
+                     },
+    "area_id":  {
+                    "readonly":  true,
+                    "relation":  "op.area",
+                    "required":  false,
+                    "string":  "Area",
+                    "type":  "many2one"
+                },
+    "specialization_id":  {
+                              "readonly":  false,
+                              "relation":  "op.specialization",
+                              "required":  false,
+                              "string":  "Specialization",
+                              "type":  "many2one"
+                          },
+    "online_course":  {
+                          "readonly":  false,
+                          "required":  false,
+                          "string":  "Online Course",
+                          "type":  "boolean"
+                      },
+    "subject_counts":  {
+                           "readonly":  true,
+                           "required":  false,
+                           "string":  "Subject Counts",
+                           "type":  "integer"
+                       },
+    "notice_group_id":  {
+                            "readonly":  false,
+                            "relation":  "op.notice.group",
+                            "required":  false,
+                            "string":  "Notice Group",
+                            "type":  "many2one"
+                        },
+    "admission_count":  {
+                            "readonly":  true,
+                            "required":  false,
+                            "string":  "Admission Count",
+                            "type":  "integer"
+                        },
+    "assignment_count":  {
+                             "readonly":  true,
+                             "required":  false,
+                             "string":  "Assignment Count",
+                             "type":  "integer"
+                         },
+    "short_desc":  {
+                       "readonly":  false,
+                       "required":  false,
+                       "string":  "Short Description",
+                       "type":  "text"
+                   },
+    "sequence":  {
+                     "help":  "Display order",
+                     "readonly":  false,
+                     "required":  false,
+                     "string":  "Sequence",
+                     "type":  "integer"
+                 },
+    "tag_ids":  {
+                    "readonly":  false,
+                    "relation":  "op.course.tag",
+                    "required":  false,
+                    "string":  "Tags",
+                    "type":  "many2many"
+                },
+    "category_ids":  {
+                         "readonly":  false,
+                         "relation":  "op.course.category",
+                         "required":  false,
+                         "string":  "Categories",
+                         "type":  "many2many"
+                     },
+    "state":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "selection":  [
+                                    [
+                                        "draft",
+                                        "Draft"
+                                    ],
+                                    [
+                                        "open",
+                                        "Confirm"
+                                    ],
+                                    [
+                                        "closed",
+                                        "Closed"
+                                    ]
+                                ],
+                  "string":  "State",
+                  "type":  "selection"
+              },
+    "display_style":  {
+                          "readonly":  false,
+                          "required":  false,
+                          "selection":  [
+                                            [
+                                                "default",
+                                                "Default"
+                                            ],
+                                            [
+                                                "detail_one",
+                                                "Detailed One"
+                                            ],
+                                            [
+                                                "detail_two",
+                                                "Detailed Two"
+                                            ]
+                                        ],
+                          "string":  "Display Style",
+                          "type":  "selection"
+                      },
+    "description":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Description",
+                        "type":  "html"
+                    },
+    "allow_reviews":  {
+                          "readonly":  false,
+                          "required":  false,
+                          "string":  "Allow Reviews",
+                          "type":  "boolean"
+                      },
+    "module_lines":  {
+                         "readonly":  false,
+                         "relation":  "op.course.module",
+                         "required":  false,
+                         "string":  "Module",
+                         "type":  "one2many"
+                     },
+    "content_content_ids":  {
+                                "readonly":  true,
+                                "relation":  "op.course.module",
+                                "required":  false,
+                                "string":  "Content",
+                                "type":  "one2many"
+                            },
+    "content_category_ids":  {
+                                 "readonly":  true,
+                                 "relation":  "op.course.module",
+                                 "required":  false,
+                                 "string":  "Content Modules",
+                                 "type":  "one2many"
+                             },
+    "lms_course_type":  {
+                            "readonly":  false,
+                            "required":  true,
+                            "selection":  [
+                                              [
+                                                  "training",
+                                                  "Training"
+                                              ],
+                                              [
+                                                  "documentation",
+                                                  "Documentation"
+                                              ]
+                                          ],
+                            "string":  "Course type",
+                            "type":  "selection"
+                        },
+    "is_paid":  {
+                    "readonly":  false,
+                    "required":  false,
+                    "string":  "Paid Course?",
+                    "type":  "boolean"
+                },
+    "is_certificate":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Certificate Of Completion?",
+                           "type":  "boolean"
+                       },
+    "user_id":  {
+                    "readonly":  false,
+                    "relation":  "res.users",
+                    "required":  false,
+                    "string":  "Responsible",
+                    "type":  "many2one"
+                },
+    "total_time":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Duration",
+                       "type":  "float"
+                   },
+    "total_modules":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "string":  "Number of Contents",
+                          "type":  "integer"
+                      },
+    "total_enrollment":  {
+                             "readonly":  true,
+                             "required":  false,
+                             "string":  "Total Enrollment",
+                             "type":  "integer"
+                         },
+    "enrollment_line":  {
+                            "readonly":  false,
+                            "relation":  "op.course.enrollment",
+                            "required":  false,
+                            "string":  "Enrollment",
+                            "type":  "one2many"
+                        },
+    "visibility":  {
+                       "help":  "Defines who can access your courses and their content.",
+                       "readonly":  false,
+                       "required":  true,
+                       "selection":  [
+                                         [
+                                             "public",
+                                             "Everyone"
+                                         ],
+                                         [
+                                             "connected",
+                                             "Signed In"
+                                         ],
+                                         [
+                                             "invited_user",
+                                             "Only Invited User"
+                                         ]
+                                     ],
+                       "string":  "Visibility Policy",
+                       "type":  "selection"
+                   },
+    "invited_users_ids":  {
+                              "readonly":  false,
+                              "relation":  "res.users",
+                              "required":  false,
+                              "string":  "Invited Users",
+                              "type":  "many2many"
+                          },
+    "navigation_policy":  {
+                              "readonly":  false,
+                              "required":  true,
+                              "selection":  [
+                                                [
+                                                    "free",
+                                                    "Free Learning Path"
+                                                ],
+                                                [
+                                                    "sequence",
+                                                    "Sequential Learning Path"
+                                                ]
+                                            ],
+                              "string":  "Navigation Policy",
+                              "type":  "selection"
+                          },
+    "suggested_course_ids":  {
+                                 "readonly":  false,
+                                 "relation":  "op.course",
+                                 "required":  false,
+                                 "string":  "Suggested Course",
+                                 "type":  "many2many"
+                             },
+    "rating_avg_stars":  {
+                             "readonly":  true,
+                             "required":  false,
+                             "string":  "Rating Average (Stars)",
+                             "type":  "float"
+                         },
+    "announcement_line":  {
+                              "readonly":  false,
+                              "relation":  "op.course.announcement",
+                              "required":  false,
+                              "string":  "Announcements",
+                              "type":  "one2many"
+                          },
+    "background":  {
+                       "readonly":  false,
+                       "required":  false,
+                       "string":  "Background Image",
+                       "type":  "binary"
+                   },
+    "certi_title":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Certificate Title",
+                        "type":  "char"
+                    },
+    "certi_date":  {
+                       "readonly":  false,
+                       "required":  false,
+                       "string":  "Certificate Date",
+                       "type":  "boolean"
+                   },
+    "completion_count":  {
+                             "readonly":  true,
+                             "required":  false,
+                             "string":  "Completions",
+                             "type":  "integer"
+                         },
+    "avg_progress":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Avg. Progress (%)",
+                         "type":  "float"
+                     },
+    "subject_selection_option":  {
+                                     "readonly":  false,
+                                     "required":  false,
+                                     "selection":  [
+                                                       [
+                                                           "regular",
+                                                           " Regular"
+                                                       ],
+                                                       [
+                                                           "credit_based",
+                                                           "Credit Based"
+                                                       ],
+                                                       [
+                                                           "subject_based",
+                                                           "Subject Based"
+                                                       ]
+                                                   ],
+                                     "string":  "Subject Selection",
+                                     "type":  "selection"
+                                 },
+    "credit":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Course Credit",
+                   "type":  "float"
+               },
+    "reg_fees":  {
+                     "readonly":  false,
+                     "required":  false,
+                     "string":  "Registration Fees",
+                     "type":  "boolean"
+                 },
+    "product_id":  {
+                       "readonly":  false,
+                       "relation":  "product.product",
+                       "required":  false,
+                       "string":  "Product",
+                       "type":  "many2one"
+                   },
+    "full_description":  {
+                             "readonly":  false,
+                             "required":  false,
+                             "string":  "Full Description",
+                             "type":  "html"
+                         },
+    "is_enroll_user":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Enroll User",
+                           "type":  "boolean"
+                       },
+    "online_course_created":  {
+                                  "readonly":  false,
+                                  "required":  false,
+                                  "string":  "Online Course Created",
+                                  "type":  "boolean"
+                              },
+    "lms_course_count":  {
+                             "readonly":  true,
+                             "required":  false,
+                             "string":  "LMS course count",
+                             "type":  "char"
+                         },
+    "forum_id":  {
+                     "readonly":  false,
+                     "relation":  "forum.forum",
+                     "required":  false,
+                     "string":  "Forum",
+                     "type":  "many2one"
+                 },
+    "forum_post_ids":  {
+                           "readonly":  false,
+                           "relation":  "forum.post",
+                           "required":  false,
+                           "string":  "Forum Post",
+                           "type":  "one2many"
+                       },
+    "forum_count":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Forum Count",
+                        "type":  "integer"
+                    },
+    "forum_post_count":  {
+                             "readonly":  true,
+                             "required":  false,
+                             "string":  "Forum Post Count",
+                             "type":  "integer"
+                         },
+    "forum_reply_count":  {
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Forum Reply Count",
+                              "type":  "integer"
+                          },
+    "price":  {
+                  "help":  "The sale price is managed from the product template. Click on the \u0027Configure Variants\u0027 button to set the extra attribute prices.",
+                  "readonly":  true,
+                  "required":  false,
+                  "string":  "Computed Price",
+                  "type":  "float"
+              },
+    "list_price":  {
+                       "help":  "Price at which the product is sold to customers.",
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Price",
+                       "type":  "float"
+                   },
+    "survey_ids":  {
+                       "readonly":  false,
+                       "relation":  "survey.survey",
+                       "required":  false,
+                       "string":  "Survey",
+                       "type":  "one2many"
+                   },
+    "timing_course_count":  {
+                                "readonly":  true,
+                                "required":  false,
+                                "string":  "Timing Course Count",
+                                "type":  "integer"
+                            },
+    "timetable_count":  {
+                            "readonly":  true,
+                            "required":  false,
+                            "string":  "Timetable Count",
+                            "type":  "integer"
+                        },
+    "grade_template_ids":  {
+                               "readonly":  false,
+                               "relation":  "op.grade.template",
+                               "required":  true,
+                               "string":  "Grade Template",
+                               "type":  "many2many"
+                           },
+    "grade_scale_id":  {
+                           "readonly":  false,
+                           "relation":  "op.grade.scale",
+                           "required":  false,
+                           "string":  "Final Grade",
+                           "type":  "many2one"
+                       },
+    "course_change_fees":  {
+                               "readonly":  false,
+                               "required":  false,
+                               "string":  "Course Change Fees",
+                               "type":  "boolean"
+                           }
+}

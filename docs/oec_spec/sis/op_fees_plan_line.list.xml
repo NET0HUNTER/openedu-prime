@@ -1,0 +1,14 @@
+﻿<list>
+                    <field name="invoice_date"/>
+                    <field name="student_id"/>
+                    <field name="due_days"/>
+                    <field name="fees_factor"/>
+                    <field name="amount"/>
+                    <field name="paid_amount" sum="Total"/>
+                    <field name="fees_term_id"/>
+                    <field name="state"/>
+                    <field name="invoice_state"/>
+                    <button string="Create Invoice" invisible="state != 'draft'" type="object" name="get_invoice"/>
+
+                    <button string="View Invoice" invisible="state != 'invoice'" type="object" name="action_get_invoice"/>
+                </list>

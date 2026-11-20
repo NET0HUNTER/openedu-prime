@@ -1,0 +1,13 @@
+﻿<search string="Grading Assignment">
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="My Assignments" name="faculty_id" domain="[('faculty_id.user_id','=',uid)]"/>
+                    <field name="name"/>
+                    <field name="sequence"/>
+                    <field name="assignment_type"/>
+                    <newline/>
+                    <group>
+                        <filter string="Year" name="group_by_year" domain="[]" context="{'grou p_by':'year_id'}"/>
+                        <filter string="Term" name="group_by_term" domain="[]" context="{'group_by':'term_id'}"/>
+                        <filter string="Course" name="group_by_course" domain="[]" context="{'group_by':'course_id'}"/>
+                    </group>
+                </search>

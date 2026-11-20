@@ -1,0 +1,1 @@
+<kanban string="Media Purchase Request"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

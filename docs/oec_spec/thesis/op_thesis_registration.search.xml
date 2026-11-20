@@ -1,0 +1,22 @@
+<search string="Thesis Registrations">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="student_id"/>
+                    <field name="program_id"/>
+                    <field name="department_id"/>
+                    <field name="research_area"/>
+                    <filter string="Draft" name="draft_thesis" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Submitted" name="submitted_thesis" domain="[('state', '=', 'submitted')]"/>
+                    <filter string="Approved" name="approved_thesis" domain="[('state', '=', 'approved')]"/>
+                    <filter string="In Progress" name="in_progress_thesis" domain="[('state', '=', 'in_progress')]"/>
+                    <filter string="Completed" name="completed_thesis" domain="[('state', '=', 'completed')]"/>
+                    <filter string="Cancelled" name="cancelled_thesis" domain="[('state', '=', 'cancelled')]"/>
+                    <filter string="With Supervisor" name="with_supervisor" domain="[('has_supervisor', '=', True)]"/>
+                    <filter string="Without Supervisor" name="without_supervisor" domain="[('has_supervisor', '=', False)]"/>
+                    <group>
+                        <filter string="Student" name="group_by_student" domain="[]" context="{'group_by':'student_id'}"/>
+                        <filter string="Program" name="group_by_program" domain="[]" context="{'group_by':'program_id'}"/>
+                        <filter string="Department" name="group_by_department" domain="[]" context="{'group_by':'department_id'}"/>
+                        <filter string="Status" name="group_by_state" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>

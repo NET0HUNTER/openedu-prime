@@ -1,0 +1,20 @@
+<search>
+                <field name="issue_name" string="Helpdesk Ticket" filter_domain="[('issue_name','ilike',self)]"/>
+                <field name="team_id" string="Team"/>
+                <field name="user_id" string="Created By"/>
+                <field name="issue_type_id" string="Issue Type"/>
+                <field name="partner_id" string="Related Partner"/>
+                <field name="stage_id" string="Status"/>
+                <filter string="Archived" name="archieved" domain="[('active','=',False)]"/>
+                <filter string="My Ticket" name="ticket_assigned_to_me" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter string="Open" name="stage_open" domain="[('stage_id', '!=',4)]"/>
+                <group>
+                    <filter string="Status" name="status" domain="" context="{'group_by':'stage_id'}"/>
+                    <filter string="Team" name="team" domain="" context="{'group_by':'team_id'}"/>
+                    <filter string="Created By" name="createdby" domain="" context="{'group_by':'user_id'}"/>
+                    <filter string="Related Partner" name="relatedpartner" domain="" context="{'group_by':'partner_id'}"/>
+                    <filter string="Assigned To" name="assignto" domain="" context="{'group_by':'user_id'}"/>
+                    <filter string="Issue Type" name="issuetype" domain="" context="{'group_by':'issue_type_id'}"/>
+                </group>
+            </search>

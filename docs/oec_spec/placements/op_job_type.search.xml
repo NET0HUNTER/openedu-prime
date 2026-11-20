@@ -1,0 +1,4 @@
+<search string="Job Type">
+                <field name="name"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+            </search>

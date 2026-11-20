@@ -1,0 +1,823 @@
+﻿- Admissions => [ir.actions.act_window] op.admission.register {kanban,form,list} 
+  - Admissions
+    - Admission => [ir.actions.act_window] op.admission.register {kanban,form,list} 
+    - Applications => [ir.actions.act_window] op.admission {kanban,list,form,graph,pivot} 
+    - Course Change Request => [ir.actions.act_window] op.student.course.change.req {list,form} 
+  - Reporting
+    - Admission Report => [ir.actions.act_window] admission.analysis {form} 
+    - Admission Analysis => [ir.actions.act_window] op.admission {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Admission Stages => [ir.actions.act_window] admission.stage {list,form} 
+    - Admission Tags => [ir.actions.act_window] admission.tag {list,form} 
+    - Admission Templates => [ir.actions.act_window] op.admission.customtemplate {list,form} 
+- Students => [ir.actions.act_window] op.student {kanban,list,form,activity} 
+  - Profile => [ir.actions.act_window] op.student {kanban,list,form,activity} 
+  - General
+    - Activity Logs => [ir.actions.act_window] op.activity {list,form,pivot,graph} 
+    - Achievements => [ir.actions.act_window] op.achievement {list,form,pivot,graph} 
+    - Subject Registration => [ir.actions.act_window] op.subject.registration {list,form,graph,pivot} 
+    - Student Course Detail => [ir.actions.act_window] op.student.course {list,form,pivot} 
+    - Student Progression => [ir.actions.act_window] op.student.progression {list,form,pivot,graph} 
+    - Student Withdrawal Request => [ir.actions.act_window] op.student.withdrawal {list,form} 
+    - Student Leave Request => [ir.actions.act_window] student.leave.request {calendar,kanban,list,form,search} 
+  - Reporting
+    - Activity Analysis => [ir.actions.act_window] op.activity {pivot} 
+    - Achievement Analysis => [ir.actions.act_window] op.achievement {pivot} 
+    - Subject Registration Analysis => [ir.actions.act_window] op.subject.registration {pivot} 
+    - Student Course Analysis => [ir.actions.act_window] op.student.course {pivot} 
+    - Student Progress Analysis => [ir.actions.act_window] op.student.progression {pivot} 
+    - Student Withdrawal Analysis => [ir.actions.act_window] student.withdrawal.analysis.wizard {form} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Activity Types => [ir.actions.act_window] op.activity.type {list,form} 
+    - Leave Type => [ir.actions.act_window] student.leave.type {list,form} 
+- SIS => [ir.actions.act_window] op.department {kanban,form} 
+  - Dashboard
+    - Department => [ir.actions.act_window] op.department {kanban,form} 
+    - Program => [ir.actions.act_window] op.program {kanban,form} 
+    - Course => [ir.actions.act_window] op.course {kanban,form} 
+    - Batch => [ir.actions.act_window] op.batch {kanban,form} 
+    - Section => [ir.actions.act_window] op.section {kanban,list,form} 
+    - Convocation => [ir.actions.act_window] op.convocation.ceremony {kanban,form} 
+  - Students => [ir.actions.act_window] op.student {kanban,list,form,activity} 
+  - Faculties => [ir.actions.act_window] op.faculty {kanban,list,form,activity} 
+  - Parents => [ir.actions.act_window] op.parent {list,form} 
+  - General
+    - Fees
+      - Fees Plan => [ir.actions.act_window] op.fees.plan {list,form} 
+      - Fees Plan Lines => [ir.actions.act_window] op.fees.plan.line {list,form} 
+    - Health => [ir.actions.act_window] op.health {list,form} 
+    - Student Migration => [ir.actions.act_window] student.migrate {form} 
+    - Discipline
+      - Discipline Records => [ir.actions.act_window] op.discipline {calendar,list,form,pivot,graph} 
+      - Suspended Students => [ir.actions.act_window] suspended.student {list,form} 
+    - Scholarship
+      - Scholarships => [ir.actions.act_window] op.scholarship {kanban,list,form} 
+    - Grievances => [ir.actions.act_window] grievance {kanban,list,form,search,pivot,activity} 
+      - Grievances => [ir.actions.act_window] grievance {kanban,list,form,search,pivot,activity} 
+  - Convocation
+    - Ceremonies => [ir.actions.act_window] op.convocation.ceremony {kanban,list,form} 
+    - Registrations => [ir.actions.act_window] op.convocation.registration {kanban,list,form} 
+  - Reporting
+    - Migration Report => [ir.actions.act_window] migration.report {pivot} 
+    - Discipline
+      - Misbehaviour Type Wise => [ir.actions.act_window] misbehaviour.type {form} 
+      - Student Wise => [ir.actions.act_window] student.wise {form} 
+    - Attainment => [ir.actions.act_window] attainment.dashboard.record {pivot} 
+    - Skill Assessment
+      - Skill Assessment Analysis => [ir.actions.act_window] op.student.skill.assessment.line {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Academic Year => [ir.actions.act_window] op.academic.year {list,form} 
+    - Academic Term => [ir.actions.act_window] op.academic.term {list,form} 
+    - Fees Terms => [ir.actions.act_window] op.fees.terms {list,form} 
+    - Program Management
+      - Programs => [ir.actions.act_window] op.program {list,form,pivot} 
+      - Program Level => [ir.actions.act_window] op.program.level {list,form} 
+    - Course Management
+      - Courses => [ir.actions.act_window] op.course {list,form,pivot} 
+      - Batches => [ir.actions.act_window] op.batch {list,form,pivot} 
+      - Department => [ir.actions.act_window] op.department {list,form} 
+      - Course Credit => [ir.actions.act_window] course.credit {list,form} 
+    - Subject Management
+      - Subjects => [ir.actions.act_window] op.subject {list,form} 
+    - Class Room Management
+      - Class Rooms => [ir.actions.act_window] op.classroom {list,form} 
+    - OBE
+      - Program outcome => [ir.actions.act_window] program.outcome {list,form} 
+      - Course outcome => [ir.actions.act_window] course.outcome {list,form} 
+    - Activity Management
+      - Achievement Types => [ir.actions.act_window] op.achievement.type {list,form} 
+    - Skill Assessment
+      - Skills => [ir.actions.act_window] op.student.skill.name {list,form} 
+      - Skill Levels => [ir.actions.act_window] op.student.skill.level.name {list,form} 
+      - Skills Category => [ir.actions.act_window] op.skill.category {list,form} 
+      - Skill Assessment Template => [ir.actions.act_window] op.student.skill.type {list,form} 
+    - Parents
+      - Relationships => [ir.actions.act_window] op.parent.relationship {list,form} 
+    - General Management
+      - Facilities => [ir.actions.act_window] op.facility {list,form} 
+      - Convocation Documents => [ir.actions.act_window] op.convocation.document {list,form} 
+      - Categories => [ir.actions.act_window] op.category {list,form} 
+      - Area => [ir.actions.act_window] op.area {list,form} 
+      - Specialization => [ir.actions.act_window] op.specialization {list,form} 
+      - Scholarship Stages => [ir.actions.act_window] scholarship.stages {list,form} 
+      - Scholarship Types => [ir.actions.act_window] op.scholarship.type {list,form} 
+    - Discipline
+      - School Offences => [ir.actions.act_window] school.offences {list,form} 
+      - Elearning Rules => [ir.actions.act_window] elearning.rules {list,form} 
+      - Misbehaviour Categories => [ir.actions.act_window] op.misbehaviour.category {list,form} 
+    - Grievances
+      - Grievance Category => [ir.actions.act_window] grievance.category {list,form} 
+      - Grievance Teams => [ir.actions.act_window] grievance.team {kanban,list,form,search} 
+- LMS => [ir.actions.act_window] op.course {kanban,list,form} 
+  - Dashboard => [ir.actions.act_window] op.course {kanban,list,form} 
+  - Reporting
+    - Summary => [ir.actions.client] False {} lms.stats.dashboard
+    - Course Participation => [ir.actions.act_window] op.course.enrollment {graph} 
+    - Course Profile Report => [ir.actions.act_window] op.course {pivot} 
+    - Quiz Participation Report => [ir.actions.act_window] op.quiz {list} 
+    - Quiz Statistics => [ir.actions.act_window] op.quiz.result {graph} 
+    - Forum Participation => [ir.actions.act_window] op.course {graph} 
+  - Configuration
+    - Tags => [ir.actions.act_window] op.course.tag {list} 
+    - Category => [ir.actions.act_window] op.course.category {list,form} 
+  - LMS Course Generator => [ir.actions.client] False {} lms_course_generator
+- Time Table => [ir.actions.act_window] op.session {kanban,calendar,pivot} 
+  - Timetable
+    - Sessions => [ir.actions.act_window] op.session {list,form} 
+    - Generate Timetable => [ir.actions.act_window] generate.time.table {form} 
+  - Lesson Planning
+    - Lesson Planning => [ir.actions.act_window] op.lesson {calendar,list,form,pivot,graph} 
+  - Reporting
+    - Generate Timetable Report => [ir.actions.act_window] time.table.report {form} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+-  Class Attendances => [ir.actions.act_window] op.attendance.register {kanban,list,form} 
+  - Attendance
+    - Registers => [ir.actions.act_window] op.attendance.register {kanban,list,form} 
+    - Sheets => [ir.actions.act_window] op.attendance.sheet {kanban,list,form,pivot,graph} 
+    - Attendance Lines => [ir.actions.act_window] op.attendance.line {list,form,pivot,graph} 
+  - Check In => [ir.actions.client] False {} student_attendance_face_mode
+  - Kiosk Mode => [ir.actions.client] False {} student_attendance_kiosk_mode
+  - Reporting
+    - Attendance Sheet Analysis => [ir.actions.act_window] op.attendance.sheet {pivot} 
+    - Attendance Line Analysis => [ir.actions.act_window] op.attendance.line {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Attendance Type => [ir.actions.act_window] op.attendance.type {list,form} 
+- Assignments => [ir.actions.act_window] op.assignment {list,form,pivot,graph} 
+  - Assignments
+    - Assignments => [ir.actions.act_window] op.assignment {list,form,pivot,graph} 
+    - Submissions => [ir.actions.act_window] op.assignment.sub.line {list,form,pivot,graph} 
+  - Reporting
+    - Assignment Analysis => [ir.actions.act_window] op.assignment {pivot} 
+    - Submission Analysis => [ir.actions.act_window] op.assignment.sub.line {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Assignment Types => [ir.actions.act_window] grading.assignment.type {list,form} 
+    - Rubrics Template => [ir.actions.act_window] op.rubric.template {list,form} 
+    - Assignment Grades => [ir.actions.act_window] op.assign.grade.config {list,form} 
+    - Rubrics Level => [ir.actions.act_window] op.rubric.level {list,form} 
+    - Late Submission => [ir.actions.act_window] late.submission {list,form} 
+- Exams => [ir.actions.act_window] op.exam.session {list,form,calendar,pivot} 
+  - Exams
+    - Exam Sessions => [ir.actions.act_window] op.exam.session {list,form,calendar,pivot} 
+    - Exams => [ir.actions.act_window] op.exam {list,form,calendar,pivot} 
+    - Exam Attendees => [ir.actions.act_window] op.exam.attendees {list,form,pivot} 
+    - Result Templates => [ir.actions.act_window] op.result.template {list,form} 
+    - Marksheet Registers => [ir.actions.act_window] op.marksheet.register {list,form} 
+    - Marksheet Lines => [ir.actions.act_window] op.marksheet.line {list,form,pivot} 
+    - Result Lines => [ir.actions.act_window] op.result.line {list,form} 
+  - Reporting
+    - Result Analysis => [ir.actions.act_window] op.result.line {graph} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Exam Types => [ir.actions.act_window] op.exam.type {list,form} 
+    - Exam Rooms => [ir.actions.act_window] op.exam.room {list,form} 
+- Grade Book => [ir.actions.act_window] grading.assignment {kanban,list,form} 
+  - Grading Assignment => [ir.actions.act_window] grading.assignment {kanban,list,form} 
+  - Grade Book => [ir.actions.act_window] gradebook.gradebook {list,form} 
+  - Reporting
+    - Gradebook Excel Report => [ir.actions.act_window] grading.wizard {form} 
+    - Grade By Course => [ir.actions.act_window] op.course {list,form,pivot} 
+    - Grade By Batch => [ir.actions.act_window] op.batch {list,form,pivot} 
+    - Grade By Subject => [ir.actions.act_window] op.subject {list,form} 
+    - Grades Analysis => [ir.actions.act_window] gradebook.line {list,form,pivot} 
+    - Honor Roll => [ir.actions.act_window] op.honorroll {list,form} 
+    - Grade By Report => [ir.actions.client] False {} grade_book_grid_by_assignment
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Assignment
+      - Assignment Stages => [ir.actions.act_window] assignment.stage {list,form} 
+      - Assignment Types => [ir.actions.act_window] grading.assignment.type {list,form} 
+      - Grade Table => [ir.actions.act_window] op.grade.table {list,form} 
+    - Course
+      - Grade Scale => [ir.actions.act_window] op.grade.scale {list,form} 
+      - Grade Template => [ir.actions.act_window] op.grade.template {list,form} 
+- Job Queue => [ir.actions.act_window] queue.job {list,form,pivot,graph} 
+  - Queue
+    - Jobs => [ir.actions.act_window] queue.job {list,form,pivot,graph} 
+    - Channels => [ir.actions.act_window] queue.job.channel {list,form} 
+    - Job Functions => [ir.actions.act_window] queue.job.function {list,form} 
+- Quiz => [ir.actions.act_window] op.quiz {list,form} 
+  - Quiz
+    - Quiz => [ir.actions.act_window] op.quiz {list,form} 
+    - Results => [ir.actions.act_window] op.quiz.result {list,pivot,form} 
+  - Question Bank
+    - Question Bank => [ir.actions.act_window] op.question.bank {list,form} 
+  - Reporting
+    - Quiz Result Analysis => [ir.actions.act_window] op.quiz.result {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Quiz Category => [ir.actions.act_window] op.quiz.category {list,form} 
+    - Grades => [ir.actions.act_window] op.answer.grade {list,form} 
+    - Question Bank Type => [ir.actions.act_window] op.question.bank.type {list,form} 
+  - AI Quiz Generator => [ir.actions.client] False {} quiz_ai_view
+- Thesis => [ir.actions.act_window] op.thesis.registration {kanban,list,form,graph,pivot} 
+  - Thesis Management
+    - Registrations => [ir.actions.act_window] op.thesis.registration {kanban,list,form,graph,pivot} 
+    - Progress Reports => [ir.actions.act_window] op.thesis.progress {list,form,graph,pivot} 
+    - Extension Requests => [ir.actions.act_window] op.thesis.extension {list,form,graph,pivot} 
+    - Submissions => [ir.actions.act_window] op.thesis.submission {list,form,graph,pivot} 
+  - Configuration
+    - Committee Members => [ir.actions.act_window] op.thesis.committee {list,form} 
+    - Evaluation Templates => [ir.actions.act_window] op.thesis.evaluation.template {list,form} 
+    - Extension Reasons => [ir.actions.act_window] op.thesis.extension.reason {list,form} 
+    - Report Types => [ir.actions.act_window] op.thesis.report.type {list,form} 
+- OMR => [ir.actions.act_window] op.omr.exam {kanban,list,form,pivot} 
+  - Exam => [ir.actions.act_window] op.omr.exam {kanban,list,form,pivot} 
+  - Generate Sheet => [ir.actions.act_window] op.omr.template.wizard {form} 
+  - Reporting
+    - Answer Sheets => [ir.actions.act_window] op.answer.sheets {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Answer Sheet => [ir.actions.act_window] op.answersheet.configuration {list,form} 
+- Campus => [ir.actions.act_window] op.campus.facility {list,form,graph,pivot} 
+  - Facilities
+    - Facility => [ir.actions.act_window] op.campus.facility {list,form,graph,pivot} 
+    - Facility Allocations => [ir.actions.act_window] op.facility.allocation {calendar,list,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Facility Type => [ir.actions.act_window] op.facility.type {list,form} 
+- Transportation => [ir.actions.act_window] op.route.register {kanban,list,form} 
+  - Route Register => [ir.actions.act_window] op.route.register {kanban,list,form} 
+  - Trips => [ir.actions.act_window] op.route.line {list,form,pivot,graph} 
+  - Agreements => [ir.actions.act_window] op.transportation.agreement {list,form,pivot,calendar} 
+  - Reporting
+    - Trips Analysis => [ir.actions.act_window] op.route.line {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Routes => [ir.actions.act_window] op.route {list,form} 
+    - Stops => [ir.actions.act_window] op.stop {list,form,pivot,graph} 
+    - Vehicles => [ir.actions.act_window] op.vehicle {list,form} 
+    - Plan => [ir.actions.act_window] cost.plan {list,form} 
+- Library => [ir.actions.act_window] op.media.type {kanban,form} 
+  - Dashboard => [ir.actions.act_window] op.media.type {kanban,form} 
+  - All Media
+    - Media => [ir.actions.act_window] op.media {list,form,pivot,graph} 
+    - Media Units => [ir.actions.act_window] op.media.unit {list,form,pivot,graph} 
+    - Media Movements => [ir.actions.act_window] op.media.movement {list,form,pivot} 
+    - Media Queue Requests => [ir.actions.act_window] op.media.queue {list,form,pivot,graph} 
+    - Media Purchase Requests => [ir.actions.act_window] op.media.purchase {list,form,pivot,graph} 
+    - Issue Media => [ir.actions.act_window] barcode.issue.media {form} 
+  - Barcode => [ir.actions.client] False {} openeducat_library_barcode.scan_view
+  - Reporting
+    - Media Analysis => [ir.actions.act_window] op.media {pivot} 
+    - Media Unit Analysis => [ir.actions.act_window] op.media.unit {pivot} 
+    - Media Movement Analysis => [ir.actions.act_window] op.media.movement {pivot} 
+    - Media Queue Analysis => [ir.actions.act_window] op.media.queue {pivot} 
+    - Media Purchase Analysis => [ir.actions.act_window] op.media.purchase {pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Library Cards => [ir.actions.act_window] op.library.card {list,form} 
+    - Publishers => [ir.actions.act_window] op.publisher {list,form} 
+    - Authors => [ir.actions.act_window] op.author {list,form} 
+    - Tags => [ir.actions.act_window] op.tag {list,form} 
+    - Media Type => [ir.actions.act_window] op.media.type {list,form} 
+    - Library Card Types => [ir.actions.act_window] op.library.card.type {list,form} 
+- Digital Library => [ir.actions.act_window] op.digital.library.category {list,form} 
+  - Category => [ir.actions.act_window] op.digital.library.category {list,form} 
+  - Material => [ir.actions.act_window] op.digital.library.material {list,form} 
+  - Enrollment => [ir.actions.act_window] op.digital.library.enrollment {list,form} 
+- Events => [ir.actions.act_window] event.event {kanban,calendar,list,form,pivot,graph,activity} 
+  - Events => [ir.actions.act_window] event.event {kanban,calendar,list,form,pivot,graph,activity} 
+  - Registration Desk => [ir.actions.client] False {} event.event_barcode_scan_view
+  - Reporting
+    - Attendees => [ir.actions.act_window] event.registration {graph,pivot,kanban,list,form} 
+    - Revenues => [ir.actions.act_window] event.sale.report {graph,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Event Templates => [ir.actions.act_window] event.type {list,form} 
+    - Event Stages => [ir.actions.act_window] event.stage {list,form} 
+    - Event Tags Categories => [ir.actions.act_window] event.tag.category {list,form} 
+    - Event Questions => [ir.actions.act_window] event.question {list,form} 
+    - Lead Generation => [ir.actions.act_window] event.lead.rule {list,form} 
+- Placements => [ir.actions.act_window] op.activity.announcement {kanban,list,form,pivot,calendar,activity} 
+  - Opportunities
+    - Job Opportunities => [ir.actions.act_window] op.activity.announcement {kanban,list,form,pivot,calendar,activity} 
+    - Student Applications => [ir.actions.act_window] op.job.applicant {kanban,list,form,graph,pivot,activity} 
+    - Placement Offers => [ir.actions.act_window] op.placement.offer {list,form,pivot} 
+  - Campus Events => [ir.actions.act_window] event.event {kanban,list,form} 
+  - Configuration
+    - Coordination Teams => [ir.actions.act_window] op.placement.cell {kanban,list,form} 
+    - Partner Companies => [ir.actions.act_window] res.partner {kanban,list,form} 
+    - Recruitment Sessions => [ir.actions.act_window] training.season {list,form} 
+    - Event Templates => [ir.actions.act_window] event.type {list,form} 
+    - Event Stages => [ir.actions.act_window] event.stage {list,form} 
+    - Event Tages => [ir.actions.act_window] event.tag.category {list,form} 
+- Alumni => [ir.actions.act_window] op.alumni.group {list,form} 
+  - Alumni Group => [ir.actions.act_window] op.alumni.group {list,form} 
+  - Alumni Job => [ir.actions.act_window] op.job.post {list,form,pivot,calendar,activity} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+- Fleet => [ir.actions.act_window] fleet.vehicle {kanban,list,form,pivot,activity} 
+  - Fleet
+    - Fleet => [ir.actions.act_window] fleet.vehicle {kanban,list,form,pivot,activity} 
+    - Contracts => [ir.actions.act_window] fleet.vehicle.log.contract {list,kanban,form,graph,pivot,activity} 
+    - Services => [ir.actions.act_window] fleet.vehicle.log.services {list,kanban,form,graph,pivot,activity} 
+    - Odometers => [ir.actions.act_window] fleet.vehicle.odometer {list,form,graph} 
+  - Reporting
+    - Costs => [ir.actions.act_window] fleet.vehicle.cost.report {graph,pivot} 
+    - Odometers => [ir.actions.act_window] fleet.vehicle.odometer.report {graph} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Models
+      - Manufacturers => [ir.actions.act_window] fleet.vehicle.model.brand {kanban,list,form} 
+      - Models => [ir.actions.act_window] fleet.vehicle.model {list,form} 
+      - Categories => [ir.actions.act_window] fleet.vehicle.model.category {list} 
+- Recruitment => [ir.actions.act_window] hr.job {kanban,list,form} 
+  - Applications
+    - By Job Positions => [ir.actions.act_window] hr.job {kanban,list,form} 
+    - By Talent Pools => [ir.actions.act_window] hr.talent.pool {kanban,list,form} 
+    - All Applications => [ir.actions.act_window] hr.applicant {kanban,list,form,pivot,graph,calendar,activity} 
+  - Reporting
+    - Recruitment Analysis => [ir.actions.act_window] hr.applicant {graph,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Job Positions
+      - Employment Types => [ir.actions.act_window] hr.contract.type {list} 
+    - Applications
+      - Degrees => [ir.actions.act_window] hr.recruitment.degree {list,form} 
+      - Refuse Reasons => [ir.actions.act_window] hr.applicant.refuse.reason {list,form} 
+      - Tags => [ir.actions.act_window] hr.applicant.category {list,form} 
+    - Employees
+      - Departments => [ir.actions.act_window] hr.department {list,form} 
+      - Skill Types => [ir.actions.act_window] hr.skill.type {list,form} 
+    - Activities
+      - Activity Types => [ir.actions.act_window] mail.activity.type {list,kanban,form} 
+      - Activity Plans => [ir.actions.act_window] mail.activity.plan {list,kanban,form} 
+    - Job Boards
+      - Emails => [ir.actions.act_window] hr.job.platform {list,form} 
+- Job => [ir.actions.act_window] op.job.post {kanban,list,form,pivot,calendar,activity} 
+  - Job Post => [ir.actions.act_window] op.job.post {kanban,list,form,pivot,calendar,activity} 
+  - Applicant => [ir.actions.act_window] op.job.applicant {kanban,list,form,activity,pivot,graph} 
+  - Configuration
+    - Job Type => [ir.actions.act_window] op.job.type {list,form} 
+    - Stages => [ir.actions.act_window] job.post.stage {list,form} 
+- OnBoarding => [ir.actions.act_window] oe.onboarding.steps {kanban} 
+- Human Resources => [ir.actions.act_window] hr.employee {kanban,list,form,activity,graph,pivot} 
+  - Employees => [ir.actions.act_window] hr.employee {kanban,list,form,activity,graph,pivot} 
+  - Departments => [ir.actions.act_window] hr.department {kanban,list,form} 
+  - Learning
+    - Certifications => [ir.actions.act_window] hr.employee.skill {list,form} 
+    - Training Attendances => [ir.actions.act_window] hr.resume.line {list,kanban,form,calendar} 
+    - Courses
+      - Onsite => [ir.actions.act_window] event.event {kanban,calendar,list,form,pivot,graph,activity} 
+  - Reporting
+    - Skills
+      - Skills Inventory => [ir.actions.act_window] hr.employee.skill.report {list,pivot} 
+      - Certifications => [ir.actions.act_window] hr.employee.certification.report {list,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Employee
+      - Onboarding / Offboarding => [ir.actions.act_window] mail.activity.plan {list,kanban,form} 
+      - Work Locations => [ir.actions.act_window] hr.work.location {list,form} 
+      - Working Schedules => [ir.actions.act_window] resource.calendar {list,form} 
+      - Departure Reasons => [ir.actions.act_window] hr.departure.reason {list} 
+      - Skill Types => [ir.actions.act_window] hr.skill.type {list,form} 
+    - Recruitment
+      - Job Positions => [ir.actions.act_window] hr.job {list,form} 
+      - Contract Templates => [ir.actions.act_window] hr.version {list,form} 
+      - Employment Types => [ir.actions.act_window] hr.contract.type {list} 
+    - Challenges
+      - Badges => [ir.actions.act_window] gamification.badge {kanban,list,form} 
+      - Challenges => [ir.actions.act_window] gamification.challenge {kanban,list,form} 
+      - Goals History => [ir.actions.act_window] gamification.goal {list,kanban} 
+- Time Off => [ir.actions.act_window] hr.leave {calendar,list,form,activity} 
+  - My Time
+    - Dashboard => [ir.actions.act_window] hr.leave {calendar,list,form,activity} 
+    - My Time Off => [ir.actions.act_window] hr.leave {list,form,kanban,activity} 
+    - My Allocations => [ir.actions.act_window] hr.leave.allocation {list,kanban,form,activity} 
+  - Overview => [ir.actions.act_window] hr.leave.report.calendar {calendar} 
+  - Management
+    - Time Off => [ir.actions.act_window] hr.leave {kanban,list,form,calendar,activity} 
+    - Allocations => [ir.actions.act_window] hr.leave.allocation {kanban,list,form,activity} 
+  - Reporting
+    - by Employee => [ir.actions.act_window] hr.leave {list,graph,pivot,calendar,form} 
+    - by Type => [ir.actions.act_window] hr.leave.report {graph,list,pivot} 
+    - Balance => [ir.actions.server]  {} 
+  - Configuration
+    - Time Off Types => [ir.actions.act_window] hr.leave.type {list,kanban,form} 
+    - Accrual Plans => [ir.actions.act_window] hr.leave.accrual.plan {list,form} 
+    - Public Holidays => [ir.actions.act_window] resource.calendar.leaves {list,form} 
+    - Mandatory Days => [ir.actions.act_window] hr.leave.mandatory.day {list,form} 
+- Expenses => [ir.actions.act_window] hr.expense {list,kanban,form,graph,pivot,activity} 
+  - My Expenses
+    - My Expenses => [ir.actions.act_window] hr.expense {list,kanban,form,graph,pivot,activity} 
+    - Expenses to Process => [ir.actions.act_window] hr.expense {list,kanban,form,graph,pivot,activity} 
+  - Reporting
+    - Expenses Analysis => [ir.actions.act_window] hr.expense {graph,pivot,list,form} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Expense Categories => [ir.actions.act_window] product.product {list,kanban,form} 
+- Approvals => [ir.actions.act_window] multi.approval.type {kanban,list,form} 
+  - Approval Types => [ir.actions.act_window] multi.approval.type {kanban,list,form} 
+  - Approvals
+    - My Request => [ir.actions.act_window] multi.request {list,form} 
+    - To Review => [ir.actions.act_window] multi.request {list,form} 
+    - All Approval => [ir.actions.act_window] multi.request {search,list,form} 
+  - Activity Types => [ir.actions.act_window] mail.activity.type {list,form} 
+- Sales => [ir.actions.act_window] sale.order {list,kanban,form,calendar,pivot,graph,activity} 
+  - Orders
+    - Quotations => [ir.actions.act_window] sale.order {list,kanban,form,calendar,pivot,graph,activity} 
+    - Orders => [ir.actions.act_window] sale.order {list,kanban,form,calendar,pivot,graph,activity} 
+    - Sales Teams => [ir.actions.act_window] crm.team {kanban,form} 
+    - Customers => [ir.actions.act_window] res.partner {list,kanban,form} 
+  - To Invoice
+    - Orders to Invoice => [ir.actions.act_window] sale.order {list,form,calendar,graph,pivot,kanban,activity} 
+    - Orders to Upsell => [ir.actions.act_window] sale.order {list,form,calendar,graph,pivot,kanban,activity} 
+  - Products
+    - Products => [ir.actions.act_window] product.template {list,form} 
+    - Product Variants => [ir.actions.act_window] product.product {kanban,list,form,activity} 
+    - Pricelists => [ir.actions.act_window] product.pricelist {list,kanban,form} 
+  - Reporting
+    - Sales => [ir.actions.act_window] sale.report {graph,pivot,list,form} 
+    - Salespersons => [ir.actions.act_window] sale.report {graph,pivot} 
+    - Products => [ir.actions.act_window] sale.report {graph,pivot} 
+    - Customers => [ir.actions.act_window] sale.report {graph,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Sales Teams => [ir.actions.act_window] crm.team {list,form} 
+    - Sales Orders
+      - Quotation Templates => [ir.actions.act_window] sale.order.template {list,form} 
+      - Headers/Footers => [ir.actions.act_window] quotation.document {kanban,list,form} 
+      - Delivery Methods => [ir.actions.act_window] delivery.carrier {list,form} 
+      - Tags => [ir.actions.act_window] crm.tag {list,form} 
+    - Products
+      - Attributes => [ir.actions.act_window] product.attribute {list,form} 
+      - Combo Choices => [ir.actions.act_window] product.combo {list,form} 
+      - Categories => [ir.actions.act_window] product.category {list,form} 
+      - Product Tags => [ir.actions.act_window] product.tag {list,form} 
+    - Online Payments
+      - Payment Providers => [ir.actions.act_window] payment.provider {kanban,list,form} 
+      - Payment Methods => [ir.actions.act_window] payment.method {list,kanban,form} 
+    - Activities
+      - Activity Plans => [ir.actions.act_window] mail.activity.plan {list,kanban,form} 
+- Accounting => [ir.actions.act_window] account.journal {kanban,form} 
+  - Dashboard => [ir.actions.act_window] account.journal {kanban,form} 
+  - Customers
+    - Invoices => [ir.actions.act_window] account.move {list,kanban,form,activity} 
+    - Credit Notes => [ir.actions.act_window] account.move {list,kanban,form,activity} 
+    - Payments => [ir.actions.act_window] account.payment {list,kanban,form,graph,activity} 
+    - Batch Payments => [ir.actions.act_window] account.batch.payment {list,form,kanban,activity} 
+    - Products => [ir.actions.act_window] product.template {list,form} 
+    - Customers => [ir.actions.act_window] res.partner {list,kanban,form} 
+  - Vendors
+    - Bills => [ir.actions.act_window] account.move {list,kanban,form,activity} 
+    - Refunds => [ir.actions.act_window] account.move {list,kanban,form,activity} 
+    - Payments => [ir.actions.act_window] account.payment {list,kanban,form,graph,activity} 
+    - Batch Payments => [ir.actions.act_window] account.batch.payment {list,form,kanban,activity} 
+    - Employee Expenses => [ir.actions.act_window] hr.expense {list,kanban,form,pivot,graph} 
+    - Products => [ir.actions.act_window] product.template {list,form} 
+    - Vendors => [ir.actions.act_window] res.partner {list,kanban,form} 
+  - Accounting
+    - Transactions
+      - Journal Entries => [ir.actions.act_window] account.move {list,kanban,form,activity} 
+    - Closing
+      - Reconcile => [ir.actions.act_window] account.move.line {list} 
+      - Lock Dates… => [ir.actions.act_window] account.change.lock.date {form} 
+    - Assets => [ir.actions.act_window] account.asset.asset {list,kanban,form} 
+    - Generate Assets Entries => [ir.actions.act_window] asset.depreciation.confirmation.wizard {list,form} 
+  - Assets
+    - Request Assets => [ir.actions.act_window] account.asset.request {list,form,search,pivot} 
+    - Request Reasons => [ir.actions.act_window] asset.request.reason {list,form} 
+  - Review
+    - Control
+      - Journal Items => [ir.actions.act_window] account.move.line {list,pivot,graph,kanban} 
+    - Logs
+      - Audit Trail => [ir.actions.act_window] mail.message {list} 
+  - Reporting
+    - Taxes & Fiscal
+      - 1099 Report… => [ir.actions.act_window] l10n_us_1099.wizard {form} 
+    - Management
+      - Invoice Analysis => [ir.actions.act_window] account.invoice.report {graph,pivot} 
+      - Analytic Report => [ir.actions.act_window] account.analytic.line {list,form} 
+      - Assets => [ir.actions.act_window] asset.asset.report {graph,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Asset Types => [ir.actions.act_window] account.asset.category {list,kanban,form} 
+    - Accounting
+      - Chart of Accounts => [ir.actions.act_window] account.account {list,kanban,form} 
+      - Taxes => [ir.actions.act_window] account.tax {list,kanban,form} 
+      - Journals => [ir.actions.act_window] account.journal {list,kanban,form} 
+      - Currencies => [ir.actions.act_window] res.currency {list,kanban,form} 
+      - Fiscal Positions => [ir.actions.act_window] account.fiscal.position {list,kanban,form} 
+      - Multi-Ledger => [ir.actions.act_window] account.journal.group {list,form} 
+    - Invoicing
+      - Payment Terms => [ir.actions.act_window] account.payment.term {list,kanban,form} 
+      - Product Categories => [ir.actions.act_window] product.category {list,form} 
+    - Online Payments
+      - Payment Providers => [ir.actions.act_window] payment.provider {kanban,list,form} 
+      - Payment Methods => [ir.actions.act_window] payment.method {list,kanban,form} 
+    - Sync Errors => [ir.actions.act_window] exchange.rate.sync.error {list,form} 
+- Purchase => [ir.actions.act_window] purchase.order {list,kanban,form,pivot,graph,calendar,activity} 
+  - Orders
+    - Requests for Quotation => [ir.actions.act_window] purchase.order {list,kanban,form,pivot,graph,calendar,activity} 
+    - Purchase Orders => [ir.actions.act_window] purchase.order {list,kanban,form,pivot,graph,calendar,activity} 
+    - Vendors => [ir.actions.act_window] res.partner {list,kanban,form} 
+  - Products
+    - Products => [ir.actions.act_window] product.template {list,form} 
+    - Product Variants => [ir.actions.act_window] product.product {list,kanban,form,activity} 
+  - Reporting
+    - Purchase => [ir.actions.act_window] purchase.report {graph,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Vendor Pricelists => [ir.actions.act_window] product.supplierinfo {list,form,kanban} 
+    - Products
+      - Attributes => [ir.actions.act_window] product.attribute {list,form} 
+      - Categories => [ir.actions.act_window] product.category {list,form} 
+- Inventory => [ir.actions.act_window] stock.picking.type {kanban,form} 
+  - Overview => [ir.actions.act_window] stock.picking.type {kanban,form} 
+  - Operations
+    - Transfers
+      - Receipts => [ir.actions.server]  {} 
+      - Deliveries => [ir.actions.server]  {} 
+    - Adjustments
+      - Physical Inventory => [ir.actions.server]  {} 
+      - Scrap => [ir.actions.act_window] stock.scrap {list,form,kanban,pivot,graph} 
+    - Procurement
+      - Replenishment => [ir.actions.server]  {} 
+  - Products
+    - Products => [ir.actions.act_window] product.template {kanban,list,form} 
+    - Product Variants => [ir.actions.act_window] product.product {list,form,kanban} 
+    - Lots / Serial Numbers => [ir.actions.act_window] stock.lot {list,form} 
+  - Reporting
+    - Stock => [ir.actions.act_window] product.product {list,form} 
+    - Moves History => [ir.actions.act_window] stock.move.line {list,kanban,pivot,form} 
+    - Moves Analysis => [ir.actions.act_window] stock.move {list,form} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Warehouse Management
+      - Warehouses => [ir.actions.act_window] stock.warehouse {list,form} 
+      - Operations Types => [ir.actions.act_window] stock.picking.type {list,form} 
+    - Products
+      - Categories => [ir.actions.act_window] product.category {list,form} 
+      - Attributes => [ir.actions.act_window] product.attribute {list,form} 
+    - Delivery
+      - Delivery Methods => [ir.actions.act_window] delivery.carrier {list,form} 
+- CRM => [ir.actions.server]  {} 
+  - Sales
+    - My Pipeline => [ir.actions.server]  {} 
+    - My Activities => [ir.actions.act_window] crm.lead {list,kanban,graph,pivot,calendar,form,activity} 
+    - My Quotations => [ir.actions.act_window] sale.order {list,kanban,form,calendar,pivot,graph,activity} 
+    - Teams => [ir.actions.act_window] crm.team {kanban,form} 
+    - Customers => [ir.actions.act_window] res.partner {list,kanban,form,activity} 
+  - Reporting
+    - Forecast => [ir.actions.server]  {} 
+    - Pipeline => [ir.actions.act_window] crm.lead {graph,pivot,list,form} 
+    - Leads => [ir.actions.act_window] crm.lead {graph,pivot,list} 
+    - Activities => [ir.actions.act_window] crm.activity.report {graph,pivot,list} 
+  - Configuration => [ir.actions.server]  {} 
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Sales Teams => [ir.actions.act_window] crm.team {list,form} 
+    - Activities
+      - Activity Types => [ir.actions.act_window] mail.activity.type {list,kanban,form} 
+      - Activity Plans => [ir.actions.act_window] mail.activity.plan {list,kanban,form} 
+    - Pipeline
+      - Tags => [ir.actions.act_window] crm.tag {list,form} 
+      - Lost Reasons => [ir.actions.act_window] crm.lost.reason {list,form} 
+    - Lead Generation
+      - Lead Mining Requests => [ir.actions.act_window] crm.iap.lead.mining.request {list,form} 
+- Website => [ir.actions.client] False {} website_preview
+  - Site
+    - Homepage => [ir.actions.client] False {} website_preview
+    - Menu Editor => [ir.actions.client] False {} website_preview
+    - Content
+      - Pages => [ir.actions.act_window] website.page {list,kanban} 
+      - Blog Posts => [ir.actions.act_window] blog.post {list,kanban,form} 
+      - Products => [ir.actions.act_window] product.template {list,kanban} 
+      - Events => [ir.actions.act_window] event.event {list,kanban} 
+      - Jobs => [ir.actions.act_window] hr.job {list,kanban,form} 
+      - Forum Posts => [ir.actions.act_window] forum.post {list,kanban,graph} 
+      - Technical Pages => [ir.actions.act_window] website.technical.page {list} 
+    - This page
+      - Properties => [ir.actions.client] False {} website_preview
+      - Optimize SEO => [ir.actions.client] False {} website_preview
+      - Link Tracker => [ir.actions.client] False {} website_preview
+      - HTML / CSS Editor => [ir.actions.client] False {} website_preview
+      - Edit Menu => [ir.actions.client] False {} website_preview
+  - eCommerce
+    - Orders
+      - Orders => [ir.actions.act_window] sale.order {list,form,kanban,activity} 
+      - Unpaid Orders => [ir.actions.act_window] sale.order {list,kanban,form,activity} 
+      - Abandoned Carts => [ir.actions.act_window] sale.order {list,kanban,form,activity} 
+      - Customers => [ir.actions.act_window] res.partner {list,kanban,form,activity} 
+    - Products
+      - Products => [ir.actions.act_window] product.template {kanban,list,form,activity} 
+      - Pricelists => [ir.actions.act_window] product.pricelist {list,kanban,form} 
+      - eCommerce Categories => [ir.actions.act_window] product.public.category {list,form} 
+      - Attributes => [ir.actions.act_window] product.attribute {list,form} 
+      - Combo Choices => [ir.actions.act_window] product.combo {list,form} 
+      - Product Tags => [ir.actions.act_window] product.tag {list,form} 
+      - Product Ribbons => [ir.actions.act_window] product.ribbon {list,form} 
+  - Reporting
+    - Analytics => [ir.actions.server]  {} 
+    - Online Sales => [ir.actions.act_window] sale.report {pivot,graph} 
+    - Visitors => [ir.actions.act_window] website.visitor {kanban,list,form,graph} 
+    - Page Views => [ir.actions.act_window] website.track {list} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Apps => [ir.actions.act_window] ir.module.module {kanban,list,form} 
+    - eCommerce
+      - Payment Providers => [ir.actions.act_window] payment.provider {kanban,list,form} 
+      - Payment Methods => [ir.actions.act_window] payment.method {list,kanban,form} 
+      - Delivery Methods => [ir.actions.act_window] delivery.carrier {list,form} 
+    - Blog
+      - Blogs => [ir.actions.act_window] blog.blog {list,form} 
+      - Tags => [ir.actions.act_window] blog.tag {list,form} 
+      - Tag Categories => [ir.actions.act_window] blog.tag.category {list,form} 
+    - Forum
+      - Forums => [ir.actions.act_window] forum.forum {list,form} 
+      - Ranks => [ir.actions.act_window] gamification.karma.rank {list,form} 
+      - Tags => [ir.actions.act_window] forum.tag {list,form} 
+      - Badges => [ir.actions.act_window] gamification.badge {kanban,list,form} 
+      - Close Reasons => [ir.actions.act_window] forum.post.reason {list} 
+- Email Marketing => [ir.actions.act_window] mailing.mailing {list,kanban,form,calendar} 
+  - Mailings => [ir.actions.act_window] mailing.mailing {list,kanban,form,calendar} 
+  - Mailing Lists
+    - Mailing Lists => [ir.actions.act_window] mailing.list {kanban,list,form} 
+    - Mailing List Contacts => [ir.actions.act_window] mailing.contact {list,kanban,form,graph,pivot} 
+  - Reporting
+    - Mass Mailing Analysis => [ir.actions.act_window] mailing.trace.report {graph,pivot,list} 
+    - Opt-Out Report => [ir.actions.act_window] mailing.subscription {graph,pivot,list,form} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Link Tracker => [ir.actions.act_window] link.tracker {list,form,graph} 
+    - Blacklisted Email Addresses => [ir.actions.act_window] mail.blacklist {list,form} 
+    - Optout Reasons => [ir.actions.act_window] mailing.subscription.optout {list,form} 
+    - Favorite Filters => [ir.actions.act_window] mailing.filter {list,form} 
+- Whatsapp => [ir.actions.client] False {} whatsapp_chat_dashboard
+  - Chat => [ir.actions.client] False {} whatsapp_chat_dashboard
+  - Contacts => [ir.actions.act_window] whatsapp.contact {list,form,pivot} 
+  - Campaign
+    - Campaign => [ir.actions.act_window] whatsapp.campaign {kanban,list,form} 
+    - Trace => [ir.actions.act_window] whatsapp.activity.trace {graph,pivot,list,form} 
+    - Participants => [ir.actions.act_window] whatsapp.campaign.participants {list,form} 
+  - Configuration
+    - Business => [ir.actions.act_window] whatsapp.business {list,form} 
+    - Templates => [ir.actions.act_window] whatsapp.template {list,form} 
+    - Tags => [ir.actions.act_window] whatsapp.tag {list,form} 
+    - Templates Library => [ir.actions.act_window] whatsapp.template.library {list,form} 
+    - Server Action => [ir.actions.act_window] whatsapp.server.action {list,form} 
+    - Blocked Contacts => [ir.actions.act_window] whatsapp.contact {list,form} 
+    - Team Assignment => [ir.actions.act_window] whatsapp.team.assignment {list,form} 
+- Live Chat => [ir.actions.act_window] im_livechat.channel {kanban,form} 
+  - Channels => [ir.actions.act_window] im_livechat.channel {kanban,form} 
+  - Sessions
+    - All Conversations => [ir.actions.act_window] discuss.channel {kanban,list,pivot,graph,form} 
+    - Looking for Help => [ir.actions.act_window] discuss.channel {list,kanban,form} 
+  - Visitors => [ir.actions.act_window] website.visitor {kanban,list,form,graph} 
+  - Reporting
+    - Agents => [ir.actions.act_window] im_livechat.channel.member.history {pivot,graph} 
+    - Sessions => [ir.actions.act_window] im_livechat.report.channel {graph,pivot} 
+  - Configuration
+    - Canned Responses => [ir.actions.act_window] mail.canned.response {list,form,kanban} 
+    - Chatbots => [ir.actions.act_window] chatbot.script {list,form} 
+    - Expertise => [ir.actions.act_window] im_livechat.expertise {list,form} 
+    - Tags => [ir.actions.act_window] im_livechat.conversation.tag {list,form} 
+- Surveys => [ir.actions.act_window] survey.survey {kanban,list,form,activity} 
+  - Surveys => [ir.actions.act_window] survey.survey {kanban,list,form,activity} 
+  - Participants => [ir.actions.act_window] survey.user_input {list,kanban,form} 
+  - Questions & Answers
+    - Questions => [ir.actions.act_window] survey.question {list,form} 
+    - Suggested Values => [ir.actions.act_window] survey.question.answer {list,form} 
+    - Detailed Answers => [ir.actions.act_window] survey.user_input.line {list,form} 
+- Contacts => [ir.actions.act_window] res.partner {list,kanban,form,activity} 
+  - Contacts => [ir.actions.act_window] res.partner {list,kanban,form,activity} 
+  - Configuration
+    - Contact Tags => [ir.actions.act_window] res.partner.category {list,form} 
+    - Contact Titles => [ir.actions.act_window] res.partner.title {list,form} 
+    - Industries => [ir.actions.act_window] res.partner.industry {list,form} 
+    - Localization
+      - Countries => [ir.actions.act_window] res.country {list,form} 
+      - Fed. States => [ir.actions.act_window] res.country.state {list,form} 
+      - Country Group => [ir.actions.act_window] res.country.group {list,form} 
+    - Bank Accounts
+      - Banks => [ir.actions.act_window] res.bank {list,form} 
+      - Bank Accounts => [ir.actions.act_window] res.partner.bank {list,form} 
+- Discuss => [ir.actions.client] False {} mail.action_discuss
+  - Discuss => [ir.actions.client] False {} mail.action_discuss
+  - Channels => [ir.actions.act_window] discuss.channel {kanban,form} 
+  - Configuration
+    - Notifications => [ir.actions.client] False {} mail.discuss_notification_settings_action
+    - Voice & Video => [ir.actions.client] False {} mail.discuss_call_settings_action
+    - Canned Responses => [ir.actions.act_window] mail.canned.response {list,form,kanban} 
+    - Roles => [ir.actions.act_window] res.role {list,form} 
+- Notice Board => [ir.actions.act_window] op.notice {list,kanban,form,pivot} 
+  - My Notice
+    - Notices => [ir.actions.act_window] op.notice {list,kanban,form,pivot} 
+  - My Circular
+    - Circulars => [ir.actions.act_window] op.circular {list,kanban,form,pivot} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Groups => [ir.actions.act_window] op.notice.group {list,form} 
+    - Circular Types => [ir.actions.act_window] op.circular.type {list,form} 
+- Dashboards => [ir.actions.client] False {} action_spreadsheet_dashboard
+  - Dashboards => [ir.actions.client] False {} action_spreadsheet_dashboard
+  - My Dashboard => [ir.actions.act_window] board.board {form} 
+  - Configuration
+    - Dashboards => [ir.actions.act_window] spreadsheet.dashboard.group {list,form} 
+- KPI Dashboard => [ir.actions.client] dashboard_pro.main_dashboard {} dashboard_kpi
+  - My Dashboard => [ir.actions.client] dashboard_pro.main_dashboard {} dashboard_kpi
+  - Create Dashboard => [ir.actions.act_window] dashboard_pro.main_dashboard {list,form} 
+  - Demo => [ir.actions.client] dashboard_pro.main_dashboard {} dashboard_kpi
+  - OpenEduCat => [ir.actions.client] dashboard_pro.main_dashboard {} dashboard_kpi
+- Calendar => [ir.actions.act_window] calendar.event {calendar,list,form} 
+  - Calendar => [ir.actions.act_window] calendar.event {calendar,list,form} 
+  - Online Appointment => [ir.actions.act_window] calendar.online.appointment {list,kanban,form} 
+  - Configuration => [ir.actions.act_window] calendar.event {calendar,list,form} 
+    - Online Appointment Resource => [ir.actions.act_window] calendar.appointment.resource {list,form} 
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+- Documents => [ir.actions.act_window] dms.file {kanban,list,graph,pivot,form} 
+  - Files => [ir.actions.act_window] dms.file {kanban,list,graph,pivot,form} 
+  - Directories => [ir.actions.act_window] dms.directory {kanban,list,form} 
+  - Configuration
+    - General Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Organizing
+      - Tags => [ir.actions.act_window] dms.tag {kanban,list,form} 
+      - Categories => [ir.actions.act_window] dms.category {list,form} 
+    - System
+      - Storages => [ir.actions.act_window] dms.storage {list,form} 
+      - Migration => [ir.actions.act_window] dms.file {list} 
+      - Access Groups => [ir.actions.act_window] dms.access.group {list,form} 
+- E-sign => [ir.actions.act_window] e.sign.template {kanban,list,form} 
+  - E-sign => [ir.actions.act_window] e.sign.template {kanban,list,form} 
+  - Documents => [ir.actions.act_window] e.sign.request {kanban,list,form} 
+  - Configuration
+    - Field Types => [ir.actions.act_window] e.sign.items {list,form} 
+    - Roles => [ir.actions.act_window] e.sign.item.role {list,form} 
+- Automated Marketing => [ir.actions.act_window] marketing.campaign {kanban,list,form} 
+  - Campaigns => [ir.actions.act_window] marketing.campaign {kanban,list,form} 
+  - Reporting
+    - Link Tracker => [ir.actions.act_window] link.tracker {graph,pivot,list,form} 
+    - Traces => [ir.actions.act_window] marketing.trace {graph,pivot,list,form} 
+    - Participants => [ir.actions.act_window] marketing.participant {graph,pivot,list,form} 
+- Multi Campus => [ir.actions.act_window] res.company {kanban} 
+  - Dashboard => [ir.actions.act_window] res.company {kanban} 
+- Spreadsheets => [ir.actions.act_window] spreadsheet.spreadsheet {list,form} 
+- Apps => [ir.actions.act_window] ir.module.module {kanban,list,form} 
+  - Apps
+    - Main Apps => [ir.actions.act_window] ir.module.module {kanban,list,form} 
+    - Theme Store => [ir.actions.act_url]  {} 
+    - Third-Party Apps => [ir.actions.act_url]  {} 
+- Settings => [ir.actions.act_window] res.config.settings {form} 
+  - General Settings => [ir.actions.act_window] res.config.settings {form} 
+  - Users & Companies
+    - Users => [ir.actions.act_window] res.users {list,kanban,form} 
+    - Companies => [ir.actions.act_window] res.company {list,kanban,form} 
+    - Roles => [ir.actions.act_window] res.users.role {list,form} 
+    - Board Affiliation => [ir.actions.act_window] op.board.affiliation {list,form} 
+- AIO => [ir.actions.client] False {} aio_playground
+  - Playground
+    - Playground => [ir.actions.client] False {} aio_playground
+    - Messages => [ir.actions.act_window] aio.playground.message {list,form} 
+    - Sessions => [ir.actions.act_window] aio.playground.session {list,kanban,form,pivot,graph} 
+    - Session Tags => [ir.actions.act_window] aio.session.tag {list,form} 
+    - Analytics
+      - Session Analytics => [ir.actions.act_window] aio.session.analytics {graph,pivot,list} 
+      - Agent Performance => [ir.actions.act_window] aio.agent.analytics {list,graph,form} 
+      - Cost Optimization => [ir.actions.act_window] aio.cost.optimizer {form} 
+      - Student Engagement => [ir.actions.act_window] aio.engagement.metrics {list,graph,form} 
+      - Token Trends => [ir.actions.act_window] aio.token.trend.analyzer {form} 
+  - Agents
+    - Agent Library => [ir.actions.act_window] aio.agent.library {kanban,list,form} 
+    - Agents => [ir.actions.act_window] aio.agent {kanban,list,form} 
+    - Team Analytics => [ir.actions.act_window] aio.team.analytics {list,form} 
+  - Executions
+    - Executions => [ir.actions.act_window] aio.agent.execution {list,form} 
+  - Configuration
+    - Model Providers => [ir.actions.act_window] aio.model.provider {list,form,pivot,graph} 
+    - Models => [ir.actions.act_window] aio.model {list,form,pivot,graph} 
+    - Workflows
+      - Workflows => [ir.actions.act_window] aio.workflow {list,kanban,form} 
+      - Executions => [ir.actions.act_window] aio.workflow.execution {list,form} 
+      - Steps => [ir.actions.act_window] aio.workflow.step {list,form} 
+    - Hooks
+      - Hooks => [ir.actions.act_window] aio.hook {list,kanban,form} 
+      - Hook Logs => [ir.actions.act_window] aio.hook.log {list,form} 
+    - Tools => [ir.actions.act_window] aio.tool {list,form} 
+    - Collections => [ir.actions.act_window] aio.collection {list,form} 
+    - Webhook Endpoints => [ir.actions.act_window] aio.webhook.endpoint {list,form} 
+    - Database Configs => [ir.actions.act_window] aio.database.config {list,form} 
+    - Guardrails => [ir.actions.act_window] aio.guardrail {list,kanban,form} 
+    - File Sources => [ir.actions.act_window] aio.file.source {list,form} 
+    - JSON Schemas => [ir.actions.act_window] aio.json.schema {list,form} 
+    - Output Templates => [ir.actions.act_window] aio.output.template {list,form} 
+    - Evaluations => [ir.actions.act_window] aio.agent.evaluation {list,form} 
+    - Tool Approvals => [ir.actions.act_window] aio.agent.approval {list,form} 
+- Helpdesk => [ir.actions.act_window] helpdesk.team {kanban,form} 
+  - Dashboard => [ir.actions.act_window] helpdesk.team {kanban,form} 
+  - Tickets
+    - My Tickets => [ir.actions.act_window] helpdesk.ticket {list,kanban,form,pivot} 
+    - All Tickets => [ir.actions.act_window] helpdesk.ticket {list,kanban,form,pivot} 
+  - Reporting
+    - Helpdesk Report => [ir.actions.act_window] helpdesk.report {graph,pivot,list} 
+    - Customer Ratings => [ir.actions.act_window] rating.rating {kanban,form,list,pivot,graph} 
+  - Configuration
+    - Settings => [ir.actions.act_window] res.config.settings {form} 
+    - Helpdesk Team => [ir.actions.act_window] helpdesk.team {list,kanban,form} 
+    - Issue Type => [ir.actions.act_window] issue.type {kanban,list,form} 
+    - Tags => [ir.actions.act_window] helpdesk.tag {list,form} 
+    - Stages => [ir.actions.act_window] helpdesk.stage {list,form} 

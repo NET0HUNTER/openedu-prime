@@ -1,0 +1,14 @@
+<search string="Committee Members">
+                    <field name="faculty_id"/>
+                    <field name="registration_id"/>
+                    <field name="role"/>
+                    <filter string="Supervisors" name="supervisors" domain="[('role', '=', 'supervisor')]"/>
+                    <filter string="Co-Supervisors" name="co_supervisors" domain="[('role', '=', 'co_supervisor')]"/>
+                    <filter string="Advisors" name="advisors" domain="[('role', '=', 'advisor')]"/>
+                    <filter string="Examiners" name="examiners" domain="[('role', '=', 'examiner')]"/>
+                    <group>
+                        <filter string="Faculty" name="group_by_faculty" domain="[]" context="{'group_by':'faculty_id'}"/>
+                        <filter string="Thesis" name="group_by_thesis" domain="[]" context="{'group_by':'registration_id'}"/>
+                        <filter string="Role" name="group_by_role" domain="[]" context="{'group_by':'role'}"/>
+                    </group>
+                </search>

@@ -1,0 +1,40 @@
+<form string="Media Units">
+                    <header>
+                        <button name="1207" type="action" string="Issue Media" invisible="state != 'available'" context="{'default_transaction_type':'issue','default_media_unit_number': barcode}" class="oe_highlight"/>
+                        <button name="1207" type="action" string="Return Media" invisible="state != 'issue'" context="{'default_transaction_type':'return','default_media_unit_number': barcode}" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="available,issue" statusbar_colors="{&quot;r&quot;:&quot;red&quot;}"/>
+                    </header>
+                <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="barcode" readonly="1"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="media_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="media_type_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="movements" string="Movements">
+                                <field name="movement_lines" nolabel="1">
+                                    <list create="false" editable="top" delete="false">
+                                        <field name="library_card_id" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="partner_id" can_create="True" can_write="True"/>
+                                        <field name="media_id" can_create="True" can_write="True"/>
+                                        <field name="media_unit_id" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="issued_date" on_change="1"/>
+                                        <field name="return_date"/>
+                                        <field name="actual_return_date"/>
+                                        <field name="state"/>
+                                        <field name="invoice_id"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

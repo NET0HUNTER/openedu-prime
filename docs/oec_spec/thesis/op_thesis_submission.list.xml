@@ -1,0 +1,8 @@
+<list string="Thesis Submissions">
+                    <field name="name"/>
+                    <field name="registration_id" on_change="1"/>
+                    <field name="student_id"/>
+                    <field name="title" optional="hide"/>
+                    <field name="submission_date"/>
+                    <field name="state"/>
+                </list>

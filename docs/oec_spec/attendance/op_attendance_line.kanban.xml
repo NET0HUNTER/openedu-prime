@@ -1,0 +1,99 @@
+﻿<kanban highlight_color="color" string="Attendance Line kanban" class="o_slide_kanban o_slide_channel_kanban o_attendance_kanban" default_order="attendance_date asc, student_id asc">
+                    <field name="student_id" on_change="1"/>
+                    <field name="color"/>
+                    <field name="attendance_id"/>
+                    <field name="present" on_change="1"/>
+                    <field name="absent" on_change="1"/>
+                    <field name="excused" on_change="1"/>
+                    <field name="late" on_change="1"/>
+                    <templates>
+                        <t t-name="menu">
+                            <div class="container" role="menu">
+                            <div class="row my-2">
+                                    <div class="col-4 o_kanban_card_manage_section o_kanban_manage_view">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_views" class="o_kanban_card_manage_title">
+                                                <span>Views</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_new" class="o_kanban_card_manage_title">
+                                                <span>New</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4 o_kanban_card_manage_section o_kanban_manage_operations">
+                                        <div role="menuitem" class="px-1">
+                                            <div name="openeducat_reports" class="o_kanban_card_manage_title">
+                                                <span>Reports</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                    <div role="menuitem" aria-haspopup="true" class="col-8">
+                                        <field name="color" widget="kanban_color_picker"/>
+                                    </div>
+                                    <div role="menuitem" class="col-4">
+                                        <a type="open">Settings</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-name="card">
+                            <main class="d-flex flex-column gap-2 p-2 position-relative h-100">
+                                <!-- Header -->
+                                <div class="d-flex justify-content-between align-items-start gap-2">
+                                    <div class="d-flex align-items-center gap-3 w-100" style="min-width: 0;">
+                                        <div class="flex-shrink-0">
+                                            <img t-if="record.student_id.raw_value" t-att-src="'/web/image/op.student/' + record.student_id.raw_value + '/image_128'" alt="Student" class="border rounded object-fit-cover" style="width: 50px; height: 50px;"/>
+                                        </div>
+                                        <div class="d-flex flex-column gap-1 w-100" style="min-width: 0;">
+                                            <h5 class="mb-0 fw-bold text-dark text-truncate" t-att-title="record.student_id.value" style="font-size: 1.15rem;">
+                                                <field name="student_id" on_change="1"/>
+                                            </h5>
+                                            <div class="d-flex align-items-center small text-muted text-truncate" t-if="record.attendance_id.raw_value">
+                                                <i class="fa fa-clipboard me-2" role="img" aria-label="Register" title="Register"/>
+                                                <field name="attendance_id"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0 text-end small fw-bold mt-1">
+                                        <span t-if="record.present.raw_value" class="text-success">
+                                            <i class="fa fa-circle me-1" title="Present"/>Present
+                                        </span>
+                                        <span t-if="record.absent.raw_value" class="text-danger">
+                                            <i class="fa fa-circle me-1" title="Absent"/>Absent
+                                        </span>
+                                        <span t-if="record.excused.raw_value" class="text-info">
+                                            <i class="fa fa-circle me-1" title="Excused"/>Excused
+                                        </span>
+                                        <span t-if="record.late.raw_value" class="text-warning">
+                                            <i class="fa fa-circle me-1" title="Late"/>Late
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-1 mt-auto pt-2 border-top" role="group">
+                                    <button name="action_present" type="object" role="button" class="btn bg-light rounded text-decoration-none p-1 d-flex align-items-center justify-content-center flex-grow-1 text-muted border border-light-subtle" style="font-size: 11px; min-width: 0; white-space: nowrap; box-shadow: none;">
+                                        <i class="fa fa-check text-dark me-1 flex-shrink-0" style="font-size: 0.75rem;" title="Present"/>
+                                        <span class="text-truncate">Present</span>
+                                    </button>
+                                    <button name="action_absent" type="object" role="button" class="btn bg-light rounded text-decoration-none p-1 d-flex align-items-center justify-content-center flex-grow-1 text-muted border border-light-subtle" style="font-size: 11px; min-width: 0; white-space: nowrap; box-shadow: none;">
+                                        <i class="fa fa-times text-dark me-1 flex-shrink-0" style="font-size: 0.75rem;" title="Absent"/>
+                                        <span class="text-truncate">Absent</span>
+                                    </button>
+                                    <button name="action_excused" type="object" role="button" class="btn bg-light rounded text-decoration-none p-1 d-flex align-items-center justify-content-center flex-grow-1 text-muted border border-light-subtle" style="font-size: 11px; min-width: 0; white-space: nowrap; box-shadow: none;">
+                                        <i class="fa fa-exclamation text-dark me-1 flex-shrink-0" style="font-size: 0.75rem;" title="Excused"/>
+                                        <span class="text-truncate">Excused</span>
+                                    </button>
+                                    <button name="action_late" type="object" role="button" class="btn bg-light rounded text-decoration-none p-1 d-flex align-items-center justify-content-center flex-grow-1 text-muted border border-light-subtle" style="font-size: 11px; min-width: 0; white-space: nowrap; box-shadow: none;">
+                                        <i class="fa fa-clock-o text-dark me-1 flex-shrink-0" style="font-size: 0.75rem;" title="Late"/>
+                                        <span class="text-truncate">Late</span>
+                                    </button>
+                                </div>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>

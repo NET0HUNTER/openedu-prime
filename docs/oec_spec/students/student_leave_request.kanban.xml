@@ -1,0 +1,86 @@
+﻿<kanban class="o_kanban_mobile oe_background_grey" default_group_by="state" create="0" sample="1">
+                <field name="student_id" on_change="1"/>
+                <field name="start_date" on_change="1"/>
+                <field name="end_date" on_change="1"/>
+                <field name="description"/>
+                <field name="duration"/>
+                <field name="faculty_id"/>
+                <field name="approve_date"/>
+                <field name="leave_type"/>
+                <field name="state"/>
+                <field name="color"/>
+                <field name="image_1920"/>
+                <field name="start_date_only"/>
+                <field name="end_date_only"/>
+                <templates>
+                    <t t-name="card">
+                        <widget name="web_ribbon" title="Draft" bg_color="bg-info text-white" invisible="state != 'draft'"/>
+                        <widget name="web_ribbon" title="Confirm" bg_color="bg-primary text-white" invisible="state != 'confirm'"/>
+                        <widget name="web_ribbon" title="Validate" bg_color="bg-warning text-white" invisible="state != 'validate'"/>
+                        <widget name="web_ribbon" title="Approved" bg_color="bg-success text-white" invisible="state != 'approve'"/>
+                        <widget name="web_ribbon" title="Refused" bg_color="bg-danger text-white" invisible="state != 'refuse'"/>
+                        <widget name="web_ribbon" title="Cancelled" bg_color="bg-secondary text-white" invisible="state != 'cancel'"/>
+                        
+                        <main class="d-flex flex-column gap-2 p-1 position-relative">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-start gap-2 pe-5">
+                                <div class="d-flex align-items-center gap-3 w-100" style="min-width: 0;">
+                                    <img t-att-src="record.image_1920.raw_value ? '/web/image/student.leave.request/' + record.id.raw_value + '/image_1920' : '/web/static/img/placeholder.png'" alt="Student Avatar" class="o_avatar rounded-circle object-fit-cover flex-shrink-0" style="width: 44px; height: 44px;"/>
+                                    <div class="d-flex flex-column gap-1 min-w-0">
+                                        <h5 class="mb-0 fw-bold text-primary text-truncate" t-att-title="record.student_id.value" style="font-size: 1.15rem;">
+                                            <field name="student_id" on_change="1"/>
+                                        </h5>
+                                        <small t-if="record.leave_type.raw_value" class="text-muted text-truncate d-block">
+                                            <i class="fa fa-tag me-2" role="img" aria-label="Type" title="Type"/>
+                                            <field name="leave_type"/>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-column gap-1 mb-1 mt-2">
+                                <div t-if="record.faculty_id.raw_value" class="d-flex align-items-center small text-muted text-truncate">
+                                    <i class="fa fa-user-circle me-2 flex-shrink-0" style="width: 14px;" title="Faculty"/>
+                                    <span><field name="faculty_id"/></span>
+                                </div>
+                                <div class="d-flex align-items-center small text-muted text-truncate">
+                                    <i class="fa fa-calendar me-2 flex-shrink-0" style="width: 14px;" title="Dates"/>
+                                    <span><field name="start_date_only"/> <t t-if="record.end_date_only.raw_value"> - <field name="end_date_only"/></t></span>
+                                </div>
+                                <div t-if="record.duration.raw_value" class="d-flex align-items-center small text-muted text-truncate">
+                                    <i class="fa fa-clock-o me-2 flex-shrink-0" style="width: 14px;" title="Duration"/>
+                                    <span><field name="duration"/></span>
+                                </div>
+                                <div t-if="record.description.raw_value" class="d-flex align-items-start gap-1 small text-muted mt-1">
+                                    <i class="fa fa-align-left me-1 flex-shrink-0 mt-1" style="width: 14px;" title="Description"/>
+                                    <span style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-word;">
+                                        <t t-esc="record.description.value"/>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="d-flex gap-2 flex-wrap mt-auto pt-2 border-top">
+                                <button t-if="record.state.raw_value === 'draft'" name="action_confirm" type="object" class="btn btn-sm btn-primary flex-grow-1 fw-bold">
+                                    Confirm
+                                </button>
+                                <button t-if="record.state.raw_value === 'confirm'" name="action_validate" type="object" class="btn btn-sm btn-primary flex-grow-1 fw-bold">
+                                    Validate
+                                </button>
+                                <button t-if="record.state.raw_value === 'validate'" name="action_approve" type="object" class="btn btn-sm btn-success flex-grow-1 fw-bold">
+                                    Approve
+                                </button>
+                                <button t-if="['confirm', 'validate', 'approve'].includes(record.state.raw_value)" name="action_refuse" type="object" class="btn btn-sm btn-outline-danger flex-grow-1 fw-semibold">
+                                    Refuse
+                                </button>
+                                <button t-if="['validate', 'approve'].includes(record.state.raw_value)" name="action_cancel" type="object" class="btn btn-sm btn-outline-secondary flex-grow-1 fw-semibold">
+                                    Cancel
+                                </button>
+                                <button t-if="['cancel', 'refuse'].includes(record.state.raw_value)" name="action_draft" type="object" class="btn btn-sm btn-light border flex-grow-1 fw-semibold text-muted">
+                                    Make Draft
+                                </button>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

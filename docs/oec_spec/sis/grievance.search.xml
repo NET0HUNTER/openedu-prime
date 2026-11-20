@@ -1,0 +1,17 @@
+﻿<search string="Grievance Search">
+                <field name="subject"/>
+                <field name="student_id"/>
+                <field name="faculty_id"/>
+                <field name="parent_id"/>
+                <group>
+                    <filter string="Academic" domain="[('is_academic' , '=' , True)]" name="is_academic"/>
+                    <filter string="Non-Academic" domain="[('is_academic' , '=' , False)]" name="is_academic"/>
+                    <filter string="In Review" domain="[('state' , '=' , 'in_review')]" name="state"/>
+                    <filter string="Close" domain="[('state' , '=' , 'close')]" name="state"/>
+                    <filter string="Cancel" domain="[('state' , '=' , 'cancel')]" name="state"/>
+                    <filter string="Appeal" domain="[('is_appeal' , '=' , 'True')]" name="is_appeal"/>
+                    <filter string="In Action" domain="[('state' , '=' , 'action')]" name="is_appeal"/>
+                    <filter string="Group by Date" name="created_date" context="{'group_by' : 'created_date'}"/>
+
+                </group>
+            </search>

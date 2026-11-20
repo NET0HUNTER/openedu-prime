@@ -1,0 +1,5 @@
+<search string="Channels">
+                <field name="name"/>
+                <field name="complete_name"/>
+                <field name="parent_id"/>
+            </search>

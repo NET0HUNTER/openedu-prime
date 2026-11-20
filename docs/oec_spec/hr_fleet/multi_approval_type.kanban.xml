@@ -1,0 +1,67 @@
+<kanban>
+                    <field name="name"/>
+                    <field name="id"/>
+                    <field name="image"/>
+                    <field name="apply_for_model"/>
+                    <field name="description"/>
+                    <field name="request_to_validate_count"/>
+                    <t t-name="card">
+                        <main class="d-flex flex-column h-100 position-relative p-1">
+                            
+                            <!-- Header Area -->
+                            <div class="d-flex align-items-start pb-2">
+                                <!-- Image Avatar -->
+                                <div t-if="record.image.raw_value" class="d-flex justify-content-center align-items-center flex-shrink-0 rounded bg-light border me-3" style="width: 64px; height: 64px; border-color: #e5e7eb !important; overflow: hidden;">
+                                    <field name="image" widget="image" options="{'size': [64, 64]}"/>
+                                </div>
+                                
+                                <!-- Title & Metadata -->
+                                <div class="d-flex flex-column flex-grow-1" style="min-width: 0;">
+                                    <div class="d-flex justify-content-between align-items-start w-100">
+                                        <div class="d-flex flex-column flex-grow-1" style="min-width: 0;">
+                                            <h5 class="fw-bold text-dark mb-1 text-truncate" style="font-size: 1.15rem;">
+                                                <field name="name"/>
+                                            </h5>
+                                            <div t-if="record.description.raw_value" class="small text-muted w-100" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4;">
+                                                <field name="description"/>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="flex-shrink-0 ms-2 mt-1" role="menuitem">
+                                            <a class="text-muted oe_kanban_action oe_kanban_action_a" href="#" type="edit">
+                                                <i class="fa fa-edit" role="img" aria-label="Manage" title="Manage"/>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex-grow-1"/>
+                            
+                            <!-- Metrics Grid (2 columns) -->
+                            <div class="row g-2 pt-2" name="metrics_grid" t-if="!selection_mode">
+                                <!-- New Request -->
+                                <div class="col-6">
+                                    <button type="object" name="create_request" context="{'approval_type_id':'active_id'}" invisible="apply_for_model == True" class="btn d-flex align-items-center justify-content-center text-decoration-none bg-primary p-2 rounded h-100 border w-100 text-white" style="min-width: 0; box-shadow: none;">
+                                        <span class="d-flex align-items-center small fw-bold" style="min-width: 0;">
+                                            <i class="fa fa-plus me-2 flex-shrink-0" title="New Request"/>
+                                            <span class="text-truncate">New Request</span>
+                                        </span>
+                                    </button>
+                                </div>
+                                <!-- To Review -->
+                                <div class="col-6">
+                                    <button name="999" type="action" class="btn d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle w-100" style="background-color: #f8f9fa !important; min-width: 0; box-shadow: none;">
+                                        <span class="d-flex align-items-center text-muted small" style="min-width: 0;">
+                                            <i class="fa fa-tasks me-2 text-dark flex-shrink-0" title="To Review"/>
+                                            <span class="text-truncate">To Review</span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0 ms-2">
+                                            <field name="request_to_validate_count"/>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </main>
+                    </t>
+                </kanban>

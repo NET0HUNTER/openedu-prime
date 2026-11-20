@@ -1,0 +1,93 @@
+{
+  "fields": {
+    "date": {
+      "change_default": false,
+      "groupable": true,
+      "name": "date",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Expense Date",
+      "type": "date"
+    },
+    "employee_id": {
+      "change_default": false,
+      "context": {},
+      "domain": "(company_id and [('company_id', 'in', [company_id] + [False])] or [('company_id', '=', False)]) + ([('filter_for_expense', '=', True)])",
+      "groupable": true,
+      "name": "employee_id",
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "quantity": {
+      "aggregator": "sum",
+      "change_default": false,
+      "digits": [
+        16,
+        2
+      ],
+      "groupable": true,
+      "name": "quantity",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Quantity",
+      "type": "float"
+    },
+    "tax_amount": {
+      "aggregator": "sum",
+      "change_default": false,
+      "currency_field": "company_currency_id",
+      "groupable": true,
+      "help": "Tax amount in company currency",
+      "name": "tax_amount",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Tax amount",
+      "type": "monetary"
+    },
+    "total_amount": {
+      "aggregator": "sum",
+      "change_default": false,
+      "currency_field": "company_currency_id",
+      "groupable": true,
+      "name": "total_amount",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Total",
+      "type": "monetary"
+    },
+    "price_unit": {
+      "aggregator": "sum",
+      "change_default": false,
+      "digits": false,
+      "groupable": true,
+      "min_display_digits": 2,
+      "name": "price_unit",
+      "readonly": true,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Unit Price",
+      "type": "float"
+    }
+  },
+  "has_approval_rules": false
+}

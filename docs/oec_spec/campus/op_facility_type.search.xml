@@ -1,0 +1,8 @@
+<search string="Facility Type">
+                <field name="name"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <newline/>
+                <group>
+                    <filter string="Name" name="group_by_facility_type_name" domain="[]" context="{'group_by':'name'}"/>
+                </group>
+            </search>

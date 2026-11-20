@@ -1,0 +1,15 @@
+﻿<list string="Attendance Line">
+                    <field name="attendance_id" optional="show" on_change="1"/>
+                    <field name="attendance_date"/>
+                    <field name="student_id" on_change="1"/>
+                    <field name="check_in" optional="hide"/>
+                    <field name="course_id" optional="show"/>
+                    <field name="company_id" optional="hide"/>
+                    <field name="batch_id" optional="show"/>
+                    <field name="present" on_change="1"/>
+                    <field name="absent" on_change="1"/>
+                    <field name="excused" on_change="1"/>
+                    <field name="late" on_change="1"/>
+                    <field name="attendance_type_id" optional="hide" on_change="1"/>
+                    <field name="remark" optional="hide"/>
+                </list>

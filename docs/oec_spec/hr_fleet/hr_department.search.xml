@@ -1,0 +1,7 @@
+<search string="Departments">
+                    <field name="name" string="Department"/>
+                    <field name="manager_id"/>
+                    
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active','=',False)]"/>
+                </search>

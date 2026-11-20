@@ -1,0 +1,11 @@
+﻿<form string="Admission Analysis">
+                    <group>
+                        <field name="course_id" can_create="True" can_write="True"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                    <footer>
+                        <button name="print_report" type="object" string="Print" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>

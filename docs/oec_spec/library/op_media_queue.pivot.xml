@@ -1,0 +1,4 @@
+<pivot string="Media Queue Request">
+                    <field name="media_id" type="col"/>
+                    <field name="user_id" type="row"/>
+                </pivot>

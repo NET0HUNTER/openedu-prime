@@ -1,0 +1,16 @@
+<list string="Assignment">
+                    <field name="name" on_change="1"/>
+                    <field name="course_id" on_change="1"/>
+                    <field name="batch_id" on_change="1"/>
+                    <field name="subject_id" on_change="1"/>
+                    <field name="faculty_id" optional="show" on_change="1"/>
+                    <field name="reviewer" optional="hide"/>
+                    <field name="assignment_type" on_change="1"/>
+                <field name="issued_date" optional="show" on_change="1"/>
+                    <field name="submission_date" optional="show"/>
+                    <field name="attempt_type" optional="hide" on_change="1"/>
+                    <field name="max_attempt" optional="hide"/>
+                    <field name="evaluation_type" optional="hide"/>
+                    <field name="state"/>
+                    <field name="company_id" optional="show"/>
+                </list>

@@ -1,0 +1,4 @@
+<graph string="Purchase Request" type="bar">
+                    <field name="name"/>
+                    <field name="requested_id"/>
+                </graph>

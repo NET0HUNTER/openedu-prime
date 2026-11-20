@@ -1,0 +1,60 @@
+<form string="Alumni Group">
+                    <header>
+                        <button name="createforum" type="object" class="oe_highlight" string="Create Forum" invisible="forum_id != False"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <div class="oe_avatar">
+                            <field name="image" widget="image" nolabel="1" options="{'size': [100, 100]}"/>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="forum_id"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="fees_id" can_create="True" can_write="True"/>
+                                <field name="alumni_fees_amount"/>
+                            </group>
+                        </group>
+                        <separator string="Students"/>
+                        <field name="alumni_student_line" widget="many2many">
+                            <list>
+                                <field name="name" on_change="1"/>
+                                <field name="invoice_id" invisible="1" on_change="1"/>
+                                <field name="join_date"/>
+                                <field name="number"/>
+                                <field name="state"/>
+                                <button name="get_invoice" type="object" invisible="state == 'invoice'" class="oe_highlight" string="Create invoice"/>
+                                <button string="View Invoice" invisible="state != 'invoice'" type="object" name="action_get_invoice"/>
+                            </list>
+                        </field>
+                        <separator string="Description"/>
+                        <field name="description" widget="html"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="open_alumni_events_group" type="object" icon="fa-map-marker" string="Events">
+                            <b><field string="Events" name="event_count" widget="statinfo"/></b>
+                        </button>
+                    </div>
+                    <separator string="Blog"/>
+                    <field name="blog_post_ids"><list js_class="website_pages_list" type="object" action="open_website_url" multi_edit="1">
+            <field name="active" column_invisible="True"/>
+            <field name="name"/>
+            <field name="website_url"/>
+
+            <field name="author_id" optional="show" can_create="True" can_write="True"/>
+            <field name="blog_id" optional="hide" on_change="1" can_create="True" can_write="True"/>
+            <field name="create_uid" optional="hide"/>
+            <field name="write_uid" optional="hide"/>
+            <field name="write_date" optional="hide"/>
+
+            <field name="is_seo_optimized"/>
+            <field name="is_published"/>
+
+            <field name="website_id"/>
+        </list></field>
+                    </sheet>
+                    <chatter/>
+                </form>

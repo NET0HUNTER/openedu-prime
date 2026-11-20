@@ -1,0 +1,46 @@
+{
+  "fields": {
+    "event_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "event_id",
+      "readonly": false,
+      "relation": "event.event",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Event",
+      "type": "many2one"
+    },
+    "sale_status": {
+      "change_default": false,
+      "groupable": true,
+      "name": "sale_status",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "selection": [
+        [
+          "to_pay",
+          "Not Sold"
+        ],
+        [
+          "sold",
+          "Sold"
+        ],
+        [
+          "free",
+          "Free"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Sale Status",
+      "type": "selection"
+    }
+  },
+  "has_approval_rules": false
+}

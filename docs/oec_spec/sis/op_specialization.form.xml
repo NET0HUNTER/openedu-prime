@@ -1,0 +1,20 @@
+﻿<form string="Specializations">
+                    <header/>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                        </div>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="area_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

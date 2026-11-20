@@ -1,0 +1,23 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1467,
+                      "name":  "Fees Report",
+                      "binding_view_types":  "list,form"
+                  }
+              ],
+    "action":  [
+                   {
+                       "id":  1469,
+                       "name":  "Send Reminder to Student",
+                       "binding_view_types":  "list,form",
+                       "sequence":  5
+                   },
+                   {
+                       "id":  1517,
+                       "name":  "Send Reminder to Parent",
+                       "binding_view_types":  "list,form",
+                       "sequence":  5
+                   }
+               ]
+}

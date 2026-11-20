@@ -1,0 +1,9 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1186,
+                      "name":  "Marksheet",
+                      "binding_view_types":  "list,form"
+                  }
+              ]
+}

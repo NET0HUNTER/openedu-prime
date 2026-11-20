@@ -1,0 +1,18 @@
+{
+  "fields": {
+    "start": {
+      "change_default": false,
+      "groupable": true,
+      "help": "Start date of an event, without time for full days events",
+      "name": "start",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Start",
+      "type": "datetime"
+    }
+  },
+  "has_approval_rules": false
+}

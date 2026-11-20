@@ -1,0 +1,13 @@
+<list multi_edit="1" sample="1" decoration-info="state == 'draft'">
+                    <field name="company_id" column_invisible="True" readonly="state == 'done'" on_change="1" can_create="True" can_write="True"/>
+                    <field name="name" decoration-bf="1"/>
+                    <field name="date_done"/>
+                    <field name="product_id" readonly="1" on_change="1"/>
+                    <field name="scrap_qty" readonly="state == 'done'"/>
+                    
+                    
+                    
+                    <field name="company_id" readonly="1" on_change="1"/>
+                    <field name="state" widget="badge" decoration-success="state == 'done'" decoration-muted="state == 'draft'"/>
+                
+</list>

@@ -1,0 +1,11 @@
+﻿<form string="Student Skill Level Name">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group col="4" colspan="4">
+                                <field name="name"/>
+                                <field name="progress"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

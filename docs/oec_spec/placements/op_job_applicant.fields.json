@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "post_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "post_id",
+      "readonly": false,
+      "relation": "op.job.post",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Job Post",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

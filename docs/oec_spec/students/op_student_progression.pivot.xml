@@ -1,0 +1,6 @@
+﻿<pivot string="Student Progression Analysis">
+                    <field name="student_id" type="row"/>
+                    <field name="state"/>
+                    <field name="date"/>
+                    <field name="created_by"/>
+                </pivot>

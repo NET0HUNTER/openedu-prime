@@ -1,0 +1,57 @@
+<kanban class="o_kanban_mobile" sample="1">
+                <field name="name"/>
+                <field name="value"/>
+                <field name="date" on_change="1"/>
+                <field name="method_number"/>
+                <field name="oe_method_period_unit"/>
+                <field name="category_id" on_change="1"/>
+                <field name="state"/>
+                <field name="currency_id"/>
+                <templates>
+                    <t t-name="card">
+                        <main class="oe_kanban_global_click d-flex flex-column gap-1 p-1 position-relative">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-start gap-2">
+                                <div class="flex-grow-1 d-flex align-items-center gap-2" style="min-width: 0;">
+                                    <i class="fa fa-building text-primary flex-shrink-0" style="font-size: 1.15rem;" title="Asset"/>
+                                    <h5 class="mb-0 fw-bold text-primary text-truncate" t-att-title="record.name.value" style="font-size: 1.1rem;">
+                                        <field name="name"/>
+                                    </h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <span t-attf-class="badge rounded-pill #{record.state.raw_value == 'open' ? 'bg-success text-white' : (record.state.raw_value == 'draft' ? 'bg-info text-white' : (record.state.raw_value == 'oe_paused' ? 'bg-warning text-white' : 'bg-secondary text-white'))}" style="font-size: 0.75rem; font-weight: 500;">
+                                        <field name="state"/>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Card Body / Details -->
+                            <div class="d-flex flex-column gap-1">
+                                <!-- Category / Model -->
+                                <div t-if="record.category_id.raw_value" class="d-flex align-items-center small text-muted text-truncate" title="Category">
+                                    <i class="fa fa-tags me-2 text-muted flex-shrink-0" style="width: 14px; text-align: center;"/>
+                                    <span class="text-truncate"><field name="category_id" on_change="1"/></span>
+                                </div>
+                                
+                                <!-- Acquisition Date -->
+                                <div t-if="record.date.raw_value" class="d-flex align-items-center small text-muted text-truncate" title="Acquisition Date">
+                                    <i class="fa fa-calendar me-2 text-muted flex-shrink-0" style="width: 14px; text-align: center;"/>
+                                    <span>Acquired on: <field name="date" on_change="1"/></span>
+                                </div>
+
+                                <!-- Duration / Depreciation -->
+                                <div t-if="record.method_number.raw_value" class="d-flex align-items-center small text-muted text-truncate" title="Depreciation Period">
+                                    <i class="fa fa-clock-o me-2 text-muted flex-shrink-0" style="width: 14px; text-align: center;"/>
+                                    <span>Duration: <field name="method_number"/> <field name="oe_method_period_unit"/></span>
+                                </div>
+                            </div>
+
+                            <!-- Card Footer: Asset Value -->
+                            <footer class="d-flex align-items-center gap-1 pt-2 border-top">
+                                <i class="fa fa-money me-2 text-muted flex-shrink-0" style="width: 14px; text-align: center;"/>
+                                <span class="small text-muted">Value: <field name="value" widget="monetary" options="{'currency_field': 'currency_id'}"/></span>
+                            </footer>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

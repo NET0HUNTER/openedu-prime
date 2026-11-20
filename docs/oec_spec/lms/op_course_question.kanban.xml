@@ -1,0 +1,1 @@
+<kanban string="Content Quiz Question"><templates><t t-name="card"><field name="question"/></t></templates></kanban>

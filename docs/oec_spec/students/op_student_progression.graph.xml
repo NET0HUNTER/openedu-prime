@@ -1,0 +1,5 @@
+﻿<graph string="Student Progression graph" type="pie">
+                    <field name="student_id" type="row"/>
+                    <field name="state" type="col"/>
+                    <field name="date" interval="month"/>
+                </graph>

@@ -1,0 +1,11 @@
+<list>
+                    <field name="name"/>
+                    <field name="route_id" on_change="1"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="cost"/>
+                    <field name="product_id" optional="hide"/>
+                    <field name="transport_lines" optional="hide"/>
+                    <field name="plan_id" optional="hide"/>
+                    <field name="state" optional="hide"/>
+                </list>

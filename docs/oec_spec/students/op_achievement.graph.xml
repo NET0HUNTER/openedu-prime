@@ -1,0 +1,4 @@
+﻿<graph string="Achievement Graph View" type="bar">
+                    <field name="student_id"/>
+                    <field name="achievement_type_id"/>
+                </graph>

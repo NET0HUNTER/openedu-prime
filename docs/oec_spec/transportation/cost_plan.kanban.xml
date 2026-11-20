@@ -1,0 +1,1 @@
+<kanban string="Plan for Cost"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

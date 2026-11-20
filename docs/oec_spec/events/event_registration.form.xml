@@ -1,0 +1,85 @@
+<form string="Event Registration">
+                <field name="active" invisible="1"/>
+                <header>
+                    <button name="action_send_badge_email" string="Send by Email" type="object" class="oe_highlight" invisible="not active or state != 'open' and state != 'done'"/>
+                    <button name="action_confirm" string="Registered" type="object" class="oe_highlight" invisible="not active or state != 'draft'"/>
+                    <button name="action_set_done" string="Attended" type="object" class="oe_highlight" invisible="not active or state != 'open'"/>
+                    <button name="action_cancel" string="Cancel Registration" type="object" invisible="not active or state == 'cancel'"/>
+                    <field name="state" nolabel="1" colspan="2" widget="statusbar" statusbar_visible="open,done" readonly="False" options="{'clickable': '1'}" on_change="1"/>
+                </header>
+                <sheet string="Registration">
+                    <div class="oe_button_box" name="button_box">
+                <button name="732" class="oe_stat_button" type="action" icon="fa-star" invisible="lead_count == 0">
+                    <div class="o_stat_info">
+                        <field name="lead_count"/>
+                        <span class="o_stat_text"> Leads</span>
+                    </div>
+                </button>
+                <button name="action_view_sale_order" type="object" class="oe_stat_button" icon="fa-usd" invisible="not sale_order_id">
+                        <div class="o_stat_info">
+                            <span class="o_stat_text">Sale Order</span>
+                        </div>
+                </button></div>
+                    <widget name="web_ribbon" text="Archived" bg_color="text-bg-danger" invisible="active"/>
+                <widget name="web_ribbon" title="Sold" bg_color="text-bg-success" invisible="sale_status != 'sold'"/>
+                <widget name="web_ribbon" title="Not Sold" bg_color="text-bg-info" invisible="not sale_status or sale_status in ('sold', 'free') or not id"/>
+                    <group>
+                        <group string="Attendee" name="attendee">
+                            <field class="o_text_overflow" name="name"/>
+                            <field name="email"/>
+                            <field name="phone" class="o_force_ltr" widget="phone" options="{'enable_sms': true}" on_change="1"/>
+                <field name="visitor_id" can_create="False" can_write="True" invisible="1" column_invisible="1"/>
+                            <field name="company_name" placeholder="e.g. &quot;Azure Interior&quot;"/>
+                        </group>
+                        <group string="Event Information" name="event">
+                            <field class="text-break" name="event_id" context="{'name_with_seats_availability': True}" options="{'no_create': True}" on_change="1" can_create="True" can_write="True"/>
+                            <field name="event_slot_id" invisible="not is_multi_slots" required="is_multi_slots" context="{'name_with_seats_availability': True}" options="{'no_open': True, 'no_create': True}" domain="[('event_id', '=', event_id)]" can_create="True" can_write="True"/>
+                            <field name="event_ticket_id" invisible="not event_id" context="{'name_with_seats_availability': True, 'is_event_multi_slots': is_multi_slots}" options="{'no_open': True, 'no_create': True}" domain="[('event_id', '=', event_id)]" can_create="True" can_write="True"/>
+                            <field name="barcode" invisible="1" column_invisible="1"/>
+                            <field name="partner_id" on_change="1" can_create="True" can_write="True"/>
+                <field name="is_convocation" invisible="1"/>
+                <field name="program_id" required="is_convocation == True" invisible="is_convocation == False" can_create="True" can_write="True"/>
+                            <field name="create_date" string="Registration Date" invisible="1" column_invisible="1"/>
+                            <field name="date_closed" invisible="1" column_invisible="1"/>
+                        </group>
+                <group string="Transaction" name="transaction" invisible="1" column_invisible="1">
+                <field name="sale_order_id" on_change="1" can_create="True" can_write="True"/>
+                <field name="sale_order_line_id" readonly="1" invisible="not sale_order_id"/></group>
+                        <group string="Marketing" name="utm_link" invisible="1" column_invisible="1">
+                            <field name="utm_campaign_id" can_create="True" can_write="True"/>
+                            <field name="utm_medium_id" can_create="True" can_write="True"/>
+                            <field name="utm_source_id" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <field name="registration_properties" columns="2"/>
+                    <notebook>
+                        <page string="Questions" name="questions">
+                            <field name="registration_answer_ids" widget="one2many">
+                                <list editable="bottom">
+                                    <field name="event_id" column_invisible="True"/>
+                                    <field name="question_id" domain="[('event_ids', 'in', event_id)]" options="{'no_create': True}" on_change="1" can_create="True" can_write="True"/>
+                                    <field name="question_type" string="Type"/>
+                                    <field name="value_answer_id" invisible="question_type != 'simple_choice'" domain="[('question_id', '=', question_id)]" options="{'no_create': True}" can_create="True" can_write="True"/>
+                                    <field name="value_text_box" invisible="question_type == 'simple_choice'"/>
+                <field name="file" filename="file_name" widget="binary" invisible="question_type != 'file'"/>
+                <field name="file_name" invisible="1"/>
+                                </list>
+                                <kanban class="o_kanban_mobile" create="false" delete="false">
+                                    <field name="event_id"/>
+                                    <field name="question_type"/>
+                                    <templates>
+                                        <t t-name="card" class="justify-content-between">
+                                            <field class="fw-bold fs-5" name="question_id" domain="[('event_ids', 'in', event_id)]" on_change="1"/>
+                                            <field name="value_answer_id" invisible="question_type != 'simple_choice'" domain="[('question_id', '=', question_id)]" options="{'no_create': True}"/>
+                                            <field name="value_text_box" invisible="question_type == 'simple_choice'"/>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter reload_on_post="True"/>
+            <field name="sale_status" invisible="True" readonly="True" data-used-by="invisible=&quot;not sale_status or sale_status in ('sold', 'free') or not id&quot; (widget,web_ribbon)"/>
+<field name="is_multi_slots" invisible="True" readonly="True" data-used-by="context=&quot;{'name_with_seats_availability': True, 'is_event_multi_slots': is_multi_slots}&quot; (field,event_ticket_id)"/>
+</form>

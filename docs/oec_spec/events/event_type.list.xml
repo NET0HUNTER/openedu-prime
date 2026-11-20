@@ -1,0 +1,4 @@
+<list string="Event Template" sample="1">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </list>

@@ -1,0 +1,22 @@
+﻿<form string="Result Line">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="student_id" can_create="True" can_write="True"/>
+                                <field name="marks" on_change="1"/>
+                                <field name="grade" invisible="evaluation_type != 'grade'"/>
+                    <field name="grade_point" on_change="1"/>
+                    <field name="qp"/>
+                                <field name="marksheet_line_id" invisible="1" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="exam_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="status"/>
+                    <field name="credit" on_change="1"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                <field name="evaluation_type"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

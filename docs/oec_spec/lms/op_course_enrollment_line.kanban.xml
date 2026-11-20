@@ -1,0 +1,1 @@
+<kanban string="Course Enrollment Lines"><templates><t t-name="card"><field name="id"/></t></templates></kanban>

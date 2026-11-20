@@ -1,0 +1,32 @@
+﻿<form>
+                <header>
+                    <button name="action_submitted" string="Submit" type="object" class="btn-primary" invisible="state in ['submitted','processed','approved','cancel']"/>
+                    <button name="action_draft" string="Set to Draft" type="object" invisible="state in ['draft','processed','approved']"/>
+                    <button name="action_approved" string="Approve" type="object" class="btn-primary" invisible="state in ['approved','submitted','draft','cancel']"/>
+                    <button name="action_processed" string="In Process" type="object" class="btn-primary" invisible="state in ['processed','draft','approved','cancel']"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state == 'cancel'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,processed,approved,cancel"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="course_id" readonly="state in ['submitted','processed','approved','cancel']" can_create="True" can_write="True"/>
+                            <field name="academic_year_id" readonly="state in ['submitted','processed','approved','cancel']" can_create="True" can_write="True"/>
+                            <field name="student_id" domain="['&amp;', ('course_detail_ids.course_id', '=', course_id), ('course_detail_ids.academic_years_id', '=', academic_year_id)]" readonly="state in ['submitted','processed','approved','cancel']" can_create="True" can_write="True"/>
+                            <field name="principal_id" readonly="state in ['submitted','processed','approved','cancel']" can_create="True" can_write="True"/>
+                            <field name="withdrawal_reason" readonly="state in ['submitted','processed','approved','cancel']"/>
+                            <field name="comments" readonly="state in ['submitted','processed','approved','cancel']"/>
+                            <field name="attachment_ids" widget="many2many_binary" readonly="state in ['submitted','processed','approved','cancel']" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="requested_by" readonly="state in ['submitted','processed','approved','cancel']"/>
+                            <field name="batch_id" domain="[('course_id', '=', course_id)]" readonly="state in ['submitted','processed','approved','cancel']" can_create="True" can_write="True"/>
+                            <field name="requested_date" readonly="state in ['submitted','processed','approved','cancel']"/>
+                            <field name="advisor_id" readonly="state in ['submitted','processed','approved','cancel']" can_create="True" can_write="True"/>
+                            <field name="finance_clearance_done" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>

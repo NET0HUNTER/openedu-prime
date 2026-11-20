@@ -1,0 +1,4 @@
+<graph string="Media Queue Request" type="bar">
+                    <field name="user_id"/>
+                    <field name="media_id"/>
+                </graph>

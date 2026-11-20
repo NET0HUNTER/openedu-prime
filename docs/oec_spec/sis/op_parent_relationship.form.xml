@@ -1,0 +1,10 @@
+﻿<form string="Relationships">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

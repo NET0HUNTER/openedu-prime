@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": false,
+      "related": "partner_id.name",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Company Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

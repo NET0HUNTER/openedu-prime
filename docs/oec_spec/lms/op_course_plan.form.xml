@@ -1,0 +1,122 @@
+<form string="course plan">
+                    <header/>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="get_subject_configure" type="object" icon="fa-book">
+                                <field string="Configure Subject" name="subject_configure_count" widget="statinfo"/>
+                            </button>
+                <button name="action_view_copo_lines" type="object" class="oe_stat_button" icon="fa-calendar">
+                    <field name="copo_lines_count" widget="statinfo" string="CO PO Lines"/>
+                </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="course_id" domain="[('id', 'in', course_ids)]" on_change="1" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="academic_term_id" can_create="True" can_write="True"/>
+                                <field name="academic_plan_id" invisible="1" can_create="True" can_write="True"/>
+                <field name="fees_term_id" required="True" can_create="True" can_write="True"/>
+
+                            </group>
+                            <notebook>
+                                <page string="Configure Subjects">
+                                    <field name="subject_faculty_line" nolabel="1">
+                                        <list>
+                                            <field name="academic_plan_id" optional="hide" on_change="1"/>
+                                            <field name="subject_id"/>
+                                            <field name="credit"/>
+                                            <field name="faculty_id" options="{'no_create': True}"/>
+                                            <field name="total_lectures"/>
+                                            <field name="total_lab"/>
+                                            <field name="tuition"/>
+                                            <field name="total_marks"/>
+                                        </list>
+                                        <form string="Subject">
+                                            <sheet>
+                                                <group>
+                                                    <group>
+                                                        <field name="academic_plan_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                                                        <field name="subject_ids" invisible="1" can_create="True" can_write="True"/>
+                                                        <field name="subject_id" domain="[('course_id', '=', parent.course_id)]" options="{'no_create': True}" can_create="True" can_write="True"/>
+                                                        <field name="credit"/>
+                                                        <field name="company_id" invisible="1"/>
+                                                        <field name="total_lab"/>
+                                                        <field name="total_marks" readonly="1"/>
+                                                    </group>
+                                                    <group>
+                                                        <field name="faculty_id" options="{'no_create': True}" required="True" can_create="True" can_write="True"/>
+                                                        <field name="total_lectures"/>
+                                                        <field name="tuition"/>
+                                                        <field name="subject_type"/>
+                                                    </group>
+                                                    <notebook>
+                                                        <page string="Marks Line">
+                                                            <field name="marks_line" on_change="1">
+                                                                <list editable="top">
+                                                                    <field name="assessment_type_id" can_create="True" can_write="True"/>
+                                                                    <field name="maximum_marks"/>
+                                                                    <field name="passing_marks"/>
+                                                                </list>
+                                                                <form>
+                                                                    <group>
+                                                                        <group>
+                                                                            <field name="assessment_type_id" can_create="True" can_write="True"/>
+                                                                        </group>
+                                                                        <group>
+                                                                            <field name="maximum_marks"/>
+                                                                            <field name="passing_marks"/>
+                                                                            <field name="subject_faculty_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                                                                        </group>
+                                                                    </group>
+                                                                </form>
+                                                            </field>
+                                                        </page>
+                                                        <page string="Topics">
+                                                            <field name="topics_line" nolabel="1">
+                                                                <list editable="top">
+                                                                    <field name="name"/>
+                                                                    <field name="parent_id" can_create="True" can_write="True"/>
+                                                                    <field name="description"/>
+                                                                    <field name="academic_plan_id" optional="hide" can_create="True" can_write="True"/>
+                                                                </list>
+                                                                <form string="Topics">
+                                                                    <sheet>
+                                                                        <group>
+                                                                            <group>
+                                                                                <field name="name"/>
+                                                                                <field name="parent_id" can_create="True" can_write="True"/>
+                                                                            </group>
+                                                                            <group>
+                                                                                <field name="academic_plan_id" invisible="1" can_create="True" can_write="True"/>
+                                                                                <field name="description"/>
+                                                                            </group>
+                                                                        </group>
+                                                                    </sheet>
+                                                                </form>
+                                                            </field>
+                                                        </page>
+                                                    </notebook>
+                                                </group>
+                                            </sheet>
+                                        </form>
+                                    </field>
+                                </page>
+                <page name="copo_map" string="CO PO mapping">
+                    <field name="copo_line_ids" on_change="1">
+                        <list editable="bottom">
+                            <field name="co_id" can_create="True" can_write="True"/>
+                            <field name="po_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                            <field name="mapping_weight"/>
+                            <field name="academic_year_id" can_create="True" can_write="True"/>
+                            <field name="academic_term_id" can_create="True" can_write="True"/>
+                        </list>
+                    </field>
+                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                <field name="course_ids" invisible="True" readonly="True" data-used-by="domain=&quot;[('id', 'in', course_ids)]&quot; (field,course_id)"/>
+</form>

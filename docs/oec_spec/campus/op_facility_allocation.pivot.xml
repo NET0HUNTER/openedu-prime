@@ -1,0 +1,4 @@
+<pivot string="Exam Attendees Pivot">
+                    <field name="partner_id" type="row"/>
+                    <field name="facility_id" type="col"/>
+                </pivot>

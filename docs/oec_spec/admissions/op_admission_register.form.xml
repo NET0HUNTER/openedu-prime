@@ -1,0 +1,67 @@
+﻿<form string="Admission Register">
+                    <header>
+                        <button name="confirm_register" invisible="state != 'draft'" type="object" string="Confirm" class="oe_highlight"/>
+                        <button name="start_application" invisible="state != 'confirm'" type="object" string="Start Application" class="oe_highlight"/>
+                        <button name="start_admission" invisible="state != 'application'" type="object" string="Start Admission" class="oe_highlight"/>
+                        <button name="close_register" invisible="state != 'admission'" type="object" string="Done" class="oe_highlight"/>
+                        <button name="cancel_register" invisible="state not in ('draft', 'confirm')" string="Cancel" type="object"/>
+                        <button name="set_to_draft" invisible="state != 'cancel'" string="Set to Draft" type="object"/>
+                        <button name="action_reset_to_draft" invisible="state in ('draft', 'cancel')" string="Reset to Draft" type="object" confirm="Reset this register to draft? Linked admissions are not touched."/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,application,admission"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="open_student_application" type="object" icon="fa-id-card" style="border-right: 1px solid;">
+                                <field string="Applications" name="application_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name" readonly="state != 'draft'"/>
+                                <field name="academic_years_id" readonly="state != 'draft'" required="1"/>
+                                <field name="start_date" readonly="state != 'draft'"/>
+                                <field name="max_count" readonly="state != 'draft'"/>
+                                <field name="product_id" context="{'default_type': 'service'}" readonly="state != 'draft'" required="admission_base != 'program'" invisible="admission_base == 'program'" can_create="True" can_write="True"/>
+                                <field name="minimum_age_criteria" readonly="state != 'draft'"/>
+                                <field name="academic_term_id" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="admission_base" readonly="state != 'draft'" on_change="1"/>
+                                <field name="course_id" readonly="state != 'draft'" invisible="admission_base != 'course'" required="admission_base == 'course'" options="{'no_open': True, 'no_create': True}"/>
+                                <field name="program_id" readonly="state != 'draft'" invisible="admission_base != 'program'" required="admission_base == 'program'" can_create="True" can_write="True"/>
+                                <!--                                <field name="course_ids" readonly="state != 'draft'" widget="many2many_tags"-->
+                                <!--                                       invisible="admission_base != 'program'"-->
+                                <!--                                       required="admission_base == 'program'"-->
+                                <!--                                       domain="[('program_id', '=', program_id)]"-->
+                                <!--                                       options="{'no_open': True, 'no_create': True}"/>-->
+                                <field name="end_date" readonly="state != 'draft'"/>
+                                <field name="min_count" readonly="state != 'draft'"/>
+                <field name="program_fees" invisible="admission_base != 'program'" readonly="state != 'draft'"/>
+                <field name="registration_fees" invisible="admission_base == 'program'" readonly="state != 'draft'"/>
+                <field name="register_product_id" required="registration_fees == True" readonly="state != 'draft'" invisible="registration_fees != True or admission_base == 'program'" options="{'no_open': True, 'no_create': True}" can_create="True" can_write="True"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                <group>
+                    <field name="admission_template_id" invisible="admission_base == 'program'" domain="[('program_base_template', '!=', True)]" can_create="True" can_write="True"/>
+                    <field name="admission_template_id" invisible="admission_base != 'program'" domain="[('program_base_template', '=', True)]" can_create="True" can_write="True"/>
+                    <field name="sign_in_required"/>
+                </group>
+                        <notebook>
+                            <page name="course_fees_detail" string="Configure Course Fees" invisible="admission_base != 'program'">
+                                <field name="admission_fees_line_ids" required="admission_base == 'program'" readonly="state != 'draft'">
+                                    <list editable="top">
+                                        <field name="course_id" options="{'no_open': True, 'no_create': True}" domain="[('program_id', '=', parent.program_id)]" can_create="True" can_write="True"/>
+                                        <field name="course_fees_product_id" options="{'no_open': True, 'no_create': True}" can_create="True" can_write="True"/>
+                <field name="registration_fees"/>
+                <field name="register_product_id" required="registration_fees == True" invisible="registration_fees != True" options="{'no_open': True, 'no_create': True}" can_create="True" can_write="True"/>
+                                        <field name="register_id" invisible="True" can_create="True" can_write="True"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

@@ -1,0 +1,77 @@
+<form string="Job Post">
+                <header>
+                    <button name="set_review" string="Review" type="object" class="oe_highlight" invisible="states != 'draft'"/>
+                    <button name="set_submit" string="Start Recruitment" type="object" class="oe_highlight" invisible="not (states == 'review' or states == 'done')"/>
+                    <button name="set_done" string="Stop Recruitment" type="object" invisible="states != 'submit'"/>
+                    <button name="set_cancel" string="Cancel Recruitment" type="object" invisible="states != 'submit'"/>
+                    <field name="states" widget="statusbar" statusbar_visible="review,submit,done,cancel" invisible="states == 'submit'"/>
+                    <field name="states" widget="statusbar" statusbar_visible="submit,done,cancel" invisible="states != 'submit'"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <group>
+                        <group string="Job Position" name="job position">
+                            <field name="name" readonly="1"/>
+                            <field name="is_read" invisible="1" readonly="states != 'draft'"/>
+                            <field name="job_post" readonly="states != 'draft'"/>
+                        </group>
+
+                        <group string="Address Detail" name="address">
+                            <label for="street" string="Address"/>
+                            <div name="div_address">
+                                <field name="street" placeholder="Street..." readonly="states != 'draft'"/>
+                                <field name="street2" placeholder="Street2" readonly="states != 'draft'"/>
+                                <div class="address_format d-md-flex">
+                                    <field name="city" placeholder="City" readonly="states != 'draft'"/>
+                                    <field name="state_id" class="oe_no_button" placeholder="State" options="{&quot;no_open&quot;: True}" readonly="states != 'draft'" can_create="True" can_write="True"/>
+                                    <field name="zip" placeholder="ZIP" readonly="states != 'draft'"/>
+                                </div>
+                                <field name="country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True}" readonly="states != 'draft'" can_create="True" can_write="True"/>
+                            </div>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page name="offer_information" string="Offer">
+                            <group name="offer" col="2">
+                                <group>
+                                    <field name="salary_from" widget="monetary" option="{'currency_field':'currency_id'}" readonly="states != 'draft'"/>
+                                    <field name="salary_upto" widget="monetary" option="{'currency_field':'currency_id'}" readonly="states != 'draft'"/>
+                                    <field name="payable_at" readonly="states != 'draft'"/>
+                                </group>
+                                <group>
+                                <field name="employment_type" readonly="states != 'draft'" can_create="True" can_write="True"/>
+                <field name="skill_ids" widget="many2many_tags" readonly="states != 'draft'" can_create="True" can_write="True"/>
+                                <field name="currency_id" invisible="1" readonly="states != 'draft'"/>
+                                <field name="url" widget="url" string="URL" readonly="states != 'draft'"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page name="other_information" string="Other Information">
+                            <group name="otherinformation" col="2">
+                            <group>
+                            <field name="created_by" readonly="states != 'draft'"/>
+                                <field name="alumni_student_id" readonly="states != 'draft'" invisible="created_by != 'alumni'" required="created_by == 'alumni'" on_change="1" can_create="True" can_write="True"/>
+                                <label for="start_date" string="Date" readonly="states != 'draft'"/>
+                                <div class="o_row">
+                                    <field name="start_date" widget="daterange" class="oe_inline" options="{'related_end_date': 'end_date'}" readonly="states != 'draft'"/>
+                                    <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                                    <field name="end_date" widget="daterange" nolabel="1" class="oe_inline" options="{'related_start_date': 'start_date'}" readonly="states != 'draft'"/>
+                                </div>
+                            </group>
+                            <group>
+                                <field name="expected_employees" readonly="states != 'draft'"/>
+                                <field name="company_id" optional="show" readonly="states != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="department_id" readonly="states != 'draft'" can_create="True" can_write="True"/>
+                            </group>
+                            </group>
+                        </page>
+                    </notebook>
+                    <group>
+                        <group string="Description">
+                            <field name="description" readonly="states != 'draft'"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>

@@ -1,0 +1,1 @@
+<kanban string="Quiz Answer Grades"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

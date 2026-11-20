@@ -1,0 +1,54 @@
+﻿<kanban sample="1" class="o_faculty_kanban">
+                    <field name="id"/>
+                    <field name="image_1920" on_change="1"/>
+                    <field name="main_department_id"/>
+                    <field name="faculty_subject_ids"/>
+                    <field name="email"/>
+                    <field name="phone" on_change="1"/>
+                <field name="course_count"/>
+                <field name="subject_count"/>
+                    <templates>
+                        <t t-name="card" class="d-flex flex-column bg-white shadow-sm border-0 p-0" style="border-radius: 8px; overflow: hidden; transition: all 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.1)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 .125rem .25rem rgba(0,0,0,.075)';">
+                            <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+
+                            <!-- Main Header: Square Image + Contact Info -->
+                            <div class="d-flex p-3 w-100">
+                                <div class="rounded-3 shadow-sm me-3 bg-white d-flex justify-content-center align-items-center" style="width: 85px; height: 85px; overflow: hidden; flex-shrink: 0; border: 1px solid #e9ecef;">
+                                    <t t-if="record.image_1920.value">
+                                        <field name="image_1920" class="w-100 h-100" style="object-fit: cover;" widget="image" options="{'img_class': 'w-100 h-100 object-fit-cover'}" on_change="1"/>
+                                    </t>
+                                    <t t-else="">
+                                        <field name="avatar_128" class="w-100 h-100" style="object-fit: cover;" widget="image" options="{'img_class': 'w-100 h-100 object-fit-cover'}" on_change="1"/>
+                                    </t>
+                                </div>
+                                <div class="d-flex flex-column justify-content-center flex-grow-1" style="min-width: 0;">
+                                    <field name="name" class="fw-bold text-dark d-block text-truncate mb-1" style="font-size:1.15rem;" on_change="1"/>
+                                    <div class="d-flex align-items-center text-truncate mb-1" t-if="record.email.value" style="font-size:0.85rem; min-width: 0;">
+                                        <i class="fa fa-envelope text-primary me-2 flex-shrink-0" title="Email"/>
+                                        <span class="text-truncate d-block text-dark" style="min-width: 0; color: #374151 !important;"><field name="email"/></span>
+                                    </div>
+                                    <div class="d-flex align-items-center text-truncate" t-if="record.phone.value" style="font-size:0.85rem; min-width: 0;">
+                                        <i class="fa fa-phone text-success me-2 flex-shrink-0" title="Phone"/>
+                                        <span class="text-truncate d-block text-dark" style="min-width: 0; color: #374151 !important;"><field name="phone" on_change="1"/></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footer: Stat Buttons + Activity Icon -->
+                            <footer class="px-3 py-1 d-flex flex-nowrap align-items-center gap-2 w-100 mt-auto bg-white" style="border-top: 1px solid #dee2e6; min-height: 45px;">
+                <button type="object" name="get_courses" class="btn px-2 py-1 text-decoration-none d-flex align-items-center gap-2 bg-light rounded-3 border border-light-subtle" style="border: 0;">
+                    <i class="fa fa-book text-dark"/>
+                    <span class="text-muted fw-medium d-none d-sm-inline" style="font-size: 0.8rem;">Courses</span>
+                </button>
+                <button type="object" name="get_subjects" class="btn px-2 py-1 text-decoration-none d-flex align-items-center gap-2 bg-light rounded-3 border border-light-subtle" style="border: 0;">
+                    <i class="fa fa-pencil-square-o text-dark"/>
+                    <span class="text-muted fw-medium d-none d-sm-inline" style="font-size: 0.8rem;">Subjects</span>
+                </button>
+                                <div name="activity_box" class="d-flex align-items-center justify-content-center bg-light px-2 py-1 rounded-3 ms-auto border border-light-subtle" style="height: 32px; color: #212529 !important;">
+                                    <field name="activity_ids" widget="kanban_activity"/>
+                                </div>
+                            </footer>
+                        </t>
+                    </templates>
+                <field name="active" invisible="True" readonly="True" data-used-by="invisible='active' (widget,web_ribbon)"/>
+</kanban>

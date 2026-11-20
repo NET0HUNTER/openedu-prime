@@ -1,0 +1,4 @@
+<pivot string="Tickets">
+                <field name="issue_name" type="row"/>
+                <field name="user_id" type="col"/>
+            </pivot>

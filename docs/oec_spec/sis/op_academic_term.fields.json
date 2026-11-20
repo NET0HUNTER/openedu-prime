@@ -1,0 +1,79 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "name":  {
+                 "readonly":  false,
+                 "required":  true,
+                 "string":  "Name",
+                 "type":  "char"
+             },
+    "term_start_date":  {
+                            "readonly":  false,
+                            "required":  true,
+                            "string":  "Start Date",
+                            "type":  "date"
+                        },
+    "term_end_date":  {
+                          "readonly":  false,
+                          "required":  true,
+                          "string":  "End Date",
+                          "type":  "date"
+                      },
+    "academic_year_id":  {
+                             "readonly":  false,
+                             "relation":  "op.academic.year",
+                             "required":  true,
+                             "string":  "Academic Year",
+                             "type":  "many2one"
+                         },
+    "parent_term":  {
+                        "readonly":  false,
+                        "relation":  "op.academic.term",
+                        "required":  false,
+                        "string":  "Parent Term",
+                        "type":  "many2one"
+                    },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   }
+}

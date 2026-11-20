@@ -1,0 +1,4 @@
+<graph string="Jobs" create="False" delete="False">
+                <field name="job_function_id" type="row"/>
+                <field name="exec_time" type="measure"/>
+            </graph>

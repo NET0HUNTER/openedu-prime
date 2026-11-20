@@ -1,0 +1,4 @@
+<pivot string="Job Applicant">
+                <field name="user_id" type="row"/>
+                <field name="post_id" type="col"/>
+            </pivot>

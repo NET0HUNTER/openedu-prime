@@ -1,0 +1,270 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "message_is_follower":  {
+                                "readonly":  true,
+                                "required":  false,
+                                "string":  "Is Follower",
+                                "type":  "boolean"
+                            },
+    "message_follower_ids":  {
+                                 "readonly":  false,
+                                 "relation":  "mail.followers",
+                                 "required":  false,
+                                 "string":  "Followers",
+                                 "type":  "one2many"
+                             },
+    "message_partner_ids":  {
+                                "readonly":  false,
+                                "relation":  "res.partner",
+                                "required":  false,
+                                "string":  "Followers (Partners)",
+                                "type":  "many2many"
+                            },
+    "message_ids":  {
+                        "readonly":  false,
+                        "relation":  "mail.message",
+                        "required":  false,
+                        "string":  "Messages",
+                        "type":  "one2many"
+                    },
+    "has_message":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Has Message",
+                        "type":  "boolean"
+                    },
+    "message_needaction":  {
+                               "help":  "If checked, new messages require your attention.",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Action Needed",
+                               "type":  "boolean"
+                           },
+    "message_needaction_counter":  {
+                                       "help":  "Number of messages requiring action",
+                                       "readonly":  true,
+                                       "required":  false,
+                                       "string":  "Number of Actions",
+                                       "type":  "integer"
+                                   },
+    "message_has_error":  {
+                              "help":  "If checked, some messages have a delivery error.",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Message Delivery error",
+                              "type":  "boolean"
+                          },
+    "message_has_error_counter":  {
+                                      "help":  "Number of messages with delivery error",
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "Number of errors",
+                                      "type":  "integer"
+                                  },
+    "message_attachment_count":  {
+                                     "readonly":  true,
+                                     "required":  false,
+                                     "string":  "Attachment Count",
+                                     "type":  "integer"
+                                 },
+    "rating_ids":  {
+                       "readonly":  false,
+                       "relation":  "rating.rating",
+                       "required":  false,
+                       "string":  "Ratings",
+                       "type":  "one2many"
+                   },
+    "website_message_ids":  {
+                                "help":  "Website communication history",
+                                "readonly":  false,
+                                "relation":  "mail.message",
+                                "required":  false,
+                                "string":  "Website Messages",
+                                "type":  "one2many"
+                            },
+    "message_has_sms_error":  {
+                                  "help":  "If checked, some messages have a delivery error.",
+                                  "readonly":  true,
+                                  "required":  false,
+                                  "string":  "SMS Delivery error",
+                                  "type":  "boolean"
+                              },
+    "attendance_id":  {
+                          "readonly":  false,
+                          "relation":  "op.attendance.sheet",
+                          "required":  false,
+                          "string":  "Attendance Sheet",
+                          "type":  "many2one"
+                      },
+    "student_id":  {
+                       "readonly":  false,
+                       "relation":  "op.student",
+                       "required":  true,
+                       "string":  "Student",
+                       "type":  "many2one"
+                   },
+    "present":  {
+                    "readonly":  false,
+                    "required":  false,
+                    "string":  "Present",
+                    "type":  "boolean"
+                },
+    "excused":  {
+                    "readonly":  false,
+                    "required":  false,
+                    "string":  "Absent Excused",
+                    "type":  "boolean"
+                },
+    "absent":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Absent Unexcused",
+                   "type":  "boolean"
+               },
+    "late":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "Late",
+                 "type":  "boolean"
+             },
+    "course_id":  {
+                      "readonly":  true,
+                      "relation":  "op.course",
+                      "required":  false,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  true,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "remark":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Remark",
+                   "type":  "char"
+               },
+    "attendance_date":  {
+                            "readonly":  true,
+                            "required":  false,
+                            "string":  "Date",
+                            "type":  "date"
+                        },
+    "register_id":  {
+                        "readonly":  true,
+                        "relation":  "op.attendance.register",
+                        "required":  false,
+                        "string":  "Register",
+                        "type":  "many2one"
+                    },
+    "active":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Active",
+                   "type":  "boolean"
+               },
+    "attendance_type_id":  {
+                               "readonly":  false,
+                               "relation":  "op.attendance.type",
+                               "required":  false,
+                               "string":  "Attendance Type",
+                               "type":  "many2one"
+                           },
+    "state":  {
+                  "readonly":  true,
+                  "required":  false,
+                  "selection":  [
+                                    [
+                                        "draft",
+                                        "Draft"
+                                    ],
+                                    [
+                                        "start",
+                                        "Attendance Start"
+                                    ],
+                                    [
+                                        "done",
+                                        "Attendance Taken"
+                                    ],
+                                    [
+                                        "cancel",
+                                        "Cancelled"
+                                    ]
+                                ],
+                  "string":  "Status",
+                  "type":  "selection"
+              },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "session_id":  {
+                       "readonly":  true,
+                       "relation":  "op.session",
+                       "required":  false,
+                       "string":  "Session",
+                       "type":  "many2one"
+                   },
+    "progression_id":  {
+                           "readonly":  false,
+                           "relation":  "op.student.progression",
+                           "required":  false,
+                           "string":  "Progression No",
+                           "type":  "many2one"
+                       },
+    "color":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "string":  "Color Index",
+                  "type":  "integer"
+              },
+    "check_in":  {
+                     "readonly":  true,
+                     "required":  true,
+                     "string":  "Attendance Time",
+                     "type":  "datetime"
+                 }
+}

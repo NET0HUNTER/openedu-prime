@@ -1,0 +1,67 @@
+<form string="Thesis Submission">
+                    <header>
+                        <button name="action_submit" string="Submit" type="object" invisible="state != 'draft'" class="oe_highlight"/>
+                        <button name="action_start_review" string="Start Review" type="object" invisible="state != 'submitted'" class="oe_highlight"/>
+                        <button name="action_approve" string="Approve" type="object" invisible="state != 'under_review'" class="oe_highlight"/>
+                        <button name="action_request_revision" string="Request Revision" type="object" invisible="state != 'under_review'"/>
+                        <button name="action_invite_examiner_wizard" string="Invite Examiner" type="object" invisible="state not in ['submitted','under_review']" class="oe_highlight"/>
+                        <button name="action_submit_evaluation" string="Submit Evaluation" type="object" invisible="state != 'approved'" class="oe_highlight"/>
+                        <button name="action_complete" string="Complete" type="object" invisible="state != 'evaluated'" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,under_review,evaluated,approved,completed"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                            <label for="title" class="oe_edit_only"/>
+                            <h2>
+                                <field name="title" placeholder="Thesis Title" readonly="state != 'draft'"/>
+                            </h2>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="registration_id" options="{'no_create': True}" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="student_id" readonly="1"/>
+                                <field name="submission_date" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="total_score" readonly="1"/>
+                                <field name="examiner_id" readonly="state not in ['under_review','submitted','draft']" domain="[('registration_id', '=', registration_id), ('role', '=', 'examiner')]" can_create="True" can_write="True"/>
+                                <field name="evaluation_template_id" readonly="1" invisible="state in ['submitted','draft','rejected']"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Thesis Document" name="document">
+                                <group>
+                                    <field name="thesis_file" filename="thesis_filename" readonly="state != 'draft'"/>
+                                    <field name="thesis_filename" invisible="1"/>
+                                </group>
+                            </page>
+                            <page string="Additional Document" name="document">
+                                <group>
+                                    <field name="additonal_file" filename="thesis_filename" readonly="state != 'draft'"/>
+                                    <field name="additonal_filename" invisible="1"/>
+                                </group>
+                            </page>
+                            <page string="Revision Comments" name="revision_comments">
+                                <group>
+                                    <field name="revision_comments" readonly="state != 'under_review'"/>
+                                </group>
+                            </page>
+                            <page string="Evaluation" name="evaluation" invisible="state not in ['evaluated', 'approved']">
+                                <field name="evaluation_lines" on_change="1">
+                                    <list editable="bottom" create="false" delete="false">
+                                        <field name="parameter_id" on_change="1"/>
+                                        <field name="score" on_change="1"/>
+                                        <field name="max_marks"/>
+                                    </list>
+                                </field>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="total_score"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

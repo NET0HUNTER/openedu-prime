@@ -1,0 +1,33 @@
+{
+  "fields": {
+    "date": {
+      "aggregator": "min",
+      "change_default": false,
+      "groupable": true,
+      "name": "date",
+      "readonly": true,
+      "related": "move_id.date",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Date",
+      "type": "date"
+    },
+    "balance": {
+      "aggregator": "sum",
+      "change_default": false,
+      "currency_field": "company_currency_id",
+      "groupable": true,
+      "name": "balance",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Balance",
+      "type": "monetary"
+    }
+  },
+  "has_approval_rules": false
+}

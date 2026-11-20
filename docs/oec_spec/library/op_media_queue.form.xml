@@ -1,0 +1,30 @@
+<form string="media Queue Request">
+                    <header>
+                        <button name="do_accept" string="Accept" type="object" invisible="state != 'request'" class="oe_highlight"/>
+                        <button name="do_reject" string="Reject" type="object" invisible="state not in ('request','accept')"/>
+                        <button name="do_request_again" string="Request Again" invisible="state != 'reject'" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="request,reject,accept" statusbar_colors="{&quot;reject&quot;:&quot;red&quot;}"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="active" invisible="True"/>
+                            <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                            <div style="font-size:20px;font-weight:bold;">
+                                <field name="name"/>
+                            </div>
+                        </group>
+                        <group class="pt-3">
+                            <group>
+                                <field name="user_id" placeholder="Name" on_change="1"/>
+                                <field name="date_from"/>
+                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                <field name="is_read" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="media_id" placeholder="Media" can_create="True" can_write="True"/>
+                                <field name="date_to"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

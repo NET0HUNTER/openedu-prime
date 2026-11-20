@@ -1,0 +1,5 @@
+﻿<search string="Grade Book">
+                    <field name="name"/>
+                    <field name="student_id"/>
+                    <field name="academic_year_ids"/>
+                </search>

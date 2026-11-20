@@ -1,0 +1,13 @@
+<pivot string="Media Analysis">
+                    <field name="media_id"/>
+                    <field name="media_unit_id" type="row"/>
+                    <field name="type"/>
+                    <field name="student_id"/>
+                    <field name="library_card_id"/>
+                    <field name="issued_date"/>
+                    <field name="return_date"/>
+                    <field name="actual_return_date"/>
+                    <field name="penalty"/>
+                    <field name="invoice_id"/>
+                    <field name="state" type="col"/>
+                </pivot>

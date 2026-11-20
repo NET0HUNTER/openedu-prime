@@ -1,0 +1,303 @@
+<form string="Quiz">
+                <header>
+                    <button name="view_quiz" invisible="state != 'open'" type="object" string="View Exam"/>
+                    <button name="action_confirm" invisible="state != 'draft'" string="Confirm" type="object" class="oe_highlight"/>
+                    <button name="action_done" invisible="state != 'open'" string="Done" type="object" class="oe_highlight"/>
+                    <button name="action_draft" invisible="state != 'cancel'" string="Re-open" type="object" class="oe_highlight"/>
+                    <button name="action_cancel" invisible="state != 'open'" string="Closed" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="btn oe_stat_button" type="object" name="total_quiz" style="border-right: 1px solid;" icon="fa-book">
+                            <field string="Resullt" name="total_quiz_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <group col="2">
+                        <group>
+                            <field name="name" required="1" readonly="state != 'draft'"/>
+                            <field name="quiz_config" required="1" readonly="state != 'draft'"/>
+                            <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            <field name="parent_id" can_create="True" can_write="True"/>
+                            <field name="assigned_to" readonly="state != 'draft'" on_change="1"/>
+                        </group>
+                        <group>
+                            <field name="categ_id" required="1" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                            <field name="total_marks" readonly="1"/>
+                <field name="lms" on_change="1"/>
+                        </group>
+
+                        <group>
+                            <field name="course_ids" required="assigned_to in ['specific_course','specific_batch']" invisible="assigned_to == 'open_for_all' or assigned_to == 'specific_student'" readonly="state != 'draft'" widget="many2many_tags" on_change="1" can_create="True" can_write="True">
+                                <list editable="top">
+                                    <field name="name" required="1"/>
+                                </list>
+                            </field>
+
+                        </group>
+                        <group>
+                            <field name="batch_ids" domain="[('course_id', 'in', course_ids)]" required="assigned_to in ['specific_course','specific_batch']" invisible="assigned_to == 'open_for_all' or assigned_to == 'specific_student' or assigned_to == 'specific_course'" readonly="state != 'draft'" widget="many2many_tags" on_change="1" can_create="True" can_write="True">
+                                <list editable="top">
+                                    <field name="name" required="1"/>
+                                </list>
+                            </field>
+                        </group>
+                    </group>
+                    <group class="d-block" invisible="quiz_config != 'quiz_bank_selected' or state != 'draft'">
+                        <button name="1247" string="Fetch Questions" type="action" class="oe_highlight"/>
+                    </group>
+                    <group string="Questions Configuration" invisible="quiz_config != 'quiz_bank_random'" readonly="state != 'draft'">
+                        <field name="config_ids" nolabel="1" required="quiz_config != 'quiz_bank_random'" readonly="state != 'draft'" colspan="2">
+                            <list editable="bottom">
+                                <field name="bank_id" required="1" can_create="True" can_write="True"/>
+                                <field name="no_of_question" required="1"/>
+                                <field name="quiz_id" optional="hide" can_create="True" can_write="True"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </list>
+                        </field>
+                    </group>
+
+                    <notebook>
+                        <page string="Questions" invisible="quiz_config == 'quiz_bank_random'">
+                            <field name="line_ids" nolabel="1" readonly="quiz_config not in ['normal','quiz_bank_selected'] or state != 'draft'" on_change="1">
+                                <list>
+                                    <field name="sequence" widget="handle"/>
+                                    <control>
+                                        <create name="add_line_control" string="Add a line"/>
+                                        <create name="add_section_control" string="Add a Section" context="{'default_display_type': 'section'}"/>
+                                    </control>
+                                    <field name="display_type" column_invisible="1"/>
+                                    <field name="name"/>
+                                    <field invisible="display_type != False" name="que_type"/>
+                                    <field invisible="display_type != False" name="mark" on_change="1"/>
+                                    <field invisible="display_type != False" name="answer" optional="hide"/>
+                                    <field invisible="display_type != False" name="case_sensitive" widget="boolean_toggle" optional="hide"/>
+                                    <field invisible="display_type != False" name="line_ids" optional="hide"/>
+                                    <field invisible="display_type != False" name="quiz_id" optional="hide" on_change="1"/>
+                                    <field invisible="display_type != False" name="company_id" optional="show"/>
+                                </list>
+                                <form string="questions">
+                                    <group>
+                                        <field name="display_type" invisible="1"/>
+                                        <field name="name" string="Section" invisible="display_type != 'section'"/>
+                                    </group>
+                                    <group name="questions" colspan="4" invisible="display_type != False">
+                                        <field name="display_type" invisible="1"/>
+                                        <field name="name" string="Section" invisible="display_type != 'section'"/>
+                                    </group>
+                                    <group name="questions" colspan="4" invisible="display_type != False">
+                                        <field name="name" required="1"/>
+                                        <field name="mark" required="1" on_change="1"/>
+                                        <field name="que_type" required="1"/>
+                                        <field name="case_sensitive" invisible="que_type != 'blank'"/>
+                                        <field name="answer" invisible="que_type not in ['blank','descriptive','numeric']" required="que_type == 'blank'"/>
+                                        <field name="grade_true_id" invisible="que_type in ['descriptive','optional','optional_blank']" required="1" can_create="True" can_write="True"/>
+                                        <field name="grade_false_id" invisible="que_type in ['descriptive','optional','optional_blank']" required="1" can_create="True" can_write="True"/>
+                                        <field name="material_type"/>
+                                        <field name="video_type" invisible="material_type not in ['video']" required="material_type in ['video']"/>
+                                        <field name="datas" widget="binary" invisible="(material_type in ['quiz'] and video_type in ['fileupload']) or ((material_type not in ['audio','document','infographic'] and video_type in ['youtube','vimeo','dartfish']) and video_type not in ['fileupload'])"/>
+                                        <field name="url" invisible="material_type != 'video' or video_type == 'fileupload'" on_change="1"/>
+                                        <field name="document_id" invisible="material_type != 'video' or video_type == 'fileupload'"/>
+                                    </group>
+                                    <group name="answers" invisible="que_type == 'mathjax'">
+                                        <notebook colspan="2" name="Answers">
+                                            <page name="Answers">
+                                                <field name="line_ids" nolabel="1" invisible="que_type not in ['optional','optional_blank'] or display_type != False">
+                                                    <list editable="bottom">
+                                                        <field name="name" required="1"/>
+                                                        <field name="grade_id" options="{'no_create': True}" can_create="True" can_write="True"/>
+                                                        <field name="line_id" optional="hide" can_create="True" can_write="True"/>
+                                                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                                    </list>
+                                                    <form string="Answers">
+                                                        <group>
+                                                            <field name="name" required="1"/>
+                                                            <field name="grade_id" options="{'no_create': True}" can_create="True" can_write="True"/>
+                                                        </group>
+                                                    </form>
+                                                </field>
+                                                <field name="following_line_ids" nolabel="1" invisible="que_type != 'match_following'">
+                                                    <list editable="bottom">
+                                                        <field name="image" widget="image" class="oe_avatar float-start"/>
+                                                        <field name="question"/>
+                                                        <field name="answer" required="1"/>
+                                                        <field name="default_answer" string="Default Answer" optional="hide"/>
+                                                        <field name="grade_id" optional="hide" can_create="True" can_write="True"/>
+                                                        <field name="following_line_id" string="Question" optional="hide" can_create="True" can_write="True"/>
+                                                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                                    </list>
+                                                    <form string="Answers">
+                                                        <group>
+                                                            <field name="image" widget="image" class="oe_avatar float-start"/>
+                                                            <field name="question"/>
+                                                            <field name="answer"/>
+                                                        </group>
+                                                    </form>
+                                                </field>
+                                                <field name="following_images_line_ids" nolabel="1" invisible="que_type != 'match_following_images'">
+                                                    <list editable="bottom">
+                                                        <field name="image" widget="image" class="oe_avatar float-start"/>
+                                                        <field name="default_answer" widget="image" class="oe_avatar float-start"/>
+                                                        <field name="given_answer" optional="hide"/>
+                                                        <field name="grade_id" optional="hide" can_create="True" can_write="True"/>
+                                                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                                    </list>
+                                                    <form string="Answers">
+                                                        <group>
+                                                            <field name="image" widget="image" class="oe_avatar float-start"/>
+                                                            <field name="default_answer" widget="image" class="oe_avatar float-start"/>
+                                                        </group>
+                                                    </form>
+                                                </field>
+                                                <field name="multiple_choice_line_ids" nolabel="1" invisible="que_type != 'multiple_choice'">
+                                                    <list editable="bottom">
+                                                        <field name="que_text" column_invisible="parent.multiple_choice_que_type == 'image'"/>
+                                                        <field name="que_image" widget="image" class="oe_avatar float-start" column_invisible="parent.multiple_choice_que_type == 'text'"/>
+                                                        <field name="default_answer"/>
+                                                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                                    </list>
+                                                </field>
+                                                <field name="sort_paragraphs_line_ids" nolabel="1" invisible="que_type != 'sort_paragraphs'">
+                                                    <list editable="bottom">
+                                                        <field name="question"/>
+                                                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                                    </list>
+                                                    <form string="Answers">
+                                                        <group>
+                                                            <field name="question"/>
+                                                        </group>
+                                                    </form>
+                                                </field>
+                                            </page>
+                                        </notebook>
+                                    </group>
+
+                                <field name="multiple_choice_que_type" invisible="True" readonly="True" data-used-by="column_invisible=&quot;parent.multiple_choice_que_type == 'text'&quot; (field,que_image)"/>
+</form>
+                            </field>
+                        </page>
+                        <page string="Student(s)" invisible="assigned_to == 'open_for_all'" required="assigned_to != 'open_for_all'">
+                            <field name="student_ids" readonly="state != 'draft'" can_create="True" can_write="True">
+                                <list editable="top">
+                                    <field name="name" on_change="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Result Message">
+                            <field name="quiz_message_ids" readonly="state != 'draft'">
+                                <list>
+                                    <field name="result_from"/>
+                                    <field name="result_to"/>
+                                    <field name="quiz_id" optional="hide"/>
+                                    <field name="company_id" optional="show"/>
+                                </list>
+                                <form string="Result Message">
+                                    <group>
+                                        <field name="result_from" required="1"/>
+                                        <field name="result_to" required="1"/>
+                                    </group>
+                                    <separator string="Message"/>
+                                    <field name="message"/>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Configuration">
+                            <group col="2">
+                                <group>
+                                    <field name="single_que" readonly="state != 'draft'"/>
+                                    <field name="prev_allow" invisible="single_que == False" readonly="state != 'draft'"/>
+                                    <field name="prev_readonly" readonly="state != 'draft'"/>
+                                    <field name="show_header" readonly="state != 'draft'"/>
+                                    <field name="allow_shuffle" readonly="state != 'draft'"/>
+                                    <field name="is_attached_reference_material" readonly="state != 'draft'"/>
+                                </group>
+                                <group>
+                                    <field name="no_of_attempt" readonly="state != 'draft'"/>
+                                    <field name="que_required" readonly="state != 'draft'"/>
+                                    <field name="exit_allow" readonly="state != 'draft'"/>
+                                    <field name="manual" readonly="state != 'draft'"/>
+                                </group>
+                            </group>
+                            <group col="2">
+                                <group string="Result Configuration">
+                                    <field name="show_result" readonly="state != 'draft'" help="Result won't display if descriptive Questions."/>
+                                    <field name="right_ans" invisible="show_result == False" readonly="state != 'draft'"/>
+                                    <field name="wrong_ans" invisible="show_result == False" readonly="state != 'draft'"/>
+                                    <field name="not_attempt_ans" invisible="show_result == False" readonly="state != 'draft'"/>
+                                    <field name="display_result" readonly="state != 'draft'"/>
+
+                                </group>
+                                <group string="Timing Configuration">
+                                    <field name="time_config" readonly="state != 'draft'"/>
+                                    <label for="time_config" string="Time Limit" invisible="time_config == False"/>
+                                    <div>
+                                        <field name="time_limit_hr" style="width: 5%;" invisible="time_config == False" required="time_config == True" readonly="state != 'draft'"/>
+                                        <label string="Hr" style="width: 8%;" for="time_limit_hr" class="pe-3" invisible="time_config == False"/>
+                                        <field name="time_limit_minute" style="width: 8%;" invisible="time_config == False" required="time_config == True" readonly="state != 'draft'"/>
+                                        <label string="Min" style="width: 20%;" for="time_limit_minute" invisible="time_config == False"/>
+                                    </div>
+                                    <field name="time_expire" invisible="1"/>
+                                    <field name="grace_period" invisible="time_expire != 'grace_period' or time_config == False"/>
+                                    <label for="grace_period" string="Grace Period" invisible="grace_period == False or time_config == False"/>
+                                    <div>
+                                        <field name="grace_period_hr" style="width: 30%;" invisible="grace_period == False or time_config == False" required="grace_period == True or time_config == False"/>
+                                        <label for="grace_period_hr" string="Hr" style="width: 8%;" invisible="grace_period == False or time_config == False"/>
+                                        <field name="grace_period_minute" style="width: 30%;" invisible="grace_period == False or time_config == False" required="grace_period == True or time_config == False"/>
+                                        <label for="grace_period_minute" string="Min" style="width: 20%;" invisible="grace_period == False or time_config == False"/>
+                                    </div>
+                                </group>
+                            </group>
+                    <group>
+                        <group string="Anti Cheating">
+                            <field name="face_tracking"/>
+                            <field name="warning_limit" string="Warning Limit" invisible="face_tracking == False" on_change="1"/>
+                            <field name="warning_state" string="Warning State" invisible="face_tracking == False"/>
+                            <field name="face_sensitivity" string="Face Sensitivity" invisible="face_tracking == False"/>
+                            <field name="no_person" invisible="face_tracking == False"/>
+                            <field name="multiple_person" invisible="face_tracking == False"/>
+                            <field name="copy_paste_allow"/>
+                            <label for="question_time_out" string="Question Time Out"/>
+                            <div>
+                                <field name="question_time_out" style="width: 30%;" on_change="1"/>
+                                <label string="In Minutes" style="width: 20%;" for="question_time_out"/>
+                            </div>
+                            <field name="take_screenshot"/>
+                            <label for="random_start" string="Random" invisible="take_screenshot != 'random'"/>
+                            <label for="particular_interval" string="Time Interval" invisible="take_screenshot != 'time_interval'"/>
+                            <div>
+                                <field name="random_start" style="width: 20%;" invisible="take_screenshot != 'random'" on_change="1"/>
+                                <label string="Start In Minutes" style="width: 31%;" for="random_start" invisible="take_screenshot != 'random'"/>
+                                <field name="random_end" style="width: 20%;" invisible="take_screenshot != 'random'" on_change="1"/>
+                                <label string="End In Minutes" style="width: 31%;" for="random_end" invisible="take_screenshot != 'random'"/>
+                                <field name="particular_interval" style="width: 20%;" invisible="take_screenshot != 'time_interval'" on_change="1"/>
+                                <label string="In Minutes" style="width: 31%;" for="particular_interval" invisible="take_screenshot != 'time_interval'"/>
+                            </div>
+                         </group>
+                    </group>
+                        </page>
+                        <page string="Starting Page">
+                            <group>
+                                <field name="start_view" required="1" readonly="state != 'draft'"/>
+                            </group>
+                            <field name="quiz_audio" invisible="start_view != 'audio'" required="start_view != 'audio'" readonly="state != 'draft'"/>
+                            <field name="quiz_video" invisible="start_view != 'video'" required="start_view != 'video'" readonly="state != 'draft'"/>
+                            <field name="quiz_html" invisible="start_view != 'html'" required="start_view != 'html'" readonly="state != 'draft'"/>
+                        </page>
+                        <page string="Description">
+                            <group>
+                                <field name="description" placeholder="Description..." nolabel="1" colspan="2" readonly="state != 'draft'"/>
+                            </group>
+                        </page>
+                        <page string="Challenges">
+                            <group>
+                                <field name="challenge_ids" widget="many2many_tags" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                            </group>
+                        </page>
+                <page string="ACT Passage" invisible="not act_passage">
+                    <field name="act_passage" readonly="state != 'draft'"/>
+                </page>
+                    </notebook>
+                </sheet>
+            </form>

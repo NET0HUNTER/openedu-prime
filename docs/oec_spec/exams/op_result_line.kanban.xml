@@ -1,0 +1,1 @@
+﻿<kanban string="Result Line"><templates><t t-name="card"><field name="marks"/></t></templates></kanban>

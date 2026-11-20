@@ -1,0 +1,17 @@
+{
+  "fields": {
+    "id": {
+      "change_default": false,
+      "groupable": true,
+      "name": "id",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "ID",
+      "type": "integer"
+    }
+  },
+  "has_approval_rules": false
+}

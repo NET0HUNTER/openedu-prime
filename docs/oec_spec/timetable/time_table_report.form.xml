@@ -1,0 +1,24 @@
+﻿<form string="Time Table Report">
+                    <sheet>
+                        <div>
+                            <group colspan="4" cols="4">
+                                <group>
+                                    <field name="start_date"/>
+                                    <field name="state"/>
+                                    <field name="faculty_id" required="state == 'faculty'" invisible="state != 'faculty'" can_create="True" can_write="True"/>
+                                </group>
+                                <group>
+                                    <field name="end_date"/>
+                                    <field name="course_id" required="state == 'student'" invisible="state != 'student'" on_change="1" can_create="True" can_write="True"/>
+                                    <field name="batch_id" context="{'course_id': course_id,'get_parent_batch':1}" required="state == 'student'" invisible="state != 'student'" can_create="True" can_write="True"/>
+                                </group>
+                            </group>
+                        </div>
+                    </sheet>
+                    <footer>
+                        <span class="w-100">
+                            <button string="Print" type="object" name="gen_time_table_report" class="oe_highlight m-2"/>
+                            <button special="cancel" string="Close" type="object"/>
+                        </span>
+                    </footer>
+                </form>

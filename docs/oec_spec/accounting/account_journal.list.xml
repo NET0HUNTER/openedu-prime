@@ -1,0 +1,12 @@
+<list string="Account Journal">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="type" on_change="1"/>
+                    <field name="journal_group_ids" widget="many2many_tags" readonly="1" optional="hide"/>
+                    
+                    <field name="code" optional="show"/>
+                    <field name="default_account_id" optional="show"/>
+                    <field name="active" optional="hide"/>
+                    <field name="company_id" optional="hide" on_change="1"/>
+                    
+                </list>

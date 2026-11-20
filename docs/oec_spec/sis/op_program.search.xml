@@ -1,0 +1,13 @@
+﻿<search string="Program">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="department_id"/>
+                    <field name="active"/>
+                    <field name="company_id"/>
+                    <newline/>
+                    <group>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <filter string="Company" name="group_by_company" domain="[]" context="{'group_by':'company_id'}"/>
+                        <filter string="Department" name="group_by_department" domain="[]" context="{'group_by':'department_id'}"/>
+                    </group>
+                </search>

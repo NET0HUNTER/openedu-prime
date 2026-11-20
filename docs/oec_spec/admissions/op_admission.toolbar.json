@@ -1,0 +1,22 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1413,
+                      "name":  "Student Admission Letter",
+                      "binding_view_types":  "list,form"
+                  }
+              ],
+    "action":  [
+                   {
+                       "id":  1323,
+                       "name":  "Send Email",
+                       "binding_view_types":  "form"
+                   },
+                   {
+                       "id":  1412,
+                       "name":  "Generate E-Sign URL",
+                       "binding_view_types":  "list,form",
+                       "sequence":  5
+                   }
+               ]
+}

@@ -1,0 +1,1 @@
+<kanban string="Library Card"><templates><t t-name="card"><field name="number"/></t></templates></kanban>

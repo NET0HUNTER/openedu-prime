@@ -1,0 +1,13 @@
+﻿<search string="Specializations">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="area_id"/>
+                    <field name="company_id"/>
+                    <field name="active"/>
+                    <newline/>
+                    <group>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                        <filter string="Area" name="group_by_area" domain="[]" context="{'group_by':'area_id'}"/>
+                        <filter string="Company" name="company" context="{'group_by':'company_id'}"/>
+                    </group>
+                </search>

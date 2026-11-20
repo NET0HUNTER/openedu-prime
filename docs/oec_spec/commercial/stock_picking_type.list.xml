@@ -1,0 +1,9 @@
+<list string="Operation Types">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="active" column_invisible="True"/>
+                
+                <field name="sequence_id" invisible="1" column_invisible="1"/>
+                <field name="company_id" on_change="1"/>
+                
+            </list>

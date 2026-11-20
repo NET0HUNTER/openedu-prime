@@ -1,0 +1,18 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Semester Template"
+    },
+    {
+        "id":  2,
+        "display_name":  "English/reading"
+    },
+    {
+        "id":  3,
+        "display_name":  "Arabic/islamic"
+    },
+    {
+        "id":  4,
+        "display_name":  "Quarter Template"
+    }
+]

@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "display_name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "display_name",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Display Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

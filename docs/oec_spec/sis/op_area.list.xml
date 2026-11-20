@@ -1,0 +1,5 @@
+﻿<list string="Area">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="company_id"/>
+                </list>

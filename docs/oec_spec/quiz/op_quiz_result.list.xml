@@ -1,0 +1,17 @@
+<list create="false">
+                <field name="name"/>
+                <field name="quiz_id" on_change="1"/>
+                <field name="categ_id"/>
+                <field name="finish_date"/>
+                <field name="user_id"/>
+                <field name="total_question"/>
+                <field name="total_correct"/>
+                <field name="total_incorrect"/>
+                <field name="score" widget="float" options="{&quot;precision&quot;: 2}"/>
+                <field name="index" optional="hide"/>
+                <field name="submit_date" optional="hide"/>
+                <field name="line_ids" optional="hide" on_change="1"/>
+                    <field name="warning_line_ids" optional="hide"/>
+                <field name="state" optional="hide"/>
+                <field name="company_id" optional="show"/>
+            </list>

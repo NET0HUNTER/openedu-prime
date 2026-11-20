@@ -1,0 +1,10 @@
+﻿{
+    "action":  [
+                   {
+                       "id":  1468,
+                       "name":  "Create Invoice",
+                       "binding_view_types":  "list,form",
+                       "sequence":  5
+                   }
+               ]
+}

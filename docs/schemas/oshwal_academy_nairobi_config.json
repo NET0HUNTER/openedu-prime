@@ -1,0 +1,84 @@
+{
+  "client_name": "Oshwal Academy Nairobi",
+  "source_website": "https://oan.oshwalacademy.sc.ke/academics/",
+  "motto": "Compass for Life Skills",
+  "headquarters": {
+    "address": "First Parklands Avenue, Off Mpaka Road, Parklands",
+    "po_box": "P.O. BOX 1130, 00606 NAIROBI, KENYA",
+    "email": "oan@oshwalacademy.sc.ke",
+    "currency": "KES",
+    "country": "Kenya"
+  },
+  "brand_tokens": {
+    "primary_navy": "#1e3f7c",
+    "secondary_navy": "#21407a",
+    "navbar_crimson_red": "#ec1c24",
+    "accent_golden_yellow": "#f4cb00",
+    "highlight_coral_pink": "#f68b92",
+    "highlight_periwinkle_blue": "#91a3c7",
+    "card_bg_cream": "#fcf5ea",
+    "card_bg_pale_blue": "#cfdfff"
+  },
+  "accreditations_and_boards": [
+    "Pearson Edexcel (IGCSE & GCE A-Level)",
+    "Pearson BTEC (Level 3)",
+    "ACT",
+    "SAT",
+    "British National Curriculum"
+  ],
+  "headline_metrics": {
+    "subjects_offered": "30+",
+    "world_languages": 5,
+    "teaching_faculty_total": 180,
+    "teaching_faculty_men": 80,
+    "teaching_faculty_women": 100,
+    "student_teacher_ratio": "6:1",
+    "top_university_transition_rate": "45%"
+  },
+  "multi_campus_companies": [
+    {"name": "Oshwal Academy Nairobi - Nursery", "subdomain": "nursery.oshwalacademy.sc.ke", "stage": "Kindergarten (EYFS)", "age_range": "2-5"},
+    {"name": "Oshwal Academy Nairobi - Primary", "subdomain": "primary.oshwalacademy.sc.ke", "stage": "Primary (KS1 & KS2)", "age_range": "5-11"},
+    {"name": "Oshwal Academy Nairobi - Junior High", "subdomain": "junior.oshwalacademy.sc.ke", "stage": "Junior High (KS3 & KS4 IGCSE)", "age_range": "11-16"},
+    {"name": "Oshwal Academy Nairobi - Senior High", "subdomain": "senior.oshwalacademy.sc.ke", "stage": "Senior High (KS5 A-Level & BTEC Level 3)", "age_range": "16-18"},
+    {"name": "Oshwal Academy Mombasa", "subdomain": "mombasa.oshwalacademy.sc.ke", "stage": "All-Through Regional Campus", "age_range": "2-18"}
+  ],
+  "academic_programs_and_courses": [
+    {
+      "division": "Kindergarten",
+      "program": "Early Years Foundation Stage (EYFS)",
+      "age_range": "2-5",
+      "courses": ["Playgroup", "Foundation 1 (Nursery)", "Foundation 2 (Reception)"],
+      "learning_areas": [
+        "Communication and Language",
+        "Physical Development",
+        "Personal, Social and Emotional Development",
+        "Literacy",
+        "Mathematics",
+        "Understanding the World",
+        "Expressive Arts and Design"
+      ],
+      "evaluation_mode": "Skill Assessment (Emerging / Expected / Exceeding)"
+    },
+    {
+      "division": "Primary",
+      "program": "British National Curriculum — Key Stages 1 & 2",
+      "age_range": "5-11",
+      "courses": ["Year 1 (KS1)", "Year 2 (KS1)", "Year 3 (KS2)", "Year 4 (KS2)", "Year 5 (KS2)", "Year 6 (KS2)"],
+      "focus_areas": ["Literacy", "Mathematics", "Science", "Computing", "Performing Arts", "Sports", "Outdoor Learning", "Social Responsibility", "Co-Curricular Programme"]
+    },
+    {
+      "division": "Junior High (IGCSE)",
+      "program": "British National Curriculum — Key Stages 3 & 4 (IGCSE)",
+      "age_range": "11-16",
+      "courses": ["Year 7 (KS3)", "Year 8 (KS3)", "Year 9 (KS3)", "Year 10 (IGCSE)", "Year 11 (IGCSE)"],
+      "subject_selection_rules": "Compulsory Core + Elective Subject Registration in Year 10 for Pearson Edexcel IGCSE examinations at end of Year 11"
+    },
+    {
+      "division": "Senior High (A-Level & BTEC)",
+      "program": "Key Stage 5 — GCE A-Level & Pearson BTEC Level 3",
+      "age_range": "16-18",
+      "courses": ["Year 12 (AS-Level)", "Year 13 (A2-Level)", "Year 12 (BTEC Level 3)", "Year 13 (BTEC Level 3)"],
+      "subject_selection_rules": "3 to 5 subjects at AS-Level (Year 12) continuing to A2 (Year 13), or coursework-driven BTEC Level 3 pathway, supported by University & Careers Guidance"
+    }
+  ]
+}

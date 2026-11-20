@@ -1,0 +1,63 @@
+<form string="Asset category">
+                <sheet>
+                    <group>
+                        <div class="oe_title">
+                            <label for="name" string="Asset Type" class="oe_edit_only" invisible="type != 'purchase'"/>
+                            <label for="name" string="Deferred Revenue Type" class="oe_edit_only" invisible="type == 'purchase'"/>
+                            <h1>
+                                <field name="name" placeholder="e.g. Computers"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="type" invisible="1" on_change="1"/>
+                            <field name="company_id" options="{'no_create': True}" can_create="True" can_write="True"/>
+                        </group>
+                        <group string="Journal Entries">
+                            <field name="journal_id" can_create="True" can_write="True"/>
+                            <div class="o_td_label pb16">
+                                <label for="account_asset_id" invisible="type != 'purchase'" style="font-weight: bold" class="o_light_label"/>
+                                <label for="account_asset_id" string="Deferred Revenue Account" invisible="type != 'sale'" style="font-weight: bold" class="o_light_label"/>
+                            </div>
+                            <field name="account_asset_id" nolabel="1" invisible="type == False" domain="[('account_type', 'in', ('asset_fixed', 'asset_non_current', 'asset_current') if type == 'purchase' else ('liability_current', 'liability_non_current', 'income', 'income_other'))]" on_change="1" can_create="True" can_write="True"/>
+                            <div class="o_td_label pb16">
+                                <label for="account_depreciation_id" invisible="type != 'purchase'" style="font-weight: bold" class="o_light_label"/>
+                                <label for="account_depreciation_id" string="Recognition Income Account" invisible="type != 'sale'" style="font-weight: bold" class="o_light_label"/>
+                            </div>
+                            <field name="account_depreciation_id" nolabel="1" domain="[('account_type', 'in', ('asset_fixed', 'asset_non_current', 'asset_current') if type == 'purchase' else ('liability_current', 'liability_non_current', 'income', 'income_other'))]" can_create="True" can_write="True"/>
+                            <div class="o_td_label pb16">
+                                <label for="account_depreciation_expense_id" invisible="type != 'purchase'" style="font-weight: bold" class="o_light_label"/>
+                                <label for="account_depreciation_expense_id" string="Recognition Account" invisible="type != 'sale'" style="font-weight: bold" class="o_light_label"/>
+                            </div>
+                            <field name="account_depreciation_expense_id" nolabel="1" domain="[('account_type', 'in', ('expense', 'expense_depreciation', 'expense_direct_cost') if type == 'purchase' else ('income', 'income_other'))]" can_create="True" can_write="True"/>
+                            
+                            <field name="account_disposal_profit_id" invisible="type != 'purchase'" can_create="True" can_write="True"/>
+                            <field name="account_disposal_loss_id" invisible="type != 'purchase'" can_create="True" can_write="True"/>
+<!--                            <field name="analytic_tag_ids" groups="analytic.group_analytic_accounting"-->
+<!--                                   widget="many2many_tags"/>-->
+                        </group>
+                        <group string="Periodicity">
+                            <field name="method_time" string="Time Method Based On" widget="radio" invisible="type != 'purchase'"/>
+                            <label for="method_number" string="Number of Entries" invisible="method_time != 'number' or type == False"/>
+                            <div invisible="method_time != 'number' or type == False">
+                                <field name="method_number" class="oe_inline" required="method_time == 'number'"/>
+                            </div>
+                            <label for="method_period" string="One Entry Every"/>
+                            <div>
+                                <field name="method_period" nolabel="1" invisible="type == False" class="oe_inline"/>
+                                <field name="oe_method_period_unit" class="oe_inline"/>
+                            </div>
+                            <field name="method_end" required="method_time == 'end'" invisible="method_time != 'end'"/>
+                        </group>
+                        <group string="Additional Options">
+                            <field name="open_asset"/>
+                            <field name="group_entries"/>
+                            <field name="date_first_depreciation"/>
+                        </group>
+                        <group invisible="type == 'sale'" string="Depreciation Method">
+                            <field name="method" widget="radio"/>
+                            <field name="method_progress_factor" invisible="method == 'linear'" required="method in ['degressive', 'oe_degressive_then_linear']"/>
+                            <field name="prorata" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>

@@ -1,0 +1,16 @@
+<search string="Media Queue Request">
+                    <field name="user_id"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="state"/>
+                    <field name="media_id"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <group>
+                        <filter string="Media" name="group_by_lbr_media_queue_media" domain="[]" context="{'group_by':'media_id'}"/>
+                        <filter string="User" name="group_by_lbr_media_queue_user" domain="[]" context="{'group_by':'user_id'}"/>
+                        <filter string="Status" name="group_by_lbr_media_queue_state" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                <searchpanel>
+                    <field name="media_id" icon="fa fa-file-video-o"/>
+                </searchpanel>
+                </search>

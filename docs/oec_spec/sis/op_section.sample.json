@@ -1,0 +1,14 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "BCA-S1 section"
+    },
+    {
+        "id":  2,
+        "display_name":  "BOM-S2 section"
+    },
+    {
+        "id":  3,
+        "display_name":  "BA-S3 section"
+    }
+]

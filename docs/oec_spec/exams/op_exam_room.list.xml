@@ -1,0 +1,6 @@
+﻿<list string="Exam Room">
+                    <field name="name"/>
+                    <field name="classroom_id" on_change="1"/>
+                    <field name="capacity"/>
+                    <field name="company_id" optional="show"/>
+                </list>

@@ -1,0 +1,13 @@
+﻿<form string="Grievance Category Form">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group col="4" colspan="4">
+                                <field name="name"/>
+                                <field name="parent_id" can_create="True" can_write="True"/>
+                                <field name="is_academic"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

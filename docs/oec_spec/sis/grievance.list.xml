@@ -1,0 +1,17 @@
+﻿<list>
+                <field name="name"/>
+                <field name="subject"/>
+                <field name="created_date" widget="date"/>
+                <field name="description" optional="hide"/>
+                <field name="grievance_for" on_change="1"/>
+                <field name="student_id"/>
+                <field name="faculty_id"/>
+                <field name="parent_id" on_change="1"/>
+                <field name="course_id" optional="hide" on_change="1"/>
+                <field name="state"/>
+                <field name="batch_id" optional="hide"/>
+                <field name="academic_year_id" optional="hide" on_change="1"/>
+                <field name="academic_term_id" optional="hide"/>
+                <field name="grievance_category_id" on_change="1"/>
+                <field name="grievance_team_id" optional="hide"/>
+            </list>

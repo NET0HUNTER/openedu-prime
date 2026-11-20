@@ -1,0 +1,14 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Father"
+    },
+    {
+        "id":  2,
+        "display_name":  "Mother"
+    },
+    {
+        "id":  3,
+        "display_name":  "Gaurdian"
+    }
+]

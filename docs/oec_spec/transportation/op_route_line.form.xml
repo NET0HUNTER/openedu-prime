@@ -1,0 +1,50 @@
+<form string="Routes">
+                    <header>
+                        <button type="object" name="start_trip" invisible="state != 'draft'" string="Start Trip" class="oe_highlight"/>
+                        <button type="object" name="end_trip" invisible="state != 'start'" string="End Trip" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,start,end"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="route_type"/>
+                                <field name="route_date"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="route_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="start_time" on_change="1"/>
+                                <field name="driver_id"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Stops">
+                                <!-- <group class="pt-4 pb-4 d-block">
+                                    <button type="object" name="create_route_stop_line" class="oe_highlight" string="Get Stops" />
+                                </group> -->
+                                    <field name="route_stop_ids" nolabel="1">
+                                        <list>
+                                            <field name="sequence"/>
+                                            <field name="stop_id" on_change="1"/>
+                                            <field name="estimated_time" widget="float_time"/>
+                                        </list>
+                                    </field>
+                            </page>
+                            <page string="Passengers">
+                                <field name="route_passenger_ids" nolabel="1">
+                                    <list editable="top">
+                                        <field name="partner_id" can_create="True" can_write="True"/>
+                                        <field name="present"/>
+                                        <field name="stop_id" can_create="True" can_write="True"/>
+                                        <field name="route_line_id" optional="hide" can_create="True" can_write="True"/>
+                                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

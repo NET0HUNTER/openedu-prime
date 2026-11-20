@@ -1,0 +1,9 @@
+﻿<search string="Tag">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <newline/>
+                    <group>
+                        <filter string="Name" domain="[]" name="group_by_assignment_type_name" context="{'group_by':'name'}"/>
+                        <filter string="Code" domain="[]" name="group_by_assignment_type_code" context="{'group_by':'code'}"/>
+                    </group>
+                </search>

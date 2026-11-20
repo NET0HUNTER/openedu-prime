@@ -1,0 +1,11 @@
+﻿<form string="Scholarship Information">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group colspan="4" col="4">
+                                <field name="name"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

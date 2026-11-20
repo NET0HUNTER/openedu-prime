@@ -1,0 +1,5 @@
+﻿<search string="Skill Type">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>

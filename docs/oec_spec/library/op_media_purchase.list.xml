@@ -1,0 +1,13 @@
+<list string="Purchase Request">
+                    <field name="request_no"/>
+                    <field name="name"/>
+                    <field name="author"/>
+                    <field name="edition"/>
+                    <field name="publisher"/>
+                    <field name="course_ids"/>
+                    <field name="media_type_id" optional="hide"/>
+                    <field name="subject_ids"/>
+                    <field name="requested_id"/>
+                <field name="company_id" optional="show"/>
+                    <field name="request_date"/>
+                </list>

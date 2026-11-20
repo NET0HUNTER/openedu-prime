@@ -1,0 +1,8 @@
+<search string="Publisher">
+                    <field name="name"/>
+                    <field name="media_ids"/>
+                    <newline/>
+                    <group>
+                        <filter string="Publisher" name="group_by_lbr_publisher_name" domain="[]" context="{'group_by':'name'}"/>
+                    </group>
+                </search>

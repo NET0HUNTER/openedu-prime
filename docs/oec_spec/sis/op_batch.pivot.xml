@@ -1,0 +1,6 @@
+﻿<pivot string="Batch">
+                    <field name="name" type="row"/>
+                    <field name="course_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </pivot>

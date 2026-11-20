@@ -1,0 +1,1 @@
+﻿<kanban string="School Offences Details"><templates><t t-name="card"><field name="offences_type"/></t></templates></kanban>

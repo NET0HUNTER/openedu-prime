@@ -1,0 +1,16 @@
+<list create="false" delete="false" decoration-danger="state == 'failed'" decoration-muted="state == 'done'">
+                <field name="name"/>
+                <field name="model_name" optional="show"/>
+                <field name="state"/>
+                <field name="date_created"/>
+                <field name="eta" widget="remaining_days" string="Remaining days to execute" optional="hide"/>
+                <!-- pylint: disable=duplicate-xml-fields -->
+                <field name="date_done" optional="show"/>
+                <field name="exec_time" optional="show"/>
+                <field name="priority" optional="hide"/>
+                <field name="exc_name" optional="hide"/>
+                <field name="exc_message" optional="hide"/>
+                <field name="uuid" optional="show"/>
+                <field name="channel" optional="show"/>
+                <field name="company_id"/>
+            </list>

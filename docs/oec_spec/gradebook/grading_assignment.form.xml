@@ -1,0 +1,50 @@
+﻿<form string="Grading Assignment">
+                    <header>
+                        <button name="action_published" invisible="state != 'draft'" string="Publish" type="object" class="oe_highlight"/>
+                        <button name="action_grading_started" invisible="state in ['draft', 'grading_closed', 'grades_published', 'cancelled']" string="Grading Started" type="object" class="oe_highlight"/>
+                        <button name="action_grading_closed" invisible="state != 'grading_started'" string="Grading Closed" type="object" class="oe_highlight"/>
+                        <button name="action_grades_published" invisible="state != 'grading_closed'" string="Grades Published" type="object" class="oe_highlight"/>
+                        <button name="action_cancelled" invisible="state in ['draft', 'cancelled']" string="Close" type="object" class="oe_highlight"/>
+                        <button name="action_draft" invisible="state != 'cancelled'" string="Draft" type="object" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" on_change="1"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <div class="oe_button_box" name="button_box" width="100%">
+                            <button name="action_view_student_grade" class="btn oe_stat_button" icon="fa-book" type="object">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Grade</span>
+                                </div>
+                            </button>
+                            <button icon="fa-bar-chart" class="oe_stat_button" type="object" name="action_view_statistics">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_text">Statistics</span>
+                                </div>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="sequence"/>
+                                <field name="name" readonly="lock_change == True"/>
+                                <field name="user_id" readonly="1"/>
+                                <field name="year_id" required="1" readonly="lock_change == True" on_change="1" can_create="True" can_write="True"/>
+                                <field name="course_id" readonly="lock_change == True" can_create="True" can_write="True"/>
+                                <field name="grade" readonly="lock_change == True" on_change="1" can_create="True" can_write="True"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                                <field name="lock_change" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="issued_date" readonly="lock_change == True"/>
+                                <field name="assignment_type" readonly="lock_change == True" on_change="1" can_create="True" can_write="True"/>
+                                <field name="faculty_id" readonly="lock_change == True" can_create="True" can_write="True"/>
+                                <field name="term_id" domain="[('academic_year_id', '=', year_id)]" required="1" readonly="lock_change == True" can_create="True" can_write="True"/>
+                                <field name="subject_id" domain="[('course_id', '=', course_id)]" required="hide_subject == False" invisible="hide_subject == True" readonly="lock_change == True" can_create="True" can_write="True"/>
+                                <field name="point" invisible="hide == True" readonly="lock_change == True"/>
+                                <field name="hide" invisible="1"/>
+                                <field name="hide_subject" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

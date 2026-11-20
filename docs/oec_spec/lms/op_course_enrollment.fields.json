@@ -1,0 +1,33 @@
+{
+  "fields": {
+    "course_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "course_id",
+      "readonly": false,
+      "relation": "op.course",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Course",
+      "type": "many2one"
+    },
+    "progress": {
+      "aggregator": "sum",
+      "change_default": false,
+      "groupable": true,
+      "name": "progress",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Progress",
+      "type": "integer"
+    }
+  },
+  "has_approval_rules": false
+}

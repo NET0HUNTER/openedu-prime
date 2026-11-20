@@ -1,0 +1,62 @@
+{
+  "fields": {
+    "assignment_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "assignment_id",
+      "readonly": false,
+      "relation": "op.assignment",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Assignment",
+      "type": "many2one"
+    },
+    "state": {
+      "change_default": false,
+      "groupable": true,
+      "name": "state",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "submit",
+          "Submitted"
+        ],
+        [
+          "reject",
+          "Rejected"
+        ],
+        [
+          "change",
+          "Change Req."
+        ],
+        [
+          "accept",
+          "Accepted"
+        ],
+        [
+          "ignore",
+          "Ignore"
+        ],
+        [
+          "to_assess",
+          "To Assess"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Status",
+      "type": "selection"
+    }
+  },
+  "has_approval_rules": false
+}

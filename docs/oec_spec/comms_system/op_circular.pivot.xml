@@ -1,0 +1,4 @@
+<pivot string="Circular">
+                <field name="name" type="col"/>
+                <field name="created_by" type="row"/>
+            </pivot>

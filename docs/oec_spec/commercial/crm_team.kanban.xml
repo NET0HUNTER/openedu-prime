@@ -1,0 +1,94 @@
+<kanban class="o_crm_team_kanban" highlight_color="color" create="0" can_open="0" action="action_primary_channel_button" type="object" sample="1">
+                        <field name="alias_name" on_change="1"/>
+                        <field name="alias_domain"/>
+                        <field name="use_opportunities" on_change="1"/>
+                        <field name="use_leads" on_change="1"/>
+                <field name="invoiced_target"/>
+                <templates>
+                    <t t-name="menu">
+                        <div class="container">
+                            <div class="row">
+                                <div name="manage_view" class="col-5">
+                                    <h5 role="menuitem" class=" o_kanban_card_manage_title">
+                                        <span>View</span>
+                                    </h5>
+                        
+                        <div t-if="record.use_opportunities.raw_value">
+                            <a name="449" type="action">
+                                Opportunities
+                            </a>
+                        </div>
+                <div>
+                    <a name="977" type="action">Sales Orders</a>
+                </div>
+                <div>
+                    <a name="974" type="action">Invoices</a>
+                </div>
+                                </div>
+                                <div name="manage_new" class="col-5">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>New</span>
+                                    </h5>
+                        
+                        <div t-if="record.use_opportunities.raw_value">
+                            <a name="453" type="action">
+                                Opportunity
+                            </a>
+                        </div>
+                                </div>
+                                <div name="manage_reports" class="col-5">
+                                    <h5 role="menuitem" class="o_kanban_card_manage_title">
+                                        <span>Reporting</span>
+                                    </h5>
+                        
+                        <div t-if="record.use_opportunities.raw_value">
+                            <a name="452" type="action">
+                                Opportunities
+                            </a>
+                        </div>
+                <div name="sales_report">
+                    <a name="956" type="action">
+                        Sales
+                    </a>
+                </div>
+                <div name="invoices_report">
+                    <a name="947" type="action">
+                        Invoices
+                    </a>
+                </div>
+                                    <div name="o_team_kanban_report_separator"/>
+                        <div t-if="record.use_opportunities.raw_value">
+                            <a name="445" type="action">
+                                Activities
+                            </a>
+                        </div>
+                                </div>
+                            </div>
+
+                            <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                <div role="menuitem" aria-haspopup="true" class="col-8">
+                                    <field name="color" widget="kanban_color_picker"/>
+                                </div>
+                                <div role="menuitem" class="col-4">
+                                    <a class="dropdown-item" type="open">Configuration</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="card" class="flex-column justify-content-between">
+                        <div class="ms-2 me-3">
+                            <field name="name" class="fw-bold fs-2"/>
+                        <div class="ms-2" t-if="record.alias_name.value and record.alias_domain.value">
+                            <span t-translation="off"><i class="fa fa-envelope-o" aria-label="Leads" title="Leads" role="img"/>&amp;nbsp; <field name="alias_id" on_change="1"/></span>
+                        </div>
+                        </div>
+                        <div class="crm_team_kanban_bottom d-flex align-items-center mt-5">
+                        <a name="action_open_unassigned_leads" type="object" class="ms-2 me-auto" invisible="not lead_unassigned_count">
+                            <field name="lead_unassigned_count" class="me-1"/>Unassigned Leads
+                        </a>
+                            <field name="company_id" invisible="1"/>
+                            <field name="user_id" widget="many2one_avatar_user" class="ms-auto"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>

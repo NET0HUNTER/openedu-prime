@@ -1,0 +1,6 @@
+﻿<graph string="Course By Admission Register">
+                    <field name="course_id" type="row"/>
+                    <field name="start_date" interval="month"/>
+                    <field name="product_id" type="measure"/>
+
+                </graph>

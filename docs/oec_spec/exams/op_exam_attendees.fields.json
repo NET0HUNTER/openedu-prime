@@ -1,0 +1,116 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "student_id":  {
+                       "readonly":  false,
+                       "relation":  "op.student",
+                       "required":  true,
+                       "string":  "Student",
+                       "type":  "many2one"
+                   },
+    "status":  {
+                   "readonly":  false,
+                   "required":  true,
+                   "selection":  [
+                                     [
+                                         "present",
+                                         "Present"
+                                     ],
+                                     [
+                                         "absent",
+                                         "Absent"
+                                     ]
+                                 ],
+                   "string":  "Status",
+                   "type":  "selection"
+               },
+    "marks":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "string":  "Marks",
+                  "type":  "integer"
+              },
+    "note":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "Note",
+                 "type":  "text"
+             },
+    "exam_id":  {
+                    "readonly":  false,
+                    "relation":  "op.exam",
+                    "required":  true,
+                    "string":  "Exam",
+                    "type":  "many2one"
+                },
+    "course_id":  {
+                      "readonly":  true,
+                      "relation":  "op.course",
+                      "required":  false,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  true,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "room_id":  {
+                    "readonly":  false,
+                    "relation":  "op.exam.room",
+                    "required":  false,
+                    "string":  "Room",
+                    "type":  "many2one"
+                },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "grade":  {
+                  "readonly":  true,
+                  "required":  false,
+                  "string":  "Grade",
+                  "type":  "char"
+              }
+}

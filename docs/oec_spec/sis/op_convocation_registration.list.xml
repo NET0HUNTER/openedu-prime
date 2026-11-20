@@ -1,0 +1,8 @@
+﻿<list>
+                <field name="name"/>
+                <field name="ceremony_id"/>
+                <field name="student_id"/>
+                <field name="registration_date"/>
+                <field name="state"/>
+                <field name="total_guests"/>
+            </list>

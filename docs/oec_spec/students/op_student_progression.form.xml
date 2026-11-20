@@ -1,0 +1,133 @@
+﻿<form>
+                    <header>
+                        <field name="state" widget="statusbar"/>
+                        <button name="state_draft" type="object" string="Reset To Draft" class="oe_highlight" invisible="state in ('draft','done')"/>
+                        <button name="state_open" type="object" string="In Progress" class="oe_highlight" invisible="state in ('cancel','open','done')"/>
+                        <button name="state_rejected" type="object" string="Cancel" class="oe_highlight" invisible="state in ('cancel','draft','done')"/>
+                        <button name="state_done" type="object" string="Done" class="oe_highlight" invisible="state in ('cancel','draft','done')"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group name="StudentData">
+                            <group>
+                                <field name="name" readonly="True" force_save="1"/>
+                                <field name="date" readonly="state != 'draft'"/>
+                    <field name="grade_book" invisible="1"/>
+                            </group>
+                            <group>
+                                <field name="student_id" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <field name="created_by"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                    <page name="Activity" string="Activity">
+                        <button name="1318" type="action" string="Get Activity" class="oe_highlight" invisible="state not in ['open','draft']"/>
+                        <group class="pt-4 pb-4">
+                            <group>
+                                <field name="total_activity"/>
+                            </group>
+                        </group>
+
+                        <field name="activity_lines" domain="[('student_id', '=', student_id)]" readonly="state not in ['open','draft']" widget="one2many" on_change="1">
+                            <list editable="bottom" default_order="date asc">
+                                <field name="progression_id" optional="show" on_change="1" can_create="True" can_write="True"/>
+                                <field name="date"/>
+                                <field name="faculty_id" can_create="True" can_write="True"/>
+                                <field name="type_id" can_create="True" can_write="True"/>
+                                <field name="description" optional="hide"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page string="Transcript">
+                        <button string="Get Transcript" type="action" name="1447" class="oe_highlight"/>
+                    </page>
+                    <page name="Achievement" string="Achievement">
+                        <button name="1314" type="action" string="Get Achievement" class="oe_highlight" invisible="state not in ['open','draft']"/>
+                        <group class="pt-4 pb-4">
+                            <group>
+                                <field name="total_achievement"/>
+                            </group>
+                        </group>
+
+                        <field name="achievement_lines" readonly="state not in ['open','draft']" widget="one2many" on_change="1">
+                            <list editable="bottom" default_order="achievement_date asc">
+                                <field name="achievement_date"/>
+                                <field name="faculty_id" can_create="True" can_write="True"/>
+                                <field name="achievement_type_id" can_create="True" can_write="True"/>
+                                <field name="description"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page name="Assignment" string="Assignment">
+                        <button name="1337" type="action" string="Get Assignment" class="oe_highlight" invisible="state != 'open' and state != 'draft'"/>
+                        <group class="pt-4 pb-4">
+                            <group>
+                                <field name="total_assignment"/>
+                            </group>
+                        </group>
+                        <field name="assignment_lines" readonly="state != 'open' and state != 'draft'" widget="one2many" on_change="1">
+                                <list editable="bottom" default_order="submission_date asc">
+                                <field name="submission_date"/>
+                                <field name="assignment_id" can_create="True" can_write="True"/>
+                                <field name="state"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page name="Attendance" string="Attendance">
+                        <button name="1428" type="action" string="Get Attendance" class="oe_highlight" invisible="state not in ('open','draft')"/>
+                        <group class="pt-4 pb-4">
+                            <group>
+                                <field name="total_attendance"/>
+                            </group>
+                        </group>
+                        <field name="attendance_lines" readonly="state not in ('open','draft')" on_change="1">
+                            <list editable="bottom" default_order="attendance_date asc">
+                                <field name="attendance_date"/>
+                                <field name="attendance_id" on_change="1" can_create="True" can_write="True"/>
+                    <field name="check_in"/>
+                                <field name="present" on_change="1"/>
+                                 <field name="remark"/>
+                                <field name="course_id"/>
+                                <field name="batch_id"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page name="Discipline" string="Discipline">
+                        <button name="1354" type="action" string="Get Discipline" class="oe_highlight" invisible="state not in ('open','draft')"/>
+                        <group>
+                            <group class="pt-4 pb-4">
+                                <field name="total_discipline"/>
+                            </group>
+                        </group>
+                        <field name="discipline_lines" readonly="state not in ('open','draft')" on_change="1">
+                                <list editable="bottom" default_order="date asc">
+                                <field name="date"/>
+                                <field name="course_id"/>
+                                <field name="discipline_master"/>
+                                 <field name="recipients_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="state"/>
+                            </list>
+                        </field>
+                    </page>
+                    <page name="Marksheet" string="Marksheet Lines">
+                        <button name="1365" type="action" string="Get Marksheet Lines" class="oe_highlight" invisible="state != 'open' and state != 'draft'"/>
+                        <group>
+                            <group class="pt-4 pb-4">
+                                <field name="total_marksheet_line"/>
+                            </group>
+                        </group>
+                        <field name="marksheet_lines" readonly="state != 'open' and state != 'draft'" on_change="1">
+                            <list editable="bottom">
+                                <field name="total_marks" on_change="1"/>
+                                <field name="percentage" on_change="1"/>
+                                <field name="grade"/>
+                                <field name="status"/>
+                            </list>
+                        </field>
+                    </page>
+                        </notebook>
+                    </sheet>
+                <chatter/>
+                </form>

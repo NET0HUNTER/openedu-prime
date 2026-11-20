@@ -1,0 +1,7 @@
+<list string="AI Agents" decoration-success="state == 'active'" decoration-danger="state == 'error'">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="model_id"/>
+                <field name="collection_id"/>
+                <field name="state"/>
+            </list>

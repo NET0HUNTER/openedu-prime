@@ -1,0 +1,19 @@
+<form create="false" edit="false" string="media Issue">
+                    <group>
+                        <group>
+                            <field name="transaction_type"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group class="pt-2">
+                            <field name="media_unit_number" required="1"/>
+                        </group>
+                        <group class="pt-2">
+                            <field name="library_card_id" invisible="transaction_type == 'return'" required="transaction_type == 'issue'" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="barcode_do_issue" type="object" string="Proceed" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel"/>
+                    </footer>
+                </form>

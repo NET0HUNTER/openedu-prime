@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "directory_id": {
+      "change_default": false,
+      "context": {
+        "dms_directory_show_path": true
+      },
+      "domain": "[('permission_create', '=', True)]",
+      "groupable": true,
+      "name": "directory_id",
+      "readonly": false,
+      "relation": "dms.directory",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Directory",
+      "type": "many2one"
+    },
+    "size": {
+      "aggregator": "sum",
+      "change_default": false,
+      "groupable": true,
+      "name": "size",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Size",
+      "type": "float"
+    }
+  },
+  "has_approval_rules": false
+}

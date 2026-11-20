@@ -1,0 +1,25 @@
+﻿<form string="Result Template">
+                    <header>
+                        <button string="Generate Result" type="object" invisible="state != 'draft'" name="generate_result" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,result_generated"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name" select="1"/>
+                                <field name="exam_session_id" on_change="1" can_create="True" can_write="True"/>
+                    <field name="grade_scale_id" invisible="evaluation_type != 'grade'" required="evaluation_type == 'grade'" can_create="True" can_write="True"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="result_date"/>
+                                <field name="evaluation_type"/>
+                            </group>
+                        </group>
+                        <separator string="Grades" colspan="4" invisible="1"/>
+                        <field name="grade_ids" colspan="4" nolabel="1" invisible="1" required="evaluation_type != 'grade'" can_create="True" can_write="True"/>
+                    </sheet>
+                   <chatter/>
+                </form>

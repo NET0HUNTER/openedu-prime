@@ -1,0 +1,68 @@
+<form string="Tickets">
+                <header>
+                    <field name="stage_id" widget="statusbar_duration" options="{'clickable': '1', 'fold_field': 'fold'}" on_change="1" can_create="True" can_write="True"/>
+                    <button name="action_create_opportunity" string="Create Opportunity" type="object" class="btn-primary" invisible="not active"/>
+                    <button type="object" name="action_assign_to_me" class="btn btn-primary" string="Assign To Me"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_opportunity" type="object" class="oe_stat_button" icon="fa-star" invisible="opportunity_count == 0">
+                            <field name="opportunity_count" widget="statinfo" string="Opportunity"/>
+                        </button>
+                        <button name="action_view_partner_tickets" type="object" class="oe_stat_button" icon="fa-ticket" invisible="partner_id == False">
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="partner_ticket_count"/> Tickets
+                                </span>
+                                <span class="o_stat_text">
+                                    <field name="partner_open_ticket_count"/> Open
+                                </span>
+                            </div>
+                        </button>
+                        <field name="active" invisible="1"/>
+                        <field name="opportunity_count" invisible="1"/>
+                        <widget class="ticket_ribbon-top-right" name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="ticket_seq" readonly="1"/>
+                        </h1>
+                        <label for="issue_name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="issue_name" placeholder="Issue Details" required="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" can_create="True" can_write="True"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="partner_id" readonly="0" on_change="1" can_create="True" can_write="True"/>
+                            <field name="partner_name" invisible="partner_id != False"/>
+                            <field name="email" readonly="0"/>
+                            <field name="is_accessible" invisible="1"/>
+                            <field name="is_assigned" invisible="1"/>
+
+                            <field name="priority" widget="priority"/>
+                            <field name="rating_last_value"/>
+                            <field name="in_progress_mail" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="start_date"/>
+                            <field name="last_updated_date"/>
+                            <field name="end_date" readonly="1" force_save="1"/>
+                            <field name="team_id" required="1" on_change="1" can_create="True" can_write="True"/>
+                            <field name="issue_type_id" options="{&quot;no_open&quot;: True}" can_create="True" can_write="True"/>
+                            <field name="tag_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="help_description" string="Description">
+                            <field name="help_description"/>
+                            <field name="attachment_ids" invisible="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            <field name="stage_ids" invisible="True" readonly="True" data-used-by="domain='[(&quot;id&quot;, &quot;in&quot;, stage_ids)]' (field,stage_id)"/>
+</form>

@@ -1,0 +1,4 @@
+﻿<pivot string="Attendance Sheet">
+                    <field name="name" type="row"/>
+                    <field name="register_id" type="col"/>
+                </pivot>

@@ -1,0 +1,4 @@
+﻿<graph string="Activity Graph View" type="bar">
+                    <field name="student_id"/>
+                    <field name="type_id"/>
+                </graph>

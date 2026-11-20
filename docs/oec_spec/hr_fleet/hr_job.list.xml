@@ -1,0 +1,19 @@
+<list string="Job" sample="1" js_class="recruitment_list_view">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                <field name="department_id"/>
+                <field name="applicant_matching_score" widget="progressbar" invisible="not applicant_matching_score" column_invisible="not context.get('active_applicant_id')"/>
+                <field name="open_application_count" string="Open Applications"/>
+                <field name="no_of_recruitment" on_change="1"/>
+                <field name="website_id" optional="hide"/>
+                    <field name="no_of_employee" optional="hide" string="Number of Employees"/>
+                <field name="expected_employees" optional="hide"/>
+                <field name="no_of_hired_employee" optional="hide"/>
+                <field name="message_needaction" column_invisible="True"/>
+                <field name="company_id" optional="hide"/>
+                <field name="company_id" column_invisible="True"/>
+                <field name="alias_name" column_invisible="True" on_change="1"/>
+                <field name="is_published" string="Published"/>
+                <field name="alias_id" invisible="not alias_name" optional="hide" on_change="1"/>
+                <field name="user_id" widget="many2one_avatar_user" optional="hide"/>
+                </list>

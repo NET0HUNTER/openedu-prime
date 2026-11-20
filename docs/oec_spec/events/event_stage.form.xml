@@ -1,0 +1,17 @@
+<form string="Events Stage">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" placeholder="e.g. &quot;Promoting&quot;"/>
+                            <field name="pipe_end"/>
+                        </group>
+                        <group>
+                            <field name="fold"/>
+                            <field name="sequence"/>
+                        </group>
+                    </group>
+                    <group string="Add a description that will appear as a tooltip for this stage">
+                        <field name="description" placeholder="Add a description..." nolabel="1" colspan="2"/>
+                    </group>
+                </sheet>
+            </form>

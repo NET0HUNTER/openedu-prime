@@ -1,0 +1,13 @@
+﻿<list>
+                <field name="type"/>
+                <field name="student_id" on_change="1"/>
+                <field name="faculty_id" on_change="1"/>
+                <field name="height"/>
+                <field name="weight"/>
+                <field name="eyeglasses"/>
+                <field name="physical_challenges"/>
+                <field name="physical_challenges_note" optional="hide"/>
+                <field name="major_diseases"/>
+                <field name="regular_checkup" optional="hide"/>
+                <field name="company_id" optional="hide"/>
+            </list>

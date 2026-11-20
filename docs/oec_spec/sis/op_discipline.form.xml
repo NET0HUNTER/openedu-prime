@@ -1,0 +1,131 @@
+﻿<form string="Discipline Records">
+                    <header>
+                        <!-- Renamed from "Apology Letter" — the button
+                             now actually sends an email to the
+                             student + parents (see model). The label
+                             matches the behavior. -->
+                        <button name="apologies_letter" invisible="state != 'email_sent'" string="Request Apology Letter" type="object" class="oe_highlight"/>
+                        <button name="send_email" invisible="state != 'draft'" string="Send Email" type="object" class="oe_highlight"/>
+                        <button name="meeting_awaiting" invisible="state != 'awaiting_letter'" string="Meeting With Parents" type="object" class="oe_highlight"/>
+                        <!-- Take Action is now available at every
+                             non-terminal state past draft so staff
+                             can skip apology / meeting when the
+                             incident calls for immediate fine or
+                             suspension. Previously it was locked
+                             behind `awaiting_meeting`, forcing a
+                             manual state hop just to see the button. -->
+                        <button name="1356" invisible="state in ('draft','suspended','awaiting_payment','done')" string="Take Action" type="action" class="oe_highlight"/>
+                        <button name="reset_draft" invisible="state == 'draft'" string="Reset Draft" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,email_sent,awaiting_letter,awaiting_meeting,action_taken,awaiting_payment,done"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <!-- Smart-button box: put FIRST inside sheet so
+                             Odoo's standard CSS floats it top-right of
+                             the sheet. Placing it after the ribbon or
+                             after any other content causes stacking
+                             (the box no longer floats, browsers render
+                             it as a normal block above the fields). -->
+                        <div class="oe_button_box" name="button_box">
+                            <!-- Prior-records surface: dean opens a
+                                 case and immediately sees how many
+                                 times this student has been here
+                                 before, one click to their history. -->
+                            <button class="oe_stat_button" type="object" name="action_open_prior_discipline" icon="fa-history" invisible="not student_id or prior_discipline_count == 0">
+                                <field name="prior_discipline_count" widget="statinfo" string="Prior Records"/>
+                            </button>
+                            <button class="oe_stat_button" type="object" name="action_open_fine_invoice" icon="fa-money" invisible="not fine_invoice_id">
+                                <div class="o_stat_info">
+                                    <field name="fine_invoice_state" class="o_stat_text"/>
+                                    <span class="o_stat_text">Fine Invoice</span>
+                                </div>
+                            </button>
+                        </div>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="student_id" readonly="state != 'draft'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="date" readonly="state != 'draft'"/>
+                                <field name="discipline_master"/>
+                                <!-- Accountable faculty (may differ
+                                     from the reporter above). Editable
+                                     at any state so a case can be
+                                     handed off after triage. -->
+                                <field name="assigned_faculty_id" options="{'no_create': True, 'no_create_edit': True}" on_change="1" can_create="True" can_write="True"/>
+                                <!-- Recipients picker — scoped to the
+                                     student's partner, the student's
+                                     parents' partners, and the current
+                                     user's partner. Anything outside
+                                     that whitelist is unpickable. See
+                                     _compute_allowed_recipient_partner_ids. -->
+                                <field name="allowed_recipient_partner_ids" invisible="1"/>
+                                <field name="recipients_ids" widget="many2many_tags" readonly="state != 'draft'" domain="[('id', 'in', allowed_recipient_partner_ids)]" options="{'no_create': True, 'no_open': True}" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="progression_id" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <field name="course_id" readonly="1"/>
+                                <field name="priority" widget="priority" readonly="state != 'draft'"/>
+                                <field name="company_id" optional="show" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <!-- Fine amount surfaced on the record
+                                     itself so staff don't have to drill
+                                     into the invoice to see how much
+                                     the student owes. Hidden until a
+                                     fine invoice actually exists. -->
+                                <field name="fine_currency_id" invisible="1"/>
+                                <field name="fine_amount" widget="monetary" options="{'currency_field': 'fine_currency_id'}" invisible="not fine_invoice_id" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <separator string="Misbehaviour Info"/>
+                            <group>
+                                <field name="misbehaviour_type" readonly="state != 'draft'"/>
+                                <field name="misbehaviour_category_id" domain="[('misbehaviour_type', '=', misbehaviour_type)]" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                                <field name="misbehaviour_action" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="merit_points" readonly="state != 'draft'"/>
+                                <field name="demerit_points" readonly="state != 'draft'"/>
+                                <!-- Meeting is optional. Show the datetime
+                                     picker only when the applicant ticks
+                                     the "Schedule a Meeting?" checkbox
+                                     (the Python constraint blocks the
+                                     "scheduled but blank" combo).-->
+                                <field name="schedule_meeting" readonly="state != 'draft'"/>
+                                <field name="meeting_datetime" readonly="state != 'draft'" invisible="not schedule_meeting" required="schedule_meeting"/>
+
+                            </group>
+                            <separator string="Note" colspan="4"/>
+                            <field name="note" readonly="state != 'draft'"/>
+                        </group>
+                        <!-- Apology-submitted section: renders only
+                             once a student has actually submitted an
+                             apology via the portal. Puts the text
+                             front-and-centre on the form so staff
+                             don't have to scroll into chatter to see
+                             what was said. Full history + attachments
+                             still live in chatter.
+
+                             Layout uses a plain <div> + <field> so
+                             the apology text spans the full sheet
+                             width (default <group> is 2-col + label —
+                             a multi-paragraph apology gets crushed
+                             into the right half of the form). -->
+                        <div invisible="not apology_text" class="mt-3">
+                            <separator string="Submitted Apology"/>
+                            <group>
+                                <field name="apology_submitted_on" readonly="1"/>
+                            </group>
+                            <!-- Explicit <label> above the field so
+                                 the field itself can span full sheet
+                                 width. Using nolabel="1" on the field
+                                 + a standalone <label> renders as
+                                 "Apology Letter\n<full-width text>"
+                                 instead of the label-crushes-the-text
+                                 layout you get from removing nolabel. -->
+                            <label for="apology_text" string="Apology Letter" class="fw-bold mt-2"/>
+                            <field name="apology_text" readonly="1" nolabel="1" class="o_field_text_full"/>
+                        </div>
+                    </sheet>
+                <chatter/>
+                <field name="fine_invoice_id" invisible="True" readonly="True" data-used-by="invisible='not fine_invoice_id' (field,fine_amount)" on_change="1"/>
+</form>

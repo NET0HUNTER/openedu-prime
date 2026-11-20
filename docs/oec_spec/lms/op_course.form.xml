@@ -1,0 +1,112 @@
+<form string="Course">
+                    <header/>
+                    <header>
+                        <button type="object" name="create_online_course" invisible="online_course_created == True" string="Create Online Course" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                <button class="btn oe_stat_button" type="object" name="get_subject" style="border-right: 1px solid;" icon="fa-book">
+                    <field string="Subjects" name="subject_count" widget="statinfo"/>
+                </button>
+                    <button class="btn oe_stat_button" type="object" name="action_get_lms_course" style="border-right: 1px solid;" icon="fa-book">
+                        <field string="LMS Course" name="lms_course_count" widget="statinfo"/>
+                    </button>
+                <button class="btn oe_stat_button" type="object" name="get_faculty" style="border-right: 1px solid;" icon="fa-users">
+                    <field string="Faculties" name="faculty_count" widget="statinfo"/>
+                </button>
+
+                <button class="btn oe_stat_button" type="action" name="1085" style="border-right: 1px solid;" icon="fa-users">
+                    <field string="Students" name="student_count" widget="statinfo"/>
+                </button>
+                    <button class="btn oe_stat_button" type="object" name="action_get_assignment" style="border-right: 1px solid;" icon="fa-file">
+                        <field string="Assignment" name="assignment_count" widget="statinfo"/>
+                    </button>
+                <button class="oe_stat_button" type="object" name="course_credit" string="Course Credit" icon="fa-user-circle">
+                </button>
+                    <button class="btn oe_stat_button" type="object" name="action_get_session" style="border-right: 1px solid;" icon="fa-clock-o">
+                        <field string="Time Table" name="timetable_count" widget="statinfo"/>
+                    </button>
+                    <button name="open_grade_book_grid" class="btn oe_stat_button" icon="fa-book" type="object">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">GradeBook</span>
+                            </div>
+                    </button>
+                        </div>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <div name="combine" class="row d-flex">
+                            <div class="oe_title col-9">
+                                <h1><field name="name" options="{'line_breaks': False}" widget="text" default_focus="1" placeholder="e.g. &quot;Computer Science for kids&quot;"/></h1>
+                            </div>
+            <div class="col-3">
+                <field name="course_image" widget="image" class="oe_right oe_avatar"/>
+                </div>
+                        </div>
+                        <group class="pt-3">
+                            <group name="main">
+                                <field name="code"/>
+                                <field name="evaluation_type"/>
+                    <field name="fees_term_id" required="1" can_create="True" can_write="True"/>
+                                <field name="min_unit_load"/>
+                <field name="short_desc" required="True"/>
+                <field name="full_description"/>
+                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                <field name="department_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="parent_id" can_create="True" can_write="True"/>
+                                <field name="program_id" on_change="1" can_create="True" can_write="True"/>
+                <field name="credit"/>
+                                <field name="max_unit_load"/>
+                <field name="course_change_fees"/>
+                <field name="product_id" invisible="course_change_fees == False" can_create="True" can_write="True"/>
+                    <field name="online_course_created" invisible="1"/>
+                    <field name="is_enroll_user"/>
+                <field name="reg_fees"/>
+                <field name="product_id" required="reg_fees == True" invisible="reg_fees == False" can_create="True" can_write="True"/>
+                <field name="subject_selection_option"/>
+                <field name="area_id"/>
+                <field name="specialization_id" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Subjects" name="subject">
+                                <field name="subject_ids" nolabel="1" context="{'default_course_id': id,'default_department_id': department_id}" can_create="True" can_write="True">
+                                <list string="Subject">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                    <field name="subject_type"/>
+                    <button name="open_grade_book_grid" type="object" class="btn btn-primary" string="GradeBook">
+                    </button>
+          <field name="subject_credit"/>
+                    <field name="grade_weightage" invisible="1"/>
+                    <field name="course_id" optional="hide" on_change="1"/>
+                    <field name="credit_point" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="department_id"/>
+                    <field name="assignment_count" optional="hide"/>
+                </list></field>
+                            </page>
+                <page name="categories" string="Categories">
+                    <field name="category_ids" options="{'no_create': True}" can_create="True" can_write="True"><list>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="desc"/>
+                    <field name="icon" optional="hide"/>
+                    <field name="parent_id" optional="hide"/>
+                    <field name="active" widget="boolean_toggle" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                </list></field>
+                </page>
+                    <page name="grades" string="Grading">
+                        <group>
+                            <field name="grade_scale_id" can_create="True" can_write="True"/>
+                            <field name="grade_template_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                        </group>
+                    </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                <field name="department_id" invisible="True" readonly="True" data-used-by="context=&quot;{'default_course_id': id,'default_department_id': department_id}&quot; (field,subject_ids)"/>
+</form>

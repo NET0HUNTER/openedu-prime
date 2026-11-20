@@ -1,0 +1,16 @@
+﻿<list string="Student" decoration-danger="is_finished">
+                    <field name="title" optional="show" on_change="1"/>
+                    <field name="name" on_change="1"/>
+                <field name="is_finished" column_invisible="1"/>
+                    <field name="gender" optional="show"/>
+                    <field name="birth_date" optional="show"/>
+                    <field name="email" optional="show"/>
+                    <field name="nationality"/>
+                    <field name="lang" on_change="1"/>
+                    <field name="crm_lead_ids" optional="hide"/>
+                <field name="placement_line" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="blood_group"/>
+                    <field name="library_card_id"/>
+                    <field name="emergency_contact" optional="hide"/>
+                </list>

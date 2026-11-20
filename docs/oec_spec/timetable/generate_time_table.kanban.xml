@@ -1,0 +1,1 @@
+﻿<kanban string="Generate Sessions"><templates><t t-name="card"><field name="course_id" on_change="1"/></t></templates></kanban>

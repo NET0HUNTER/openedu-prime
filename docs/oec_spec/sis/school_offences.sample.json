@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "minor"
+    },
+    {
+        "id":  2,
+        "display_name":  "minor"
+    },
+    {
+        "id":  3,
+        "display_name":  "major"
+    },
+    {
+        "id":  4,
+        "display_name":  "major"
+    },
+    {
+        "id":  5,
+        "display_name":  "major"
+    }
+]

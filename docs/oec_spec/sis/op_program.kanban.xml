@@ -1,0 +1,132 @@
+﻿<kanban highlight_color="color" string="Program kanban" class="o_slide_kanban o_slide_channel_kanban" sample="1">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="min_unit_load"/>
+                <field name="max_unit_load"/>
+                <templates>
+                    <t t-name="menu">
+                        <div class="container" role="menu">
+                        <div class="row my-2">
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_view">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="openeducat_views" class="o_kanban_card_manage_title">
+                                            <span>Views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="openeducat_new" class="o_kanban_card_manage_title">
+                                            <span>New</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_operations">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="openeducat_reports" class="o_kanban_card_manage_title">
+                                            <span>Reports</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                <div role="menuitem" aria-haspopup="true" class="col-8">
+                                    <field name="color" widget="kanban_color_picker"/>
+                                </div>
+                                <div role="menuitem" class="col-4">
+                                    <a type="open">Settings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="card">
+                        <main class="d-flex flex-column gap-2 p-1">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-start gap-2">
+                                <div class="flex-grow-1" style="min-width: 0;">
+                                    <h5 class="mb-0 fw-bold text-primary text-truncate" t-att-title="record.name.value" style="font-size: 1.15rem;">
+                                        <field name="name"/>
+                                    </h5>
+                                </div>
+                            </div>
+
+                            <!-- Metrics Grid (2 columns) -->
+                            <div class="row g-2 mt-1" name="metrics_grid">
+                                <!-- Courses -->
+                                <div class="col-6" name="course_link">
+                                    <a name="1101" type="action" class="d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle" style="background-color: #f8f9fa !important; min-width: 0;">
+                                        <span class="d-flex align-items-center text-muted small" style="min-width: 0;">
+                                            <i class="fa fa-book me-2 text-dark flex-shrink-0" title="Courses"/>
+                                            <span class="text-truncate"><t t-esc="course_label_plural"/></span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0 ms-2">
+                                            <field name="course_count"/>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <!-- Subjects -->
+                                <div class="col-6" name="subject_link">
+                                    <a name="1102" type="action" class="d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle" style="background-color: #f8f9fa !important; min-width: 0;">
+                                        <span class="d-flex align-items-center text-muted small" style="min-width: 0;">
+                                            <i class="fa fa-bookmark me-2 text-dark flex-shrink-0" title="Subjects"/>
+                                            <span class="text-truncate"><t t-esc="subject_label_plural"/></span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0 ms-2">
+                                            <field name="subject_count"/>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <!-- Students -->
+                                <div class="col-6" name="student_link">
+                                    <a name="1104" type="action" class="d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle" style="background-color: #f8f9fa !important; min-width: 0;">
+                                        <span class="d-flex align-items-center text-muted small" style="min-width: 0;">
+                                            <i class="fa fa-user me-2 text-dark flex-shrink-0" title="Students"/>
+                                            <span class="text-truncate"><t t-esc="student_label_plural"/></span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0 ms-2">
+                                            <field name="student_count"/>
+                                        </span>
+                                    </a>
+                                </div>
+
+                                <!-- Batches -->
+                                <div class="col-6" name="batch_link">
+                                    <a name="1103" type="action" class="d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle" style="background-color: #f8f9fa !important; min-width: 0;">
+                                        <span class="d-flex align-items-center text-muted small" style="min-width: 0;">
+                                            <i class="fa fa-calendar me-2 text-dark flex-shrink-0" title="Batches"/>
+                                            <span class="text-truncate"><t t-esc="batch_label_plural"/></span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0 ms-2">
+                                            <field name="batch_count"/>
+                                        </span>
+                                    </a>
+                                </div>
+                <div class="col-6">
+                    <a name="1325" type="action" class="d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle" style="background-color: #f8f9fa !important;">
+                        <span class="d-flex align-items-center text-muted small text-truncate">
+                            <i class="fa fa-pencil-square-o me-2 text-dark"/>
+                            Admissions
+                        </span>
+                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0">
+                            <field name="admission_count"/>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-6">
+                    <a name="1465" type="action" class="d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle" style="background-color: #f8f9fa !important;">
+                        <span class="d-flex align-items-center text-muted small text-truncate">
+                            <i class="fa fa-calendar me-2 text-dark"/>
+                            Sessions
+                        </span>
+                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0">
+                            <field name="program_sessions_count"/>
+                        </span>
+                    </a>
+                </div>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

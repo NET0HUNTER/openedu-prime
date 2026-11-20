@@ -1,0 +1,214 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "due_days":  {
+                     "readonly":  false,
+                     "required":  false,
+                     "string":  "Due Days",
+                     "type":  "integer"
+                 },
+    "due_date":  {
+                     "readonly":  false,
+                     "required":  false,
+                     "string":  "Due Date",
+                     "type":  "date"
+                 },
+    "fees_factor":  {
+                        "readonly":  false,
+                        "required":  false,
+                        "string":  "Value (%)",
+                        "type":  "float"
+                    },
+    "fees_plan_id":  {
+                         "readonly":  false,
+                         "relation":  "op.fees.plan",
+                         "required":  false,
+                         "string":  "Fees",
+                         "type":  "many2one"
+                     },
+    "fees_term_id":  {
+                         "readonly":  true,
+                         "relation":  "op.fees.terms",
+                         "required":  false,
+                         "string":  "Fees Term",
+                         "type":  "many2one"
+                     },
+    "student_id":  {
+                       "readonly":  false,
+                       "relation":  "op.student",
+                       "required":  false,
+                       "string":  "Student",
+                       "type":  "many2one"
+                   },
+    "product_id":  {
+                       "readonly":  false,
+                       "relation":  "product.product",
+                       "required":  false,
+                       "string":  "Product",
+                       "type":  "many2one"
+                   },
+    "invoice_id":  {
+                       "readonly":  false,
+                       "relation":  "account.move",
+                       "required":  false,
+                       "string":  "Invoice",
+                       "type":  "many2one"
+                   },
+    "invoice_state":  {
+                          "readonly":  true,
+                          "required":  false,
+                          "selection":  [
+                                            [
+                                                "draft",
+                                                "Draft"
+                                            ],
+                                            [
+                                                "posted",
+                                                "Posted"
+                                            ],
+                                            [
+                                                "cancel",
+                                                "Cancelled"
+                                            ]
+                                        ],
+                          "string":  "Invoice Status",
+                          "type":  "selection"
+                      },
+    "op_fees_terms_line_id":  {
+                                  "readonly":  false,
+                                  "relation":  "op.fees.terms.line",
+                                  "required":  false,
+                                  "string":  "Invoice ID",
+                                  "type":  "many2one"
+                              },
+    "course_id":  {
+                      "readonly":  false,
+                      "relation":  "op.course",
+                      "required":  false,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  false,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "invoice_date":  {
+                         "readonly":  false,
+                         "required":  false,
+                         "string":  "Date",
+                         "type":  "date"
+                     },
+    "amount":  {
+                   "readonly":  false,
+                   "required":  true,
+                   "string":  "Amount",
+                   "type":  "float"
+               },
+    "paid_amount":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Paid Amount",
+                        "type":  "float"
+                    },
+    "fees_element_line_ids":  {
+                                  "readonly":  false,
+                                  "relation":  "op.fees.element.plan",
+                                  "required":  false,
+                                  "string":  "Lines",
+                                  "type":  "one2many"
+                              },
+    "fees_reminder_line_ids":  {
+                                   "readonly":  false,
+                                   "relation":  "op.fees.template.line",
+                                   "required":  false,
+                                   "string":  "Fees Reminder Lines",
+                                   "type":  "many2many"
+                               },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "state":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "selection":  [
+                                    [
+                                        "draft",
+                                        "Draft"
+                                    ],
+                                    [
+                                        "invoice",
+                                        "Invoice Created"
+                                    ],
+                                    [
+                                        "cancel",
+                                        "Cancel"
+                                    ]
+                                ],
+                  "string":  "Status",
+                  "type":  "selection"
+              },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "invoice_state_stored":  {
+                                 "help":  "Mirror of invoice_id.state, updated by account.move._post(). Used by push notification config to fire when the invoice is posted.",
+                                 "readonly":  false,
+                                 "required":  false,
+                                 "selection":  [
+                                                   [
+                                                       "draft",
+                                                       "Draft"
+                                                   ],
+                                                   [
+                                                       "posted",
+                                                       "Posted"
+                                                   ],
+                                                   [
+                                                       "cancel",
+                                                       "Cancelled"
+                                                   ]
+                                               ],
+                                 "string":  "Invoice State (stored)",
+                                 "type":  "selection"
+                             }
+}

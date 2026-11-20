@@ -1,0 +1,34 @@
+{
+  "fields": {
+    "exec_time": {
+      "aggregator": "avg",
+      "change_default": false,
+      "groupable": true,
+      "help": "Time required to execute this job in seconds. Average when grouped.",
+      "name": "exec_time",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Execution Time (avg)",
+      "type": "float"
+    },
+    "job_function_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "job_function_id",
+      "readonly": true,
+      "relation": "queue.job.function",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Job Function",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

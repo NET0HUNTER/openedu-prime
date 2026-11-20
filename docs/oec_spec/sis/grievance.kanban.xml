@@ -1,0 +1,68 @@
+﻿<kanban default_group_by="state" class="o_kanban_small_column o_opportunity_kanban" on_create="quick_create" archivable="false" sample="1" fold="true">
+                <field name="state"/>
+                <field name="subject"/>
+                <field name="color"/>
+                <field name="action_taken"/>
+                <field name="grievance_for" on_change="1"/>
+                <field name="student_id"/>
+                <field name="faculty_id"/>
+                <field name="parent_id" on_change="1"/>
+                <field name="is_academic"/>
+                <field name="grievance_team_id"/>
+                <field name="activity_state"/>
+                <field name="grievance_category_id" on_change="1"/>
+                <field name="created_date"/>
+                <templates>
+                    <t t-name="menu">
+                        <t t-if="widget.editable">
+                            <a role="menuitem" type="edit" class="dropdown-item">Edit
+                            </a>
+                        </t>
+                        <t t-if="widget.deletable">
+                            <a role="menuitem" type="delete" class="dropdown-item">
+                                Delete
+                            </a>
+                        </t>
+                        <field name="color" widget="kanban_color_picker"/>
+                    </t>
+                    <t t-name="card">
+                        <main class="d-flex flex-column gap-2 p-1 position-relative">
+                            <div class="d-flex justify-content-between align-items-start gap-2">
+                                <h5 class="fw-bold text-dark mb-0 text-truncate flex-grow-1" style="font-size: 1.2rem; line-height: 1.3;" t-att-title="record.subject.value">
+                                    <field name="subject"/>
+                                </h5>
+                                <span t-if="record.is_academic.raw_value" class="badge rounded-pill text-bg-primary flex-shrink-0">Academic</span>
+                                <span t-else="" class="badge rounded-pill text-bg-secondary flex-shrink-0">Non-Academic</span>
+                            </div>
+
+                            <!-- Meta info -->
+                            <div class="d-flex flex-column gap-1 mb-1">
+                                <div t-if="record.parent_id.raw_value or record.faculty_id.raw_value or record.student_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-user me-2 text-muted" style="width: 14px;" title="Raised by"/>
+                                    <span class="text-truncate">
+                                        <t t-if="record.parent_id.raw_value"><field name="parent_id" on_change="1"/></t>
+                                        <t t-elif="record.faculty_id.raw_value"><field name="faculty_id"/></t>
+                                        <t t-else=""><field name="student_id"/></t>
+                                    </span>
+                                </div>
+                                <div t-if="record.grievance_category_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-tags me-2 text-muted" style="width: 14px;" title="Category"/>
+                                    <span class="text-truncate"><field name="grievance_category_id" on_change="1"/></span>
+                                </div>
+                                <div t-if="record.grievance_team_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-users me-2 text-muted" style="width: 14px;" title="Team"/>
+                                    <span class="text-truncate"><field name="grievance_team_id"/></span>
+                                </div>
+                            </div>
+
+                            <footer class="d-flex justify-content-between align-items-center mt-auto pt-1 border-top small text-muted">
+                                <div t-if="record.created_date.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-calendar me-1" title="Created Date"/>
+                                    <span><field name="created_date"/></span>
+                                </div>
+                                <field name="activity_ids" widget="kanban_activity" on_change="1"/>
+                            </footer>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

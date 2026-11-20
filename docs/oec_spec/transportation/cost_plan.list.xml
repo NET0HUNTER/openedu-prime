@@ -1,0 +1,8 @@
+<list>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="company_id"/>
+                    <field name="bill" optional="hide"/>
+                    <field name="bill_selection" optional="hide"/>
+                    <field name="expires_after" optional="hide"/>
+                </list>

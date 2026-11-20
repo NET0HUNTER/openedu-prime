@@ -1,0 +1,1 @@
+<kanban string="Event Stage"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

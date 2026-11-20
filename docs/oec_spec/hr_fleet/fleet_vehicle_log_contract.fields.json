@@ -1,0 +1,47 @@
+{
+  "fields": {
+    "vehicle_id": {
+      "change_default": false,
+      "context": {},
+      "domain": "(company_id and [('company_id', 'in', [company_id] + [False])] or [('company_id', '=', False)]) + ([])",
+      "groupable": true,
+      "name": "vehicle_id",
+      "readonly": false,
+      "relation": "fleet.vehicle",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Vehicle",
+      "type": "many2one"
+    },
+    "amount": {
+      "aggregator": "sum",
+      "change_default": false,
+      "currency_field": "currency_id",
+      "groupable": true,
+      "name": "amount",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Cost",
+      "type": "monetary"
+    },
+    "date": {
+      "change_default": false,
+      "groupable": true,
+      "help": "Date when the cost has been executed",
+      "name": "date",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Date",
+      "type": "date"
+    }
+  },
+  "has_approval_rules": false
+}

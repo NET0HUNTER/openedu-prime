@@ -1,0 +1,4 @@
+<pivot string="Omr Exam Results">
+                <field name="omr_exam_id" type="col"/>
+                <field name="roll_number" type="row"/>
+            </pivot>

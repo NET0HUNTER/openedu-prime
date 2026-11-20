@@ -1,0 +1,14 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Presentation"
+    },
+    {
+        "id":  2,
+        "display_name":  "Late Application"
+    },
+    {
+        "id":  3,
+        "display_name":  "Migration"
+    }
+]

@@ -1,0 +1,439 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "message_is_follower":  {
+                                "readonly":  true,
+                                "required":  false,
+                                "string":  "Is Follower",
+                                "type":  "boolean"
+                            },
+    "message_follower_ids":  {
+                                 "readonly":  false,
+                                 "relation":  "mail.followers",
+                                 "required":  false,
+                                 "string":  "Followers",
+                                 "type":  "one2many"
+                             },
+    "message_partner_ids":  {
+                                "readonly":  false,
+                                "relation":  "res.partner",
+                                "required":  false,
+                                "string":  "Followers (Partners)",
+                                "type":  "many2many"
+                            },
+    "message_ids":  {
+                        "readonly":  false,
+                        "relation":  "mail.message",
+                        "required":  false,
+                        "string":  "Messages",
+                        "type":  "one2many"
+                    },
+    "has_message":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Has Message",
+                        "type":  "boolean"
+                    },
+    "message_needaction":  {
+                               "help":  "If checked, new messages require your attention.",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Action Needed",
+                               "type":  "boolean"
+                           },
+    "message_needaction_counter":  {
+                                       "help":  "Number of messages requiring action",
+                                       "readonly":  true,
+                                       "required":  false,
+                                       "string":  "Number of Actions",
+                                       "type":  "integer"
+                                   },
+    "message_has_error":  {
+                              "help":  "If checked, some messages have a delivery error.",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Message Delivery error",
+                              "type":  "boolean"
+                          },
+    "message_has_error_counter":  {
+                                      "help":  "Number of messages with delivery error",
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "Number of errors",
+                                      "type":  "integer"
+                                  },
+    "message_attachment_count":  {
+                                     "readonly":  true,
+                                     "required":  false,
+                                     "string":  "Attachment Count",
+                                     "type":  "integer"
+                                 },
+    "rating_ids":  {
+                       "readonly":  false,
+                       "relation":  "rating.rating",
+                       "required":  false,
+                       "string":  "Ratings",
+                       "type":  "one2many"
+                   },
+    "website_message_ids":  {
+                                "help":  "Website communication history",
+                                "readonly":  false,
+                                "relation":  "mail.message",
+                                "required":  false,
+                                "string":  "Website Messages",
+                                "type":  "one2many"
+                            },
+    "message_has_sms_error":  {
+                                  "help":  "If checked, some messages have a delivery error.",
+                                  "readonly":  true,
+                                  "required":  false,
+                                  "string":  "SMS Delivery error",
+                                  "type":  "boolean"
+                              },
+    "student_id":  {
+                       "readonly":  false,
+                       "relation":  "op.student",
+                       "required":  true,
+                       "string":  "Student",
+                       "type":  "many2one"
+                   },
+    "progression_id":  {
+                           "readonly":  false,
+                           "relation":  "op.student.progression",
+                           "required":  false,
+                           "string":  "Progression No",
+                           "type":  "many2one"
+                       },
+    "date":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "Date",
+                 "type":  "date"
+             },
+    "course_id":  {
+                      "readonly":  true,
+                      "relation":  "op.course",
+                      "required":  false,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "discipline_master":  {
+                              "readonly":  true,
+                              "relation":  "res.users",
+                              "required":  false,
+                              "string":  "Created By",
+                              "type":  "many2one"
+                          },
+    "assigned_faculty_id":  {
+                                "help":  "Faculty member accountable for following this case to resolution. Defaults to the current user\u0027s faculty record when one exists.",
+                                "readonly":  false,
+                                "relation":  "op.faculty",
+                                "required":  false,
+                                "string":  "Assigned Faculty",
+                                "type":  "many2one"
+                            },
+    "priority":  {
+                     "readonly":  false,
+                     "required":  false,
+                     "selection":  [
+                                       [
+                                           "0",
+                                           "Low"
+                                       ],
+                                       [
+                                           "1",
+                                           "Normal"
+                                       ],
+                                       [
+                                           "2",
+                                           "High"
+                                       ]
+                                   ],
+                     "string":  "Priority",
+                     "type":  "selection"
+                 },
+    "misbehaviour_type":  {
+                              "readonly":  false,
+                              "required":  true,
+                              "selection":  [
+                                                [
+                                                    "major",
+                                                    "Major"
+                                                ],
+                                                [
+                                                    "minor",
+                                                    "Minor"
+                                                ]
+                                            ],
+                              "string":  "Misbehaviour Type",
+                              "type":  "selection"
+                          },
+    "misbehaviour_category_id":  {
+                                     "readonly":  false,
+                                     "relation":  "op.misbehaviour.category",
+                                     "required":  true,
+                                     "string":  "Misbehaviour Category",
+                                     "type":  "many2one"
+                                 },
+    "misbehaviour_action":  {
+                                "readonly":  false,
+                                "required":  true,
+                                "string":  "Action To Be Taken",
+                                "type":  "char"
+                            },
+    "schedule_meeting":  {
+                             "help":  "Tick to schedule a parent meeting for this incident. When on, the Meeting Date/Time becomes required.",
+                             "readonly":  false,
+                             "required":  false,
+                             "string":  "Schedule a Meeting?",
+                             "type":  "boolean"
+                         },
+    "meeting_datetime":  {
+                             "readonly":  false,
+                             "required":  false,
+                             "string":  "Meeting Date Time",
+                             "type":  "datetime"
+                         },
+    "meeting_remark":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Remark For Meeting",
+                           "type":  "text"
+                       },
+    "master_comment":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Comment By Discipline Master",
+                           "type":  "text"
+                       },
+    "parent_comment":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Comment By Discipline Master (Meeting With Parents)",
+                           "type":  "text"
+                       },
+    "state":  {
+                  "readonly":  false,
+                  "required":  false,
+                  "selection":  [
+                                    [
+                                        "draft",
+                                        "Draft"
+                                    ],
+                                    [
+                                        "email_sent",
+                                        "Email Sent"
+                                    ],
+                                    [
+                                        "awaiting_letter",
+                                        "Apology Requested"
+                                    ],
+                                    [
+                                        "action_taken",
+                                        "Action Recorded"
+                                    ],
+                                    [
+                                        "awaiting_meeting",
+                                        "Meeting Scheduled"
+                                    ],
+                                    [
+                                        "suspended",
+                                        "Suspended"
+                                    ],
+                                    [
+                                        "awaiting_payment",
+                                        "Awaiting Payment"
+                                    ],
+                                    [
+                                        "done",
+                                        "Done"
+                                    ]
+                                ],
+                  "string":  "Status",
+                  "type":  "selection"
+              },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  true,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "note":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "Note",
+                 "type":  "text"
+             },
+    "allowed_recipient_partner_ids":  {
+                                          "help":  "Technical: the set of res.partner rows the Recipients picker is scoped to (student + student\u0027s parents + current user). Used as the M2M domain.",
+                                          "readonly":  true,
+                                          "relation":  "res.partner",
+                                          "required":  false,
+                                          "string":  "Allowed Recipient Partners",
+                                          "type":  "many2many"
+                                      },
+    "recipients_ids":  {
+                           "readonly":  false,
+                           "relation":  "res.partner",
+                           "required":  true,
+                           "string":  "Recipients",
+                           "type":  "many2many"
+                       },
+    "active":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Active",
+                   "type":  "boolean"
+               },
+    "is_submit":  {
+                      "readonly":  false,
+                      "required":  false,
+                      "string":  "Is Submit",
+                      "type":  "boolean"
+                  },
+    "apology_text":  {
+                         "help":  "The apology letter body submitted by the student via the portal (also mirrored to chatter with attachments and delivery to recipients).",
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Apology Text",
+                         "type":  "text"
+                     },
+    "apology_submitted_on":  {
+                                 "readonly":  true,
+                                 "required":  false,
+                                 "string":  "Apology Submitted On",
+                                 "type":  "datetime"
+                             },
+    "merit_points":  {
+                         "readonly":  false,
+                         "required":  false,
+                         "string":  "Merit Points",
+                         "type":  "float"
+                     },
+    "demerit_points":  {
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Demerit Points",
+                           "type":  "float"
+                       },
+    "fine_invoice_id":  {
+                            "help":  "Customer invoice generated by Take Action → Fine on this discipline record.",
+                            "readonly":  true,
+                            "relation":  "account.move",
+                            "required":  false,
+                            "string":  "Fine Invoice",
+                            "type":  "many2one"
+                        },
+    "fine_invoice_state":  {
+                               "readonly":  true,
+                               "required":  false,
+                               "selection":  [
+                                                 [
+                                                     "draft",
+                                                     "Draft"
+                                                 ],
+                                                 [
+                                                     "posted",
+                                                     "Posted"
+                                                 ],
+                                                 [
+                                                     "cancel",
+                                                     "Cancelled"
+                                                 ]
+                                             ],
+                               "string":  "Fine Invoice Status",
+                               "type":  "selection"
+                           },
+    "fine_invoice_payment_state":  {
+                                       "readonly":  true,
+                                       "required":  false,
+                                       "selection":  [
+                                                         [
+                                                             "not_paid",
+                                                             "Not Paid"
+                                                         ],
+                                                         [
+                                                             "in_payment",
+                                                             "In Payment"
+                                                         ],
+                                                         [
+                                                             "paid",
+                                                             "Paid"
+                                                         ],
+                                                         [
+                                                             "partial",
+                                                             "Partially Paid"
+                                                         ],
+                                                         [
+                                                             "reversed",
+                                                             "Reversed"
+                                                         ],
+                                                         [
+                                                             "blocked",
+                                                             "Blocked"
+                                                         ],
+                                                         [
+                                                             "invoicing_legacy",
+                                                             "Invoicing App Legacy"
+                                                         ]
+                                                     ],
+                                       "string":  "Fine Paid?",
+                                       "type":  "selection"
+                                   },
+    "fine_amount":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Fine Amount",
+                        "type":  "monetary"
+                    },
+    "fine_currency_id":  {
+                             "readonly":  true,
+                             "relation":  "res.currency",
+                             "required":  false,
+                             "string":  "Fine Currency",
+                             "type":  "many2one"
+                         },
+    "prior_discipline_count":  {
+                                   "readonly":  true,
+                                   "required":  false,
+                                   "string":  "Prior Records",
+                                   "type":  "integer"
+                               },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   }
+}

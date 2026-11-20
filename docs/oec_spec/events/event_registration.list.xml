@@ -1,0 +1,25 @@
+<list string="Registration" multi_edit="1" sample="1" expand="1" default_order="create_date desc" class="o_event_registration_view_tree" js_class="registration_summary_dialog_list">
+                <field name="barcode" column_invisible="True"/>
+                <field name="active" column_invisible="True"/>
+                <field name="create_date" optional="show" string="Registration Date"/>
+                <field name="name"/>
+                <field name="partner_id" optional="hide" on_change="1" can_create="True" can_write="True"/>
+                <field name="visitor_id" optional="hide" can_create="False" can_write="True" invisible="1" column_invisible="1"/>
+                <field name="email" optional="show"/>
+                <field name="phone" optional="show" on_change="1"/>
+                <field name="company_name" optional="hide"/>
+                <field name="event_id" column_invisible="context.get('default_event_id')" on_change="1" can_create="True" can_write="True"/>
+                <field name="sale_order_id" optional="hide" on_change="1" can_create="True" can_write="True"/>
+                <field name="event_slot_id" domain="[('event_id', '=', event_id)]" can_create="True" can_write="True"/>
+                <field name="event_ticket_id" domain="[('event_id', '=', event_id)]" can_create="True" can_write="True"/>
+                <field name="activity_ids" widget="list_activity" on_change="1"/>
+                <field name="registration_answer_ids" string="Selected Answers" widget="many2many_tags" optional="hide" readonly="1"/>
+                <field name="state" decoration-info="state in ('draft', 'open')" decoration-success="state == 'done'" decoration-muted="state == 'cancel'" widget="badge"/>
+                <field name="sale_status" optional="show" widget="badge" decoration-success="sale_status == 'sold'" decoration-danger="sale_status == 'to_pay'" invisible="not sale_status"/>
+                <field name="company_id" optional="hide" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                <field name="message_needaction" column_invisible="True"/>
+                <button name="action_confirm" string="Registered" type="object" icon="fa-check" invisible="not active or state != 'draft'"/>
+                <button name="action_set_done" string="Mark as Attending" type="object" icon="fa-level-down" invisible="not active or state != 'open'"/>
+                <button name="action_cancel" string="Cancel" type="object" class="o_btn_cancel_registration" icon="fa-times" invisible="not active or (state != 'open' and state != 'draft')"/>
+                <field name="activity_exception_decoration" widget="activity_exception"/>
+            </list>

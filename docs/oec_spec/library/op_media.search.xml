@@ -1,0 +1,21 @@
+<search string="Media">
+                    <field name="name"/>
+                    <field name="isbn"/>
+                    <field name="tags"/>
+                    <field name="unit_ids"/>
+                    <field name="author_ids"/>
+                    <field name="edition"/>
+                    <field name="publisher_ids"/>
+                    <field name="course_ids"/>
+                    <field name="subject_ids"/>
+                    <field name="internal_code"/>
+                    <newline/>
+                    <group>
+                        <filter string="Edition" name="group_by_lbr_media_edition" domain="[]" context="{'group_by':'edition'}"/>
+                        <filter string="Type" name="group_by_lbr_media_type" domain="[]" context="{'group_by':'media_type_id'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                    <searchpanel>
+                        <field name="media_type_id" icon="fa fa-file-video-o"/>
+                    </searchpanel>
+                </search>

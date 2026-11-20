@@ -1,0 +1,4 @@
+<graph string="Media Units" type="pie">
+                    <field name="name"/>
+                    <field name="media_id"/>
+                </graph>

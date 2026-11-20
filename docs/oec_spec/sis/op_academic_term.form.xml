@@ -1,0 +1,17 @@
+﻿<form string="Academic Term">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="term_start_date"/>
+                                <field name="parent_term" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="academic_year_id" can_create="True" can_write="True"/>
+                                <field name="term_end_date"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

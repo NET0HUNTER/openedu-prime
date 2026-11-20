@@ -1,0 +1,114 @@
+<form string="Assignment Sub Line">
+                    <header>
+                        <button name="act_submit" invisible="state != 'draft'" type="object" string="Submit" class="oe_highlight"/>
+                        <button name="act_accept" invisible="state != 'to_assess'" type="object" string="Accept" class="oe_highlight"/>
+                <button name="act_change_req" invisible="state != 'to_assess'" type="object" string="Change Require"/>
+                <button name="act_reject" invisible="state != 'to_assess'" type="object" string="Reject"/>
+                <button name="act_draft" invisible="state != 'change'" type="object" string="Change And Resubmit" class="oe_highlight"/>
+                        <button name="act_draft" invisible="state != 'reject'" type="object" string="Resubmit" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,submit,accept"/>
+                    <field name="ignore" invisible="True"/>
+                    <button name="ignore_submission_attempt" type="object" string="Ignore Attempt" invisible="ignore == True or state == 'accept'"/>
+                    <button name="annotate_submission" type="object" string="Annotate Submission"/>
+                    <button name="act_to_assess" invisible="state != 'submit'" type="object" string="To Assess" class="oe_highlight"/>
+                    <button name="action_open_pdf_view" invisible="state != 'to_assess'" type="object" string="Add Rubric Assessment" class="btn-primary oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="get_assessment_attempt" type="object" class="oe_stat_button" icon="fa-book" string="Assessment Attempts">
+                            <field name="assessment_attempt_line_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="student_id" readonly="state == 'accept'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="assignment_id" domain="[('allocation_ids','=',student_id),('state','=','publish')]" readonly="state == 'accept'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="marks" readonly="state == 'accept'" invisible="1" on_change="1"/>
+                    <field name="marks" invisible="hide_grade == True" readonly="state == 'accept'" on_change="1"/>
+                    <field name="grade_table_id" invisible="1" on_change="1"/>
+                    <field name="hide_grade" invisible="1" force_save="1"/>
+                    <field name="grade_table_line_id" invisible="hide_grade != True" can_create="True" can_write="True"/>
+                    <field name="late_submit"/>
+                    <field name="evaluation_boolean" invisible="1"/>
+                    <field name="grades_id" invisible="evaluation_boolean == False" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                    <field name="progression_id" readonly="state == 'accept'" can_create="True" can_write="True"/>
+                                <field name="submission_date" readonly="state == 'accept'"/>
+                    <field name="penalty"/>
+                    <field name="obtained_mark"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                <field name="user_boolean" invisible="1"/>
+                            </group>
+                        </group>
+                        <div>
+                            <label for="description" string="Description" class="mt32" readonly="state == 'accept'"/>
+                            <field name="description" nolabel="1" readonly="state == 'accept'"/>
+                    <group>
+                        <field name="rubric_type" invisible="1"/>
+                        <field name="rubric_template_id" invisible="1" on_change="1"/>
+                    </group>
+                    <group string="Assessment Attempts">
+                    </group>
+                    <field name="assessment_attempt_line" readonly="1" on_change="1">
+                        <form>
+                            <group>
+                                <h1>
+                                    <field name="name" nolabel="1" on_change="1"/>
+                                </h1>
+                            </group>
+                            <group>
+                                <field name="assignment_sub_line_id" invisible="1" on_change="1"/>
+                                <field name="assessment_by"/>
+                                <field name="assessment_date"/>
+                                <field name="assessment_score"/>
+                                <field name="final_score"/>
+                                <field name="feedback"/>
+                            </group>
+                            <field name="rubric_element_assessment_line">
+                                <form>
+                                    <group>
+                                        <h1>
+                                            <field name="name" nolabel="1"/>
+                                        </h1>
+                                    </group>
+                                    <group string="Rubrics Details">
+                                            <field name="rubric_template_id" invisible="1" on_change="1"/>
+                                            <field name="rubric_type" invisible="1"/>
+                                            <field name="rubric_element_id" on_change="1"/>
+                                            <field name="rubric_level_id" widget="radio" on_change="1"/>
+                                            <field name="rubric_element_feedback"/>
+                                            <field name="rubric_level_point" invisible="rubric_type != 'points'"/>
+                                            <field name="rubric_level_percentage" invisible="rubric_type != 'percent'"/>
+                                    </group>
+                                </form>
+                                <list>
+                                    <field name="rubric_element_id" on_change="1"/>
+                                    <field name="rubric_level_id" on_change="1"/>
+                                    <field name="rubric_level_point"/>
+                                    <field name="rubric_level_percentage"/>
+                                    <field name="out_of"/>
+                                </list>
+                            </field>
+                        </form>
+                        <list>
+                            <field name="name" on_change="1"/>
+                            <field name="assessment_by"/>
+                            <field name="assessment_date"/>
+                            <field name="assessment_score"/>
+                            <field name="final_score"/>
+                        </list>
+                    </field>
+                    <group string="Final Assessment">
+                        <field name="final_assessment_id" readonly="1"/>
+                    </group>
+                        </div>
+                        <div>
+                            <label for="note" string="Note" class="mt32" readonly="state == 'accept'"/>
+                            <field name="note" nolabel="1" readonly="state == 'accept'"/>
+                        </div>
+                    </sheet>
+                    <chatter/>
+                </form>

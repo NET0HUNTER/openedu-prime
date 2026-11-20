@@ -1,0 +1,3 @@
+<list>
+                <field name="complete_name" on_change="1"/>
+            </list>

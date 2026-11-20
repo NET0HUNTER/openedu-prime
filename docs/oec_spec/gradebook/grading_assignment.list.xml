@@ -1,0 +1,17 @@
+﻿<list>
+                    <field name="sequence" column_invisible="1"/>
+                    <field name="name"/>
+                    <field name="issued_date"/>
+                    <field name="year_id" on_change="1"/>
+                    <field name="term_id"/>
+                    <field name="assignment_type" on_change="1"/>
+                    <field name="faculty_id"/>
+                    <field name="course_id" optional="hide"/>
+                    <field name="subject_id" optional="hide"/>
+                    <field name="grade" optional="hide"/>
+                    <field name="point" optional="hide"/>
+                    <field name="user_id" optional="hide"/>
+                    <field name="state" string="Status" widget="badge" decoration-muted="state in ('draft')" decoration-success="state in ('published','grades_published')" decoration-primary="state in ('grading_started', 'grading_closed')" decoration-danger="state in ('cancelled')" optional="show" on_change="1"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="active" widget="boolean_toggle" optional="hide"/>
+                </list>

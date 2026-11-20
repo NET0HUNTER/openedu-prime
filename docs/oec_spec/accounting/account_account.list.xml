@@ -1,0 +1,16 @@
+<list create="1" delete="1" multi_edit="1" string="Chart of accounts">
+                    <field name="placeholder_code" column_invisible="1"/>
+                    <field name="code" string="Code" widget="char_with_placeholder_field" options="{'placeholder_field': 'placeholder_code'}" on_change="1"/>
+                    <field name="name" on_change="1"/>
+                    <field name="account_type" widget="account_type_selection" on_change="1"/>
+                    <field name="group_id" optional="hide"/>
+                    <field name="internal_group" column_invisible="True"/>
+                    <field name="reconcile" widget="boolean_toggle" invisible="account_type in ('asset_cash', 'liability_credit_card', 'off_balance')"/>
+                    <field name="active" optional="hide" widget="boolean_toggle"/>
+                    <field name="non_trade" widget="boolean_toggle" invisible="account_type not in ('liability_payable', 'asset_receivable')" optional="hide"/>
+                    <field name="tax_ids" optional="hide" widget="many2many_tax_tags" can_create="True" can_write="True"/>
+                    <field name="tag_ids" domain="[('applicability', '=', 'accounts')]" optional="hide" widget="many2many_tags" can_create="True" can_write="True"/>
+                    
+                    <field name="company_ids" widget="many2many_tags" readonly="True"/>
+                <field name="company_ids" column_invisible="True" readonly="True" data-used-by="domain=&quot;(company_ids and ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', '')]) + ([])&quot; (field,tax_ids)"/>
+</list>

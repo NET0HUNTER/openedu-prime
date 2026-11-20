@@ -1,0 +1,5 @@
+﻿<pivot string="Marksheet Pivot">
+                    <field name="student_id" type="row"/>
+                    <field name="status" type="col"/>
+                    <field name="percentage" type="measure"/>
+                </pivot>

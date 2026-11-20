@@ -1,0 +1,4 @@
+<pivot string="Placement Offer">
+                <field name="partner_id" type="col"/>
+                <field name="training_period" type="row"/>
+            </pivot>

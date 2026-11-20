@@ -1,0 +1,82 @@
+﻿<kanban class="o_convocation_attendee_kanban_view" default_order="name, student_id,create_date desc" sample="1" js_class="registration_summary_dialog_kanban">
+                <field name="name"/>
+                <field name="student_id"/>
+                <field name="state"/>
+                <field name="active"/>
+                <field name="ceremony_id"/>
+                <field name="program_id"/>
+                <field name="registration_date"/>
+                <field name="total_guests"/>
+                <templates>
+                    <t t-name="convocation_attendees_kanban_icons_desktop">
+                        <div class="d-none d-md-block h-100">
+                            <div id="convocation_attendees_kanban_icons_desktop" class="h-100 float-end p-2 d-flex align-items-end flex-column gap-1">
+                                <t t-if="record.active.raw_value">
+                                    <a class="btn btn-md btn-secondary" string="Confirm Attendance" name="action_approve" type="object" invisible="state == 'done'" role="button" aria-label="Confirm Attendance Button" title="Confirm Attendance">
+                                        <i class="fa fa-check" role="img"/>
+                                    </a>
+                                    <a class="btn btn-md btn-success" string="Reset To Registered" name="action_submit" type="object" invisible="state != 'done'" role="button" aria-label="Reset To Registered Button" title="Reset To Registered">
+                                        <i class="fa fa-check" role="img"/>
+                                    </a>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="event_attendees_kanban_icons_mobile">
+                        <div id="event_attendees_kanban_icons_mobile" class="d-md-none d-flex align-items-end flex-column gap-1 h-100 ps-4">
+                            <t t-if="record.active.raw_value">
+                                <a class="btn btn-secondary d-flex justify-content-center align-items-center h-100 w-100" string="Confirm Attendance" name="action_approve" type="object" invisible="state == 'done'" role="button">
+                                    <i class="fa fa-check fa-3x" role="img" aria-label="Confirm Attendance Button" title="Confirm Attendance"/>
+                                </a>
+                                <a class="btn btn-success d-flex justify-content-center align-items-center h-100 w-100" string="Reset To Registered" name="action_submit" type="object" invisible="state != 'done'" role="button">
+                                    <i class="fa fa-check fa-3x" role="img" aria-label="Reset To Registered Button" title="Reset To Registered"/>
+                                </a>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-name="card" class="row g-0">
+                        <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                        <widget name="web_ribbon" title="Draft" bg_color="bg-info text-white" invisible="state != 'draft'"/>
+                        <widget name="web_ribbon" title="Registered" bg_color="text-bg-primary" invisible="state != 'registered'"/>
+                        <widget name="web_ribbon" title="Attended" bg_color="text-bg-success" invisible="state != 'done'"/>
+                        <widget name="web_ribbon" title="Cancelled" bg_color="text-bg-danger" invisible="state != 'cancelled'"/>
+                        <div class="col-8 col-md-9">
+                            <main class="d-flex flex-column gap-2 p-1 position-relative">
+
+                                <!-- Title -->
+                                <div class="pe-4" style="max-width: 85%;">
+                                    <div class="d-flex flex-column min-w-0">
+                                        <h5 class="fw-bold text-primary mb-0 text-truncate" style="font-size: 1.15rem; line-height: 1.3;">
+                                            <field name="name"/>
+                                        </h5>
+                                        <small class="text-muted text-truncate d-block mt-1">
+                                            <i class="fa fa-user me-1" title="Student"/>
+                                            <field name="student_id"/>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <!-- Meta info -->
+                                <div class="d-flex flex-column gap-1 mb-1">
+                                    <div t-if="record.ceremony_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-graduation-cap me-2 text-muted" style="width: 14px;" title="Ceremony"/>
+                                        <span class="text-truncate"><field name="ceremony_id" invisible="context.get('default_ceremony_id')"/></span>
+                                    </div>
+                                    <div t-if="record.program_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-book me-2 text-muted" style="width: 14px;" title="Program"/>
+                                        <span class="text-truncate"><field name="program_id"/></span>
+                                    </div>
+                                    <div t-if="record.registration_date.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-calendar me-2 text-muted" style="width: 14px;" title="Registration Date"/>
+                                        <span><field name="registration_date"/></span>
+                                    </div>
+                                    <div t-if="record.total_guests.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-users me-2 text-muted" style="width: 14px;" title="Guests"/>
+                                        <span><field name="total_guests"/> Guests</span>
+                                    </div>
+                                </div>
+                            </main>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>

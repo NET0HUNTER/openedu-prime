@@ -1,0 +1,9 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1352,
+                      "name":  "Convocation Ceremony",
+                      "binding_view_types":  "list,form"
+                  }
+              ]
+}

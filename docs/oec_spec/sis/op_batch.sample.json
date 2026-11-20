@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "BCA BATCH-A"
+    },
+    {
+        "id":  2,
+        "display_name":  "MCA BATCH-A"
+    },
+    {
+        "id":  3,
+        "display_name":  "MCA BATCH-A"
+    },
+    {
+        "id":  4,
+        "display_name":  "BCOM BATCH-A"
+    },
+    {
+        "id":  5,
+        "display_name":  "BA BATCH-A"
+    }
+]

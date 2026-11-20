@@ -1,0 +1,11 @@
+<form string="Channels">
+                <group>
+                    <field name="name" required="name != 'root'" readonly="name == 'root'" on_change="1"/>
+                    <field name="parent_id" required="name != 'root'" readonly="name == 'root'" on_change="1" can_create="True" can_write="True"/>
+                    <field name="complete_name" on_change="1"/>
+                    <field name="removal_interval"/>
+                </group>
+                <group>
+                    <field name="job_function_ids" widget="many2many_tags"/>
+                </group>
+            </form>

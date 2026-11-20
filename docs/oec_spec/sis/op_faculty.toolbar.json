@@ -1,0 +1,14 @@
+﻿{
+    "action":  [
+                   {
+                       "id":  923,
+                       "name":  "Create Employee",
+                       "binding_view_types":  "form"
+                   },
+                   {
+                       "id":  924,
+                       "name":  "Create Users",
+                       "binding_view_types":  "list,form"
+                   }
+               ]
+}

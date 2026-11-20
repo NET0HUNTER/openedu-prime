@@ -1,0 +1,4 @@
+<list editable="top">
+                <field name="name" placeholder="Tag"/>
+                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+            </list>

@@ -1,0 +1,8 @@
+<search string="Activity Announcement">
+                <field name="name"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <filter string="Favorites" name="inactive" domain="[('is_favorite', '=', True)]"/>
+                <searchpanel>
+                    <field name="partner_id" icon="fa-building"/>
+                </searchpanel>
+            </search>

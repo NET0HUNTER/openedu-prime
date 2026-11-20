@@ -1,0 +1,67 @@
+<form>
+                    <header/>
+                    <sheet>
+                       
+                         <div class="d-flex justify-content-between">
+                        <div class="oe_title w-md-100">
+                            <label for="name" string="Material Title"/>
+                            <h1>
+                             <div class="d-flex">
+                            <field name="name" options="{'line_breaks': False}" widget="text" default_focus="1" placeholder="e.g. &quot;Computer Science for kids&quot;"/>
+                            </div>
+                            </h1>
+                        </div>
+                         <field name="material_cover" widget="image" nolabel="1" class="oe_right oe_avatar"/>
+                        </div>
+                        <group class="pt-3">
+                            <group name="main">
+                                <field name="material_data"/>
+                                <field name="material_type"/>
+                                <field name="language_id" can_create="True" can_write="True"/>
+                                <field name="material_edition"/>
+                                <field name="publish_online"/>
+                            </group>
+                            <group>
+                                <field name="author_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="material_source"/>
+                                <field name="publisher_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="material_tags" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="rating"/>
+                            </group>
+                            <group>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                                <field name="total_reviews"/>
+                            </group>
+                            <group>
+                                <field name="isbn_code"/>
+                            </group>
+                        </group>
+                            <group>
+                            <field name="material_description"/>
+                            </group>
+                        <notebook>
+                            <page name="enrollments" string="Enrollments">
+                                <field name="material_enrollment_line">
+                                    <list create="False" delete="False" edit="False">
+                                        <field name="user_id"/>
+                                        <field name="company_id"/>
+                                        <field name="enrollment_date"/>
+                                        <field name="state"/>
+                                    </list>
+                                </field>
+                            </page>
+                            <page name="reviews" string="Reviews">
+                                <field name="material_review_line" readonly="1" on_change="1">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="email"/>
+                                        <field name="review"/>
+                                        <field name="rating"/>
+                                        <field name="material_id" optional="hide" on_change="1"/>
+                                        <field name="user_id" optional="hide"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>

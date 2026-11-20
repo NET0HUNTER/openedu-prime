@@ -1,0 +1,9 @@
+﻿<list string="Activity Log">
+                    <field name="progression_id" optional="show"/>
+                    <field name="student_id" on_change="1"/>
+                    <field name="faculty_id"/>
+                    <field name="type_id"/>
+                    <field name="date"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="description" optional="hide"/>
+                </list>

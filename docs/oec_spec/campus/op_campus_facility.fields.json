@@ -1,0 +1,50 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "size": 64,
+      "sortable": true,
+      "store": true,
+      "string": "Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    },
+    "facility_type_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "facility_type_id",
+      "readonly": false,
+      "relation": "op.facility.type",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Facility Type",
+      "type": "many2one"
+    },
+    "parent_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "parent_id",
+      "readonly": false,
+      "relation": "op.campus.facility",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Parent Facility",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

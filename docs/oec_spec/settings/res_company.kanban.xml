@@ -1,0 +1,94 @@
+<kanban highlight_color="color" string="Company kanban" class="o_res_partner_kanban o_slide_kanban o_slide_channel_kanban o_multi_location_kanban" sample="1">
+                <field name="name"/>
+                <field name="color"/>
+                <field name="child_company_count"/>
+                <field name="company_student_count"/>
+                <field name="company_course_count"/>
+                <field name="company_subject_count"/>
+                <field name="company_batch_count"/>
+                <templates>
+                    <t t-name="menu">
+                        <div class="container" role="menu">
+                            <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                <div role="menuitem" aria-haspopup="true" class="col-12">
+                                    <field name="color" widget="kanban_color_picker"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click o_res_partner_kanban h-100">
+                            <main class="d-flex flex-column gap-2 p-3 h-100" style="min-height: 230px;">
+                                <header class="d-flex align-items-start justify-content-between gap-2 pb-2 border-bottom">
+                                    <div class="flex-grow-1" style="min-width: 0;">
+                                        <small class="d-block text-uppercase text-muted fw-semibold mb-1" style="font-size: 0.68rem; letter-spacing: 0.04em;">
+                                            Multi Location
+                                        </small>
+                                        <h3 class="mb-0 fw-bold text-dark" style="font-size: 1.18rem; line-height: 1.28; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 3rem;" t-att-title="record.name.value">
+                                            <t t-esc="record.name.value"/>
+                                        </h3>
+                                    </div>
+                                    <span class="badge rounded-pill text-bg-success flex-shrink-0">Active</span>
+                                </header>
+
+                                <div class="row g-2" name="dashboard_links">
+                                    <div class="col-6">
+                                        <a name="1228" type="action" class="text-decoration-none d-flex align-items-center justify-content-between border rounded px-2 py-2 bg-light small h-100">
+                                            <span class="d-flex flex-column text-muted">
+                                                <span class="fw-semibold">Sub Locations</span>
+                                                <span class="fw-bold text-dark fs-5">
+                                                    <t t-esc="record.child_company_count.value"/>
+                                                </span>
+                                            </span>
+                                            <i class="fa fa-sitemap text-secondary" role="img" aria-label="Sub Locations" title="Sub Locations"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-6">
+                                        <a name="1227" type="action" class="text-decoration-none d-flex align-items-center justify-content-between border rounded px-2 py-2 bg-light small h-100">
+                                            <span class="d-flex flex-column text-muted">
+                                                <span class="fw-semibold">Students</span>
+                                                <span class="fw-bold text-dark fs-5">
+                                                    <t t-esc="record.company_student_count.value"/>
+                                                </span>
+                                            </span>
+                                            <i class="fa fa-users text-secondary" role="img" aria-label="Students" title="Students"/>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a name="1230" type="action" class="text-decoration-none d-flex flex-column align-items-start border rounded px-2 py-2 bg-white small h-100">
+                                            <span class="fw-bold text-dark fs-6">
+                                                <t t-esc="record.company_course_count.value"/>
+                                            </span>
+                                            <span class="text-muted text-truncate mw-100"><t t-esc="course_label"/></span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a name="1226" type="action" class="text-decoration-none d-flex flex-column align-items-start border rounded px-2 py-2 bg-white small h-100">
+                                            <span class="fw-bold text-dark fs-6">
+                                                <t t-esc="record.company_subject_count.value"/>
+                                            </span>
+                                            <span class="text-muted text-truncate mw-100"><t t-esc="subject_label_plural"/></span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4">
+                                        <a name="1229" type="action" class="text-decoration-none d-flex flex-column align-items-start border rounded px-2 py-2 bg-white small h-100">
+                                            <span class="fw-bold text-dark fs-6">
+                                                <t t-esc="record.company_batch_count.value"/>
+                                            </span>
+                                            <span class="text-muted text-truncate mw-100"><t t-esc="batch_label"/></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <footer class="d-flex justify-content-end align-items-center pt-2 border-top mt-auto">
+                                    <a name="1228" type="action" role="button" class="btn btn-sm btn-primary px-3 fw-semibold" style="min-width: 116px;">
+                                        View Location
+                                    </a>
+                                </footer>
+                            </main>
+                        </div>
+                    </t>
+                </templates>
+                <field name="id" invisible="1"/>
+            </kanban>

@@ -1,0 +1,4 @@
+<pivot string="OMR Exam">
+                <field name="name" type="row"/>
+                <field name="answersheet_configuration_id" type="col"/>
+            </pivot>

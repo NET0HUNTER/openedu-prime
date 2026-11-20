@@ -1,0 +1,34 @@
+{
+  "fields": {
+    "partner_id": {
+      "change_default": true,
+      "context": {},
+      "domain": "(company_id and ['|', ('company_id', '=', False), ('company_id', 'parent_of', [company_id])] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', '')]) + ([])",
+      "groupable": true,
+      "name": "partner_id",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Customer",
+      "type": "many2one"
+    },
+    "amount_total": {
+      "aggregator": "sum",
+      "change_default": false,
+      "currency_field": "currency_id",
+      "groupable": true,
+      "name": "amount_total",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Total",
+      "type": "monetary"
+    }
+  },
+  "has_approval_rules": false
+}

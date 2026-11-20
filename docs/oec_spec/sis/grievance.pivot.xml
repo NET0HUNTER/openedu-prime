@@ -1,0 +1,6 @@
+﻿<pivot string="Grievance Pivot" sample="1">
+                <field name="grievance_category_id" type="row"/>
+                <field name="subject" type="row"/>
+                <field name="grievance_for" type="row"/>
+                <field name="state" type="row"/>
+            </pivot>

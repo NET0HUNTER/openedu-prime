@@ -1,0 +1,5 @@
+<search string="Roles">
+                <field name="name"/>
+                <field name="user_ids"/>
+                <field name="implied_ids"/>
+            </search>

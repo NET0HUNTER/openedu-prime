@@ -1,0 +1,49 @@
+<form>
+                <header>
+                    <button string="In Progress" name="action_in_progress" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button string="Publish" name="action_publish" type="object" class="oe_highlight" invisible="state != 'in_progress'"/>
+                    <button string="Cancel" name="action_cancel" type="object" class="oe_highlight" invisible="state != 'in_progress'"/>
+                    <button string="Unpublish" name="action_unpublish" type="object" class="oe_highlight" invisible="state != 'publish'"/>
+                    <button string="Mark as Draft" name="action_draft" type="object" invisible="state != 'cancel'"/>
+                    <!--                        <button string="Send Email" name="circular_action_send_email" type="object"-->
+                    <!--                                attrs="{'invisible':[('state','not in','publish')]}"/>-->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <div class="oe_title">
+                            <label for="circular_number" class="oe_edit_only"/>
+                            <h1>
+                                <field name="circular_number" readonly="1"/>
+                            </h1>
+                        </div>
+                    </group>
+                    <group>
+                        <group col="4">
+                            <field name="name" readonly="state not in ['draft','in_progress']"/>
+                            <field name="created_by" readonly="1"/>
+                            <field name="created_date" readonly="1"/>
+                            <field name="group_id" readonly="state not in ['draft','in_progress']" invisible="1" can_create="True" can_write="True"/>
+                            <field name="group_ids" readonly="state not in ['draft','in_progress']" widget="many2many_tags" can_create="True" can_write="True"/>
+                            <label for="start_date" string="Start From"/>
+                            <div class="o_row">
+                                <field name="start_date" nolabel="1" class="oe_inline" readonly="state not in ['draft','in_progress']"/>
+                                <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                                <field name="end_date" nolabel="1" class="oe_inline" readonly="state not in ['draft','in_progress']"/>
+                            </div>
+                             <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                        <group col="4">
+                            <field name="subject" readonly="state not in ['draft','in_progress']"/>
+                            <field name="academic_year_id" readonly="state not in ['draft','in_progress']" can_create="True" can_write="True"/>
+                            <field name="academic_term_id" readonly="state not in ['draft','in_progress']" can_create="True" can_write="True"/>
+                            <field name="high_priority" widget="priority" readonly="state not in ['draft','in_progress']"/>
+                            <field name="circular_type_id" readonly="state not in ['draft','in_progress']" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" readonly="state not in ['draft','in_progress']" widget="html"/>
+                    </group>
+                </sheet>
+                <chatter reload_on_post="True"/>
+            </form>

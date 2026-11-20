@@ -1,0 +1,17 @@
+<search string="Extension Requests">
+                    <field name="name"/>
+                    <field name="student_id"/>
+                    <field name="registration_id"/>
+                    <field name="reason_id"/>
+                    <filter string="Draft" name="draft_extensions" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Submitted" name="submitted_extensions" domain="[('state', '=', 'submitted')]"/>
+                    <filter string="Supervisor Review" name="supervisor_review_extensions" domain="[('state', '=', 'supervisor_review')]"/>
+                    <filter string="HoD Review" name="hod_review_extensions" domain="[('state', '=', 'hod_review')]"/>
+                    <filter string="Approved" name="approved_extensions" domain="[('state', '=', 'approved')]"/>
+                    <filter string="Rejected" name="rejected_extensions" domain="[('state', '=', 'rejected')]"/>
+                    <group>
+                        <filter string="Student" name="group_by_student" domain="[]" context="{'group_by':'student_id'}"/>
+                        <filter string="Thesis" name="group_by_thesis" domain="[]" context="{'group_by':'registration_id'}"/>
+                        <filter string="Status" name="group_by_state" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>

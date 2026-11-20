@@ -1,0 +1,1 @@
+<kanban string="Quiz Category"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

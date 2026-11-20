@@ -1,0 +1,8 @@
+﻿<pivot string="Discipline Records">
+                    <field name="student_id" type="col"/>
+                    <field name="date"/>
+                    <field name="course_id"/>
+                    <field name="misbehaviour_category_id" type="row"/>
+                    <field name="discipline_master"/>
+                    <field name="state"/>
+                </pivot>

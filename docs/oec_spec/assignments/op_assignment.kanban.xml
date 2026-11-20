@@ -1,0 +1,1 @@
+<kanban string="Assignment"><templates><t t-name="card"><field name="name" on_change="1"/></t></templates></kanban>

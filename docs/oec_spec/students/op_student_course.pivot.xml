@@ -1,0 +1,5 @@
+﻿<pivot string="Student Course">
+                    <field name="student_id"/>
+                    <field name="course_id" type="row"/>
+                    <field name="batch_id"/>
+                </pivot>

@@ -1,0 +1,14 @@
+<list string="Media">
+                    <field name="name"/>
+                    <field name="media_type_id"/>
+                    <field name="isbn"/>
+                    <field name="internal_code"/>
+                    <field name="edition"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="description" optional="hide"/>
+                    <field name="tags" widget="many2many_tags" optional="hide"/>
+                    <field name="author_ids" widget="many2many_tags" optional="hide"/>
+                    <field name="publisher_ids" widget="many2many_tags" optional="hide"/>
+                    <field name="course_ids" widget="many2many_tags" optional="hide"/>
+                    <field name="subject_ids" widget="many2many_tags" optional="hide"/>
+                </list>

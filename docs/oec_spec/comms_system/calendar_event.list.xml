@@ -1,0 +1,32 @@
+<list string="Meetings" sample="1" multi_edit="1" js_class="calendar_list_view">
+                <header>
+                    <button name="action_open_composer" type="object" context="{'default_composition_mode':'mass_mail'}" string="Send Mail"/>
+                <button name="action_send_sms" type="object" string="Send SMS"/>
+                </header>
+                <field name="name" string="Subject" decoration-bf="1" readonly="recurrency"/>
+                <field name="start" string="Start Date" readonly="1" on_change="1"/>
+                <field name="stop" string="End Date" readonly="1" on_change="1"/>
+                <field name="user_id" widget="many2one_avatar_user" readonly="recurrency" optional="hide" can_create="True" can_write="True"/>
+                <field name="partner_ids" widget="many2many_tags" readonly="recurrency" optional="show" can_create="True" can_write="True"/>
+                <field name="booking_status" decoration-warning="booking_status == 'appointment_request'" decoration-success="booking_status == 'appointment_booked'" decoration-muted="booking_status == 'cancelled'"/>
+                <field name="alarm_ids" widget="many2many_tags" optional="hide" readonly="recurrency" can_create="True" can_write="True"/>
+                <field name="categ_ids" widget="many2many_tags" optional="hide" readonly="recurrency" options="{'color_field': 'color'}" can_create="True" can_write="True"/>
+                <field name="recurrency" optional="hide" readonly="1"/>
+                <field name="privacy" optional="hide" readonly="recurrency"/>
+                <field name="show_as" optional="hide" readonly="recurrency"/>
+                <field name="location" optional="show" readonly="recurrency"/>
+                <field name="duration" widget="float_time" readonly="1" on_change="1"/>
+                <field name="description" optional="hide" readonly="recurrency"/>
+                <field name="op_session_id" optional="hide" can_create="True" can_write="True"/>
+                    <field name="academic_calendar" optional="hide"/>
+                    <field name="course_ids" widget="many2many_tags" optional="hide" on_change="1" can_create="True" can_write="True"/>
+                    <field name="batch_ids" widget="many2many_tags" optional="hide" can_create="True" can_write="True"/>
+                <field name="mpw" optional="hide"/>
+                <field name="meeting_url" optional="hide"/>
+                <field name="online_meeting" optional="hide"/>
+                <field name="automatic_email" optional="hide"/>
+                <field name="appointment_id" optional="hide" on_change="1"/>
+                <field name="online_appointment_resource_ids" optional="hide" can_create="True" can_write="True"/>
+                <field name="allday" column_invisible="True"/>
+                <field name="message_needaction" column_invisible="True"/>
+            </list>

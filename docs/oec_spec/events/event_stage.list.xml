@@ -1,0 +1,4 @@
+<list string="Events Stage">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+            </list>

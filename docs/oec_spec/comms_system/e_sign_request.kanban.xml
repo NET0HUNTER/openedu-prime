@@ -1,0 +1,113 @@
+<kanban class="o_esign_kanban" quick_create="false" js_class="e_sign_view" default_order="create_date desc" sample="1">
+                <field name="create_uid"/>
+                <field name="favorited_ids"/>
+                <field name="last_action_date"/>
+                <field name="state"/>
+                <field name="activity_ids" on_change="1"/>
+                <field name="activity_state"/>
+                <field name="tag_ids"/>
+                <field name="item_info"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="card">
+                        <div t-attf-class="o_sign_sticky_bottom oe_kanban_global_click d-flex flex-column h-100 p-0">
+                             
+                            <div class="d-flex flex-column w-100 h-100 bg-white">
+                                
+                                <!-- High-Density Header -->
+                                <div class="d-flex justify-content-between align-items-start p-2 w-100 border-bottom" style="border-color: #f3f4f6 !important;">
+                                    <!-- Left: Icon & Title Area -->
+                                    <div class="d-flex align-items-center gap-2 w-100" style="min-width: 0;">
+                                        
+                                        <!-- Mini Icon -->
+                                        <div class="d-flex justify-content-center align-items-center flex-shrink-0 bg-light" style="width: 32px; height: 32px; border-radius: 4px; border: 1px solid #e5e7eb;">
+                                            <i class="fa fa-pencil text-dark" title="Document" style="font-size: 1.05rem;"/>
+                                        </div>
+                                        
+                                        <!-- Title & Tags -->
+                                        <div class="d-flex flex-column flex-grow-1" style="min-width: 0;">
+                                            <div class="d-flex align-items-center gap-2 w-100">
+                                                <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.05rem; letter-spacing: -0.01em;">
+                                                    <field name="doc_name"/>
+                                                </h5>
+                                                <t t-if="user_context and record.favorited_ids and record.favorited_ids.raw_value and record.favorited_ids.raw_value.indexOf(user_context.uid) &lt; 0">
+                                                    <a type="object" name="select_favorite" class="fa fa-star-o text-muted" title="Favorites" style="font-size: 1.05rem;"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <a type="object" name="select_favorite" class="fa fa-star text-warning favorite_button_enabled" title="Favorites" style="font-size: 1.05rem;"/>
+                                                </t>
+                                            </div>
+                                            <div class="mt-1 text-truncate" style="max-height: 22px; overflow: hidden;">
+                                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Body: Vertical Signers List -->
+                                <div class="p-2 flex-grow-1">
+                                    <div class="d-flex align-items-center gap-1 mb-2">
+                                        <i class="fa fa-users text-muted" style="font-size: 0.75rem;"/>
+                                        <span class="text-muted fw-bold" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Signatories</span>
+                                    </div>
+                                    <t t-if="record.item_info and record.item_info.raw_value and record.item_info.raw_value.length &gt; 0">
+                                        <div class="d-flex flex-column gap-2 mt-1">
+                                            <div t-foreach="record.item_info.raw_value or []" t-as="item" t-key="item.id" class="d-flex justify-content-between align-items-center w-100">
+                                                
+                                                <!-- Signer Name -->
+                                                <div class="d-flex align-items-center gap-2 text-truncate">
+                                                    <t t-if="item.state === 'completed'">
+                                                        <i class="fa fa-check text-success" title="Completed" style="font-size: 0.85rem;"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <i class="fa fa-circle-o text-muted" title="Pending" style="font-size: 0.85rem;"/>
+                                                    </t>
+                                                    <span t-attf-class="text-truncate #{item.state === 'completed' ? 'text-dark' : 'text-muted'}" style="font-size: 0.85rem; font-weight: 500;">
+                                                        <t t-esc="item.partner_name"/>
+                                                    </span>
+                                                </div>
+                                                
+                                                <!-- Date or Status Pill -->
+                                                <div class="ms-2 flex-shrink-0">
+                                                    <t t-if="item.state === 'completed'">
+                                                        <span class="text-muted" style="font-size: 0.75rem;"><t t-esc="item.signing_date"/></span>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <span class="badge bg-light text-muted border" style="font-size: 0.7rem; font-weight: 500; border-color: #e5e7eb !important;">Pending</span>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                                
+                                <!-- Dense Footer -->
+                                <div class="d-flex justify-content-between align-items-center px-2 py-1 w-100 bg-white border-top" style="border-color: #f3f4f6 !important;">
+                                    <!-- Left: Action Date & Activities -->
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <i class="fa fa-clock-o text-muted" style="font-size: 0.85rem;line-height: normal;"/>
+                                            <span class="text-dark fw-bold" style="font-size: 0.85rem;">
+                                                <field name="last_action_date" widget="datetime"/>
+                                            </span>
+                                        </div>
+                                        <div class="o_kanban_inline_block border-start ps-2" style="border-color: #e5e7eb !important;">
+                                            <field name="activity_ids" widget="kanban_activity" on_change="1"/>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Right: Avatar -->
+                                    <div class="d-flex align-items-center gap-1">
+                                        <t t-if="record.create_uid.raw_value">
+                                            <span class="text-muted fw-medium text-end text-truncate" style="font-size: 0.75rem; max-width: 80px;">
+                                                <field name="create_uid"/>
+                                            </span>
+                                        </t>
+                                        <field name="create_uid" widget="many2one_avatar_user"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>

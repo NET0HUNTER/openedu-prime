@@ -1,0 +1,6 @@
+﻿<search string="Grade Table">
+                    <field name="name"/>
+                    <group>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                </search>

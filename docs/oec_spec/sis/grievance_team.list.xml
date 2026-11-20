@@ -1,0 +1,5 @@
+﻿<list>
+                <field name="name"/>
+                <field name="team_leader"/>
+                <field name="grievance_category_id" widget="many2many_tags"/>
+            </list>

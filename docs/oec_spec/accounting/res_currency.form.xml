@@ -1,0 +1,56 @@
+<form string="Currency" js_class="currency_form">
+                    <div class="alert alert-info text-center" role="alert" invisible="not is_current_company_currency">
+                        This is your company's currency.
+                    </div>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="full_name" string="Name"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="symbol"/>
+                                <field name="currency_unit_label"/>
+                                <field name="currency_subunit_label"/>
+                                <field name="position"/>
+                            </group>
+                        </group>
+
+                        <group invisible="1" column_invisible="1">
+                            <group string="Price Accuracy">
+                                <field name="rounding" on_change="1"/>
+                                <field name="decimal_places"/>
+                    <div colspan="2" invisible="not display_rounding_warning" class="alert alert-danger" role="alert">
+                        <p class="m-0">
+                            <strong>WARNING - This change is irreversible</strong>
+                        </p>
+
+                        <p class="mt-1 mb-2">
+                            You are changing decimals in your entire database, including invoices,
+                            tax amounts, accounting amounts, reports. This is probably not intended.
+                        </p>
+
+                        <div>
+                            <field name="display_rounding_warning" widget="open_decimal_precision_button"/>
+                        </div>
+                    </div>
+                            </group>
+                        </group>
+                        <notebook class="o_currency_rate_list" invisible="is_current_company_currency">
+                            <page string="Rates" name="rates">
+                                <field name="rate_ids" widget="one2many" on_change="1">
+                                    <list string="Rates" editable="top" limit="25">
+                                        <field name="name" on_change="1"/>
+                                        <field name="company_id" placeholder="Visible to all" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="company_rate" digits="[12,12]" string="Unit per USD" on_change="1"/>
+                                        <field name="inverse_company_rate" digits="[12,12]" string="USD per Unit" on_change="1"/>
+                                        <field name="rate" digits="[12,12]" optional="hide" on_change="1"/>
+                                        <field name="write_date" optional="hide"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                <field name="is_current_company_currency" invisible="True" readonly="True" data-used-by="invisible='is_current_company_currency' (notebook,None)"/>
+</form>

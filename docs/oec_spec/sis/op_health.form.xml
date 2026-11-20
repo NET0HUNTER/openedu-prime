@@ -1,0 +1,78 @@
+﻿<form string="Health">
+                <header>
+                    <button name="confirm_register" invisible="state != 'draft'" type="object" string="Confirm" class="oe_highlight"/>
+                    <button name="set_to_draft" invisible="state != 'confirm'" string="Set to Draft" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <group>
+                        <group>
+                            <field name="type" readonly="state == 'confirm'"/>
+                            <field name="student_id" required="type == 'student'" invisible="type != 'student'" readonly="state == 'confirm'" on_change="1" can_create="True" can_write="True"/>
+                            <field name="faculty_id" required="type == 'faculty'" invisible="type != 'faculty'" readonly="state == 'confirm'" on_change="1" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <group>
+                                <div class="o_row">
+                                <label for="height"/>
+                                <field name="height" readonly="state == 'confirm'" style="width: 30% !important"/>
+                                <field name="height_uom_id" readonly="state == 'confirm'" options="{'no_create': True , 'no_open': True}" style="width: 50% !important" can_create="True" can_write="True"/>
+                                </div>
+                            </group>
+
+                            <field name="company_id" optional="show" readonly="state == 'confirm'" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <group>
+                                <div class="o_row">
+                                <label for="weight"/>
+                                <field name="weight" readonly="state == 'confirm'" style="width: 30% !important"/>
+                                <field name="weight_uom_id" readonly="state == 'confirm'" style="width: 50% !important" options="{'no_create': True , 'no_open': True}" can_create="True" can_write="True"/>
+                                </div>
+                            </group>
+                        </group>
+                    </group>
+                    <separator colspan="4" string="Other Details"/>
+                    <group>
+                        <group>
+                            <field name="eyeglasses" readonly="state == 'confirm'"/>
+                            <field name="physical_challenges" readonly="state == 'confirm'"/>
+                            <field name="major_diseases" readonly="state == 'confirm'"/>
+                            <field name="regular_checkup" readonly="state == 'confirm'"/>
+                        </group>
+                        <group>
+                            <field name="physical_challenges_note" invisible="physical_challenges != True" readonly="state == 'confirm'"/>
+                            <field name="major_diseases_note" invisible="major_diseases != True" readonly="state == 'confirm'"/>
+                            <field name="eye_with_number" readonly="state == 'confirm'" invisible="not eyeglasses"/>
+                            <field name="eye_status" readonly="state == 'confirm'" invisible="not eyeglasses"/>
+                            <field name="right_eye_hyperopia" readonly="state == 'confirm'" invisible="eye_status not in ['hyperopia','bifocal'] or eye_with_number not in ['right','both'] or not eyeglasses"/>
+                            <field name="left_eye_hyperopia" readonly="state == 'confirm'" invisible="eye_status not in ['hyperopia','bifocal'] or eye_with_number not in ['left','both'] or not eyeglasses"/>
+                            <field name="left_eye_myopia" readonly="state == 'confirm'" invisible="eye_status not in ['myopia','bifocal']  or eye_with_number not in ['left','both'] or not eyeglasses"/>
+                            <field name="right_eye_myopia" readonly="state == 'confirm'" invisible="eye_status not in ['myopia','bifocal'] or eye_with_number not in ['right','both'] or not eyeglasses"/>
+                        </group>
+                    </group>
+                    <group>
+                        <separator colspan="4" string="Checkup Details"/>
+                        <group colspan="2">
+                            <field name="health_line" nolabel="1" colspan="2" readonly="state == 'confirm'">
+                                <list>
+                                    <field name="date"/>
+                                    <field name="name"/>
+                                </list>
+                                <form string="Checkup Line">
+                                    <group colspan="4">
+                                        <field name="date"/>
+                                        <field name="name"/>
+                                        <field name="recommendation"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>

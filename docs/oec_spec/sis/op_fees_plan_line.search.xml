@@ -1,0 +1,11 @@
+﻿<search string="Search Fees Plan Line">
+                    <field name="student_id"/>
+                    <field name="course_id"/>
+                    <field name="batch_id"/>
+                    
+                    <filter string="Unpaid" name="filter_unpaid" domain="[('paid_amount', '=', 0)]"/>
+                            
+                    <group>
+                        <filter string="Batch" name="group_by_batch" domain="[]" context="{'group_by': 'batch_id'}"/>
+                    </group>
+                </search>

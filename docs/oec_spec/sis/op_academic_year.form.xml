@@ -1,0 +1,32 @@
+﻿<form string="Academic Year">
+                    <header>
+                        <field name="create_boolean" invisible="True"/>
+
+                        <button name="term_create" type="object" string="Create Terms" class="oe_highlight" invisible="create_boolean != False or term_structure == 'others'"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="term_structure"/>
+                                <field name="end_date"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Academic Terms" name="academic_term_ids">
+                                <field name="academic_term_ids" nolabel="1"><list string="Academic Term">
+                    <field name="name"/>
+                    <field name="term_start_date"/>
+                    <field name="term_end_date"/>
+                    <field name="parent_term"/>
+                    <field name="academic_year_id" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                </list></field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>

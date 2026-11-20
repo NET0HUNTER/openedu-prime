@@ -1,0 +1,33 @@
+{
+  "fields": {
+    "value": {
+      "aggregator": "max",
+      "change_default": false,
+      "groupable": true,
+      "name": "value",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Odometer Value",
+      "type": "float"
+    },
+    "vehicle_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "vehicle_id",
+      "readonly": false,
+      "relation": "fleet.vehicle",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Vehicle",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

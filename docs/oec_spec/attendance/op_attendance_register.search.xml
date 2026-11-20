@@ -1,0 +1,14 @@
+﻿<search string="Attendance Register">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="course_id"/>
+                    <field name="batch_id"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <newline/>
+                    <group>
+                        <filter string="Name" name="group_by_attendance_register_name" domain="[]" context="{'group_by':'name'}"/>
+                        <filter string="Code" name="group_by_attendance_register_code" domain="[]" context="{'group_by':'code'}"/>
+                        <filter string="Course" name="group_by_attendance_register_course" domain="[]" context="{'group_by':'course_id'}"/>
+                        <filter string="Batch" name="group_by_attendance_register_batch" domain="[]" context="{'group_by':'batch_id'}"/>
+                    </group>
+                </search>

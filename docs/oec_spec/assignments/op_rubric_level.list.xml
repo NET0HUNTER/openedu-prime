@@ -1,0 +1,6 @@
+<list>
+                <field name="name"/>
+                <field name="percentage"/>
+                <field name="sequence"/>
+                <field name="is_active"/>
+            </list>

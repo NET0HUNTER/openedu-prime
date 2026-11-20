@@ -1,0 +1,1 @@
+<kanban string="Omr Sheet Generate"><templates><t t-name="card"><field name="id"/></t></templates></kanban>

@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "size": 64,
+      "sortable": true,
+      "store": true,
+      "string": "Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    },
+    "route_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "route_id",
+      "readonly": false,
+      "relation": "op.route",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Route",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

@@ -1,0 +1,28 @@
+<form string="Stop">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="sequence" required="1"/>
+                                <field name="route_id" can_create="True" can_write="True"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                                <field name="estimated_arrival_conf" required="1" widget="float_time"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Person(s)">
+                                    <field name="partner_ids" nolabel="1" can_create="True" can_write="True">
+                                        <list>
+                                            <field name="title"/>
+                                            <field name="name"/>
+                                        </list>
+                                    </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>

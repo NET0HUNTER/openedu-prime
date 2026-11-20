@@ -1,0 +1,54 @@
+<kanban class="o_slide_kanban o_omr_kanban" sample="1">
+                <field name="name"/>
+                <field name="subject_id"/>
+                <field name="template_id"/>
+                <field name="answersheet_configuration_id"/>
+                <field name="state"/>
+                <field name="answersheet_count"/>
+                <templates>
+                    <t t-name="card">
+                        <widget name="web_ribbon" title="Draft" bg_color="bg-info text-white" invisible="state != 'draft'"/>
+                        <widget name="web_ribbon" title="Confirm" bg_color="text-bg-primary" invisible="state != 'confirm'"/>
+                        <widget name="web_ribbon" title="Done" bg_color="text-bg-success" invisible="state != 'done'"/>
+                        <widget name="web_ribbon" title="Cancel" bg_color="text-bg-danger" invisible="state != 'cancel'"/>
+
+                        <main class="d-flex flex-column gap-2 p-1 position-relative">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-start gap-2 w-100 mb-2 pe-5">
+                                <h5 class="fw-bold text-dark text-truncate mb-0 flex-grow-1" style="font-size: 1.15rem; min-width: 0;">
+                                    <field name="name"/>
+                                </h5>
+                            </div>
+
+                            <!-- Meta details -->
+                            <div class="d-flex flex-column gap-1 mb-2">
+                                <div t-if="record.subject_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-book me-2 text-muted" style="width: 14px;" title="Subject"/>
+                                    <span><field name="subject_id"/></span>
+                                </div>
+                                <div t-if="record.template_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-file-text-o me-2 text-muted" style="width: 14px;" title="Template"/>
+                                    <span><field name="template_id"/></span>
+                                </div>
+                                <div t-if="record.answersheet_configuration_id.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                    <i class="fa fa-sliders me-2 text-muted" style="width: 14px;" title="Configuration"/>
+                                    <span><field name="answersheet_configuration_id"/></span>
+                                </div>
+                            </div>
+
+                            <!-- Scan widget -->
+                            <div name="omr_scan_button_box" class="omr_scan_kanban">
+                                <widget style="width:100%;" class="btn-group ps-0" name="omr_cam_widget" invisible="state != 'confirm'"/>
+                            </div>
+
+                            <!-- Bottom Action Button -->
+                            <div class="d-flex gap-2 mt-auto pt-2 border-top">
+                                <button name="answersheet_action" type="object" class="btn btn-sm btn-primary w-100 py-2 fw-bold text-white d-flex justify-content-center align-items-center gap-2">
+                                    <i class="fa fa-files-o" title="Answer Sheets"/>
+                                    <span>Answer Sheets (<field name="answersheet_count"/>)</span>
+                                </button>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

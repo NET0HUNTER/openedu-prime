@@ -1,0 +1,7 @@
+<list string="Library Card Type">
+                    <field name="name"/>
+                    <field name="allow_media"/>
+                    <field name="duration"/>
+                    <field name="penalty_amt_per_day"/>
+                    <field name="company_id" optional="show"/>
+                </list>

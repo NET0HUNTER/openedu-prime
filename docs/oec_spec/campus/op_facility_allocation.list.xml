@@ -1,0 +1,10 @@
+<list>
+                <field name="partner_id"/>
+                <field name="facility_id"/>
+                <field name="product_id"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <field name="invoice_id" optional="hide"/>
+                <field name="active" widget="boolean_toggle" optional="hide"/>
+                <field name="company_id" optional="show"/>
+            </list>

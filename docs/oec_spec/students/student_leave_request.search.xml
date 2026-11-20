@@ -1,0 +1,7 @@
+﻿<search>
+                <field name="student_id" string="Student Name"/>
+                <field name="leave_type"/>
+                <field name="description"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </search>

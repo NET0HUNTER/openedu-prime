@@ -1,0 +1,88 @@
+<kanban highlight_color="color" string="eLearning Overview" class="oe_background_grey kanban_view o_slide_kanban o_slide_channel_kanban" edit="false" sample="1">
+                    <field name="website_published"/>
+                    <field name="active"/>
+                    <field name="state"/>
+                    <field name="color"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="tag_ids"/>
+                    <field name="category_ids"/>
+                    <field name="total_enrollment"/>
+                    <field name="total_modules"/>
+                    <field name="total_time"/>
+                    <field name="rating_count"/>
+                    <field name="rating_avg_stars"/>
+                    <templates>
+                        <t t-name="menu">
+                            <div role="menuitem" aria-haspopup="true">
+                                <field name="color" widget="kanban_color_picker"/>
+                            </div>
+                            <div class="o_kanban_slides_card_manage_pane">
+                                <t t-if="widget.deletable">
+                                    <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                </t>
+                                <a role="menuitem" type="open" class="dropdown-item">Edit</a>
+                                <!-- <a role="menuitem" name="action_channel_enroll" class="dropdown-item" type="object">Add Attendees</a> -->
+                                <!-- <a role="menuitem" name="action_channel_invite" class="dropdown-item" type="object">Invite</a> -->
+                            </div>
+                        </t>
+                        <t t-name="card">
+                            <!-- State Ribbons -->
+                            <widget name="web_ribbon" title="Archived" bg_color="text-bg-warning" invisible="active"/>
+                            <widget name="web_ribbon" title="Draft" bg_color="text-bg-info" invisible="not active or state != 'draft'"/>
+                            <widget name="web_ribbon" title="Confirmed" bg_color="text-bg-secondary" invisible="not active or state != 'open' or website_published"/>
+                            <widget name="web_ribbon" title="Published" bg_color="text-bg-success" invisible="not active or state != 'open' or not website_published"/>
+                            <widget name="web_ribbon" title="Closed" bg_color="text-bg-danger" invisible="not active or state != 'closed'"/>
+
+                            <main class="d-flex flex-column gap-2 p-1">
+                                <!-- Title + Code -->
+                                <div class="pe-5">
+                                    <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.05rem; line-height: 1.35;" t-att-title="record.name.value">
+                                        <field name="name"/>
+                                    </h5>
+                                    <small t-if="record.code.raw_value" class="text-muted">
+                                        <i class="fa fa-hashtag me-1" title="Course Code"/>
+                                        <t t-esc="record.code.value"/>
+                                    </small>
+                                </div>
+
+                                <!-- Tags -->
+                                <div t-if="record.tag_ids.raw_value.length or record.category_ids.raw_value.length" class="d-flex flex-wrap gap-1">
+                                    <field t-if="record.category_ids.raw_value.length" name="category_ids" widget="many2many_tags"/>
+                                    <field t-if="record.tag_ids.raw_value.length" name="tag_ids" widget="many2many_tags"/>
+                                </div>
+
+                                <!-- Stat Buttons -->
+                                <div class="d-flex gap-2 mt-1">
+                                    <a name="action_open_enrollments" type="object" role="button" class="btn btn-sm bg-light rounded border border-light-subtle d-flex align-items-center justify-content-between gap-2 flex-grow-1 text-muted px-2 py-2 text-decoration-none" style="font-size: 12px;">
+                                        <span class="d-flex align-items-center gap-1">
+                                            <i class="fa fa-users text-dark" style="font-size: 12px;" title="Enrollments"/>
+                                            <span>Enrolled</span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6"><field name="total_enrollment"/></span>
+                                    </a>
+                                    <a name="action_open_content" type="object" role="button" class="btn btn-sm bg-light rounded border border-light-subtle d-flex align-items-center justify-content-between gap-2 flex-grow-1 text-muted px-2 py-2 text-decoration-none" style="font-size: 12px;">
+                                        <span class="d-flex align-items-center gap-1">
+                                            <i class="fa fa-book text-dark" style="font-size: 12px;" title="Lessons"/>
+                                            <span>Lessons</span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6"><field name="total_modules"/></span>
+                                    </a>
+                                </div>
+
+                                <!-- Duration + Rating footer -->
+                                <div class="d-flex align-items-center justify-content-between small text-muted pt-2 border-top mt-auto">
+                                    <span class="d-flex align-items-center gap-1">
+                                        <i class="fa fa-clock-o text-secondary" title="Duration"/>
+                                        <field name="total_time"/> hrs
+                                    </span>
+                                    <span t-if="record.rating_count.raw_value" class="d-flex align-items-center gap-1">
+                                        <i class="fa fa-star text-warning" title="Rating"/>
+                                        <field name="rating_avg_stars"/>
+                                        <span class="text-muted">(</span><field name="rating_count"/><span class="text-muted">)</span>
+                                    </span>
+                                </div>
+                            </main>
+                        </t>
+                    </templates>
+                </kanban>

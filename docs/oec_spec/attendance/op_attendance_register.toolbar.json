@@ -1,0 +1,14 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1440,
+                      "name":  "Print Attendance Report",
+                      "binding_view_types":  "list,form"
+                  },
+                  {
+                      "id":  1441,
+                      "name":  "Print Attendance Report By Week",
+                      "binding_view_types":  "list,form"
+                  }
+              ]
+}

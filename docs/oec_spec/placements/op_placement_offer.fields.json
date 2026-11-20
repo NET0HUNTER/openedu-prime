@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "partner_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "partner_id",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Partner Company",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

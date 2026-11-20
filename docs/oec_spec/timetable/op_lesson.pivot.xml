@@ -1,0 +1,4 @@
+﻿<pivot string="Lesson Learning">
+                <field name="name" type="col"/>
+                <field name="subject_id" type="row"/>
+            </pivot>

@@ -1,0 +1,7 @@
+<pivot string="Request Asset Pivot" sample="1">
+                    <field name="asset_id" type="row"/>
+                    <field name="name" type="col"/>
+                    <field name="request_for" type="col"/>
+                    <field name="state" type="col"/>
+
+                </pivot>

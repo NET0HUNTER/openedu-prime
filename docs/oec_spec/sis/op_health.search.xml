@@ -1,0 +1,17 @@
+﻿<search string="Health">
+                <field name="student_id"/>
+                <field name="faculty_id"/>
+                <field name="eyeglasses"/>
+                <field name="physical_challenges"/>
+                <field name="major_diseases"/>
+                <field name="regular_checkup"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <newline/>
+                <group>
+                    <filter string="Student Name" name="group_by_health_student_id" domain="[]" context="{'group_by':'student_id'}"/>
+                    <filter string="Eye Glasses" name="group_by_health_eyeglasses" domain="[]" context="{'group_by':'eyeglasses'}"/>
+                    <filter string="Physical Challenge" name="group_by_health_physical_challenges" domain="[]" context="{'group_by':'physical_challenges'}"/>
+                    <filter string="Major Disease" name="group_by_health_major_diseases" domain="[]" context="{'group_by':'major_diseases'}"/>
+                    <filter string="Regular Checkup" name="group_by_health_regular_checkup" domain="[]" context="{'group_by':'regular_checkup'}"/>
+                </group>
+            </search>

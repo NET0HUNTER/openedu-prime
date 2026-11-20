@@ -1,0 +1,9 @@
+﻿<search string="Result Template">
+                    <field name="name" select="True"/>
+                    <field name="exam_session_id"/>
+                    <field name="result_date" select="True"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <searchpanel>
+                        <field name="exam_session_id" icon="fa fa-pencil-square-o"/>
+                    </searchpanel>
+                </search>

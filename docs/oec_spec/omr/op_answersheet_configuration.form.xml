@@ -1,0 +1,25 @@
+<form>
+                <header/>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="company_id" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="subject_id" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Answer Keys">
+                            <field name="answer_set_line"><list>
+                <field name="paper_set"/>
+                <field name="answersheet_configuration_id" optional="hide"/>
+                <field name="question_answer_line" optional="hide"/>
+                <field name="omr_exam_id" optional="hide"/>
+            </list></field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>

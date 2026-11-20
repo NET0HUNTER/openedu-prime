@@ -1,0 +1,4 @@
+<graph string="Registration" sample="1">
+                <field name="event_id"/>
+                <field name="sale_status"/>
+            </graph>

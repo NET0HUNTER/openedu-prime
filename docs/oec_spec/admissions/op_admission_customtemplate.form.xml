@@ -1,0 +1,18 @@
+﻿<form string="Admission Template Form">
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button class="btn oe_stat_button border-end" name="website_edit_admission_page_content" type="object" icon="fa-book" string="Edit Admission Form"/>
+                    </div>
+                    <group string="Admission Web Template">
+                        <field name="name"/>
+                        <field name="admission_url" readonly="1"/>
+                        <field name="company_id" can_create="True" can_write="True"/>
+                        <field name="program_base_template"/>
+                        <field name="admission_webpage" invisible="program_base_template == True"/>
+                        <field name="program_admission_webpage" invisible="program_base_template == False"/>
+                        <!--                            <field name="admission_register_line"/>-->
+                    </group>
+
+                </sheet>
+                <chatter/>
+            </form>

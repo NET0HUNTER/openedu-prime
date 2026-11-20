@@ -1,0 +1,8 @@
+<list string="Lead Generation Rules">
+                <field name="name"/>
+                <field name="lead_creation_basis" string="Lead Creation Type" column_invisible="False"/>
+                <field name="lead_creation_trigger"/>
+                <field name="event_type_ids" widget="many2many_tags"/>
+                <field name="event_id"/>
+                <field name="company_id"/>
+            </list>

@@ -1,0 +1,14 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1273,
+                      "name":  "Progression Report",
+                      "binding_view_types":  "list,form"
+                  },
+                  {
+                      "id":  1447,
+                      "name":  "Transcript",
+                      "binding_view_types":  "list,form"
+                  }
+              ]
+}

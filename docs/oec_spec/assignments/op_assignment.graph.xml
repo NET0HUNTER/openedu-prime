@@ -1,0 +1,4 @@
+<graph string="Assignment Graph View" type="bar">
+                    <field name="course_id"/>
+                    <field name="state"/>
+                </graph>

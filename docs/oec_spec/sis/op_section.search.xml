@@ -1,0 +1,7 @@
+﻿<search string="Section">
+                    <field name="subject_id"/>
+                    <filter name="subject_id" string="Subject" domain="[]"/>
+                    <group>
+                        <filter name="group_by_subject_id" string="Subjects" domain="[]" context="{'group_by':'subject_id'}"/>
+                    </group>
+                </search>

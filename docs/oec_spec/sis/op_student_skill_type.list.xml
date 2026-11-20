@@ -1,0 +1,5 @@
+﻿<list>
+                <field name="name"/>
+                <field name="student_skills_line" optional="hide"/>
+                <field name="student_skill_level_line" optional="hide"/>
+            </list>

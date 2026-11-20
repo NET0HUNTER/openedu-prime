@@ -1,0 +1,8 @@
+<form string="Thesis Report Type">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                </sheet>
+            </form>

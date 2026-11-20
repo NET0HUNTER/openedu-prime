@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "size": 64,
+      "sortable": true,
+      "store": true,
+      "string": "Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

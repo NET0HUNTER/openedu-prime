@@ -1,0 +1,13 @@
+﻿<list string="Admission Register">
+                    <field name="name"/>
+                    <field name="course_id"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="min_count"/>
+                    <field name="max_count"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="state"/>
+                    <field name="minimum_age_criteria" optional="hide"/>
+                    <field name="academic_years_id" optional="hide"/>
+                    <field name="academic_term_id" optional="hide"/>
+                </list>

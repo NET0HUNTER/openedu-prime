@@ -1,0 +1,12 @@
+<search string="Request Asset Search">
+                    <field name="student_id"/>
+                    <field name="faculty_id"/>
+                    <group>
+                        <filter string="by Asset" context="{'group_by' : 'requested_asset'}" name="requested_asset"/>
+                        <filter string="Student Name" domain="[('request_for' , '=' , 'student')]" name="student_id"/>
+                        <filter string="Faculty Name" domain="[('request_for' , '=' , 'faculty')]" name="faculty_id"/>
+                        <filter string="Approved Request" domain="[('state' , '=' , 'approved')]" name="state"/>
+                        <filter string="Rejected Request" domain="[('state' , '=' , 'rejected')]" name="state"/>
+                        <filter string="Allocated Assets Request" domain="[('state' , '=' , 'allocate')]" name="state"/>
+                    </group>
+                </search>

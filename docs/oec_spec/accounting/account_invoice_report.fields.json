@@ -1,0 +1,33 @@
+{
+  "fields": {
+    "product_categ_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "product_categ_id",
+      "readonly": true,
+      "relation": "product.category",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Product Category",
+      "type": "many2one"
+    },
+    "price_subtotal": {
+      "aggregator": "sum",
+      "change_default": false,
+      "groupable": true,
+      "name": "price_subtotal",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Untaxed Amount",
+      "type": "float"
+    }
+  },
+  "has_approval_rules": false
+}

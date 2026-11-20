@@ -1,0 +1,1 @@
+<kanban string="Odometer log for a vehicle"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

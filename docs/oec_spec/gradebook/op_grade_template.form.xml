@@ -1,0 +1,21 @@
+﻿<form string="Grade Template">
+                <header>
+                    <button name="action_set_active" invisible="state != 'draft'" string="Active" type="object" class="oe_highlight"/>
+                    <button name="action_draft" invisible="state != 'active'" string="Draft" type="object" class="oe_highlight"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="name"/>
+                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                    </group>
+                    <group>
+                        <field name="template_line_ids"><list>
+                    <field name="academic_years_id"/>
+                    <field name="academic_term_id"/>
+                    <field name="weightage"/>
+                    <field name="company_id" optional="show"/>
+                </list></field>
+                    </group>
+                </sheet>
+            </form>

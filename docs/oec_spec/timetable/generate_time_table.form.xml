@@ -1,0 +1,93 @@
+﻿<form string="Sessions">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="course_id" on_change="1" can_create="True" can_write="True"/>
+                    <field name="id" invisible="1"/>
+                    <field name="skip_conflicts"/>
+                                <field name="start_date"/>
+                            </group>
+                            <group>
+                                <field name="batch_id" context="{'course_id': course_id,'get_parent_batch':1}" can_create="True" can_write="True"/>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <notebook invisible="1">
+                            <page name="monday" string="Monday">
+                                <field name="time_table_lines_1" nolabel="1" context="{'default_day': '0'}"><list string="Session Line" editable="bottom">
+                    <field name="day" invisible="1" on_change="1"/>
+                    <field name="session_start_time" widget="float_time"/>
+                    <field name="session_end_time" widget="float_time"/>
+                    <field name="faculty_id" can_create="True" can_write="True"/>
+                    <field name="subject_id" can_create="True" can_write="True"/>
+                    <field name="classroom_id" can_create="True" can_write="True"/>
+                </list></field>
+                            </page>
+                            <page name="tuesday" string="Tuesday">
+                                <field name="time_table_lines_2" nolabel="1" context="{'default_day': '1'}"><list string="Session Line" editable="bottom">
+                    <field name="day" invisible="1" on_change="1"/>
+                    <field name="session_start_time" widget="float_time"/>
+                    <field name="session_end_time" widget="float_time"/>
+                    <field name="faculty_id" can_create="True" can_write="True"/>
+                    <field name="subject_id" can_create="True" can_write="True"/>
+                    <field name="classroom_id" can_create="True" can_write="True"/>
+                </list></field>
+                            </page>
+                            <page name="wednesday" string="Wednesday">
+                                <field name="time_table_lines_3" nolabel="1" context="{'default_day': '2'}"><list string="Session Line" editable="bottom">
+                    <field name="day" invisible="1" on_change="1"/>
+                    <field name="session_start_time" widget="float_time"/>
+                    <field name="session_end_time" widget="float_time"/>
+                    <field name="faculty_id" can_create="True" can_write="True"/>
+                    <field name="subject_id" can_create="True" can_write="True"/>
+                    <field name="classroom_id" can_create="True" can_write="True"/>
+                </list></field>
+                            </page>
+                            <page name="thursday" string="Thursday">
+                                <field name="time_table_lines_4" nolabel="1" context="{'default_day': '3'}"><list string="Session Line" editable="bottom">
+                    <field name="day" invisible="1" on_change="1"/>
+                    <field name="session_start_time" widget="float_time"/>
+                    <field name="session_end_time" widget="float_time"/>
+                    <field name="faculty_id" can_create="True" can_write="True"/>
+                    <field name="subject_id" can_create="True" can_write="True"/>
+                    <field name="classroom_id" can_create="True" can_write="True"/>
+                </list></field>
+                            </page>
+                            <page name="friday" string="Friday">
+                                <field name="time_table_lines_5" nolabel="1" context="{'default_day': '4'}"><list string="Session Line" editable="bottom">
+                    <field name="day" invisible="1" on_change="1"/>
+                    <field name="session_start_time" widget="float_time"/>
+                    <field name="session_end_time" widget="float_time"/>
+                    <field name="faculty_id" can_create="True" can_write="True"/>
+                    <field name="subject_id" can_create="True" can_write="True"/>
+                    <field name="classroom_id" can_create="True" can_write="True"/>
+                </list></field>
+                            </page>
+                            <page name="saturday" string="Saturday">
+                                <field name="time_table_lines_6" nolabel="1" context="{'default_day': '5'}"><list string="Session Line" editable="bottom">
+                    <field name="day" invisible="1" on_change="1"/>
+                    <field name="session_start_time" widget="float_time"/>
+                    <field name="session_end_time" widget="float_time"/>
+                    <field name="faculty_id" can_create="True" can_write="True"/>
+                    <field name="subject_id" can_create="True" can_write="True"/>
+                    <field name="classroom_id" can_create="True" can_write="True"/>
+                </list></field>
+                            </page>
+                            <page name="sunday" string="Sunday">
+                                <field name="time_table_lines_7" nolabel="1" context="{'default_day': '6'}"><list string="Session Line" editable="bottom">
+                    <field name="day" invisible="1" on_change="1"/>
+                    <field name="session_start_time" widget="float_time"/>
+                    <field name="session_end_time" widget="float_time"/>
+                    <field name="faculty_id" can_create="True" can_write="True"/>
+                    <field name="subject_id" can_create="True" can_write="True"/>
+                    <field name="classroom_id" can_create="True" can_write="True"/>
+                </list></field>
+                            </page>
+                        </notebook>
+                    <field name="time_table_lines" context="{'curr_id': id}" widget="my_copy_widget"/>
+                    </sheet>
+                    <footer>
+                        <button string="Proceed" type="object" name="act_gen_time_table" class="oe_highlight"/>
+                        <button special="cancel" string="Close" type="object"/>
+                    </footer>
+                </form>

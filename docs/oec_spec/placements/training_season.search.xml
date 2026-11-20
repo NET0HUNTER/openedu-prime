@@ -1,0 +1,11 @@
+<search string="Search Seasons">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                    <filter string="Draft" name="draft" domain="[('state', '=', 'draft')]"/>
+                    <filter string="Active" name="active_state" domain="[('state', '=', 'active')]"/>
+                    <filter string="Closed" name="closed" domain="[('state', '=', 'closed')]"/>
+                    <group>
+                        <filter string="State" name="group_by_state" context="{'group_by': 'state'}"/>
+                    </group>
+                </search>

@@ -1,0 +1,6335 @@
+{
+  "id": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "id",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "ID",
+    "type": "integer"
+  },
+  "display_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "display_name",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Display Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "name",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "storage_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "directory_id.storage_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "storage_id",
+    "readonly": true,
+    "related": "directory_id.storage_id",
+    "relation": "dms.storage",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Storage",
+    "type": "many2one"
+  },
+  "is_hidden": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "storage_id.is_hidden"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Indicates if directories and files are hidden by default.",
+    "manual": false,
+    "name": "is_hidden",
+    "readonly": true,
+    "related": "storage_id.is_hidden",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Storage is Hidden",
+    "type": "boolean"
+  },
+  "company_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "storage_id.company_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "If set, directories and files will only be available for the selected company.",
+    "manual": false,
+    "name": "company_id",
+    "readonly": true,
+    "related": "storage_id.company_id",
+    "relation": "res.company",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company",
+    "type": "many2one"
+  },
+  "storage_id_save_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "storage_id.save_type"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "The save type is used to determine how a file is saved by the\n        system. If you change this setting, you can migrate existing files\n        manually by triggering the action.",
+    "manual": false,
+    "name": "storage_id_save_type",
+    "readonly": true,
+    "related": "storage_id.save_type",
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "database",
+        "Database"
+      ],
+      [
+        "file",
+        "Filestore"
+      ],
+      [
+        "attachment",
+        "Attachment"
+      ]
+    ],
+    "sortable": true,
+    "store": false,
+    "string": "Save Type",
+    "type": "selection"
+  },
+  "color": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Color",
+    "type": "integer"
+  },
+  "category_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {
+      "dms_category_show_path": true
+    },
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "category_id",
+    "readonly": false,
+    "relation": "dms.category",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Category",
+    "type": "many2one"
+  },
+  "activity_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'dms.file')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_ids",
+    "readonly": false,
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Activities",
+    "type": "one2many"
+  },
+  "activity_state": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.state"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "base.group_user",
+    "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+    "manual": false,
+    "name": "activity_state",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "overdue",
+        "Overdue"
+      ],
+      [
+        "today",
+        "Today"
+      ],
+      [
+        "planned",
+        "Planned"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Activity State",
+    "type": "selection"
+  },
+  "activity_user_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.user_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_user_id",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Responsible User",
+    "type": "many2one"
+  },
+  "activity_type_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_type_id",
+    "readonly": false,
+    "related": "activity_ids.activity_type_id",
+    "relation": "mail.activity.type",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Type",
+    "type": "many2one"
+  },
+  "activity_type_icon": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Font awesome icon e.g. fa-tasks",
+    "manual": false,
+    "name": "activity_type_icon",
+    "readonly": true,
+    "related": "activity_ids.icon",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Activity Type Icon",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_date_deadline": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.date_deadline"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_date_deadline",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Deadline",
+    "type": "date"
+  },
+  "my_activity_date_deadline": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.date_deadline",
+      "activity_ids.user_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "my_activity_date_deadline",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "My Activity Deadline",
+    "type": "date"
+  },
+  "activity_summary": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.summary"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_summary",
+    "readonly": false,
+    "related": "activity_ids.summary",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Summary",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_exception_decoration": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id.decoration_type",
+      "activity_ids.activity_type_id.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Type of the exception activity on record.",
+    "manual": false,
+    "name": "activity_exception_decoration",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "warning",
+        "Alert"
+      ],
+      [
+        "danger",
+        "Error"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Activity Exception Decoration",
+    "type": "selection"
+  },
+  "activity_exception_icon": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id.decoration_type",
+      "activity_ids.activity_type_id.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Icon to indicate an exception activity.",
+    "manual": false,
+    "name": "activity_exception_icon",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Icon",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_calendar_event_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.calendar_event_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_calendar_event_id",
+    "readonly": true,
+    "relation": "calendar.event",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Calendar Event",
+    "type": "many2one"
+  },
+  "message_is_follower": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_is_follower",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Is Follower",
+    "type": "boolean"
+  },
+  "message_follower_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'dms.file')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_follower_ids",
+    "readonly": false,
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Followers",
+    "type": "one2many"
+  },
+  "message_partner_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_partner_ids",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Followers (Partners)",
+    "type": "many2many"
+  },
+  "message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('message_type', '!=', 'user_notification')]) + ([('model', '=', 'dms.file')])",
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Messages",
+    "type": "one2many"
+  },
+  "has_message": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "has_message",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Has Message",
+    "type": "boolean"
+  },
+  "message_needaction": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, new messages require your attention.",
+    "manual": false,
+    "name": "message_needaction",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Action Needed",
+    "type": "boolean"
+  },
+  "message_needaction_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages requiring action",
+    "manual": false,
+    "name": "message_needaction_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of Actions",
+    "type": "integer"
+  },
+  "message_has_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Message Delivery error",
+    "type": "boolean"
+  },
+  "message_has_error_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages with delivery error",
+    "manual": false,
+    "name": "message_has_error_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of errors",
+    "type": "integer"
+  },
+  "message_attachment_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_attachment_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Attachment Count",
+    "type": "integer"
+  },
+  "rating_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('res_model', '=', 'dms.file')]) + ([('res_model', '=', 'dms.file')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "rating_ids",
+    "readonly": false,
+    "relation": "rating.rating",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Ratings",
+    "type": "one2many"
+  },
+  "website_message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('model', '=', 'dms.file'), ('message_type', 'in', ('comment', 'email', 'email_outgoing', 'auto_comment', 'out_of_office'))]) + ([('model', '=', 'dms.file')])",
+    "exportable": true,
+    "groupable": false,
+    "help": "Website communication history",
+    "manual": false,
+    "name": "website_message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Website Messages",
+    "type": "one2many"
+  },
+  "message_has_sms_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_sms_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "SMS Delivery error",
+    "type": "boolean"
+  },
+  "image_1920": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "mimetype",
+      "content"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_1920",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image",
+    "type": "binary"
+  },
+  "image_1024": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_1024",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 1024",
+    "type": "binary"
+  },
+  "image_512": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_512",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 512",
+    "type": "binary"
+  },
+  "image_256": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_256",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 256",
+    "type": "binary"
+  },
+  "image_128": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_128",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 128",
+    "type": "binary"
+  },
+  "icon_url": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_128"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "icon_url",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Icon URL",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "res_model": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "directory_id.res_model"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "res_model",
+    "readonly": true,
+    "related": "directory_id.res_model",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Linked attachments model",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "res_id": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "directory_id.res_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "res_id",
+    "readonly": true,
+    "related": "directory_id.res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Linked attachments record ID",
+    "type": "integer"
+  },
+  "record_ref": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "res_model",
+      "res_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "record_ref",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "selection": [
+      [
+        "op.academic.plan.stages",
+        "Academic plan Stages"
+      ],
+      [
+        "account.account",
+        "Account"
+      ],
+      [
+        "op.achievement",
+        "Achievement"
+      ],
+      [
+        "op.activity.announcement",
+        "Activity Announcement"
+      ],
+      [
+        "op.admission",
+        "Admission"
+      ],
+      [
+        "op.admission.register",
+        "Admission Register"
+      ],
+      [
+        "admission.stage",
+        "Admission Stages"
+      ],
+      [
+        "op.admission.customtemplate",
+        "Admission Template"
+      ],
+      [
+        "aio.collection",
+        "AI Agent Collection"
+      ],
+      [
+        "aio.agent.evaluation",
+        "AI Agent Evaluation Run"
+      ],
+      [
+        "aio.hook",
+        "AI Agent Execution Hook"
+      ],
+      [
+        "aio.agent.approval",
+        "AI Agent Tool Approval Request"
+      ],
+      [
+        "aio.workflow",
+        "AI Agent Workflow"
+      ],
+      [
+        "aio.guardrail",
+        "AI Guardrail"
+      ],
+      [
+        "aio.model",
+        "AI Model"
+      ],
+      [
+        "aio.model.provider",
+        "AI Model Provider"
+      ],
+      [
+        "aio.agent.execution",
+        "Aio Agent Execution"
+      ],
+      [
+        "aio.agent.execution.queue",
+        "Aio Agent Execution Queue"
+      ],
+      [
+        "aio.agent.playground",
+        "AIO Agent Playground"
+      ],
+      [
+        "aio.agent",
+        "Aio AI Agent"
+      ],
+      [
+        "aio.agent.library",
+        "Aio AI Agent Library"
+      ],
+      [
+        "aio.json.schema",
+        "Aio Json Schema"
+      ],
+      [
+        "aio.playground.message",
+        "AIO Playground Message"
+      ],
+      [
+        "aio.playground.session",
+        "AIO Playground Session"
+      ],
+      [
+        "aio.tool",
+        "Aio Tool"
+      ],
+      [
+        "aio.output.template",
+        "AI Output Format Template"
+      ],
+      [
+        "aio.webhook.endpoint",
+        "AIO Webhook Endpoint"
+      ],
+      [
+        "op.alumni.group",
+        "Alumni Group"
+      ],
+      [
+        "account.analytic.account",
+        "Analytic Account"
+      ],
+      [
+        "op.answer.set",
+        "Answer Sets"
+      ],
+      [
+        "op.answersheet.configuration",
+        "Answer Sheet Configuration"
+      ],
+      [
+        "op.question.answer",
+        "Answer Sheet Question-Answer"
+      ],
+      [
+        "op.answer.sheets",
+        "Answer Sheets"
+      ],
+      [
+        "hr.applicant",
+        "Applicant"
+      ],
+      [
+        "multi.request",
+        "Approval Request"
+      ],
+      [
+        "no.code.approval.rule",
+        "Approval Rule"
+      ],
+      [
+        "account.asset.request",
+        "Asset Requests"
+      ],
+      [
+        "account.asset.asset",
+        "Asset/Revenue Recognition"
+      ],
+      [
+        "op.assignment",
+        "Assignment"
+      ],
+      [
+        "assignment.stage",
+        "Assignment Stages"
+      ],
+      [
+        "op.assignment.sub.line",
+        "Assignment Submission"
+      ],
+      [
+        "op.attendance.line",
+        "Attendance Lines"
+      ],
+      [
+        "op.attendance.register",
+        "Attendance Register"
+      ],
+      [
+        "op.attendance.sheet",
+        "Attendance Sheet"
+      ],
+      [
+        "op.attendance.type",
+        "Attendance Type"
+      ],
+      [
+        "base.automation",
+        "Automation Rule"
+      ],
+      [
+        "res.partner.bank",
+        "Bank Accounts"
+      ],
+      [
+        "account.bank.statement",
+        "Bank Statement"
+      ],
+      [
+        "account.bank.statement.line",
+        "Bank Statement Line"
+      ],
+      [
+        "account.batch.payment",
+        "Batch Payment"
+      ],
+      [
+        "blog.blog",
+        "Blog"
+      ],
+      [
+        "blog.post",
+        "Blog Post"
+      ],
+      [
+        "calendar.online.appointment",
+        "Booking calendar Appointment"
+      ],
+      [
+        "calendar.event",
+        "Calendar Event"
+      ],
+      [
+        "op.campus.facility",
+        "Campus Facility"
+      ],
+      [
+        "op.circular",
+        "Circular"
+      ],
+      [
+        "res.company",
+        "Companies"
+      ],
+      [
+        "res.partner",
+        "Contact"
+      ],
+      [
+        "op.convocation.ceremony",
+        "Convocation Ceremony"
+      ],
+      [
+        "op.convocation.document",
+        "Convocation Document"
+      ],
+      [
+        "op.convocation.document.line",
+        "Convocation Document Line"
+      ],
+      [
+        "op.convocation.guest",
+        "Convocation Guest"
+      ],
+      [
+        "op.convocation.registration",
+        "Convocation Registration"
+      ],
+      [
+        "copo.lines",
+        "CO-PO Lines"
+      ],
+      [
+        "copo.map",
+        "CO-PO Mapping"
+      ],
+      [
+        "op.course",
+        "Course"
+      ],
+      [
+        "course.credit",
+        "Course Credit"
+      ],
+      [
+        "op.course.module",
+        "Course Module"
+      ],
+      [
+        "course.outcome",
+        "Course Outcome"
+      ],
+      [
+        "op.course.plan",
+        "Course Plan"
+      ],
+      [
+        "aio.database.config",
+        "Database Configuration for AI Agents"
+      ],
+      [
+        "hr.department",
+        "Department"
+      ],
+      [
+        "dms.directory",
+        "Directory"
+      ],
+      [
+        "op.discipline",
+        "Discipline Record Details"
+      ],
+      [
+        "discuss.channel",
+        "Discussion Channel"
+      ],
+      [
+        "document.template",
+        "Document Template"
+      ],
+      [
+        "mail.thread.cc",
+        "Email CC management"
+      ],
+      [
+        "mail.thread",
+        "Email Thread"
+      ],
+      [
+        "hr.employee",
+        "Employee"
+      ],
+      [
+        "hr.version",
+        "Employee Contract"
+      ],
+      [
+        "e.sign.template.lines",
+        "E-sign Template Lines"
+      ],
+      [
+        "event.event",
+        "Event"
+      ],
+      [
+        "event.registration",
+        "Event Registration"
+      ],
+      [
+        "op.exam",
+        "Exam"
+      ],
+      [
+        "op.exam.session",
+        "Exam Session"
+      ],
+      [
+        "hr.expense",
+        "Expense"
+      ],
+      [
+        "op.facility.allocation",
+        "Facility Allocation"
+      ],
+      [
+        "op.fees.plan",
+        "Fees Plan for Student Fees"
+      ],
+      [
+        "op.fees.terms",
+        "Fees Terms For Course"
+      ],
+      [
+        "dms.file",
+        "File"
+      ],
+      [
+        "aio.file.source",
+        "File Source for AI Agents"
+      ],
+      [
+        "forum.forum",
+        "Forum"
+      ],
+      [
+        "forum.post",
+        "Forum Post"
+      ],
+      [
+        "forum.tag",
+        "Forum Tag"
+      ],
+      [
+        "gamification.badge",
+        "Gamification Badge"
+      ],
+      [
+        "gamification.challenge",
+        "Gamification Challenge"
+      ],
+      [
+        "gamification.badge.user",
+        "Gamification User Badge"
+      ],
+      [
+        "gradebook.gradebook",
+        "Grade Book"
+      ],
+      [
+        "gradebook.line",
+        "Grade Book Line"
+      ],
+      [
+        "op.grade.template",
+        "Grade Template"
+      ],
+      [
+        "grading.assignment",
+        "Grading Assigment"
+      ],
+      [
+        "op.grade.scale",
+        "Grading Scale"
+      ],
+      [
+        "grievance",
+        "Grievance"
+      ],
+      [
+        "grievance.team",
+        "Grievance Team"
+      ],
+      [
+        "op.health",
+        "Health Detail for Students and Faculties"
+      ],
+      [
+        "helpdesk.team",
+        "Helpdesk Team"
+      ],
+      [
+        "helpdesk.ticket",
+        "Helpdesk Ticket"
+      ],
+      [
+        "op.honorroll",
+        "Honor Roll"
+      ],
+      [
+        "iap.account",
+        "IAP Account"
+      ],
+      [
+        "issue.media",
+        "Issue Media Wizard"
+      ],
+      [
+        "op.job.applicant",
+        "Job Applicant"
+      ],
+      [
+        "hr.job",
+        "Job Position"
+      ],
+      [
+        "op.job.post",
+        "Job Post Creation"
+      ],
+      [
+        "account.journal",
+        "Journal"
+      ],
+      [
+        "account.move",
+        "Journal Entry"
+      ],
+      [
+        "crm.lead",
+        "Lead"
+      ],
+      [
+        "op.lesson",
+        "Lesson"
+      ],
+      [
+        "stock.lot",
+        "Lot/Serial"
+      ],
+      [
+        "mail.blacklist",
+        "Mail Blacklist"
+      ],
+      [
+        "mail.thread.blacklist",
+        "Mail Blacklist mixin"
+      ],
+      [
+        "mailing.contact",
+        "Mailing Contact"
+      ],
+      [
+        "mail.thread.main.attachment",
+        "Mail Main Attachment management"
+      ],
+      [
+        "op.marksheet.register",
+        "Marksheet Register"
+      ],
+      [
+        "mailing.mailing",
+        "Mass Mailing"
+      ],
+      [
+        "op.media",
+        "Media Details"
+      ],
+      [
+        "op.media.movement",
+        "Media Movement"
+      ],
+      [
+        "op.media.purchase",
+        "Media Purchase Request"
+      ],
+      [
+        "op.media.queue",
+        "Media Queue Request"
+      ],
+      [
+        "op.media.unit",
+        "Media Unit"
+      ],
+      [
+        "op.meeting",
+        "Meeting"
+      ],
+      [
+        "mail.tracking.duration.mixin",
+        "Mixin to compute the time a record has spent in each value a many2one field can take"
+      ],
+      [
+        "fleet.vehicle.model",
+        "Model of a vehicle"
+      ],
+      [
+        "op.notice",
+        "Notice Board"
+      ],
+      [
+        "op.omr.exam",
+        "Omr Exam"
+      ],
+      [
+        "op.omr.image",
+        "Omr Images"
+      ],
+      [
+        "op.omr.template",
+        "Omr Template"
+      ],
+      [
+        "op.academic.plan",
+        "OpenEduCat Academic Plan"
+      ],
+      [
+        "op.area",
+        "OpenEduCat Area"
+      ],
+      [
+        "op.batch",
+        "OpenEduCat Batch"
+      ],
+      [
+        "op.faculty",
+        "OpenEduCat Faculty"
+      ],
+      [
+        "op.intake.year",
+        "OpenEduCat Intake Year"
+      ],
+      [
+        "op.program.level",
+        "OpenEduCat Program level"
+      ],
+      [
+        "op.specialization",
+        "OpenEduCat Specializations"
+      ],
+      [
+        "op.parent",
+        "Parent"
+      ],
+      [
+        "account.payment",
+        "Payments"
+      ],
+      [
+        "phone.blacklist",
+        "Phone Blacklist"
+      ],
+      [
+        "mail.thread.phone",
+        "Phone Blacklist Mixin"
+      ],
+      [
+        "op.placement.cell",
+        "Placement cell team"
+      ],
+      [
+        "op.placement.offer",
+        "Placement Offer"
+      ],
+      [
+        "cost.plan",
+        "Plan for Cost"
+      ],
+      [
+        "account.reconcile.model",
+        "Preset to create journal entries during a invoices and payments matching"
+      ],
+      [
+        "product.pricelist",
+        "Pricelist"
+      ],
+      [
+        "product.template",
+        "Product"
+      ],
+      [
+        "product.category",
+        "Product Category"
+      ],
+      [
+        "product.feed",
+        "Product Feed"
+      ],
+      [
+        "product.product",
+        "Product Variant"
+      ],
+      [
+        "program.outcome",
+        "Program Outcome"
+      ],
+      [
+        "purchase.order",
+        "Purchase Order"
+      ],
+      [
+        "queue.job",
+        "Queue Job"
+      ],
+      [
+        "op.quiz",
+        "Quiz"
+      ],
+      [
+        "op.quiz.result",
+        "Quiz Results"
+      ],
+      [
+        "rating.mixin",
+        "Rating Mixin"
+      ],
+      [
+        "op.result.template",
+        "Result Template"
+      ],
+      [
+        "op.rubric.template",
+        "Rubrics Template Configuration"
+      ],
+      [
+        "sale.order",
+        "Sales Order"
+      ],
+      [
+        "crm.team",
+        "Sales Team"
+      ],
+      [
+        "crm.team.member",
+        "Sales Team Member"
+      ],
+      [
+        "ir.cron",
+        "Scheduled Actions"
+      ],
+      [
+        "op.scholarship",
+        "Scholarship"
+      ],
+      [
+        "stock.scrap",
+        "Scrap"
+      ],
+      [
+        "sem.credit",
+        "Semester Credit"
+      ],
+      [
+        "ir.actions.server",
+        "Server Action"
+      ],
+      [
+        "fleet.vehicle.log.services",
+        "Services for vehicles"
+      ],
+      [
+        "op.session",
+        "Sessions"
+      ],
+      [
+        "e.sign.request",
+        "Signature Request"
+      ],
+      [
+        "op.student",
+        "Student"
+      ],
+      [
+        "op.activity",
+        "Student Activity"
+      ],
+      [
+        "student.attainment",
+        "Student Attainment"
+      ],
+      [
+        "op.student.course.change.req",
+        "Student Course Change Request"
+      ],
+      [
+        "op.student.course",
+        "Student Course Details"
+      ],
+      [
+        "student.leave.request",
+        "Student Leave Request"
+      ],
+      [
+        "op.student.progression",
+        "Student progression"
+      ],
+      [
+        "op.student.skill.assessment",
+        "Student Skill Assessment"
+      ],
+      [
+        "student.withdrawal.analysis.wizard",
+        "Student Withdrawal Analysis Wizard"
+      ],
+      [
+        "op.student.withdrawal",
+        "student withdrawal management"
+      ],
+      [
+        "op.subject",
+        "Subject Material Allocation"
+      ],
+      [
+        "op.subject.registration",
+        "Subject Registration Details"
+      ],
+      [
+        "survey.survey",
+        "Survey"
+      ],
+      [
+        "survey.user_input",
+        "Survey User Input"
+      ],
+      [
+        "hr.talent.pool",
+        "Talent Pool"
+      ],
+      [
+        "account.tax",
+        "Tax"
+      ],
+      [
+        "e.sign.template",
+        "Template for Document"
+      ],
+      [
+        "terminology.configuration",
+        "Terminology Configuration"
+      ],
+      [
+        "op.thesis.evaluation.template",
+        "Thesis Evaluation"
+      ],
+      [
+        "op.thesis.extension",
+        "Thesis Extension Request"
+      ],
+      [
+        "op.program",
+        "Thesis Program"
+      ],
+      [
+        "op.thesis.progress",
+        "Thesis Progress Report"
+      ],
+      [
+        "op.thesis.registration",
+        "Thesis Registration"
+      ],
+      [
+        "op.thesis.submission",
+        "Thesis Submission"
+      ],
+      [
+        "hr.leave",
+        "Time Off"
+      ],
+      [
+        "hr.leave.allocation",
+        "Time Off Allocation"
+      ],
+      [
+        "training.season",
+        "Training Season"
+      ],
+      [
+        "stock.picking",
+        "Transfer"
+      ],
+      [
+        "op.transportation.agreement",
+        "Transportation Agreement"
+      ],
+      [
+        "op.route.line",
+        "Transportation Route Line"
+      ],
+      [
+        "fleet.vehicle",
+        "Vehicle"
+      ],
+      [
+        "fleet.vehicle.log.contract",
+        "Vehicle Contract"
+      ],
+      [
+        "whatsapp.business",
+        "Whatsapp business"
+      ],
+      [
+        "whatsapp.chat",
+        "Whatsapp Chat"
+      ],
+      [
+        "whatsapp.contact",
+        "Whatsapp Contact"
+      ],
+      [
+        "whatsapp.media",
+        "Whatsapp Media"
+      ],
+      [
+        "whatsapp.msg.button.type",
+        "Whatsapp Msg Button Type"
+      ],
+      [
+        "whatsapp.note",
+        "Whatsapp Notes"
+      ],
+      [
+        "whatsapp.tag",
+        "Whatsapp Tag"
+      ],
+      [
+        "whatsapp.team.assignment",
+        "Whatsapp Team Assignment"
+      ],
+      [
+        "whatsapp.team.members",
+        "Whatsapp Team Members"
+      ],
+      [
+        "whatsapp.template",
+        "Whatsapp Templates"
+      ],
+      [
+        "whatsapp.template.library",
+        "Whatsapp Templates Library"
+      ],
+      [
+        "whatsapp.text",
+        "Whatsapp Text"
+      ],
+      [
+        "aio.workflow.execution",
+        "Workflow Execution"
+      ],
+      [
+        "report.openeducat_omr.report_layout_hundred",
+        "100 Omr Sheet Layout"
+      ],
+      [
+        "l10n_us.1099_box",
+        "1099 Report Box"
+      ],
+      [
+        "l10n_us_1099.wizard",
+        "1099 Report Export Wizard"
+      ],
+      [
+        "auth_totp.wizard",
+        "2-Factor Setup Wizard"
+      ],
+      [
+        "abstract.dms.mixin",
+        "Abstract Dms Mixin"
+      ],
+      [
+        "report.openeducat_attendance_report_xlsx.abstract",
+        "Abstract XLSX Report"
+      ],
+      [
+        "op.academic.term",
+        "Academic Term"
+      ],
+      [
+        "op.academic.year",
+        "Academic Year"
+      ],
+      [
+        "res.groups",
+        "Access Groups"
+      ],
+      [
+        "account.auto.reconcile.wizard",
+        "Account automatic reconciliation wizard"
+      ],
+      [
+        "account.cash.rounding",
+        "Account Cash Rounding"
+      ],
+      [
+        "account.chart.template",
+        "Account Chart Template"
+      ],
+      [
+        "account.root",
+        "Account codes first 2 digits"
+      ],
+      [
+        "account.group",
+        "Account Group"
+      ],
+      [
+        "account.report",
+        "Accounting Report"
+      ],
+      [
+        "account.report.column",
+        "Accounting Report Column"
+      ],
+      [
+        "account.report.expression",
+        "Accounting Report Expression"
+      ],
+      [
+        "account.report.external.value",
+        "Accounting Report External Value"
+      ],
+      [
+        "account.report.line",
+        "Accounting Report Line"
+      ],
+      [
+        "account.journal.group",
+        "Account Journal Group"
+      ],
+      [
+        "account.lock_exception",
+        "Account Lock Exception"
+      ],
+      [
+        "account.merge.wizard",
+        "Account merge wizard"
+      ],
+      [
+        "account.merge.wizard.line",
+        "Account merge wizard line"
+      ],
+      [
+        "account.move.reversal",
+        "Account Move Reversal"
+      ],
+      [
+        "account.move.send",
+        "Account Move Send"
+      ],
+      [
+        "account.move.send.batch.wizard",
+        "Account Move Send Batch Wizard"
+      ],
+      [
+        "account.move.send.wizard",
+        "Account Move Send Wizard"
+      ],
+      [
+        "account.reconcile.wizard",
+        "Account reconciliation wizard"
+      ],
+      [
+        "report.account.report_invoice",
+        "Account report without payment lines"
+      ],
+      [
+        "report.account.report_invoice_with_payments",
+        "Account report with payment lines"
+      ],
+      [
+        "account.fiscal.position.account",
+        "Accounts Mapping of Fiscal Position"
+      ],
+      [
+        "account.account.tag",
+        "Account Tag"
+      ],
+      [
+        "hr.leave.accrual.plan",
+        "Accrual Plan"
+      ],
+      [
+        "hr.leave.accrual.level",
+        "Accrual Plan Level"
+      ],
+      [
+        "account.accrued.orders.wizard",
+        "Accrued Orders Wizard"
+      ],
+      [
+        "achievement.progress.wizard",
+        "Achievement Progress Wizard"
+      ],
+      [
+        "op.achievement.type",
+        "Achievement Type"
+      ],
+      [
+        "ir.actions.actions",
+        "Actions"
+      ],
+      [
+        "ir.actions.act_url",
+        "Action URL"
+      ],
+      [
+        "ir.actions.act_window",
+        "Action Window"
+      ],
+      [
+        "ir.actions.act_window_close",
+        "Action Window Close"
+      ],
+      [
+        "ir.actions.act_window.view",
+        "Action Window View"
+      ],
+      [
+        "mail.activity",
+        "Activity"
+      ],
+      [
+        "mail.activity.mixin",
+        "Activity Mixin"
+      ],
+      [
+        "mail.activity.plan",
+        "Activity Plan"
+      ],
+      [
+        "mail.activity.plan.template",
+        "Activity plan template"
+      ],
+      [
+        "activity.progress.wizard",
+        "Activity Progress Wizard"
+      ],
+      [
+        "mail.activity.schedule",
+        "Activity schedule plan Wizard"
+      ],
+      [
+        "whatsapp.activity.trace",
+        "Activity Trace"
+      ],
+      [
+        "mail.activity.type",
+        "Activity Type"
+      ],
+      [
+        "op.activity.type",
+        "Activity Type"
+      ],
+      [
+        "job.add.applicants",
+        "Add applicants to a job"
+      ],
+      [
+        "talent.pool.add.applicants",
+        "Add applicants to talent pool"
+      ],
+      [
+        "mailing.contact.to.list",
+        "Add Contacts to Mailing List"
+      ],
+      [
+        "format.address.mixin",
+        "Address Format"
+      ],
+      [
+        "report.openeducat_admission.report_admission_analysis",
+        "Admission Analysis Report"
+      ],
+      [
+        "admission.analysis",
+        "Admission Analysis Wizard"
+      ],
+      [
+        "op.admission.fees.line",
+        "Admission Fees Line"
+      ],
+      [
+        "admission.tag",
+        "Admission Tag"
+      ],
+      [
+        "aio.agent.config.wizard",
+        "Agent Configuration Wizard"
+      ],
+      [
+        "aio.agent.delegation",
+        "Agent Delegation Rule"
+      ],
+      [
+        "aio.agent.execution.chunk",
+        "Agent Execution Chunk"
+      ],
+      [
+        "aio.agent.event",
+        "Agent Execution Event Log"
+      ],
+      [
+        "aio.agent.execution.wizard",
+        "Agent Execution Wizard"
+      ],
+      [
+        "aio.agent.input",
+        "Agent Input Configuration"
+      ],
+      [
+        "aio.agent.input.selection",
+        "Agent Input Selection Option"
+      ],
+      [
+        "aio.agent.library.review",
+        "Agent Library Review"
+      ],
+      [
+        "aio.agent.analytics",
+        "Agent Performance Analytics"
+      ],
+      [
+        "aio.agent.eval.result",
+        "AI Agent Evaluation Result"
+      ],
+      [
+        "aio.field.mixin",
+        "AI Field Generation Mixin"
+      ],
+      [
+        "aio.field.tools",
+        "AI Field Generation Tools"
+      ],
+      [
+        "lms.ai.course",
+        "AI Generated Course"
+      ],
+      [
+        "lms.ai.lesson.content",
+        "AI Generated Lesson Content"
+      ],
+      [
+        "aio.agent.action.mixin",
+        "AIO Agent Action Mixin"
+      ],
+      [
+        "aio.agent.budget.mixin",
+        "AIO Agent Budget Mixin"
+      ],
+      [
+        "aio.agent.config.mixin",
+        "AIO Agent Configuration Mixin"
+      ],
+      [
+        "aio.agent.event.mixin",
+        "AIO Agent Event Mixin"
+      ],
+      [
+        "aio.agent.execution.mixin",
+        "AIO Agent Execution Mixin"
+      ],
+      [
+        "aio.agent.streaming.mixin",
+        "AIO Agent Streaming Mixin"
+      ],
+      [
+        "aio.config.mixin",
+        "AIO Configuration Mixin"
+      ],
+      [
+        "aio.team.analytics",
+        "AIO Team Analytics"
+      ],
+      [
+        "aio.response.cache",
+        "AI Response Cache"
+      ],
+      [
+        "website.route",
+        "All Website Route"
+      ],
+      [
+        "account.analytic.distribution.model",
+        "Analytic Distribution Model"
+      ],
+      [
+        "account.analytic.line",
+        "Analytic Line"
+      ],
+      [
+        "analytic.mixin",
+        "Analytic Mixin"
+      ],
+      [
+        "analytic.plan.fields.mixin",
+        "Analytic Plan Fields"
+      ],
+      [
+        "account.analytic.plan",
+        "Analytic Plans"
+      ],
+      [
+        "account.analytic.applicability",
+        "Analytic Plan's Applicabilities"
+      ],
+      [
+        "account.edi.xml.ubl_a_nz",
+        "A-NZ BIS Billing 3.0"
+      ],
+      [
+        "res.users.apikeys.description",
+        "API Key Description"
+      ],
+      [
+        "hr.recruitment.degree",
+        "Applicant Degree"
+      ],
+      [
+        "ir.module.category",
+        "Application"
+      ],
+      [
+        "calendar.appointment.question",
+        "Appointment Question"
+      ],
+      [
+        "no.code.approval.entry",
+        "Approval Entry"
+      ],
+      [
+        "multi.model.request",
+        "ApprovalModelRequest"
+      ],
+      [
+        "multi.product.line",
+        "ApprovalProductLine"
+      ],
+      [
+        "no.code.approval.request",
+        "Approval Request"
+      ],
+      [
+        "multi.request.line",
+        "ApprovalRequestLine"
+      ],
+      [
+        "no.code.approval.rule.approver",
+        "Approval Rule Approvers Enriched"
+      ],
+      [
+        "op.assessment.attempt",
+        "Assessment Attempt"
+      ],
+      [
+        "op.assessment.type",
+        "Assessment Type"
+      ],
+      [
+        "ir.asset",
+        "Asset"
+      ],
+      [
+        "account.asset.category",
+        "Asset category"
+      ],
+      [
+        "asset.depreciation.confirmation.wizard",
+        "asset.depreciation.confirmation.wizard"
+      ],
+      [
+        "account.asset.depreciation.line",
+        "Asset depreciation line"
+      ],
+      [
+        "asset.asset.report",
+        "Assets Analysis"
+      ],
+      [
+        "website.assets",
+        "Assets Utils"
+      ],
+      [
+        "op.thesis.committee.assign.wizard",
+        "Assign Committee Members Wizard"
+      ],
+      [
+        "assignment.co",
+        "Assignment CO"
+      ],
+      [
+        "assignment.progress.wizard",
+        "Assignment Progress Wizard"
+      ],
+      [
+        "assignment.statistics",
+        "Assignment Statistics"
+      ],
+      [
+        "grading.assignment.type",
+        "Assignment Type"
+      ],
+      [
+        "assignment.type.weight.line",
+        "Assignment Type Weight Line"
+      ],
+      [
+        "assignment.wizard",
+        "Assignment Wizard"
+      ],
+      [
+        "ir.attachment",
+        "Attachment"
+      ],
+      [
+        "attainment.dashboard.record",
+        "Attainment Dashboard Record"
+      ],
+      [
+        "attendance.progress.wizard",
+        "Attendance Progress Wizard"
+      ],
+      [
+        "report.openeducat_attendance.student_attendance_report",
+        "Attendance Report"
+      ],
+      [
+        "attendance.weight.line",
+        "Attendance Weight Line"
+      ],
+      [
+        "product.attribute.value",
+        "Attribute Value"
+      ],
+      [
+        "auth_totp.device",
+        "Authentication Device"
+      ],
+      [
+        "op.digital.library.publisher",
+        "Author Of Material"
+      ],
+      [
+        "op.digital.library.author",
+        "Author Of Material"
+      ],
+      [
+        "sequence.mixin",
+        "Automatic sequence"
+      ],
+      [
+        "ir.autovacuum",
+        "Automatic Vacuum"
+      ],
+      [
+        "account.autopost.bills.wizard",
+        "Autopost Bills Wizard"
+      ],
+      [
+        "avatar.mixin",
+        "Avatar Mixin"
+      ],
+      [
+        "stock.backorder.confirmation",
+        "Backorder Confirmation"
+      ],
+      [
+        "stock.backorder.confirmation.line",
+        "Backorder Confirmation Line"
+      ],
+      [
+        "op.badge.student.wizard",
+        "Badge Student Wizard"
+      ],
+      [
+        "res.bank",
+        "Bank"
+      ],
+      [
+        "hr.bank.account.allocation.wizard.line",
+        "Bank Account Allocation Line (Wizard)"
+      ],
+      [
+        "hr.bank.account.allocation.wizard",
+        "Bank Account Allocation Wizard"
+      ],
+      [
+        "bank.rec.mixin",
+        "Bank Reconciliation Shared Helpers"
+      ],
+      [
+        "account.setup.bank.manual.config",
+        "Bank setup manual config"
+      ],
+      [
+        "barcodes.barcode_events_mixin",
+        "Barcode Event Mixin"
+      ],
+      [
+        "barcode.issue.media",
+        "Barcode Issue Media Wizard"
+      ],
+      [
+        "barcode.nomenclature",
+        "Barcode Nomenclature"
+      ],
+      [
+        "barcode.rule",
+        "Barcode Rule"
+      ],
+      [
+        "base",
+        "Base"
+      ],
+      [
+        "account.edi.cii",
+        "Base helpers for CII"
+      ],
+      [
+        "account.edi.ubl",
+        "Base helpers for UBL"
+      ],
+      [
+        "base_import.import",
+        "Base Import"
+      ],
+      [
+        "base_import.mapping",
+        "Base Import Mapping"
+      ],
+      [
+        "account.batch.error.wizard",
+        "Batch Payment Error Wizard"
+      ],
+      [
+        "account.batch.error.wizard.line",
+        "Batch Payment Error Wizard Line"
+      ],
+      [
+        "bill.to.po.wizard",
+        "Bill to Purchase Order"
+      ],
+      [
+        "account.edi.xml.ubl_de",
+        "BIS3 DE (XRechnung)"
+      ],
+      [
+        "blog.tag",
+        "Blog Tag"
+      ],
+      [
+        "blog.tag.category",
+        "Blog Tag Category"
+      ],
+      [
+        "board.board",
+        "Board"
+      ],
+      [
+        "op.board.affiliation",
+        "Board Affiliation"
+      ],
+      [
+        "report.openeducat_core.report_student_bonafide",
+        "Bonafide Certificate Report"
+      ],
+      [
+        "bonafide.certificate.wizard",
+        "Bonafide Certificate Wizard"
+      ],
+      [
+        "calendar.appointment.slot",
+        "Booking Slot"
+      ],
+      [
+        "fleet.vehicle.model.brand",
+        "Brand of the vehicle"
+      ],
+      [
+        "calendar.appointment.slot.generate.wizard",
+        "Bulk Generate Appointment Slots"
+      ],
+      [
+        "account.document.import.mixin",
+        "Business document import mixin"
+      ],
+      [
+        "calendar.appointment.resource",
+        "Calendar Appointment Resource"
+      ],
+      [
+        "calendar.attendee",
+        "Calendar Attendee Information"
+      ],
+      [
+        "calendar.filters",
+        "Calendar Filters"
+      ],
+      [
+        "calendar.popover.delete.wizard",
+        "Calendar Popover Delete Wizard"
+      ],
+      [
+        "calendar.provider.config",
+        "Calendar Provider Configuration Wizard"
+      ],
+      [
+        "utm.stage",
+        "Campaign Stage"
+      ],
+      [
+        "queue.jobs.to.cancelled",
+        "Cancel all selected jobs"
+      ],
+      [
+        "sale.mass.cancel.orders",
+        "Cancel multiple quotations"
+      ],
+      [
+        "hr.holidays.cancel.leave",
+        "Cancel Time Off Wizard"
+      ],
+      [
+        "mail.canned.response",
+        "Canned Response"
+      ],
+      [
+        "bus.listener.mixin",
+        "Can send messages via bus.bus"
+      ],
+      [
+        "hr.applicant.category",
+        "Category of applicant"
+      ],
+      [
+        "op.digital.library.category",
+        "Category Of Material"
+      ],
+      [
+        "fleet.vehicle.model.category",
+        "Category of the model"
+      ],
+      [
+        "account.change.lock.date",
+        "Change Lock Date"
+      ],
+      [
+        "change.password.wizard",
+        "Change Password Wizard"
+      ],
+      [
+        "discuss.channel.member",
+        "Channel Member"
+      ],
+      [
+        "chatbot.message",
+        "Chatbot Message"
+      ],
+      [
+        "chatbot.script",
+        "Chatbot Script"
+      ],
+      [
+        "chatbot.script.answer",
+        "Chatbot Script Answer"
+      ],
+      [
+        "chatbot.script.step",
+        "Chatbot Script Step"
+      ],
+      [
+        "lot.label.layout",
+        "Choose the sheet layout to print lot labels"
+      ],
+      [
+        "product.label.layout",
+        "Choose the sheet layout to print the labels"
+      ],
+      [
+        "picking.label.type",
+        "Choose whether to print product or lot/sn labels"
+      ],
+      [
+        "op.circular.type",
+        "Circular Type"
+      ],
+      [
+        "op.classroom",
+        "Classroom"
+      ],
+      [
+        "op.asset",
+        "Classroom Assets"
+      ],
+      [
+        "ir.actions.client",
+        "Client Action"
+      ],
+      [
+        "account.edi.common",
+        "Common functions for EDI documents: generate the data, the constraints, etc"
+      ],
+      [
+        "bus.bus",
+        "Communication Bus"
+      ],
+      [
+        "base.document.layout",
+        "Company Document Layout"
+      ],
+      [
+        "aio.tool.component",
+        "Composed Tool Pipeline Step"
+      ],
+      [
+        "res.config",
+        "Config"
+      ],
+      [
+        "res.config.settings",
+        "Config Settings"
+      ],
+      [
+        "ir.actions.todo",
+        "Configuration Wizards"
+      ],
+      [
+        "confirm.stock.sms",
+        "Confirm Stock SMS"
+      ],
+      [
+        "stock.inventory.conflict",
+        "Conflict in Inventory"
+      ],
+      [
+        "op.course.question",
+        "Content Quiz Question"
+      ],
+      [
+        "hr.version.wizard",
+        "Contract Template Wizard"
+      ],
+      [
+        "hr.contract.type",
+        "Contract Type"
+      ],
+      [
+        "crm.lead2opportunity.partner.mass",
+        "Convert Lead to Opportunity (in mass)"
+      ],
+      [
+        "crm.lead2opportunity.partner",
+        "Convert Lead to Opportunity (not in mass)"
+      ],
+      [
+        "lead.to.student",
+        "Convert Lead To Student"
+      ],
+      [
+        "helpdesk.ticket.to.opportunity",
+        "Convert Ticket to Opportunity"
+      ],
+      [
+        "spreadsheet.dashboard.share",
+        "Copy of a shared dashboard"
+      ],
+      [
+        "aio.cost.optimizer",
+        "Cost Optimization Analyzer"
+      ],
+      [
+        "res.country",
+        "Country"
+      ],
+      [
+        "res.country.group",
+        "Country Group"
+      ],
+      [
+        "format.vat.label.mixin",
+        "Country Specific VAT Label"
+      ],
+      [
+        "res.country.state",
+        "Country state"
+      ],
+      [
+        "op.course.announcement",
+        "Course Announcement"
+      ],
+      [
+        "op.course.category",
+        "Course Category"
+      ],
+      [
+        "op.course.enrollment.line",
+        "Course Enrollment Lines"
+      ],
+      [
+        "op.course.tag",
+        "Course Tag"
+      ],
+      [
+        "website.cover_properties.mixin",
+        "Cover Properties Website Mixin"
+      ],
+      [
+        "auth.passkey.key.create",
+        "Create a Passkey"
+      ],
+      [
+        "account.automatic.entry.wizard",
+        "Create Automatic Entries"
+      ],
+      [
+        "account.create.batch.error.wizard",
+        "Create Batch Payment Error Wizard"
+      ],
+      [
+        "wizard.course.allocation",
+        "Create course allocation for selected Student(s)"
+      ],
+      [
+        "wizard.op.faculty.employee",
+        "Create Employee and User of Faculty"
+      ],
+      [
+        "wizard.ir.model.menu.create",
+        "Create Menu Wizard"
+      ],
+      [
+        "crm.quotation.partner",
+        "Create new or use existing Customer on new Quotation"
+      ],
+      [
+        "wizard.create.role.from.user",
+        "Create role from user wizard"
+      ],
+      [
+        "wizard.op.student.subject.registration",
+        "Create Subject Registration"
+      ],
+      [
+        "wizard.op.faculty",
+        "Create User for selected Faculty(s)"
+      ],
+      [
+        "wizard.op.student",
+        "Create User for selected Student(s)"
+      ],
+      [
+        "crm.activity.report",
+        "CRM Activity Analysis"
+      ],
+      [
+        "crm.iap.lead.industry",
+        "CRM IAP Lead Industry"
+      ],
+      [
+        "crm.iap.lead.mining.request",
+        "CRM Lead Mining Request"
+      ],
+      [
+        "crm.recurring.plan",
+        "CRM Recurring revenue plans"
+      ],
+      [
+        "crm.stage",
+        "CRM Stages"
+      ],
+      [
+        "crm.tag",
+        "CRM Tag"
+      ],
+      [
+        "res.currency",
+        "Currency"
+      ],
+      [
+        "res.currency.rate",
+        "Currency Rate"
+      ],
+      [
+        "ir.ui.view.custom",
+        "Custom View"
+      ],
+      [
+        "dashboard_pro.element_action",
+        "Dashboard Element Action Model"
+      ],
+      [
+        "dashboard_pro.element",
+        "Dashboard Element Model And object"
+      ],
+      [
+        "dashboard_pro.element_target",
+        "Dashboard Element Target Object And Model."
+      ],
+      [
+        "pro_dashboard_pro.item_action",
+        "Dashboard Item Action"
+      ],
+      [
+        "dashboard_pro.element_groupby",
+        "Dashboard Item Group By Dimension"
+      ],
+      [
+        "dashboard_pro.dashboard_template",
+        "Dashboard Template"
+      ],
+      [
+        "decimal.precision",
+        "Decimal Precision"
+      ],
+      [
+        "ir.default",
+        "Default Values"
+      ],
+      [
+        "choose.delivery.carrier",
+        "Delivery Carrier Selection Wizard"
+      ],
+      [
+        "delivery.price.rule",
+        "Delivery Price Rules"
+      ],
+      [
+        "delivery.zip.prefix",
+        "Delivery Zip Prefix"
+      ],
+      [
+        "ir.demo",
+        "Demo"
+      ],
+      [
+        "ir.demo_failure",
+        "Demo failure"
+      ],
+      [
+        "ir.demo_failure.wizard",
+        "Demo Failure wizard"
+      ],
+      [
+        "hr.departure.reason",
+        "Departure Reason"
+      ],
+      [
+        "hr.departure.wizard",
+        "Departure Wizard"
+      ],
+      [
+        "res.device.log",
+        "Device Log"
+      ],
+      [
+        "res.device",
+        "Devices"
+      ],
+      [
+        "digest.digest",
+        "Digest"
+      ],
+      [
+        "digest.tip",
+        "Digest Tips"
+      ],
+      [
+        "op.digital.library.enrollment",
+        "Digital Library Enrollment"
+      ],
+      [
+        "op.digital.library.material.review",
+        "Digital Library Material Review"
+      ],
+      [
+        "discipline.progress.wizard",
+        "Discipline Progress Wizard"
+      ],
+      [
+        "sale.order.discount",
+        "Discount Wizard"
+      ],
+      [
+        "asset.dispose",
+        "Dispose Asset"
+      ],
+      [
+        "dms.security.mixin",
+        "DMS Security Mixin"
+      ],
+      [
+        "dms.mixins.thumbnail",
+        "DMS thumbnail and icon mixin"
+      ],
+      [
+        "dms.category",
+        "Document Category"
+      ],
+      [
+        "mail.followers",
+        "Document Followers"
+      ],
+      [
+        "dms.tag",
+        "Document Tag"
+      ],
+      [
+        "fleet.vehicle.assignation.log",
+        "Drivers history on a vehicle"
+      ],
+      [
+        "website.sale.extra.field",
+        "E-Commerce Extra Info Shown on product page"
+      ],
+      [
+        "registration.editor",
+        "Edit Attendee Details on Sales Confirmation"
+      ],
+      [
+        "registration.editor.line",
+        "Edit Attendee Line on Sales Confirmation"
+      ],
+      [
+        "account.edi.xml.ubl_efff",
+        "E-FFF (BE)"
+      ],
+      [
+        "elearning.rules",
+        "Elearning Rules Details"
+      ],
+      [
+        "mail.alias",
+        "Email Aliases"
+      ],
+      [
+        "mail.alias.mixin",
+        "Email Aliases Mixin"
+      ],
+      [
+        "mail.alias.mixin.optional",
+        "Email Aliases Mixin (light)"
+      ],
+      [
+        "mail.compose.message",
+        "Email composition wizard"
+      ],
+      [
+        "mail.alias.domain",
+        "Email Domain"
+      ],
+      [
+        "mail.template.preview",
+        "Email Template Preview"
+      ],
+      [
+        "mail.template",
+        "Email Templates"
+      ],
+      [
+        "ir.embedded.actions",
+        "Embedded Actions"
+      ],
+      [
+        "hr.employee.category",
+        "Employee Category"
+      ],
+      [
+        "hr.employee.certification.report",
+        "Employee Certification Report"
+      ],
+      [
+        "hr.employee.location",
+        "Employee Location"
+      ],
+      [
+        "report.hr_skills.report_employee_cv",
+        "Employee Resume"
+      ],
+      [
+        "hr.employee.skill.report",
+        "Employee Skills Report"
+      ],
+      [
+        "hr.employee.skill.history.report",
+        "Employee Skills Report"
+      ],
+      [
+        "base.enable.profiling.wizard",
+        "Enable profiling for some time"
+      ],
+      [
+        "e.sign.request.signer",
+        "E-Sign request signer"
+      ],
+      [
+        "esign.tag",
+        "ESign Tag"
+      ],
+      [
+        "calendar.alarm",
+        "Event Alarm"
+      ],
+      [
+        "calendar.alarm_manager",
+        "Event Alarm Manager"
+      ],
+      [
+        "event.mail",
+        "Event Automated Mailing"
+      ],
+      [
+        "event.event.configurator",
+        "Event Configurator"
+      ],
+      [
+        "event.lead.request",
+        "Event Lead Request"
+      ],
+      [
+        "event.lead.rule",
+        "Event Lead Rules"
+      ],
+      [
+        "calendar.event.type",
+        "Event Meeting Type"
+      ],
+      [
+        "event.question",
+        "Event Question"
+      ],
+      [
+        "event.question.answer",
+        "Event Question Answer"
+      ],
+      [
+        "calendar.recurrence",
+        "Event Recurrence Rule"
+      ],
+      [
+        "event.registration.answer",
+        "Event Registration Answer"
+      ],
+      [
+        "event.sale.report",
+        "Event Sales Report"
+      ],
+      [
+        "event.slot",
+        "Event Slot"
+      ],
+      [
+        "event.stage",
+        "Event Stage"
+      ],
+      [
+        "event.tag",
+        "Event Tag"
+      ],
+      [
+        "event.tag.category",
+        "Event Tag Category"
+      ],
+      [
+        "event.type",
+        "Event Template"
+      ],
+      [
+        "event.type.ticket",
+        "Event Template Ticket"
+      ],
+      [
+        "event.event.ticket",
+        "Event Ticket"
+      ],
+      [
+        "op.exam.attendees",
+        "Exam Attendees"
+      ],
+      [
+        "report.openeducat_exam.report_marksheet_report",
+        "Exam Marksheet Report"
+      ],
+      [
+        "op.exam.room",
+        "Exam Room"
+      ],
+      [
+        "report.openeducat_exam.report_ticket",
+        "Exam Ticket Report"
+      ],
+      [
+        "op.exam.type",
+        "Exam Type"
+      ],
+      [
+        "question.answer.import.sheet.option",
+        "Excel sheet available for import"
+      ],
+      [
+        "exchange.rate.sync.error",
+        "Exchange Rate Synchronization Errors"
+      ],
+      [
+        "hr.expense.approve.duplicate",
+        "Expense Approve Duplicate"
+      ],
+      [
+        "hr.expense.post.wizard",
+        "Expense Posting Wizard"
+      ],
+      [
+        "hr.expense.refuse.wizard",
+        "Expense Refuse Reason Wizard"
+      ],
+      [
+        "hr.expense.split",
+        "Expense Split"
+      ],
+      [
+        "hr.expense.split.wizard",
+        "Expense Split Wizard"
+      ],
+      [
+        "ir.exports",
+        "Exports"
+      ],
+      [
+        "ir.exports.line",
+        "Exports Line"
+      ],
+      [
+        "facility.invoice",
+        "facility Invoice"
+      ],
+      [
+        "op.facility.type",
+        "Facility Type"
+      ],
+      [
+        "account.edi.xml.cii",
+        "Factur-x/ZUGFeRD CII 2.2.0"
+      ],
+      [
+        "op.fees.terms.line",
+        "Fees Details Line"
+      ],
+      [
+        "op.fees.plan.line",
+        "Fees Details Line"
+      ],
+      [
+        "op.fees.element",
+        "Fees Element for course"
+      ],
+      [
+        "op.fees.element.plan",
+        "Fees Element Plan"
+      ],
+      [
+        "report.openeducat_fees.report_fees_analysis",
+        "Fees Report"
+      ],
+      [
+        "op.fees.template.line",
+        "Fees Template Line"
+      ],
+      [
+        "html.field.history.mixin",
+        "Field html History"
+      ],
+      [
+        "ir.model.fields",
+        "Fields"
+      ],
+      [
+        "ir.fields.converter",
+        "Fields Converter"
+      ],
+      [
+        "ir.model.fields.selection",
+        "Fields Selection"
+      ],
+      [
+        "crm.lead.scoring.frequency.field",
+        "Fields that can be used for predictive lead scoring computation"
+      ],
+      [
+        "ir.binary",
+        "File streaming helper model for controllers"
+      ],
+      [
+        "ir.filters",
+        "Filters"
+      ],
+      [
+        "final.assessment.selection",
+        "Final Assessment Selection"
+      ],
+      [
+        "account.fiscal.position",
+        "Fiscal Position"
+      ],
+      [
+        "account.fiscal.year",
+        "Fiscal Year"
+      ],
+      [
+        "fleet.vehicle.cost.report",
+        "Fleet Analysis Report"
+      ],
+      [
+        "fleet.vehicle.odometer.report",
+        "Fleet Odometer Analysis Report"
+      ],
+      [
+        "fleet.service.type",
+        "Fleet Service Type"
+      ],
+      [
+        "mail.followers.edit",
+        "Followers edit wizard"
+      ],
+      [
+        "sale.pdf.form.field",
+        "Form fields of inside quotation documents."
+      ],
+      [
+        "account.full.reconcile",
+        "Full Reconcile"
+      ],
+      [
+        "op.gamification.badge",
+        "Gamification Badge"
+      ],
+      [
+        "gamification.challenge.line",
+        "Gamification generic goal for challenge"
+      ],
+      [
+        "gamification.goal",
+        "Gamification Goal"
+      ],
+      [
+        "gamification.goal.definition",
+        "Gamification Goal Definition"
+      ],
+      [
+        "gamification.goal.wizard",
+        "Gamification Goal Wizard"
+      ],
+      [
+        "op.badge.student",
+        "Gamification Student badge"
+      ],
+      [
+        "gamification.badge.user.wizard",
+        "Gamification User Badge Wizard"
+      ],
+      [
+        "payment.link.wizard",
+        "Generate Sales Payment Link"
+      ],
+      [
+        "generate.time.table",
+        "Generate Sessions"
+      ],
+      [
+        "hr.leave.allocation.generate.multi.wizard",
+        "Generate time off allocations for multiple employees"
+      ],
+      [
+        "hr.leave.generate.multi.wizard",
+        "Generate time off for multiple employees"
+      ],
+      [
+        "gen.time.table.line",
+        "Generate Time Table Lines"
+      ],
+      [
+        "time.table.report",
+        "Generate Time Table Report"
+      ],
+      [
+        "report.account.report_hash_integrity",
+        "Get hash integrity result as PDF."
+      ],
+      [
+        "crm.lead.lost",
+        "Get Lost Reason"
+      ],
+      [
+        "applicant.get.refuse.reason",
+        "Get Refuse Reason"
+      ],
+      [
+        "google.gmail.mixin",
+        "Google Gmail Mixin"
+      ],
+      [
+        "google.meet",
+        "Google Meet Meetings"
+      ],
+      [
+        "op.grade.configuration",
+        "Grade Configuration"
+      ],
+      [
+        "op.assign.grade.config",
+        "Grade Configuration"
+      ],
+      [
+        "op.grade.table",
+        "Grade Table"
+      ],
+      [
+        "op.grade.table.line",
+        "Grade Table Line"
+      ],
+      [
+        "op.grade.template.line",
+        "Grade Template Line"
+      ],
+      [
+        "op.grade.override.line",
+        "Grading Override Line"
+      ],
+      [
+        "op.grade.type",
+        "Grading Type"
+      ],
+      [
+        "grading.wizard",
+        "Grading Wizard"
+      ],
+      [
+        "portal.wizard",
+        "Grant Portal Access"
+      ],
+      [
+        "wizard.action.taken",
+        "Grievance Action Taken"
+      ],
+      [
+        "grievance.category",
+        "Grievance Category"
+      ],
+      [
+        "grievance.root.cause",
+        "Grievance Root Cause"
+      ],
+      [
+        "wizard.groups.into.role",
+        "Group groups into a role"
+      ],
+      [
+        "spreadsheet.dashboard.group",
+        "Group of dashboards"
+      ],
+      [
+        "op.notice.group",
+        "Groups"
+      ],
+      [
+        "aio.guardrail.test.wizard",
+        "Guardrail Test Wizard"
+      ],
+      [
+        "mail.guest",
+        "Guest"
+      ],
+      [
+        "op.health.line",
+        "Health Line"
+      ],
+      [
+        "op.held.exam",
+        "Held Exam"
+      ],
+      [
+        "helpdesk.report",
+        "Helpdesk Report"
+      ],
+      [
+        "helpdesk.stage",
+        "Helpdesk Stage"
+      ],
+      [
+        "helpdesk.tag",
+        "Helpdesk Tags"
+      ],
+      [
+        "crm.iap.lead.helpers",
+        "Helper methods for crm_iap_mine modules"
+      ],
+      [
+        "report.hr_holidays.report_holidayssummary",
+        "Holidays Summary Report"
+      ],
+      [
+        "op.honorroll.line",
+        "Honor Roll Line"
+      ],
+      [
+        "aio.hook.log",
+        "Hook Execution Log"
+      ],
+      [
+        "hr.manager.department.report",
+        "Hr Manager Department Report"
+      ],
+      [
+        "hr.mixin",
+        "hr.mixin"
+      ],
+      [
+        "hr.holidays.summary.employee",
+        "HR Time Off Summary Report By Employee"
+      ],
+      [
+        "html_editor.converter.test.sub",
+        "Html Editor Converter Subtest"
+      ],
+      [
+        "html_editor.converter.test",
+        "Html Editor Converter Test"
+      ],
+      [
+        "website.html.text.processor",
+        "HTML Text Processor Abstract Model"
+      ],
+      [
+        "ir.http",
+        "HTTP Routing"
+      ],
+      [
+        "iap.enrich.api",
+        "IAP Lead Enrichment API"
+      ],
+      [
+        "iap.autocomplete.api",
+        "IAP Partner Autocomplete API"
+      ],
+      [
+        "iap.service",
+        "IAP Service"
+      ],
+      [
+        "mail.ice.server",
+        "ICE Server"
+      ],
+      [
+        "image.mixin",
+        "Image Mixin"
+      ],
+      [
+        "spreadsheet.spreadsheet.import",
+        "Import data to spreadsheet"
+      ],
+      [
+        "spreadsheet.spreadsheet.import.mode",
+        "Import Mode"
+      ],
+      [
+        "base.import.module",
+        "Import Module"
+      ],
+      [
+        "question.answer.import.wizard",
+        "Import Question Answers from Excel"
+      ],
+      [
+        "fetchmail.server",
+        "Incoming Mail Server"
+      ],
+      [
+        "account.incoterms",
+        "Incoterms"
+      ],
+      [
+        "res.partner.industry",
+        "Industry"
+      ],
+      [
+        "base.language.install",
+        "Install Language"
+      ],
+      [
+        "stock.inventory.adjustment.name",
+        "Inventory Adjustment Reference / Reason"
+      ],
+      [
+        "stock.inventory.warning",
+        "Inventory Adjustment Warning"
+      ],
+      [
+        "stock.location",
+        "Inventory Locations"
+      ],
+      [
+        "stock.route",
+        "Inventory Routes"
+      ],
+      [
+        "op.thesis.examiner.invite.wizard",
+        "Invite Thesis Examiner Wizard"
+      ],
+      [
+        "account.invoice.report",
+        "Invoices Statistics"
+      ],
+      [
+        "issue.type",
+        "Issue Type"
+      ],
+      [
+        "e.sign.item.option",
+        "Item Option"
+      ],
+      [
+        "e.sign.item.role",
+        "Item Role"
+      ],
+      [
+        "queue.job.channel",
+        "Job Channels"
+      ],
+      [
+        "queue.job.function",
+        "Job Functions"
+      ],
+      [
+        "hr.job.platform",
+        "Job Platforms"
+      ],
+      [
+        "job.post.stage",
+        "Job Stages"
+      ],
+      [
+        "op.job.type",
+        "Job Type Creation"
+      ],
+      [
+        "account.move.line",
+        "Journal Item"
+      ],
+      [
+        "discuss.call.history",
+        "Keep the call history"
+      ],
+      [
+        "im_livechat.channel.member.history",
+        "Keep the channel member history"
+      ],
+      [
+        "kpi.provider",
+        "KPI Provider"
+      ],
+      [
+        "base.language.export",
+        "Language Export"
+      ],
+      [
+        "base.language.import",
+        "Language Import"
+      ],
+      [
+        "res.lang",
+        "Languages"
+      ],
+      [
+        "late.submission",
+        "Late Submission"
+      ],
+      [
+        "late.submission.line",
+        "Late Submission Line"
+      ],
+      [
+        "crm.lead.scoring.frequency",
+        "Lead Scoring Frequency"
+      ],
+      [
+        "op.library.card",
+        "Library Card"
+      ],
+      [
+        "report.openeducat_library.report_library_card_barcode",
+        "Library Card Barcode Report"
+      ],
+      [
+        "op.library.card.type",
+        "Library Card Type"
+      ],
+      [
+        "op.media.renew",
+        "Library Media Renewal"
+      ],
+      [
+        "mail.message.link.preview",
+        "Link between link previews and messages"
+      ],
+      [
+        "product.uom",
+        "Link between products and their UoMs"
+      ],
+      [
+        "sms.tracker",
+        "Link SMS to mailing/sms tracking models"
+      ],
+      [
+        "link.tracker",
+        "Link Tracker"
+      ],
+      [
+        "link.tracker.click",
+        "Link Tracker Click"
+      ],
+      [
+        "link.tracker.code",
+        "Link Tracker Code"
+      ],
+      [
+        "im_livechat.channel",
+        "Livechat Channel"
+      ],
+      [
+        "im_livechat.channel.rule",
+        "Livechat Channel Rules"
+      ],
+      [
+        "im_livechat.conversation.tag",
+        "Live Chat Conversation Tags"
+      ],
+      [
+        "im_livechat.expertise",
+        "Live Chat Expertise"
+      ],
+      [
+        "im_livechat.report.channel",
+        "Livechat Support Channel Report"
+      ],
+      [
+        "op.course.enrollment",
+        "LMS Course Enrollment"
+      ],
+      [
+        "ai.chat.playground",
+        "LMS Course Generator"
+      ],
+      [
+        "lms.stats",
+        "LMS Stats"
+      ],
+      [
+        "ir.logging",
+        "Logging"
+      ],
+      [
+        "report.stock.label_lot_template_view",
+        "Lot Label Report"
+      ],
+      [
+        "mail.activity.schedule.line",
+        "Mail Activity Schedule Line"
+      ],
+      [
+        "mail.bot",
+        "Mail Bot"
+      ],
+      [
+        "mail.composer.mixin",
+        "Mail Composer Mixin"
+      ],
+      [
+        "mail.gateway.allowed",
+        "Mail Gateway Allowed"
+      ],
+      [
+        "mailing.contact.import",
+        "Mailing Contact Import"
+      ],
+      [
+        "mailing.filter",
+        "Mailing Favorite Filters"
+      ],
+      [
+        "mailing.list",
+        "Mailing List"
+      ],
+      [
+        "mailing.subscription",
+        "Mailing List Subscription"
+      ],
+      [
+        "mailing.trace",
+        "Mailing Statistics"
+      ],
+      [
+        "mailing.subscription.optout",
+        "Mailing Subscription Reason"
+      ],
+      [
+        "mail.rebrand.config",
+        "Mail Rebrand Configuration"
+      ],
+      [
+        "mail.render.mixin",
+        "Mail Render Mixin"
+      ],
+      [
+        "discuss.channel.rtc.session",
+        "Mail RTC session"
+      ],
+      [
+        "event.type.mail",
+        "Mail Scheduling on Event Category"
+      ],
+      [
+        "ir.mail_server",
+        "Mail Server"
+      ],
+      [
+        "mail.template.reset",
+        "Mail Template Reset"
+      ],
+      [
+        "mail.tracking.value",
+        "Mail Tracking Value"
+      ],
+      [
+        "dashboard_pro.main_dashboard",
+        "Main Dashboard Model And Objects"
+      ],
+      [
+        "op.facility",
+        "Manage Facility"
+      ],
+      [
+        "op.facility.line",
+        "Manage Facility Line"
+      ],
+      [
+        "op.assignment.finish.reason.wizard",
+        "Manager reason wizard for finishing an assignment with missing submissions"
+      ],
+      [
+        "hr.leave.mandatory.day",
+        "Mandatory Day"
+      ],
+      [
+        "account.code.mapping",
+        "Mapping of account codes per company"
+      ],
+      [
+        "marketing.activity",
+        "Marketing Activity"
+      ],
+      [
+        "marketing.campaign",
+        "Marketing Campaign"
+      ],
+      [
+        "marketing.campaign.test",
+        "Marketing Campaign Test"
+      ],
+      [
+        "marketing.participant",
+        "Marketing Participant"
+      ],
+      [
+        "marketing.trace",
+        "Marketing Trace"
+      ],
+      [
+        "op.marksheet.line",
+        "Marksheet Line"
+      ],
+      [
+        "marksheet.line.progress.wizard",
+        "Marksheet line Progress Wizard"
+      ],
+      [
+        "op.marks.line",
+        "Marks Line"
+      ],
+      [
+        "mailing.trace.report",
+        "Mass Mailing Statistics"
+      ],
+      [
+        "op.digital.library.material",
+        "Material For Digital Library"
+      ],
+      [
+        "op.author",
+        "Media Author"
+      ],
+      [
+        "return.media",
+        "Media Author"
+      ],
+      [
+        "report.openeducat_library.report_media_barcode",
+        "Media Barcode Report"
+      ],
+      [
+        "reserve.media",
+        "Media Reserve"
+      ],
+      [
+        "op.tag",
+        "Media Tags"
+      ],
+      [
+        "op.media.type",
+        "Media Type"
+      ],
+      [
+        "op.meeting.wizard",
+        "Meeting Wizard"
+      ],
+      [
+        "ir.ui.menu",
+        "Menu"
+      ],
+      [
+        "mailing.list.merge",
+        "Merge Mass Mailing List"
+      ],
+      [
+        "crm.merge.opportunity",
+        "Merge Opportunities"
+      ],
+      [
+        "base.partner.merge.line",
+        "Merge Partner Line"
+      ],
+      [
+        "base.partner.merge.automatic.wizard",
+        "Merge Partner Wizard"
+      ],
+      [
+        "mail.message",
+        "Message"
+      ],
+      [
+        "mail.notification",
+        "Message Notifications"
+      ],
+      [
+        "mail.message.reaction",
+        "Message Reaction"
+      ],
+      [
+        "mail.message.subtype",
+        "Message subtypes"
+      ],
+      [
+        "mail.message.translation",
+        "Message Translation"
+      ],
+      [
+        "discuss.voice.metadata",
+        "Metadata for voice attachments"
+      ],
+      [
+        "microsoft.outlook.mixin",
+        "Microsoft Outlook Mixin"
+      ],
+      [
+        "migration.report",
+        "Migration Report"
+      ],
+      [
+        "stock.warehouse.orderpoint",
+        "Minimum Inventory Rule"
+      ],
+      [
+        "op.misbehaviour.category",
+        "Misbehaviour Category Details"
+      ],
+      [
+        "misbehaviour.type",
+        "Misbehaviour Type"
+      ],
+      [
+        "report.openeducat_discipline.misbehaviour_type_report",
+        "Misbehaviour Type Report"
+      ],
+      [
+        "ir.model.access",
+        "Model Access"
+      ],
+      [
+        "ir.model.constraint",
+        "Model Constraint"
+      ],
+      [
+        "ir.model.data",
+        "Model Data"
+      ],
+      [
+        "to_do.list",
+        "Model For To Do List"
+      ],
+      [
+        "ir.model.inherit",
+        "Model Inheritance Tree"
+      ],
+      [
+        "website.controller.page",
+        "Model Page"
+      ],
+      [
+        "ir.model",
+        "Models"
+      ],
+      [
+        "asset.modify",
+        "Modify Asset"
+      ],
+      [
+        "ir.module.module",
+        "Module"
+      ],
+      [
+        "base.module.install.request",
+        "Module Activation Request"
+      ],
+      [
+        "base.module.install.review",
+        "Module Activation Review"
+      ],
+      [
+        "ir.module.module.dependency",
+        "Module dependency"
+      ],
+      [
+        "ir.module.module.exclusion",
+        "Module exclusion"
+      ],
+      [
+        "report.base.report_irmodulereference",
+        "Module Reference Report (base)"
+      ],
+      [
+        "base.module.uninstall",
+        "Module Uninstall"
+      ],
+      [
+        "multi.approval.type",
+        "MultiApproval"
+      ],
+      [
+        "multi.approval.type.line",
+        "MultiApprovalLine"
+      ],
+      [
+        "student.additional.attempt",
+        "Multiple Submission Attempt"
+      ],
+      [
+        "website.multi.mixin",
+        "Multi Website Mixin"
+      ],
+      [
+        "website.published.multi.mixin",
+        "Multi Website Published Mixin"
+      ],
+      [
+        "fleet.vehicle.odometer",
+        "Odometer log for a vehicle"
+      ],
+      [
+        "op.omr.template.wizard",
+        "Omr Sheet Generate"
+      ],
+      [
+        "onboarding.onboarding",
+        "Onboarding"
+      ],
+      [
+        "oe.onboarding.plan",
+        "Onboarding Plan"
+      ],
+      [
+        "onboarding.progress.step",
+        "Onboarding Progress Step Tracker"
+      ],
+      [
+        "onboarding.progress",
+        "Onboarding Progress Tracker"
+      ],
+      [
+        "onboarding.onboarding.step",
+        "Onboarding Step"
+      ],
+      [
+        "oe.onboarding.steps",
+        "Onboarding Steps"
+      ],
+      [
+        "report.op.attendance_xlsx",
+        "Openeducat Attendance Report"
+      ],
+      [
+        "report.op.attendance_xlsx_by_week",
+        "Openeducat Attendance Report By Week"
+      ],
+      [
+        "op.category",
+        "OpenEduCat Category"
+      ],
+      [
+        "op.department",
+        "OpenEduCat Department"
+      ],
+      [
+        "openeducat.label.helper",
+        "Openeducat Label Helper"
+      ],
+      [
+        "account.financial.year.op",
+        "Opening Balance of Financial Year"
+      ],
+      [
+        "crm.lost.reason",
+        "Opp. Lost Reason"
+      ],
+      [
+        "mail.mail",
+        "Outgoing Mails"
+      ],
+      [
+        "sms.sms",
+        "Outgoing SMS"
+      ],
+      [
+        "op.override.mark",
+        "Override Mark Wizard"
+      ],
+      [
+        "stock.package",
+        "Package"
+      ],
+      [
+        "website.page",
+        "Page"
+      ],
+      [
+        "website.page.properties",
+        "Page Properties"
+      ],
+      [
+        "website.page.properties.base",
+        "Page Properties Base"
+      ],
+      [
+        "report.paperformat",
+        "Paper Format Config"
+      ],
+      [
+        "account.partial.reconcile",
+        "Partial Reconcile"
+      ],
+      [
+        "res.partner.category",
+        "Partner Tags"
+      ],
+      [
+        "res.partner.title",
+        "Partner Title"
+      ],
+      [
+        "op.partner.transportation.fees.details",
+        "Partner Transportation Fees Details"
+      ],
+      [
+        "report.openeducat_attendance_report_xlsx.partner_xlsx",
+        "Partner XLSX Report"
+      ],
+      [
+        "auth.passkey.key",
+        "Passkey"
+      ],
+      [
+        "res.users.identitycheck",
+        "Password Check Wizard"
+      ],
+      [
+        "account.payment.register",
+        "Pay"
+      ],
+      [
+        "payment.capture.wizard",
+        "Payment Capture Wizard"
+      ],
+      [
+        "payment.method",
+        "Payment Method"
+      ],
+      [
+        "account.payment.method.line",
+        "Payment Methods"
+      ],
+      [
+        "account.payment.method",
+        "Payment Methods"
+      ],
+      [
+        "payment.provider",
+        "Payment Provider"
+      ],
+      [
+        "payment.refund.wizard",
+        "Payment Refund Wizard"
+      ],
+      [
+        "account.payment.term",
+        "Payment Terms"
+      ],
+      [
+        "account.payment.term.line",
+        "Payment Terms Line"
+      ],
+      [
+        "payment.token",
+        "Payment Token"
+      ],
+      [
+        "payment.transaction",
+        "Payment Transaction"
+      ],
+      [
+        "crm.iap.lead.role",
+        "People Role"
+      ],
+      [
+        "crm.iap.lead.seniority",
+        "People Seniority"
+      ],
+      [
+        "op.timing",
+        "Period"
+      ],
+      [
+        "stock.picking.type",
+        "Picking Type"
+      ],
+      [
+        "placement.officer.create.wizard",
+        "Placement Officer Wizard"
+      ],
+      [
+        "aio.playground.print.wizard",
+        "Playground Print Wizard"
+      ],
+      [
+        "portal.mixin",
+        "Portal Mixin"
+      ],
+      [
+        "portal.share",
+        "Portal Sharing"
+      ],
+      [
+        "portal.wizard.user",
+        "Portal User Config"
+      ],
+      [
+        "forum.post.reason",
+        "Post Closing Reason"
+      ],
+      [
+        "forum.post.vote",
+        "Post Vote"
+      ],
+      [
+        "report.product.report_pricelist",
+        "Pricelist Report"
+      ],
+      [
+        "product.pricelist.item",
+        "Pricelist Rule"
+      ],
+      [
+        "print.prenumbered.checks",
+        "Print Pre-numbered Checks"
+      ],
+      [
+        "hr.employee.cv.wizard",
+        "Print Resume"
+      ],
+      [
+        "privacy.log",
+        "Privacy Log"
+      ],
+      [
+        "privacy.lookup.wizard",
+        "Privacy Lookup Wizard"
+      ],
+      [
+        "privacy.lookup.wizard.line",
+        "Privacy Lookup Wizard Line"
+      ],
+      [
+        "res.groups.privilege",
+        "Privileges"
+      ],
+      [
+        "product.attribute",
+        "Product Attribute"
+      ],
+      [
+        "product.attribute.category",
+        "Product Attribute Category"
+      ],
+      [
+        "product.attribute.custom.value",
+        "Product Attribute Custom Value"
+      ],
+      [
+        "product.catalog.mixin",
+        "Product Catalog Mixin"
+      ],
+      [
+        "product.combo",
+        "Product Combo"
+      ],
+      [
+        "product.combo.item",
+        "Product Combo Item"
+      ],
+      [
+        "product.document",
+        "Product Document"
+      ],
+      [
+        "product.image",
+        "Product Image"
+      ],
+      [
+        "report.product.report_producttemplatelabel_dymo",
+        "Product Label Report"
+      ],
+      [
+        "report.stock.label_product_product_view",
+        "Product Label Report"
+      ],
+      [
+        "report.product.report_producttemplatelabel2x7",
+        "Product Label Report 2x7"
+      ],
+      [
+        "report.product.report_producttemplatelabel4x12",
+        "Product Label Report 4x12"
+      ],
+      [
+        "report.product.report_producttemplatelabel4x12noprice",
+        "Product Label Report 4x12 No Price"
+      ],
+      [
+        "report.product.report_producttemplatelabel4x7",
+        "Product Label Report 4x7"
+      ],
+      [
+        "stock.move.line",
+        "Product Moves (Stock Move Line)"
+      ],
+      [
+        "product.replenish",
+        "Product Replenish"
+      ],
+      [
+        "stock.replenish.mixin",
+        "Product Replenish Mixin"
+      ],
+      [
+        "product.ribbon",
+        "Product ribbon"
+      ],
+      [
+        "product.tag",
+        "Product Tag"
+      ],
+      [
+        "product.template.attribute.exclusion",
+        "Product Template Attribute Exclusion"
+      ],
+      [
+        "product.template.attribute.line",
+        "Product Template Attribute Line"
+      ],
+      [
+        "product.template.attribute.value",
+        "Product Template Attribute Value"
+      ],
+      [
+        "uom.uom",
+        "Product Unit of Measure"
+      ],
+      [
+        "product.value",
+        "Product Value"
+      ],
+      [
+        "product.wishlist",
+        "Product Wishlist"
+      ],
+      [
+        "ir.profile",
+        "Profiling results"
+      ],
+      [
+        "pwa.config",
+        "Progressive Web App Configuration"
+      ],
+      [
+        "ir.cron.progress",
+        "Progress of Scheduled Actions"
+      ],
+      [
+        "properties.base.definition",
+        "Properties Base Definition"
+      ],
+      [
+        "properties.base.definition.mixin",
+        "Properties Base Definition Mixin"
+      ],
+      [
+        "hr.employee.public",
+        "Public Employee"
+      ],
+      [
+        "op.publisher",
+        "Publisher"
+      ],
+      [
+        "publisher_warranty.contract",
+        "Publisher Warranty Contract"
+      ],
+      [
+        "purchase.bill.line.match",
+        "Purchase Line and Vendor Bill line matching view"
+      ],
+      [
+        "purchase.order.line",
+        "Purchase Order Line"
+      ],
+      [
+        "purchase.report",
+        "Purchase Report"
+      ],
+      [
+        "purchase.bill.union",
+        "Purchases & Bills Union"
+      ],
+      [
+        "purchase.edi.xml.ubl_bis3",
+        "Purchase UBL BIS Ordering 3.5"
+      ],
+      [
+        "push.notification.config",
+        "Push Notification Configuration"
+      ],
+      [
+        "mail.push.device",
+        "Push Notification Device"
+      ],
+      [
+        "push.notification.recipient",
+        "Push Notification Recipient (field-chain row)"
+      ],
+      [
+        "mail.push",
+        "Push Notifications"
+      ],
+      [
+        "stock.putaway.rule",
+        "Putaway Rule"
+      ],
+      [
+        "stock.put.in.pack",
+        "Put In Pack Wizard"
+      ],
+      [
+        "qna.mixin",
+        "QNA Mixin"
+      ],
+      [
+        "stock.quant",
+        "Quants"
+      ],
+      [
+        "question.answer",
+        "Question Answer"
+      ],
+      [
+        "op.quiz.line",
+        "Questions"
+      ],
+      [
+        "question.single",
+        "Question Single"
+      ],
+      [
+        "queue.job.lock",
+        "Queue Job Lock"
+      ],
+      [
+        "op.answer.grade",
+        "Quiz Answer Grades"
+      ],
+      [
+        "op.quiz.answer",
+        "Quiz Answers"
+      ],
+      [
+        "op.question.bank.answer.following",
+        "Quiz Answers match the following"
+      ],
+      [
+        "op.quiz.answer.following",
+        "Quiz Answers match the following"
+      ],
+      [
+        "op.question.bank.answer.following.images",
+        "Quiz Answers match the following images"
+      ],
+      [
+        "op.quiz.answer.following.images",
+        "Quiz Answers match the following images"
+      ],
+      [
+        "op.quiz.answer.multiple.choice",
+        "Quiz Answers multiple choice"
+      ],
+      [
+        "op.quiz.answer.sort.paragraphs",
+        "Quiz Answers sort paragraphs"
+      ],
+      [
+        "op.quiz.category",
+        "Quiz Category"
+      ],
+      [
+        "op.quiz.config",
+        "Quiz Configuration"
+      ],
+      [
+        "op.quiz.result.line.multiple.choice",
+        "quiz multiple choice result"
+      ],
+      [
+        "op.question.bank",
+        "Quiz Question Bank"
+      ],
+      [
+        "op.question.bank.answer",
+        "Quiz Question Bank Answers"
+      ],
+      [
+        "op.question.bank.answer.sort.paragraphs",
+        "Quiz Question Bank Answers multiple choice"
+      ],
+      [
+        "op.question.bank.answer.multiple.choice",
+        "Quiz Question Bank Answers multiple choice"
+      ],
+      [
+        "op.question.bank.type",
+        "Quiz Question Bank Type"
+      ],
+      [
+        "op.question.bank.line",
+        "Quiz Question Lines"
+      ],
+      [
+        "op.question.wizard",
+        "Quiz Question Wizard"
+      ],
+      [
+        "op.quiz.ai",
+        "Quiz Records"
+      ],
+      [
+        "op.quiz.result.line",
+        "Quiz Result Line"
+      ],
+      [
+        "op.quiz.result.line.answers",
+        "Quiz Result Line Answer"
+      ],
+      [
+        "op.quiz.result.line.following.images",
+        "Quiz Result Line Following Images"
+      ],
+      [
+        "op.quiz.result.message",
+        "Quiz Result Message"
+      ],
+      [
+        "op.quiz.result.line.sort.paragraphs",
+        "Quiz result sort paragraphs"
+      ],
+      [
+        "quotation.document",
+        "Quotation's Headers & Footers"
+      ],
+      [
+        "sale.order.template",
+        "Quotation Template"
+      ],
+      [
+        "sale.order.template.line",
+        "Quotation Template Line"
+      ],
+      [
+        "ir.qweb",
+        "Qweb"
+      ],
+      [
+        "ir.qweb.field",
+        "Qweb Field"
+      ],
+      [
+        "ir.qweb.field.barcode",
+        "Qweb Field Barcode"
+      ],
+      [
+        "ir.qweb.field.contact",
+        "Qweb Field Contact"
+      ],
+      [
+        "ir.qweb.field.date",
+        "Qweb Field Date"
+      ],
+      [
+        "ir.qweb.field.datetime",
+        "Qweb Field Datetime"
+      ],
+      [
+        "ir.qweb.field.duration",
+        "Qweb Field Duration"
+      ],
+      [
+        "ir.qweb.field.float",
+        "Qweb Field Float"
+      ],
+      [
+        "ir.qweb.field.float_time",
+        "Qweb Field Float Time"
+      ],
+      [
+        "ir.qweb.field.html",
+        "Qweb Field HTML"
+      ],
+      [
+        "ir.qweb.field.image_url",
+        "Qweb Field Image"
+      ],
+      [
+        "ir.qweb.field.image",
+        "Qweb Field Image"
+      ],
+      [
+        "ir.qweb.field.integer",
+        "Qweb Field Integer"
+      ],
+      [
+        "ir.qweb.field.many2many",
+        "Qweb field many2many"
+      ],
+      [
+        "ir.qweb.field.many2one",
+        "Qweb Field Many to One"
+      ],
+      [
+        "ir.qweb.field.monetary",
+        "Qweb Field Monetary"
+      ],
+      [
+        "ir.qweb.field.one2many",
+        "Qweb field one2many"
+      ],
+      [
+        "ir.qweb.field.qweb",
+        "Qweb Field qweb"
+      ],
+      [
+        "ir.qweb.field.relative",
+        "Qweb Field Relative"
+      ],
+      [
+        "ir.qweb.field.selection",
+        "Qweb Field Selection"
+      ],
+      [
+        "ir.qweb.field.text",
+        "Qweb Field Text"
+      ],
+      [
+        "ir.qweb.field.time",
+        "QWeb Field Time"
+      ],
+      [
+        "gamification.karma.rank",
+        "Rank based on karma"
+      ],
+      [
+        "rating.rating",
+        "Rating"
+      ],
+      [
+        "rating.parent.mixin",
+        "Rating Parent Mixin"
+      ],
+      [
+        "dms.access.group",
+        "Record Access Groups"
+      ],
+      [
+        "ir.rule",
+        "Record Rule"
+      ],
+      [
+        "hr.recruitment.stage",
+        "Recruitment Stages"
+      ],
+      [
+        "stock.reference",
+        "Reference between stock documents"
+      ],
+      [
+        "hr.applicant.refuse.reason",
+        "Refuse Reason of Applicant"
+      ],
+      [
+        "event.mail.registration",
+        "Registration Mail Scheduler"
+      ],
+      [
+        "ir.model.relation",
+        "Relation Model"
+      ],
+      [
+        "op.parent.relationship",
+        "Relationships"
+      ],
+      [
+        "account.resequence.wizard",
+        "Remake the sequence of Journal Entries."
+      ],
+      [
+        "product.removal",
+        "Removal Strategy"
+      ],
+      [
+        "mail.blacklist.remove",
+        "Remove email from blacklist wizard"
+      ],
+      [
+        "phone.blacklist.remove",
+        "Remove phone from blacklist"
+      ],
+      [
+        "ir.actions.report",
+        "Report Action"
+      ],
+      [
+        "report.layout",
+        "Report Layout"
+      ],
+      [
+        "res.role",
+        "Represents a role in the system used to categorize users. Each role has a unique name and can be associated with multiple users. Roles can be mentioned in messages to notify all associated users."
+      ],
+      [
+        "asset.request.reason",
+        "Request Reason"
+      ],
+      [
+        "reset.view.arch.wizard",
+        "Reset View Architecture Wizard"
+      ],
+      [
+        "resource.mixin",
+        "Resource Mixin"
+      ],
+      [
+        "resource.resource",
+        "Resources"
+      ],
+      [
+        "resource.calendar.leaves",
+        "Resource Time Off Detail"
+      ],
+      [
+        "resource.calendar",
+        "Resource Working Time"
+      ],
+      [
+        "op.result.line",
+        "Result Line"
+      ],
+      [
+        "asset.resume",
+        "Resume Asset Depreciation"
+      ],
+      [
+        "hr.resume.line",
+        "Resume line of an employee"
+      ],
+      [
+        "stock.return.picking",
+        "Return Picking"
+      ],
+      [
+        "stock.return.picking.line",
+        "Return Picking Line"
+      ],
+      [
+        "website.robots",
+        "Robots.txt Editor"
+      ],
+      [
+        "op.room.distribution",
+        "Room Distribution"
+      ],
+      [
+        "op.route.register",
+        "Route Register"
+      ],
+      [
+        "op.rubric.element.assessment.line",
+        "Rubric Element Assessment Line"
+      ],
+      [
+        "op.rubric.level",
+        "Rubric Level"
+      ],
+      [
+        "op.assignment.rubric.level.sub.line",
+        "Rubric Level Sub Line"
+      ],
+      [
+        "op.rubric.element",
+        "Rubrics Elements Configuration"
+      ],
+      [
+        "op.rubric.element.level",
+        "Rubrics Elements Level Configuration"
+      ],
+      [
+        "op.assignment.rubric.sub.line",
+        "Rubric Sub Line"
+      ],
+      [
+        "account.reconcile.model.line",
+        "Rules for the reconciliation model"
+      ],
+      [
+        "hr.payroll.structure.type",
+        "Salary Structure Type"
+      ],
+      [
+        "sale.edi.xml.ubl_bis3",
+        "Sale BIS Ordering 3.5"
+      ],
+      [
+        "sale.advance.payment.inv",
+        "Sales Advance Payment Invoice"
+      ],
+      [
+        "sale.report",
+        "Sales Analysis Report"
+      ],
+      [
+        "sale.order.line",
+        "Sales Order Line"
+      ],
+      [
+        "mailing.mailing.test",
+        "Sample Mail Wizard"
+      ],
+      [
+        "discuss.gif.favorite",
+        "Save favorite GIF from Tenor API"
+      ],
+      [
+        "mailing.mailing.schedule.date",
+        "schedule a mailing"
+      ],
+      [
+        "mail.scheduled.message",
+        "Scheduled Message"
+      ],
+      [
+        "mail.message.schedule",
+        "Scheduled Messages"
+      ],
+      [
+        "scholarship.stages",
+        "Scholarship Stages"
+      ],
+      [
+        "op.scholarship.type",
+        "Scholarship Type"
+      ],
+      [
+        "school.offences",
+        "School Offences Details"
+      ],
+      [
+        "stock.scrap.reason.tag",
+        "Scrap Reason Tag"
+      ],
+      [
+        "op.section",
+        "Section"
+      ],
+      [
+        "secure.hash",
+        "Secure Hash"
+      ],
+      [
+        "account.secure.entries.wizard",
+        "Secure Journal Entries"
+      ],
+      [
+        "spreadsheet.select.row.number",
+        "Select number of rows to duplicate row"
+      ],
+      [
+        "asset.sell",
+        "Sell Asset"
+      ],
+      [
+        "send.copy",
+        "Send copy"
+      ],
+      [
+        "applicant.send.mail",
+        "Send mails to applicants"
+      ],
+      [
+        "fleet.vehicle.send.mail",
+        "Send mails to Drivers"
+      ],
+      [
+        "esign.send",
+        "Send sign request"
+      ],
+      [
+        "sms.composer",
+        "Send SMS Wizard"
+      ],
+      [
+        "website.seo.metadata",
+        "SEO metadata"
+      ],
+      [
+        "ir.sequence",
+        "Sequence"
+      ],
+      [
+        "ir.sequence.date_range",
+        "Sequence Date Range"
+      ],
+      [
+        "ir.actions.server.history",
+        "Server Action History"
+      ],
+      [
+        "server.action.history.wizard",
+        "Server Action History Wizard"
+      ],
+      [
+        "aio.session.analytics",
+        "Session Analytics Dashboard"
+      ],
+      [
+        "aio.session.tag",
+        "Session Tag"
+      ],
+      [
+        "queue.jobs.to.done",
+        "Set all selected jobs to done"
+      ],
+      [
+        "homework.location.wizard",
+        "Set Homework Location Wizard"
+      ],
+      [
+        "account.edi.xml.ubl_sg",
+        "SG BIS Billing 3.0"
+      ],
+      [
+        "share.document",
+        "Share Document"
+      ],
+      [
+        "delivery.carrier",
+        "Shipping Methods"
+      ],
+      [
+        "res.users.apikeys.show",
+        "Show API Key"
+      ],
+      [
+        "e.sign.items",
+        "Sign Items"
+      ],
+      [
+        "e.sign.request.item",
+        "Sign request item"
+      ],
+      [
+        "e.sign.request.item.value",
+        "Sign request item Value"
+      ],
+      [
+        "e.sign.logs",
+        "Sign requests access history"
+      ],
+      [
+        "account.edi.xml.ubl_nl",
+        "SI-UBL 2.0 (NLCIUS)"
+      ],
+      [
+        "hr.skill",
+        "Skill"
+      ],
+      [
+        "hr.individual.skill.mixin",
+        "Skill level"
+      ],
+      [
+        "hr.skill.level",
+        "Skill Level"
+      ],
+      [
+        "hr.applicant.skill",
+        "Skill level for an applicant"
+      ],
+      [
+        "hr.employee.skill",
+        "Skill level for employee"
+      ],
+      [
+        "op.skill.line",
+        "Skill Lines Creation Creation"
+      ],
+      [
+        "op.skill.category",
+        "Skills Category Creation"
+      ],
+      [
+        "hr.job.skill",
+        "Skills for job positions"
+      ],
+      [
+        "hr.skill.type",
+        "Skill Type"
+      ],
+      [
+        "op.course.answer",
+        "Slide Question's Answer"
+      ],
+      [
+        "event.mail.slot",
+        "Slot Mail Scheduler"
+      ],
+      [
+        "sms.account.phone",
+        "SMS Account Registration Phone Number Wizard"
+      ],
+      [
+        "sms.account.sender",
+        "SMS Account Sender Name Wizard"
+      ],
+      [
+        "sms.account.code",
+        "SMS Account Verification Code Wizard"
+      ],
+      [
+        "sms.template.preview",
+        "SMS Template Preview"
+      ],
+      [
+        "sms.template.reset",
+        "SMS Template Reset"
+      ],
+      [
+        "sms.template",
+        "SMS Templates"
+      ],
+      [
+        "snailmail.letter",
+        "Snailmail Letter"
+      ],
+      [
+        "stock.orderpoint.snooze",
+        "Snooze Orderpoint"
+      ],
+      [
+        "hr.recruitment.source",
+        "Source of Applicants"
+      ],
+      [
+        "sparse_fields.test",
+        "Sparse fields Test"
+      ],
+      [
+        "spreadsheet.spreadsheet",
+        "Spreadsheet"
+      ],
+      [
+        "spreadsheet.abstract",
+        "Spreadsheet abstract for inheritance"
+      ],
+      [
+        "spreadsheet.dashboard",
+        "Spreadsheet Dashboard"
+      ],
+      [
+        "spreadsheet.mixin",
+        "Spreadsheet mixin"
+      ],
+      [
+        "spreadsheet.base.revision",
+        "Spreadsheet Oca Revision"
+      ],
+      [
+        "stock.avco.report",
+        "Stock AVCO Justifier"
+      ],
+      [
+        "stock.move",
+        "Stock Move"
+      ],
+      [
+        "stock.package.destination",
+        "Stock Package Destination"
+      ],
+      [
+        "stock.package.history",
+        "Stock Package History"
+      ],
+      [
+        "stock.package.type",
+        "Stock package type"
+      ],
+      [
+        "stock.quantity.history",
+        "Stock Quantity History"
+      ],
+      [
+        "stock.quant.relocate",
+        "Stock Quantity Relocation"
+      ],
+      [
+        "report.stock.quantity",
+        "Stock Quantity Report"
+      ],
+      [
+        "report.stock.report_reception",
+        "Stock Reception Report"
+      ],
+      [
+        "stock.forecasted_product_product",
+        "Stock Replenishment Report"
+      ],
+      [
+        "stock.forecasted_product_template",
+        "Stock Replenishment Report"
+      ],
+      [
+        "stock.request.count",
+        "Stock Request an Inventory Count"
+      ],
+      [
+        "stock.rule",
+        "Stock Rule"
+      ],
+      [
+        "report.stock.report_stock_rule",
+        "Stock rule report"
+      ],
+      [
+        "stock.rules.report",
+        "Stock Rules report"
+      ],
+      [
+        "stock.replenishment.info",
+        "Stock supplier replenishment information"
+      ],
+      [
+        "stock_account.stock.valuation.report",
+        "Stock Valuation"
+      ],
+      [
+        "stock.replenishment.option",
+        "Stock warehouse replenishment option"
+      ],
+      [
+        "dms.storage",
+        "Storage"
+      ],
+      [
+        "stock.storage.category",
+        "Storage Category"
+      ],
+      [
+        "stock.storage.category.capacity",
+        "Storage Category Capacity"
+      ],
+      [
+        "mail.link.preview",
+        "Store link preview data"
+      ],
+      [
+        "student.attendance",
+        "Student Attendance"
+      ],
+      [
+        "student.co.attainment",
+        "Student CO Attainment"
+      ],
+      [
+        "aio.engagement.metrics",
+        "Student Engagement Metrics"
+      ],
+      [
+        "op.student.fees.details",
+        "Student Fees Details"
+      ],
+      [
+        "student.leave.type",
+        "Student Leave Type"
+      ],
+      [
+        "student.migrate",
+        "Student Migrate"
+      ],
+      [
+        "student.notice.circular.read",
+        "Student Notice Read"
+      ],
+      [
+        "op.student.skill",
+        "Student Skill"
+      ],
+      [
+        "op.student.skill.assessment.line",
+        "Student Skill Assessment"
+      ],
+      [
+        "op.student.skill.level",
+        "Student Skill Level"
+      ],
+      [
+        "op.student.skill.level.name",
+        "Student Skill Level Name"
+      ],
+      [
+        "op.student.skill.line",
+        "Student Skill Line"
+      ],
+      [
+        "op.student.skill.name",
+        "Student Skill Name"
+      ],
+      [
+        "op.student.skill.type",
+        "Student Skill Types"
+      ],
+      [
+        "student.statistics",
+        "Student Statistics"
+      ],
+      [
+        "student.transcript.wizard",
+        "Student Transcript Generation Wizard"
+      ],
+      [
+        "student.wise",
+        "Student Wise"
+      ],
+      [
+        "report.openeducat_discipline.student_wise_report",
+        "Student Wise Report"
+      ],
+      [
+        "student.withdrawal.fee.wizard",
+        "Student Withdrawal Fee Action Wizard"
+      ],
+      [
+        "op.subject.cost",
+        "Subject Cost"
+      ],
+      [
+        "subject.credit",
+        "Subject Credit"
+      ],
+      [
+        "op.subject.faculty",
+        "Subject Faculty Line"
+      ],
+      [
+        "subterm.weight.line",
+        "Sub Term Weight Line"
+      ],
+      [
+        "product.supplierinfo",
+        "Supplier Pricelist"
+      ],
+      [
+        "survey.invite",
+        "Survey Invitation Wizard"
+      ],
+      [
+        "survey.question.answer",
+        "Survey Label"
+      ],
+      [
+        "survey.question",
+        "Survey Question"
+      ],
+      [
+        "survey.user_input.line",
+        "Survey User Input Line"
+      ],
+      [
+        "suspended.student",
+        "Suspended Student Details"
+      ],
+      [
+        "ir.config_parameter",
+        "System Parameter"
+      ],
+      [
+        "op.digital.library.material.tag",
+        "Tags For Material"
+      ],
+      [
+        "take.action",
+        "Take Action Based on Misbehaviour"
+      ],
+      [
+        "account.tax.group",
+        "Tax Group"
+      ],
+      [
+        "account.tax.repartition.line",
+        "Tax Repartition Line"
+      ],
+      [
+        "template.reset.mixin",
+        "Template Reset Mixin"
+      ],
+      [
+        "terminology.rendered.output",
+        "Terminology in Rendered Output"
+      ],
+      [
+        "openeducat.terminology.exception",
+        "Terminology Protected Name"
+      ],
+      [
+        "openeducat.terminology.scope",
+        "Terminology Scope"
+      ],
+      [
+        "openeducat.terminology.term",
+        "Terminology Term"
+      ],
+      [
+        "theme.ir.asset",
+        "Theme Asset"
+      ],
+      [
+        "theme.ir.attachment",
+        "Theme Attachments"
+      ],
+      [
+        "dashboard_pro.theme",
+        "Theme Of Dashboard"
+      ],
+      [
+        "theme.ir.ui.view",
+        "Theme UI View"
+      ],
+      [
+        "theme.utils",
+        "Theme Utils"
+      ],
+      [
+        "op.thesis.committee",
+        "Thesis Committee Member"
+      ],
+      [
+        "op.thesis.evaluation.parameter",
+        "Thesis Evaluation Parameter"
+      ],
+      [
+        "op.thesis.extension.reason",
+        "Thesis Extension Reason"
+      ],
+      [
+        "op.thesis.progress.feedback.wizard",
+        "Thesis Progress Feedback Wizard"
+      ],
+      [
+        "op.thesis.report.type",
+        "Thesis Report Type"
+      ],
+      [
+        "op.thesis.submission.evaluation.line",
+        "Thesis Submission Evaluation Line"
+      ],
+      [
+        "hr.leave.report.calendar",
+        "Time Off Calendar"
+      ],
+      [
+        "hr.leave.report",
+        "Time Off Summary / Report"
+      ],
+      [
+        "hr.leave.employee.type.report",
+        "Time Off Summary / Report"
+      ],
+      [
+        "hr.leave.type",
+        "Time Off Type"
+      ],
+      [
+        "report.openeducat_timetable.report_timetable_student_generate",
+        "Timetable Student Report"
+      ],
+      [
+        "report.openeducat_timetable.report_timetable_teacher_generate",
+        "Timetable Teacher Report"
+      ],
+      [
+        "aio.token.trend.analyzer",
+        "Token Usage Trend Analyzer"
+      ],
+      [
+        "op.topics",
+        "Topics"
+      ],
+      [
+        "auth.totp.rate.limit.log",
+        "TOTP rate limit logs"
+      ],
+      [
+        "web_tour.tour",
+        "Tours"
+      ],
+      [
+        "web_tour.tour.step",
+        "Tour's step"
+      ],
+      [
+        "stock.traceability.report",
+        "Traceability Report"
+      ],
+      [
+        "gamification.karma.tracking",
+        "Track Karma Changes"
+      ],
+      [
+        "op.route",
+        "Transportation Route"
+      ],
+      [
+        "op.route.passenger",
+        "Transportation Route Passenger"
+      ],
+      [
+        "op.route.stop.line",
+        "Transportation Route Stop Line"
+      ],
+      [
+        "op.stop",
+        "Transportation Stop"
+      ],
+      [
+        "op.vehicle",
+        "Transportation Vehicle"
+      ],
+      [
+        "ir.cron.trigger",
+        "Triggered actions"
+      ],
+      [
+        "hr.resume.line.type",
+        "Type of a resume line"
+      ],
+      [
+        "account.edi.xml.ubl_20",
+        "UBL 2.0"
+      ],
+      [
+        "account.edi.xml.ubl_21",
+        "UBL 2.1"
+      ],
+      [
+        "account.edi.xml.ubl_bis3",
+        "UBL BIS Billing 3.0.12"
+      ],
+      [
+        "account.edi.ubl_cen_en16931",
+        "UBL CEN-EN16931"
+      ],
+      [
+        "account.edi.ubl_pint",
+        "UBL PINT"
+      ],
+      [
+        "account.edi.ubl_pint_eu",
+        "UBL PINT-EU Layer"
+      ],
+      [
+        "website.base.unit",
+        "Unit of Measure for price per unit on eCommerce products."
+      ],
+      [
+        "_unknown",
+        "Unknown"
+      ],
+      [
+        "op.update.mark",
+        "Update Mark Wizard"
+      ],
+      [
+        "base.module.update",
+        "Update Module"
+      ],
+      [
+        "update.product.attribute.value",
+        "Update product attribute value"
+      ],
+      [
+        "crm.lead.pls.update",
+        "Update the probabilities"
+      ],
+      [
+        "base.module.upgrade",
+        "Upgrade Module"
+      ],
+      [
+        "res.users",
+        "User"
+      ],
+      [
+        "res.user.bookmark",
+        "User Bookmark"
+      ],
+      [
+        "change.password.own",
+        "User, change own password wizard"
+      ],
+      [
+        "change.password.user",
+        "User, Change Password Wizard"
+      ],
+      [
+        "mail.presence",
+        "User/Guest Presence"
+      ],
+      [
+        "website.custom_blocked_third_party_domains",
+        "User list of blocked 3rd-party domains"
+      ],
+      [
+        "res.users.role",
+        "User role"
+      ],
+      [
+        "res.users.apikeys",
+        "Users API Keys"
+      ],
+      [
+        "res.users.role.line",
+        "Users associated to a role"
+      ],
+      [
+        "res.users.deletion",
+        "Users Deletion Request"
+      ],
+      [
+        "res.users.settings",
+        "User Settings"
+      ],
+      [
+        "res.users.settings.embedded.action",
+        "User Settings for Embedded Actions"
+      ],
+      [
+        "res.users.settings.volumes",
+        "User Settings Volumes"
+      ],
+      [
+        "res.users.log",
+        "Users Log"
+      ],
+      [
+        "utm.campaign",
+        "UTM Campaign"
+      ],
+      [
+        "utm.medium",
+        "UTM Medium"
+      ],
+      [
+        "utm.mixin",
+        "UTM Mixin"
+      ],
+      [
+        "utm.source",
+        "UTM Source"
+      ],
+      [
+        "utm.source.mixin",
+        "UTM Source Mixin"
+      ],
+      [
+        "utm.tag",
+        "UTM Tag"
+      ],
+      [
+        "validate.account.move",
+        "Validate Account Move"
+      ],
+      [
+        "fleet.vehicle.state",
+        "Vehicle Status"
+      ],
+      [
+        "fleet.vehicle.tag",
+        "Vehicle Tag"
+      ],
+      [
+        "vendor.delay.report",
+        "Vendor Delay Report"
+      ],
+      [
+        "ir.ui.view",
+        "View"
+      ],
+      [
+        "website.track",
+        "Visited Pages"
+      ],
+      [
+        "stock.warehouse",
+        "Warehouse"
+      ],
+      [
+        "op.quiz.result.warning",
+        "Warning data"
+      ],
+      [
+        "stock.warn.insufficient.qty",
+        "Warn Insufficient Quantity"
+      ],
+      [
+        "stock.warn.insufficient.qty.scrap",
+        "Warn Insufficient Scrap Quantity"
+      ],
+      [
+        "web.environment.ribbon.backend",
+        "Web Environment Ribbon Backend"
+      ],
+      [
+        "aio.webhook.call.log",
+        "Webhook Call Log"
+      ],
+      [
+        "website",
+        "Website"
+      ],
+      [
+        "website.checkout.step",
+        "Website Checkout Step"
+      ],
+      [
+        "website.configurator.feature",
+        "Website Configurator Feature"
+      ],
+      [
+        "website.event.menu",
+        "Website Event Menu"
+      ],
+      [
+        "website.menu",
+        "Website Menu"
+      ],
+      [
+        "website.page_options.mixin",
+        "Website page/record specific options"
+      ],
+      [
+        "website.page_visibility_options.mixin",
+        "Website page/record specific visibility options"
+      ],
+      [
+        "product.public.category",
+        "Website Product Category"
+      ],
+      [
+        "website.published.mixin",
+        "Website Published Mixin"
+      ],
+      [
+        "website.rewrite",
+        "Website rewrite"
+      ],
+      [
+        "website.searchable.mixin",
+        "Website Searchable Mixin"
+      ],
+      [
+        "website.snippet.filter",
+        "Website Snippet Filter"
+      ],
+      [
+        "website.technical.page",
+        "Website Technical Page"
+      ],
+      [
+        "theme.website.menu",
+        "Website Theme Menu"
+      ],
+      [
+        "theme.website.page",
+        "Website Theme Page"
+      ],
+      [
+        "website.visitor",
+        "Website Visitor"
+      ],
+      [
+        "ir.websocket",
+        "websocket message handling"
+      ],
+      [
+        "whatsapp.activate.template",
+        "Whatsapp Activate Template"
+      ],
+      [
+        "whatsapp.variable",
+        "Whatsapp Add Variable"
+      ],
+      [
+        "whatsapp.body.variable",
+        "Whatsapp body variable"
+      ],
+      [
+        "whatsapp.buttons",
+        "Whatsapp Buttons"
+      ],
+      [
+        "whatsapp.campaign",
+        "Whatsapp Campaign"
+      ],
+      [
+        "whatsapp.campaign.activity",
+        "Whatsapp Campaign Activity"
+      ],
+      [
+        "whatsapp.campaign.participants",
+        "Whatsapp Campaign Participants"
+      ],
+      [
+        "whatsapp.chat.create",
+        "WHATSAPP Chat Create"
+      ],
+      [
+        "whatsapp.chat.reaction",
+        "WhatsApp Chat Reaction"
+      ],
+      [
+        "whatsapp.conversation.analytics",
+        "Whatsapp Conversation Analytics"
+      ],
+      [
+        "whatsapp.description.widget",
+        "whatsapp description widget"
+      ],
+      [
+        "whatsapp.header.media.variable",
+        "Whatsapp header media variable"
+      ],
+      [
+        "whatsapp.header.variable",
+        "Whatsapp header variable"
+      ],
+      [
+        "whatsapp.interective",
+        "Whatsapp Interective"
+      ],
+      [
+        "whatsapp.list.sections",
+        "Whatsapp List Sections"
+      ],
+      [
+        "whatsapp.preview",
+        "Whatsapp preview"
+      ],
+      [
+        "whatsapp.chatter",
+        "Whatsapp preview"
+      ],
+      [
+        "whatsapp.sections.rows",
+        "Whatsapp Sections Rows"
+      ],
+      [
+        "whatsapp.server.action",
+        "Whatsapp Server Action"
+      ],
+      [
+        "whatsapp.server.map",
+        "Whatsapp Server Map"
+      ],
+      [
+        "op.subject.registration.reject.change.wizard",
+        "Wizard: admin rejects a student change request on op.subject.registration."
+      ],
+      [
+        "fees.detail.report.wizard",
+        "Wizard For Fees Details Report"
+      ],
+      [
+        "select.fees.term.type.wizard",
+        "Wizard For Fees Term Type"
+      ],
+      [
+        "session.confirmation",
+        "Wizard for Multiple Session Confirmation"
+      ],
+      [
+        "queue.requeue.job",
+        "Wizard to requeue a selection of jobs"
+      ],
+      [
+        "resource.calendar.attendance",
+        "Work Detail"
+      ],
+      [
+        "aio.workflow.step",
+        "Workflow Step"
+      ],
+      [
+        "aio.workflow.step.execution",
+        "Workflow Step Execution"
+      ],
+      [
+        "hr.work.location",
+        "Work Location"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Record Referenced",
+    "type": "reference"
+  },
+  "permission_read": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "permission_read",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Read Access",
+    "type": "boolean"
+  },
+  "permission_create": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "permission_create",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Create Access",
+    "type": "boolean"
+  },
+  "permission_write": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "permission_write",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Write Access",
+    "type": "boolean"
+  },
+  "permission_unlink": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "permission_unlink",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Delete Access",
+    "type": "boolean"
+  },
+  "access_url": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Customer Portal URL",
+    "manual": false,
+    "name": "access_url",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Portal Access URL",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "access_token": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "access_token",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Security Token",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "access_warning": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "access_warning",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Access warning",
+    "translate": false,
+    "type": "text"
+  },
+  "active": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "If a file is set to archived, it is not displayed, but still exists.",
+    "manual": false,
+    "name": "active",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Archived",
+    "type": "boolean"
+  },
+  "directory_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {
+      "dms_directory_show_path": true
+    },
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('permission_create', '=', True)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "directory_id",
+    "readonly": false,
+    "relation": "dms.directory",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Directory",
+    "type": "many2one"
+  },
+  "user_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "user_id",
+    "readonly": false,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Assigned to",
+    "type": "many2one"
+  },
+  "path_names": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "directory_id",
+      "directory_id.parent_path"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "path_names",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Path Names",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "path_json": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "directory_id",
+      "directory_id.parent_path"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "path_json",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Path Json",
+    "translate": false,
+    "type": "text"
+  },
+  "tag_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('category_id', '=', False),('category_id', '=?', category_id)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "tag_ids",
+    "readonly": false,
+    "relation": "dms.tag",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Tags",
+    "type": "many2many"
+  },
+  "content": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "content_binary",
+      "content_file",
+      "attachment_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "content",
+    "readonly": false,
+    "required": true,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Content",
+    "type": "binary"
+  },
+  "extension": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "mimetype",
+      "content"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "extension",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Extension",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "mimetype": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "content"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "mimetype",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Type",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "size": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "size",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Size",
+    "type": "float"
+  },
+  "checksum": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "checksum",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Checksum/SHA1",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "content_binary": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "content_binary",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Content Binary",
+    "type": "binary"
+  },
+  "save_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "content_binary",
+      "content_file"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "save_type",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Current Save Type",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "migration": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "storage_id",
+      "storage_id.save_type"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "migration",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Migration Status",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "require_migration": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "storage_id",
+      "storage_id.save_type"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "require_migration",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Require Migration",
+    "type": "boolean"
+  },
+  "content_file": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "content_file",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Content File",
+    "type": "binary"
+  },
+  "attachment_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "attachment_id",
+    "readonly": false,
+    "relation": "ir.attachment",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Attachment File",
+    "type": "many2one"
+  },
+  "locked_by": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "locked_by",
+    "readonly": false,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Locked By",
+    "type": "many2one"
+  },
+  "is_locked": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "locked_by"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "is_locked",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Locked",
+    "type": "boolean"
+  },
+  "is_lock_editor": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "locked_by"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "is_lock_editor",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Editor",
+    "type": "boolean"
+  },
+  "create_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created by",
+    "type": "many2one"
+  },
+  "create_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created on",
+    "type": "datetime"
+  },
+  "write_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated by",
+    "type": "many2one"
+  },
+  "write_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated on",
+    "type": "datetime"
+  }
+}

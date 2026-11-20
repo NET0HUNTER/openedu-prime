@@ -1,0 +1,20 @@
+﻿<search string="Registration">
+                    <field name="name"/>
+                    <field name="application_number"/>
+                    <field name="admission_date"/>
+                    <field name="application_date"/>
+                    <field name="birth_date"/>
+                    <field name="course_id"/>
+                    <field name="batch_id"/>
+                    <separator/>
+                    <filter name="enrolled_student" string="Enrolled" domain="[('state','=','done')]"/>
+                    <group>
+                        <filter string="Admission Date" name="group_by_adm_admission_date" domain="[]" context="{'group_by':'admission_date'}"/>
+                        <filter string="Application Date" name="group_by_adm_application_date" domain="[]" context="{'group_by':'application_date'}"/>
+                        <filter string="Course" name="group_by_adm_course_id" domain="[]" context="{'group_by':'course_id'}"/>
+                        <filter string="Batch" name="group_by_adm_batch_id" domain="[]" context="{'group_by':'batch_id'}"/>
+                        <filter string="Status" name="group_by_adm_state" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Register" name="group_by_adm_register" domain="[('register_id.state', 'not in', ['cancel', 'done'])]" context="{'group_by':'register_id'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                </search>

@@ -1,0 +1,8 @@
+<search string="Library Card Type">
+                    <field name="name"/>
+                    <field name="duration"/>
+                    <field name="penalty_amt_per_day"/>
+                    <newline/>
+                    <group>
+                    </group>
+                </search>

@@ -1,0 +1,4 @@
+<pivot string="Assignment Pivot View">
+                    <field name="course_id" type="col"/>
+                    <field name="state" type="row"/>
+                </pivot>

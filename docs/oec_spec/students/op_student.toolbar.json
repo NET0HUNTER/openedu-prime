@@ -1,0 +1,61 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  921,
+                      "name":  "Student ID Card",
+                      "binding_view_types":  "list,form"
+                  },
+                  {
+                      "id":  1081,
+                      "name":  "Student Information",
+                      "binding_view_types":  "list,form"
+                  },
+                  {
+                      "id":  1082,
+                      "name":  "Course Enrollment",
+                      "binding_view_types":  "list,form"
+                  },
+                  {
+                      "id":  1129,
+                      "name":  "Library ID Card",
+                      "binding_view_types":  "list,form"
+                  },
+                  {
+                      "id":  1511,
+                      "name":  "Attendance Summary",
+                      "binding_view_types":  "list,form"
+                  }
+              ],
+    "action":  [
+                   {
+                       "id":  925,
+                       "name":  "Create Users",
+                       "binding_view_types":  "list,form"
+                   },
+                   {
+                       "id":  926,
+                       "name":  "Bonafide Certificate",
+                       "binding_view_types":  "list,form"
+                   },
+                   {
+                       "id":  1080,
+                       "name":  "Student Course Allocation",
+                       "binding_view_types":  "list,form"
+                   },
+                   {
+                       "id":  1221,
+                       "name":  "Create Student Subject Registration",
+                       "binding_view_types":  "list,form"
+                   },
+                   {
+                       "id":  1341,
+                       "name":  "Student Attendance",
+                       "binding_view_types":  "list,form"
+                   },
+                   {
+                       "id":  1477,
+                       "name":  "Generate Transcript",
+                       "binding_view_types":  "list,form"
+                   }
+               ]
+}

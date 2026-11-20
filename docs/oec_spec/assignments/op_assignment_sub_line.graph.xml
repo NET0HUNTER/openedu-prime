@@ -1,0 +1,4 @@
+<graph string="Assignment Sub Line Graph View" type="pie">
+                    <field name="assignment_id"/>
+                    <field name="state"/>
+                </graph>

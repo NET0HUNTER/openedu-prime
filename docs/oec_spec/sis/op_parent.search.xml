@@ -1,0 +1,9 @@
+﻿<search string="Parent">
+                    <field name="name"/>
+                    <field name="student_ids"/>
+                    <newline/>
+                    <group>
+                        <filter string="Name" name="group_by_parent_name" domain="[]" context="{'group_by':'name'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                </search>

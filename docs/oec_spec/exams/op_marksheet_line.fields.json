@@ -1,0 +1,181 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "marksheet_reg_id":  {
+                             "readonly":  false,
+                             "relation":  "op.marksheet.register",
+                             "required":  false,
+                             "string":  "Marksheet Register",
+                             "type":  "many2one"
+                         },
+    "evaluation_type":  {
+                            "readonly":  true,
+                            "required":  false,
+                            "selection":  [
+                                              [
+                                                  "normal",
+                                                  "Normal"
+                                              ],
+                                              [
+                                                  "grade",
+                                                  "Grade"
+                                              ]
+                                          ],
+                            "string":  "Evolution Type",
+                            "type":  "selection"
+                        },
+    "student_id":  {
+                       "readonly":  false,
+                       "relation":  "op.student",
+                       "required":  true,
+                       "string":  "Student",
+                       "type":  "many2one"
+                   },
+    "result_line":  {
+                        "readonly":  false,
+                        "relation":  "op.result.line",
+                        "required":  false,
+                        "string":  "Results",
+                        "type":  "one2many"
+                    },
+    "total_marks":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Total Marks",
+                        "type":  "integer"
+                    },
+    "percentage":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Percentage",
+                       "type":  "float"
+                   },
+    "generated_date":  {
+                           "readonly":  false,
+                           "required":  true,
+                           "string":  "Generated Date",
+                           "type":  "date"
+                       },
+    "grade":  {
+                  "readonly":  true,
+                  "required":  false,
+                  "string":  "Grade",
+                  "type":  "char"
+              },
+    "status":  {
+                   "readonly":  true,
+                   "required":  false,
+                   "selection":  [
+                                     [
+                                         "pass",
+                                         "Pass"
+                                     ],
+                                     [
+                                         "fail",
+                                         "Fail"
+                                     ]
+                                 ],
+                   "string":  "Status",
+                   "type":  "selection"
+               },
+    "active":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Active",
+                   "type":  "boolean"
+               },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "is_read":  {
+                    "readonly":  false,
+                    "required":  false,
+                    "string":  "Read?",
+                    "type":  "boolean"
+                },
+    "is_read_by_parent":  {
+                              "readonly":  false,
+                              "required":  false,
+                              "string":  "Read by Parent?",
+                              "type":  "boolean"
+                          },
+    "progression_id":  {
+                           "readonly":  false,
+                           "relation":  "op.student.progression",
+                           "required":  false,
+                           "string":  "Progression No",
+                           "type":  "many2one"
+                       },
+    "exam_name":  {
+                      "readonly":  true,
+                      "relation":  "op.exam.session",
+                      "required":  false,
+                      "string":  "Exam Session",
+                      "type":  "many2one"
+                  },
+    "exam_type":  {
+                      "readonly":  true,
+                      "relation":  "op.exam.type",
+                      "required":  false,
+                      "string":  "Exam Type",
+                      "type":  "many2one"
+                  },
+    "grand_total":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Grand Total",
+                        "type":  "integer"
+                    },
+    "gpa_count":  {
+                      "readonly":  true,
+                      "required":  false,
+                      "string":  "GPA",
+                      "type":  "float"
+                  },
+    "total_points":  {
+                         "readonly":  false,
+                         "required":  false,
+                         "string":  "total_points",
+                         "type":  "float"
+                     }
+}

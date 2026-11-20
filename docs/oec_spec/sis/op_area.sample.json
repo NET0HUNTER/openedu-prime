@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Agriculture"
+    },
+    {
+        "id":  2,
+        "display_name":  "Applied Sciences"
+    },
+    {
+        "id":  3,
+        "display_name":  "Architecture and Planning"
+    },
+    {
+        "id":  4,
+        "display_name":  "Ayurved"
+    },
+    {
+        "id":  5,
+        "display_name":  "Commerce"
+    }
+]

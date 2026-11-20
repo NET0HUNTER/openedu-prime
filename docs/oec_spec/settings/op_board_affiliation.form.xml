@@ -1,0 +1,15 @@
+<form string="Board Affiliation">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="code" required="1"/>
+                            </group>
+                            <label for="note" string="Description" class="mt-3"/>
+                            <field name="note" nolabel="1"/>
+                        </group>
+                    </sheet>
+                </form>

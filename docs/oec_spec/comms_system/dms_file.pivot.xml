@@ -1,0 +1,5 @@
+<pivot display_quantity="true">
+                <field name="storage_id" type="row"/>
+                <field name="directory_id" type="row"/>
+                <field name="size" type="measure"/>
+            </pivot>

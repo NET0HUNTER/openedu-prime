@@ -1,0 +1,142 @@
+<form string="Jobs - Recruitment Form" class="o_applicant_form">
+            <field name="company_id" invisible="1" can_create="True" can_write="True"/>
+            <field name="application_status" invisible="1" on_change="1"/>
+            <field name="employee_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+            <field name="meeting_ids" invisible="1" on_change="1"/>
+            <field name="refuse_reason_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+            <field name="email_normalized" invisible="1" on_change="1"/>
+            <field name="partner_phone_sanitized" invisible="1" on_change="1"/>
+            <field name="emp_is_active" invisible="1"/>
+            <field name="is_rotting" invisible="1"/>
+            <field name="rotting_days" invisible="1"/>
+            <header>
+                <button string="Create Employee" name="create_employee_from_applicant" type="object" data-hotkey="q" class="o_create_employee" invisible="employee_id or not active or not date_closed"/>
+                <button string="Refuse" name="archive_applicant" type="object" invisible="not active or is_pool_applicant" data-hotkey="d"/>
+                <button string="Restore" name="action_unarchive" type="object" invisible="active" data-hotkey="x"/>
+                <field name="stage_id" widget="rotting_statusbar_duration" options="{'clickable': '1'}" invisible="(not active and not employee_id) or is_pool_applicant" on_change="1" can_create="True" can_write="True"/>
+                <button string="Create Applications" name="action_job_add_applicants" type="object" invisible="not is_pool_applicant"/>
+                <button string="Add to Pool" name="action_talent_pool_add_applicants" type="object" invisible="is_pool_applicant or is_applicant_in_pool"/>
+            </header>
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_open_employee" type="object" class="oe_stat_button" icon="fa-id-card-o" invisible="not (employee_id or emp_is_active)">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value"><field name="employee_name" readonly="1"/></span>
+                            <span class="o_stat_text">Employee</span>
+                        </div>
+                    </button>
+                    <button name="action_open_applications" class="oe_stat_button" icon="fa-pencil" type="object" context="{'active_test': False}" invisible="not application_count or (application_count &lt;= 1 and not is_pool_applicant)">
+                        <field name="application_count" widget="statinfo" string="Applications"/>
+                    </button>
+                    <button name="action_create_meeting" class="oe_stat_button" icon="fa-calendar" type="object" invisible="not id">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text"><field name="meeting_display_text"/></span>
+                            <span class="o_stat_value"><field name="meeting_display_date" readonly="1"/></span>
+                        </div>
+                    </button>
+                    <button name="action_talent_pool_stat_button" class="oe_stat_button" icon="fa-users" type="object" invisible="not id or is_pool_applicant or not is_applicant_in_pool">
+                        <field name="talent_pool_count" widget="statinfo" string="Talent Pools"/>
+                    </button>
+                </div>
+                <!-- Job pipe ribbons -->
+                <widget name="web_ribbon" title="Refused" bg_color="text-bg-danger" invisible="application_status != 'refused'"/>
+                <widget name="web_ribbon" title="Archived" bg_color="text-bg-secondary" invisible="application_status != 'archived'"/>
+                <widget name="web_ribbon" title="Hired" invisible="application_status != 'hired'"/>
+                <field name="active" invisible="1"/>
+                <field name="legend_normal" invisible="1"/>
+                <field name="legend_blocked" invisible="1"/>
+                <field name="legend_waiting" invisible="1"/>
+                <field name="legend_done" invisible="1"/>
+                <field name="kanban_state" widget="hr_applicant_state_selection" invisible="application_status == 'refused' or application_status == 'archived' or is_pool_applicant" class="o_field_state_selection"/>
+                <div class="oe_title pe-0">
+                    <label for="partner_name" class="oe_edit_only" string="Applicant" invisible="is_pool_applicant"/>
+                    <label for="partner_name" class="oe_edit_only" string="Talent" invisible="not is_pool_applicant"/>
+                    <h1 class="d-flex justify-content-between align-items-center me-4">
+                        <field name="partner_name" options="{'line_breaks': False}" context="{'default_company_id': company_id}" required="1"/>
+                    </h1>
+                </div>
+                <group>
+                    <group>
+                        <field name="partner_name" invisible="1"/>
+                        <field name="partner_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                        <field name="refuse_reason_id" invisible="active" on_change="1" can_create="True" can_write="True"/>
+                        <field name="email_from" placeholder="e.g. john.doe@example.com" widget="email" on_change="1"/>
+                        <field name="partner_phone" widget="phone" on_change="1"/>
+                        <field name="linkedin_profile" placeholder="e.g. https://www.linkedin.com/in/..." widget="url" on_change="1"/>
+                    </group>
+                    <group>
+                        <field name="priority" widget="priority"/>
+                        <field name="job_id" invisible="is_pool_applicant" placeholder="Spontaneous application" on_change="1" can_create="True" can_write="True"/>
+                        <field name="talent_pool_ids" widget="many2many_tags" options="{'color_field': 'color'}" invisible="not is_pool_applicant" on_change="1" can_create="True" can_write="True"/>
+                        <field name="user_id" widget="many2one_avatar_user" placeholder="Unassigned" can_create="True" can_write="True"/>
+                        <field name="interviewer_ids" options="{'no_create': True}" widget="many2many_avatar_user" invisible="is_pool_applicant" placeholder="Who can access applicants" can_create="True" can_write="True"/>
+                        <field name="date_closed" invisible="not date_closed" on_change="1"/>
+                        <field name="categ_ids" placeholder="e.g. Trainee" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" can_create="True" can_write="True"/>
+                    </group>
+                </group>
+                <field name="applicant_properties" columns="2"/>
+                <notebook>
+                    <page string="Note" name="application_note">
+                        <field name="applicant_notes" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Add private notes about this applicant..."/>
+                    </page>
+                    <page string="Details" name="application_details">
+                        <group>
+                            <group string="Applicant">
+                                <field name="type_id" placeholder="e.g. Masters" on_change="1" can_create="True" can_write="True"/>
+                                <field name="availability" placeholder="Directly"/>
+                            </group>
+                            <group string="Job">
+                                <field name="department_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="company_id" options="{&quot;no_open&quot;:True}" placeholder="Visible to all" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group string="Salary Package" name="recruitment_contract">
+                                <label for="salary_expected"/>
+                                <div class="o_row">
+                                    <field name="salary_expected" placeholder="Expected"/>
+                                    <span invisible="not salary_expected_extra"> + </span>
+                                    <field name="salary_expected_extra" placeholder="Other benefits"/>
+                                </div>
+                                <label for="salary_proposed"/>
+                                <div class="o_row">
+                                    <field name="salary_proposed"/>
+                                    <span invisible="not salary_proposed_extra"> + </span>
+                                    <field name="salary_proposed_extra" placeholder="Other benefits"/>
+                                </div>
+                            </group>
+                            <group string="Sourcing">
+                                <field name="source_id" placeholder="Select where the applicant comes from" can_create="True" can_write="True"/>
+                                <field name="medium_id" placeholder="Select the way applicant found the offer" can_create="True" can_write="True"/>
+                                <field name="campaign_id" placeholder="Select the campaign the applicant was part of" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </page>
+                <page string="Skills">
+                    <div class="o_hr_skills_editable o_hr_skills_group o_group_skills">
+                        <field name="id" invisible="1"/>
+                        <group>
+                            <group>
+                                <field mode="list" nolabel="1" name="current_applicant_skill_ids" widget="skills_one2many" context="{'default_applicant_id': id, 'no_timeline': True}" on_change="1">
+                                    <list class="o_applicant_skills" decoration-muted="valid_to and valid_to &lt; context_today().strftime('%Y-%m-%d')" decoration-danger="valid_to and valid_to &lt;= (context_today() + relativedelta(days=7)).strftime('%Y-%m-%d') and valid_to &gt; context_today().strftime('%Y-%m-%d')" decoration-warning="valid_to and valid_to &lt;= (context_today() + relativedelta(months=1)).strftime('%Y-%m-%d') and valid_to &gt; (context_today() + relativedelta(days=7)).strftime('%Y-%m-%d')">
+                                        <field name="skill_type_id" optional="hidden" on_change="1"/>
+                                        <field name="skill_id" on_change="1"/>
+                                        <field name="skill_level_id" on_change="1"/>
+                                        <field name="level_progress" widget="progressbar"/>
+                                        <field name="valid_to" column_invisible="1" on_change="1"/>
+                                    </list>
+                                </field>
+                            </group>
+                            <group>
+                                <field name="matching_score" invisible="is_pool_applicant" nolabel="1" widget="skill_match_gauge_field" options="{'max_value': 100}"/>
+                            </group>
+                        </group>
+                    </div>
+                </page>
+                </notebook>
+            </sheet>
+            <div class="o_attachment_preview"/>
+            <chatter open_attachments="True" reload_on_attachment="True"/>
+          <field name="is_pool_applicant" invisible="True" readonly="True" data-used-by="invisible='is_pool_applicant' (field,matching_score); invisible='not id or is_pool_applicant or not is_applicant_in_pool' (button,action_talent_pool_stat_button)"/>
+<field name="is_applicant_in_pool" invisible="True" readonly="True" data-used-by="invisible='is_pool_applicant or is_applicant_in_pool' (button,action_talent_pool_add_applicants); invisible='not id or is_pool_applicant or not is_applicant_in_pool' (button,action_talent_pool_stat_button)"/>
+</form>

@@ -1,0 +1,16 @@
+<form string="Library Card Type">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="duration"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="allow_media"/>
+                                <field name="penalty_amt_per_day"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

@@ -1,0 +1,4 @@
+﻿<calendar string="Exam Session" event_open_popup="True" date_start="start_date" date_stop="end_date" mode="month" quick_create="False" color="name">
+                    <field name="name"/>
+                    <field name="course_id"/>
+                </calendar>

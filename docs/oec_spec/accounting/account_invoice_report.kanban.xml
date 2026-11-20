@@ -1,0 +1,1 @@
+<kanban string="Invoices Statistics" create="False" delete="False" edit="False"><templates><t t-name="card"><field name="invoice_date"/></t></templates></kanban>

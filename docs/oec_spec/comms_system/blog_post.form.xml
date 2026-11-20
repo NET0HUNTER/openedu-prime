@@ -1,0 +1,34 @@
+<form string="Blog Post">
+            <sheet>
+                <div class="oe_button_box" name="button_box" invisible="not active">
+                    <field name="is_published" widget="website_redirect_button"/>
+                </div>
+                <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                <group name="blog_details">
+                    <field name="blog_id" on_change="1" can_create="True" can_write="True"/>
+                    <field name="active" invisible="1"/>
+                    <field name="name" placeholder="Blog Post Title"/>
+                    <field name="subtitle" placeholder="Blog Subtitle"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" can_create="True" can_write="True"/>
+                    <field name="website_id"/>
+                </group>
+                <group name="publishing_details" string="Publishing Options">
+                    <field name="author_id" can_create="True" can_write="True"/>
+                    <field name="create_date" on_change="1" invisible="1" column_invisible="1"/>
+                    <field name="visits"/>
+                    <field name="post_date"/>
+                    <field name="write_uid"/>
+                    <field name="write_date"/>
+                </group>
+                <notebook>
+                    <page name="seo" string="SEO" invisible="1" column_invisible="1">
+                        <group name="default_opengraph">
+                            <field name="website_meta_title" string="Meta Title"/>
+                            <field name="website_meta_description" string="Meta Description"/>
+                            <field name="website_meta_keywords" string="Meta Keywords" help="Separate every keyword with a comma"/>
+                        </group>
+                    </page>
+                </notebook>
+            </sheet>
+            <chatter/>
+        </form>

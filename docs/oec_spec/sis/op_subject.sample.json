@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Fundamentals of Programming using C (Theory)"
+    },
+    {
+        "id":  2,
+        "display_name":  "Fundamentals of Programming using C (Practical)"
+    },
+    {
+        "id":  3,
+        "display_name":  "Digital and Mobile Media Marketing"
+    },
+    {
+        "id":  4,
+        "display_name":  "Mathematical Aptitude"
+    },
+    {
+        "id":  5,
+        "display_name":  "Database Management Systems (Theory)"
+    }
+]

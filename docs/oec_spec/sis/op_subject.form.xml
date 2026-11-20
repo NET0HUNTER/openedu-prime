@@ -1,0 +1,42 @@
+﻿<form string="Subject">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <div class="oe_button_box" name="button_box" width="100%">
+                    <button class="btn oe_stat_button" type="object" name="action_get_assignment" style="border-right: 1px solid;" icon="fa-file">
+                        <field string="Assignment" name="assignment_count" widget="statinfo"/>
+                    </button>
+                    <button class="btn oe_stat_button" type="object" name="action_get_session" style="border-right: 1px solid;" icon="fa-clock-o">
+                        <field string="Time Table" name="timetable_count" widget="statinfo"/>
+                    </button>
+                    </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="type"/>
+                    <field name="default_template"/>
+                                <field name="subject_type"/>
+          <field name="subject_credit"/>
+                                <field name="department_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                    <field name="parent_sub_id" can_create="True" can_write="True"/>
+                    <field name="course_id" required="1" on_change="1" can_create="True" can_write="True"/>
+                    <field name="attempted_units"/>
+                    <field name="credit_point"/>
+                                <field name="grade_weightage" invisible="1"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    <group>
+                        <field name="grade_template_ids" invisible="default_template != False" can_create="True" can_write="True"><list>
+                <field name="name"/>
+                <field name="company_id" optional="show"/>
+                <field name="state" string="Status" on_change="1"/>
+            </list></field>
+                    </group>
+                    </sheet>
+                    <chatter/>
+                </form>

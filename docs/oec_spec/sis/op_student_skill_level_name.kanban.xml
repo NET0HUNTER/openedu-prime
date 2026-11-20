@@ -1,0 +1,1 @@
+﻿<kanban string="Student Skill Level Name"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

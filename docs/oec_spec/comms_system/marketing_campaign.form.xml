@@ -1,0 +1,241 @@
+<form string="Campaign">
+                <header>
+                <button name="action_open_canvas" type="object" string="Open Canvas" class="btn-secondary" icon="fa-sitemap" invisible="marketing_activity_ids == []"/>
+                    <button name="action_start_campaign" type="object" invisible="state not in ['draft','stopped']" class="btn-primary" string="Start"/>
+                    <button name="action_stop_campaign" type="object" invisible="state != 'running'" class="btn-primary" string="Stop"/>
+                    <button name="702" type="action" invisible="marketing_activity_ids == []" class="btn-secondary" string="Launch a Test"/>
+                    <button name="synch_participants" type="object" invisible="1" class="btn-secondary" string="Generate participants" confirm="Are you sure you want to proceed ?" column_invisible="1"/>
+                    <button name="execute_activities" type="object" invisible="1" class="btn-secondary" string="Execute activities" confirm="Are you sure you want to proceed ?" column_invisible="1"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,running,stopped"/>
+                </header>
+                <field name="require_sync" invisible="1"/>
+                <div class="text-center alert alert-primary" role="alert" invisible="require_sync == False">
+                    <div class="h4 mt8"><strong>The workflow has been modified!</strong></div>
+                    <p>Some participants are already running on this campaign. Click on 'Update' to apply the modifications you've just made.</p>
+                    <p>Be aware that participants that had no more activities could be reintroduced into the campaign and new traces could be created for them.</p>
+                    <p class="mb8">
+                        <button name="action_update_participants" type="object" class="btn btn-primary" string="Update"/>
+                        <button name="action_set_synchronized" type="object" class="btn btn-secondary ml8" string="Don't update"/>
+                    </p>
+                </div>
+                <sheet>
+                    <div name="button_box" class="oe_button_box">
+                        <button name="template_view_action" type="object" icon="fa-envelope-o" class="oe_stat_button">
+                            <field name="mass_mailing_count" widget="statinfo" string="Templates"/>
+                        </button>
+                        <button name="action_view_tracker_statistics" type="object" icon="fa-link" class="oe_stat_button">
+                            <field name="link_tracker_click_count" widget="statinfo" string="Clicks"/>
+                        </button>
+                        <button name="706" type="action" icon="fa-flask" class="oe_stat_button" invisible="test_participant_count == 0">
+                            <field name="test_participant_count" widget="statinfo" string="Tests"/>
+                        </button>
+                        <button name="707" type="action" icon="fa-code-fork fa-rotate-180 fa-flip-vertical" class="oe_stat_button">
+                            <field name="total_participant_count" widget="statinfo" string="Participants"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <span class="oe_edit_only">Name</span>
+                        <h1><field name="name" required="1" placeholder="e.g. eCommerce Offers" on_change="1"/></h1>
+                    </div>
+                    <group>
+                        <field name="model_id" string="Target" class="oe_inline" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}" on_change="1" can_create="True" can_write="True"/>
+                        <field name="active" invisible="1"/>
+                        <field name="model_name" invisible="1"/>
+                        <field name="unique_field_id" string="Unicity based on " options="{'no_create_edit': True, 'no_open': True}" class="oe_inline" can_create="True" can_write="True" invisible="1" column_invisible="1"/>
+                        <field name="domain" widget="domain" options="{'model': 'model_name'}" on_change="1"/>
+                        <field name="utm_campaign_id" required="0" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                    </group>
+                    <div class="o_ma_hierarchy">
+                        <div class="o_ma_hierarchy_title" invisible="marketing_activity_ids == []">Workflow</div>
+                        <div class="o_ma_hierarchy_readonly oe_read_only" invisible="marketing_activity_ids != []">
+                            <h3>No activity added</h3>
+                            <p>
+                                Click on 'Edit' button to add new activity in workflow.
+                            </p>
+                        </div>
+                        <field name="marketing_activity_ids" widget="kanban_hierarchy" mode="kanban" nolabel="1" class="o_ma_hierarchy_container o_ma_campaign_hierarchy" add-label="Add new activity" context="{                                 'default_campaign_id': id,                                 'default_model_id': model_id,                                 'default_utm_campaign_id': utm_campaign_id,                             }" on_change="1">
+
+                        <kanban>
+                                <field name="id" invisible="1"/>
+                                <field name="model_name" invisible="1"/>
+                                <field name="name" invisible="1" on_change="1"/>
+                                <field name="domain" invisible="1" on_change="1"/>
+                                <field name="activity_type" invisible="1" on_change="1"/>
+                                <field name="parent_id" invisible="1" on_change="1"/>
+                                <field name="trigger_type" invisible="1"/>
+                                <field name="total_sent" invisible="1"/>
+                                <field name="total_click" invisible="1"/>
+                                <field name="total_open" invisible="1"/>
+                                <field name="total_reply" invisible="1"/>
+                                <field name="total_bounce" invisible="1"/>
+                                <field name="processed" invisible="1"/>
+                                <field name="rejected" invisible="1"/>
+                                <!-- v19 quirk: invisible="1" on a Many2one strips
+                                     display_name from the field spec
+                                     (see web/static/src/model/relational_model/utils.js
+                                     `getFieldsSpec`, lines ~373/402: when
+                                     isAlwaysInvisible=true, `fields.display_name` is
+                                     NOT added). The server then returns just the id,
+                                     and `record.mass_mailing_id.value` evaluates to
+                                     empty until the form opens (because the form's
+                                     field component triggers a name_get).
+                                     Declared without `invisible` — the kanban arch
+                                     parser still registers the field for the read
+                                     spec (now with display_name), but the field is
+                                     not rendered anywhere because no template uses
+                                     it as a <field> widget. -->
+                                <field name="mass_mailing_id" on_change="1"/>
+                                <field name="server_action_id"/>
+                                <templates>
+                                    <!-- The hierarchy depth gate in HierarchyKanbanRenderer's
+                                         meta-template (see setup() in automated_marketing.js)
+                                         + _getSortedRecordsByHierarchy already filter records
+                                         to the right level. The previous `t-if="!record.parent_id.raw_value || props.displayChildren"`
+                                         was redundant AND broken: the recursive t-call doesn't
+                                         propagate displayChildren=true to the nested card, so
+                                         every child activity (parent_id != null) silently
+                                         failed to render. -->
+                                    <div t-name="card">
+                                        <div class="o_ma_body w-0" id="marketing_view">
+                                            <t t-call="timeline"/>
+                                            <div class="o_ma_card">
+                                                <div class="o_ma_title_bar">
+                                                    <span>
+                                                        <!-- N21 audit: inline style → class; sizing now in modern.scss. -->
+                                                        <svg class="p-1 o_ma_activity_icon" t-if="record.activity_type.raw_value == 'email'" title="Email">
+                                                            <image href="/automated_marketing/static/src/img/email.svg" class="change-my-color"/>
+                                                        </svg>
+                                                        <svg class="p-1 o_ma_activity_icon" t-else="" title="Other activity">
+                                                            <image href="/automated_marketing/static/src/img/cog.svg" class="change-my-color"/>
+                                                        </svg>
+
+                                                    </span>
+                                                    <div class="o_ma_title">
+                                                        <h4 class="mb0 mt0 activity_title">
+                                                            <!-- N20 audit: only expose the "open" link when the
+                                                                 activity is persisted. Clicking a type="open" on an
+                                                                 un-saved virtual row opens a confused empty modal. -->
+                                                            <a t-if="record.id.raw_value" type="open" class="oe_kanban_action oe_kanban_action_a" t-att-title="record.name.raw_value"><field name="name" on_change="1"/></a>
+                                                            <span t-else="" t-att-title="record.name.raw_value"><field name="name" on_change="1"/></span>
+                                                        </h4>
+                                                        <div class="o_ma_desc">
+                                                            <t t-esc="record.activity_type.value"/>
+                                                            <!-- Email → show the mailing.mailing template name in parens
+                                                                 Action → show the server-action name in parens
+                                                                 so admins know at a glance WHAT this activity will fire. -->
+                                                            <t t-if="record.activity_type.raw_value == 'email' and record.mass_mailing_id.value">
+                                                                (<t t-esc="record.mass_mailing_id.value"/>)
+                                                            </t>
+                                                            <t t-if="record.activity_type.raw_value == 'action' and record.server_action_id.value">
+                                                                (<t t-esc="record.server_action_id.value"/>)
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex graph_filter_switch">
+                                                        <div class="float-left">
+                                                            <span class="edit_image" t-if="record.id.raw_value">
+                                                                <!-- N20 audit: hide on un-saved rows (no resId to open). -->
+                                                                <a type="open" role="button"><img class="o_ma_icon" src="/automated_marketing/static/src/img/edit.svg" style="opacity: 0.6;" alt="Edit"/></a>
+                                                            </span>
+                                                            <span class="delete_image">
+                                                                <a type="delete" role="button"><img class="o_ma_icon" src="/automated_marketing/static/src/img/delete.svg" style="opacity: 0.6;" alt="Delete"/></a>
+                                                            </span>
+                                                        </div>
+                                                        <span role="img" title="Graph" aria-label="Graph" class="activity_graph active switch_button">
+                                                            <img class="o_ma_icon" src="/automated_marketing/static/src/img/analytics.svg" style="opacity: 0.6;" alt="Graph"/>
+                                                        </span>
+                                                        <span title="Filter" role="img" aria-label="Filter" class="activity_filter">
+                                                            <img class="o_ma_icon" src="/automated_marketing/static/src/img/filter.svg" style="opacity: 0.6;" alt="Filter"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="o_pane o_pane_graph">
+                                                    <div class="pb-3 row mt16">
+                                                        <div class="col-lg-8 col-8 o_ma_graph mb10">
+                                                            <t t-if="record.statistics_graph_data.value">
+                                                                <field name="statistics_graph_data" widget="marketing_graph" graph_type="line"/>
+                                                            </t>
+                                                        </div>
+                                                        <div class="col-lg-4 col-4 graph_details" t-if="record.activity_type.raw_value == 'email'">
+                                                            <div class="col-12" title="Mails sent and not bounced" style="margin-bottom:5px;">
+                                                                <a name="action_sent" type="object">
+                                                                    <strong><t t-esc="record.total_sent.raw_value or 0"> </t></strong> Sent
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-12" style="margin-bottom:5px;">
+                                                                <a name="action_clicked" type="object">
+                                                                    <strong><t t-esc="Math.round((record.total_click.raw_value/(record.total_sent.raw_value or 1)) * 100) or 0"/>%</strong> Clicked
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-12" style="margin-bottom:5px;">
+                                                                <a name="action_replied" type="object">
+                                                                    <strong><t t-esc="Math.round((record.total_reply.raw_value/(record.total_sent.raw_value or 1)) * 100) or 0"/>%</strong> Replied
+                                                                </a>
+                                                            </div>
+                                                            <div class="col-12" style="margin-bottom:5px;">
+                                                                <a name="action_bounced" type="object">
+                                                                    <strong><t t-esc="Math.round((record.total_bounce.raw_value/(record.total_sent.raw_value or 1)) * 100) or 0"/>%</strong> Bounced
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row o_ma_email_details text-center">
+                                                        <div class="col m-2">
+                                                            <span class="mt4 mb4" style="font-size: 25px;color: #009d9e;"><t t-esc="record.processed.value or 0"> </t></span>
+                                                            <span style="text-align: center;font-size: 18px;" class="m-2">Success</span>
+                                                        </div>
+                                                        <div class="col m-2">
+                                                            <span class="mt4 mb4 o_ma_text_rejected" style="font-size: 25px;"><t t-esc="record.rejected.value or 0"> </t></span>
+                                                            <span style="font-size: 18px;" class="m-2">Rejected</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="o_pane o_pane_filter d-none">
+                                                    <field name="domain" widget="domain" options="{'model': 'model_name'}" readonly="1" on_change="1"/>
+                                                </div>
+                                                <div class="o_ma_child_activity text-center">
+                                                    <!-- N21 audit: dropped invalid `height="8px"` attr from
+                                                         this spacer div; replaced by an empty-styled class so the
+                                                         layout can grow/shrink from SCSS. -->
+                                                    <div class="o_ma_child_activity_title"/>
+                                                    <div t-if="record.id.raw_value" class="o_ma_child_activity_buttons">
+                                                        <span class="add_child_activity p-2" child-activity="activity" style="margin: auto; cursor: pointer;" title="Add a child activity"> Add child activity </span>
+                                                        <i child-activity="activity" title="Add Another Activity" class="fa add_child_activity" aria-label="Add Another Activity"><img class="o_ma_icon o_ma_icon_primary" src="/automated_marketing/static/src/img/add.svg" height="20px" alt="Add"/> </i>
+                                                        <i t-if="record.activity_type.raw_value == 'email'" child-activity="mail_open" class="fa o_ma_text_processed add_child_activity" title="Opened" aria-label="Opened"><img class="o_ma_icon o_ma_icon_primary" src="/automated_marketing/static/src/img/open.svg" height="20px" alt="Open"/></i>
+                                                        <i t-if="record.activity_type.raw_value == 'email'" child-activity="mail_not_open" class="fa o_ma_text_rejected add_child_activity" title="Not Opened" aria-label="Not Opened"><img class="o_ma_icon o_ma_icon_cancel" src="/automated_marketing/static/src/img/not-open.svg" height="20px" alt="Not-Open"/></i>
+                                                        <i t-if="record.activity_type.raw_value == 'email'" child-activity="mail_reply" class="fa o_ma_text_processed add_child_activity" title="Replied" aria-label="Replied"><img class="o_ma_icon o_ma_icon_primary" src="/automated_marketing/static/src/img/reply.svg" height="20px" alt="Reply"/></i>
+                                                        <i t-if="record.activity_type.raw_value == 'email'" child-activity="mail_not_reply" class="fa o_ma_text_rejected add_child_activity" title="Not Replied" aria-label="Not Replied"><img class="o_ma_icon o_ma_icon_cancel" src="/automated_marketing/static/src/img/reply.svg" height="20px" alt="Not Reply"/></i>
+                                                        <i t-if="record.activity_type.raw_value == 'email'" child-activity="mail_click" class="fa o_ma_text_processed add_child_activity" title="Clicked" aria-label="Clicked"> <img class="o_ma_icon o_ma_icon_primary" src="/automated_marketing/static/src/img/finger.svg" height="20px" alt="Clicked"/></i>
+                                                        <i t-if="record.activity_type.raw_value == 'email'" child-activity="mail_not_click" class="fa o_ma_text_rejected add_child_activity" title="Not Clicked" aria-label="Not Clicked"><img class="o_ma_icon o_ma_icon_cancel" src="/automated_marketing/static/src/img/hand.svg" height="20px" alt="Not Clicked"/></i>
+                                                        <i t-if="record.activity_type.raw_value == 'email'" child-activity="mail_bounce" class="fa o_ma_text_rejected add_child_activity" title="Bounced" aria-label="Bounced"><img class="o_ma_icon o_ma_icon_cancel" src="/automated_marketing/static/src/img/warning.svg" height="20px" alt="Bounced"/></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <t t-name="timeline">
+                                        <div class="o_ma_timeline text-center">
+                                            <strong class="o_ma_interval">
+                                                <i class="fa fa-clock-o" role="img" aria-label="Select time" title="Select time"/>
+                                                <field name="interval_number"/>
+                                                <field name="interval_type"/>
+                                                <!-- For child activities, also show the
+                                                     trigger condition ("after Mail: replied",
+                                                     "after another activity", etc.) so the
+                                                     workflow chart explains WHY this
+                                                     activity fires. Root activities trigger
+                                                     at "beginning of campaign" which is
+                                                     obvious from position, so skip the
+                                                     suffix there. -->
+                                                <t t-if="record.trigger_type.raw_value !== 'begin'">
+                                                    after <field name="trigger_type"/>
+                                                </t>
+                                            </strong>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </div>
+                </sheet>
+            </form>

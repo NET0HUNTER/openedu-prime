@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "roll_number": {
+      "change_default": false,
+      "groupable": true,
+      "name": "roll_number",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Roll Number",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

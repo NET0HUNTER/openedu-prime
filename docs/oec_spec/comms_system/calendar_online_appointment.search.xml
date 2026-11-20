@@ -1,0 +1,5 @@
+<search>
+                <field name="name"/>
+                <filter string="MyAppointment" name="user_id" domain="[('user_id', '=', uid)]"/>
+                <filter string="Has Pending Requests" name="has_pending" domain="[('pending_request_count', '&gt;', 0)]" help="Manual-confirmation appointments with bookings still awaiting review."/>
+            </search>

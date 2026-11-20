@@ -1,0 +1,34 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    },
+    "media_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "media_id",
+      "readonly": false,
+      "relation": "op.media",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Media",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

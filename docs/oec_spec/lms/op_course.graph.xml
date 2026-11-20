@@ -1,0 +1,5 @@
+<graph string="Forum Participation by Learners" type="bar" stacked="True">
+                    <field name="forum_id" type="row"/> <!-- Course Name -->
+                    <field name="forum_post_count" type="measure"/>
+                    <field name="forum_reply_count"/>
+                </graph>

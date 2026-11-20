@@ -1,0 +1,161 @@
+<form>
+                    <header>
+                        <button type="object" name="action_join" class="oe_highlight" string="Join Channel" invisible="are_you_inside"/>
+                        <button type="object" name="action_quit" class="btn btn-primary" string="Leave Channel" invisible="not are_you_inside"/>
+                        <field name="are_you_inside" invisible="1"/>
+                    </header>
+                    <sheet>
+                        <field name="rating_count" invisible="1"/>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="action_view_chatbot_scripts" icon="fa-android" invisible="chatbot_script_count == 0">
+                                <field string="Chatbots" name="chatbot_script_count" widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" type="action" invisible="nbr_channel == 0" name="482" icon="fa-comments">
+                                <div>
+                                    <div class="o_stat_info flex-row-reverse align-items-baseline gap-1 me-1">
+                                        <span class="o_stat_value"><field name="nbr_channel"/></span>
+                                        <span class="o_stat_text">Sessions</span>
+                                    </div>
+                                    <div class="o_stat_info flex-row-reverse align-items-baseline gap-1 me-1" invisible="rating_count == 0">
+                                        <span class="o_stat_value"><field name="rating_percentage_satisfaction"/>%</span>
+                                        <span class="o_stat_text">Happy</span>
+                                    </div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="e.g. YourWebsite.com"/>
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page string="Agents" name="Agents">
+                                    <field name="user_ids" nolabel="1" colspan="2" domain="[['all_group_ids', 'in', 50]]" mode="list,kanban" context="{'add_livechat_channel_ctx': True}" on_change="1" can_create="True" can_write="True">
+                                        <list no_open="1" create="0">
+                                            <field name="partner_id" string="Agent" widget="many2one_avatar_user" width="175px" context="{'im_livechat_hide_partner_company': True}" on_change="1"/>
+                                            <field name="livechat_is_in_call" widget="boolean_phone" nolabel="1" on_change="1"/>
+                                            <field string="Languages" name="livechat_lang_ids" widget="many2many_tags" optional="show"/>
+                                            <field string="Expertise" name="livechat_expertise_ids" widget="many2many_tags" optional="show"/>
+                                            <field string="Ongoing Sessions" name="livechat_ongoing_session_count" width="150px" optional="show" on_change="1"/>
+                                        </list>
+                                        <kanban class="o_kanban_mobile" can_open="False" create="0">
+                                            <templates>
+                                                <t t-name="card" class="flex-row">
+                                                    <aside>
+                                                        <field name="avatar_1024" widget="image" alt="User" on_change="1"/>
+                                                    </aside>
+                                                    <main class="ps-1">
+                                                        <div class="d-flex justify-content-between align-items-baseline">
+                                                            <field name="name" class="fw-bold fs-5" on_change="1"/>
+                                                            <a class="btn p-0 opacity-75 opacity-100-hover" role="button" type="delete">
+                                                                <i title="Remove operator" class="fa fa-fw fa-lg fa-close"/>
+                                                            </a>
+                                                        </div>
+                                                        <field t-if="record.livechat_lang_ids.raw_value.length &gt; 0" name="livechat_lang_ids" widget="many2many_tags"/>
+                                                        <field t-if="record.livechat_expertise_ids.raw_value.length &gt; 0" name="livechat_expertise_ids" widget="many2many_tags"/>
+                                                        <div class="d-flex justify-content-between align-items-baseline">
+                                                            <div class="column">
+                                                                <span>Ongoing Sessions:</span><field name="livechat_ongoing_session_count" class="ms-1" on_change="1"/>
+                                                            </div>
+                                                            <field name="livechat_is_in_call" class="me-1" widget="boolean_phone" on_change="1"/>
+                                                        </div>
+                                                    </main>
+                                                </t>
+                                            </templates>
+                                        </kanban>
+                                    </field>
+                                    <group>
+                                        <group class="order-1 order-lg-0">
+                                            <p class="text-muted" colspan="2">
+                                                Agents who are inactive in Odoo for more than 30 minutes will be considered disconnected.
+                                            </p>
+                                        </group>
+                                        <group class="oe_subtotal_footer d-flex justify-content-end">
+                                            <div class="container">
+                                                <div class="row mb-2">
+                                                    <div class="col"><label class="fw-bold" for="ongoing_session_count"/></div>
+                                                    <div class="col me-1"><field name="ongoing_session_count" nolabel="1"/></div>
+                                                </div>
+                                                <div class="row mb-2" invisible="max_sessions_mode!='limited'">
+                                                    <div class="col"><label class="fw-bold" for="remaining_session_capacity"/></div>
+                                                    <div class="col me-1"><field name="remaining_session_capacity" nolabel="1"/></div>
+                                                </div>
+                                            </div>
+                                        </group>
+                                    </group>
+                            </page>
+                            <page string="Options" name="options">
+                                <group>
+                                    <group string="Live Chat Button">
+                                        <field name="button_text" string="Notification Text" placeholder="e.g. Need help? Chat with us."/>
+                                        <label for="button_background_color" string="Button Colors"/>
+                                        <div class="o_livechat_layout_colors d-flex align-items-center align-middle">
+                                            <field name="button_background_color" widget="color" class="mb-4 w-auto o_im_livechat_field_widget_color"/>
+                                            <field name="button_text_color" widget="color" class="mb-4 w-auto o_im_livechat_field_widget_color"/>
+                                            <widget name="colors_reset_button" options="{'default_colors': {'button_background_color': '#878787', 'button_text_color': '#FFFFFF'}}"/>
+                                        </div>
+                                    </group>
+                                    <group string="Live Chat Window">
+                                        <field name="default_message" placeholder="e.g. Hello, how may I help you?"/>
+                                        <label for="header_background_color" string="Window Colors"/>
+                                        <div class="o_livechat_layout_colors d-flex align-items-center align-middle">
+                                            <field name="header_background_color" widget="color" class="mb-4 w-auto o_im_livechat_field_widget_color"/>
+                                            <field name="title_color" widget="color" class="mb-4 w-auto o_im_livechat_field_widget_color"/>
+                                            <widget name="colors_reset_button" options="{'default_colors': {'header_background_color': '#875A7B', 'title_color': '#FFFFFF'}}"/>
+                                        </div>
+                                        <field name="review_link" placeholder="Do not redirect visitors"/>
+                                    </group>
+                                </group>
+                                <group string="Session Limits">
+                                    <group>
+                                        <field name="max_sessions_mode" widget="radio" options="{'horizontal': true}"/>
+                                        <field name="max_sessions" invisible="max_sessions_mode != 'limited'" on_change="1"/>
+                                        <field name="block_assignment_during_call" on_change="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Rules" name="channel_rules">
+                                <field name="rule_ids" colspan="2" on_change="1"><list string="Rules">
+                    <field name="sequence" widget="handle"/>
+                    <field name="action"/>
+                    <field name="chatbot_script_id" on_change="1"/>
+                    <field name="regex_url"/>
+                    <field name="country_ids" widget="many2many_tags"/>
+                </list></field>
+                                <div class="text-muted" colspan="2">
+                                    To apply the rule only to certain pages of your website, enter a URL regex like /shop. This will match any page that starts with /shop, such as /shop/product. Leave the field empty to apply the rule to all pages.<br/>
+                                    For on-premise databases, GeoIP must be installed on your server to geolocate visitors. Without it, rules that include country restrictions will be ignored.
+                                    <widget name="documentation_link" path="/administration/on_premise/geo_ip.html" icon="fa-fw fa-info-circle"/>
+                                </div>
+                            </page>
+                            <page string="Widget" name="configuration_widget">
+                                <div class="alert alert-warning mt4 mb16" role="alert" invisible="web_page">
+                                    Save your Channel to get your configuration widget.
+                                </div>
+                                <div invisible="not web_page">
+                                    <p>
+                                        Learn how to display a live chat bubble on your website and start chatting with visitors in a few easy steps.
+                                    </p>
+                                    <separator string="FOR WEBSITES BUILT WITH ODOO"/>
+                                    <ol>
+                                        <li>Go to <strong>Website</strong> &gt; <strong>Configuration</strong> &gt; <strong>Settings</strong> &gt; <strong>Email</strong> &amp; <strong>Marketing.</strong></li>
+                                        <li>Turn on the <strong>Live Chat</strong> feature.</li>
+                                        <li>Choose the live chat channel you want to display on your website.</li>
+                                    </ol>
+                                    <separator string="FOR OTHER WEBSITES"/>
+                                    <p>
+                                        Add the following code to the &lt;head&gt; section of your website:
+                                    </p>
+                                    <field class="text-muted" name="script_external" readonly="1" widget="CopyClipboardChar"/>
+                                    <br/><br/>
+                                    <p>
+                                        Alternatively, share this URL with your customers or suppliers via email:
+                                    </p>
+                                    <field class="text-muted" name="web_page" readonly="1" widget="CopyClipboardChar"/>
+                                </div>
+                            </page>
+                        </notebook>
+                    </sheet>
+                <field name="max_sessions_mode" invisible="True" readonly="True" data-used-by="invisible=&quot;max_sessions_mode!='limited'&quot; (div,None)"/>
+</form>

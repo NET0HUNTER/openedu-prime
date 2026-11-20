@@ -1,0 +1,38 @@
+<form string="Request Asset Form">
+                    <header>
+                        <button string="Approve" type="object" name="approved_progressbar" invisible="state in ('rejected','approved','allocate','returned')"/>
+                        <button string="Reject" type="object" name="reject_progressbar" invisible="state in ('rejected','approved','allocate','returned')"/>
+                        <button string="Allocate" type="object" name="allocate_progressbar" invisible="state != 'approved' or state in ('allocate','returned')"/>
+                        <button string="Return" type="object" name="return_progressbar" invisible="state in ('draft','approved','returned','rejected')"/>
+
+                        <field name="state" widget="statusbar"/>
+
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="request_for" readonly="state in ('rejected','returned')" on_change="1"/>
+                                <field name="student_id" string="Student" invisible="request_for != 'student'" readonly="state in ('rejected','returned')" required="request_for == 'student'" options="{'no_create': True , 'no_open': True}" can_create="True" can_write="True"/>
+                                <field name="faculty_id" invisible="request_for != 'faculty'" readonly="state in ('rejected','returned')" required="request_for == 'faculty'" options="{'no_create': True , 'no_open': True}" can_create="True" can_write="True"/>
+                                <field name="company_id" can_create="True" can_write="True"/>
+                                <field name="approve_date" invisible="state in ('rejected','draft')" readonly="state == 'returned'"/>
+                                <field name="reject_date" readonly="state in ('rejected','returned')" invisible="state != 'rejected'"/>
+                            </group>
+                            <group>
+                                <field name="request_date" readonly="1"/>
+                                <field name="requested_asset" readonly="state in ('rejected','returned')"/>
+                                <field name="asset_id" invisible="state in ('rejected','draft')" readonly="state == 'returned'" required="state == 'allocate'" options="{'no_create': True , 'no_open': True}" can_create="True" can_write="True"/>
+                                <field name="allocate_date" invisible="state in ('rejected','draft','approved')" readonly="state == 'returned'"/>
+                                <field name="return_date" readonly="state in ('rejected','returned')" invisible="state != 'returned'"/>
+                            </group>
+                            <label class="fw-bold mt-4" for="request_reason_id" string="Reason"/>
+                            <field name="request_reason_id" readonly="state in ('rejected','returned')" placeholder="Reason" options="{'no_create': True , 'no_open': True}" can_create="True" can_write="True"/>
+                        </group>
+                    </sheet>
+                    <chatter/>
+                </form>

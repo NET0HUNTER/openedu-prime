@@ -1,0 +1,36 @@
+<form string="Placement Offer">
+                <header>
+                    <button name="placement_offer" invisible="state != 'draft'" type="object" string="Offer" class="oe_highlight"/>
+                    <button name="placement_join" invisible="state != 'offer'" type="object" string="Join" class="oe_highlight"/>
+                    <button name="confirm_rejected" invisible="state in ['join','cancel','reject']" string="Reject" type="object"/>
+                    <button name="confirm_cancel" invisible="state != 'draft' and state != 'offer' and state != 'join'" string="Cancel" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,offer,join"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="partner_id" placeholder="Company Name" style="width: 100%" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                        </h1>
+                        <h1>
+                            <field name="student_id" placeholder="Student Name" style="width: 80%" readonly="state != 'draft'" can_create="True" can_write="True"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group col="4">
+                            <field name="join_date" readonly="state != 'draft'"/>
+                            <field name="offer_package" widget="monetary" readonly="state != 'draft'"/>
+                        </group>
+                         <group>
+                            <label string="Training Period" for="training_period"/>
+                             <div name="training_period">
+                            <field name="training_period" required="1" style="width:15%;"/>
+                            <field name="training_type" style="width:20%"/>
+                        </div>
+                            <field name="company_id" on_change="1" can_create="True" can_write="True"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            <field name="state" invisible="True" readonly="True" data-used-by="readonly=&quot;state != 'draft'&quot; (field,offer_package)"/>
+</form>

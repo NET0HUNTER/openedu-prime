@@ -1,0 +1,7 @@
+<list>
+                    <field name="name"/>
+                    <field name="rubric_element_line" widget="many2many_tags" optional="hide"/>
+                    <field name="rubrics_type" optional="hide"/>
+                    <field name="state" widget="badge" decoration-success="state == 'in_use'" decoration-muted="state == 'draft'" decoration-warning="state == 'cancel'" decoration-primary="state == 're_open'" decoration-danger="state == 'expire'"/>
+                    <field name="company_id" optional="show"/>
+                </list>

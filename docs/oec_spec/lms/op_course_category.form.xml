@@ -1,0 +1,23 @@
+<form string="Course Category">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group class="">
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="icon" placeholder="E.g fa fa-home"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                                <field name="parent_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                            <!-- <label name="Description" for="desc"/> -->
+                            <field name="desc" placeholder="Description..." nolabel="1"/>
+                        </group>
+                        </group>
+
+                    </sheet>
+                </form>

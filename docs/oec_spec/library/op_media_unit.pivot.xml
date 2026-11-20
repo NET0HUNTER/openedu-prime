@@ -1,0 +1,4 @@
+<pivot string="Media Units">
+                    <field name="media_id" type="col"/>
+                    <field name="name" type="row"/>
+                </pivot>

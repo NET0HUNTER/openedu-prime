@@ -1,0 +1,18 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "AC"
+    },
+    {
+        "id":  2,
+        "display_name":  "TV"
+    },
+    {
+        "id":  3,
+        "display_name":  "WiFi"
+    },
+    {
+        "id":  4,
+        "display_name":  "RO Water"
+    }
+]

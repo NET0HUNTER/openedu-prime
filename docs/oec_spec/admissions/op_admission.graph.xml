@@ -1,0 +1,4 @@
+﻿<graph string="Course By Admission" type="pie">
+                    <field name="course_id"/>
+                    <field name="nbr" operator="+"/>
+                </graph>

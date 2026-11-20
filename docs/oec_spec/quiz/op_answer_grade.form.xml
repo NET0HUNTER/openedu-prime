@@ -1,0 +1,13 @@
+<form string="Grades">
+                <header/>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <group>
+                        <group col="4" colspan="4">
+                            <field name="name" required="1"/>
+                            <field name="value" required="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>

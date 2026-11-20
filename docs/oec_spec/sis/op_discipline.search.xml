@@ -1,0 +1,29 @@
+﻿<search string="Discipline Records">
+                    <field name="student_id" select="True"/>
+                    <field name="date" select="True"/>
+                    <field name="course_id" select="True"/>
+                    <field name="discipline_master" select="True"/>
+                    <field name="assigned_faculty_id" select="True"/>
+                    <field name="misbehaviour_type" select="True"/>
+                    <field name="misbehaviour_category_id" select="True"/>
+                    <field name="misbehaviour_action" select="True"/>
+                    <newline/>
+                    <filter string="Today" name="today" domain="[('date', '&gt;=', time.strftime('%Y-%m-%d 00:00:00')),('date', '&lt;=', time.strftime('%Y-%m-%d 23:59:59'))]"/>
+                    <filter string="Week" name="week" domain="['&amp;',('date', '&gt;=', (context_today() + relativedelta(weeks=-1,days=1,weekday=0)).strftime('%Y-%m-%d')),('date', '&lt;=', (context_today() + relativedelta(weekday=6)).strftime('%Y-%m-%d'))]"/>
+                    <!-- Odoo 19's date parser is strict about ISO
+                         format (2026-07-01, not 2026-07-1). The old
+                         `%Y-%m-1` literal-1 pattern produced dates
+                         like "2026-07-1" that made `parse_iso_date`
+                         throw when grouping by month. Zero-padded
+                         `%Y-%m-01` fixes it. -->
+                    <filter string="Month" name="month" domain="[('date','&gt;=', context_today().strftime('%Y-%m-01')), ('date','&lt;', ((context_today() + relativedelta(months=1)).strftime('%Y-%m-01')) )]"/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    <group>
+                        <filter string="Student" name="group_by_student" domain="[]" context="{'group_by':'student_id'}"/>
+                        <filter string="Course" name="group_by_course" domain="[]" context="{'group_by':'course_id'}"/>
+                        <filter string="Master" name="group_by_master" domain="[]" context="{'group_by':'discipline_master'}"/>
+                        <filter string="Assigned Faculty" name="group_by_assigned" domain="[]" context="{'group_by':'assigned_faculty_id'}"/>
+                        <filter string="Type" name="group_by_type" domain="[]" context="{'group_by':'misbehaviour_type'}"/>
+                        <filter string="Category" name="group_by_category" domain="[]" context="{'group_by':'misbehaviour_category_id'}"/>
+                    </group>
+                </search>

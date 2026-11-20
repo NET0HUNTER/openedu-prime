@@ -1,0 +1,5 @@
+<pivot string="Jobs" create="False" delete="False">
+                <field name="exec_time" type="measure"/>
+                <field name="job_function_id" type="row"/>
+                <field name="date_done" type="col" interval="week"/>
+            </pivot>

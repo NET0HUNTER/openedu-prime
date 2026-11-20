@@ -1,0 +1,298 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "message_is_follower":  {
+                                "readonly":  true,
+                                "required":  false,
+                                "string":  "Is Follower",
+                                "type":  "boolean"
+                            },
+    "message_follower_ids":  {
+                                 "readonly":  false,
+                                 "relation":  "mail.followers",
+                                 "required":  false,
+                                 "string":  "Followers",
+                                 "type":  "one2many"
+                             },
+    "message_partner_ids":  {
+                                "readonly":  false,
+                                "relation":  "res.partner",
+                                "required":  false,
+                                "string":  "Followers (Partners)",
+                                "type":  "many2many"
+                            },
+    "message_ids":  {
+                        "readonly":  false,
+                        "relation":  "mail.message",
+                        "required":  false,
+                        "string":  "Messages",
+                        "type":  "one2many"
+                    },
+    "has_message":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Has Message",
+                        "type":  "boolean"
+                    },
+    "message_needaction":  {
+                               "help":  "If checked, new messages require your attention.",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Action Needed",
+                               "type":  "boolean"
+                           },
+    "message_needaction_counter":  {
+                                       "help":  "Number of messages requiring action",
+                                       "readonly":  true,
+                                       "required":  false,
+                                       "string":  "Number of Actions",
+                                       "type":  "integer"
+                                   },
+    "message_has_error":  {
+                              "help":  "If checked, some messages have a delivery error.",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Message Delivery error",
+                              "type":  "boolean"
+                          },
+    "message_has_error_counter":  {
+                                      "help":  "Number of messages with delivery error",
+                                      "readonly":  true,
+                                      "required":  false,
+                                      "string":  "Number of errors",
+                                      "type":  "integer"
+                                  },
+    "message_attachment_count":  {
+                                     "readonly":  true,
+                                     "required":  false,
+                                     "string":  "Attachment Count",
+                                     "type":  "integer"
+                                 },
+    "rating_ids":  {
+                       "readonly":  false,
+                       "relation":  "rating.rating",
+                       "required":  false,
+                       "string":  "Ratings",
+                       "type":  "one2many"
+                   },
+    "website_message_ids":  {
+                                "help":  "Website communication history",
+                                "readonly":  false,
+                                "relation":  "mail.message",
+                                "required":  false,
+                                "string":  "Website Messages",
+                                "type":  "one2many"
+                            },
+    "message_has_sms_error":  {
+                                  "help":  "If checked, some messages have a delivery error.",
+                                  "readonly":  true,
+                                  "required":  false,
+                                  "string":  "SMS Delivery error",
+                                  "type":  "boolean"
+                              },
+    "session_id":  {
+                       "readonly":  false,
+                       "relation":  "op.exam.session",
+                       "required":  false,
+                       "string":  "Exam Session",
+                       "type":  "many2one"
+                   },
+    "course_id":  {
+                      "readonly":  true,
+                      "relation":  "op.course",
+                      "required":  false,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  true,
+                     "relation":  "op.batch",
+                     "required":  false,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "subject_id":  {
+                       "readonly":  false,
+                       "relation":  "op.subject",
+                       "required":  true,
+                       "string":  "Subject",
+                       "type":  "many2one"
+                   },
+    "exam_code":  {
+                      "readonly":  false,
+                      "required":  true,
+                      "string":  "Exam Code",
+                      "type":  "char"
+                  },
+    "attendees_line":  {
+                           "readonly":  true,
+                           "relation":  "op.exam.attendees",
+                           "required":  false,
+                           "string":  "Attendees",
+                           "type":  "one2many"
+                       },
+    "start_time":  {
+                       "readonly":  false,
+                       "required":  true,
+                       "string":  "Start Time",
+                       "type":  "datetime"
+                   },
+    "end_time":  {
+                     "readonly":  false,
+                     "required":  true,
+                     "string":  "End Time",
+                     "type":  "datetime"
+                 },
+    "state":  {
+                  "readonly":  true,
+                  "required":  false,
+                  "selection":  [
+                                    [
+                                        "draft",
+                                        "Draft"
+                                    ],
+                                    [
+                                        "schedule",
+                                        "Scheduled"
+                                    ],
+                                    [
+                                        "held",
+                                        "Held"
+                                    ],
+                                    [
+                                        "result_updated",
+                                        "Result Updated"
+                                    ],
+                                    [
+                                        "cancel",
+                                        "Cancelled"
+                                    ],
+                                    [
+                                        "done",
+                                        "Done"
+                                    ]
+                                ],
+                  "string":  "Status",
+                  "type":  "selection"
+              },
+    "note":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "Note",
+                 "type":  "text"
+             },
+    "responsible_id":  {
+                           "readonly":  false,
+                           "relation":  "op.faculty",
+                           "required":  false,
+                           "string":  "Responsible",
+                           "type":  "many2many"
+                       },
+    "name":  {
+                 "readonly":  false,
+                 "required":  true,
+                 "string":  "Exam",
+                 "type":  "char"
+             },
+    "total_marks":  {
+                        "readonly":  false,
+                        "required":  true,
+                        "string":  "Total Marks",
+                        "type":  "integer"
+                    },
+    "min_marks":  {
+                      "readonly":  false,
+                      "required":  true,
+                      "string":  "Passing Marks",
+                      "type":  "integer"
+                  },
+    "active":  {
+                   "readonly":  false,
+                   "required":  false,
+                   "string":  "Active",
+                   "type":  "boolean"
+               },
+    "attendees_count":  {
+                            "readonly":  true,
+                            "required":  false,
+                            "string":  "Attendees Count",
+                            "type":  "integer"
+                        },
+    "results_entered":  {
+                            "readonly":  true,
+                            "required":  false,
+                            "string":  "Results Entered",
+                            "type":  "boolean"
+                        },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "company_id":  {
+                       "readonly":  false,
+                       "relation":  "res.company",
+                       "required":  false,
+                       "string":  "Company",
+                       "type":  "many2one"
+                   },
+    "responsible_names":  {
+                              "help":  "Names of everyone responsible for this exam, comma separated. Display only — search and grouping still belong on `responsible_id`.",
+                              "readonly":  true,
+                              "required":  false,
+                              "string":  "Responsible",
+                              "type":  "char"
+                          },
+    "oe_results_entered":  {
+                               "help":  "True once any attendee of this exam has marks against them.",
+                               "readonly":  true,
+                               "required":  false,
+                               "string":  "Results Entered",
+                               "type":  "boolean"
+                           },
+    "faculty_id":  {
+                       "readonly":  false,
+                       "relation":  "op.faculty",
+                       "required":  true,
+                       "string":  "Faculty",
+                       "type":  "many2one"
+                   },
+    "grading_assignment_id":  {
+                                  "readonly":  false,
+                                  "relation":  "grading.assignment",
+                                  "required":  false,
+                                  "string":  "Grading Assignment",
+                                  "type":  "many2one"
+                              }
+}

@@ -1,0 +1,3 @@
+<pivot string="Registration" display_quantity="1" sample="1">
+                <field name="event_id" type="row"/>
+            </pivot>

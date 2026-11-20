@@ -1,0 +1,21 @@
+<form string="Library Card">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="number"/>
+                                <field name="library_card_type_id" can_create="True" can_write="True"/>
+                                <field name="type" on_change="1"/>
+                                <field name="student_id" options="{'no_create': True , 'no_open': True}" invisible="type != 'student'" required="type == 'student'" on_change="1" can_create="True" can_write="True"/>
+                                <field name="faculty_id" options="{'no_create': True , 'no_open': True}" invisible="type != 'faculty'" required="type == 'faculty'" on_change="1" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="issue_date"/>
+                                <field name="partner_id" readonly="1" force_save="1"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

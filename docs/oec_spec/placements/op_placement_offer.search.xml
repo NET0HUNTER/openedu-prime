@@ -1,0 +1,4 @@
+<search string="Placement Offer">
+                <field name="partner_id"/>
+                <field name="student_id"/>
+            </search>

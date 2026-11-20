@@ -1,0 +1,12 @@
+﻿<list>
+                    <field name="name"/>
+                    <field name="year_id"/>
+                    <field name="course_id"/>
+                    <field name="subject_id" optional="hide"/>
+                    <field name="from_per" optional="hide"/>
+                    <field name="to_per" optional="hide"/>
+                    <field name="description" optional="hide"/>
+                    <field name="state" optional="hide"/>
+                    <field name="active" widget="boolean_toggle" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                </list>

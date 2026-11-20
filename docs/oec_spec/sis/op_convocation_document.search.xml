@@ -1,0 +1,8 @@
+﻿<search>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="document_type"/>
+                <group>
+                    <filter string="Document Type" name="document_type" context="{'group_by':'document_type'}"/>
+                </group>
+            </search>

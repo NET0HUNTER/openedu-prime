@@ -1,0 +1,12 @@
+﻿<list string="Result Line">
+                    <field name="student_id"/>
+                    <field name="exam_id" on_change="1"/>
+                    <field name="marks" on_change="1"/>
+                    <field name="grade" invisible="evaluation_type != 'grade'"/>
+                    <field name="grade_point" on_change="1"/>
+                    <field name="credit" on_change="1"/>
+                    <field name="qp"/>
+                    <field name="status"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="evaluation_type"/>
+                </list>

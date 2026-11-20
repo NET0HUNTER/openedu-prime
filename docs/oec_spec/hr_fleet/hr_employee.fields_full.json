@@ -1,0 +1,7226 @@
+{
+  "id": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "id",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "ID",
+    "type": "integer"
+  },
+  "display_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "display_name",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Display Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "image_1920": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_1920",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image",
+    "type": "binary"
+  },
+  "image_1024": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_1024",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 1024",
+    "type": "binary"
+  },
+  "image_512": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_512",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 512",
+    "type": "binary"
+  },
+  "image_256": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_256",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 256",
+    "type": "binary"
+  },
+  "image_128": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_128",
+    "readonly": true,
+    "related": "image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image 128",
+    "type": "binary"
+  },
+  "avatar_1920": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "user_id.avatar_1920",
+      "image_1920",
+      "name",
+      "image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_1920",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar",
+    "type": "binary"
+  },
+  "avatar_1024": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "user_id.avatar_1024",
+      "image_1024",
+      "name",
+      "image_1024"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_1024",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 1024",
+    "type": "binary"
+  },
+  "avatar_512": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "user_id.avatar_512",
+      "image_512",
+      "name",
+      "image_512"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_512",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 512",
+    "type": "binary"
+  },
+  "avatar_256": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "user_id.avatar_256",
+      "image_256",
+      "name",
+      "image_256"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_256",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 256",
+    "type": "binary"
+  },
+  "avatar_128": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "user_id.avatar_128",
+      "image_128",
+      "name",
+      "image_128"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "avatar_128",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Avatar 128",
+    "type": "binary"
+  },
+  "resource_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "resource_id",
+    "readonly": false,
+    "relation": "resource.resource",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Resource",
+    "type": "many2one"
+  },
+  "company_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "resource_id.company_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "company_id",
+    "readonly": false,
+    "related": "resource_id.company_id",
+    "relation": "res.company",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company",
+    "type": "many2one"
+  },
+  "resource_calendar_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.resource_calendar_id"
+    ],
+    "domain": "(company_id and [('company_id', 'in', [company_id] + [False])] or [('company_id', '=', False)]) + ([])",
+    "exportable": true,
+    "groupable": true,
+    "help": "Working hour of week",
+    "manual": false,
+    "name": "resource_calendar_id",
+    "readonly": false,
+    "related": "version_id.resource_calendar_id",
+    "relation": "resource.calendar",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Default Working Hours",
+    "type": "many2one"
+  },
+  "tz": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "resource_id.tz"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "This field is used in order to define in which timezone the resources will work.",
+    "manual": false,
+    "name": "tz",
+    "readonly": false,
+    "related": "resource_id.tz",
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "Africa/Abidjan",
+        "Africa/Abidjan"
+      ],
+      [
+        "Africa/Accra",
+        "Africa/Accra"
+      ],
+      [
+        "Africa/Addis_Ababa",
+        "Africa/Addis_Ababa"
+      ],
+      [
+        "Africa/Algiers",
+        "Africa/Algiers"
+      ],
+      [
+        "Africa/Asmara",
+        "Africa/Asmara"
+      ],
+      [
+        "Africa/Asmera",
+        "Africa/Asmera"
+      ],
+      [
+        "Africa/Bamako",
+        "Africa/Bamako"
+      ],
+      [
+        "Africa/Bangui",
+        "Africa/Bangui"
+      ],
+      [
+        "Africa/Banjul",
+        "Africa/Banjul"
+      ],
+      [
+        "Africa/Bissau",
+        "Africa/Bissau"
+      ],
+      [
+        "Africa/Blantyre",
+        "Africa/Blantyre"
+      ],
+      [
+        "Africa/Brazzaville",
+        "Africa/Brazzaville"
+      ],
+      [
+        "Africa/Bujumbura",
+        "Africa/Bujumbura"
+      ],
+      [
+        "Africa/Cairo",
+        "Africa/Cairo"
+      ],
+      [
+        "Africa/Casablanca",
+        "Africa/Casablanca"
+      ],
+      [
+        "Africa/Ceuta",
+        "Africa/Ceuta"
+      ],
+      [
+        "Africa/Conakry",
+        "Africa/Conakry"
+      ],
+      [
+        "Africa/Dakar",
+        "Africa/Dakar"
+      ],
+      [
+        "Africa/Dar_es_Salaam",
+        "Africa/Dar_es_Salaam"
+      ],
+      [
+        "Africa/Djibouti",
+        "Africa/Djibouti"
+      ],
+      [
+        "Africa/Douala",
+        "Africa/Douala"
+      ],
+      [
+        "Africa/El_Aaiun",
+        "Africa/El_Aaiun"
+      ],
+      [
+        "Africa/Freetown",
+        "Africa/Freetown"
+      ],
+      [
+        "Africa/Gaborone",
+        "Africa/Gaborone"
+      ],
+      [
+        "Africa/Harare",
+        "Africa/Harare"
+      ],
+      [
+        "Africa/Johannesburg",
+        "Africa/Johannesburg"
+      ],
+      [
+        "Africa/Juba",
+        "Africa/Juba"
+      ],
+      [
+        "Africa/Kampala",
+        "Africa/Kampala"
+      ],
+      [
+        "Africa/Khartoum",
+        "Africa/Khartoum"
+      ],
+      [
+        "Africa/Kigali",
+        "Africa/Kigali"
+      ],
+      [
+        "Africa/Kinshasa",
+        "Africa/Kinshasa"
+      ],
+      [
+        "Africa/Lagos",
+        "Africa/Lagos"
+      ],
+      [
+        "Africa/Libreville",
+        "Africa/Libreville"
+      ],
+      [
+        "Africa/Lome",
+        "Africa/Lome"
+      ],
+      [
+        "Africa/Luanda",
+        "Africa/Luanda"
+      ],
+      [
+        "Africa/Lubumbashi",
+        "Africa/Lubumbashi"
+      ],
+      [
+        "Africa/Lusaka",
+        "Africa/Lusaka"
+      ],
+      [
+        "Africa/Malabo",
+        "Africa/Malabo"
+      ],
+      [
+        "Africa/Maputo",
+        "Africa/Maputo"
+      ],
+      [
+        "Africa/Maseru",
+        "Africa/Maseru"
+      ],
+      [
+        "Africa/Mbabane",
+        "Africa/Mbabane"
+      ],
+      [
+        "Africa/Mogadishu",
+        "Africa/Mogadishu"
+      ],
+      [
+        "Africa/Monrovia",
+        "Africa/Monrovia"
+      ],
+      [
+        "Africa/Nairobi",
+        "Africa/Nairobi"
+      ],
+      [
+        "Africa/Ndjamena",
+        "Africa/Ndjamena"
+      ],
+      [
+        "Africa/Niamey",
+        "Africa/Niamey"
+      ],
+      [
+        "Africa/Nouakchott",
+        "Africa/Nouakchott"
+      ],
+      [
+        "Africa/Ouagadougou",
+        "Africa/Ouagadougou"
+      ],
+      [
+        "Africa/Porto-Novo",
+        "Africa/Porto-Novo"
+      ],
+      [
+        "Africa/Sao_Tome",
+        "Africa/Sao_Tome"
+      ],
+      [
+        "Africa/Timbuktu",
+        "Africa/Timbuktu"
+      ],
+      [
+        "Africa/Tripoli",
+        "Africa/Tripoli"
+      ],
+      [
+        "Africa/Tunis",
+        "Africa/Tunis"
+      ],
+      [
+        "Africa/Windhoek",
+        "Africa/Windhoek"
+      ],
+      [
+        "America/Adak",
+        "America/Adak"
+      ],
+      [
+        "America/Anchorage",
+        "America/Anchorage"
+      ],
+      [
+        "America/Anguilla",
+        "America/Anguilla"
+      ],
+      [
+        "America/Antigua",
+        "America/Antigua"
+      ],
+      [
+        "America/Araguaina",
+        "America/Araguaina"
+      ],
+      [
+        "America/Argentina/Buenos_Aires",
+        "America/Argentina/Buenos_Aires"
+      ],
+      [
+        "America/Argentina/Catamarca",
+        "America/Argentina/Catamarca"
+      ],
+      [
+        "America/Argentina/ComodRivadavia",
+        "America/Argentina/ComodRivadavia"
+      ],
+      [
+        "America/Argentina/Cordoba",
+        "America/Argentina/Cordoba"
+      ],
+      [
+        "America/Argentina/Jujuy",
+        "America/Argentina/Jujuy"
+      ],
+      [
+        "America/Argentina/La_Rioja",
+        "America/Argentina/La_Rioja"
+      ],
+      [
+        "America/Argentina/Mendoza",
+        "America/Argentina/Mendoza"
+      ],
+      [
+        "America/Argentina/Rio_Gallegos",
+        "America/Argentina/Rio_Gallegos"
+      ],
+      [
+        "America/Argentina/Salta",
+        "America/Argentina/Salta"
+      ],
+      [
+        "America/Argentina/San_Juan",
+        "America/Argentina/San_Juan"
+      ],
+      [
+        "America/Argentina/San_Luis",
+        "America/Argentina/San_Luis"
+      ],
+      [
+        "America/Argentina/Tucuman",
+        "America/Argentina/Tucuman"
+      ],
+      [
+        "America/Argentina/Ushuaia",
+        "America/Argentina/Ushuaia"
+      ],
+      [
+        "America/Aruba",
+        "America/Aruba"
+      ],
+      [
+        "America/Asuncion",
+        "America/Asuncion"
+      ],
+      [
+        "America/Atikokan",
+        "America/Atikokan"
+      ],
+      [
+        "America/Atka",
+        "America/Atka"
+      ],
+      [
+        "America/Bahia",
+        "America/Bahia"
+      ],
+      [
+        "America/Bahia_Banderas",
+        "America/Bahia_Banderas"
+      ],
+      [
+        "America/Barbados",
+        "America/Barbados"
+      ],
+      [
+        "America/Belem",
+        "America/Belem"
+      ],
+      [
+        "America/Belize",
+        "America/Belize"
+      ],
+      [
+        "America/Blanc-Sablon",
+        "America/Blanc-Sablon"
+      ],
+      [
+        "America/Boa_Vista",
+        "America/Boa_Vista"
+      ],
+      [
+        "America/Bogota",
+        "America/Bogota"
+      ],
+      [
+        "America/Boise",
+        "America/Boise"
+      ],
+      [
+        "America/Buenos_Aires",
+        "America/Buenos_Aires"
+      ],
+      [
+        "America/Cambridge_Bay",
+        "America/Cambridge_Bay"
+      ],
+      [
+        "America/Campo_Grande",
+        "America/Campo_Grande"
+      ],
+      [
+        "America/Cancun",
+        "America/Cancun"
+      ],
+      [
+        "America/Caracas",
+        "America/Caracas"
+      ],
+      [
+        "America/Catamarca",
+        "America/Catamarca"
+      ],
+      [
+        "America/Cayenne",
+        "America/Cayenne"
+      ],
+      [
+        "America/Cayman",
+        "America/Cayman"
+      ],
+      [
+        "America/Chicago",
+        "America/Chicago"
+      ],
+      [
+        "America/Chihuahua",
+        "America/Chihuahua"
+      ],
+      [
+        "America/Ciudad_Juarez",
+        "America/Ciudad_Juarez"
+      ],
+      [
+        "America/Coral_Harbour",
+        "America/Coral_Harbour"
+      ],
+      [
+        "America/Cordoba",
+        "America/Cordoba"
+      ],
+      [
+        "America/Costa_Rica",
+        "America/Costa_Rica"
+      ],
+      [
+        "America/Creston",
+        "America/Creston"
+      ],
+      [
+        "America/Cuiaba",
+        "America/Cuiaba"
+      ],
+      [
+        "America/Curacao",
+        "America/Curacao"
+      ],
+      [
+        "America/Danmarkshavn",
+        "America/Danmarkshavn"
+      ],
+      [
+        "America/Dawson",
+        "America/Dawson"
+      ],
+      [
+        "America/Dawson_Creek",
+        "America/Dawson_Creek"
+      ],
+      [
+        "America/Denver",
+        "America/Denver"
+      ],
+      [
+        "America/Detroit",
+        "America/Detroit"
+      ],
+      [
+        "America/Dominica",
+        "America/Dominica"
+      ],
+      [
+        "America/Edmonton",
+        "America/Edmonton"
+      ],
+      [
+        "America/Eirunepe",
+        "America/Eirunepe"
+      ],
+      [
+        "America/El_Salvador",
+        "America/El_Salvador"
+      ],
+      [
+        "America/Ensenada",
+        "America/Ensenada"
+      ],
+      [
+        "America/Fort_Nelson",
+        "America/Fort_Nelson"
+      ],
+      [
+        "America/Fort_Wayne",
+        "America/Fort_Wayne"
+      ],
+      [
+        "America/Fortaleza",
+        "America/Fortaleza"
+      ],
+      [
+        "America/Glace_Bay",
+        "America/Glace_Bay"
+      ],
+      [
+        "America/Godthab",
+        "America/Godthab"
+      ],
+      [
+        "America/Goose_Bay",
+        "America/Goose_Bay"
+      ],
+      [
+        "America/Grand_Turk",
+        "America/Grand_Turk"
+      ],
+      [
+        "America/Grenada",
+        "America/Grenada"
+      ],
+      [
+        "America/Guadeloupe",
+        "America/Guadeloupe"
+      ],
+      [
+        "America/Guatemala",
+        "America/Guatemala"
+      ],
+      [
+        "America/Guayaquil",
+        "America/Guayaquil"
+      ],
+      [
+        "America/Guyana",
+        "America/Guyana"
+      ],
+      [
+        "America/Halifax",
+        "America/Halifax"
+      ],
+      [
+        "America/Havana",
+        "America/Havana"
+      ],
+      [
+        "America/Hermosillo",
+        "America/Hermosillo"
+      ],
+      [
+        "America/Indiana/Indianapolis",
+        "America/Indiana/Indianapolis"
+      ],
+      [
+        "America/Indiana/Knox",
+        "America/Indiana/Knox"
+      ],
+      [
+        "America/Indiana/Marengo",
+        "America/Indiana/Marengo"
+      ],
+      [
+        "America/Indiana/Petersburg",
+        "America/Indiana/Petersburg"
+      ],
+      [
+        "America/Indiana/Tell_City",
+        "America/Indiana/Tell_City"
+      ],
+      [
+        "America/Indiana/Vevay",
+        "America/Indiana/Vevay"
+      ],
+      [
+        "America/Indiana/Vincennes",
+        "America/Indiana/Vincennes"
+      ],
+      [
+        "America/Indiana/Winamac",
+        "America/Indiana/Winamac"
+      ],
+      [
+        "America/Indianapolis",
+        "America/Indianapolis"
+      ],
+      [
+        "America/Inuvik",
+        "America/Inuvik"
+      ],
+      [
+        "America/Iqaluit",
+        "America/Iqaluit"
+      ],
+      [
+        "America/Jamaica",
+        "America/Jamaica"
+      ],
+      [
+        "America/Jujuy",
+        "America/Jujuy"
+      ],
+      [
+        "America/Juneau",
+        "America/Juneau"
+      ],
+      [
+        "America/Kentucky/Louisville",
+        "America/Kentucky/Louisville"
+      ],
+      [
+        "America/Kentucky/Monticello",
+        "America/Kentucky/Monticello"
+      ],
+      [
+        "America/Knox_IN",
+        "America/Knox_IN"
+      ],
+      [
+        "America/Kralendijk",
+        "America/Kralendijk"
+      ],
+      [
+        "America/La_Paz",
+        "America/La_Paz"
+      ],
+      [
+        "America/Lima",
+        "America/Lima"
+      ],
+      [
+        "America/Los_Angeles",
+        "America/Los_Angeles"
+      ],
+      [
+        "America/Louisville",
+        "America/Louisville"
+      ],
+      [
+        "America/Lower_Princes",
+        "America/Lower_Princes"
+      ],
+      [
+        "America/Maceio",
+        "America/Maceio"
+      ],
+      [
+        "America/Managua",
+        "America/Managua"
+      ],
+      [
+        "America/Manaus",
+        "America/Manaus"
+      ],
+      [
+        "America/Marigot",
+        "America/Marigot"
+      ],
+      [
+        "America/Martinique",
+        "America/Martinique"
+      ],
+      [
+        "America/Matamoros",
+        "America/Matamoros"
+      ],
+      [
+        "America/Mazatlan",
+        "America/Mazatlan"
+      ],
+      [
+        "America/Mendoza",
+        "America/Mendoza"
+      ],
+      [
+        "America/Menominee",
+        "America/Menominee"
+      ],
+      [
+        "America/Merida",
+        "America/Merida"
+      ],
+      [
+        "America/Metlakatla",
+        "America/Metlakatla"
+      ],
+      [
+        "America/Mexico_City",
+        "America/Mexico_City"
+      ],
+      [
+        "America/Miquelon",
+        "America/Miquelon"
+      ],
+      [
+        "America/Moncton",
+        "America/Moncton"
+      ],
+      [
+        "America/Monterrey",
+        "America/Monterrey"
+      ],
+      [
+        "America/Montevideo",
+        "America/Montevideo"
+      ],
+      [
+        "America/Montreal",
+        "America/Montreal"
+      ],
+      [
+        "America/Montserrat",
+        "America/Montserrat"
+      ],
+      [
+        "America/Nassau",
+        "America/Nassau"
+      ],
+      [
+        "America/New_York",
+        "America/New_York"
+      ],
+      [
+        "America/Nipigon",
+        "America/Nipigon"
+      ],
+      [
+        "America/Nome",
+        "America/Nome"
+      ],
+      [
+        "America/Noronha",
+        "America/Noronha"
+      ],
+      [
+        "America/North_Dakota/Beulah",
+        "America/North_Dakota/Beulah"
+      ],
+      [
+        "America/North_Dakota/Center",
+        "America/North_Dakota/Center"
+      ],
+      [
+        "America/North_Dakota/New_Salem",
+        "America/North_Dakota/New_Salem"
+      ],
+      [
+        "America/Nuuk",
+        "America/Nuuk"
+      ],
+      [
+        "America/Ojinaga",
+        "America/Ojinaga"
+      ],
+      [
+        "America/Panama",
+        "America/Panama"
+      ],
+      [
+        "America/Pangnirtung",
+        "America/Pangnirtung"
+      ],
+      [
+        "America/Paramaribo",
+        "America/Paramaribo"
+      ],
+      [
+        "America/Phoenix",
+        "America/Phoenix"
+      ],
+      [
+        "America/Port-au-Prince",
+        "America/Port-au-Prince"
+      ],
+      [
+        "America/Port_of_Spain",
+        "America/Port_of_Spain"
+      ],
+      [
+        "America/Porto_Acre",
+        "America/Porto_Acre"
+      ],
+      [
+        "America/Porto_Velho",
+        "America/Porto_Velho"
+      ],
+      [
+        "America/Puerto_Rico",
+        "America/Puerto_Rico"
+      ],
+      [
+        "America/Punta_Arenas",
+        "America/Punta_Arenas"
+      ],
+      [
+        "America/Rainy_River",
+        "America/Rainy_River"
+      ],
+      [
+        "America/Rankin_Inlet",
+        "America/Rankin_Inlet"
+      ],
+      [
+        "America/Recife",
+        "America/Recife"
+      ],
+      [
+        "America/Regina",
+        "America/Regina"
+      ],
+      [
+        "America/Resolute",
+        "America/Resolute"
+      ],
+      [
+        "America/Rio_Branco",
+        "America/Rio_Branco"
+      ],
+      [
+        "America/Rosario",
+        "America/Rosario"
+      ],
+      [
+        "America/Santa_Isabel",
+        "America/Santa_Isabel"
+      ],
+      [
+        "America/Santarem",
+        "America/Santarem"
+      ],
+      [
+        "America/Santiago",
+        "America/Santiago"
+      ],
+      [
+        "America/Santo_Domingo",
+        "America/Santo_Domingo"
+      ],
+      [
+        "America/Sao_Paulo",
+        "America/Sao_Paulo"
+      ],
+      [
+        "America/Scoresbysund",
+        "America/Scoresbysund"
+      ],
+      [
+        "America/Shiprock",
+        "America/Shiprock"
+      ],
+      [
+        "America/Sitka",
+        "America/Sitka"
+      ],
+      [
+        "America/St_Barthelemy",
+        "America/St_Barthelemy"
+      ],
+      [
+        "America/St_Johns",
+        "America/St_Johns"
+      ],
+      [
+        "America/St_Kitts",
+        "America/St_Kitts"
+      ],
+      [
+        "America/St_Lucia",
+        "America/St_Lucia"
+      ],
+      [
+        "America/St_Thomas",
+        "America/St_Thomas"
+      ],
+      [
+        "America/St_Vincent",
+        "America/St_Vincent"
+      ],
+      [
+        "America/Swift_Current",
+        "America/Swift_Current"
+      ],
+      [
+        "America/Tegucigalpa",
+        "America/Tegucigalpa"
+      ],
+      [
+        "America/Thule",
+        "America/Thule"
+      ],
+      [
+        "America/Thunder_Bay",
+        "America/Thunder_Bay"
+      ],
+      [
+        "America/Tijuana",
+        "America/Tijuana"
+      ],
+      [
+        "America/Toronto",
+        "America/Toronto"
+      ],
+      [
+        "America/Tortola",
+        "America/Tortola"
+      ],
+      [
+        "America/Vancouver",
+        "America/Vancouver"
+      ],
+      [
+        "America/Virgin",
+        "America/Virgin"
+      ],
+      [
+        "America/Whitehorse",
+        "America/Whitehorse"
+      ],
+      [
+        "America/Winnipeg",
+        "America/Winnipeg"
+      ],
+      [
+        "America/Yakutat",
+        "America/Yakutat"
+      ],
+      [
+        "America/Yellowknife",
+        "America/Yellowknife"
+      ],
+      [
+        "Antarctica/Casey",
+        "Antarctica/Casey"
+      ],
+      [
+        "Antarctica/Davis",
+        "Antarctica/Davis"
+      ],
+      [
+        "Antarctica/DumontDUrville",
+        "Antarctica/DumontDUrville"
+      ],
+      [
+        "Antarctica/Macquarie",
+        "Antarctica/Macquarie"
+      ],
+      [
+        "Antarctica/Mawson",
+        "Antarctica/Mawson"
+      ],
+      [
+        "Antarctica/McMurdo",
+        "Antarctica/McMurdo"
+      ],
+      [
+        "Antarctica/Palmer",
+        "Antarctica/Palmer"
+      ],
+      [
+        "Antarctica/Rothera",
+        "Antarctica/Rothera"
+      ],
+      [
+        "Antarctica/South_Pole",
+        "Antarctica/South_Pole"
+      ],
+      [
+        "Antarctica/Syowa",
+        "Antarctica/Syowa"
+      ],
+      [
+        "Antarctica/Troll",
+        "Antarctica/Troll"
+      ],
+      [
+        "Antarctica/Vostok",
+        "Antarctica/Vostok"
+      ],
+      [
+        "Arctic/Longyearbyen",
+        "Arctic/Longyearbyen"
+      ],
+      [
+        "Asia/Aden",
+        "Asia/Aden"
+      ],
+      [
+        "Asia/Almaty",
+        "Asia/Almaty"
+      ],
+      [
+        "Asia/Amman",
+        "Asia/Amman"
+      ],
+      [
+        "Asia/Anadyr",
+        "Asia/Anadyr"
+      ],
+      [
+        "Asia/Aqtau",
+        "Asia/Aqtau"
+      ],
+      [
+        "Asia/Aqtobe",
+        "Asia/Aqtobe"
+      ],
+      [
+        "Asia/Ashgabat",
+        "Asia/Ashgabat"
+      ],
+      [
+        "Asia/Ashkhabad",
+        "Asia/Ashkhabad"
+      ],
+      [
+        "Asia/Atyrau",
+        "Asia/Atyrau"
+      ],
+      [
+        "Asia/Baghdad",
+        "Asia/Baghdad"
+      ],
+      [
+        "Asia/Bahrain",
+        "Asia/Bahrain"
+      ],
+      [
+        "Asia/Baku",
+        "Asia/Baku"
+      ],
+      [
+        "Asia/Bangkok",
+        "Asia/Bangkok"
+      ],
+      [
+        "Asia/Barnaul",
+        "Asia/Barnaul"
+      ],
+      [
+        "Asia/Beirut",
+        "Asia/Beirut"
+      ],
+      [
+        "Asia/Bishkek",
+        "Asia/Bishkek"
+      ],
+      [
+        "Asia/Brunei",
+        "Asia/Brunei"
+      ],
+      [
+        "Asia/Calcutta",
+        "Asia/Calcutta"
+      ],
+      [
+        "Asia/Chita",
+        "Asia/Chita"
+      ],
+      [
+        "Asia/Choibalsan",
+        "Asia/Choibalsan"
+      ],
+      [
+        "Asia/Chongqing",
+        "Asia/Chongqing"
+      ],
+      [
+        "Asia/Chungking",
+        "Asia/Chungking"
+      ],
+      [
+        "Asia/Colombo",
+        "Asia/Colombo"
+      ],
+      [
+        "Asia/Dacca",
+        "Asia/Dacca"
+      ],
+      [
+        "Asia/Damascus",
+        "Asia/Damascus"
+      ],
+      [
+        "Asia/Dhaka",
+        "Asia/Dhaka"
+      ],
+      [
+        "Asia/Dili",
+        "Asia/Dili"
+      ],
+      [
+        "Asia/Dubai",
+        "Asia/Dubai"
+      ],
+      [
+        "Asia/Dushanbe",
+        "Asia/Dushanbe"
+      ],
+      [
+        "Asia/Famagusta",
+        "Asia/Famagusta"
+      ],
+      [
+        "Asia/Gaza",
+        "Asia/Gaza"
+      ],
+      [
+        "Asia/Harbin",
+        "Asia/Harbin"
+      ],
+      [
+        "Asia/Hebron",
+        "Asia/Hebron"
+      ],
+      [
+        "Asia/Ho_Chi_Minh",
+        "Asia/Ho_Chi_Minh"
+      ],
+      [
+        "Asia/Hong_Kong",
+        "Asia/Hong_Kong"
+      ],
+      [
+        "Asia/Hovd",
+        "Asia/Hovd"
+      ],
+      [
+        "Asia/Irkutsk",
+        "Asia/Irkutsk"
+      ],
+      [
+        "Asia/Istanbul",
+        "Asia/Istanbul"
+      ],
+      [
+        "Asia/Jakarta",
+        "Asia/Jakarta"
+      ],
+      [
+        "Asia/Jayapura",
+        "Asia/Jayapura"
+      ],
+      [
+        "Asia/Jerusalem",
+        "Asia/Jerusalem"
+      ],
+      [
+        "Asia/Kabul",
+        "Asia/Kabul"
+      ],
+      [
+        "Asia/Kamchatka",
+        "Asia/Kamchatka"
+      ],
+      [
+        "Asia/Karachi",
+        "Asia/Karachi"
+      ],
+      [
+        "Asia/Kashgar",
+        "Asia/Kashgar"
+      ],
+      [
+        "Asia/Kathmandu",
+        "Asia/Kathmandu"
+      ],
+      [
+        "Asia/Katmandu",
+        "Asia/Katmandu"
+      ],
+      [
+        "Asia/Khandyga",
+        "Asia/Khandyga"
+      ],
+      [
+        "Asia/Kolkata",
+        "Asia/Kolkata"
+      ],
+      [
+        "Asia/Krasnoyarsk",
+        "Asia/Krasnoyarsk"
+      ],
+      [
+        "Asia/Kuala_Lumpur",
+        "Asia/Kuala_Lumpur"
+      ],
+      [
+        "Asia/Kuching",
+        "Asia/Kuching"
+      ],
+      [
+        "Asia/Kuwait",
+        "Asia/Kuwait"
+      ],
+      [
+        "Asia/Macao",
+        "Asia/Macao"
+      ],
+      [
+        "Asia/Macau",
+        "Asia/Macau"
+      ],
+      [
+        "Asia/Magadan",
+        "Asia/Magadan"
+      ],
+      [
+        "Asia/Makassar",
+        "Asia/Makassar"
+      ],
+      [
+        "Asia/Manila",
+        "Asia/Manila"
+      ],
+      [
+        "Asia/Muscat",
+        "Asia/Muscat"
+      ],
+      [
+        "Asia/Nicosia",
+        "Asia/Nicosia"
+      ],
+      [
+        "Asia/Novokuznetsk",
+        "Asia/Novokuznetsk"
+      ],
+      [
+        "Asia/Novosibirsk",
+        "Asia/Novosibirsk"
+      ],
+      [
+        "Asia/Omsk",
+        "Asia/Omsk"
+      ],
+      [
+        "Asia/Oral",
+        "Asia/Oral"
+      ],
+      [
+        "Asia/Phnom_Penh",
+        "Asia/Phnom_Penh"
+      ],
+      [
+        "Asia/Pontianak",
+        "Asia/Pontianak"
+      ],
+      [
+        "Asia/Pyongyang",
+        "Asia/Pyongyang"
+      ],
+      [
+        "Asia/Qatar",
+        "Asia/Qatar"
+      ],
+      [
+        "Asia/Qostanay",
+        "Asia/Qostanay"
+      ],
+      [
+        "Asia/Qyzylorda",
+        "Asia/Qyzylorda"
+      ],
+      [
+        "Asia/Rangoon",
+        "Asia/Rangoon"
+      ],
+      [
+        "Asia/Riyadh",
+        "Asia/Riyadh"
+      ],
+      [
+        "Asia/Saigon",
+        "Asia/Saigon"
+      ],
+      [
+        "Asia/Sakhalin",
+        "Asia/Sakhalin"
+      ],
+      [
+        "Asia/Samarkand",
+        "Asia/Samarkand"
+      ],
+      [
+        "Asia/Seoul",
+        "Asia/Seoul"
+      ],
+      [
+        "Asia/Shanghai",
+        "Asia/Shanghai"
+      ],
+      [
+        "Asia/Singapore",
+        "Asia/Singapore"
+      ],
+      [
+        "Asia/Srednekolymsk",
+        "Asia/Srednekolymsk"
+      ],
+      [
+        "Asia/Taipei",
+        "Asia/Taipei"
+      ],
+      [
+        "Asia/Tashkent",
+        "Asia/Tashkent"
+      ],
+      [
+        "Asia/Tbilisi",
+        "Asia/Tbilisi"
+      ],
+      [
+        "Asia/Tehran",
+        "Asia/Tehran"
+      ],
+      [
+        "Asia/Tel_Aviv",
+        "Asia/Tel_Aviv"
+      ],
+      [
+        "Asia/Thimbu",
+        "Asia/Thimbu"
+      ],
+      [
+        "Asia/Thimphu",
+        "Asia/Thimphu"
+      ],
+      [
+        "Asia/Tokyo",
+        "Asia/Tokyo"
+      ],
+      [
+        "Asia/Tomsk",
+        "Asia/Tomsk"
+      ],
+      [
+        "Asia/Ujung_Pandang",
+        "Asia/Ujung_Pandang"
+      ],
+      [
+        "Asia/Ulaanbaatar",
+        "Asia/Ulaanbaatar"
+      ],
+      [
+        "Asia/Ulan_Bator",
+        "Asia/Ulan_Bator"
+      ],
+      [
+        "Asia/Urumqi",
+        "Asia/Urumqi"
+      ],
+      [
+        "Asia/Ust-Nera",
+        "Asia/Ust-Nera"
+      ],
+      [
+        "Asia/Vientiane",
+        "Asia/Vientiane"
+      ],
+      [
+        "Asia/Vladivostok",
+        "Asia/Vladivostok"
+      ],
+      [
+        "Asia/Yakutsk",
+        "Asia/Yakutsk"
+      ],
+      [
+        "Asia/Yangon",
+        "Asia/Yangon"
+      ],
+      [
+        "Asia/Yekaterinburg",
+        "Asia/Yekaterinburg"
+      ],
+      [
+        "Asia/Yerevan",
+        "Asia/Yerevan"
+      ],
+      [
+        "Atlantic/Azores",
+        "Atlantic/Azores"
+      ],
+      [
+        "Atlantic/Bermuda",
+        "Atlantic/Bermuda"
+      ],
+      [
+        "Atlantic/Canary",
+        "Atlantic/Canary"
+      ],
+      [
+        "Atlantic/Cape_Verde",
+        "Atlantic/Cape_Verde"
+      ],
+      [
+        "Atlantic/Faeroe",
+        "Atlantic/Faeroe"
+      ],
+      [
+        "Atlantic/Faroe",
+        "Atlantic/Faroe"
+      ],
+      [
+        "Atlantic/Jan_Mayen",
+        "Atlantic/Jan_Mayen"
+      ],
+      [
+        "Atlantic/Madeira",
+        "Atlantic/Madeira"
+      ],
+      [
+        "Atlantic/Reykjavik",
+        "Atlantic/Reykjavik"
+      ],
+      [
+        "Atlantic/South_Georgia",
+        "Atlantic/South_Georgia"
+      ],
+      [
+        "Atlantic/St_Helena",
+        "Atlantic/St_Helena"
+      ],
+      [
+        "Atlantic/Stanley",
+        "Atlantic/Stanley"
+      ],
+      [
+        "Australia/ACT",
+        "Australia/ACT"
+      ],
+      [
+        "Australia/Adelaide",
+        "Australia/Adelaide"
+      ],
+      [
+        "Australia/Brisbane",
+        "Australia/Brisbane"
+      ],
+      [
+        "Australia/Broken_Hill",
+        "Australia/Broken_Hill"
+      ],
+      [
+        "Australia/Canberra",
+        "Australia/Canberra"
+      ],
+      [
+        "Australia/Currie",
+        "Australia/Currie"
+      ],
+      [
+        "Australia/Darwin",
+        "Australia/Darwin"
+      ],
+      [
+        "Australia/Eucla",
+        "Australia/Eucla"
+      ],
+      [
+        "Australia/Hobart",
+        "Australia/Hobart"
+      ],
+      [
+        "Australia/LHI",
+        "Australia/LHI"
+      ],
+      [
+        "Australia/Lindeman",
+        "Australia/Lindeman"
+      ],
+      [
+        "Australia/Lord_Howe",
+        "Australia/Lord_Howe"
+      ],
+      [
+        "Australia/Melbourne",
+        "Australia/Melbourne"
+      ],
+      [
+        "Australia/NSW",
+        "Australia/NSW"
+      ],
+      [
+        "Australia/North",
+        "Australia/North"
+      ],
+      [
+        "Australia/Perth",
+        "Australia/Perth"
+      ],
+      [
+        "Australia/Queensland",
+        "Australia/Queensland"
+      ],
+      [
+        "Australia/South",
+        "Australia/South"
+      ],
+      [
+        "Australia/Sydney",
+        "Australia/Sydney"
+      ],
+      [
+        "Australia/Tasmania",
+        "Australia/Tasmania"
+      ],
+      [
+        "Australia/Victoria",
+        "Australia/Victoria"
+      ],
+      [
+        "Australia/West",
+        "Australia/West"
+      ],
+      [
+        "Australia/Yancowinna",
+        "Australia/Yancowinna"
+      ],
+      [
+        "Brazil/Acre",
+        "Brazil/Acre"
+      ],
+      [
+        "Brazil/DeNoronha",
+        "Brazil/DeNoronha"
+      ],
+      [
+        "Brazil/East",
+        "Brazil/East"
+      ],
+      [
+        "Brazil/West",
+        "Brazil/West"
+      ],
+      [
+        "CET",
+        "CET"
+      ],
+      [
+        "CST6CDT",
+        "CST6CDT"
+      ],
+      [
+        "Canada/Atlantic",
+        "Canada/Atlantic"
+      ],
+      [
+        "Canada/Central",
+        "Canada/Central"
+      ],
+      [
+        "Canada/Eastern",
+        "Canada/Eastern"
+      ],
+      [
+        "Canada/Mountain",
+        "Canada/Mountain"
+      ],
+      [
+        "Canada/Newfoundland",
+        "Canada/Newfoundland"
+      ],
+      [
+        "Canada/Pacific",
+        "Canada/Pacific"
+      ],
+      [
+        "Canada/Saskatchewan",
+        "Canada/Saskatchewan"
+      ],
+      [
+        "Canada/Yukon",
+        "Canada/Yukon"
+      ],
+      [
+        "Chile/Continental",
+        "Chile/Continental"
+      ],
+      [
+        "Chile/EasterIsland",
+        "Chile/EasterIsland"
+      ],
+      [
+        "Cuba",
+        "Cuba"
+      ],
+      [
+        "EET",
+        "EET"
+      ],
+      [
+        "EST",
+        "EST"
+      ],
+      [
+        "EST5EDT",
+        "EST5EDT"
+      ],
+      [
+        "Egypt",
+        "Egypt"
+      ],
+      [
+        "Eire",
+        "Eire"
+      ],
+      [
+        "Europe/Amsterdam",
+        "Europe/Amsterdam"
+      ],
+      [
+        "Europe/Andorra",
+        "Europe/Andorra"
+      ],
+      [
+        "Europe/Astrakhan",
+        "Europe/Astrakhan"
+      ],
+      [
+        "Europe/Athens",
+        "Europe/Athens"
+      ],
+      [
+        "Europe/Belfast",
+        "Europe/Belfast"
+      ],
+      [
+        "Europe/Belgrade",
+        "Europe/Belgrade"
+      ],
+      [
+        "Europe/Berlin",
+        "Europe/Berlin"
+      ],
+      [
+        "Europe/Bratislava",
+        "Europe/Bratislava"
+      ],
+      [
+        "Europe/Brussels",
+        "Europe/Brussels"
+      ],
+      [
+        "Europe/Bucharest",
+        "Europe/Bucharest"
+      ],
+      [
+        "Europe/Budapest",
+        "Europe/Budapest"
+      ],
+      [
+        "Europe/Busingen",
+        "Europe/Busingen"
+      ],
+      [
+        "Europe/Chisinau",
+        "Europe/Chisinau"
+      ],
+      [
+        "Europe/Copenhagen",
+        "Europe/Copenhagen"
+      ],
+      [
+        "Europe/Dublin",
+        "Europe/Dublin"
+      ],
+      [
+        "Europe/Gibraltar",
+        "Europe/Gibraltar"
+      ],
+      [
+        "Europe/Guernsey",
+        "Europe/Guernsey"
+      ],
+      [
+        "Europe/Helsinki",
+        "Europe/Helsinki"
+      ],
+      [
+        "Europe/Isle_of_Man",
+        "Europe/Isle_of_Man"
+      ],
+      [
+        "Europe/Istanbul",
+        "Europe/Istanbul"
+      ],
+      [
+        "Europe/Jersey",
+        "Europe/Jersey"
+      ],
+      [
+        "Europe/Kaliningrad",
+        "Europe/Kaliningrad"
+      ],
+      [
+        "Europe/Kiev",
+        "Europe/Kiev"
+      ],
+      [
+        "Europe/Kirov",
+        "Europe/Kirov"
+      ],
+      [
+        "Europe/Kyiv",
+        "Europe/Kyiv"
+      ],
+      [
+        "Europe/Lisbon",
+        "Europe/Lisbon"
+      ],
+      [
+        "Europe/Ljubljana",
+        "Europe/Ljubljana"
+      ],
+      [
+        "Europe/London",
+        "Europe/London"
+      ],
+      [
+        "Europe/Luxembourg",
+        "Europe/Luxembourg"
+      ],
+      [
+        "Europe/Madrid",
+        "Europe/Madrid"
+      ],
+      [
+        "Europe/Malta",
+        "Europe/Malta"
+      ],
+      [
+        "Europe/Mariehamn",
+        "Europe/Mariehamn"
+      ],
+      [
+        "Europe/Minsk",
+        "Europe/Minsk"
+      ],
+      [
+        "Europe/Monaco",
+        "Europe/Monaco"
+      ],
+      [
+        "Europe/Moscow",
+        "Europe/Moscow"
+      ],
+      [
+        "Europe/Nicosia",
+        "Europe/Nicosia"
+      ],
+      [
+        "Europe/Oslo",
+        "Europe/Oslo"
+      ],
+      [
+        "Europe/Paris",
+        "Europe/Paris"
+      ],
+      [
+        "Europe/Podgorica",
+        "Europe/Podgorica"
+      ],
+      [
+        "Europe/Prague",
+        "Europe/Prague"
+      ],
+      [
+        "Europe/Riga",
+        "Europe/Riga"
+      ],
+      [
+        "Europe/Rome",
+        "Europe/Rome"
+      ],
+      [
+        "Europe/Samara",
+        "Europe/Samara"
+      ],
+      [
+        "Europe/San_Marino",
+        "Europe/San_Marino"
+      ],
+      [
+        "Europe/Sarajevo",
+        "Europe/Sarajevo"
+      ],
+      [
+        "Europe/Saratov",
+        "Europe/Saratov"
+      ],
+      [
+        "Europe/Simferopol",
+        "Europe/Simferopol"
+      ],
+      [
+        "Europe/Skopje",
+        "Europe/Skopje"
+      ],
+      [
+        "Europe/Sofia",
+        "Europe/Sofia"
+      ],
+      [
+        "Europe/Stockholm",
+        "Europe/Stockholm"
+      ],
+      [
+        "Europe/Tallinn",
+        "Europe/Tallinn"
+      ],
+      [
+        "Europe/Tirane",
+        "Europe/Tirane"
+      ],
+      [
+        "Europe/Tiraspol",
+        "Europe/Tiraspol"
+      ],
+      [
+        "Europe/Ulyanovsk",
+        "Europe/Ulyanovsk"
+      ],
+      [
+        "Europe/Uzhgorod",
+        "Europe/Uzhgorod"
+      ],
+      [
+        "Europe/Vaduz",
+        "Europe/Vaduz"
+      ],
+      [
+        "Europe/Vatican",
+        "Europe/Vatican"
+      ],
+      [
+        "Europe/Vienna",
+        "Europe/Vienna"
+      ],
+      [
+        "Europe/Vilnius",
+        "Europe/Vilnius"
+      ],
+      [
+        "Europe/Volgograd",
+        "Europe/Volgograd"
+      ],
+      [
+        "Europe/Warsaw",
+        "Europe/Warsaw"
+      ],
+      [
+        "Europe/Zagreb",
+        "Europe/Zagreb"
+      ],
+      [
+        "Europe/Zaporozhye",
+        "Europe/Zaporozhye"
+      ],
+      [
+        "Europe/Zurich",
+        "Europe/Zurich"
+      ],
+      [
+        "GB",
+        "GB"
+      ],
+      [
+        "GB-Eire",
+        "GB-Eire"
+      ],
+      [
+        "GMT",
+        "GMT"
+      ],
+      [
+        "GMT+0",
+        "GMT+0"
+      ],
+      [
+        "GMT-0",
+        "GMT-0"
+      ],
+      [
+        "GMT0",
+        "GMT0"
+      ],
+      [
+        "Greenwich",
+        "Greenwich"
+      ],
+      [
+        "HST",
+        "HST"
+      ],
+      [
+        "Hongkong",
+        "Hongkong"
+      ],
+      [
+        "Iceland",
+        "Iceland"
+      ],
+      [
+        "Indian/Antananarivo",
+        "Indian/Antananarivo"
+      ],
+      [
+        "Indian/Chagos",
+        "Indian/Chagos"
+      ],
+      [
+        "Indian/Christmas",
+        "Indian/Christmas"
+      ],
+      [
+        "Indian/Cocos",
+        "Indian/Cocos"
+      ],
+      [
+        "Indian/Comoro",
+        "Indian/Comoro"
+      ],
+      [
+        "Indian/Kerguelen",
+        "Indian/Kerguelen"
+      ],
+      [
+        "Indian/Mahe",
+        "Indian/Mahe"
+      ],
+      [
+        "Indian/Maldives",
+        "Indian/Maldives"
+      ],
+      [
+        "Indian/Mauritius",
+        "Indian/Mauritius"
+      ],
+      [
+        "Indian/Mayotte",
+        "Indian/Mayotte"
+      ],
+      [
+        "Indian/Reunion",
+        "Indian/Reunion"
+      ],
+      [
+        "Iran",
+        "Iran"
+      ],
+      [
+        "Israel",
+        "Israel"
+      ],
+      [
+        "Jamaica",
+        "Jamaica"
+      ],
+      [
+        "Japan",
+        "Japan"
+      ],
+      [
+        "Kwajalein",
+        "Kwajalein"
+      ],
+      [
+        "Libya",
+        "Libya"
+      ],
+      [
+        "MET",
+        "MET"
+      ],
+      [
+        "MST",
+        "MST"
+      ],
+      [
+        "MST7MDT",
+        "MST7MDT"
+      ],
+      [
+        "Mexico/BajaNorte",
+        "Mexico/BajaNorte"
+      ],
+      [
+        "Mexico/BajaSur",
+        "Mexico/BajaSur"
+      ],
+      [
+        "Mexico/General",
+        "Mexico/General"
+      ],
+      [
+        "NZ",
+        "NZ"
+      ],
+      [
+        "NZ-CHAT",
+        "NZ-CHAT"
+      ],
+      [
+        "Navajo",
+        "Navajo"
+      ],
+      [
+        "PRC",
+        "PRC"
+      ],
+      [
+        "PST8PDT",
+        "PST8PDT"
+      ],
+      [
+        "Pacific/Apia",
+        "Pacific/Apia"
+      ],
+      [
+        "Pacific/Auckland",
+        "Pacific/Auckland"
+      ],
+      [
+        "Pacific/Bougainville",
+        "Pacific/Bougainville"
+      ],
+      [
+        "Pacific/Chatham",
+        "Pacific/Chatham"
+      ],
+      [
+        "Pacific/Chuuk",
+        "Pacific/Chuuk"
+      ],
+      [
+        "Pacific/Easter",
+        "Pacific/Easter"
+      ],
+      [
+        "Pacific/Efate",
+        "Pacific/Efate"
+      ],
+      [
+        "Pacific/Enderbury",
+        "Pacific/Enderbury"
+      ],
+      [
+        "Pacific/Fakaofo",
+        "Pacific/Fakaofo"
+      ],
+      [
+        "Pacific/Fiji",
+        "Pacific/Fiji"
+      ],
+      [
+        "Pacific/Funafuti",
+        "Pacific/Funafuti"
+      ],
+      [
+        "Pacific/Galapagos",
+        "Pacific/Galapagos"
+      ],
+      [
+        "Pacific/Gambier",
+        "Pacific/Gambier"
+      ],
+      [
+        "Pacific/Guadalcanal",
+        "Pacific/Guadalcanal"
+      ],
+      [
+        "Pacific/Guam",
+        "Pacific/Guam"
+      ],
+      [
+        "Pacific/Honolulu",
+        "Pacific/Honolulu"
+      ],
+      [
+        "Pacific/Johnston",
+        "Pacific/Johnston"
+      ],
+      [
+        "Pacific/Kanton",
+        "Pacific/Kanton"
+      ],
+      [
+        "Pacific/Kiritimati",
+        "Pacific/Kiritimati"
+      ],
+      [
+        "Pacific/Kosrae",
+        "Pacific/Kosrae"
+      ],
+      [
+        "Pacific/Kwajalein",
+        "Pacific/Kwajalein"
+      ],
+      [
+        "Pacific/Majuro",
+        "Pacific/Majuro"
+      ],
+      [
+        "Pacific/Marquesas",
+        "Pacific/Marquesas"
+      ],
+      [
+        "Pacific/Midway",
+        "Pacific/Midway"
+      ],
+      [
+        "Pacific/Nauru",
+        "Pacific/Nauru"
+      ],
+      [
+        "Pacific/Niue",
+        "Pacific/Niue"
+      ],
+      [
+        "Pacific/Norfolk",
+        "Pacific/Norfolk"
+      ],
+      [
+        "Pacific/Noumea",
+        "Pacific/Noumea"
+      ],
+      [
+        "Pacific/Pago_Pago",
+        "Pacific/Pago_Pago"
+      ],
+      [
+        "Pacific/Palau",
+        "Pacific/Palau"
+      ],
+      [
+        "Pacific/Pitcairn",
+        "Pacific/Pitcairn"
+      ],
+      [
+        "Pacific/Pohnpei",
+        "Pacific/Pohnpei"
+      ],
+      [
+        "Pacific/Ponape",
+        "Pacific/Ponape"
+      ],
+      [
+        "Pacific/Port_Moresby",
+        "Pacific/Port_Moresby"
+      ],
+      [
+        "Pacific/Rarotonga",
+        "Pacific/Rarotonga"
+      ],
+      [
+        "Pacific/Saipan",
+        "Pacific/Saipan"
+      ],
+      [
+        "Pacific/Samoa",
+        "Pacific/Samoa"
+      ],
+      [
+        "Pacific/Tahiti",
+        "Pacific/Tahiti"
+      ],
+      [
+        "Pacific/Tarawa",
+        "Pacific/Tarawa"
+      ],
+      [
+        "Pacific/Tongatapu",
+        "Pacific/Tongatapu"
+      ],
+      [
+        "Pacific/Truk",
+        "Pacific/Truk"
+      ],
+      [
+        "Pacific/Wake",
+        "Pacific/Wake"
+      ],
+      [
+        "Pacific/Wallis",
+        "Pacific/Wallis"
+      ],
+      [
+        "Pacific/Yap",
+        "Pacific/Yap"
+      ],
+      [
+        "Poland",
+        "Poland"
+      ],
+      [
+        "Portugal",
+        "Portugal"
+      ],
+      [
+        "ROC",
+        "ROC"
+      ],
+      [
+        "ROK",
+        "ROK"
+      ],
+      [
+        "Singapore",
+        "Singapore"
+      ],
+      [
+        "Turkey",
+        "Turkey"
+      ],
+      [
+        "UCT",
+        "UCT"
+      ],
+      [
+        "US/Alaska",
+        "US/Alaska"
+      ],
+      [
+        "US/Aleutian",
+        "US/Aleutian"
+      ],
+      [
+        "US/Arizona",
+        "US/Arizona"
+      ],
+      [
+        "US/Central",
+        "US/Central"
+      ],
+      [
+        "US/East-Indiana",
+        "US/East-Indiana"
+      ],
+      [
+        "US/Eastern",
+        "US/Eastern"
+      ],
+      [
+        "US/Hawaii",
+        "US/Hawaii"
+      ],
+      [
+        "US/Indiana-Starke",
+        "US/Indiana-Starke"
+      ],
+      [
+        "US/Michigan",
+        "US/Michigan"
+      ],
+      [
+        "US/Mountain",
+        "US/Mountain"
+      ],
+      [
+        "US/Pacific",
+        "US/Pacific"
+      ],
+      [
+        "US/Samoa",
+        "US/Samoa"
+      ],
+      [
+        "UTC",
+        "UTC"
+      ],
+      [
+        "Universal",
+        "Universal"
+      ],
+      [
+        "W-SU",
+        "W-SU"
+      ],
+      [
+        "WET",
+        "WET"
+      ],
+      [
+        "Zulu",
+        "Zulu"
+      ],
+      [
+        "Etc/GMT",
+        "Etc/GMT"
+      ],
+      [
+        "Etc/GMT+0",
+        "Etc/GMT+0"
+      ],
+      [
+        "Etc/GMT+1",
+        "Etc/GMT+1"
+      ],
+      [
+        "Etc/GMT+10",
+        "Etc/GMT+10"
+      ],
+      [
+        "Etc/GMT+11",
+        "Etc/GMT+11"
+      ],
+      [
+        "Etc/GMT+12",
+        "Etc/GMT+12"
+      ],
+      [
+        "Etc/GMT+2",
+        "Etc/GMT+2"
+      ],
+      [
+        "Etc/GMT+3",
+        "Etc/GMT+3"
+      ],
+      [
+        "Etc/GMT+4",
+        "Etc/GMT+4"
+      ],
+      [
+        "Etc/GMT+5",
+        "Etc/GMT+5"
+      ],
+      [
+        "Etc/GMT+6",
+        "Etc/GMT+6"
+      ],
+      [
+        "Etc/GMT+7",
+        "Etc/GMT+7"
+      ],
+      [
+        "Etc/GMT+8",
+        "Etc/GMT+8"
+      ],
+      [
+        "Etc/GMT+9",
+        "Etc/GMT+9"
+      ],
+      [
+        "Etc/GMT-0",
+        "Etc/GMT-0"
+      ],
+      [
+        "Etc/GMT-1",
+        "Etc/GMT-1"
+      ],
+      [
+        "Etc/GMT-10",
+        "Etc/GMT-10"
+      ],
+      [
+        "Etc/GMT-11",
+        "Etc/GMT-11"
+      ],
+      [
+        "Etc/GMT-12",
+        "Etc/GMT-12"
+      ],
+      [
+        "Etc/GMT-13",
+        "Etc/GMT-13"
+      ],
+      [
+        "Etc/GMT-14",
+        "Etc/GMT-14"
+      ],
+      [
+        "Etc/GMT-2",
+        "Etc/GMT-2"
+      ],
+      [
+        "Etc/GMT-3",
+        "Etc/GMT-3"
+      ],
+      [
+        "Etc/GMT-4",
+        "Etc/GMT-4"
+      ],
+      [
+        "Etc/GMT-5",
+        "Etc/GMT-5"
+      ],
+      [
+        "Etc/GMT-6",
+        "Etc/GMT-6"
+      ],
+      [
+        "Etc/GMT-7",
+        "Etc/GMT-7"
+      ],
+      [
+        "Etc/GMT-8",
+        "Etc/GMT-8"
+      ],
+      [
+        "Etc/GMT-9",
+        "Etc/GMT-9"
+      ],
+      [
+        "Etc/GMT0",
+        "Etc/GMT0"
+      ],
+      [
+        "Etc/Greenwich",
+        "Etc/Greenwich"
+      ],
+      [
+        "Etc/UCT",
+        "Etc/UCT"
+      ],
+      [
+        "Etc/UTC",
+        "Etc/UTC"
+      ],
+      [
+        "Etc/Universal",
+        "Etc/Universal"
+      ],
+      [
+        "Etc/Zulu",
+        "Etc/Zulu"
+      ]
+    ],
+    "sortable": true,
+    "store": false,
+    "string": "Timezone",
+    "type": "selection"
+  },
+  "activity_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'hr.employee')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "activity_ids",
+    "readonly": false,
+    "relation": "mail.activity",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Activities",
+    "type": "one2many"
+  },
+  "activity_state": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.state"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "Status based on activities\nOverdue: Due date is already passed\nToday: Activity date is today\nPlanned: Future activities.",
+    "manual": false,
+    "name": "activity_state",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "overdue",
+        "Overdue"
+      ],
+      [
+        "today",
+        "Today"
+      ],
+      [
+        "planned",
+        "Planned"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Activity State",
+    "type": "selection"
+  },
+  "activity_user_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.user_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "activity_user_id",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Responsible User",
+    "type": "many2one"
+  },
+  "activity_type_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "activity_type_id",
+    "readonly": false,
+    "related": "activity_ids.activity_type_id",
+    "relation": "mail.activity.type",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Type",
+    "type": "many2one"
+  },
+  "activity_type_icon": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "Font awesome icon e.g. fa-tasks",
+    "manual": false,
+    "name": "activity_type_icon",
+    "readonly": true,
+    "related": "activity_ids.icon",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Activity Type Icon",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_date_deadline": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.date_deadline"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "activity_date_deadline",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Deadline",
+    "type": "date"
+  },
+  "my_activity_date_deadline": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.date_deadline",
+      "activity_ids.user_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "my_activity_date_deadline",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "My Activity Deadline",
+    "type": "date"
+  },
+  "activity_summary": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.summary"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "activity_summary",
+    "readonly": false,
+    "related": "activity_ids.summary",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Summary",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_exception_decoration": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id.decoration_type",
+      "activity_ids.activity_type_id.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "Type of the exception activity on record.",
+    "manual": false,
+    "name": "activity_exception_decoration",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "warning",
+        "Alert"
+      ],
+      [
+        "danger",
+        "Error"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Activity Exception Decoration",
+    "type": "selection"
+  },
+  "activity_exception_icon": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.activity_type_id.decoration_type",
+      "activity_ids.activity_type_id.icon"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "Icon to indicate an exception activity.",
+    "manual": false,
+    "name": "activity_exception_icon",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Icon",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "activity_calendar_event_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "activity_ids.calendar_event_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "activity_calendar_event_id",
+    "readonly": true,
+    "relation": "calendar.event",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Next Activity Calendar Event",
+    "type": "many2one"
+  },
+  "message_is_follower": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "message_is_follower",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Is Follower",
+    "type": "boolean"
+  },
+  "message_follower_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'hr.employee')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "message_follower_ids",
+    "readonly": false,
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Followers",
+    "type": "one2many"
+  },
+  "message_partner_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "message_partner_ids",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Followers (Partners)",
+    "type": "many2many"
+  },
+  "message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('message_type', '!=', 'user_notification')]) + ([('model', '=', 'hr.employee')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Messages",
+    "type": "one2many"
+  },
+  "has_message": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "has_message",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Has Message",
+    "type": "boolean"
+  },
+  "message_needaction": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "If checked, new messages require your attention.",
+    "manual": false,
+    "name": "message_needaction",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Action Needed",
+    "type": "boolean"
+  },
+  "message_needaction_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "Number of messages requiring action",
+    "manual": false,
+    "name": "message_needaction_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of Actions",
+    "type": "integer"
+  },
+  "message_has_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Message Delivery error",
+    "type": "boolean"
+  },
+  "message_has_error_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "Number of messages with delivery error",
+    "manual": false,
+    "name": "message_has_error_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of errors",
+    "type": "integer"
+  },
+  "message_attachment_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "message_attachment_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Attachment Count",
+    "type": "integer"
+  },
+  "rating_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('res_model', '=', 'hr.employee')]) + ([('res_model', '=', 'hr.employee')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "rating_ids",
+    "readonly": false,
+    "relation": "rating.rating",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Ratings",
+    "type": "one2many"
+  },
+  "website_message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('model', '=', 'hr.employee'), ('message_type', 'in', ('comment', 'email', 'email_outgoing', 'auto_comment', 'out_of_office'))]) + ([('model', '=', 'hr.employee')])",
+    "exportable": true,
+    "groupable": false,
+    "help": "Website communication history",
+    "manual": false,
+    "name": "website_message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Website Messages",
+    "type": "one2many"
+  },
+  "message_has_sms_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_sms_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "SMS Delivery error",
+    "type": "boolean"
+  },
+  "message_main_attachment_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "message_main_attachment_id",
+    "readonly": false,
+    "relation": "ir.attachment",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Main Attachment",
+    "type": "many2one"
+  },
+  "version_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "current_version_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "version_id",
+    "readonly": true,
+    "relation": "hr.version",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Version",
+    "type": "many2one"
+  },
+  "current_version_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_ids.date_version",
+      "version_ids.active",
+      "active"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "current_version_id",
+    "readonly": true,
+    "relation": "hr.version",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Current Version",
+    "type": "many2one"
+  },
+  "current_date_version": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "current_version_id.date_version"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "current_date_version",
+    "readonly": true,
+    "related": "current_version_id.date_version",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Current Date Version",
+    "type": "date"
+  },
+  "version_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "version_ids",
+    "readonly": false,
+    "relation": "hr.version",
+    "relation_field": "employee_id",
+    "required": true,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Employee Versions",
+    "type": "one2many"
+  },
+  "versions_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "versions_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Versions Count",
+    "type": "integer"
+  },
+  "version_revision": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_ids.write_date"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "version_revision",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Version Revision",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "resource_id.name"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "name",
+    "readonly": false,
+    "related": "resource_id.name",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Employee Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "user_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "resource_id.user_id"
+    ],
+    "domain": "(company_id and [('company_ids', 'in', [company_id])] or [(1, '=', 1)]) + ([])",
+    "exportable": true,
+    "groupable": true,
+    "help": "Related user name for the resource to manage its access.",
+    "manual": false,
+    "name": "user_id",
+    "readonly": false,
+    "related": "resource_id.user_id",
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "User",
+    "type": "many2one"
+  },
+  "user_partner_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.partner_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Partner-related data of the user",
+    "manual": false,
+    "name": "user_partner_id",
+    "readonly": true,
+    "related": "user_id.partner_id",
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "User's partner",
+    "type": "many2one"
+  },
+  "share": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.share"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "External user with limited access, created only for the purpose of sharing data.",
+    "manual": false,
+    "name": "share",
+    "readonly": true,
+    "related": "user_id.share",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Share User",
+    "type": "boolean"
+  },
+  "phone": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.phone"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "phone",
+    "readonly": true,
+    "related": "user_id.phone",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Phone",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "im_status": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.im_status"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "im_status",
+    "readonly": true,
+    "related": "user_id.im_status",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "IM Status",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.email"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "email",
+    "readonly": true,
+    "related": "user_id.email",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Email",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "hr_presence_state": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.im_status"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "hr_presence_state",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "selection": [
+      [
+        "present",
+        "Present"
+      ],
+      [
+        "absent",
+        "Absent"
+      ],
+      [
+        "archive",
+        "Archived"
+      ],
+      [
+        "out_of_working_hour",
+        "Off-Hours"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Hr Presence State",
+    "type": "selection"
+  },
+  "last_activity": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "last_activity",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Last Activity",
+    "type": "date"
+  },
+  "last_activity_time": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "last_activity_time",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Last Activity Time",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "hr_icon_display": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "monday_location_id",
+      "tuesday_location_id",
+      "wednesday_location_id",
+      "thursday_location_id",
+      "friday_location_id",
+      "saturday_location_id",
+      "sunday_location_id",
+      "exceptional_location_id",
+      "resource_calendar_id",
+      "hr_presence_state"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "hr_icon_display",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "selection": [
+      [
+        "presence_present",
+        "Present"
+      ],
+      [
+        "presence_out_of_working_hour",
+        "Off-Hours"
+      ],
+      [
+        "presence_absent",
+        "Absent"
+      ],
+      [
+        "presence_archive",
+        "Archived"
+      ],
+      [
+        "presence_undetermined",
+        "Undetermined"
+      ],
+      [
+        "presence_holiday_absent",
+        "On leave"
+      ],
+      [
+        "presence_holiday_present",
+        "Present but on leave"
+      ],
+      [
+        "presence_home",
+        "At Home"
+      ],
+      [
+        "presence_office",
+        "At Office"
+      ],
+      [
+        "presence_other",
+        "At Other"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Hr Icon Display",
+    "type": "selection"
+  },
+  "show_hr_icon_display": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "monday_location_id",
+      "tuesday_location_id",
+      "wednesday_location_id",
+      "thursday_location_id",
+      "friday_location_id",
+      "saturday_location_id",
+      "sunday_location_id",
+      "exceptional_location_id",
+      "resource_calendar_id",
+      "hr_presence_state"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "show_hr_icon_display",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Show Hr Icon Display",
+    "type": "boolean"
+  },
+  "newly_hired": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "newly_hired",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Newly Hired",
+    "type": "boolean"
+  },
+  "active": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "resource_id.active"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "If the active field is set to False, it will allow you to hide the resource record without removing it.",
+    "manual": false,
+    "name": "active",
+    "readonly": false,
+    "related": "resource_id.active",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Active",
+    "type": "boolean"
+  },
+  "company_country_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "company_id.country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_system,hr.group_hr_user",
+    "manual": false,
+    "name": "company_country_id",
+    "readonly": true,
+    "related": "company_id.country_id",
+    "relation": "res.country",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Company Country",
+    "type": "many2one"
+  },
+  "company_country_code": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "company_country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_system,hr.group_hr_user",
+    "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+    "manual": false,
+    "name": "company_country_code",
+    "readonly": true,
+    "related": "company_country_id.code",
+    "required": false,
+    "searchable": false,
+    "size": 2,
+    "sortable": false,
+    "store": false,
+    "string": "Company Country Code",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "work_phone": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "work_contact_id",
+      "work_contact_id.phone",
+      "work_contact_id.email"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "work_phone",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Phone",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "mobile_phone": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "mobile_phone",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Mobile",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "work_email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "work_contact_id",
+      "work_contact_id.phone",
+      "work_contact_id.email"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "work_email",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Email",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "work_contact_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "work_contact_id",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Contact",
+    "type": "many2one"
+  },
+  "legal_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "legal_name",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Legal Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "is_user_active": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.active"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "is_user_active",
+    "readonly": true,
+    "related": "user_id.active",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "User's active",
+    "type": "boolean"
+  },
+  "private_phone": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_phone",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Private Phone",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "private_email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_email",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Private Email",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "lang": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "lang",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "ar_001",
+        "Arabic / الْعَرَبيّة"
+      ],
+      [
+        "zh_CN",
+        "Chinese, Simplified / 简体中文"
+      ],
+      [
+        "nl_NL",
+        "Dutch / Nederlands"
+      ],
+      [
+        "en_US",
+        "English (US)"
+      ],
+      [
+        "fr_FR",
+        "French / Français"
+      ],
+      [
+        "de_DE",
+        "German / Deutsch"
+      ],
+      [
+        "id_ID",
+        "Indonesian / Bahasa Indonesia"
+      ],
+      [
+        "it_IT",
+        "Italian / Italiano"
+      ],
+      [
+        "pt_PT",
+        "Portuguese / Português"
+      ],
+      [
+        "ru_RU",
+        "Russian / русский язык"
+      ],
+      [
+        "es_ES",
+        "Spanish / Español"
+      ],
+      [
+        "vi_VN",
+        "Vietnamese / Tiếng Việt"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Lang",
+    "type": "selection"
+  },
+  "place_of_birth": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "place_of_birth",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Place of Birth",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "country_of_birth": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "country_of_birth",
+    "readonly": false,
+    "relation": "res.country",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Country of Birth",
+    "type": "many2one"
+  },
+  "birthday": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "birthday",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Birthday",
+    "type": "date"
+  },
+  "birthday_public_display": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "birthday_public_display",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Show to all employees",
+    "type": "boolean"
+  },
+  "birthday_public_display_string": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "birthday_public_display"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "birthday_public_display_string",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Public Date of Birth",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "bank_account_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('partner_id', '=', work_contact_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]",
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "Employee bank accounts to pay salaries",
+    "manual": false,
+    "name": "bank_account_ids",
+    "readonly": false,
+    "relation": "res.partner.bank",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Bank Accounts",
+    "type": "many2many"
+  },
+  "is_trusted_bank_account": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "bank_account_ids.allow_out_payment"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "is_trusted_bank_account",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Is Trusted Bank Account",
+    "type": "boolean"
+  },
+  "primary_bank_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "bank_account_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "primary_bank_account_id",
+    "readonly": true,
+    "relation": "res.partner.bank",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Primary Bank Account",
+    "type": "many2one"
+  },
+  "has_multiple_bank_accounts": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "bank_account_ids"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "has_multiple_bank_accounts",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Has Multiple Bank Accounts",
+    "type": "boolean"
+  },
+  "salary_distribution": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "bank_account_ids.active"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "salary_distribution",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Salary Distribution",
+    "type": "json"
+  },
+  "permit_no": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "permit_no",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Permit No",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "visa_no": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "visa_no",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Visa No",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "visa_expire": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "visa_expire",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Visa Expiration Date",
+    "type": "date"
+  },
+  "work_permit_expiration_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "work_permit_expiration_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Permit Expiration Date",
+    "type": "date"
+  },
+  "has_work_permit": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "has_work_permit",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Work Permit",
+    "type": "binary"
+  },
+  "work_permit_scheduled_activity": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "work_permit_scheduled_activity",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Permit Scheduled Activity",
+    "type": "boolean"
+  },
+  "work_permit_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name",
+      "permit_no"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "work_permit_name",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "work_permit_name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "certificate": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "certificate",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "graduate",
+        "Graduate"
+      ],
+      [
+        "bachelor",
+        "Bachelor"
+      ],
+      [
+        "master",
+        "Master"
+      ],
+      [
+        "doctor",
+        "Doctor"
+      ],
+      [
+        "other",
+        "Other"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Certificate Level",
+    "type": "selection"
+  },
+  "study_field": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "study_field",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Field of Study",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "study_school": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "study_school",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "School",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "emergency_contact": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "emergency_contact",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Emergency Contact",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "emergency_phone": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "emergency_phone",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Emergency Phone",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "work_location_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "monday_location_id",
+      "tuesday_location_id",
+      "wednesday_location_id",
+      "thursday_location_id",
+      "friday_location_id",
+      "saturday_location_id",
+      "sunday_location_id",
+      "exceptional_location_id",
+      "version_id.work_location_id.name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "work_location_name",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Work Location Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "work_location_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "monday_location_id",
+      "tuesday_location_id",
+      "wednesday_location_id",
+      "thursday_location_id",
+      "friday_location_id",
+      "saturday_location_id",
+      "sunday_location_id",
+      "exceptional_location_id",
+      "version_id.work_location_id.location_type"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "work_location_type",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "selection": [
+      [
+        "home",
+        "Home"
+      ],
+      [
+        "office",
+        "Office"
+      ],
+      [
+        "other",
+        "Other"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Work Location Type",
+    "type": "selection"
+  },
+  "contract_date_start": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.contract_date_start"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "contract_date_start",
+    "readonly": false,
+    "related": "version_id.contract_date_start",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Contract Start Date",
+    "type": "date"
+  },
+  "contract_date_end": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.contract_date_end"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_manager",
+    "help": "End date of the contract (if it's a fixed-term contract).",
+    "manual": false,
+    "name": "contract_date_end",
+    "readonly": false,
+    "related": "version_id.contract_date_end",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Contract End Date",
+    "type": "date"
+  },
+  "trial_date_end": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.trial_date_end"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_manager",
+    "help": "End date of the trial period (if there is one).",
+    "manual": false,
+    "name": "trial_date_end",
+    "readonly": false,
+    "related": "version_id.trial_date_end",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "End of Trial Period",
+    "type": "date"
+  },
+  "contract_wage": {
+    "change_default": false,
+    "company_dependent": false,
+    "currency_field": "currency_id",
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.contract_wage"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "contract_wage",
+    "readonly": true,
+    "related": "version_id.contract_wage",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Contract Wage",
+    "type": "monetary"
+  },
+  "date_start": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.date_start"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "date_start",
+    "readonly": true,
+    "related": "version_id.date_start",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Date Start",
+    "type": "date"
+  },
+  "date_end": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.date_end"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "date_end",
+    "readonly": true,
+    "related": "version_id.date_end",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Date End",
+    "type": "date"
+  },
+  "is_current": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.is_current"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "is_current",
+    "readonly": true,
+    "related": "version_id.is_current",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Is Current",
+    "type": "boolean"
+  },
+  "is_past": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.is_past"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "is_past",
+    "readonly": true,
+    "related": "version_id.is_past",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Is Past",
+    "type": "boolean"
+  },
+  "is_future": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.is_future"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "is_future",
+    "readonly": true,
+    "related": "version_id.is_future",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Is Future",
+    "type": "boolean"
+  },
+  "is_in_contract": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.is_in_contract"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "is_in_contract",
+    "readonly": true,
+    "related": "version_id.is_in_contract",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Is In Contract",
+    "type": "boolean"
+  },
+  "structure_type_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.structure_type_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "structure_type_id",
+    "readonly": false,
+    "related": "version_id.structure_type_id",
+    "relation": "hr.payroll.structure.type",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Salary Structure Type",
+    "type": "many2one"
+  },
+  "contract_type_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.contract_type_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_manager",
+    "manual": false,
+    "name": "contract_type_id",
+    "readonly": false,
+    "related": "version_id.contract_type_id",
+    "relation": "hr.contract.type",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Contract Type",
+    "type": "many2one"
+  },
+  "parent_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'in', allowed_company_ids)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "parent_id",
+    "readonly": false,
+    "relation": "hr.employee",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Manager",
+    "type": "many2one"
+  },
+  "child_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "child_ids.active"
+    ],
+    "domain": [
+      [
+        "active",
+        "=",
+        true
+      ]
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "child_ids",
+    "readonly": false,
+    "relation": "hr.employee",
+    "relation_field": "parent_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Direct subordinates",
+    "type": "one2many"
+  },
+  "coach_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "parent_id"
+    ],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'in', allowed_company_ids)]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Select the \"Employee\" who is the coach of this employee.\nThe \"Coach\" has no specific rights or responsibilities by default.",
+    "manual": false,
+    "name": "coach_id",
+    "readonly": false,
+    "relation": "hr.employee",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Coach",
+    "type": "many2one"
+  },
+  "category_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "category_ids",
+    "readonly": false,
+    "relation": "hr.employee.category",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Tags",
+    "type": "many2many"
+  },
+  "color": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Color Index",
+    "type": "integer"
+  },
+  "barcode": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "ID used for employee identification.",
+    "manual": false,
+    "name": "barcode",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Badge ID",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "pin": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "PIN used to Check In/Out in the Kiosk Mode of the Attendance application (if enabled in Configuration) and to change the cashier in the Point of Sale application.",
+    "manual": false,
+    "name": "pin",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "PIN",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "id_card": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "id_card",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "ID Card Copy",
+    "type": "binary"
+  },
+  "driving_license": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "driving_license",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Driving License",
+    "type": "binary"
+  },
+  "private_car_plate": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "If you have more than one car, just separate the plates by a space.",
+    "manual": false,
+    "name": "private_car_plate",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Private Car Plate",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "currency_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "company_id.currency_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "currency_id",
+    "readonly": true,
+    "related": "company_id.currency_id",
+    "relation": "res.currency",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Currency",
+    "type": "many2one"
+  },
+  "related_partners_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "user_id",
+      "applicant_ids"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "related_partners_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Related Partners Count",
+    "type": "integer"
+  },
+  "employee_properties": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "definition_record": "company_id",
+    "definition_record_field": "employee_properties_definition",
+    "depends": [
+      "company_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "employee_properties",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Properties",
+    "type": "properties"
+  },
+  "create_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created by",
+    "type": "many2one"
+  },
+  "create_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created on",
+    "type": "datetime"
+  },
+  "write_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated by",
+    "type": "many2one"
+  },
+  "write_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated on",
+    "type": "datetime"
+  },
+  "expense_manager_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "parent_id"
+    ],
+    "domain": [
+      "|",
+      [
+        "id",
+        "parent_of",
+        []
+      ],
+      [
+        "all_group_ids",
+        "in",
+        [
+          80
+        ]
+      ]
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Select the user responsible for approving \"Expenses\" of this employee.\nIf empty, the approval is done by an Administrator or Approver (determined in settings/users).",
+    "manual": false,
+    "name": "expense_manager_id",
+    "readonly": false,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Expense Approver",
+    "type": "many2one"
+  },
+  "filter_for_expense": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user,hr_expense.group_hr_expense_manager",
+    "manual": false,
+    "name": "filter_for_expense",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Filter For Expense",
+    "type": "boolean"
+  },
+  "employee_cars_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "fleet.fleet_group_manager",
+    "manual": false,
+    "name": "employee_cars_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Cars",
+    "type": "integer"
+  },
+  "car_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "fleet.fleet_group_manager,hr.group_hr_user",
+    "manual": false,
+    "name": "car_ids",
+    "readonly": false,
+    "relation": "fleet.vehicle",
+    "relation_field": "driver_employee_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Vehicles (private)",
+    "type": "one2many"
+  },
+  "license_plate": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "private_car_plate",
+      "car_ids.license_plate"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "license_plate",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "License Plate",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "mobility_card": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "fleet.fleet_group_user",
+    "manual": false,
+    "name": "mobility_card",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Mobility Card",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "goal_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "user_id.goal_ids.challenge_id.challenge_category"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "goal_ids",
+    "readonly": true,
+    "relation": "gamification.goal",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Employee HR Goals",
+    "type": "one2many"
+  },
+  "badge_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "direct_badge_ids",
+      "user_id.badge_ids.employee_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "All employee badges, linked to the employee either directly or through the user",
+    "manual": false,
+    "name": "badge_ids",
+    "readonly": true,
+    "relation": "gamification.badge.user",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Employee Badges",
+    "type": "one2many"
+  },
+  "has_badges": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "direct_badge_ids",
+      "user_id.badge_ids.employee_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "has_badges",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Has Badges",
+    "type": "boolean"
+  },
+  "direct_badge_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "Badges directly linked to the employee",
+    "manual": false,
+    "name": "direct_badge_ids",
+    "readonly": false,
+    "relation": "gamification.badge.user",
+    "relation_field": "employee_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Direct Badge",
+    "type": "one2many"
+  },
+  "leave_manager_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "parent_id"
+    ],
+    "domain": "[('share', '=', False), ('company_ids', 'in', company_id)]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Select the user responsible for approving \"Time Off\" of this employee.\nIf empty, the approval is done by an Administrator or Approver (determined in settings/users).",
+    "manual": false,
+    "name": "leave_manager_id",
+    "readonly": false,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Time Off Approver",
+    "type": "many2one"
+  },
+  "current_leave_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "current_leave_id",
+    "readonly": true,
+    "relation": "hr.leave.type",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Current Time Off Type",
+    "type": "many2one"
+  },
+  "current_leave_state": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "current_leave_state",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "selection": [
+      [
+        "confirm",
+        "Waiting Approval"
+      ],
+      [
+        "refuse",
+        "Refused"
+      ],
+      [
+        "validate1",
+        "Waiting Second Approval"
+      ],
+      [
+        "validate",
+        "Approved"
+      ],
+      [
+        "cancel",
+        "Cancelled"
+      ]
+    ],
+    "sortable": false,
+    "store": false,
+    "string": "Current Time Off Status",
+    "type": "selection"
+  },
+  "leave_date_from": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "leave_date_from",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "From Date",
+    "type": "date"
+  },
+  "leave_date_to": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "leave_date_to",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "To Date",
+    "type": "date"
+  },
+  "allocation_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "allocation_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Total number of days allocated.",
+    "type": "float"
+  },
+  "allocations_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "allocations_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Total number of allocations",
+    "type": "integer"
+  },
+  "show_leaves": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "show_leaves",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Able to see Remaining Time Off",
+    "type": "boolean"
+  },
+  "is_absent": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "is_absent",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Absent Today",
+    "type": "boolean"
+  },
+  "allocation_display": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "allocation_display",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Allocation Display",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "allocation_remaining_display": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "allocation_remaining_display",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Allocation Remaining Display",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "monday_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "monday_location_id",
+    "readonly": false,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Monday",
+    "type": "many2one"
+  },
+  "tuesday_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "tuesday_location_id",
+    "readonly": false,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Tuesday",
+    "type": "many2one"
+  },
+  "wednesday_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "wednesday_location_id",
+    "readonly": false,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Wednesday",
+    "type": "many2one"
+  },
+  "thursday_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "thursday_location_id",
+    "readonly": false,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Thursday",
+    "type": "many2one"
+  },
+  "friday_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "friday_location_id",
+    "readonly": false,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Friday",
+    "type": "many2one"
+  },
+  "saturday_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "saturday_location_id",
+    "readonly": false,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Saturday",
+    "type": "many2one"
+  },
+  "sunday_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "sunday_location_id",
+    "readonly": false,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Sunday",
+    "type": "many2one"
+  },
+  "exceptional_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "help": "This is the exceptional, non-weekly, location set for today.",
+    "manual": false,
+    "name": "exceptional_location_id",
+    "readonly": true,
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Current",
+    "type": "many2one"
+  },
+  "today_location_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "today_location_name",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Today Location Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "child_all_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "child_ids",
+      "child_ids.child_all_count"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "child_all_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Indirect Subordinates Count",
+    "type": "integer"
+  },
+  "department_color": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "department_id.color"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "department_color",
+    "readonly": true,
+    "related": "department_id.color",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Department Color",
+    "type": "integer"
+  },
+  "child_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "child_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Direct Subordinates Count",
+    "type": "integer"
+  },
+  "subordinate_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "child_ids",
+      "child_ids.child_all_count"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Direct and indirect subordinates",
+    "manual": false,
+    "name": "subordinate_ids",
+    "readonly": true,
+    "relation": "hr.employee",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Subordinates",
+    "type": "one2many"
+  },
+  "is_subordinate": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "parent_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "is_subordinate",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Is Subordinate",
+    "type": "boolean"
+  },
+  "applicant_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "applicant_ids",
+    "readonly": false,
+    "relation": "hr.applicant",
+    "relation_field": "employee_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Applicants",
+    "type": "one2many"
+  },
+  "resume_line_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "resume_line_ids",
+    "readonly": false,
+    "relation": "hr.resume.line",
+    "relation_field": "employee_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Resume lines",
+    "type": "one2many"
+  },
+  "employee_skill_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "employee_skill_ids.skill_type_id.active"
+    ],
+    "domain": [
+      [
+        "skill_type_id.active",
+        "=",
+        true
+      ]
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "employee_skill_ids",
+    "readonly": false,
+    "relation": "hr.employee.skill",
+    "relation_field": "employee_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Skills",
+    "type": "one2many"
+  },
+  "current_employee_skill_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "employee_skill_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "current_employee_skill_ids",
+    "readonly": false,
+    "relation": "hr.employee.skill",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Current Employee Skill",
+    "type": "one2many"
+  },
+  "skill_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "employee_skill_ids.skill_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "skill_ids",
+    "readonly": true,
+    "relation": "hr.skill",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Skill",
+    "type": "many2many"
+  },
+  "certification_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "employee_skill_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "certification_ids",
+    "readonly": false,
+    "relation": "hr.employee.skill",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Certification",
+    "type": "one2many"
+  },
+  "display_certification_page": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "display_certification_page",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Display Certification Page",
+    "type": "boolean"
+  },
+  "employee_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.employee_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "employee_id",
+    "readonly": false,
+    "related": "version_id.employee_id",
+    "relation": "hr.employee",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Employee",
+    "type": "many2one"
+  },
+  "date_version": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.date_version"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "date_version",
+    "readonly": false,
+    "related": "version_id.date_version",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Date Version",
+    "type": "date"
+  },
+  "last_modified_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.last_modified_uid"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "last_modified_uid",
+    "readonly": false,
+    "related": "version_id.last_modified_uid",
+    "relation": "res.users",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Last Modified by",
+    "type": "many2one"
+  },
+  "last_modified_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.last_modified_date"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "last_modified_date",
+    "readonly": false,
+    "related": "version_id.last_modified_date",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Last Modified on",
+    "type": "datetime"
+  },
+  "country_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "country_id",
+    "readonly": false,
+    "related": "version_id.country_id",
+    "relation": "res.country",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Nationality (Country)",
+    "type": "many2one"
+  },
+  "identification_id": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.identification_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "Enter the employee's National Identification Number issued by the government (e.g., Aadhaar, SIN, NIN). This is used for official records and statutory compliance.",
+    "manual": false,
+    "name": "identification_id",
+    "readonly": false,
+    "related": "version_id.identification_id",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Identification No",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "ssnid": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.ssnid"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "Social Security Number",
+    "manual": false,
+    "name": "ssnid",
+    "readonly": false,
+    "related": "version_id.ssnid",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "SSN No",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "passport_id": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.passport_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "passport_id",
+    "readonly": false,
+    "related": "version_id.passport_id",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Passport No",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "passport_expiration_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.passport_expiration_date"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "passport_expiration_date",
+    "readonly": false,
+    "related": "version_id.passport_expiration_date",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Passport Expiration Date",
+    "type": "date"
+  },
+  "sex": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.sex"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "This is the legal sex recognized by the state.",
+    "manual": false,
+    "name": "sex",
+    "readonly": false,
+    "related": "version_id.sex",
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "male",
+        "Male"
+      ],
+      [
+        "female",
+        "Female"
+      ],
+      [
+        "other",
+        "Other"
+      ]
+    ],
+    "sortable": true,
+    "store": false,
+    "string": "Gender",
+    "type": "selection"
+  },
+  "private_street": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.private_street"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_street",
+    "readonly": false,
+    "related": "version_id.private_street",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Private Street",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "private_street2": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.private_street2"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_street2",
+    "readonly": false,
+    "related": "version_id.private_street2",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Private Street2",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "private_city": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.private_city"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_city",
+    "readonly": false,
+    "related": "version_id.private_city",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Private City",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "allowed_country_state_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.allowed_country_state_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "allowed_country_state_ids",
+    "readonly": true,
+    "related": "version_id.allowed_country_state_ids",
+    "relation": "res.country.state",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Allowed Country State",
+    "type": "many2many"
+  },
+  "private_state_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.private_state_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_state_id",
+    "readonly": false,
+    "related": "version_id.private_state_id",
+    "relation": "res.country.state",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Private State",
+    "type": "many2one"
+  },
+  "private_zip": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.private_zip"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_zip",
+    "readonly": false,
+    "related": "version_id.private_zip",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Private Zip",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "private_country_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.private_country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "private_country_id",
+    "readonly": false,
+    "related": "version_id.private_country_id",
+    "relation": "res.country",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Private Country",
+    "type": "many2one"
+  },
+  "distance_home_work": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.distance_home_work"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "distance_home_work",
+    "readonly": false,
+    "related": "version_id.distance_home_work",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Home-Work Distance",
+    "type": "integer"
+  },
+  "km_home_work": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.km_home_work"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "km_home_work",
+    "readonly": false,
+    "related": "version_id.km_home_work",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Home-Work Distance in Km",
+    "type": "integer"
+  },
+  "distance_home_work_unit": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.distance_home_work_unit"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "distance_home_work_unit",
+    "readonly": false,
+    "related": "version_id.distance_home_work_unit",
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "kilometers",
+        "km"
+      ],
+      [
+        "miles",
+        "mi"
+      ]
+    ],
+    "sortable": true,
+    "store": false,
+    "string": "Home-Work Distance unit",
+    "type": "selection"
+  },
+  "marital": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.marital"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "marital",
+    "readonly": false,
+    "related": "version_id.marital",
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "single",
+        "Single"
+      ],
+      [
+        "married",
+        "Married"
+      ],
+      [
+        "cohabitant",
+        "Legal Cohabitant"
+      ],
+      [
+        "widower",
+        "Widower"
+      ],
+      [
+        "divorced",
+        "Divorced"
+      ]
+    ],
+    "sortable": true,
+    "store": false,
+    "string": "Marital Status",
+    "type": "selection"
+  },
+  "spouse_complete_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.spouse_complete_name"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "spouse_complete_name",
+    "readonly": false,
+    "related": "version_id.spouse_complete_name",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Spouse Legal Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "spouse_birthdate": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.spouse_birthdate"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "spouse_birthdate",
+    "readonly": false,
+    "related": "version_id.spouse_birthdate",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Spouse Birthdate",
+    "type": "date"
+  },
+  "children": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.children"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "children",
+    "readonly": false,
+    "related": "version_id.children",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Dependent Children",
+    "type": "integer"
+  },
+  "employee_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.employee_type"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "employee_type",
+    "readonly": false,
+    "related": "version_id.employee_type",
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "employee",
+        "Employee"
+      ],
+      [
+        "worker",
+        "Worker"
+      ],
+      [
+        "student",
+        "Student"
+      ],
+      [
+        "trainee",
+        "Trainee"
+      ],
+      [
+        "contractor",
+        "Contractor"
+      ],
+      [
+        "freelance",
+        "Freelancer"
+      ]
+    ],
+    "sortable": true,
+    "store": false,
+    "string": "Employee Type",
+    "type": "selection"
+  },
+  "department_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.department_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "department_id",
+    "readonly": false,
+    "related": "version_id.department_id",
+    "relation": "hr.department",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Department",
+    "type": "many2one"
+  },
+  "member_of_department": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.member_of_department"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Whether the employee is a member of the active user's department or one of it's child department.",
+    "manual": false,
+    "name": "member_of_department",
+    "readonly": true,
+    "related": "version_id.member_of_department",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Member of department",
+    "type": "boolean"
+  },
+  "job_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.job_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "job_id",
+    "readonly": false,
+    "related": "version_id.job_id",
+    "relation": "hr.job",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Job",
+    "type": "many2one"
+  },
+  "job_title": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.job_title"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "job_title",
+    "readonly": false,
+    "related": "version_id.job_title",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Job Title",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "is_custom_job_title": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.is_custom_job_title"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "is_custom_job_title",
+    "readonly": true,
+    "related": "version_id.is_custom_job_title",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Is Custom Job Title",
+    "type": "boolean"
+  },
+  "address_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.address_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "address_id",
+    "readonly": false,
+    "related": "version_id.address_id",
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Work Address",
+    "type": "many2one"
+  },
+  "work_location_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.work_location_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "work_location_id",
+    "readonly": false,
+    "related": "version_id.work_location_id",
+    "relation": "hr.work.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Work Location",
+    "type": "many2one"
+  },
+  "departure_reason_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.departure_reason_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "departure_reason_id",
+    "readonly": false,
+    "related": "version_id.departure_reason_id",
+    "relation": "hr.departure.reason",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Departure Reason",
+    "type": "many2one"
+  },
+  "departure_description": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.departure_description"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "departure_description",
+    "readonly": false,
+    "related": "version_id.departure_description",
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": true,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Additional Information",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": false,
+    "type": "html"
+  },
+  "departure_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.departure_date"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "departure_date",
+    "readonly": false,
+    "related": "version_id.departure_date",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Departure Date",
+    "type": "date"
+  },
+  "is_flexible": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.is_flexible"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "is_flexible",
+    "readonly": true,
+    "related": "version_id.is_flexible",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Is Flexible",
+    "type": "boolean"
+  },
+  "is_fully_flexible": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.is_fully_flexible"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "is_fully_flexible",
+    "readonly": true,
+    "related": "version_id.is_fully_flexible",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Is Fully Flexible",
+    "type": "boolean"
+  },
+  "contract_template_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.contract_template_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "Select a contract template to auto-fill the contract form with predefined values. You can still edit the fields as needed after applying the template.",
+    "manual": false,
+    "name": "contract_template_id",
+    "readonly": false,
+    "related": "version_id.contract_template_id",
+    "relation": "hr.version",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Contract Template",
+    "type": "many2one"
+  },
+  "active_employee": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.active_employee"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "If the active field is set to False, it will allow you to hide the resource record without removing it.",
+    "manual": false,
+    "name": "active_employee",
+    "readonly": true,
+    "related": "version_id.active_employee",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Active Employee",
+    "type": "boolean"
+  },
+  "wage": {
+    "aggregator": "avg",
+    "change_default": false,
+    "company_dependent": false,
+    "currency_field": "currency_id",
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.wage"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_manager",
+    "help": "Employee's monthly gross wage.",
+    "manual": false,
+    "name": "wage",
+    "readonly": false,
+    "related": "version_id.wage",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Wage",
+    "type": "monetary"
+  },
+  "country_code": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.country_code"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+    "manual": false,
+    "name": "country_code",
+    "readonly": true,
+    "related": "version_id.country_code",
+    "required": false,
+    "searchable": false,
+    "size": 2,
+    "sortable": false,
+    "store": false,
+    "string": "Country Code",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "additional_note": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.additional_note"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "manual": false,
+    "name": "additional_note",
+    "readonly": false,
+    "related": "version_id.additional_note",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Additional Note",
+    "translate": false,
+    "type": "text"
+  },
+  "hr_responsible_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "version_id.hr_responsible_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "hr.group_hr_user",
+    "help": "Person responsible for validating the employee's contracts.",
+    "manual": false,
+    "name": "hr_responsible_id",
+    "readonly": false,
+    "related": "version_id.hr_responsible_id",
+    "relation": "res.users",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "HR Responsible",
+    "type": "many2one"
+  }
+}

@@ -1,0 +1,46 @@
+﻿<form string="Fees Plan">
+                <header>
+                    <button string="Draft" invisible="state in ['draft','running']" class="oe_highlight" type="object" name="draft_fees_plan"/>
+                    <button string="Running" invisible="state != 'draft'" class="oe_highlight" type="object" name="running_fees_plan"/>
+                    <button string="Done" invisible="state != 'running'" class="oe_highlight" type="object" name="done_fees_plan"/>
+                    <button string="Cancel" invisible="state == 'cancel'" class="oe_highlight" type="object" name="cancel_fees_plan"/>
+                    <field name="state" widget="statusbar" clickable="1" statusbar_visible="draft,running,done,cancel"/>
+                    <button string="Send Reminder to Student" invisible="state != 'running'" class="oe_highlight" type="object" name="send_reminder_mail_student"/>
+                    <button string="Send Reminder to Parent" invisible="state != 'running'" class="oe_highlight" type="object" name="send_reminder_mail_parent"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="product_id" readonly="state in ['done', 'cancel']" can_create="True" can_write="True"/>
+                            <field name="paid_amount"/>
+                            <field name="total_amount"/>
+                        </group>
+                        <group>
+                            <field name="student_id" readonly="state in ['done', 'cancel']" can_create="True" can_write="True"/>
+                            <field name="fees_term_id" readonly="state in ['done', 'cancel']" on_change="1" can_create="True" can_write="True"/>
+                            <field name="remaining_amount"/>
+                            <field name="company_id" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="lines" string="Lines">
+                            <field name="fees_plan_line_ids"><list>
+                    <field name="invoice_date"/>
+                    <field name="student_id"/>
+                    <field name="due_days"/>
+                    <field name="fees_factor"/>
+                    <field name="amount"/>
+                    <field name="paid_amount" sum="Total"/>
+                    <field name="fees_term_id"/>
+                    <field name="state"/>
+                    <field name="invoice_state"/>
+                    <button string="Create Invoice" invisible="state != 'draft'" type="object" name="get_invoice"/>
+
+                    <button string="View Invoice" invisible="state != 'invoice'" type="object" name="action_get_invoice"/>
+                </list></field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>

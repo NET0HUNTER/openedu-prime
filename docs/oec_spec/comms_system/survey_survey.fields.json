@@ -1,0 +1,18 @@
+{
+  "fields": {
+    "color": {
+      "aggregator": "sum",
+      "change_default": false,
+      "groupable": true,
+      "name": "color",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Color Index",
+      "type": "integer"
+    }
+  },
+  "has_approval_rules": false
+}

@@ -1,0 +1,4 @@
+﻿<list>
+                    <field name="name"/>
+                    <field name="progress" widget="progressbar" class="d-inline-block text-end"/>
+                </list>

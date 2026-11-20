@@ -1,0 +1,12 @@
+<list string="Thesis Registrations">
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="student_id" on_change="1"/>
+                    <field name="program_id" optional="hide" on_change="1"/>
+                    <field name="department_id" optional="hide"/>
+                    <field name="registration_date"/>
+                    <field name="final_submission_deadline"/>
+                    <field name="has_supervisor" optional="hide"/>
+                    <field name="progress_count"/>
+                    <field name="state"/>
+                </list>

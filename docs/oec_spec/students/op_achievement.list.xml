@@ -1,0 +1,9 @@
+﻿<list>
+                    <field name="progression_id" optional="hide"/>
+                    <field name="student_id" on_change="1"/>
+                    <field name="faculty_id"/>
+                    <field name="achievement_type_id"/>
+                    <field name="description" optional="show"/>
+                    <field name="achievement_date"/>
+                    <field name="company_id" optional="show"/>
+                </list>

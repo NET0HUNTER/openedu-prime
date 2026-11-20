@@ -1,0 +1,21 @@
+{
+  "fields": {
+    "doc_name": {
+      "change_default": false,
+      "groupable": true,
+      "help": "This is how the document will be named in the mail",
+      "name": "doc_name",
+      "readonly": true,
+      "related": "template_id.name",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": false,
+      "string": "Document Name",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

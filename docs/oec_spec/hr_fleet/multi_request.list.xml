@@ -1,0 +1,6 @@
+<list create="false" sample="1" decoration-info="request_status == 'new'">
+                    <field name="name"/>
+                    <field name="user_id" widget="many2one_avatar_user"/>
+                    <field name="approval_type_id"/>
+                    <field name="request_status" decoration-info="request_status == 'new'" decoration-warning="request_status == 'pending'" decoration-success="request_status == 'approved'" decoration-danger="request_status == 'refused'" widget="badge"/>
+                </list>

@@ -1,0 +1,113 @@
+<form string="Company" duplicate="0">
+                  <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_all_company_branches" type="object" invisible="not all_child_ids" icon="fa-sitemap" string="Branches"/>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <field name="logo" widget="contact_image" class="oe_avatar text-start float-none" nolabel="1" options="{'size': [100,100], 'img_class': 'rounded-4'}"/>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="e.g. My Company" widget="field_partner_autocomplete" on_change="1"/>
+                            </h1>
+                        </div>
+                    </div>
+                    <notebook colspan="4">
+                        <page string="General Information" name="general_info">
+                            <group>
+                                <group>
+                                    <field name="partner_id" string="Contact" readonly="1" required="0" on_change="1" invisible="1" column_invisible="1"/>
+                                    <label for="street" string="Address"/>
+                                    <div class="o_address_format">
+                                        <field name="street" placeholder="Street..." class="o_address_street"/>
+                                        <field name="street2" placeholder="Street 2..." class="o_address_street"/>
+                                        <field name="city" placeholder="City" class="o_address_city"/>
+                                        <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="zip" placeholder="ZIP" class="o_address_zip"/>
+                                        <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" on_change="1" can_create="True" can_write="True"/>
+                <field name="account_enabled_tax_country_ids" invisible="1"/>
+                                    </div>
+                <field name="company_vat_placeholder" invisible="1"/> <!-- Needed for the placeholder widget -->
+                                    <field name="vat" options="{'placeholder_field': 'company_vat_placeholder'}" widget="field_partner_autocomplete"/>
+                                    <field name="company_registry_placeholder" invisible="1"/> <!-- Needed for the placeholder widget -->
+                <field name="company_registry_placeholder" invisible="1"/> <!-- Needed for the placeholder widget -->
+                                    <field name="company_registry" options="{'placeholder_field': 'company_registry_placeholder'}"/>
+                <field name="iap_enrich_auto_done" invisible="1"/>
+                                    <field name="currency_id" options="{'no_create': True, 'no_open': True}" id="company_currency" context="{'active_test': False}" readonly="parent_id != False" can_create="True" can_write="True"/>
+                                </group>
+                                <group>
+                                    <field name="phone" class="o_force_ltr"/>
+                                    <field name="email"/>
+                                    <field name="website" string="Website" widget="url" placeholder="e.g. https://www.odoo.com"/>
+                                    <field name="parent_id" on_change="1" can_create="True" can_write="True" invisible="1" column_invisible="1"/>
+                    <field name="signature" widget="image"/>
+                <field name="alias_domain_id" on_change="1" can_create="True" can_write="True"/>
+                <field name="bounce_formatted" invisible="1" column_invisible="1"/>
+                <field name="catchall_formatted" invisible="1" column_invisible="1"/>
+                <field name="default_from_email" invisible="1" column_invisible="1"/>
+                                    <field name="color" widget="color_picker"/>
+                                </group>
+                                <group string="Social Media" name="social_media" invisible="1" column_invisible="1">
+                    <field name="social_twitter"/>
+                    <field name="social_facebook"/>
+                    <field name="social_github"/>
+                    <field name="social_linkedin"/>
+                    <field name="social_youtube"/>
+                    <field name="social_instagram"/>
+                    <field name="social_tiktok"/>
+                    <field name="social_discord"/>
+                </group>
+            </group>
+                        </page>
+                        <page string="Branches" name="branches">
+                            <field name="child_ids" nolabel="1" context="{'default_parent_id': id}"><list string="Companies" decoration-muted="not active">
+                    <field name="sequence" widget="handle"/>
+                    <field name="logo" invisible="not logo" widget="image" options="{'size': [24, 24], 'img_class': 'o_avatar rounded'}" width="30" nolabel="1"/>
+                    <field name="name" on_change="1"/>
+                    <field name="partner_id" required="0" on_change="1"/>
+                    <field name="child_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                <field name="active" column_invisible="True" readonly="True" data-used-by="decoration-muted='not active' (list,None)"/>
+</list></field>
+                        </page>
+                <page string="Exchange Rate Orchestration" name="exchange_rate_orchestration">
+                    <group string="Synchronization Configuration">
+                        <field name="synchronization_frequency"/>
+                        <field name="rate_provider_selection"/>
+                        <field name="next_execution_timestamp"/>
+                    </group>
+                    <group string="Performance Tuning">
+                        <field name="synchronization_batch_size"/>
+                        <field name="error_tolerance_threshold"/>
+                    </group>
+                    <group string="Actions">
+                        <button name="trigger_comprehensive_synchronization" type="object" string="Execute Comprehensive Sync" class="btn-primary"/>
+                    </group>
+                </page>
+                    <page string="Board Affiliation">
+                        <field name="affiliation_ids"><list>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="company_id" optional="show"/>
+                </list></field>
+                    </page>
+                <page string="Instance Details" invisible="1">
+                    <group>
+                        <field name="openeducat_instance_key"/>
+                        <field name="openeducat_instance_hash_key"/>
+                        <field name="is_mail_sent"/>
+                        <field name="verify_date"/>
+                        <field name="openeducat_instance_hash_msg"/>
+                        <field name="is_hash_verified"/>
+                    </group>
+                </page>
+                    <page name="institute_detail" string="Institute Detail">
+                        <separator string="Accreditation" colspan="4"/>
+                        <field name="accreditation" colspna="4" nolabel="1"/>
+                        <separator string="Approval Authority" colspan="4"/>
+                        <field name="approval_authority" colspna="4" nolabel="1"/>
+                    </page>
+                    </notebook>
+                    </sheet>
+                <chatter/>
+                <field name="all_child_ids" invisible="True" readonly="True" data-used-by="invisible='not all_child_ids' (button,action_all_company_branches)"/>
+</form>

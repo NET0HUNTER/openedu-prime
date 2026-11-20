@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Draft"
+    },
+    {
+        "id":  2,
+        "display_name":  "Published"
+    },
+    {
+        "id":  3,
+        "display_name":  "Grading Started"
+    },
+    {
+        "id":  4,
+        "display_name":  "Grading Closed"
+    },
+    {
+        "id":  5,
+        "display_name":  "Grades Published"
+    }
+]

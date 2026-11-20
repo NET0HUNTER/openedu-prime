@@ -1,0 +1,4 @@
+﻿<graph string="Lesson Learning" type="bar">
+                <field name="name"/>
+                <field name="subject_id"/>
+            </graph>

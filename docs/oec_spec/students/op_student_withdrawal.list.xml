@@ -1,0 +1,8 @@
+﻿<list>
+                <field name="sequence"/>
+                <field name="student_id"/>
+                <field name="course_id"/>
+                <field name="requested_by"/>
+                <field name="requested_date"/>
+                <field name="state" widget="badge"/>
+            </list>

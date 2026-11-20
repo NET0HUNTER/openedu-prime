@@ -1,0 +1,5 @@
+﻿<search string="Academic Year">
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </search>

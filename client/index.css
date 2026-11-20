@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --oe-brand-primary: #1565c0;
+  --oe-brand-primary-dark: #0d47a1;
+  --oe-brand-primary-light: #e3f2fd;
+  --oe-brand-accent: #ec1c24;
+  --oe-brand-gold: #f4cb00;
+  --oe-card-coral: #f68b92;
+  --oe-card-periwinkle: #91a3c7;
+  --oe-surface-cream: #fcf5ea;
+  --oe-surface-pale-blue: #cfdfff;
+  --oe-bg-workspace: #f8f9fa;
+  --oe-bg-apps: #f9fbfc;
+  --oe-font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  font-family: var(--oe-font-family);
+  background-color: var(--oe-bg-workspace);
+  color: #212529;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Exact OpenEduCat / Odoo 19 diagonal corner ribbon (.ribbon.ribbon-top-right) */
+.ribbon {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  z-index: 1;
+  overflow: hidden;
+  width: 75px;
+  height: 75px;
+  text-align: right;
+  pointer-events: none;
+}
+
+.ribbon span {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 20px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  width: 100px;
+  display: block;
+  background: #198754;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  position: absolute;
+  top: 18px;
+  right: -22px;
+}
+
+/* Exact Odoo 19 statusbar arrow buttons (.o_arrow_button) */
+.o_statusbar_status {
+  display: inline-flex;
+  align-items: center;
+}
+
+.o_arrow_button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 16px 0 24px;
+  height: 31px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #495057;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-left: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.o_arrow_button:first-child {
+  padding-left: 12px;
+  border-left: 1px solid #dee2e6;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.o_arrow_button:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.o_arrow_button.o_arrow_button_current {
+  background-color: color-mix(in srgb, var(--oe-brand-primary) 12%, #ffffff);
+  color: var(--oe-brand-primary);
+  font-weight: 700;
+}
+
+.o_arrow_button:not(:first-child)::before,
+.o_arrow_button:not(:first-child)::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  pointer-events: none;
+}
+
+.o_arrow_button:not(:first-child)::before {
+  border-left: 11px solid #dee2e6;
+  margin-left: 0px;
+  z-index: 1;
+}
+
+.o_arrow_button:not(:first-child)::after {
+  border-left: 10px solid #f8f9fa;
+  margin-left: -1px;
+  z-index: 2;
+}
+
+.o_arrow_button.o_arrow_button_current:not(:first-child)::after {
+  border-left: 10px solid color-mix(in srgb, var(--oe-brand-primary) 12%, #ffffff);
+}
+
+/* Odoo clean inline flat form input style */
+.oe-input {
+  width: 100%;
+  font-size: 13px;
+  color: #212529;
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-radius: 3px;
+  padding: 2px 4px;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.oe-input:hover:not(:disabled) {
+  border-bottom-color: #cbd5e1;
+}
+
+.oe-input:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-bottom-color: var(--oe-brand-primary);
+}
+
+select.oe-input {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 18px;
+  background-image: none;
+}
+
+select.oe-input:hover:not(:disabled),
+select.oe-input:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236c757d' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+}
+
+/* Orange PUBLISHED ribbon for Admission Registers */
+.ribbon-warning span {
+  background: #f59e0b;
+}
+.ribbon-primary span {
+  background: var(--oe-brand-primary);
+}

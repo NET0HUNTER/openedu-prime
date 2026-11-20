@@ -1,0 +1,4 @@
+﻿<pivot string="Exam Pivot">
+                    <field name="subject_id" type="row"/>
+                    <field name="state" type="col"/>
+                </pivot>

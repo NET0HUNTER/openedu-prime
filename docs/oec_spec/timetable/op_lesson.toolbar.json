@@ -1,0 +1,9 @@
+﻿{
+    "print":  [
+                  {
+                      "id":  1375,
+                      "name":  "Lesson planning",
+                      "binding_view_types":  "list,form"
+                  }
+              ]
+}

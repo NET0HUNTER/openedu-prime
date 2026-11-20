@@ -1,0 +1,12 @@
+<list default_order="ticket_seq desc">
+                <field name="ticket_seq"/>
+                <field name="priority" widget="priority" optional="show"/>
+                <field name="partner_id" on_change="1"/>
+                <field name="start_date"/>
+                <field name="issue_name"/>
+                <field name="user_id"/>
+                <field name="partner_id" on_change="1"/>
+                <field name="activity_ids" widget="list_activity" optional="show"/>
+                <field name="team_id" on_change="1"/>
+                <field name="stage_id" on_change="1"/>
+            </list>

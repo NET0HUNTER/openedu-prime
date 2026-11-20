@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Asian"
+    },
+    {
+        "id":  2,
+        "display_name":  "Mongoloid"
+    },
+    {
+        "id":  3,
+        "display_name":  "Pacific Islanders"
+    },
+    {
+        "id":  4,
+        "display_name":  "Amerindians"
+    },
+    {
+        "id":  5,
+        "display_name":  "Roma"
+    }
+]

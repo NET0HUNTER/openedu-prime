@@ -1,0 +1,3 @@
+<graph string="Thesis By registration" type="pie">
+                    <field name="registration_id"/>
+                </graph>

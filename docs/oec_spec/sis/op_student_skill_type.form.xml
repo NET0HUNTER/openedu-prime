@@ -1,0 +1,22 @@
+﻿<form string="Student Skill Types">
+                <header/>
+                <sheet>
+                    <h1>
+                        <label for="name" string="Name"/>
+                        <field name="name" class="ml32"/>
+                    </h1>
+                    <group string="Skills">
+                        <field name="student_skills_line" nolabel="1" colspan="2"><list editable="bottom">
+                    <field name="student_skill_name_id" can_create="True" can_write="True"/>
+                </list></field>
+                    </group>
+                    <group string="Levels">
+                        <field name="student_skill_level_line" nolabel="1" colspan="2"><list>
+                    <field name="student_skill_level_name_id" on_change="1"/>
+                    <field name="progress" widget="progressbar"/>
+                    <field name="student_skill_type_id" optional="hide"/>
+                    <field name="company_id"/>
+                </list></field>
+                    </group>
+                </sheet>
+            </form>

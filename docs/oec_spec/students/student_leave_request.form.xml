@@ -1,0 +1,52 @@
+﻿<form>
+                <header>
+                    <button string="Confirm" name="action_confirm" type="object" class="oe_highlight" invisible="state not in ('draft')"/>
+                    <button string="Validate" name="action_validate" type="object" class="oe_highlight" invisible="state not in ('confirm')"/>
+                    <button string="Cancel" name="action_cancel" type="object" class="oe_highlight" invisible="state not in ('validate','approve')"/>
+                    <button string="Approve" name="action_approve" type="object" class="oe_highlight" invisible="state not in ('validate')"/>
+                    <button string="Refuse" name="action_refuse" type="object" invisible="state not in ('validate','approve','confirm')"/>
+                    <button string="Mark as Draft" name="action_draft" type="object" invisible="state not in ('refuse','cancel')"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="student_id" readonly="state not in ('draft')" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="leave_type" string="Leave Type" readonly="state not in ('draft')" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <label for="start_date" string="Leave From"/>
+                            <div class="o_row">
+                                <field name="start_date" widget="daterange" nolabel="1" class="oe_inline" options="{'related_end_date': 'end_date'}" readonly="state not in ('draft')" on_change="1"/>
+                                <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
+                                <field name="end_date" widget="daterange" nolabel="1" class="oe_inline" options="{'related_start_date': 'start_date'}" readonly="state not in ('draft')" on_change="1"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="duration"/>
+                        </group>
+                        <group>
+                            <field name="faculty_id" readonly="state not in ('draft')" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="company_id" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <separator string="Description"/>
+                    <field name="description" placeholder="Description..." nolabel="1" readonly="state not in ('draft')"/>
+                    <notebook>
+                        <page string="Attachments" name="attachments">
+                            <field name="attachment_ids" readonly="state not in ('draft')" file_name="file_name">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="datas" filename="name"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+
+                <chatter reload_on_post="True"/>
+            </form>

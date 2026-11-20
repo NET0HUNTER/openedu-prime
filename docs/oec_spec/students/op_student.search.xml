@@ -1,0 +1,11 @@
+﻿<search string="Student">
+                    <field name="name"/>
+                    <field name="blood_group"/>
+                    <newline/>
+                    <group>
+                        <filter name="blood_group" string="Blood Group" domain="[]" context="{'group_by':'blood_group'}"/>
+                        <filter name="nationality" string="Nationality" domain="[]" context="{'group_by':'nationality'}"/>
+                        <filter name="language" string="Language" domain="[]" context="{'group_by':'lang'}"/>
+                        <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                    </group>
+                </search>

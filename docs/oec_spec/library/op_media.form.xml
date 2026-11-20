@@ -1,0 +1,60 @@
+<form string="Media">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="1134" context="{'search_default_media_id': id}" type="action" icon="fa-tasks">
+                            <field name="total_units" widget="statinfo" string="Units"/>
+                        </button>
+                        <button class="oe_stat_button" name="1135" context="{'search_default_media_id': id}" type="action" icon="fa-tasks" string="Movements">
+                        </button>
+                        <button class="oe_stat_button" name="action_open_media_queue_with_domain" type="object" icon="fa-tasks">
+                                <field name="total_media_queue_req" widget="statinfo"/>
+                        </button>
+                    </div>
+                        <h1>
+                            <field name="name" placeholder="Media Name" class="w-100 w-md-50"/>
+                        </h1>
+                        <newline/>
+                        <group class="pt-2">
+                            <group>
+                                <field name="author_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="isbn"/>
+                                <field name="edition"/>
+                                <field name="media_type_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="publisher_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <field name="internal_code"/>
+                                <field name="tags" widget="many2many_tags" can_create="True" can_write="True"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page name="description" string="Description">
+                                <field name="description" colspan="4"/>
+                            </page>
+                            <page name="education_details" string="Education Details">
+                                <separator string="Course"/>
+                                    <field name="course_ids" nolabel="1" widget="many2many_tags" can_create="True" can_write="True"/>
+                                <separator string="Subjects"/>
+                                    <field name="subject_ids" nolabel="1" widget="many2many_tags" can_create="True" can_write="True"/>
+                            </page>
+                            <page name="media_queue_requests" string="Media Queue Requests">
+                                <field name="queue_ids" colspan="4" nolabel="1">
+                                    <list string="Media Queue Request">
+                                        <field name="user_id" on_change="1"/>
+                                        <field name="date_from"/>
+                                        <field name="date_to"/>
+                                        <field name="state"/>
+                                        <button name="do_accept" string="Accept" type="object" invisible="state != 'request'" icon="fa-thumbs-up" style="font-size: 15px;"/>
+                                        <button name="do_reject" string="Reject" type="object" invisible="state not in ('request','accept')" icon="fa-thumbs-down" style="font-size: 15px;"/>
+                                        <button name="do_request_again" string="Request Again" invisible="state != 'reject'" type="object" icon="fa-undo" style="font-size: 15px;"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

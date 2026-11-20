@@ -1,0 +1,19 @@
+<form string="Wizard">
+                <group>
+                    <group col="4" colspan="4">
+                        <field name="no_option"/>
+                        <field name="no_que"/>
+                    </group>
+                    <group col="4" colspan="4">
+                        <field name="date"/>
+                        <field name="mobile_no"/>
+                        <field name="instruction"/>
+                        <field name="signature"/>
+                        <field name="batch"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="get_template" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>

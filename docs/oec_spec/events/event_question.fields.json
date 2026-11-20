@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "title": {
+      "change_default": false,
+      "groupable": true,
+      "name": "title",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Title",
+      "translate": true,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

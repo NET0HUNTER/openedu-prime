@@ -1,0 +1,1 @@
+﻿<kanban string="Achievement"><templates><t t-name="card"><field name="student_id" on_change="1"/></t></templates></kanban>

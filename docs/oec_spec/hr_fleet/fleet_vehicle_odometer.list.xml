@@ -1,0 +1,8 @@
+<list string="Odometer Logs" editable="top">
+                <field name="date"/>
+                <field name="vehicle_id" widget="many2one_avatar" on_change="1" can_create="True" can_write="True"/>
+                <field name="driver_id" widget="many2one_avatar" can_create="True" can_write="True"/>
+                <field name="driver_employee_id" widget="many2one_avatar_user" optional="hide"/>
+                <field name="value"/>
+                <field name="unit"/>
+            </list>

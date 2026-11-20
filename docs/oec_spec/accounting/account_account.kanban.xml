@@ -1,0 +1,18 @@
+<kanban class="o_kanban_mobile">
+                    <templates>
+                        <t t-name="card">
+                            <div class="row">
+                                <div class="col-8">
+                                    <field class="fw-bolder" name="name" on_change="1"/>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <field class="badge rounded-pill" name="code" on_change="1"/>
+                                </div>
+                            </div>
+                            <div>
+                                <strong>Type: </strong>
+                                <field name="account_type" on_change="1"/>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>

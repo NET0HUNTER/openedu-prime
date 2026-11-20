@@ -1,0 +1,19 @@
+{
+  "fields": {
+    "job_post": {
+      "change_default": false,
+      "groupable": true,
+      "name": "job_post",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Job Position",
+      "translate": true,
+      "trim": true,
+      "type": "char"
+    }
+  },
+  "has_approval_rules": false
+}

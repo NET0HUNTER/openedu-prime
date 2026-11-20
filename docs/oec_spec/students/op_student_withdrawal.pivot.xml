@@ -1,0 +1,6 @@
+﻿<pivot string="Student Withdrawal Analysis">
+                <field name="course_id" type="col"/>
+                <field name="student_id" type="row"/>
+                <field name="requested_date"/>
+                <field name="withdrawal_reason"/>
+            </pivot>

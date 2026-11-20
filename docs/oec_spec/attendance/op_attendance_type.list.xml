@@ -1,0 +1,8 @@
+﻿<list string="Attendance Type">
+                    <field name="name"/>
+                    <field name="present"/>
+                    <field name="absent"/>
+                    <field name="excused"/>
+                    <field name="late"/>
+                    <field name="company_id" optional="show"/>
+                </list>

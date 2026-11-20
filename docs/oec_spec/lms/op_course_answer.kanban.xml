@@ -1,0 +1,1 @@
+<kanban string="Slide Question's Answer"><templates><t t-name="card"><field name="text_value"/></t></templates></kanban>

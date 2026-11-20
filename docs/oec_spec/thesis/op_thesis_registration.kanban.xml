@@ -1,0 +1,115 @@
+<kanban highlight_color="color" string="Thesis kanban" class="o_slide_kanban o_slide_channel_kanban o_thesis_kanban" sample="1">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="student_id" on_change="1"/>
+                <field name="program_id"/>
+                <field name="registration_date"/>
+                <field name="final_submission_deadline"/>
+                <field name="state"/>
+                <field name="progress_count"/>
+                <field name="extension_count"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="menu">
+                        <div class="container" role="menu">
+                        <div class="row my-2">
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_view">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="openeducat_views" class="o_kanban_card_manage_title">
+                                            <span>Views</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_new">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="openeducat_new" class="o_kanban_card_manage_title">
+                                            <span>New</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4 o_kanban_card_manage_section o_kanban_manage_operations">
+                                    <div role="menuitem" class="px-1">
+                                        <div name="openeducat_reports" class="o_kanban_card_manage_title">
+                                            <span>Reports</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
+                                <div role="menuitem" aria-haspopup="true" class="col-8">
+                                    <field name="color" widget="kanban_color_picker"/>
+                                </div>
+                                <div role="menuitem" class="col-4">
+                                    <a type="open">Settings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-name="card">
+                        <widget name="web_ribbon" title="Draft" bg_color="text-bg-info" invisible="state != 'draft'"/>
+                        <widget name="web_ribbon" title="Submitted" bg_color="text-bg-secondary" invisible="state != 'submitted'"/>
+                        <widget name="web_ribbon" title="Approved" bg_color="text-bg-primary" invisible="state != 'approved'"/>
+                        <widget name="web_ribbon" title="In Progress" bg_color="text-bg-warning" invisible="state != 'in_progress'"/>
+                        <widget name="web_ribbon" title="Completed" bg_color="text-bg-success" invisible="state != 'completed'"/>
+                        <widget name="web_ribbon" title="Cancelled" bg_color="text-bg-danger" invisible="state != 'cancelled'"/>
+                        
+                        <main class="d-flex flex-column gap-2 p-1 position-relative">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-start gap-2 pe-5">
+                                <div class="flex-grow-1 d-flex flex-column gap-1" style="min-width: 0;">
+                                    <h5 class="mb-0 fw-bold text-primary text-truncate" t-att-title="record.name.value" style="font-size: 1.15rem;">
+                                        <field name="name"/>
+                                    </h5>
+                                </div>
+                            </div>
+
+                            <!-- Student Info -->
+                            <div t-if="record.student_id.raw_value" class="d-flex align-items-center small text-muted">
+                                <i class="fa fa-user me-2" role="img" aria-label="Student" title="Student"/>
+                                <field name="student_id" on_change="1"/>
+                            </div>
+                            <!-- Program Info -->
+                            <div t-if="record.program_id.raw_value" class="d-flex align-items-center small text-muted">
+                                <i class="fa fa-book me-2" role="img" aria-label="Program" title="Program"/>
+                                <field name="program_id"/>
+                            </div>
+
+                            <!-- Dates -->
+                            <div class="d-flex align-items-center small text-muted">
+                                <i class="fa fa-calendar me-2" role="img" aria-label="Dates" title="Dates"/>
+                                <field name="registration_date" widget="date"/>
+                                <span class="mx-2">-</span>
+                                <field name="final_submission_deadline" widget="date"/>
+                            </div>
+
+                            <!-- Metrics Grid (2 columns) -->
+                            <div class="row g-2 mt-1" name="metrics_grid">
+                                <!-- Reports -->
+                                <div class="col-6">
+                                    <button name="action_view_progress_reports" type="object" class="btn d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle w-100" style="background-color: #f8f9fa !important; min-width: 0; box-shadow: none;">
+                                        <span class="d-flex align-items-center text-muted small" style="min-width: 0;">
+                                            <i class="fa fa-user me-2 text-dark flex-shrink-0" title="Reports"/>
+                                            <span class="text-truncate">Reports</span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0 ms-2">
+                                            <field name="progress_count"/>
+                                        </span>
+                                    </button>
+                                </div>
+                                <!-- Extensions -->
+                                <div class="col-6">
+                                    <button name="action_view_extensions" type="object" class="btn d-flex align-items-center justify-content-between text-decoration-none bg-light p-2 rounded h-100 border border-light-subtle w-100" style="background-color: #f8f9fa !important; min-width: 0; box-shadow: none;">
+                                        <span class="d-flex align-items-center text-muted small" style="min-width: 0;">
+                                            <i class="fa fa-calendar me-2 text-dark flex-shrink-0" title="Extensions"/>
+                                            <span class="text-truncate">Extensions</span>
+                                        </span>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold fs-6 flex-shrink-0 ms-2">
+                                            <field name="extension_count"/>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

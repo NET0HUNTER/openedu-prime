@@ -1,0 +1,15 @@
+﻿<form string="Exam Room">
+                    <header/>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="capacity"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="classroom_id" on_change="1" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>

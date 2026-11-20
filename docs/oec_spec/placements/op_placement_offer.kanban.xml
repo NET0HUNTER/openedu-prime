@@ -1,0 +1,1 @@
+<kanban string="Placement Offer"><templates><t t-name="card"><field name="partner_id"/></t></templates></kanban>

@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "name": {
+      "change_default": false,
+      "groupable": true,
+      "name": "name",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "size": 128,
+      "sortable": true,
+      "store": true,
+      "string": "Title",
+      "translate": false,
+      "trim": true,
+      "type": "char"
+    },
+    "requested_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "requested_id",
+      "readonly": false,
+      "relation": "res.partner",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Requested By",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

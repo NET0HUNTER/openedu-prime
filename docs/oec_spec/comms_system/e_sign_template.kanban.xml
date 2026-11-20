@@ -1,0 +1,96 @@
+<kanban quick_create="false" js_class="e_sign_view" class="o_sign_template_kanban o_esign_kanban" default_order="create_date desc" sample="1">
+                    <field name="active"/>
+                    <field name="template_id"/>
+                    <field name="create_date"/>
+                    <field name="favorited_ids"/>
+                    <field name="create_uid"/>
+                    <field name="is_favorite"/>
+                    <t t-name="card">
+                        <!-- We let Odoo's native article handle the border. No inner border or shadow. -->
+                        <div class="d-flex flex-column h-100 bg-white">
+                            
+                            <!-- Header Area -->
+                            <div class="d-flex align-items-start p-2">
+                                <!-- Document Icon -->
+                                <div class="d-flex justify-content-center align-items-center flex-shrink-0 rounded bg-light border me-2" style="width: 36px; height: 36px; border-color: #e5e7eb !important;">
+                                    <i class="fa fa-file-text-o text-dark" title="Document" style="font-size: 1.05rem;"/>
+                                </div>
+                                
+                                <!-- Title & Metadata -->
+                                <div class="d-flex flex-column flex-grow-1 text-truncate" style="min-width: 0;">
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <div class="d-flex align-items-center gap-2 text-truncate">
+                                            <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.05rem; letter-spacing: -0.01em;">
+                                                <field name="name"/>
+                                            </h5>
+                                            <t t-if="record.is_favorite.raw_value">
+                                                <a type="object" name="count_favorite" class="fa fa-star text-warning favorite_button_enabled" title="Favorites" style="font-size: 1.05rem;"/>
+                                            </t>
+                                            <t t-else="">
+                                                <a type="object" name="count_favorite" class="fa fa-star-o text-muted" title="Favorites" style="font-size: 1.05rem;"/>
+                                            </t>
+                                        </div>
+                                        <field name="user_id" widget="many2one_avatar_user" class="flex-shrink-0 ms-1"/>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-2 mt-1">
+                                        <span class="text-muted d-flex align-items-center gap-1" style="font-size: 0.75rem;">
+                                            <i class="fa fa-clock-o" title="Created Date"/> <field name="create_date" widget="datetime"/>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dedicated Tags Ribbon -->
+                            <t t-if="record.tag_ids.raw_value.length &gt; 0">
+                                <div class="px-2 pb-1">
+                                    <div class="text-truncate" style="max-height: 22px; overflow: hidden;">
+                                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                    </div>
+                                </div>
+                            </t>
+                            
+                            <!-- Metrics Body (Template Usage Analytics) -->
+                            <div class="d-flex flex-column p-2 flex-grow-1">
+                                <div class="d-flex align-items-center gap-1 mb-2">
+                                    <i class="fa fa-bar-chart text-muted" style="font-size: 0.75rem;"/>
+                                    <span class="text-muted fw-bold" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;">Template Usage</span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <!-- In Progress Metric Box -->
+                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 p-2 rounded border" style="border-color: #fef3c7 !important; background-color: #fffbeb;">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <i class="fa fa-hourglass-half text-warning" style="font-size: 0.85rem;"/>
+                                            <span class="text-warning fw-bold" style="font-size: 0.75rem; text-transform: uppercase;">Pending</span>
+                                        </div>
+                                        <span class="fw-bold text-dark" style="font-size: 1rem;"><field name="in_progress_count"/></span>
+                                    </div>
+                                    
+                                    <!-- Completed Metric Box -->
+                                    <div class="d-flex align-items-center justify-content-between flex-grow-1 p-2 rounded border" style="border-color: #d1fae5 !important; background-color: #ecfdf5;">
+                                        <div class="d-flex align-items-center gap-1">
+                                            <i class="fa fa-check-circle text-success" style="font-size: 0.85rem;"/>
+                                            <span class="text-success fw-bold" style="font-size: 0.75rem; text-transform: uppercase;">Done</span>
+                                        </div>
+                                        <span class="fw-bold text-dark" style="font-size: 1rem;"><field name="signed_count"/></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Actions Footer -->
+                            <div class="d-flex justify-content-between align-items-center p-2 bg-white border-top" style="border-color: #f3f4f6 !important;">
+                                <button name="718" type="action" context="{'sign_directly_without_mail': 0}" class="btn btn-sm btn-primary rounded px-3 py-1 shadow-none fw-bold d-flex align-items-center gap-1 o_kanban_sign_send_request" style="font-size: 0.85rem;">
+                                    <i class="fa fa-paper-plane"/> Send
+                                </button>
+                                <div class="d-flex gap-1">
+                                    <button name="open_url" type="object" context="{'sign_directly_without_mail': 1}" class="btn btn-sm btn-light border rounded px-2 py-1 shadow-none text-dark fw-bold hover-dark d-flex align-items-center gap-1" style="font-size: 0.85rem; border-color: #d1d5db !important;">
+                                        <i class="fa fa-pencil"/> Sign
+                                    </button>
+                                    <button name="720" type="action" class="btn btn-sm btn-light border rounded px-2 py-1 shadow-none text-dark fw-bold hover-dark d-flex align-items-center gap-1" style="font-size: 0.85rem; border-color: #d1d5db !important;">
+                                        <i class="fa fa-share-alt"/> Share
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </t>
+                </kanban>

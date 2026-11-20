@@ -1,0 +1,6448 @@
+{
+  "id": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "id",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "ID",
+    "type": "integer"
+  },
+  "display_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "display_name",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Display Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "message_is_follower": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_is_follower",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Is Follower",
+    "type": "boolean"
+  },
+  "message_follower_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'res.company')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_follower_ids",
+    "readonly": false,
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Followers",
+    "type": "one2many"
+  },
+  "message_partner_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_partner_ids",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Followers (Partners)",
+    "type": "many2many"
+  },
+  "message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('message_type', '!=', 'user_notification')]) + ([('model', '=', 'res.company')])",
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Messages",
+    "type": "one2many"
+  },
+  "has_message": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "has_message",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Has Message",
+    "type": "boolean"
+  },
+  "message_needaction": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, new messages require your attention.",
+    "manual": false,
+    "name": "message_needaction",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Action Needed",
+    "type": "boolean"
+  },
+  "message_needaction_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages requiring action",
+    "manual": false,
+    "name": "message_needaction_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of Actions",
+    "type": "integer"
+  },
+  "message_has_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Message Delivery error",
+    "type": "boolean"
+  },
+  "message_has_error_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages with delivery error",
+    "manual": false,
+    "name": "message_has_error_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of errors",
+    "type": "integer"
+  },
+  "message_attachment_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_attachment_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Attachment Count",
+    "type": "integer"
+  },
+  "rating_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('res_model', '=', 'res.company')]) + ([('res_model', '=', 'res.company')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "rating_ids",
+    "readonly": false,
+    "relation": "rating.rating",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Ratings",
+    "type": "one2many"
+  },
+  "website_message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('model', '=', 'res.company'), ('message_type', 'in', ('comment', 'email', 'email_outgoing', 'auto_comment', 'out_of_office'))]) + ([('model', '=', 'res.company')])",
+    "exportable": true,
+    "groupable": false,
+    "help": "Website communication history",
+    "manual": false,
+    "name": "website_message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Website Messages",
+    "type": "one2many"
+  },
+  "message_has_sms_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_sms_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "SMS Delivery error",
+    "type": "boolean"
+  },
+  "name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.name"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "name",
+    "readonly": false,
+    "related": "partner_id.name",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "active": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "active",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Active",
+    "type": "boolean"
+  },
+  "sequence": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Used to order Companies in the company switcher",
+    "manual": false,
+    "name": "sequence",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Sequence",
+    "type": "integer"
+  },
+  "parent_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "parent_id",
+    "readonly": false,
+    "relation": "res.company",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Parent Company",
+    "type": "many2one"
+  },
+  "child_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "child_ids",
+    "readonly": false,
+    "relation": "res.company",
+    "relation_field": "parent_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Branches",
+    "type": "one2many"
+  },
+  "all_child_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {
+      "active_test": false
+    },
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "all_child_ids",
+    "readonly": false,
+    "relation": "res.company",
+    "relation_field": "parent_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "All Child",
+    "type": "one2many"
+  },
+  "parent_path": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "parent_path",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Parent Path",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "parent_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "parent_path"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "parent_ids",
+    "readonly": true,
+    "relation": "res.company",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Parent",
+    "type": "many2many"
+  },
+  "root_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "parent_path"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "root_id",
+    "readonly": true,
+    "relation": "res.company",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Root",
+    "type": "many2one"
+  },
+  "partner_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "partner_id",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Partner",
+    "type": "many2one"
+  },
+  "report_header": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Company tagline, which is included in a printed document's header or footer (depending on the selected layout).",
+    "manual": false,
+    "name": "report_header",
+    "readonly": false,
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": true,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company Tagline",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": true,
+    "type": "html"
+  },
+  "report_footer": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Footer text displayed at the bottom of all reports.",
+    "manual": false,
+    "name": "report_footer",
+    "readonly": false,
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": true,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Report Footer",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": true,
+    "type": "html"
+  },
+  "company_details": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Header text displayed at the top of all reports.",
+    "manual": false,
+    "name": "company_details",
+    "readonly": false,
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": true,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company Details",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": true,
+    "type": "html"
+  },
+  "is_company_details_empty": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "company_details"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "is_company_details_empty",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Is Company Details Empty",
+    "type": "boolean"
+  },
+  "logo": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.image_1920"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "logo",
+    "readonly": false,
+    "related": "partner_id.image_1920",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Company Logo",
+    "type": "binary"
+  },
+  "logo_web": {
+    "attachment": false,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.image_1920"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "logo_web",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Logo Web",
+    "type": "binary"
+  },
+  "uses_default_logo": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.image_1920"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "uses_default_logo",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Uses Default Logo",
+    "type": "boolean"
+  },
+  "currency_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "currency_id",
+    "readonly": false,
+    "relation": "res.currency",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Currency",
+    "type": "many2one"
+  },
+  "user_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "user_ids",
+    "readonly": false,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Accepted Users",
+    "type": "many2many"
+  },
+  "street": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.street",
+      "partner_id.street2",
+      "partner_id.city",
+      "partner_id.zip",
+      "partner_id.state_id",
+      "partner_id.country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "street",
+    "readonly": false,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Street",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "street2": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.street",
+      "partner_id.street2",
+      "partner_id.city",
+      "partner_id.zip",
+      "partner_id.state_id",
+      "partner_id.country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "street2",
+    "readonly": false,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Street2",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "zip": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.street",
+      "partner_id.street2",
+      "partner_id.city",
+      "partner_id.zip",
+      "partner_id.state_id",
+      "partner_id.country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "zip",
+    "readonly": false,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Zip",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "city": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.street",
+      "partner_id.street2",
+      "partner_id.city",
+      "partner_id.zip",
+      "partner_id.state_id",
+      "partner_id.country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "city",
+    "readonly": false,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "City",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "state_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.street",
+      "partner_id.street2",
+      "partner_id.city",
+      "partner_id.zip",
+      "partner_id.state_id",
+      "partner_id.country_id"
+    ],
+    "domain": "[('country_id', '=?', country_id)]",
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "state_id",
+    "readonly": false,
+    "relation": "res.country.state",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Fed. State",
+    "type": "many2one"
+  },
+  "bank_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.bank_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "bank_ids",
+    "readonly": false,
+    "related": "partner_id.bank_ids",
+    "relation": "res.partner.bank",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Banks",
+    "type": "one2many"
+  },
+  "country_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.street",
+      "partner_id.street2",
+      "partner_id.city",
+      "partner_id.zip",
+      "partner_id.state_id",
+      "partner_id.country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "country_id",
+    "readonly": false,
+    "relation": "res.country",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Country",
+    "type": "many2one"
+  },
+  "country_code": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "The ISO country code in two chars. \nYou can use this field for quick search.",
+    "manual": false,
+    "name": "country_code",
+    "readonly": true,
+    "related": "country_id.code",
+    "required": false,
+    "searchable": false,
+    "size": 2,
+    "sortable": false,
+    "store": false,
+    "string": "Country Code",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.email"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "email",
+    "readonly": false,
+    "related": "partner_id.email",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Email",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "phone": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.phone"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "phone",
+    "readonly": false,
+    "related": "partner_id.phone",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Phone",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "website": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.website"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website",
+    "readonly": false,
+    "related": "partner_id.website",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Website Link",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "vat": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.vat"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "You can use '/' to indicate that the customer has no Tax ID.",
+    "manual": false,
+    "name": "vat",
+    "readonly": false,
+    "related": "partner_id.vat",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Tax ID",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "company_registry": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.company_registry"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "The registry number of the company. Use it if it is different from the Tax ID. It must be unique across all partners of a same country",
+    "manual": false,
+    "name": "company_registry",
+    "readonly": false,
+    "related": "partner_id.company_registry",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Company ID",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "company_registry_placeholder": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id.company_registry_placeholder"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "company_registry_placeholder",
+    "readonly": true,
+    "related": "partner_id.company_registry_placeholder",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Company Registry Placeholder",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "paperformat_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "paperformat_id",
+    "readonly": false,
+    "relation": "report.paperformat",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Paper format",
+    "type": "many2one"
+  },
+  "external_report_layout_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "external_report_layout_id",
+    "readonly": false,
+    "relation": "ir.ui.view",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Document Template",
+    "type": "many2one"
+  },
+  "font": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "font",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "Lato",
+        "Lato"
+      ],
+      [
+        "Roboto",
+        "Roboto"
+      ],
+      [
+        "Open_Sans",
+        "Open Sans"
+      ],
+      [
+        "Montserrat",
+        "Montserrat"
+      ],
+      [
+        "Oswald",
+        "Oswald"
+      ],
+      [
+        "Raleway",
+        "Raleway"
+      ],
+      [
+        "Tajawal",
+        "Tajawal"
+      ],
+      [
+        "Fira_Mono",
+        "Fira Mono"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Font",
+    "type": "selection"
+  },
+  "primary_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "primary_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Primary Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "secondary_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "secondary_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Secondary Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "root_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "color",
+    "readonly": false,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Color Index",
+    "type": "integer"
+  },
+  "layout_background": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "layout_background",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "Blank",
+        "Blank"
+      ],
+      [
+        "Demo logo",
+        "Demo logo"
+      ],
+      [
+        "Custom",
+        "Custom"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Layout Background",
+    "type": "selection"
+  },
+  "layout_background_image": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "layout_background_image",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Background Image",
+    "type": "binary"
+  },
+  "uninstalled_l10n_module_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "uninstalled_l10n_module_ids",
+    "readonly": true,
+    "relation": "ir.module.module",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Uninstalled L10N Module",
+    "type": "many2many"
+  },
+  "create_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created by",
+    "type": "many2one"
+  },
+  "create_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created on",
+    "type": "datetime"
+  },
+  "write_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated by",
+    "type": "many2one"
+  },
+  "write_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated on",
+    "type": "datetime"
+  },
+  "social_twitter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_twitter",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "X Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "social_facebook": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_facebook",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Facebook Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "social_github": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_github",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "GitHub Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "social_linkedin": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_linkedin",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "LinkedIn Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "social_youtube": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_youtube",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Youtube Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "social_instagram": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_instagram",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Instagram Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "social_tiktok": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_tiktok",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "TikTok Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "social_discord": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "social_discord",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Discord Account",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "nomenclature_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "nomenclature_id",
+    "readonly": false,
+    "relation": "barcode.nomenclature",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Nomenclature",
+    "type": "many2one"
+  },
+  "resource_calendar_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "resource_calendar_ids",
+    "readonly": false,
+    "relation": "resource.calendar",
+    "relation_field": "company_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Working Hours",
+    "type": "one2many"
+  },
+  "resource_calendar_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "resource_calendar_id",
+    "readonly": false,
+    "relation": "resource.calendar",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Working Hours",
+    "type": "many2one"
+  },
+  "theme_menu_style": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "theme_menu_style",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "sidemenu",
+        "Side Menu"
+      ],
+      [
+        "apps",
+        "Top Menu"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Menu Style",
+    "type": "selection"
+  },
+  "theme_font_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "theme_font_name",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "Rubik",
+        "Rubik"
+      ],
+      [
+        "sans-serif",
+        "sans-serif"
+      ],
+      [
+        "poppins",
+        "Poppins"
+      ],
+      [
+        "lato",
+        "Lato"
+      ],
+      [
+        "merriweather",
+        "Merriweather"
+      ],
+      [
+        "montserrat",
+        "Montserrat"
+      ],
+      [
+        "opensans",
+        "OpenSans"
+      ],
+      [
+        "playfairdisplay",
+        "PlayfairDisplay"
+      ],
+      [
+        "google-font",
+        "Google Font"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Select Font",
+    "type": "selection"
+  },
+  "google_font": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "google_font",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Google Font",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "theme_color_brand": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "theme_color_brand",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Theme Brand Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "theme_background_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "theme_background_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Theme Background Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "theme_sidebar_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "theme_sidebar_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Theme Sidebar Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "dashboard_background": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "dashboard_background",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Dashboard Background",
+    "type": "binary"
+  },
+  "preloader_option": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "preloader_option",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "style_one",
+        "Style One"
+      ],
+      [
+        "style_two",
+        "Style Two"
+      ],
+      [
+        "style_three",
+        "Style Three"
+      ],
+      [
+        "style_four",
+        "Style Four"
+      ],
+      [
+        "style_five",
+        "Style Five"
+      ],
+      [
+        "style_six",
+        "Style Six"
+      ],
+      [
+        "style_seven",
+        "Style Seven"
+      ],
+      [
+        "style_eight",
+        "Style Eight"
+      ],
+      [
+        "style_nine",
+        "Style Nine"
+      ],
+      [
+        "style_ten",
+        "Style Ten"
+      ],
+      [
+        "style_eleven",
+        "Style Eleven"
+      ],
+      [
+        "style_twelve",
+        "Style Twelve"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Preloader Option",
+    "type": "selection"
+  },
+  "menu_bg_image": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "menu_bg_image",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Apps Menu Footer Image",
+    "type": "binary"
+  },
+  "custom_bg_image": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "custom_bg_image",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Custom Background Image",
+    "type": "binary"
+  },
+  "sidebar_bg_image": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "sidebar_bg_image",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Sidebar Background",
+    "type": "binary"
+  },
+  "theme_sidebar_text_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "theme_sidebar_text_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Sidebar Text Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "sidebar_company_logo": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "sidebar_company_logo",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Sidebar Logo",
+    "type": "binary"
+  },
+  "alias_domain_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "alias_domain_id",
+    "readonly": false,
+    "relation": "mail.alias.domain",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Email Domain",
+    "type": "many2one"
+  },
+  "bounce_email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "alias_domain_id",
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "bounce_email",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Bounce Email",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "bounce_formatted": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "alias_domain_id",
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "bounce_formatted",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Bounce",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "catchall_email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "alias_domain_id",
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "catchall_email",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Catchall Email",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "catchall_formatted": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "alias_domain_id",
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "catchall_formatted",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Catchall",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "default_from_email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "alias_domain_id.default_from_email"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "default_from_email",
+    "readonly": true,
+    "related": "alias_domain_id.default_from_email",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Default From",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "email_formatted": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "partner_id",
+      "catchall_formatted"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "email_formatted",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Formatted Email",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "email_primary_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "email_primary_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Email Button Text",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "email_secondary_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "email_secondary_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Email Button Color",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "iap_enrich_auto_done": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "iap_enrich_auto_done",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Enrich Done",
+    "type": "boolean"
+  },
+  "snailmail_color": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "snailmail_color",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Snailmail Color",
+    "type": "boolean"
+  },
+  "snailmail_cover": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "snailmail_cover",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Add a Cover Page",
+    "type": "boolean"
+  },
+  "snailmail_duplex": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "snailmail_duplex",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Both sides",
+    "type": "boolean"
+  },
+  "fiscalyear_last_day": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "fiscalyear_last_day",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Fiscalyear Last Day",
+    "type": "integer"
+  },
+  "fiscalyear_last_month": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "fiscalyear_last_month",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "1",
+        "January"
+      ],
+      [
+        "2",
+        "February"
+      ],
+      [
+        "3",
+        "March"
+      ],
+      [
+        "4",
+        "April"
+      ],
+      [
+        "5",
+        "May"
+      ],
+      [
+        "6",
+        "June"
+      ],
+      [
+        "7",
+        "July"
+      ],
+      [
+        "8",
+        "August"
+      ],
+      [
+        "9",
+        "September"
+      ],
+      [
+        "10",
+        "October"
+      ],
+      [
+        "11",
+        "November"
+      ],
+      [
+        "12",
+        "December"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Fiscalyear Last Month",
+    "type": "selection"
+  },
+  "fiscalyear_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Any entry up to and including that date will be postponed to a later time, in accordance with its journal's sequence.",
+    "manual": false,
+    "name": "fiscalyear_lock_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Global Lock Date",
+    "type": "date"
+  },
+  "tax_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Any entry with taxes up to and including that date will be postponed to a later time, in accordance with its journal's sequence. The tax lock date is automatically set when the tax closing entry is posted.",
+    "manual": false,
+    "name": "tax_lock_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Tax Return Lock Date",
+    "type": "date"
+  },
+  "sale_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Any sales entry prior to and including this date will be postponed to a later date, in accordance with its journal's sequence.",
+    "manual": false,
+    "name": "sale_lock_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Sales Lock Date",
+    "type": "date"
+  },
+  "purchase_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Any purchase entry prior to and including this date will be postponed to a later date, in accordance with its journal's sequence.",
+    "manual": false,
+    "name": "purchase_lock_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Purchase Lock date",
+    "type": "date"
+  },
+  "hard_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Any entry up to and including that date will be postponed to a later time, in accordance with its journal sequence. This lock date is irreversible and does not allow any exception.",
+    "manual": false,
+    "name": "hard_lock_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Hard Lock Date",
+    "type": "date"
+  },
+  "user_fiscalyear_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "fiscalyear_lock_date"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "user_fiscalyear_lock_date",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "User Fiscalyear Lock Date",
+    "type": "date"
+  },
+  "user_tax_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "tax_lock_date"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "user_tax_lock_date",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "User Tax Lock Date",
+    "type": "date"
+  },
+  "user_sale_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "sale_lock_date"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "user_sale_lock_date",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "User Sale Lock Date",
+    "type": "date"
+  },
+  "user_purchase_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "purchase_lock_date"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "user_purchase_lock_date",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "User Purchase Lock Date",
+    "type": "date"
+  },
+  "user_hard_lock_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "hard_lock_date"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "user_hard_lock_date",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "User Hard Lock Date",
+    "type": "date"
+  },
+  "transfer_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + [('reconcile', '=', True), ('account_type', '=', 'asset_current')]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Intermediary account used when moving money from a liquidity account to another",
+    "manual": false,
+    "name": "transfer_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Inter-Banks Transfer Account",
+    "type": "many2one"
+  },
+  "expects_chart_of_accounts": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "expects_chart_of_accounts",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Expects a Chart of Accounts",
+    "type": "boolean"
+  },
+  "chart_template": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "chart_template",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "generic_coa",
+        "Generic Chart of Accounts"
+      ],
+      [
+        "ae",
+        "🇦🇪 United Arab Emirates"
+      ],
+      [
+        "ar_ri",
+        "🇦🇷 Argentina - Argentine Generic Chart of Accounts for Registered Accountants"
+      ],
+      [
+        "ar_base",
+        "🇦🇷 Argentina - Generic Chart of Accounts Argentina Single Taxpayer / Basis"
+      ],
+      [
+        "ar_ex",
+        "🇦🇷 Argentina - Argentine Generic Chart of Accounts for Exempt Individuals"
+      ],
+      [
+        "at",
+        "🇦🇹 Austria"
+      ],
+      [
+        "au",
+        "🇦🇺 Australia"
+      ],
+      [
+        "bd",
+        "🇧🇩 Bangladesh"
+      ],
+      [
+        "be_comp",
+        "🇧🇪 Belgium - Companies"
+      ],
+      [
+        "be_asso",
+        "🇧🇪 Belgium - Associations and Foundations"
+      ],
+      [
+        "bf",
+        "🇧🇫 Burkina Faso - SYSCOHADA for Companies"
+      ],
+      [
+        "bf_syscebnl",
+        "🇧🇫 Burkina Faso - SYSCEBNL for Associations"
+      ],
+      [
+        "bg",
+        "🇧🇬 Bulgaria"
+      ],
+      [
+        "bh",
+        "🇧🇭 Bahrain"
+      ],
+      [
+        "bj",
+        "🇧🇯 Benin - SYSCOHADA for Companies"
+      ],
+      [
+        "bj_syscebnl",
+        "🇧🇯 Benin - SYSCEBNL for Associations"
+      ],
+      [
+        "bo",
+        "🇧🇴 Bolivia"
+      ],
+      [
+        "br",
+        "🇧🇷 Brazil"
+      ],
+      [
+        "ca_2023",
+        "🇨🇦 Canada"
+      ],
+      [
+        "cd",
+        "🇨🇩 Congo (DRC) - SYSCOHADA for Companies"
+      ],
+      [
+        "cd_syscebnl",
+        "🇨🇩 Congo (DRC) - SYSCEBNL for Associations"
+      ],
+      [
+        "cf",
+        "🇨🇫 Central African Republic - SYSCOHADA for Companies"
+      ],
+      [
+        "cf_syscebnl",
+        "🇨🇫 Central African Republic - SYSCEBNL for Associations"
+      ],
+      [
+        "cg",
+        "🇨🇬 Congo (Republic) - SYSCOHADA for Companies"
+      ],
+      [
+        "cg_syscebnl",
+        "🇨🇬 Congo (Republic) - SYSCEBNL for Associations"
+      ],
+      [
+        "ch",
+        "🇨🇭 Switzerland"
+      ],
+      [
+        "ci",
+        "🇨🇮 Côte d'Ivoire - SYSCOHADA for Companies"
+      ],
+      [
+        "ci_syscebnl",
+        "🇨🇮 Côte d'Ivoire - SYSCEBNL for Associations"
+      ],
+      [
+        "cl",
+        "🇨🇱 Chile"
+      ],
+      [
+        "cm",
+        "🇨🇲 Cameroon - SYSCOHADA for Companies"
+      ],
+      [
+        "cm_syscebnl",
+        "🇨🇲 Cameroon - SYSCEBNL for Associations"
+      ],
+      [
+        "cn",
+        "🇨🇳 China - Accounting Standards for Small Business Enterprises"
+      ],
+      [
+        "cn_large_bis",
+        "🇨🇳 China - Accounting Standards for Business Enterprises"
+      ],
+      [
+        "co",
+        "🇨🇴 Colombia"
+      ],
+      [
+        "cr",
+        "🇨🇷 Costa Rica"
+      ],
+      [
+        "cy",
+        "🇨🇾 Cyprus"
+      ],
+      [
+        "cz",
+        "🇨🇿 Czech Republic"
+      ],
+      [
+        "de_skr03",
+        "🇩🇪 Germany - German Chart of Accounts SKR03"
+      ],
+      [
+        "de_skr04",
+        "🇩🇪 Germany - German chart of accounts SKR04"
+      ],
+      [
+        "dk",
+        "🇩🇰 Denmark"
+      ],
+      [
+        "do",
+        "🇩🇴 Dominican Republic"
+      ],
+      [
+        "dz",
+        "🇩🇿 Algeria"
+      ],
+      [
+        "ec",
+        "🇪🇨 Ecuador"
+      ],
+      [
+        "ee",
+        "🇪🇪 Estonia"
+      ],
+      [
+        "eg",
+        "🇪🇬 Egypt"
+      ],
+      [
+        "es_pymes",
+        "🇪🇸 Spain - SMEs (2008)"
+      ],
+      [
+        "es_assec",
+        "🇪🇸 Spain - Non-profit entities (2008)"
+      ],
+      [
+        "es_canary_assoc",
+        "🇪🇸 Spain - Canary Islands - PGCE non-profit entities (2008)"
+      ],
+      [
+        "es_canary_full",
+        "🇪🇸 Spain - Canary Islands - Complete (2008)"
+      ],
+      [
+        "es_canary_pymes",
+        "🇪🇸 Spain - Canary Islands - SMEs (2008)"
+      ],
+      [
+        "es_coop_full",
+        "🇪🇸 Spain - Cooperatives - Complete (2008)"
+      ],
+      [
+        "es_coop_pymes",
+        "🇪🇸 Spain - Cooperatives - SMEs (2008)"
+      ],
+      [
+        "es_full",
+        "🇪🇸 Spain - Complete (2008)"
+      ],
+      [
+        "et",
+        "🇪🇹 Ethiopia"
+      ],
+      [
+        "fi",
+        "🇫🇮 Finland"
+      ],
+      [
+        "fr",
+        "🇫🇷 France"
+      ],
+      [
+        "gf",
+        "🇬🇫 French Guiana"
+      ],
+      [
+        "gp",
+        "🇬🇵 Guadeloupe"
+      ],
+      [
+        "mc",
+        "🇲🇨 Monaco"
+      ],
+      [
+        "mq",
+        "🇲🇶 Martinique"
+      ],
+      [
+        "re",
+        "🇷🇪 Réunion"
+      ],
+      [
+        "yt",
+        "🇾🇹 Mayotte"
+      ],
+      [
+        "ga",
+        "🇬🇦 Gabon - SYSCOHADA for Companies"
+      ],
+      [
+        "ga_syscebnl",
+        "🇬🇦 Gabon - SYSCEBNL for Associations"
+      ],
+      [
+        "ge",
+        "🇬🇪 Georgia - Georgian Chart of Accounts (IFRS)"
+      ],
+      [
+        "gn",
+        "🇬🇳 Guinea - SYSCOHADA for Companies"
+      ],
+      [
+        "gn_syscebnl",
+        "🇬🇳 Guinea - SYSCEBNL for Associations"
+      ],
+      [
+        "gq",
+        "🇬🇶 Equatorial Guinea - SYSCOHADA for Companies"
+      ],
+      [
+        "gq_syscebnl",
+        "🇬🇶 Equatorial Guinea - SYSCEBNL for Associations"
+      ],
+      [
+        "gr",
+        "🇬🇷 Greece"
+      ],
+      [
+        "gt",
+        "🇬🇹 Guatemala"
+      ],
+      [
+        "gw",
+        "🇬🇼 Guinea-Bissau - SYSCOHADA for Companies"
+      ],
+      [
+        "gw_syscebnl",
+        "🇬🇼 Guinea-Bissau - SYSCEBNL for Associations"
+      ],
+      [
+        "hk",
+        "🇭🇰 Hong Kong"
+      ],
+      [
+        "hn",
+        "🇭🇳 Honduras"
+      ],
+      [
+        "hr",
+        "🇭🇷 Croatia"
+      ],
+      [
+        "hr_kuna",
+        "🇭🇷 Croatia - RRIF-ov računski plan za poduzetnike"
+      ],
+      [
+        "hu",
+        "🇭🇺 Hungary"
+      ],
+      [
+        "id",
+        "🇮🇩 Indonesia"
+      ],
+      [
+        "ie",
+        "🇮🇪 Ireland"
+      ],
+      [
+        "il",
+        "🇮🇱 Israel"
+      ],
+      [
+        "in",
+        "🇮🇳 India"
+      ],
+      [
+        "iq",
+        "🇮🇶 Iraq"
+      ],
+      [
+        "it",
+        "🇮🇹 Italy"
+      ],
+      [
+        "jo_standard",
+        "🇯🇴 Jordan"
+      ],
+      [
+        "jp",
+        "🇯🇵 Japan"
+      ],
+      [
+        "ke",
+        "🇰🇪 Kenya"
+      ],
+      [
+        "kh",
+        "🇰🇭 Cambodia"
+      ],
+      [
+        "km",
+        "🇰🇲 Comoros - SYSCOHADA for Companies"
+      ],
+      [
+        "km_syscebnl",
+        "🇰🇲 Comoros - SYSCEBNL for Associations"
+      ],
+      [
+        "kr",
+        "🇰🇷 South Korea"
+      ],
+      [
+        "kw",
+        "🇰🇼 Kuwait"
+      ],
+      [
+        "kz",
+        "🇰🇿 Kazakhstan"
+      ],
+      [
+        "lb",
+        "🇱🇧 Lebanon"
+      ],
+      [
+        "lk",
+        "🇱🇰 Sri Lanka"
+      ],
+      [
+        "lt",
+        "🇱🇹 Lithuania"
+      ],
+      [
+        "lu",
+        "🇱🇺 Luxembourg"
+      ],
+      [
+        "lv",
+        "🇱🇻 Latvia"
+      ],
+      [
+        "ma",
+        "🇲🇦 Morocco"
+      ],
+      [
+        "ml",
+        "🇲🇱 Mali - SYSCOHADA for Companies"
+      ],
+      [
+        "ml_syscebnl",
+        "🇲🇱 Mali - SYSCEBNL for Associations"
+      ],
+      [
+        "mn",
+        "🇲🇳 Mongolia"
+      ],
+      [
+        "mr",
+        "🇲🇷 Mauritania"
+      ],
+      [
+        "mt",
+        "🇲🇹 Malta"
+      ],
+      [
+        "mu",
+        "🇲🇺 Mauritius"
+      ],
+      [
+        "mx",
+        "🇲🇽 Mexico"
+      ],
+      [
+        "my",
+        "🇲🇾 Malaysia"
+      ],
+      [
+        "mz",
+        "🇲🇿 Mozambique"
+      ],
+      [
+        "ne",
+        "🇳🇪 Niger - SYSCOHADA for Companies"
+      ],
+      [
+        "ne_syscebnl",
+        "🇳🇪 Niger - SYSCEBNL for Associations"
+      ],
+      [
+        "ng",
+        "🇳🇬 Nigeria"
+      ],
+      [
+        "nl",
+        "🇳🇱 Netherlands"
+      ],
+      [
+        "no",
+        "🇳🇴 Norway"
+      ],
+      [
+        "nz",
+        "🇳🇿 New Zealand"
+      ],
+      [
+        "om",
+        "🇴🇲 Oman"
+      ],
+      [
+        "pa",
+        "🇵🇦 Panama"
+      ],
+      [
+        "pe",
+        "🇵🇪 Peru"
+      ],
+      [
+        "ph",
+        "🇵🇭 Philippines"
+      ],
+      [
+        "pk",
+        "🇵🇰 Pakistan"
+      ],
+      [
+        "pl",
+        "🇵🇱 Poland"
+      ],
+      [
+        "pt",
+        "🇵🇹 Portugal"
+      ],
+      [
+        "qa",
+        "🇶🇦 Qatar"
+      ],
+      [
+        "ro",
+        "🇷🇴 Romania"
+      ],
+      [
+        "rs",
+        "🇷🇸 Serbia"
+      ],
+      [
+        "rw",
+        "🇷🇼 Rwanda"
+      ],
+      [
+        "sa",
+        "🇸🇦 Saudi Arabia"
+      ],
+      [
+        "se",
+        "🇸🇪 Sweden"
+      ],
+      [
+        "se_K2",
+        "🇸🇪 Sweden - Swedish BAS Chart of Account complete K2"
+      ],
+      [
+        "se_K3",
+        "🇸🇪 Sweden - Swedish BAS Chart of Account complete K3"
+      ],
+      [
+        "sg",
+        "🇸🇬 Singapore"
+      ],
+      [
+        "si",
+        "🇸🇮 Slovenia"
+      ],
+      [
+        "sk",
+        "🇸🇰 Slovakia"
+      ],
+      [
+        "sn",
+        "🇸🇳 Senegal - SYSCOHADA for Companies"
+      ],
+      [
+        "sn_syscebnl",
+        "🇸🇳 Senegal - SYSCEBNL for Associations"
+      ],
+      [
+        "syscebnl",
+        "SYSCEBNL"
+      ],
+      [
+        "syscohada",
+        "SYSCOHADA - Revised"
+      ],
+      [
+        "td",
+        "🇹🇩 Chad - SYSCOHADA for Companies"
+      ],
+      [
+        "td_syscebnl",
+        "🇹🇩 Chad - SYSCEBNL for Associations"
+      ],
+      [
+        "tg",
+        "🇹🇬 Togo - SYSCOHADA for Companies"
+      ],
+      [
+        "tg_syscebnl",
+        "🇹🇬 Togo - SYSCEBNL for Associations"
+      ],
+      [
+        "th",
+        "🇹🇭 Thailand"
+      ],
+      [
+        "tn",
+        "🇹🇳 Tunisia"
+      ],
+      [
+        "tr",
+        "🇹🇷 Türkiye"
+      ],
+      [
+        "tw",
+        "🇹🇼 Taiwan"
+      ],
+      [
+        "tz",
+        "🇹🇿 Tanzania"
+      ],
+      [
+        "ua_psbo",
+        "🇺🇦 Ukraine - IFRS Chart of Accounts"
+      ],
+      [
+        "ug",
+        "🇺🇬 Uganda - Uganda Generic Chart of Accounts"
+      ],
+      [
+        "uk",
+        "🇬🇧 United Kingdom"
+      ],
+      [
+        "xi",
+        "🇽🇮 Northern Ireland"
+      ],
+      [
+        "us",
+        "🇺🇸 United States"
+      ],
+      [
+        "uy",
+        "🇺🇾 Uruguay - Uruguayan Generic Chart of Accounts"
+      ],
+      [
+        "uz",
+        "🇺🇿 Uzbekistan"
+      ],
+      [
+        "ve",
+        "🇻🇪 Venezuela"
+      ],
+      [
+        "vn",
+        "🇻🇳 Vietnam"
+      ],
+      [
+        "za",
+        "🇿🇦 South Africa"
+      ],
+      [
+        "zm",
+        "🇿🇲 Zambia"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Chart Template",
+    "type": "selection"
+  },
+  "bank_account_code_prefix": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "bank_account_code_prefix",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Prefix of the bank accounts",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "cash_account_code_prefix": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "cash_account_code_prefix",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Prefix of the cash accounts",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "default_cash_difference_income_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "default_cash_difference_income_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Cash Difference Income",
+    "type": "many2one"
+  },
+  "default_cash_difference_expense_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "default_cash_difference_expense_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Cash Difference Expense",
+    "type": "many2one"
+  },
+  "account_journal_suspense_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_journal_suspense_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Journal Suspense Account",
+    "type": "many2one"
+  },
+  "account_journal_early_pay_discount_gain_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_journal_early_pay_discount_gain_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Cash Discount Write-Off Gain Account",
+    "type": "many2one"
+  },
+  "account_journal_early_pay_discount_loss_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_journal_early_pay_discount_loss_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Cash Discount Write-Off Loss Account",
+    "type": "many2one"
+  },
+  "transfer_account_code_prefix": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "transfer_account_code_prefix",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Prefix of the transfer accounts",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "account_sale_tax_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_sale_tax_id",
+    "readonly": false,
+    "relation": "account.tax",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Sale Tax",
+    "type": "many2one"
+  },
+  "account_purchase_tax_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_purchase_tax_id",
+    "readonly": false,
+    "relation": "account.tax",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Purchase Tax",
+    "type": "many2one"
+  },
+  "account_purchase_receipt_fiscal_position_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_purchase_receipt_fiscal_position_id",
+    "readonly": false,
+    "relation": "account.fiscal.position",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Purchase Receipt Fiscal Position",
+    "type": "many2one"
+  },
+  "tax_calculation_rounding_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "tax_calculation_rounding_method",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "round_globally",
+        "Round per Tax"
+      ],
+      [
+        "round_per_line",
+        "Round per Line"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Tax Calculation Rounding Method",
+    "type": "selection"
+  },
+  "currency_exchange_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [
+      [
+        "type",
+        "=",
+        "general"
+      ]
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "currency_exchange_journal_id",
+    "readonly": false,
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Exchange Gain or Loss Journal",
+    "type": "many2one"
+  },
+  "income_currency_exchange_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + [('internal_group', '=', 'income')]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "income_currency_exchange_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Gain Exchange Rate Account",
+    "type": "many2one"
+  },
+  "expense_currency_exchange_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + [('account_type', 'in', ('expense', 'expense_other'))]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "expense_currency_exchange_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Loss Exchange Rate Account",
+    "type": "many2one"
+  },
+  "anglo_saxon_accounting": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "anglo_saxon_accounting",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Use anglo-saxon accounting",
+    "type": "boolean"
+  },
+  "bank_journal_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "bank_journal_ids.type"
+    ],
+    "domain": [
+      [
+        "type",
+        "=",
+        "bank"
+      ]
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "bank_journal_ids",
+    "readonly": false,
+    "relation": "account.journal",
+    "relation_field": "company_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Bank Journals",
+    "type": "one2many"
+  },
+  "incoterm_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "International Commercial Terms are a series of predefined commercial terms used in international transactions.",
+    "manual": false,
+    "name": "incoterm_id",
+    "readonly": false,
+    "relation": "account.incoterms",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default incoterm",
+    "type": "many2one"
+  },
+  "qr_code": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "qr_code",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Display QR-code on invoices",
+    "type": "boolean"
+  },
+  "link_qr_code": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "link_qr_code",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Display Link QR-code",
+    "type": "boolean"
+  },
+  "display_invoice_amount_total_words": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "display_invoice_amount_total_words",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Total amount of invoice in letters",
+    "type": "boolean"
+  },
+  "display_invoice_tax_company_currency": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "display_invoice_tax_company_currency",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Taxes in company currency",
+    "type": "boolean"
+  },
+  "account_use_credit_limit": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Enable the use of credit limit on partners.",
+    "manual": false,
+    "name": "account_use_credit_limit",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Sales Credit Limit",
+    "type": "boolean"
+  },
+  "batch_payment_sequence_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "batch_payment_sequence_id",
+    "readonly": true,
+    "relation": "ir.sequence",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Batch Payment Sequence",
+    "type": "many2one"
+  },
+  "account_opening_move_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "The journal entry containing the initial balance of all this company's accounts.",
+    "manual": false,
+    "name": "account_opening_move_id",
+    "readonly": false,
+    "relation": "account.move",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Opening Journal Entry",
+    "type": "many2one"
+  },
+  "account_opening_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "account_opening_move_id.journal_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Journal where the opening entry of this company's accounting has been posted.",
+    "manual": false,
+    "name": "account_opening_journal_id",
+    "readonly": false,
+    "related": "account_opening_move_id.journal_id",
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Opening Journal",
+    "type": "many2one"
+  },
+  "account_opening_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "That is the date of the opening entry.",
+    "manual": false,
+    "name": "account_opening_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Opening Entry",
+    "type": "date"
+  },
+  "invoice_terms": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "invoice_terms",
+    "readonly": false,
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": true,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Terms and Conditions",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": true,
+    "type": "html"
+  },
+  "terms_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "terms_type",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "plain",
+        "Add a Note"
+      ],
+      [
+        "html",
+        "Add a link to a Web Page"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Terms & Conditions format",
+    "type": "selection"
+  },
+  "invoice_terms_html": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "terms_type"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "invoice_terms_html",
+    "readonly": false,
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": false,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Terms and Conditions as a Web page",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": true,
+    "type": "html"
+  },
+  "account_default_pos_receivable_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_default_pos_receivable_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default PoS Receivable Account",
+    "type": "many2one"
+  },
+  "expense_accrual_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + [('internal_group', '=', 'liability'), ('account_type', 'not in', ('asset_receivable', 'liability_payable'))]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Account used to move the period of an expense",
+    "manual": false,
+    "name": "expense_accrual_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Expense Accrual Account",
+    "type": "many2one"
+  },
+  "revenue_accrual_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + [('internal_group', '=', 'asset'), ('account_type', 'not in', ('asset_receivable', 'liability_payable'))]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Account used to move the period of a revenue",
+    "manual": false,
+    "name": "revenue_accrual_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Revenue Accrual Account",
+    "type": "many2one"
+  },
+  "automatic_entry_default_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + [('type', '=', 'general')]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Journal used by default for moving the period of an entry",
+    "manual": false,
+    "name": "automatic_entry_default_journal_id",
+    "readonly": false,
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Automatic Entry Default Journal",
+    "type": "many2one"
+  },
+  "domestic_fiscal_position_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "fiscal_position_ids",
+      "fiscal_position_ids.sequence",
+      "fiscal_position_ids.country_id",
+      "fiscal_position_ids.country_group_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "domestic_fiscal_position_id",
+    "readonly": true,
+    "relation": "account.fiscal.position",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Domestic Fiscal Position",
+    "type": "many2one"
+  },
+  "account_fiscal_country_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "The country to use the tax reports from for this company",
+    "manual": false,
+    "name": "account_fiscal_country_id",
+    "readonly": false,
+    "relation": "res.country",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Fiscal Country",
+    "type": "many2one"
+  },
+  "account_fiscal_country_group_codes": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "account_fiscal_country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "account_fiscal_country_group_codes",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Account Fiscal Country Group Codes",
+    "type": "json"
+  },
+  "account_enabled_tax_country_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "account_fiscal_country_id"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Technical field containing the countries for which this company is using tax-related features(hence the ones for which l10n modules need to show tax-related fields).",
+    "manual": false,
+    "name": "account_enabled_tax_country_ids",
+    "readonly": true,
+    "relation": "res.country",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "l10n-used countries",
+    "type": "many2many"
+  },
+  "tax_exigibility": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "tax_exigibility",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Use Cash Basis",
+    "type": "boolean"
+  },
+  "tax_cash_basis_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "tax_cash_basis_journal_id",
+    "readonly": false,
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Cash Basis Journal",
+    "type": "many2one"
+  },
+  "account_cash_basis_base_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "help": "Account that will be set on lines created in cash basis journal entry and used to keep track of the tax base amount.",
+    "manual": false,
+    "name": "account_cash_basis_base_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Base Tax Received Account",
+    "type": "many2one"
+  },
+  "account_storno": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "account_fiscal_country_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_storno",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Storno accounting",
+    "type": "boolean"
+  },
+  "display_account_storno": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "account_fiscal_country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "display_account_storno",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Display Account Storno",
+    "type": "boolean"
+  },
+  "fiscal_position_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "fiscal_position_ids",
+    "readonly": false,
+    "relation": "account.fiscal.position",
+    "relation_field": "company_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Fiscal Position",
+    "type": "one2many"
+  },
+  "multi_vat_foreign_country_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "fiscal_position_ids.foreign_vat"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Countries for which the company has a VAT number",
+    "manual": false,
+    "name": "multi_vat_foreign_country_ids",
+    "readonly": true,
+    "relation": "res.country",
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Foreign VAT countries",
+    "type": "many2many"
+  },
+  "quick_edit_mode": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "quick_edit_mode",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "out_invoices",
+        "Customer Invoices"
+      ],
+      [
+        "in_invoices",
+        "Vendor Bills"
+      ],
+      [
+        "out_and_in_invoices",
+        "Customer Invoices and Vendor Bills"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Quick encoding",
+    "type": "selection"
+  },
+  "account_discount_income_allocation_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_discount_income_allocation_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Separate account for income discount",
+    "type": "many2one"
+  },
+  "account_discount_expense_allocation_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_discount_expense_allocation_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Separate account for expense discount",
+    "type": "many2one"
+  },
+  "restrictive_audit_trail": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Enable this option to prevent deletion of journal item related logs",
+    "manual": false,
+    "name": "restrictive_audit_trail",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Restrictive Audit Trail",
+    "type": "boolean"
+  },
+  "force_restrictive_audit_trail": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "force_restrictive_audit_trail",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Force Audit Trail",
+    "type": "boolean"
+  },
+  "autopost_bills": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "autopost_bills",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Auto-validate bills",
+    "type": "boolean"
+  },
+  "account_price_include": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Default on whether the sales price used on the product and invoices with this Company includes its taxes.",
+    "manual": false,
+    "name": "account_price_include",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "tax_included",
+        "Tax Included"
+      ],
+      [
+        "tax_excluded",
+        "Tax Excluded"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Default Sales Price Include",
+    "type": "selection"
+  },
+  "company_vat_placeholder": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "country_id",
+      "account_fiscal_country_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "company_vat_placeholder",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Company Vat Placeholder",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "income_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('account_type', 'not in', ('asset_receivable','liability_payable','asset_cash','liability_credit_card','off_balance'))]",
+    "exportable": true,
+    "groupable": true,
+    "help": "This account will be used when validating a customer invoice.",
+    "manual": false,
+    "name": "income_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Income Account",
+    "type": "many2one"
+  },
+  "expense_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('account_type', 'not in', ('asset_receivable','liability_payable','asset_cash','liability_credit_card','off_balance'))]",
+    "exportable": true,
+    "groupable": true,
+    "help": "The expense is accounted for when a vendor bill is validated, except in anglo-saxon accounting with perpetual inventory valuation in which case the expense (Cost of Goods Sold account) is recognized at the customer invoice validation.",
+    "manual": false,
+    "name": "expense_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Expense Account",
+    "type": "many2one"
+  },
+  "price_difference_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('account_type', 'not in', ('asset_receivable','liability_payable','asset_cash','liability_credit_card','off_balance'))]",
+    "exportable": true,
+    "groupable": true,
+    "help": "During perpetual valuation, this account will hold the price difference between the standard price and the bill price.",
+    "manual": false,
+    "name": "price_difference_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Price Difference Account",
+    "type": "many2one"
+  },
+  "hr_presence_control_email_amount": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "hr_presence_control_email_amount",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "# emails to send",
+    "type": "integer"
+  },
+  "hr_presence_control_ip_list": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "hr_presence_control_ip_list",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Valid IP addresses",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "employee_properties_definition": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "employee_properties_definition",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Employee Properties",
+    "type": "properties_definition"
+  },
+  "hr_presence_control_login": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "hr_presence_control_login",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Based on user status in system",
+    "type": "boolean"
+  },
+  "hr_presence_control_email": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "hr_presence_control_email",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Based on number of emails sent",
+    "type": "boolean"
+  },
+  "hr_presence_control_ip": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "hr_presence_control_ip",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Based on IP Address",
+    "type": "boolean"
+  },
+  "hr_presence_control_attendance": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "hr_presence_control_attendance",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Based on attendances",
+    "type": "boolean"
+  },
+  "contract_expiration_notice_period": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "contract_expiration_notice_period",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Contract Expiry Notice Period",
+    "type": "integer"
+  },
+  "work_permit_expiration_notice_period": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "work_permit_expiration_notice_period",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Work Permit Expiry Notice Period",
+    "type": "integer"
+  },
+  "internal_transit_location_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_id', 'in', [id] + [False])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "internal_transit_location_id",
+    "readonly": false,
+    "relation": "stock.location",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Internal Transit Location",
+    "type": "many2one"
+  },
+  "stock_move_email_validation": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "stock_move_email_validation",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Email Confirmation picking",
+    "type": "boolean"
+  },
+  "stock_mail_confirmation_template_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('model', '=', 'stock.picking')]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Email sent to the customer once the order is done.",
+    "manual": false,
+    "name": "stock_mail_confirmation_template_id",
+    "readonly": false,
+    "relation": "mail.template",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Email Template confirmation picking",
+    "type": "many2one"
+  },
+  "annual_inventory_month": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Annual inventory month for products not in a location with a cyclic inventory date. Set to no month if no automatic annual inventory.",
+    "manual": false,
+    "name": "annual_inventory_month",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "1",
+        "January"
+      ],
+      [
+        "2",
+        "February"
+      ],
+      [
+        "3",
+        "March"
+      ],
+      [
+        "4",
+        "April"
+      ],
+      [
+        "5",
+        "May"
+      ],
+      [
+        "6",
+        "June"
+      ],
+      [
+        "7",
+        "July"
+      ],
+      [
+        "8",
+        "August"
+      ],
+      [
+        "9",
+        "September"
+      ],
+      [
+        "10",
+        "October"
+      ],
+      [
+        "11",
+        "November"
+      ],
+      [
+        "12",
+        "December"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Annual Inventory Month",
+    "type": "selection"
+  },
+  "annual_inventory_day": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Day of the month when the annual inventory should occur. If zero or negative, then the first day of the month will be selected instead.\n        If greater than the last day of a month, then the last day of the month will be selected instead.",
+    "manual": false,
+    "name": "annual_inventory_day",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Day of the month",
+    "type": "integer"
+  },
+  "horizon_days": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Configure your horizon to trigger reordering rules earlier to get\n                                a head start on replenishment and avoid delays, or trigger it just-in-time\n                                ('0 days') to avoid overstocking.",
+    "manual": false,
+    "name": "horizon_days",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Replenishment Horizon",
+    "type": "float"
+  },
+  "stock_text_confirmation": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "stock_text_confirmation",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Stock Text Confirmation",
+    "type": "boolean"
+  },
+  "stock_confirmation_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "stock_confirmation_type",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "sms",
+        "SMS"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Stock Confirmation Type",
+    "type": "selection"
+  },
+  "website_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website_id",
+    "readonly": true,
+    "relation": "website",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Website",
+    "type": "many2one"
+  },
+  "invoicing_switch_threshold": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Every payment and invoice before this date will receive the 'From Invoicing' status, hiding all the accounting entries related to it. Use this option after installing Accounting if you were using only Invoicing before, before importing all your actual accounting data in to Odoo.",
+    "manual": false,
+    "name": "invoicing_switch_threshold",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Invoicing Switch Threshold",
+    "type": "date"
+  },
+  "predict_bill_product": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "predict_bill_product",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Predict Bill Product",
+    "type": "boolean"
+  },
+  "sign_invoice": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "sign_invoice",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Display signing field on invoices",
+    "type": "boolean"
+  },
+  "signing_user": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "signing_user",
+    "readonly": false,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Signing User",
+    "type": "many2one"
+  },
+  "deferred_expense_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "deferred_expense_journal_id",
+    "readonly": false,
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Deferred Expense Journal",
+    "type": "many2one"
+  },
+  "deferred_expense_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "deferred_expense_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Deferred Expense Account",
+    "type": "many2one"
+  },
+  "generate_deferred_expense_entries_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "generate_deferred_expense_entries_method",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "on_validation",
+        "On bill validation"
+      ],
+      [
+        "manual",
+        "Manually & Grouped"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Generate Deferred Expense Entries",
+    "type": "selection"
+  },
+  "deferred_expense_amount_computation_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "deferred_expense_amount_computation_method",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "day",
+        "Days"
+      ],
+      [
+        "month",
+        "Months"
+      ],
+      [
+        "full_months",
+        "Full Months"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Deferred Expense Based on",
+    "type": "selection"
+  },
+  "deferred_revenue_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "deferred_revenue_journal_id",
+    "readonly": false,
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Deferred Revenue Journal",
+    "type": "many2one"
+  },
+  "deferred_revenue_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "deferred_revenue_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Deferred Revenue Account",
+    "type": "many2one"
+  },
+  "generate_deferred_revenue_entries_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "generate_deferred_revenue_entries_method",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "on_validation",
+        "On bill validation"
+      ],
+      [
+        "manual",
+        "Manually & Grouped"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Generate Deferred Revenue Entries",
+    "type": "selection"
+  },
+  "deferred_revenue_amount_computation_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "deferred_revenue_amount_computation_method",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "day",
+        "Days"
+      ],
+      [
+        "month",
+        "Months"
+      ],
+      [
+        "full_months",
+        "Full Months"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Deferred Revenue Based on",
+    "type": "selection"
+  },
+  "account_check_printing_layout": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Select the format corresponding to the check paper you will be printing your checks on.\nIn order to disable the printing feature, select 'None'.",
+    "manual": false,
+    "name": "account_check_printing_layout",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "disabled",
+        "None"
+      ],
+      [
+        "l10n_us_check_printing.action_print_check_top",
+        "Print Check (Top) - US"
+      ],
+      [
+        "l10n_us_check_printing.action_print_check_middle",
+        "Print Check (Middle) - US"
+      ],
+      [
+        "l10n_us_check_printing.action_print_check_bottom",
+        "Print Check (Bottom) - US"
+      ],
+      [
+        "l10n_us_check_printing.action_print_blank_check_top",
+        "Print Blank Check (Top) - US"
+      ],
+      [
+        "l10n_us_check_printing.action_print_blank_check_middle",
+        "Print Blank Check (Middle) - US"
+      ],
+      [
+        "l10n_us_check_printing.action_print_blank_check_bottom",
+        "Print Blank Check (Bottom) - US"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Check Layout",
+    "type": "selection"
+  },
+  "account_check_printing_date_label": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "This option allows you to print the date label on the check as per CPA.\nDisable this if your pre-printed check includes the date label.",
+    "manual": false,
+    "name": "account_check_printing_date_label",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Print Date Label",
+    "type": "boolean"
+  },
+  "account_check_printing_multi_stub": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "This option allows you to print check details (stub) on multiple pages if they don't fit on a single page.",
+    "manual": false,
+    "name": "account_check_printing_multi_stub",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Multi-Pages Check Stub",
+    "type": "boolean"
+  },
+  "account_check_printing_margin_top": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Adjust the margins of generated checks to make it fit your printer's settings.",
+    "manual": false,
+    "name": "account_check_printing_margin_top",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Check Top Margin",
+    "type": "float"
+  },
+  "account_check_printing_margin_left": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Adjust the margins of generated checks to make it fit your printer's settings.",
+    "manual": false,
+    "name": "account_check_printing_margin_left",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Check Left Margin",
+    "type": "float"
+  },
+  "account_check_printing_margin_right": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Adjust the margins of generated checks to make it fit your printer's settings.",
+    "manual": false,
+    "name": "account_check_printing_margin_right",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Right Margin",
+    "type": "float"
+  },
+  "currency_interval_unit": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "currency_interval_unit",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "manually",
+        "Manually"
+      ],
+      [
+        "daily",
+        "Daily"
+      ],
+      [
+        "weekly",
+        "Weekly"
+      ],
+      [
+        "monthly",
+        "Monthly"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Interval Unit",
+    "type": "selection"
+  },
+  "currency_next_execution_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "currency_next_execution_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Next Execution Date",
+    "type": "date"
+  },
+  "currency_provider": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "country_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "currency_provider",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "ecb",
+        "European Central Bank"
+      ],
+      [
+        "xe_com",
+        "xe.com"
+      ],
+      [
+        "cbuae",
+        "[AE] Central Bank of the UAE"
+      ],
+      [
+        "bnb",
+        "[BG] Bulgaria National Bank"
+      ],
+      [
+        "bbr",
+        "[BR] Central Bank of Brazil"
+      ],
+      [
+        "boc",
+        "[CA] Bank of Canada"
+      ],
+      [
+        "fta",
+        "[CH] Federal Tax Administration of Switzerland"
+      ],
+      [
+        "mindicador",
+        "[CL] Central Bank of Chile via mindicador.cl"
+      ],
+      [
+        "banrepco",
+        "[CO] Bank of the Republic"
+      ],
+      [
+        "cu",
+        "[CU] Central Bank of Cuba"
+      ],
+      [
+        "cnb",
+        "[CZ] Czech National Bank"
+      ],
+      [
+        "cbegy",
+        "[EG] Central Bank of Egypt"
+      ],
+      [
+        "banguat",
+        "[GT] Bank of Guatemala"
+      ],
+      [
+        "mnb",
+        "[HU] Magyar Nemzeti Bank"
+      ],
+      [
+        "bi",
+        "[ID] Bank Indonesia"
+      ],
+      [
+        "boi",
+        "[IT] Bank of Italy"
+      ],
+      [
+        "nbkz",
+        "[KZ] National Bank of Kazakhstan"
+      ],
+      [
+        "banxico",
+        "[MX] Bank of Mexico"
+      ],
+      [
+        "bnm",
+        "[MY] Bank Negara Malaysia"
+      ],
+      [
+        "bcrp",
+        "[PE] SUNAT (replaces Bank of Peru)"
+      ],
+      [
+        "nbp",
+        "[PL] National Bank of Poland"
+      ],
+      [
+        "bnr",
+        "[RO] National Bank of Romania"
+      ],
+      [
+        "srb",
+        "[SE] Sveriges Riksbank"
+      ],
+      [
+        "bsi",
+        "[SI] Bank of Slovenia"
+      ],
+      [
+        "bot",
+        "[TH] Bank of Thailand"
+      ],
+      [
+        "tcmb",
+        "[TR] Central Bank of the Republic of Türkiye"
+      ],
+      [
+        "hmrc",
+        "[UK] HM Revenue & Customs"
+      ],
+      [
+        "bcu",
+        "[UY] Uruguayan Central Bank"
+      ],
+      [
+        "cbu",
+        "[UZ] Central Bank of Uzbekistan"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Service Provider",
+    "type": "selection"
+  },
+  "synchronization_frequency": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "synchronization_frequency",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "disabled",
+        "Disabled"
+      ],
+      [
+        "hourly",
+        "Every Hour"
+      ],
+      [
+        "daily",
+        "Daily"
+      ],
+      [
+        "weekly",
+        "Weekly"
+      ],
+      [
+        "monthly",
+        "Monthly"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Synchronization Frequency",
+    "type": "selection"
+  },
+  "next_execution_timestamp": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "next_execution_timestamp",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Next Execution Time",
+    "type": "datetime"
+  },
+  "rate_provider_selection": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "country_id"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "rate_provider_selection",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "european_central_bank",
+        "European Central Bank"
+      ],
+      [
+        "xe_currency_service",
+        "xe.com"
+      ],
+      [
+        "uae_central_banking",
+        "[AE] Central Bank of the UAE"
+      ],
+      [
+        "bulgarian_national_banking",
+        "[BG] Bulgaria National Bank"
+      ],
+      [
+        "brazilian_central_banking",
+        "[BR] Central Bank of Brazil"
+      ],
+      [
+        "bank_of_canada",
+        "[CA] Bank of Canada"
+      ],
+      [
+        "swiss_federal_tax",
+        "[CH] Federal Tax Administration of Switzerland"
+      ],
+      [
+        "chilean_market_indicator",
+        "[CL] Central Bank of Chile via mindicador.cl"
+      ],
+      [
+        "colombian_republic_bank",
+        "[CO] Bank of the Republic"
+      ],
+      [
+        "czech_national_banking",
+        "[CZ] Czech National Bank"
+      ],
+      [
+        "egyptian_central_banking",
+        "[EG] Central Bank of Egypt"
+      ],
+      [
+        "guatemalan_banking",
+        "[GT] Bank of Guatemala"
+      ],
+      [
+        "hungarian_national_banking",
+        "[HU] Magyar Nemzeti Bank"
+      ],
+      [
+        "italian_banking_institute",
+        "[IT] Bank of Italy"
+      ],
+      [
+        "mexican_banking_authority",
+        "[MX] Bank of Mexico"
+      ],
+      [
+        "peruvian_tax_authority",
+        "[PE] SUNAT (replaces Bank of Peru)"
+      ],
+      [
+        "polish_national_banking",
+        "[PL] National Bank of Poland"
+      ],
+      [
+        "romanian_national_banking",
+        "[RO] National Bank of Romania"
+      ],
+      [
+        "swedish_central_banking",
+        "[SE] Sveriges Riksbank"
+      ],
+      [
+        "turkish_central_banking",
+        "[TR] Central Bank of the Republic of Türkiye"
+      ],
+      [
+        "uk_revenue_customs",
+        "[UK] HM Revenue & Customs"
+      ],
+      [
+        "malaysian_central_banking",
+        "[MY] Bank Negara Malaysia"
+      ],
+      [
+        "indonesian_banking_institute",
+        "[ID] Bank Indonesia"
+      ],
+      [
+        "uruguayan_central_banking",
+        "[UY] Uruguayan Central Bank"
+      ],
+      [
+        "thai_banking_authority",
+        "[TH] Bank of Thailand"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Exchange Rate Provider",
+    "type": "selection"
+  },
+  "synchronization_batch_size": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Number of currencies to process in each synchronization batch",
+    "manual": false,
+    "name": "synchronization_batch_size",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Batch Size",
+    "type": "integer"
+  },
+  "error_tolerance_threshold": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Maximum acceptable rate variation before triggering validation alerts",
+    "manual": false,
+    "name": "error_tolerance_threshold",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Error Tolerance",
+    "type": "float"
+  },
+  "expense_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + [('type', '=', 'purchase')]",
+    "exportable": true,
+    "groupable": true,
+    "help": "The company's default journal used when an employee expense is created.",
+    "manual": false,
+    "name": "expense_journal_id",
+    "readonly": false,
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Expense Journal",
+    "type": "many2one"
+  },
+  "company_expense_allowed_payment_method_line_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + [('payment_type', '=', 'outbound'), ('journal_id', '!=', False), ('journal_id.active', '=', True)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "company_expense_allowed_payment_method_line_ids",
+    "readonly": false,
+    "relation": "account.payment.method.line",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Payment methods available for expenses paid by company",
+    "type": "many2many"
+  },
+  "job_properties_definition": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "job_properties_definition",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Job Properties",
+    "type": "properties_definition"
+  },
+  "po_lock": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Purchase Order Modification used when you want to purchase order editable after confirm",
+    "manual": false,
+    "name": "po_lock",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "edit",
+        "Allow to edit purchase orders"
+      ],
+      [
+        "lock",
+        "Confirmed purchase orders are not editable"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Purchase Order Modification",
+    "type": "selection"
+  },
+  "po_double_validation": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Provide a double validation mechanism for purchases",
+    "manual": false,
+    "name": "po_double_validation",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "one_step",
+        "Confirm purchase orders in one step"
+      ],
+      [
+        "two_step",
+        "Get 2 levels of approvals to confirm a purchase order"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Levels of Approvals",
+    "type": "selection"
+  },
+  "po_double_validation_amount": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "currency_field": "currency_id",
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Minimum amount for which a double validation is required",
+    "manual": false,
+    "name": "po_double_validation_amount",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Double validation amount",
+    "type": "monetary"
+  },
+  "account_stock_journal_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_stock_journal_id",
+    "readonly": false,
+    "relation": "account.journal",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Stock Journal",
+    "type": "many2one"
+  },
+  "account_stock_valuation_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_stock_valuation_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Stock Valuation Account",
+    "type": "many2one"
+  },
+  "account_production_wip_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_production_wip_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Production WIP Account",
+    "type": "many2one"
+  },
+  "account_production_wip_overhead_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_ids', 'parent_of', [id])] + []",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "account_production_wip_overhead_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Production WIP Overhead Account",
+    "type": "many2one"
+  },
+  "inventory_period": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "inventory_period",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "manual",
+        "Manual"
+      ],
+      [
+        "daily",
+        "Daily"
+      ],
+      [
+        "monthly",
+        "Monthly"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Inventory Period",
+    "type": "selection"
+  },
+  "inventory_valuation": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "inventory_valuation",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "periodic",
+        "Periodic (at closing)"
+      ],
+      [
+        "real_time",
+        "Perpetual (at invoicing)"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Valuation",
+    "type": "selection"
+  },
+  "cost_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "cost_method",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "selection": [
+      [
+        "standard",
+        "Standard Price"
+      ],
+      [
+        "fifo",
+        "First In First Out (FIFO)"
+      ],
+      [
+        "average",
+        "Average Cost (AVCO)"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Cost Method",
+    "type": "selection"
+  },
+  "stock_sms_confirmation_template_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('model', '=', 'stock.picking')]",
+    "exportable": true,
+    "groupable": true,
+    "help": "SMS sent to the customer once the order is delivered.",
+    "manual": false,
+    "name": "stock_sms_confirmation_template_id",
+    "readonly": false,
+    "relation": "sms.template",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "SMS Template",
+    "type": "many2one"
+  },
+  "has_received_warning_stock_sms": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "has_received_warning_stock_sms",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Has Received Warning Stock Sms",
+    "type": "boolean"
+  },
+  "signature": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "signature",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Signature",
+    "type": "binary"
+  },
+  "accreditation": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "accreditation",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Accreditation",
+    "translate": false,
+    "type": "text"
+  },
+  "approval_authority": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "approval_authority",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Approval Authority",
+    "translate": false,
+    "type": "text"
+  },
+  "days_to_purchase": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Days needed to confirm a PO, define when a PO should be validated",
+    "manual": false,
+    "name": "days_to_purchase",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Days to Purchase",
+    "type": "float"
+  },
+  "portal_confirmation_sign": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "portal_confirmation_sign",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Online Signature",
+    "type": "boolean"
+  },
+  "portal_confirmation_pay": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "portal_confirmation_pay",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Online Payment",
+    "type": "boolean"
+  },
+  "prepayment_percent": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "The percentage of the amount needed to be paid to confirm quotations.",
+    "manual": false,
+    "name": "prepayment_percent",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Prepayment percentage",
+    "type": "float"
+  },
+  "quotation_validity_days": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Days between quotation proposal and expiration. 0 days means automatic expiration is disabled",
+    "manual": false,
+    "name": "quotation_validity_days",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Quotation Validity",
+    "type": "integer"
+  },
+  "sale_discount_product_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "['|', ('company_id', '=', False), ('company_id', 'parent_of', [id])] + [('type', '=', 'service'), ('invoice_policy', '=', 'order')]",
+    "exportable": true,
+    "groupable": true,
+    "help": "Default product used for discounts",
+    "manual": false,
+    "name": "sale_discount_product_id",
+    "readonly": false,
+    "relation": "product.product",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Discount Product",
+    "type": "many2one"
+  },
+  "sale_onboarding_payment_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "sale_onboarding_payment_method",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "digital_signature",
+        "Sign online"
+      ],
+      [
+        "paypal",
+        "PayPal"
+      ],
+      [
+        "stripe",
+        "Stripe"
+      ],
+      [
+        "other",
+        "Pay with another payment provider"
+      ],
+      [
+        "manual",
+        "Manual Payment"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Sale onboarding selected payment method",
+    "type": "selection"
+  },
+  "downpayment_account_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [
+      [
+        "account_type",
+        "in",
+        [
+          "income",
+          "income_other",
+          "liability_current"
+        ]
+      ]
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "This account will be used on Downpayment invoices.",
+    "manual": false,
+    "name": "downpayment_account_id",
+    "readonly": false,
+    "relation": "account.account",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Downpayment Account",
+    "type": "many2one"
+  },
+  "openeducat_instance_key": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "openeducat_instance_key",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "OpenEducat Instance Key",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "openeducat_instance_hash_key": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Instance Hash key is correspondence to instance key which you get in mail.",
+    "manual": false,
+    "name": "openeducat_instance_hash_key",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "OpenEducat Instance Hash Key",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "is_mail_sent": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "is_mail_sent",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Is Mail Sent",
+    "type": "boolean"
+  },
+  "verify_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "verify_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Verify Date",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "openeducat_instance_hash_msg": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "openeducat_instance_hash_msg",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Instance Hash Key Message",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "is_hash_verified": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "is_hash_verified",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Is Hash Verified",
+    "type": "boolean"
+  },
+  "sale_order_template_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "[('company_id', 'in', [id] + [False])] + ['|', ('company_id', '=', False), ('company_id', '=', id)]",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "sale_order_template_id",
+    "readonly": false,
+    "relation": "sale.order.template",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Default Sale Template",
+    "type": "many2one"
+  },
+  "security_lead": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Margin of error for dates promised to customers. Products will be scheduled for procurement and delivery that many days earlier than the actual promised date, to cope with unexpected delays in the supply chain.",
+    "manual": false,
+    "name": "security_lead",
+    "readonly": false,
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Sales Safety Days",
+    "type": "float"
+  },
+  "affiliation_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "affiliation_ids",
+    "readonly": false,
+    "relation": "op.board.affiliation",
+    "relation_field": "company_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Affiliation Board",
+    "type": "one2many"
+  },
+  "meeting_enterprise_onboard_panel": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "meeting_enterprise_onboard_panel",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "not_done",
+        "Not done"
+      ],
+      [
+        "just_done",
+        "Just done"
+      ],
+      [
+        "done",
+        "Done"
+      ],
+      [
+        "closed",
+        "Closed"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "State of the meeting onboarding step",
+    "type": "selection"
+  },
+  "onboarding_meeting_layout_state": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "onboarding_meeting_layout_state",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "not_done",
+        "Not done"
+      ],
+      [
+        "just_done",
+        "Just done"
+      ],
+      [
+        "done",
+        "Done"
+      ],
+      [
+        "closed",
+        "Closed"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "State of the onboarding meeting layout  step",
+    "type": "selection"
+  },
+  "parent_company_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "parent_company_id",
+    "readonly": false,
+    "relation": "res.company",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company",
+    "type": "many2one"
+  },
+  "child_company_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "child_company_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Child Company Count",
+    "type": "integer"
+  },
+  "company_student_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "company_student_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Company Student Count",
+    "type": "integer"
+  },
+  "company_course_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "company_course_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Company Course Count",
+    "type": "integer"
+  },
+  "company_batch_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "company_batch_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Company Batch Count",
+    "type": "integer"
+  },
+  "company_subject_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "company_subject_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Company Subject Count",
+    "type": "integer"
+  }
+}

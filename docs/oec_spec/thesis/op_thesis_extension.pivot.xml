@@ -1,0 +1,5 @@
+<pivot string="Extension Requests Analysis">
+                    <field name="student_id" type="row"/>
+                    <field name="state" type="col"/>
+                    <field name="requested_deadline" interval="month"/>
+                </pivot>

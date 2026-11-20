@@ -1,0 +1,13 @@
+<list>
+                <field name="name"/>
+                <field name="user_id" on_change="1"/>
+                <field name="post_id" on_change="1"/>
+                <field name="activity_id"/>
+                <field name="stage_id" on_change="1"/>
+                <field name="mobile" optional="hide"/>
+                <field name="salary_expected" widget="monetary" optional="hide"/>
+                <field name="salary_proposed" widget="monetary" optional="hide"/>
+                <field name="availability" optional="hide"/>
+                <field name="kanban_state" widget="kanban_state_selection" optional="hide"/>
+                <field name="company_id" optional="show"/>
+            </list>

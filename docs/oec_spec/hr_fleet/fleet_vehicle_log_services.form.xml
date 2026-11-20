@@ -1,0 +1,42 @@
+<form string="Services Logs">
+                <field name="active" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+                <header>
+                    <field name="state" widget="statusbar" options="{'clickable': '1'}"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
+                    <group col="2">
+                        <group>
+                            <field name="description"/>
+                            <field name="service_type_id" can_create="True" can_write="True"/>
+                            <field name="date"/>
+                            <field name="amount" widget="monetary" readonly="account_move_line_id"/>
+                            <field name="vendor_id" widget="many2one_avatar" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="vehicle_id" on_change="1" can_create="True" can_write="True"/>
+                            <field name="purchaser_id" widget="many2one_avatar" can_create="True" can_write="True"/>
+                <field name="purchaser_employee_id" string="Driver (Employee)" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                            <label for="odometer"/>
+                            <div class="o_row">
+                                <field name="odometer" class="w-25"/>
+                                <field name="odometer_unit" class="ps-1 ps-sm-0"/>
+                            </div>
+                        </group>
+                    </group>
+                    <separator string="Notes"/>
+                    <field nolabel="1" name="notes" placeholder="Write here any other information related to the service completed."/>
+                <div class="oe_button_box" name="button_box">
+                    <button name="action_open_account_move" type="object" class="oe_stat_button" icon="fa-pencil-square-o" invisible="not account_move_line_id">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text text-success" invisible="account_move_state != 'posted'" title="Service's Bill">Service's Bill</span>
+                            <span class="o_stat_text text-warning" invisible="account_move_state == 'posted'" title="Service's Bill">Service's Bill</span>
+                        </div>
+                    </button>
+                </div>
+                </sheet>
+                <chatter/>
+            <field name="account_move_line_id" invisible="True" readonly="True" data-used-by="invisible='not account_move_line_id' (button,action_open_account_move)" on_change="1"/>
+<field name="account_move_state" invisible="True" readonly="True" data-used-by="invisible=&quot;account_move_state == 'posted'&quot; (span,None)"/>
+</form>

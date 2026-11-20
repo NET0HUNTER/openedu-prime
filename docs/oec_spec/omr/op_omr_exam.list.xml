@@ -1,0 +1,9 @@
+<list>
+                <field name="name"/>
+                <field name="template_id"/>
+                <field name="answersheet_configuration_id"/>
+                <field name="subject_id" optional="hide"/>
+                <field name="omr_image_line" optional="hide"/>
+                <field name="answer_sheets_line" optional="hide"/>
+                <field name="state" optional="hide"/>
+            </list>

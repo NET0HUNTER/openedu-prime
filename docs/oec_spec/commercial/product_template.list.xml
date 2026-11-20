@@ -1,0 +1,25 @@
+<list string="Product" multi_edit="1" sample="1">
+                <field name="product_variant_count" column_invisible="True"/>
+                <field name="sale_ok" column_invisible="True"/>
+                <field name="currency_id" column_invisible="True"/>
+                <field name="cost_currency_id" column_invisible="True"/>
+                <field name="is_favorite" widget="boolean_favorite" optional="show" nolabel="1"/>
+                <field name="name" string="Product Name"/>
+                <field name="default_code" optional="show" on_change="1"/>
+                <field name="website_id" optional="hide" can_create="True" can_write="True"/>
+                    <field name="responsible_id" widget="many2one_avatar_user" optional="hide" can_create="True" can_write="True"/>
+                <field name="product_tag_ids" widget="many2many_tags" optional="hide" can_create="True" can_write="True"/>
+                <field name="website_ribbon_id" optional="hide" can_create="True" can_write="True"/>
+                <field name="barcode" optional="hide" readonly="product_variant_count != 1"/>
+                <field name="company_id" options="{'no_create': True}" optional="hide" on_change="1" can_create="True" can_write="True"/>
+                <field name="list_price" string="Sales Price" widget="monetary" options="{'currency_field': 'currency_id'}" optional="show" decoration-muted="not sale_ok"/>
+                <field name="standard_price" widget="monetary" options="{'currency_field': 'cost_currency_id'}" optional="show" readonly="1" on_change="1"/>
+                <field name="categ_id" optional="hide" can_create="True" can_write="True"/>
+                <field name="type" optional="hide" readonly="1" on_change="1"/>
+                    <field name="show_on_hand_qty_status_button" column_invisible="True"/>
+                    <field name="qty_available" invisible="not show_on_hand_qty_status_button" string="On Hand" optional="show" decoration-danger="qty_available &lt; 0" sum="Total On Hand"/>
+                    <field name="virtual_available" invisible="not show_on_hand_qty_status_button" string="Forecasted" optional="show" decoration-danger="virtual_available &lt; 0" decoration-bf="1" sum="Total Forecasted"/>
+                
+                <field name="active" column_invisible="True"/>
+                <field name="activity_exception_decoration" widget="activity_exception"/>
+            </list>

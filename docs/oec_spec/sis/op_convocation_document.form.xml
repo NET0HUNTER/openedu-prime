@@ -1,0 +1,21 @@
+﻿<form string="Convocation Document">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="document_type"/>
+                        </group>
+                        <group>
+                            <field name="company_id" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>

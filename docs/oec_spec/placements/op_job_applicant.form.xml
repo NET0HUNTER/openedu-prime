@@ -1,0 +1,64 @@
+<form string="Job Applicant">
+                <header>
+                    <field name="stage_id" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}" on_change="1" can_create="True" can_write="True"/>
+                <button name="action_offer" string="Send Offer" type="object" class="btn-primary" invisible="state not in 'second_interview' or is_offer"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_get_attachment_tree_view" class="oe_stat_button pull-right" icon="fa-book" type="object">
+                            <field name="attachment_number" widget="statinfo" string="Documents"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name" style="width: 100%"/>
+                            <field name="post_id" required="1" readonly="0" on_change="1" can_create="True" can_write="True"/>
+                <field name="activity_id" readonly="0"/>
+                            <field name="state" invisible="1" on_change="1"/>
+                            <field name="mobile" string="Mobile"/>
+                <field name="final_score"/>
+                        </group>
+                        <group>
+                            <field name="user_id" required="1" readonly="state=='contract_signed'" on_change="1" can_create="True" can_write="True"/>
+                            <field name="date" required="1" readonly="state=='contract_signed'"/>
+                <field name="written_score" invisible="state not in ['first_interview','second_interview','contract_proposal','contract_signed']" readonly="state!='first_interview'"/>
+                <field name="interview_score" invisible="state not in ['first_interview','second_interview','contract_proposal','contract_signed']" readonly="state!='first_interview'"/>
+                <field name="gd_score" invisible="state not in ['second_interview','contract_proposal','contract_signed']" readonly="state=='contract_signed'"/>
+                            <field name="company_id" optional="show" on_change="1" can_create="True" can_write="True"/>
+                        </group>
+
+                    </group>
+                    <notebook colspan="4" id="contract_page">
+                    <page string="Contract">
+                        <group>
+                        <field name="currency_id" invisible="1"/>
+                        <label for="salary_expected"/>
+                        <div class="o_row">
+                            <field name="salary_expected" widget="monetary" required="1" readonly="state =='contract_signed'"/>
+                        </div>
+                        <label for="salary_proposed"/>
+                        <div class="o_row">
+                            <field name="salary_proposed" widget="monetary" required="1" readonly="state =='contract_signed'"/>
+                        </div>
+                        </group>
+                        <group>
+                            <field name="availability" required="1" readonly="state =='contract_signed'"/>
+                        </group>
+                    </page>
+                <page string="Additional Information" id="additional_info_page">
+                    <group>
+                        <field name="cover_letter" readonly="state=='contract_signed'"/>
+                        <field name="notes" readonly="state=='contract_signed'"/>
+                    </group>
+                </page>
+                    </notebook>
+
+                    <field name="legend_normal" invisible="1"/>
+                    <field name="legend_blocked" invisible="1"/>
+                    <field name="legend_done" invisible="1"/>
+                </sheet>
+                <chatter/>
+            <field name="is_offer" invisible="True" readonly="True" data-used-by="invisible=&quot;state not in 'second_interview' or is_offer&quot; (button,action_offer)"/>
+</form>

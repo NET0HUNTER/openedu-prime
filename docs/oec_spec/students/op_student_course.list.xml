@@ -1,0 +1,11 @@
+﻿<list string="Student Course Detail">
+                    <field name="student_id"/>
+                    <field name="course_id" on_change="1"/>
+                    <field name="batch_id"/>
+                    <field name="subject_ids" widget="many2many_tags"/>
+                    <field name="roll_number"/>
+                    <field name="academic_years_id" optional="hide"/>
+                    <field name="academic_term_id" optional="hide"/>
+                    <field name="state" on_change="1"/>
+                <field name="is_withdrawal" column_invisible="1"/>
+                </list>

@@ -1,0 +1,3838 @@
+{
+  "id": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "id",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "ID",
+    "type": "integer"
+  },
+  "display_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "name"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "display_name",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Display Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "question_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Ask question to user",
+    "manual": false,
+    "name": "question_ids",
+    "readonly": false,
+    "relation": "question.single",
+    "relation_field": "qna_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Questions",
+    "type": "one2many"
+  },
+  "website_published": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "is_published"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website_published",
+    "readonly": false,
+    "related": "is_published",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": false,
+    "string": "Visible on current website",
+    "type": "boolean"
+  },
+  "is_published": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "is_published",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Is Published",
+    "type": "boolean"
+  },
+  "can_publish": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "can_publish",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Can Publish",
+    "type": "boolean"
+  },
+  "website_url": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "The full relative URL to access the document through the website.",
+    "manual": false,
+    "name": "website_url",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Website URL",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "website_absolute_url": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "website_url"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "The full absolute URL to access the document through the website.",
+    "manual": false,
+    "name": "website_absolute_url",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Website Absolute URL",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "is_seo_optimized": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "website_meta_title",
+      "website_meta_description",
+      "website_meta_keywords"
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "is_seo_optimized",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "SEO optimized",
+    "type": "boolean"
+  },
+  "website_meta_title": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website_meta_title",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Website meta title",
+    "translate": true,
+    "trim": true,
+    "type": "char"
+  },
+  "website_meta_description": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website_meta_description",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Website meta description",
+    "translate": true,
+    "type": "text"
+  },
+  "website_meta_keywords": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website_meta_keywords",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Website meta keywords",
+    "translate": true,
+    "trim": true,
+    "type": "char"
+  },
+  "website_meta_og_img": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website_meta_og_img",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Website opengraph image",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "seo_name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "seo_name",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Seo name",
+    "translate": true,
+    "trim": true,
+    "type": "char"
+  },
+  "message_is_follower": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_is_follower",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Is Follower",
+    "type": "boolean"
+  },
+  "message_follower_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([]) + ([('res_model', '=', 'calendar.online.appointment')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_follower_ids",
+    "readonly": false,
+    "relation": "mail.followers",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Followers",
+    "type": "one2many"
+  },
+  "message_partner_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "message_follower_ids"
+    ],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_partner_ids",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Followers (Partners)",
+    "type": "many2many"
+  },
+  "message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('message_type', '!=', 'user_notification')]) + ([('model', '=', 'calendar.online.appointment')])",
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Messages",
+    "type": "one2many"
+  },
+  "has_message": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "has_message",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Has Message",
+    "type": "boolean"
+  },
+  "message_needaction": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, new messages require your attention.",
+    "manual": false,
+    "name": "message_needaction",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Action Needed",
+    "type": "boolean"
+  },
+  "message_needaction_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages requiring action",
+    "manual": false,
+    "name": "message_needaction_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of Actions",
+    "type": "integer"
+  },
+  "message_has_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Message Delivery error",
+    "type": "boolean"
+  },
+  "message_has_error_counter": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of messages with delivery error",
+    "manual": false,
+    "name": "message_has_error_counter",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Number of errors",
+    "type": "integer"
+  },
+  "message_attachment_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "message_attachment_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Attachment Count",
+    "type": "integer"
+  },
+  "rating_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('res_model', '=', 'calendar.online.appointment')]) + ([('res_model', '=', 'calendar.online.appointment')])",
+    "exportable": true,
+    "groupable": false,
+    "groups": "base.group_user",
+    "manual": false,
+    "name": "rating_ids",
+    "readonly": false,
+    "relation": "rating.rating",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Ratings",
+    "type": "one2many"
+  },
+  "website_message_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "([('model', '=', 'calendar.online.appointment'), ('message_type', 'in', ('comment', 'email', 'email_outgoing', 'auto_comment', 'out_of_office'))]) + ([('model', '=', 'calendar.online.appointment')])",
+    "exportable": true,
+    "groupable": false,
+    "help": "Website communication history",
+    "manual": false,
+    "name": "website_message_ids",
+    "readonly": false,
+    "relation": "mail.message",
+    "relation_field": "res_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Website Messages",
+    "type": "one2many"
+  },
+  "message_has_sms_error": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "If checked, some messages have a delivery error.",
+    "manual": false,
+    "name": "message_has_sms_error",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "SMS Delivery error",
+    "type": "boolean"
+  },
+  "name": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "name",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Name",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "code": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Unique to identify appointment",
+    "manual": false,
+    "name": "code",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Unique Code",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "employee_ids": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "employee_ids.resource_calendar_id",
+      "employee_ids.user_id"
+    ],
+    "domain": [
+      [
+        "resource_calendar_id",
+        "!=",
+        false
+      ],
+      [
+        "user_id",
+        "!=",
+        false
+      ]
+    ],
+    "exportable": true,
+    "groupable": true,
+    "help": "Staff line",
+    "manual": false,
+    "name": "employee_ids",
+    "readonly": false,
+    "relation": "hr.employee",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Staff",
+    "type": "many2many"
+  },
+  "resource_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "resource_ids",
+    "readonly": false,
+    "relation": "resource.calendar.attendance",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Resources",
+    "type": "many2many"
+  },
+  "slots": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "User can select the slot which is in slot line",
+    "manual": false,
+    "name": "slots",
+    "readonly": false,
+    "relation": "calendar.appointment.slot",
+    "relation_field": "appointment_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Appointment Slots",
+    "type": "one2many"
+  },
+  "duration": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Hour for appointment",
+    "manual": false,
+    "name": "duration",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Duration",
+    "type": "float"
+  },
+  "appointment_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "appointment_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Appointment Date",
+    "type": "date"
+  },
+  "min_appointment_hours": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Minimum hours before that user take appointment",
+    "manual": false,
+    "name": "min_appointment_hours",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Pre-Booking Time",
+    "type": "float"
+  },
+  "appointment_schedule": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "appointment_schedule",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "recurring_time",
+        "Available now"
+      ],
+      [
+        "punctual_time",
+        "Date Range"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Appointment Schedule",
+    "type": "selection"
+  },
+  "max_appointment_days": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Maximum days, Only those days user take appointment",
+    "manual": false,
+    "name": "max_appointment_days",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Appointment not after (days)",
+    "type": "integer"
+  },
+  "not_after_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Set the days",
+    "manual": false,
+    "name": "not_after_type",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "calendar_days",
+        "Calendar Days"
+      ],
+      [
+        "business_days",
+        "Business Days"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "not_after_type",
+    "type": "selection"
+  },
+  "from_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "from_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "From Date",
+    "type": "datetime"
+  },
+  "end_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "end_date",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "End Date",
+    "type": "datetime"
+  },
+  "is_cancel": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "For appointment cancellation",
+    "manual": false,
+    "name": "is_cancel",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Allow Cancellation",
+    "type": "boolean"
+  },
+  "min_appointment_cancel_duration": {
+    "aggregator": "sum",
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "User cancel appointment before duration",
+    "manual": false,
+    "name": "min_appointment_cancel_duration",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Cancel Appointment Before",
+    "type": "integer"
+  },
+  "cancel_type": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Types of time for cancel appointment",
+    "manual": false,
+    "name": "cancel_type",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "minutes",
+        "Minutes"
+      ],
+      [
+        "hours",
+        "Hours"
+      ],
+      [
+        "days",
+        "Days"
+      ],
+      [
+        "weeks",
+        "Weeks"
+      ],
+      [
+        "months",
+        "Months"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Cancel In",
+    "type": "selection"
+  },
+  "assign_method": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Set the method for assignation Staff",
+    "manual": false,
+    "name": "assign_method",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "random",
+        "Random"
+      ],
+      [
+        "customer",
+        "Customer Selection"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Assignation",
+    "type": "selection"
+  },
+  "user_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "user_id",
+    "readonly": false,
+    "relation": "res.users",
+    "required": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Team Leader",
+    "type": "many2one"
+  },
+  "default_timezone": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Set your timezone",
+    "manual": false,
+    "name": "default_timezone",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "Africa/Abidjan",
+        "Africa/Abidjan"
+      ],
+      [
+        "Africa/Accra",
+        "Africa/Accra"
+      ],
+      [
+        "Africa/Addis_Ababa",
+        "Africa/Addis_Ababa"
+      ],
+      [
+        "Africa/Algiers",
+        "Africa/Algiers"
+      ],
+      [
+        "Africa/Asmara",
+        "Africa/Asmara"
+      ],
+      [
+        "Africa/Asmera",
+        "Africa/Asmera"
+      ],
+      [
+        "Africa/Bamako",
+        "Africa/Bamako"
+      ],
+      [
+        "Africa/Bangui",
+        "Africa/Bangui"
+      ],
+      [
+        "Africa/Banjul",
+        "Africa/Banjul"
+      ],
+      [
+        "Africa/Bissau",
+        "Africa/Bissau"
+      ],
+      [
+        "Africa/Blantyre",
+        "Africa/Blantyre"
+      ],
+      [
+        "Africa/Brazzaville",
+        "Africa/Brazzaville"
+      ],
+      [
+        "Africa/Bujumbura",
+        "Africa/Bujumbura"
+      ],
+      [
+        "Africa/Cairo",
+        "Africa/Cairo"
+      ],
+      [
+        "Africa/Casablanca",
+        "Africa/Casablanca"
+      ],
+      [
+        "Africa/Ceuta",
+        "Africa/Ceuta"
+      ],
+      [
+        "Africa/Conakry",
+        "Africa/Conakry"
+      ],
+      [
+        "Africa/Dakar",
+        "Africa/Dakar"
+      ],
+      [
+        "Africa/Dar_es_Salaam",
+        "Africa/Dar_es_Salaam"
+      ],
+      [
+        "Africa/Djibouti",
+        "Africa/Djibouti"
+      ],
+      [
+        "Africa/Douala",
+        "Africa/Douala"
+      ],
+      [
+        "Africa/El_Aaiun",
+        "Africa/El_Aaiun"
+      ],
+      [
+        "Africa/Freetown",
+        "Africa/Freetown"
+      ],
+      [
+        "Africa/Gaborone",
+        "Africa/Gaborone"
+      ],
+      [
+        "Africa/Harare",
+        "Africa/Harare"
+      ],
+      [
+        "Africa/Johannesburg",
+        "Africa/Johannesburg"
+      ],
+      [
+        "Africa/Juba",
+        "Africa/Juba"
+      ],
+      [
+        "Africa/Kampala",
+        "Africa/Kampala"
+      ],
+      [
+        "Africa/Khartoum",
+        "Africa/Khartoum"
+      ],
+      [
+        "Africa/Kigali",
+        "Africa/Kigali"
+      ],
+      [
+        "Africa/Kinshasa",
+        "Africa/Kinshasa"
+      ],
+      [
+        "Africa/Lagos",
+        "Africa/Lagos"
+      ],
+      [
+        "Africa/Libreville",
+        "Africa/Libreville"
+      ],
+      [
+        "Africa/Lome",
+        "Africa/Lome"
+      ],
+      [
+        "Africa/Luanda",
+        "Africa/Luanda"
+      ],
+      [
+        "Africa/Lubumbashi",
+        "Africa/Lubumbashi"
+      ],
+      [
+        "Africa/Lusaka",
+        "Africa/Lusaka"
+      ],
+      [
+        "Africa/Malabo",
+        "Africa/Malabo"
+      ],
+      [
+        "Africa/Maputo",
+        "Africa/Maputo"
+      ],
+      [
+        "Africa/Maseru",
+        "Africa/Maseru"
+      ],
+      [
+        "Africa/Mbabane",
+        "Africa/Mbabane"
+      ],
+      [
+        "Africa/Mogadishu",
+        "Africa/Mogadishu"
+      ],
+      [
+        "Africa/Monrovia",
+        "Africa/Monrovia"
+      ],
+      [
+        "Africa/Nairobi",
+        "Africa/Nairobi"
+      ],
+      [
+        "Africa/Ndjamena",
+        "Africa/Ndjamena"
+      ],
+      [
+        "Africa/Niamey",
+        "Africa/Niamey"
+      ],
+      [
+        "Africa/Nouakchott",
+        "Africa/Nouakchott"
+      ],
+      [
+        "Africa/Ouagadougou",
+        "Africa/Ouagadougou"
+      ],
+      [
+        "Africa/Porto-Novo",
+        "Africa/Porto-Novo"
+      ],
+      [
+        "Africa/Sao_Tome",
+        "Africa/Sao_Tome"
+      ],
+      [
+        "Africa/Timbuktu",
+        "Africa/Timbuktu"
+      ],
+      [
+        "Africa/Tripoli",
+        "Africa/Tripoli"
+      ],
+      [
+        "Africa/Tunis",
+        "Africa/Tunis"
+      ],
+      [
+        "Africa/Windhoek",
+        "Africa/Windhoek"
+      ],
+      [
+        "America/Adak",
+        "America/Adak"
+      ],
+      [
+        "America/Anchorage",
+        "America/Anchorage"
+      ],
+      [
+        "America/Anguilla",
+        "America/Anguilla"
+      ],
+      [
+        "America/Antigua",
+        "America/Antigua"
+      ],
+      [
+        "America/Araguaina",
+        "America/Araguaina"
+      ],
+      [
+        "America/Argentina/Buenos_Aires",
+        "America/Argentina/Buenos_Aires"
+      ],
+      [
+        "America/Argentina/Catamarca",
+        "America/Argentina/Catamarca"
+      ],
+      [
+        "America/Argentina/ComodRivadavia",
+        "America/Argentina/ComodRivadavia"
+      ],
+      [
+        "America/Argentina/Cordoba",
+        "America/Argentina/Cordoba"
+      ],
+      [
+        "America/Argentina/Jujuy",
+        "America/Argentina/Jujuy"
+      ],
+      [
+        "America/Argentina/La_Rioja",
+        "America/Argentina/La_Rioja"
+      ],
+      [
+        "America/Argentina/Mendoza",
+        "America/Argentina/Mendoza"
+      ],
+      [
+        "America/Argentina/Rio_Gallegos",
+        "America/Argentina/Rio_Gallegos"
+      ],
+      [
+        "America/Argentina/Salta",
+        "America/Argentina/Salta"
+      ],
+      [
+        "America/Argentina/San_Juan",
+        "America/Argentina/San_Juan"
+      ],
+      [
+        "America/Argentina/San_Luis",
+        "America/Argentina/San_Luis"
+      ],
+      [
+        "America/Argentina/Tucuman",
+        "America/Argentina/Tucuman"
+      ],
+      [
+        "America/Argentina/Ushuaia",
+        "America/Argentina/Ushuaia"
+      ],
+      [
+        "America/Aruba",
+        "America/Aruba"
+      ],
+      [
+        "America/Asuncion",
+        "America/Asuncion"
+      ],
+      [
+        "America/Atikokan",
+        "America/Atikokan"
+      ],
+      [
+        "America/Atka",
+        "America/Atka"
+      ],
+      [
+        "America/Bahia",
+        "America/Bahia"
+      ],
+      [
+        "America/Bahia_Banderas",
+        "America/Bahia_Banderas"
+      ],
+      [
+        "America/Barbados",
+        "America/Barbados"
+      ],
+      [
+        "America/Belem",
+        "America/Belem"
+      ],
+      [
+        "America/Belize",
+        "America/Belize"
+      ],
+      [
+        "America/Blanc-Sablon",
+        "America/Blanc-Sablon"
+      ],
+      [
+        "America/Boa_Vista",
+        "America/Boa_Vista"
+      ],
+      [
+        "America/Bogota",
+        "America/Bogota"
+      ],
+      [
+        "America/Boise",
+        "America/Boise"
+      ],
+      [
+        "America/Buenos_Aires",
+        "America/Buenos_Aires"
+      ],
+      [
+        "America/Cambridge_Bay",
+        "America/Cambridge_Bay"
+      ],
+      [
+        "America/Campo_Grande",
+        "America/Campo_Grande"
+      ],
+      [
+        "America/Cancun",
+        "America/Cancun"
+      ],
+      [
+        "America/Caracas",
+        "America/Caracas"
+      ],
+      [
+        "America/Catamarca",
+        "America/Catamarca"
+      ],
+      [
+        "America/Cayenne",
+        "America/Cayenne"
+      ],
+      [
+        "America/Cayman",
+        "America/Cayman"
+      ],
+      [
+        "America/Chicago",
+        "America/Chicago"
+      ],
+      [
+        "America/Chihuahua",
+        "America/Chihuahua"
+      ],
+      [
+        "America/Ciudad_Juarez",
+        "America/Ciudad_Juarez"
+      ],
+      [
+        "America/Coral_Harbour",
+        "America/Coral_Harbour"
+      ],
+      [
+        "America/Cordoba",
+        "America/Cordoba"
+      ],
+      [
+        "America/Costa_Rica",
+        "America/Costa_Rica"
+      ],
+      [
+        "America/Creston",
+        "America/Creston"
+      ],
+      [
+        "America/Cuiaba",
+        "America/Cuiaba"
+      ],
+      [
+        "America/Curacao",
+        "America/Curacao"
+      ],
+      [
+        "America/Danmarkshavn",
+        "America/Danmarkshavn"
+      ],
+      [
+        "America/Dawson",
+        "America/Dawson"
+      ],
+      [
+        "America/Dawson_Creek",
+        "America/Dawson_Creek"
+      ],
+      [
+        "America/Denver",
+        "America/Denver"
+      ],
+      [
+        "America/Detroit",
+        "America/Detroit"
+      ],
+      [
+        "America/Dominica",
+        "America/Dominica"
+      ],
+      [
+        "America/Edmonton",
+        "America/Edmonton"
+      ],
+      [
+        "America/Eirunepe",
+        "America/Eirunepe"
+      ],
+      [
+        "America/El_Salvador",
+        "America/El_Salvador"
+      ],
+      [
+        "America/Ensenada",
+        "America/Ensenada"
+      ],
+      [
+        "America/Fort_Nelson",
+        "America/Fort_Nelson"
+      ],
+      [
+        "America/Fort_Wayne",
+        "America/Fort_Wayne"
+      ],
+      [
+        "America/Fortaleza",
+        "America/Fortaleza"
+      ],
+      [
+        "America/Glace_Bay",
+        "America/Glace_Bay"
+      ],
+      [
+        "America/Godthab",
+        "America/Godthab"
+      ],
+      [
+        "America/Goose_Bay",
+        "America/Goose_Bay"
+      ],
+      [
+        "America/Grand_Turk",
+        "America/Grand_Turk"
+      ],
+      [
+        "America/Grenada",
+        "America/Grenada"
+      ],
+      [
+        "America/Guadeloupe",
+        "America/Guadeloupe"
+      ],
+      [
+        "America/Guatemala",
+        "America/Guatemala"
+      ],
+      [
+        "America/Guayaquil",
+        "America/Guayaquil"
+      ],
+      [
+        "America/Guyana",
+        "America/Guyana"
+      ],
+      [
+        "America/Halifax",
+        "America/Halifax"
+      ],
+      [
+        "America/Havana",
+        "America/Havana"
+      ],
+      [
+        "America/Hermosillo",
+        "America/Hermosillo"
+      ],
+      [
+        "America/Indiana/Indianapolis",
+        "America/Indiana/Indianapolis"
+      ],
+      [
+        "America/Indiana/Knox",
+        "America/Indiana/Knox"
+      ],
+      [
+        "America/Indiana/Marengo",
+        "America/Indiana/Marengo"
+      ],
+      [
+        "America/Indiana/Petersburg",
+        "America/Indiana/Petersburg"
+      ],
+      [
+        "America/Indiana/Tell_City",
+        "America/Indiana/Tell_City"
+      ],
+      [
+        "America/Indiana/Vevay",
+        "America/Indiana/Vevay"
+      ],
+      [
+        "America/Indiana/Vincennes",
+        "America/Indiana/Vincennes"
+      ],
+      [
+        "America/Indiana/Winamac",
+        "America/Indiana/Winamac"
+      ],
+      [
+        "America/Indianapolis",
+        "America/Indianapolis"
+      ],
+      [
+        "America/Inuvik",
+        "America/Inuvik"
+      ],
+      [
+        "America/Iqaluit",
+        "America/Iqaluit"
+      ],
+      [
+        "America/Jamaica",
+        "America/Jamaica"
+      ],
+      [
+        "America/Jujuy",
+        "America/Jujuy"
+      ],
+      [
+        "America/Juneau",
+        "America/Juneau"
+      ],
+      [
+        "America/Kentucky/Louisville",
+        "America/Kentucky/Louisville"
+      ],
+      [
+        "America/Kentucky/Monticello",
+        "America/Kentucky/Monticello"
+      ],
+      [
+        "America/Knox_IN",
+        "America/Knox_IN"
+      ],
+      [
+        "America/Kralendijk",
+        "America/Kralendijk"
+      ],
+      [
+        "America/La_Paz",
+        "America/La_Paz"
+      ],
+      [
+        "America/Lima",
+        "America/Lima"
+      ],
+      [
+        "America/Los_Angeles",
+        "America/Los_Angeles"
+      ],
+      [
+        "America/Louisville",
+        "America/Louisville"
+      ],
+      [
+        "America/Lower_Princes",
+        "America/Lower_Princes"
+      ],
+      [
+        "America/Maceio",
+        "America/Maceio"
+      ],
+      [
+        "America/Managua",
+        "America/Managua"
+      ],
+      [
+        "America/Manaus",
+        "America/Manaus"
+      ],
+      [
+        "America/Marigot",
+        "America/Marigot"
+      ],
+      [
+        "America/Martinique",
+        "America/Martinique"
+      ],
+      [
+        "America/Matamoros",
+        "America/Matamoros"
+      ],
+      [
+        "America/Mazatlan",
+        "America/Mazatlan"
+      ],
+      [
+        "America/Mendoza",
+        "America/Mendoza"
+      ],
+      [
+        "America/Menominee",
+        "America/Menominee"
+      ],
+      [
+        "America/Merida",
+        "America/Merida"
+      ],
+      [
+        "America/Metlakatla",
+        "America/Metlakatla"
+      ],
+      [
+        "America/Mexico_City",
+        "America/Mexico_City"
+      ],
+      [
+        "America/Miquelon",
+        "America/Miquelon"
+      ],
+      [
+        "America/Moncton",
+        "America/Moncton"
+      ],
+      [
+        "America/Monterrey",
+        "America/Monterrey"
+      ],
+      [
+        "America/Montevideo",
+        "America/Montevideo"
+      ],
+      [
+        "America/Montreal",
+        "America/Montreal"
+      ],
+      [
+        "America/Montserrat",
+        "America/Montserrat"
+      ],
+      [
+        "America/Nassau",
+        "America/Nassau"
+      ],
+      [
+        "America/New_York",
+        "America/New_York"
+      ],
+      [
+        "America/Nipigon",
+        "America/Nipigon"
+      ],
+      [
+        "America/Nome",
+        "America/Nome"
+      ],
+      [
+        "America/Noronha",
+        "America/Noronha"
+      ],
+      [
+        "America/North_Dakota/Beulah",
+        "America/North_Dakota/Beulah"
+      ],
+      [
+        "America/North_Dakota/Center",
+        "America/North_Dakota/Center"
+      ],
+      [
+        "America/North_Dakota/New_Salem",
+        "America/North_Dakota/New_Salem"
+      ],
+      [
+        "America/Nuuk",
+        "America/Nuuk"
+      ],
+      [
+        "America/Ojinaga",
+        "America/Ojinaga"
+      ],
+      [
+        "America/Panama",
+        "America/Panama"
+      ],
+      [
+        "America/Pangnirtung",
+        "America/Pangnirtung"
+      ],
+      [
+        "America/Paramaribo",
+        "America/Paramaribo"
+      ],
+      [
+        "America/Phoenix",
+        "America/Phoenix"
+      ],
+      [
+        "America/Port-au-Prince",
+        "America/Port-au-Prince"
+      ],
+      [
+        "America/Port_of_Spain",
+        "America/Port_of_Spain"
+      ],
+      [
+        "America/Porto_Acre",
+        "America/Porto_Acre"
+      ],
+      [
+        "America/Porto_Velho",
+        "America/Porto_Velho"
+      ],
+      [
+        "America/Puerto_Rico",
+        "America/Puerto_Rico"
+      ],
+      [
+        "America/Punta_Arenas",
+        "America/Punta_Arenas"
+      ],
+      [
+        "America/Rainy_River",
+        "America/Rainy_River"
+      ],
+      [
+        "America/Rankin_Inlet",
+        "America/Rankin_Inlet"
+      ],
+      [
+        "America/Recife",
+        "America/Recife"
+      ],
+      [
+        "America/Regina",
+        "America/Regina"
+      ],
+      [
+        "America/Resolute",
+        "America/Resolute"
+      ],
+      [
+        "America/Rio_Branco",
+        "America/Rio_Branco"
+      ],
+      [
+        "America/Rosario",
+        "America/Rosario"
+      ],
+      [
+        "America/Santa_Isabel",
+        "America/Santa_Isabel"
+      ],
+      [
+        "America/Santarem",
+        "America/Santarem"
+      ],
+      [
+        "America/Santiago",
+        "America/Santiago"
+      ],
+      [
+        "America/Santo_Domingo",
+        "America/Santo_Domingo"
+      ],
+      [
+        "America/Sao_Paulo",
+        "America/Sao_Paulo"
+      ],
+      [
+        "America/Scoresbysund",
+        "America/Scoresbysund"
+      ],
+      [
+        "America/Shiprock",
+        "America/Shiprock"
+      ],
+      [
+        "America/Sitka",
+        "America/Sitka"
+      ],
+      [
+        "America/St_Barthelemy",
+        "America/St_Barthelemy"
+      ],
+      [
+        "America/St_Johns",
+        "America/St_Johns"
+      ],
+      [
+        "America/St_Kitts",
+        "America/St_Kitts"
+      ],
+      [
+        "America/St_Lucia",
+        "America/St_Lucia"
+      ],
+      [
+        "America/St_Thomas",
+        "America/St_Thomas"
+      ],
+      [
+        "America/St_Vincent",
+        "America/St_Vincent"
+      ],
+      [
+        "America/Swift_Current",
+        "America/Swift_Current"
+      ],
+      [
+        "America/Tegucigalpa",
+        "America/Tegucigalpa"
+      ],
+      [
+        "America/Thule",
+        "America/Thule"
+      ],
+      [
+        "America/Thunder_Bay",
+        "America/Thunder_Bay"
+      ],
+      [
+        "America/Tijuana",
+        "America/Tijuana"
+      ],
+      [
+        "America/Toronto",
+        "America/Toronto"
+      ],
+      [
+        "America/Tortola",
+        "America/Tortola"
+      ],
+      [
+        "America/Vancouver",
+        "America/Vancouver"
+      ],
+      [
+        "America/Virgin",
+        "America/Virgin"
+      ],
+      [
+        "America/Whitehorse",
+        "America/Whitehorse"
+      ],
+      [
+        "America/Winnipeg",
+        "America/Winnipeg"
+      ],
+      [
+        "America/Yakutat",
+        "America/Yakutat"
+      ],
+      [
+        "America/Yellowknife",
+        "America/Yellowknife"
+      ],
+      [
+        "Antarctica/Casey",
+        "Antarctica/Casey"
+      ],
+      [
+        "Antarctica/Davis",
+        "Antarctica/Davis"
+      ],
+      [
+        "Antarctica/DumontDUrville",
+        "Antarctica/DumontDUrville"
+      ],
+      [
+        "Antarctica/Macquarie",
+        "Antarctica/Macquarie"
+      ],
+      [
+        "Antarctica/Mawson",
+        "Antarctica/Mawson"
+      ],
+      [
+        "Antarctica/McMurdo",
+        "Antarctica/McMurdo"
+      ],
+      [
+        "Antarctica/Palmer",
+        "Antarctica/Palmer"
+      ],
+      [
+        "Antarctica/Rothera",
+        "Antarctica/Rothera"
+      ],
+      [
+        "Antarctica/South_Pole",
+        "Antarctica/South_Pole"
+      ],
+      [
+        "Antarctica/Syowa",
+        "Antarctica/Syowa"
+      ],
+      [
+        "Antarctica/Troll",
+        "Antarctica/Troll"
+      ],
+      [
+        "Antarctica/Vostok",
+        "Antarctica/Vostok"
+      ],
+      [
+        "Arctic/Longyearbyen",
+        "Arctic/Longyearbyen"
+      ],
+      [
+        "Asia/Aden",
+        "Asia/Aden"
+      ],
+      [
+        "Asia/Almaty",
+        "Asia/Almaty"
+      ],
+      [
+        "Asia/Amman",
+        "Asia/Amman"
+      ],
+      [
+        "Asia/Anadyr",
+        "Asia/Anadyr"
+      ],
+      [
+        "Asia/Aqtau",
+        "Asia/Aqtau"
+      ],
+      [
+        "Asia/Aqtobe",
+        "Asia/Aqtobe"
+      ],
+      [
+        "Asia/Ashgabat",
+        "Asia/Ashgabat"
+      ],
+      [
+        "Asia/Ashkhabad",
+        "Asia/Ashkhabad"
+      ],
+      [
+        "Asia/Atyrau",
+        "Asia/Atyrau"
+      ],
+      [
+        "Asia/Baghdad",
+        "Asia/Baghdad"
+      ],
+      [
+        "Asia/Bahrain",
+        "Asia/Bahrain"
+      ],
+      [
+        "Asia/Baku",
+        "Asia/Baku"
+      ],
+      [
+        "Asia/Bangkok",
+        "Asia/Bangkok"
+      ],
+      [
+        "Asia/Barnaul",
+        "Asia/Barnaul"
+      ],
+      [
+        "Asia/Beirut",
+        "Asia/Beirut"
+      ],
+      [
+        "Asia/Bishkek",
+        "Asia/Bishkek"
+      ],
+      [
+        "Asia/Brunei",
+        "Asia/Brunei"
+      ],
+      [
+        "Asia/Calcutta",
+        "Asia/Calcutta"
+      ],
+      [
+        "Asia/Chita",
+        "Asia/Chita"
+      ],
+      [
+        "Asia/Choibalsan",
+        "Asia/Choibalsan"
+      ],
+      [
+        "Asia/Chongqing",
+        "Asia/Chongqing"
+      ],
+      [
+        "Asia/Chungking",
+        "Asia/Chungking"
+      ],
+      [
+        "Asia/Colombo",
+        "Asia/Colombo"
+      ],
+      [
+        "Asia/Dacca",
+        "Asia/Dacca"
+      ],
+      [
+        "Asia/Damascus",
+        "Asia/Damascus"
+      ],
+      [
+        "Asia/Dhaka",
+        "Asia/Dhaka"
+      ],
+      [
+        "Asia/Dili",
+        "Asia/Dili"
+      ],
+      [
+        "Asia/Dubai",
+        "Asia/Dubai"
+      ],
+      [
+        "Asia/Dushanbe",
+        "Asia/Dushanbe"
+      ],
+      [
+        "Asia/Famagusta",
+        "Asia/Famagusta"
+      ],
+      [
+        "Asia/Gaza",
+        "Asia/Gaza"
+      ],
+      [
+        "Asia/Harbin",
+        "Asia/Harbin"
+      ],
+      [
+        "Asia/Hebron",
+        "Asia/Hebron"
+      ],
+      [
+        "Asia/Ho_Chi_Minh",
+        "Asia/Ho_Chi_Minh"
+      ],
+      [
+        "Asia/Hong_Kong",
+        "Asia/Hong_Kong"
+      ],
+      [
+        "Asia/Hovd",
+        "Asia/Hovd"
+      ],
+      [
+        "Asia/Irkutsk",
+        "Asia/Irkutsk"
+      ],
+      [
+        "Asia/Istanbul",
+        "Asia/Istanbul"
+      ],
+      [
+        "Asia/Jakarta",
+        "Asia/Jakarta"
+      ],
+      [
+        "Asia/Jayapura",
+        "Asia/Jayapura"
+      ],
+      [
+        "Asia/Jerusalem",
+        "Asia/Jerusalem"
+      ],
+      [
+        "Asia/Kabul",
+        "Asia/Kabul"
+      ],
+      [
+        "Asia/Kamchatka",
+        "Asia/Kamchatka"
+      ],
+      [
+        "Asia/Karachi",
+        "Asia/Karachi"
+      ],
+      [
+        "Asia/Kashgar",
+        "Asia/Kashgar"
+      ],
+      [
+        "Asia/Kathmandu",
+        "Asia/Kathmandu"
+      ],
+      [
+        "Asia/Katmandu",
+        "Asia/Katmandu"
+      ],
+      [
+        "Asia/Khandyga",
+        "Asia/Khandyga"
+      ],
+      [
+        "Asia/Kolkata",
+        "Asia/Kolkata"
+      ],
+      [
+        "Asia/Krasnoyarsk",
+        "Asia/Krasnoyarsk"
+      ],
+      [
+        "Asia/Kuala_Lumpur",
+        "Asia/Kuala_Lumpur"
+      ],
+      [
+        "Asia/Kuching",
+        "Asia/Kuching"
+      ],
+      [
+        "Asia/Kuwait",
+        "Asia/Kuwait"
+      ],
+      [
+        "Asia/Macao",
+        "Asia/Macao"
+      ],
+      [
+        "Asia/Macau",
+        "Asia/Macau"
+      ],
+      [
+        "Asia/Magadan",
+        "Asia/Magadan"
+      ],
+      [
+        "Asia/Makassar",
+        "Asia/Makassar"
+      ],
+      [
+        "Asia/Manila",
+        "Asia/Manila"
+      ],
+      [
+        "Asia/Muscat",
+        "Asia/Muscat"
+      ],
+      [
+        "Asia/Nicosia",
+        "Asia/Nicosia"
+      ],
+      [
+        "Asia/Novokuznetsk",
+        "Asia/Novokuznetsk"
+      ],
+      [
+        "Asia/Novosibirsk",
+        "Asia/Novosibirsk"
+      ],
+      [
+        "Asia/Omsk",
+        "Asia/Omsk"
+      ],
+      [
+        "Asia/Oral",
+        "Asia/Oral"
+      ],
+      [
+        "Asia/Phnom_Penh",
+        "Asia/Phnom_Penh"
+      ],
+      [
+        "Asia/Pontianak",
+        "Asia/Pontianak"
+      ],
+      [
+        "Asia/Pyongyang",
+        "Asia/Pyongyang"
+      ],
+      [
+        "Asia/Qatar",
+        "Asia/Qatar"
+      ],
+      [
+        "Asia/Qostanay",
+        "Asia/Qostanay"
+      ],
+      [
+        "Asia/Qyzylorda",
+        "Asia/Qyzylorda"
+      ],
+      [
+        "Asia/Rangoon",
+        "Asia/Rangoon"
+      ],
+      [
+        "Asia/Riyadh",
+        "Asia/Riyadh"
+      ],
+      [
+        "Asia/Saigon",
+        "Asia/Saigon"
+      ],
+      [
+        "Asia/Sakhalin",
+        "Asia/Sakhalin"
+      ],
+      [
+        "Asia/Samarkand",
+        "Asia/Samarkand"
+      ],
+      [
+        "Asia/Seoul",
+        "Asia/Seoul"
+      ],
+      [
+        "Asia/Shanghai",
+        "Asia/Shanghai"
+      ],
+      [
+        "Asia/Singapore",
+        "Asia/Singapore"
+      ],
+      [
+        "Asia/Srednekolymsk",
+        "Asia/Srednekolymsk"
+      ],
+      [
+        "Asia/Taipei",
+        "Asia/Taipei"
+      ],
+      [
+        "Asia/Tashkent",
+        "Asia/Tashkent"
+      ],
+      [
+        "Asia/Tbilisi",
+        "Asia/Tbilisi"
+      ],
+      [
+        "Asia/Tehran",
+        "Asia/Tehran"
+      ],
+      [
+        "Asia/Tel_Aviv",
+        "Asia/Tel_Aviv"
+      ],
+      [
+        "Asia/Thimbu",
+        "Asia/Thimbu"
+      ],
+      [
+        "Asia/Thimphu",
+        "Asia/Thimphu"
+      ],
+      [
+        "Asia/Tokyo",
+        "Asia/Tokyo"
+      ],
+      [
+        "Asia/Tomsk",
+        "Asia/Tomsk"
+      ],
+      [
+        "Asia/Ujung_Pandang",
+        "Asia/Ujung_Pandang"
+      ],
+      [
+        "Asia/Ulaanbaatar",
+        "Asia/Ulaanbaatar"
+      ],
+      [
+        "Asia/Ulan_Bator",
+        "Asia/Ulan_Bator"
+      ],
+      [
+        "Asia/Urumqi",
+        "Asia/Urumqi"
+      ],
+      [
+        "Asia/Ust-Nera",
+        "Asia/Ust-Nera"
+      ],
+      [
+        "Asia/Vientiane",
+        "Asia/Vientiane"
+      ],
+      [
+        "Asia/Vladivostok",
+        "Asia/Vladivostok"
+      ],
+      [
+        "Asia/Yakutsk",
+        "Asia/Yakutsk"
+      ],
+      [
+        "Asia/Yangon",
+        "Asia/Yangon"
+      ],
+      [
+        "Asia/Yekaterinburg",
+        "Asia/Yekaterinburg"
+      ],
+      [
+        "Asia/Yerevan",
+        "Asia/Yerevan"
+      ],
+      [
+        "Atlantic/Azores",
+        "Atlantic/Azores"
+      ],
+      [
+        "Atlantic/Bermuda",
+        "Atlantic/Bermuda"
+      ],
+      [
+        "Atlantic/Canary",
+        "Atlantic/Canary"
+      ],
+      [
+        "Atlantic/Cape_Verde",
+        "Atlantic/Cape_Verde"
+      ],
+      [
+        "Atlantic/Faeroe",
+        "Atlantic/Faeroe"
+      ],
+      [
+        "Atlantic/Faroe",
+        "Atlantic/Faroe"
+      ],
+      [
+        "Atlantic/Jan_Mayen",
+        "Atlantic/Jan_Mayen"
+      ],
+      [
+        "Atlantic/Madeira",
+        "Atlantic/Madeira"
+      ],
+      [
+        "Atlantic/Reykjavik",
+        "Atlantic/Reykjavik"
+      ],
+      [
+        "Atlantic/South_Georgia",
+        "Atlantic/South_Georgia"
+      ],
+      [
+        "Atlantic/St_Helena",
+        "Atlantic/St_Helena"
+      ],
+      [
+        "Atlantic/Stanley",
+        "Atlantic/Stanley"
+      ],
+      [
+        "Australia/ACT",
+        "Australia/ACT"
+      ],
+      [
+        "Australia/Adelaide",
+        "Australia/Adelaide"
+      ],
+      [
+        "Australia/Brisbane",
+        "Australia/Brisbane"
+      ],
+      [
+        "Australia/Broken_Hill",
+        "Australia/Broken_Hill"
+      ],
+      [
+        "Australia/Canberra",
+        "Australia/Canberra"
+      ],
+      [
+        "Australia/Currie",
+        "Australia/Currie"
+      ],
+      [
+        "Australia/Darwin",
+        "Australia/Darwin"
+      ],
+      [
+        "Australia/Eucla",
+        "Australia/Eucla"
+      ],
+      [
+        "Australia/Hobart",
+        "Australia/Hobart"
+      ],
+      [
+        "Australia/LHI",
+        "Australia/LHI"
+      ],
+      [
+        "Australia/Lindeman",
+        "Australia/Lindeman"
+      ],
+      [
+        "Australia/Lord_Howe",
+        "Australia/Lord_Howe"
+      ],
+      [
+        "Australia/Melbourne",
+        "Australia/Melbourne"
+      ],
+      [
+        "Australia/NSW",
+        "Australia/NSW"
+      ],
+      [
+        "Australia/North",
+        "Australia/North"
+      ],
+      [
+        "Australia/Perth",
+        "Australia/Perth"
+      ],
+      [
+        "Australia/Queensland",
+        "Australia/Queensland"
+      ],
+      [
+        "Australia/South",
+        "Australia/South"
+      ],
+      [
+        "Australia/Sydney",
+        "Australia/Sydney"
+      ],
+      [
+        "Australia/Tasmania",
+        "Australia/Tasmania"
+      ],
+      [
+        "Australia/Victoria",
+        "Australia/Victoria"
+      ],
+      [
+        "Australia/West",
+        "Australia/West"
+      ],
+      [
+        "Australia/Yancowinna",
+        "Australia/Yancowinna"
+      ],
+      [
+        "Brazil/Acre",
+        "Brazil/Acre"
+      ],
+      [
+        "Brazil/DeNoronha",
+        "Brazil/DeNoronha"
+      ],
+      [
+        "Brazil/East",
+        "Brazil/East"
+      ],
+      [
+        "Brazil/West",
+        "Brazil/West"
+      ],
+      [
+        "CET",
+        "CET"
+      ],
+      [
+        "CST6CDT",
+        "CST6CDT"
+      ],
+      [
+        "Canada/Atlantic",
+        "Canada/Atlantic"
+      ],
+      [
+        "Canada/Central",
+        "Canada/Central"
+      ],
+      [
+        "Canada/Eastern",
+        "Canada/Eastern"
+      ],
+      [
+        "Canada/Mountain",
+        "Canada/Mountain"
+      ],
+      [
+        "Canada/Newfoundland",
+        "Canada/Newfoundland"
+      ],
+      [
+        "Canada/Pacific",
+        "Canada/Pacific"
+      ],
+      [
+        "Canada/Saskatchewan",
+        "Canada/Saskatchewan"
+      ],
+      [
+        "Canada/Yukon",
+        "Canada/Yukon"
+      ],
+      [
+        "Chile/Continental",
+        "Chile/Continental"
+      ],
+      [
+        "Chile/EasterIsland",
+        "Chile/EasterIsland"
+      ],
+      [
+        "Cuba",
+        "Cuba"
+      ],
+      [
+        "EET",
+        "EET"
+      ],
+      [
+        "EST",
+        "EST"
+      ],
+      [
+        "EST5EDT",
+        "EST5EDT"
+      ],
+      [
+        "Egypt",
+        "Egypt"
+      ],
+      [
+        "Eire",
+        "Eire"
+      ],
+      [
+        "Etc/GMT",
+        "Etc/GMT"
+      ],
+      [
+        "Etc/GMT+0",
+        "Etc/GMT+0"
+      ],
+      [
+        "Etc/GMT+1",
+        "Etc/GMT+1"
+      ],
+      [
+        "Etc/GMT+10",
+        "Etc/GMT+10"
+      ],
+      [
+        "Etc/GMT+11",
+        "Etc/GMT+11"
+      ],
+      [
+        "Etc/GMT+12",
+        "Etc/GMT+12"
+      ],
+      [
+        "Etc/GMT+2",
+        "Etc/GMT+2"
+      ],
+      [
+        "Etc/GMT+3",
+        "Etc/GMT+3"
+      ],
+      [
+        "Etc/GMT+4",
+        "Etc/GMT+4"
+      ],
+      [
+        "Etc/GMT+5",
+        "Etc/GMT+5"
+      ],
+      [
+        "Etc/GMT+6",
+        "Etc/GMT+6"
+      ],
+      [
+        "Etc/GMT+7",
+        "Etc/GMT+7"
+      ],
+      [
+        "Etc/GMT+8",
+        "Etc/GMT+8"
+      ],
+      [
+        "Etc/GMT+9",
+        "Etc/GMT+9"
+      ],
+      [
+        "Etc/GMT-0",
+        "Etc/GMT-0"
+      ],
+      [
+        "Etc/GMT-1",
+        "Etc/GMT-1"
+      ],
+      [
+        "Etc/GMT-10",
+        "Etc/GMT-10"
+      ],
+      [
+        "Etc/GMT-11",
+        "Etc/GMT-11"
+      ],
+      [
+        "Etc/GMT-12",
+        "Etc/GMT-12"
+      ],
+      [
+        "Etc/GMT-13",
+        "Etc/GMT-13"
+      ],
+      [
+        "Etc/GMT-14",
+        "Etc/GMT-14"
+      ],
+      [
+        "Etc/GMT-2",
+        "Etc/GMT-2"
+      ],
+      [
+        "Etc/GMT-3",
+        "Etc/GMT-3"
+      ],
+      [
+        "Etc/GMT-4",
+        "Etc/GMT-4"
+      ],
+      [
+        "Etc/GMT-5",
+        "Etc/GMT-5"
+      ],
+      [
+        "Etc/GMT-6",
+        "Etc/GMT-6"
+      ],
+      [
+        "Etc/GMT-7",
+        "Etc/GMT-7"
+      ],
+      [
+        "Etc/GMT-8",
+        "Etc/GMT-8"
+      ],
+      [
+        "Etc/GMT-9",
+        "Etc/GMT-9"
+      ],
+      [
+        "Etc/GMT0",
+        "Etc/GMT0"
+      ],
+      [
+        "Etc/Greenwich",
+        "Etc/Greenwich"
+      ],
+      [
+        "Etc/UCT",
+        "Etc/UCT"
+      ],
+      [
+        "Etc/UTC",
+        "Etc/UTC"
+      ],
+      [
+        "Etc/Universal",
+        "Etc/Universal"
+      ],
+      [
+        "Etc/Zulu",
+        "Etc/Zulu"
+      ],
+      [
+        "Europe/Amsterdam",
+        "Europe/Amsterdam"
+      ],
+      [
+        "Europe/Andorra",
+        "Europe/Andorra"
+      ],
+      [
+        "Europe/Astrakhan",
+        "Europe/Astrakhan"
+      ],
+      [
+        "Europe/Athens",
+        "Europe/Athens"
+      ],
+      [
+        "Europe/Belfast",
+        "Europe/Belfast"
+      ],
+      [
+        "Europe/Belgrade",
+        "Europe/Belgrade"
+      ],
+      [
+        "Europe/Berlin",
+        "Europe/Berlin"
+      ],
+      [
+        "Europe/Bratislava",
+        "Europe/Bratislava"
+      ],
+      [
+        "Europe/Brussels",
+        "Europe/Brussels"
+      ],
+      [
+        "Europe/Bucharest",
+        "Europe/Bucharest"
+      ],
+      [
+        "Europe/Budapest",
+        "Europe/Budapest"
+      ],
+      [
+        "Europe/Busingen",
+        "Europe/Busingen"
+      ],
+      [
+        "Europe/Chisinau",
+        "Europe/Chisinau"
+      ],
+      [
+        "Europe/Copenhagen",
+        "Europe/Copenhagen"
+      ],
+      [
+        "Europe/Dublin",
+        "Europe/Dublin"
+      ],
+      [
+        "Europe/Gibraltar",
+        "Europe/Gibraltar"
+      ],
+      [
+        "Europe/Guernsey",
+        "Europe/Guernsey"
+      ],
+      [
+        "Europe/Helsinki",
+        "Europe/Helsinki"
+      ],
+      [
+        "Europe/Isle_of_Man",
+        "Europe/Isle_of_Man"
+      ],
+      [
+        "Europe/Istanbul",
+        "Europe/Istanbul"
+      ],
+      [
+        "Europe/Jersey",
+        "Europe/Jersey"
+      ],
+      [
+        "Europe/Kaliningrad",
+        "Europe/Kaliningrad"
+      ],
+      [
+        "Europe/Kiev",
+        "Europe/Kiev"
+      ],
+      [
+        "Europe/Kirov",
+        "Europe/Kirov"
+      ],
+      [
+        "Europe/Kyiv",
+        "Europe/Kyiv"
+      ],
+      [
+        "Europe/Lisbon",
+        "Europe/Lisbon"
+      ],
+      [
+        "Europe/Ljubljana",
+        "Europe/Ljubljana"
+      ],
+      [
+        "Europe/London",
+        "Europe/London"
+      ],
+      [
+        "Europe/Luxembourg",
+        "Europe/Luxembourg"
+      ],
+      [
+        "Europe/Madrid",
+        "Europe/Madrid"
+      ],
+      [
+        "Europe/Malta",
+        "Europe/Malta"
+      ],
+      [
+        "Europe/Mariehamn",
+        "Europe/Mariehamn"
+      ],
+      [
+        "Europe/Minsk",
+        "Europe/Minsk"
+      ],
+      [
+        "Europe/Monaco",
+        "Europe/Monaco"
+      ],
+      [
+        "Europe/Moscow",
+        "Europe/Moscow"
+      ],
+      [
+        "Europe/Nicosia",
+        "Europe/Nicosia"
+      ],
+      [
+        "Europe/Oslo",
+        "Europe/Oslo"
+      ],
+      [
+        "Europe/Paris",
+        "Europe/Paris"
+      ],
+      [
+        "Europe/Podgorica",
+        "Europe/Podgorica"
+      ],
+      [
+        "Europe/Prague",
+        "Europe/Prague"
+      ],
+      [
+        "Europe/Riga",
+        "Europe/Riga"
+      ],
+      [
+        "Europe/Rome",
+        "Europe/Rome"
+      ],
+      [
+        "Europe/Samara",
+        "Europe/Samara"
+      ],
+      [
+        "Europe/San_Marino",
+        "Europe/San_Marino"
+      ],
+      [
+        "Europe/Sarajevo",
+        "Europe/Sarajevo"
+      ],
+      [
+        "Europe/Saratov",
+        "Europe/Saratov"
+      ],
+      [
+        "Europe/Simferopol",
+        "Europe/Simferopol"
+      ],
+      [
+        "Europe/Skopje",
+        "Europe/Skopje"
+      ],
+      [
+        "Europe/Sofia",
+        "Europe/Sofia"
+      ],
+      [
+        "Europe/Stockholm",
+        "Europe/Stockholm"
+      ],
+      [
+        "Europe/Tallinn",
+        "Europe/Tallinn"
+      ],
+      [
+        "Europe/Tirane",
+        "Europe/Tirane"
+      ],
+      [
+        "Europe/Tiraspol",
+        "Europe/Tiraspol"
+      ],
+      [
+        "Europe/Ulyanovsk",
+        "Europe/Ulyanovsk"
+      ],
+      [
+        "Europe/Uzhgorod",
+        "Europe/Uzhgorod"
+      ],
+      [
+        "Europe/Vaduz",
+        "Europe/Vaduz"
+      ],
+      [
+        "Europe/Vatican",
+        "Europe/Vatican"
+      ],
+      [
+        "Europe/Vienna",
+        "Europe/Vienna"
+      ],
+      [
+        "Europe/Vilnius",
+        "Europe/Vilnius"
+      ],
+      [
+        "Europe/Volgograd",
+        "Europe/Volgograd"
+      ],
+      [
+        "Europe/Warsaw",
+        "Europe/Warsaw"
+      ],
+      [
+        "Europe/Zagreb",
+        "Europe/Zagreb"
+      ],
+      [
+        "Europe/Zaporozhye",
+        "Europe/Zaporozhye"
+      ],
+      [
+        "Europe/Zurich",
+        "Europe/Zurich"
+      ],
+      [
+        "GB",
+        "GB"
+      ],
+      [
+        "GB-Eire",
+        "GB-Eire"
+      ],
+      [
+        "GMT",
+        "GMT"
+      ],
+      [
+        "GMT+0",
+        "GMT+0"
+      ],
+      [
+        "GMT-0",
+        "GMT-0"
+      ],
+      [
+        "GMT0",
+        "GMT0"
+      ],
+      [
+        "Greenwich",
+        "Greenwich"
+      ],
+      [
+        "HST",
+        "HST"
+      ],
+      [
+        "Hongkong",
+        "Hongkong"
+      ],
+      [
+        "Iceland",
+        "Iceland"
+      ],
+      [
+        "Indian/Antananarivo",
+        "Indian/Antananarivo"
+      ],
+      [
+        "Indian/Chagos",
+        "Indian/Chagos"
+      ],
+      [
+        "Indian/Christmas",
+        "Indian/Christmas"
+      ],
+      [
+        "Indian/Cocos",
+        "Indian/Cocos"
+      ],
+      [
+        "Indian/Comoro",
+        "Indian/Comoro"
+      ],
+      [
+        "Indian/Kerguelen",
+        "Indian/Kerguelen"
+      ],
+      [
+        "Indian/Mahe",
+        "Indian/Mahe"
+      ],
+      [
+        "Indian/Maldives",
+        "Indian/Maldives"
+      ],
+      [
+        "Indian/Mauritius",
+        "Indian/Mauritius"
+      ],
+      [
+        "Indian/Mayotte",
+        "Indian/Mayotte"
+      ],
+      [
+        "Indian/Reunion",
+        "Indian/Reunion"
+      ],
+      [
+        "Iran",
+        "Iran"
+      ],
+      [
+        "Israel",
+        "Israel"
+      ],
+      [
+        "Jamaica",
+        "Jamaica"
+      ],
+      [
+        "Japan",
+        "Japan"
+      ],
+      [
+        "Kwajalein",
+        "Kwajalein"
+      ],
+      [
+        "Libya",
+        "Libya"
+      ],
+      [
+        "MET",
+        "MET"
+      ],
+      [
+        "MST",
+        "MST"
+      ],
+      [
+        "MST7MDT",
+        "MST7MDT"
+      ],
+      [
+        "Mexico/BajaNorte",
+        "Mexico/BajaNorte"
+      ],
+      [
+        "Mexico/BajaSur",
+        "Mexico/BajaSur"
+      ],
+      [
+        "Mexico/General",
+        "Mexico/General"
+      ],
+      [
+        "NZ",
+        "NZ"
+      ],
+      [
+        "NZ-CHAT",
+        "NZ-CHAT"
+      ],
+      [
+        "Navajo",
+        "Navajo"
+      ],
+      [
+        "PRC",
+        "PRC"
+      ],
+      [
+        "PST8PDT",
+        "PST8PDT"
+      ],
+      [
+        "Pacific/Apia",
+        "Pacific/Apia"
+      ],
+      [
+        "Pacific/Auckland",
+        "Pacific/Auckland"
+      ],
+      [
+        "Pacific/Bougainville",
+        "Pacific/Bougainville"
+      ],
+      [
+        "Pacific/Chatham",
+        "Pacific/Chatham"
+      ],
+      [
+        "Pacific/Chuuk",
+        "Pacific/Chuuk"
+      ],
+      [
+        "Pacific/Easter",
+        "Pacific/Easter"
+      ],
+      [
+        "Pacific/Efate",
+        "Pacific/Efate"
+      ],
+      [
+        "Pacific/Enderbury",
+        "Pacific/Enderbury"
+      ],
+      [
+        "Pacific/Fakaofo",
+        "Pacific/Fakaofo"
+      ],
+      [
+        "Pacific/Fiji",
+        "Pacific/Fiji"
+      ],
+      [
+        "Pacific/Funafuti",
+        "Pacific/Funafuti"
+      ],
+      [
+        "Pacific/Galapagos",
+        "Pacific/Galapagos"
+      ],
+      [
+        "Pacific/Gambier",
+        "Pacific/Gambier"
+      ],
+      [
+        "Pacific/Guadalcanal",
+        "Pacific/Guadalcanal"
+      ],
+      [
+        "Pacific/Guam",
+        "Pacific/Guam"
+      ],
+      [
+        "Pacific/Honolulu",
+        "Pacific/Honolulu"
+      ],
+      [
+        "Pacific/Johnston",
+        "Pacific/Johnston"
+      ],
+      [
+        "Pacific/Kanton",
+        "Pacific/Kanton"
+      ],
+      [
+        "Pacific/Kiritimati",
+        "Pacific/Kiritimati"
+      ],
+      [
+        "Pacific/Kosrae",
+        "Pacific/Kosrae"
+      ],
+      [
+        "Pacific/Kwajalein",
+        "Pacific/Kwajalein"
+      ],
+      [
+        "Pacific/Majuro",
+        "Pacific/Majuro"
+      ],
+      [
+        "Pacific/Marquesas",
+        "Pacific/Marquesas"
+      ],
+      [
+        "Pacific/Midway",
+        "Pacific/Midway"
+      ],
+      [
+        "Pacific/Nauru",
+        "Pacific/Nauru"
+      ],
+      [
+        "Pacific/Niue",
+        "Pacific/Niue"
+      ],
+      [
+        "Pacific/Norfolk",
+        "Pacific/Norfolk"
+      ],
+      [
+        "Pacific/Noumea",
+        "Pacific/Noumea"
+      ],
+      [
+        "Pacific/Pago_Pago",
+        "Pacific/Pago_Pago"
+      ],
+      [
+        "Pacific/Palau",
+        "Pacific/Palau"
+      ],
+      [
+        "Pacific/Pitcairn",
+        "Pacific/Pitcairn"
+      ],
+      [
+        "Pacific/Pohnpei",
+        "Pacific/Pohnpei"
+      ],
+      [
+        "Pacific/Ponape",
+        "Pacific/Ponape"
+      ],
+      [
+        "Pacific/Port_Moresby",
+        "Pacific/Port_Moresby"
+      ],
+      [
+        "Pacific/Rarotonga",
+        "Pacific/Rarotonga"
+      ],
+      [
+        "Pacific/Saipan",
+        "Pacific/Saipan"
+      ],
+      [
+        "Pacific/Samoa",
+        "Pacific/Samoa"
+      ],
+      [
+        "Pacific/Tahiti",
+        "Pacific/Tahiti"
+      ],
+      [
+        "Pacific/Tarawa",
+        "Pacific/Tarawa"
+      ],
+      [
+        "Pacific/Tongatapu",
+        "Pacific/Tongatapu"
+      ],
+      [
+        "Pacific/Truk",
+        "Pacific/Truk"
+      ],
+      [
+        "Pacific/Wake",
+        "Pacific/Wake"
+      ],
+      [
+        "Pacific/Wallis",
+        "Pacific/Wallis"
+      ],
+      [
+        "Pacific/Yap",
+        "Pacific/Yap"
+      ],
+      [
+        "Poland",
+        "Poland"
+      ],
+      [
+        "Portugal",
+        "Portugal"
+      ],
+      [
+        "ROC",
+        "ROC"
+      ],
+      [
+        "ROK",
+        "ROK"
+      ],
+      [
+        "Singapore",
+        "Singapore"
+      ],
+      [
+        "Turkey",
+        "Turkey"
+      ],
+      [
+        "UCT",
+        "UCT"
+      ],
+      [
+        "US/Alaska",
+        "US/Alaska"
+      ],
+      [
+        "US/Aleutian",
+        "US/Aleutian"
+      ],
+      [
+        "US/Arizona",
+        "US/Arizona"
+      ],
+      [
+        "US/Central",
+        "US/Central"
+      ],
+      [
+        "US/East-Indiana",
+        "US/East-Indiana"
+      ],
+      [
+        "US/Eastern",
+        "US/Eastern"
+      ],
+      [
+        "US/Hawaii",
+        "US/Hawaii"
+      ],
+      [
+        "US/Indiana-Starke",
+        "US/Indiana-Starke"
+      ],
+      [
+        "US/Michigan",
+        "US/Michigan"
+      ],
+      [
+        "US/Mountain",
+        "US/Mountain"
+      ],
+      [
+        "US/Pacific",
+        "US/Pacific"
+      ],
+      [
+        "US/Samoa",
+        "US/Samoa"
+      ],
+      [
+        "UTC",
+        "UTC"
+      ],
+      [
+        "Universal",
+        "Universal"
+      ],
+      [
+        "W-SU",
+        "W-SU"
+      ],
+      [
+        "WET",
+        "WET"
+      ],
+      [
+        "Zulu",
+        "Zulu"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Default Timezone",
+    "type": "selection"
+  },
+  "calendar_reminder_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "calendar_reminder_ids",
+    "readonly": false,
+    "relation": "calendar.alarm",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Reminders",
+    "type": "many2many"
+  },
+  "description": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "help": "Message for the user",
+    "manual": false,
+    "name": "description",
+    "readonly": false,
+    "required": false,
+    "sanitize": true,
+    "sanitize_attributes": true,
+    "sanitize_style": false,
+    "sanitize_tags": true,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Descriptions",
+    "strip_classes": false,
+    "strip_style": false,
+    "translate": false,
+    "type": "html"
+  },
+  "location": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "location",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Appointment Location",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "questions": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Add the question to ask the user",
+    "manual": false,
+    "name": "questions",
+    "readonly": false,
+    "relation": "calendar.appointment.question",
+    "relation_field": "appointment_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Appointment Question",
+    "type": "one2many"
+  },
+  "count_appointment": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Number of appointment which is booked",
+    "manual": false,
+    "name": "count_appointment",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "appointment",
+    "type": "integer"
+  },
+  "pending_request_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "help": "Manual-confirmation bookings that are still awaiting staff review. Drives the smart button + alert banner.",
+    "manual": false,
+    "name": "pending_request_count",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": false,
+    "string": "Pending Requests",
+    "type": "integer"
+  },
+  "company_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "company_id",
+    "readonly": false,
+    "relation": "res.company",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Company",
+    "type": "many2one"
+  },
+  "resource_location_id": {
+    "allow_hierachy_operators": true,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": "(company_id and ['|', ('company_id', '=', False), ('company_id', 'parent_of', [company_id])] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', '')]) + ([])",
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "resource_location_id",
+    "readonly": false,
+    "relation": "res.partner",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Location",
+    "type": "many2one"
+  },
+  "website_id": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "website_id",
+    "readonly": false,
+    "relation": "website",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Website",
+    "type": "many2one"
+  },
+  "manual_confirm": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "manual_confirm",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Manual Confirmation",
+    "type": "boolean"
+  },
+  "allow_other_members": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "allow_other_members",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Allow Other Member",
+    "type": "boolean"
+  },
+  "event_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "event_ids",
+    "readonly": false,
+    "relation": "calendar.event",
+    "relation_field": "appointment_id",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Calender Events",
+    "type": "one2many"
+  },
+  "appointment_based_on": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "appointment_based_on",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "selection": [
+      [
+        "employee",
+        "Employee"
+      ],
+      [
+        "calendar_resource",
+        "Resource"
+      ]
+    ],
+    "sortable": true,
+    "store": true,
+    "string": "Appointment Based on",
+    "type": "selection"
+  },
+  "appointment_resource_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [
+      "appointment_resource_ids.resource_calendar_id"
+    ],
+    "domain": [
+      [
+        "resource_calendar_id",
+        "!=",
+        false
+      ]
+    ],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "appointment_resource_ids",
+    "readonly": false,
+    "relation": "calendar.appointment.resource",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Appointment Resources",
+    "type": "many2many"
+  },
+  "image_1920": {
+    "attachment": true,
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": false,
+    "manual": false,
+    "name": "image_1920",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Image",
+    "type": "binary"
+  },
+  "short_description": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "short_description",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Description",
+    "translate": false,
+    "type": "text"
+  },
+  "share_url": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "website_url"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "help": "Absolute deep-link to this appointment's public booking page. Share with anyone — they'll land directly on this service's calendar/staff/time picker, skipping the service-chooser step.",
+    "manual": false,
+    "name": "share_url",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Share URL",
+    "translate": false,
+    "trim": true,
+    "type": "char"
+  },
+  "create_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created by",
+    "type": "many2one"
+  },
+  "create_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Created on",
+    "type": "datetime"
+  },
+  "write_uid": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_uid",
+    "readonly": true,
+    "relation": "res.users",
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated by",
+    "type": "many2one"
+  },
+  "write_date": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "write_date",
+    "readonly": true,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Last Updated on",
+    "type": "datetime"
+  },
+  "create_crm_lead": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [],
+    "exportable": true,
+    "groupable": true,
+    "manual": false,
+    "name": "create_crm_lead",
+    "readonly": false,
+    "required": false,
+    "searchable": true,
+    "sortable": true,
+    "store": true,
+    "string": "Create Opportunities",
+    "type": "boolean"
+  },
+  "crm_lead_ids": {
+    "allow_hierachy_operators": false,
+    "change_default": false,
+    "company_dependent": false,
+    "context": {},
+    "default_export_compatible": false,
+    "depends": [],
+    "domain": [],
+    "exportable": true,
+    "groupable": true,
+    "groups": "sales_team.group_sale_salesman",
+    "manual": false,
+    "name": "crm_lead_ids",
+    "readonly": false,
+    "relation": "crm.lead",
+    "required": false,
+    "searchable": true,
+    "sortable": false,
+    "store": true,
+    "string": "Leads/Opportunity",
+    "type": "many2many"
+  },
+  "crm_lead_count": {
+    "change_default": false,
+    "company_dependent": false,
+    "default_export_compatible": false,
+    "depends": [
+      "event_ids",
+      "event_ids.opportunity_id"
+    ],
+    "exportable": true,
+    "groupable": false,
+    "groups": "sales_team.group_sale_salesman",
+    "manual": false,
+    "name": "crm_lead_count",
+    "readonly": true,
+    "required": false,
+    "searchable": false,
+    "sortable": false,
+    "store": false,
+    "string": "Crm Leads Count",
+    "type": "integer"
+  }
+}

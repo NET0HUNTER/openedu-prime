@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "C-1 Fees Term"
+    },
+    {
+        "id":  2,
+        "display_name":  "C-2 Fees Term"
+    },
+    {
+        "id":  3,
+        "display_name":  "C-3 Fees Term"
+    },
+    {
+        "id":  4,
+        "display_name":  "C-4 Fees Term"
+    },
+    {
+        "id":  5,
+        "display_name":  "Fixed Days fees Term"
+    }
+]

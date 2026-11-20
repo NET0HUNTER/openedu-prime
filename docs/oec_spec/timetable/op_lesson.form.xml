@@ -1,0 +1,36 @@
+﻿<form string="Lesson Information">
+                <header>
+                    <button type="object" name="lesson_plan" invisible="state != 'draft'" string="Planned" class="oe_highlight"/>
+                    <button type="object" name="lesson_conduct" invisible="state != 'plan'" string="Conducted" class="oe_highlight"/>
+                    <button type="object" name="lesson_draft" invisible="state != 'cancel'" string="Set to Draft" class="oe_highlight"/>
+                    <button type="object" name="lesson_cancel" invisible="state not in ['draft', 'plan']" string="Cancel"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,plan,conduct"/>
+                </header>
+                <sheet>
+                    <field name="active" invisible="1"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="course_id" on_change="1" can_create="True" can_write="True"/>
+                            <field name="batch_id" can_create="True" can_write="True"/>
+                            <field name="subject_id" can_create="True" can_write="True"/>
+                            <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                        </group>
+                        <group>
+                            <field name="faculty_id" on_change="1" can_create="True" can_write="True"/>
+                            <field name="start_datetime"/>
+                            <field name="end_datetime"/>
+                            <field name="session_ids" widget="many2many_tags" can_create="True" can_write="True"/>
+
+                        </group>
+                    </group>
+                    <div class="text-left">
+                        <h2>
+                            <strong>Lesson Topic</strong>
+                        </h2>
+                    </div>
+                    <field name="lesson_topic" placeholder="Lesson Topic ..." colspan="4"/>
+                </sheet>
+                <chatter/>
+            </form>

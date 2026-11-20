@@ -1,0 +1,12 @@
+<search string="Asset Account">
+                <field name="name" string="Asset"/>
+                <field name="date"/>
+                <filter string="Current" name="current" domain="[('state','in', ('draft','open', 'oe_paused'))]" help="Assets in draft, open, and paused states"/>
+                <filter string="Closed" name="closed" domain="[('state','=', 'close')]" help="Assets in closed state"/>
+                <field name="category_id" string="Asset Category"/>
+                <field name="partner_id" filter_domain="[('partner_id','child_of',self)]"/>
+                <group>
+                    <filter string="Date" name="month" domain="[]" context="{'group_by':'date'}"/>
+                    <filter string="Asset Category" name="category" domain="[]" context="{'group_by':'category_id'}"/>
+                </group>
+            </search>

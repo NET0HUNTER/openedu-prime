@@ -1,0 +1,36 @@
+<kanban sample="1" class="o_kanban_mobile" js_class="account_documents_kanban">
+                <field name="currency_id" on_change="1"/>
+                <templates>
+                    <t t-name="card">
+                        <main class="oe_kanban_global_click d-flex flex-column gap-2 p-1 position-relative">
+                            <!-- Card Header -->
+                            <div class="d-flex justify-content-between align-items-start gap-2">
+                                <div class="flex-grow-1 d-flex flex-column gap-1" style="min-width: 0;">
+                                    <h5 class="mb-0 fw-bold text-primary text-truncate" t-att-title="record.name.value" style="font-size: 1.15rem;">
+                                        <field name="name"/>
+                                    </h5>
+                                </div>
+                                <div class="flex-shrink-0">
+                                    <field name="state" widget="label_selection" options="{'classes': {'draft': 'info', 'sent': 'primary', 'reconciled': 'success'}}"/>
+                                </div>
+                            </div>
+                            
+                            <!-- Date -->
+                            <div class="d-flex align-items-center small text-muted">
+                                <i class="fa fa-calendar me-2" role="img" aria-label="Date" title="Date"/>
+                                <field name="date"/>
+                            </div>
+                            
+                            <!-- Amount -->
+                            <div class="d-flex align-items-center small text-muted">
+                                <i class="fa fa-money me-2" role="img" aria-label="Amount" title="Amount"/>
+                                <field name="amount" widget="monetary"/>
+                            </div>
+                            
+                            <div class="mt-1" t-if="record.activity_ids.raw_value.length &gt; 0">
+                                <field name="activity_ids" widget="kanban_activity"/>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

@@ -1,0 +1,13 @@
+﻿<list string="Exam Session">
+                    <field name="name"/>
+                    <field name="exam_code"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="course_id" optional="show" on_change="1"/>
+                    <field name="batch_id" optional="show"/>
+                    <field name="exam_type" optional="show"/>
+                    <field name="evaluation_type" optional="show"/>
+                    <field name="venue" optional="show"/>
+                    <field name="state"/>
+                    <field name="company_id" optional="show"/>
+                </list>

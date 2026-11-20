@@ -1,0 +1,95 @@
+<kanban default_group_by="stage_id" class="o_kanban_small_column o_opportunity_kanban" highlight_color="color" on_create="quick_create" quick_create_view="helpdesk_basic.quick_create_ticket_form" archivable="false" sample="1">
+                <field name="stage_id" options="{&quot;group_by_tooltip&quot;: {&quot;description&quot;: &quot;Stage Description&quot;}}" on_change="1"/>
+                <field name="id"/>
+                <field name="issue_name"/>
+                <field name="team_id" on_change="1"/>
+                <field name="user_id"/>
+                <field name="partner_id" on_change="1"/>
+                <field name="color"/>
+                <field name="priority"/>
+                <field name="help_description"/>
+                <field name="ticket_seq"/>
+                <field name="active"/>
+                <field name="start_date"/>
+                <field name="activity_ids"/>
+                <templates>
+                    <t t-name="menu" t-if="!selection_mode">
+                        <t t-if="widget.editable"><a role="menuitem" type="open" class="dropdown-item">Edit</a></t>
+                        <a t-if="record.active.raw_value" role="menuitem" type="archive" class="dropdown-item">Archive</a>
+                        <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                        <div role="separator" class="dropdown-divider"/>
+                        <field name="color" widget="kanban_color_picker"/>
+                    </t>
+                    <t t-name="card">
+                        <div class="oe_kanban_global_click d-flex flex-column h-100 p-0 bg-white" style="border-radius: 6px; overflow: hidden;">
+                            
+                            <!-- High-Density Header -->
+                            <div class="d-flex justify-content-between align-items-start p-2 px-1 pt-1 w-100 border-bottom" style="border-color: #f3f4f6 !important;">
+                                <div class="d-flex flex-column flex-grow-1" style="min-width: 0;">
+                                    <h5 class="fw-bold text-dark mb-0 text-truncate" style="font-size: 1.05rem;">
+                                        <field name="issue_name"/>
+                                        <span t-if="record.ticket_seq.raw_value" class="text-muted fw-normal ms-1" style="font-size: 0.85em;">
+                                            (#<field name="ticket_seq"/>)
+                                        </span>
+                                    </h5>
+                                </div>
+                            </div>
+                            
+                            <!-- Body: Clean Text Metadata & Tags -->
+                            <div class="p-2 px-1 flex-grow-1 d-flex flex-column gap-1">
+                                <!-- Partner or Team -->
+                                <div class="text-dark text-truncate" style="font-size: 0.9rem; font-weight: 500;">
+                                    <t t-if="record.partner_id.raw_value">
+                                        <field name="partner_id" on_change="1"/>
+                                    </t>
+                                    <t t-elif="record.team_id.raw_value">
+                                        <field name="team_id" on_change="1"/>
+                                    </t>
+                                </div>
+                                
+                                <!-- Issue Type (Clean Text) -->
+                                <div t-if="record.issue_type_id.raw_value" class="text-muted text-truncate" style="font-size: 0.85rem;">
+                                    <field name="issue_type_id"/>
+                                </div>
+                                
+                                <!-- Priority and Tags inline -->
+                                <div class="d-flex align-items-center gap-2 mt-1" style="max-height: 22px; overflow: hidden;">
+                                    <div class="flex-shrink-0">
+                                        <field name="priority" widget="priority"/>
+                                    </div>
+                                    <div t-if="record.tag_ids.raw_value.length &gt; 0" class="flex-grow-1 text-truncate">
+                                        <field name="tag_ids" widget="many2many_tags"/>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dense Footer: Start Date, Activity, Avatar inline -->
+                            <div class="d-flex justify-content-between align-items-center px-1 py-1 w-100 bg-white border-top" style="border-color: #f3f4f6 !important;">
+                                <!-- Left: Start Date & Activities -->
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <i class="fa fa-clock-o text-muted" style="font-size: 0.85rem;line-height: normal;"/>
+                                        <span class="text-dark fw-bold" style="font-size: 0.85rem;">
+                                            <field name="start_date" widget="datetime"/>
+                                        </span>
+                                    </div>
+                                    <div class="o_kanban_inline_block border-start ps-2" style="border-color: #e5e7eb !important;">
+                                        <field name="activity_ids" widget="kanban_activity"/>
+                                    </div>
+                                </div>
+                                
+                                <!-- Right: Avatar -->
+                                <div class="d-flex align-items-center gap-1 flex-shrink-0">
+                                    <t t-if="record.user_id.raw_value">
+                                        <span class="text-muted fw-medium text-end text-truncate" style="font-size: 0.75rem; max-width: 80px;">
+                                            <field name="user_id"/>
+                                        </span>
+                                    </t>
+                                    <field name="user_id" widget="many2one_avatar_user"/>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </t>
+                </templates>
+            </kanban>

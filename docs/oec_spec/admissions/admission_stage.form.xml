@@ -1,0 +1,13 @@
+﻿<form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sequence"/>
+                        <field name="fold"/>
+                        <field name="state"/>
+                        <field name="view_boolean"/>
+                        <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>

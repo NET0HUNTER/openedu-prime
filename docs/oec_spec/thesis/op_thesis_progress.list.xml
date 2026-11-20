@@ -1,0 +1,9 @@
+<list string="Progress Reports">
+                    <field name="name"/>
+                    <field name="registration_id" on_change="1"/>
+                    <field name="student_id"/>
+                    <field name="report_id"/>
+                    <field name="report_date"/>
+                    <field name="feedback_date" optional="hide"/>
+                    <field name="state"/>
+                </list>

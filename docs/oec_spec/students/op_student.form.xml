@@ -1,0 +1,281 @@
+﻿<form string="Student">
+                    <header>
+                    </header>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                    <button class="btn oe_stat_button" type="object" name="get_student" style="border-right: 1px solid;" icon="fa-book">
+                        <field string="Admission" name="student_count" widget="statinfo"/>
+                    </button>
+                    <button class="btn oe_stat_button" type="object" name="action_view_invoice" style="border-right: 1px solid;" icon="fa-pencil-square-o">
+                        <field string="Invoiced" name="total_invoiced" widget="statinfo" on_change="1"/>
+                    </button>
+                    <button class="btn oe_stat_button" type="object" name="count_fees_plan_details" style="border-right: 1px solid;border-bottom: 1px solid;white-space: inherit;display: inline-flex;" icon="fa-file">
+                        <field string="Fees Plan Details" name="fees_plan_details_count" widget="statinfo"/>
+                    </button>
+                    <button class="btn oe_stat_button" type="object" name="get_assignment" style="border-right: 1px solid;" icon="fa-newspaper-o">
+                        <field string="Assignment" name="assignment_count" widget="statinfo"/>
+                    </button>
+                    <button name="get_attendance" class="btn oe_stat_button" icon="fa-calendar" type="object">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Attendance</span>
+                        </div>
+                    </button>
+                    <button class="btn oe_stat_button" type="object" name="get_activity" style="border-right: 1px solid;" icon="fa-book" context="{'default_student_id': id}">
+                            <field string="Activity" name="activity_count" widget="statinfo"/>
+                        </button>
+                <button name="open_grade_book_grid" class="btn oe_stat_button" icon="fa-book" type="object">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">GradeBook</span>
+                    </div>
+                </button>
+                <button class="btn oe_stat_button" type="object" name="get_placement" style="border-right: 1px solid;" icon="fa-briefcase">
+                    <field string="Placements" name="placement_count" widget="statinfo"/>
+                </button>
+                <button class="btn oe_stat_button" type="object" name="get_job_post" style="border-right: 1px solid;" icon="fa-file-text">
+                    <field string="Job Post" name="Job_post_count" widget="statinfo"/>
+                </button>
+                    <button class="btn oe_stat_button" type="object" name="count_discipline" style="border-right: 1px solid;" icon="fa-file">
+                        <field string="Discipline" name="discipline_count" widget="statinfo"/>
+                    </button>
+                    <button class="btn oe_stat_button" type="object" name="count_media_movement_lines" style="border-right: 1px solid;" icon="fa-file">
+                        <field string="Media" name="media_movement_lines_count" widget="statinfo"/>
+                    </button>
+                <button class="btn oe_stat_button" type="object" name="get_health" style="border-right: 1px solid;" icon="fa-medkit">
+                    <field string="Health" name="health_count" widget="statinfo"/>
+                </button>
+                    <button name="get_parent" class="btn oe_stat_button" icon="fa-user-o" type="object">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Parents</span>
+                        </div>
+                    </button>
+                    <button class="btn oe_stat_button" type="object" name="count_crm_lead" style="border-right: 1px solid;" icon="fa-file">
+                        <field string="Leads" name="crm_lead_count" widget="statinfo"/>
+                    </button>
+                        </div>
+                        <field name="active" invisible="True"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <div class="row flex-column flex-sm-row align-items-center">
+                            <div class="o_employee_avatar ms-2 p-0 h-100 mw-25 align-self-start align-self-sm-center">
+                                <field name="image_1920" widget="image" class="m-0" options="{&quot;size&quot;: [128,158], &quot;zoom&quot;: true, &quot;preview_image&quot;:&quot;avatar_128&quot;}" on_change="1"/>
+                            </div>
+                            <div class="align-self-start o_employee_form_header_info">
+                                <div class="oe_title ps-0 pe-2 mw-100">
+                                    <h5 class="d-flex align-items-baseline mb-0">
+                                        <field name="title" options="{'no_create': True}" placeholder="Title" on_change="1" can_create="True" can_write="True"/>
+                                    </h5>
+                                    <div class="d-flex student-name">
+                                        <div class="">
+                                            <h1 class="d-md-flex align-items-center gap-1 w-50">
+                                                <field name="name" placeholder="Name" required="1" invisible="True" on_change="1"/>
+                                                <field name="first_name" widget="inline_char" required="1" placeholder="First Name" on_change="1"/>
+                                                <field name="middle_name" widget="inline_char" placeholder="Middle Name" on_change="1"/>
+                                                <field name="last_name" widget="inline_char" placeholder="Last Name" on_change="1"/>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-baseline w-md-50">
+                                        <i class="fa fa-fw me-1 fa-envelope text-primary" title="Email"/>
+                                        <field name="email" class="w-100" widget="email" placeholder="Email"/>
+                                    </div>
+                                    <div class="d-flex align-items-baseline w-md-50">
+                                        <i class="fa fa-fw me-1 fa-phone text-primary" title="Phone"/>
+                                        <field name="phone" class="w-100" widget="phone" placeholder="Phone" on_change="1"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <group>
+                            <group>
+                                <field name="gender" required="1"/>
+                                <field name="birth_date"/>
+                                <field name="certificate_number" invisible="True"/>
+                                <label for="street" string="Address"/>
+                                <div name="o_address_format">
+                                    <field name="street" placeholder="Street..." on_change="1"/>
+                                    <field name="street2" placeholder="Street2" on_change="1"/>
+                                    <div class="address_format d-md-flex">
+                                        <field name="city" placeholder="City" on_change="1"/>
+                                        <field name="state_id" class="oe_no_button" placeholder="State" options="{&quot;no_open&quot;: True}" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="zip" placeholder="ZIP" on_change="1"/>
+                                    </div>
+                                    <field name="country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True}" on_change="1" can_create="True" can_write="True"/>
+                                </div>
+                                <field name="emergency_contact" context="{'show_address': 1}" options="{&quot;always_reload&quot;: True}" can_create="True" can_write="True"/>
+                    <field name="alumni_boolean" style="margin-right: 0px !important;"/>
+                            </group>
+                            <group>
+                    <field name="company_id" optional="hide" can_create="True" can_write="True"/>
+                                <field name="lang" on_change="1"/>
+                                <field name="blood_group"/>
+                                <field name="nationality" can_create="True" can_write="True"/>
+                                <field name="visa_info"/>
+                                <field name="category_id" can_create="True" can_write="True"/>
+                                <field name="user_id" string="User" readonly="1"/>
+                                <field name="partner_id" placeholder="Partner" required="0" on_change="1" can_create="True" can_write="True"/>
+                            </group>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Other Information" name="other_information" autofocus="autofocus">
+                                <group name="other_info">
+                                    <field name="child_ids" mode="kanban" context="{'default_parent_id': id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_lang': lang, 'default_user_id': user_id, 'default_type': is_company and 'contact' or 'other'}" on_change="1">
+                                        <kanban color="color">
+                                            <field name="color"/>
+                                            <field name="type" on_change="1"/>
+                                            <field name="is_company" on_change="1"/>
+                                            <templates>
+                                                <t t-name="card" class="flex-row">
+                                                    <aside class="o_kanban_aside_full">
+                                                        <field name="avatar_128" class="o_kanban_image_fill w-100" widget="image" options="{'img_class': 'object-fit-cover'}" alt="Contact image" invisible="type != 'contact'"/>
+                                                        <field name="avatar_128" class="o_kanban_image_fill w-100" widget="image" options="{'img_class': 'object-fit-contain p-2'}" alt="Contact image" invisible="type == 'contact'"/>
+                                                    </aside>
+                                                    <main class="ps-2 ps-md-0">
+                                                        <field name="name" invisible="not name" class="fw-bold" on_change="1"/>
+                                                        <field name="type" invisible="name" class="fw-bold" on_change="1"/>
+                                                        <div t-if="record.email.raw_value" class="text-truncate">
+                                                            <i class="fa fa-fw me-1 fa-envelope text-primary" title="Email"/>
+                                                            <field name="email" on_change="1"/>
+                                                        </div>
+                                                        <div t-if="record.phone.raw_value">
+                                                            <i class="fa fa-fw me-1 fa-phone text-primary" title="Phone"/>
+                                                            <field name="phone" on_change="1"/>
+                                                        </div>
+                                                        <div invisible="not function or is_company">
+                                                            <i class="fa fa-fw me-1 fa-suitcase text-primary" title="Position"/>
+                                                            <field name="function"/>
+                                                        </div>
+                                                        <div t-if="record.type.raw_value != 'contact' and (record.city.raw_value or record.country_id.raw_value)">
+                                                            <i class="fa fa-fw me-1 fa-map-marker text-primary" title="Location"/>
+                                                            <field name="city" on_change="1"/>
+                                                            <span t-if="record.city.raw_value and record.country_id.raw_value">, </span>
+                                                            <field name="country_id" on_change="1"/>
+                                                        </div>
+                                                    </main>
+                                                </t>
+                                            </templates>
+                                        </kanban>
+                                        <form string="Contact / Address">
+                                            <sheet>
+                                                <field name="type" required="1" widget="radio" options="{'horizontal': true}" on_change="1"/>
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <field name="image_1920" widget="contact_image" nolabel="1" options="{'preview_image': 'avatar_128', 'size': [100,100], 'img_class': 'rounded border'}" on_change="1"/>
+                                                    <div class="flex-grow-1">
+                                                        <h3>
+                                                            <field name="name" class="d-block" string="Name" default_focus="1" required="type == 'contact'" placeholder="e.g. Brandon Freeman" on_change="1"/>
+                                                        </h3>
+                                                        <div class="row flex-row">
+                                                            <div class="d-flex align-items-baseline">
+                                                                <i class="fa fa-fw me-1 fa-envelope text-primary" title="Email"/>
+                                                                <field name="email" widget="email" class="w-100" context="{'gravatar_image': True}" required="user_ids" placeholder="Email" on_change="1"/>
+                                                            </div>
+                                                            <div class="d-flex align-items-baseline">
+                                                                <i class="fa fa-fw me-1 fa-phone text-primary" title="Phone"/>
+                                                                <field name="phone" widget="phone" class="w-100" placeholder="Phone" on_change="1"/>
+                                                            </div>
+                                                            <div invisible="is_company or type != 'contact'" class="d-flex align-items-baseline">
+                                                                <i class="fa fa-fw me-1 fa-suitcase text-primary" title="Position"/>
+                                                                <field name="function" placeholder="Job title"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <group invisible="type == 'contact'" name="other_info">
+                                                    <group>
+                                                        <span class="o_form_label o_td_label o_address_type">
+                                                            <field name="type_address_label" readonly="1" class="fw-bold"/>
+                                                        </span>
+                                                        <div class="o_address_format" name="div_address">
+                                                            <field name="street" placeholder="Street..." class="o_address_street" on_change="1"/>
+                                                            <field name="street2" placeholder="Street 2..." class="o_address_street" on_change="1"/>
+                                                            <field name="city" placeholder="City" class="o_address_city" on_change="1"/>
+                                                            <field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" context="{'country_id': country_id, 'default_country_id': country_id, 'zip': zip}" on_change="1" can_create="True" can_write="True"/>
+                                                            <field name="zip" placeholder="ZIP" class="o_address_zip" on_change="1"/>
+                                                            <field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" on_change="1" can_create="True" can_write="True"/>
+                                                        </div>
+                                                    </group>
+                                                </group>
+                                                <group>
+                                                    <field name="company_id" invisible="1" on_change="1" can_create="True" can_write="True"/>    <!-- Need to save value from parented record, cf onchange -->
+                                                    <label for="comment"/>
+                                                    <field name="comment" options="{'height': 100}" placeholder="Internal notes..." nolabel="1"/>
+                                                </group>
+                                                <field name="lang" invisible="True" on_change="1"/>  <!-- Need to add lang to save default value from parented record -->
+                                            </sheet>
+                                        <field name="user_ids" invisible="True" readonly="True" data-used-by="required='user_ids' (field,email)" on_change="1"/>
+<field name="is_company" invisible="True" readonly="True" data-used-by="invisible=&quot;is_company or type != 'contact'&quot; (div,None)" on_change="1"/>
+</form>
+                                    </field>
+                                </group>
+                                <group string="miscellaneous">
+                                    <field name="gr_no"/>
+                    <field name="library_card_id" can_create="True" can_write="True"/>
+                                </group>
+                    <group string="Attendance">
+                            <field name="pin" string="PIN"/>
+                             <label for="barcode"/>
+                            <div class="o_row" name="barcode">
+                                <field name="barcode"/>
+                                <button string="Generate" class="btn btn-link" type="object" name="generate_random_barcode" invisible="barcode != False"/>
+                            </div>
+                    </group>
+                            </page>
+                    <page name="achievement" string="Achievement">
+                        <div class="row">
+                            <div class="o_group_resume o_group_achievement col-md-12 d-flex">
+                                <field mode="list" name="achievement_line_ids" readonly="1" widget="ach_page">
+                                    <list>
+                                        <field name="student_id" on_change="1"/>
+                                        <field name="faculty_id"/>
+                                        <field name="achievement_type_id"/>
+                                        <field name="description"/>
+                                        <field name="achievement_date"/>
+                                        <field name="display_name" invisible="1"/>
+                                    </list>
+                                </field>
+                            </div>
+                        </div>
+                    </page>
+                    <page name="student_skills" string="Skills">
+                        <separator string="Technical Skills"/>
+                            <field mode="list" name="student_skill_line" nolabel="1" colspan="2">
+                                <list>
+                                    <field name="student_skill_type_id"/>
+                                    <field name="student_skills_id"/>
+                                    <field name="student_skill_level_id" on_change="1"/>
+                                    <field name="progress" widget="progressbar"/>
+                                </list>
+                            </field>
+                <separator string="Self Assessed Skills"/>
+                <field name="skill_line">
+                    <list>
+                        <field name="skill_type_id"/>
+                        <field name="level_id" on_change="1"/>
+                        <field name="progress" widget="progressbar"/>
+                    </list>
+                </field>
+                    </page>
+                    <page string="Alumni Details" invisible="alumni_boolean == False">
+                        <group>
+                            <group>
+                                <field name="alumni_id" can_create="True" can_write="True"/>
+                                <field name="passing_year_id" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="current_position"/>
+                                <field name="current_job"/>
+                            </group>
+                        </group>
+                    </page>
+                <page string="Face Recognition" name="face_recognition">
+                    <group>
+                        <widget name="cam_widget"/>
+                        <field name="descriptor"/>
+                        <field name="image_detect" widget="image" class="w-50 mt-2" on_change="1"/>
+                    </group>
+                </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                <field name="is_company" invisible="True" readonly="True" data-used-by="context=&quot;{'default_parent_id': id, 'default_street': street, 'default_street2': street2, 'default_city': city, 'default_state_id': state_id, 'default_zip': zip, 'default_country_id': country_id, 'default_lang': lang, 'default_user_id': user_id, 'default_type': is_company and 'contact' or 'other'}&quot; (field,child_ids)" on_change="1"/>
+</form>

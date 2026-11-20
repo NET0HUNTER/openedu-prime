@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "Academic"
+    },
+    {
+        "id":  12,
+        "display_name":  "Academic / course requirement and course content"
+    },
+    {
+        "id":  10,
+        "display_name":  "Academic / Examinations related issues"
+    },
+    {
+        "id":  8,
+        "display_name":  "Academic / Grades Issues"
+    },
+    {
+        "id":  11,
+        "display_name":  "Academic / Issues related to Admissions"
+    }
+]

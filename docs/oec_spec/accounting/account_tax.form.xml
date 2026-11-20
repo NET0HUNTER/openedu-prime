@@ -1,0 +1,91 @@
+<form string="Account Tax">
+                    <field name="company_id" invisible="1" on_change="1"/>
+                    <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="amount_type" on_change="1"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="is_used" invisible="1"/>
+                            <field name="type_tax_use"/>
+                            <field name="tax_scope"/>
+                            <label for="amount" invisible="amount_type not in ('fixed', 'percent', 'division')"/>
+                            <div invisible="amount_type not in ('fixed', 'percent', 'division')">
+                                <field name="amount" class="oe_inline" nolabel="1" on_change="1"/>
+                                <span class="o_form_label oe_inline" invisible="amount_type == 'fixed'">%</span>
+                            </div>
+                            <field name="fiscal_position_ids" widget="many2many_tags" placeholder="all" on_change="1" can_create="True" can_write="True"/>
+                            <field name="original_tax_ids" widget="many2many_tags" invisible="not display_alternative_taxes_field" options="{'no_create': True}" can_create="True" can_write="True"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Definition" name="definition">
+                            <group invisible="amount_type == 'group'">
+                                <field name="country_code" invisible="1"/>
+                                <group string="Distribution for Invoices" class="mw-100">
+                                    <field name="invoice_repartition_line_ids" nolabel="1" colspan="2" on_change="1"><list editable="bottom" create="1" delete="1">
+                    <field name="sequence" widget="handle"/>
+                    <field name="factor_percent" invisible="repartition_type == 'base'" widget="account_tax_repartition_line_factor_percent" on_change="1"/>
+                    <field name="repartition_type" on_change="1"/>
+                    <field name="account_id" invisible="repartition_type == 'base'" options="{'no_create': True}" on_change="1" can_create="True" can_write="True"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'no_create': True}" domain="tag_ids_domain" can_create="True" can_write="True"/>
+                    <field name="use_in_tax_closing" optional="hidden" invisible="repartition_type == 'base'"/>
+                    <field name="company_id" column_invisible="True" on_change="1"/>
+                    <field name="tag_ids_domain" column_invisible="True"/>
+                </list></field>
+                                </group>
+                                <group string="Distribution for Refunds" class="mw-100">
+                                    <field name="refund_repartition_line_ids" nolabel="1" colspan="2"><list editable="bottom" create="1" delete="1">
+                    <field name="sequence" widget="handle"/>
+                    <field name="factor_percent" invisible="repartition_type == 'base'" widget="account_tax_repartition_line_factor_percent" on_change="1"/>
+                    <field name="repartition_type" on_change="1"/>
+                    <field name="account_id" invisible="repartition_type == 'base'" options="{'no_create': True}" on_change="1" can_create="True" can_write="True"/>
+                    <field name="tag_ids" widget="many2many_tags" options="{'no_create': True}" domain="tag_ids_domain" can_create="True" can_write="True"/>
+                    <field name="use_in_tax_closing" optional="hidden" invisible="repartition_type == 'base'"/>
+                    <field name="company_id" column_invisible="True" on_change="1"/>
+                    <field name="tag_ids_domain" column_invisible="True"/>
+                </list></field>
+                                </group>
+                            </group>
+                            <field name="children_tax_ids" invisible="amount_type != 'group' or type_tax_use == 'none'" domain="[('type_tax_use','in',('none',type_tax_use)), ('amount_type','!=','group')]" can_create="True" can_write="True">
+                                <list string="Children Taxes">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="amount_type" on_change="1"/>
+                                    <field name="amount" on_change="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Advanced Options" name="advanced_options">
+                            <group>
+                                <group>
+                                    <field name="invoice_label"/>
+                                    <field name="description"/>
+                                    <field name="tax_group_id" invisible="amount_type == 'group'" required="amount_type != 'group'" can_create="True" can_write="True"/>
+                                    
+                                    <field name="company_id" options="{'no_create': True}" on_change="1"/>
+                                    <field name="country_id" required="True" on_change="1" can_create="True" can_write="True"/>
+                <field name="ubl_cii_tax_category_code" on_change="1"/>
+                <field name="ubl_cii_tax_exemption_reason_code" invisible="not ubl_cii_requires_exemption_reason"/>
+                                    <field name="invoice_legal_notes"/>
+                                </group>
+                                <group name="advanced_booleans">
+                                    <field name="price_include" invisible="1" on_change="1"/>
+                                    <field name="price_include_override" invisible="amount_type == 'group' or has_negative_factor" placeholder="Default" on_change="1"/>
+                                    <field name="include_base_amount" invisible="amount_type == 'group'"/>
+                                    <field name="is_base_affected" invisible="1" column_invisible="1"/>
+                                    <field name="hide_tax_exigibility" invisible="1"/>
+                                    <field name="tax_exigibility" widget="radio" invisible="amount_type == 'group' or not hide_tax_exigibility"/>
+                                    <field name="cash_basis_transition_account_id" options="{'no_create': True}" invisible="tax_exigibility == 'on_invoice'" required="tax_exigibility == 'on_payment'" can_create="True" can_write="True"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+                <field name="display_alternative_taxes_field" invisible="True" readonly="True" data-used-by="invisible='not display_alternative_taxes_field' (field,original_tax_ids)"/>
+<field name="ubl_cii_requires_exemption_reason" invisible="True" readonly="True" data-used-by="invisible='not ubl_cii_requires_exemption_reason' (field,ubl_cii_tax_exemption_reason_code)" on_change="1"/>
+<field name="has_negative_factor" invisible="True" readonly="True" data-used-by="invisible=&quot;amount_type == 'group' or has_negative_factor&quot; (field,price_include_override)"/>
+</form>

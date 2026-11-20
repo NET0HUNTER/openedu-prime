@@ -1,0 +1,14 @@
+<search string="Results">
+                <field name="name"/>
+                <field name="quiz_id"/>
+                <field name="user_id"/>
+                <group>
+                    <filter string="Quiz" name="group_by_result_quiz_id" context="{'group_by': 'quiz_id'}"/>
+                    <filter string="Quiz Category" name="group_by_result_categ_id" context="{'group_by': 'categ_id'}"/>
+                    <filter string="User" name="group_by_result_user_id" context="{'group_by': 'user_id'}"/>
+                    <filter string="Finished On" name="group_by_result_finish" context="{'group_by': 'finish_date'}"/>
+                </group>
+                <searchpanel>
+                    <field name="quiz_id"/>
+                </searchpanel>
+            </search>

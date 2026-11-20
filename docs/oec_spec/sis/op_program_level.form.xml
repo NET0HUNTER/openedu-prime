@@ -1,0 +1,17 @@
+﻿<form string="Program Level">
+                    <header/>
+                    <sheet>
+                        <div name="button_box" class="oe_button_box">
+                        </div>
+                        <div style="width:100%;" class="row align-items-center">
+                            <div class="mb16 col-12 col-lg-10 px-4">
+                                <div class="row oe_title">
+                                    <label for="name" string="Program Level"/>
+                                    <h1>
+                                        <field name="name" options="{'line_breaks': False}" widget="text" default_focus="1" placeholder="e.g. &quot;Master&quot;"/>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>

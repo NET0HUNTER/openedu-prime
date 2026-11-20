@@ -1,0 +1,5332 @@
+﻿[
+    {
+        "id":  1254,
+        "name":  "Question Bank",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.question.bank",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1342,
+        "name":  "Attendance Registers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.attendance.register",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1400,
+        "name":  "Answer Sheet",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.answersheet.configuration",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1483,
+        "name":  "Grade Template",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.grade.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1303,
+        "name":  "Vehicles",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.vehicle",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1385,
+        "name":  "LMS Dashboard Templates",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "lms.stats.dashboard"
+    },
+    {
+        "id":  1307,
+        "name":  "Cost Plan",
+        "type":  "ir.actions.act_window",
+        "res_model":  "cost.plan",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  564,
+        "name":  "Moves Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "stock.move",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_done\u0027: 1,\n                \u0027pivot_measures\u0027: [\u0027quantity\u0027, \u0027__count__\u0027],\n                }",
+        "tag":  null
+    },
+    {
+        "id":  1002,
+        "name":  "Approval Request",
+        "type":  "ir.actions.act_window",
+        "res_model":  "multi.request",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027line_ids.user_id\u0027,\u0027=\u0027,uid),(\u0027request_status\u0027,\u0027=\u0027,\u0027pending\u0027)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  660,
+        "name":  "Assets Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "asset.asset.report",
+        "view_mode":  "graph,pivot",
+        "domain":  "[(\u0027asset_category_id.type\u0027, \u0027=\u0027, \u0027purchase\u0027)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  945,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027openeducat_core\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1274,
+        "name":  "Student Progression",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.progression",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  327,
+        "name":  "Event Tags Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.tag.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  333,
+        "name":  "Payment Methods",
+        "type":  "ir.actions.act_window",
+        "res_model":  "payment.method",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027is_primary\u0027, \u0027=\u0027, True)]",
+        "context":  "{\u0027active_test\u0027: False, \u0027search_default_available_pms\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1134,
+        "name":  "Media Units",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.unit",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  755,
+        "name":  "Expense Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.product",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027can_be_expensed\u0027, \u0027=\u0027, True)]",
+        "context":  "{\n            \u0027default_can_be_expensed\u0027: 1,\n            \u0027default_type\u0027: \u0027service\u0027,\n            \u0027default_expense_policy\u0027 : \u0027cost\u0027,\n        }",
+        "tag":  null
+    },
+    {
+        "id":  311,
+        "name":  "Attendees",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.registration",
+        "view_mode":  "graph,pivot,kanban,list,form",
+        "domain":  "",
+        "context":  "{\n                \u0027search_default_filter_last_month_creation\u0027: 1,\n                \u0027search_default_taken\u0027: 1,\n                \u0027search_default_status\u0027: 2,\n                \u0027search_default_group_by_create_date_day\u0027: 3,\n                \u0027search_default_group_event\u0027: 1,\n                \u0027registration_view_hide_group_by_create_date_week\u0027: 1,\n            }\n        ",
+        "tag":  null
+    },
+    {
+        "id":  499,
+        "name":  "Mass Mailing Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mailing.trace.report",
+        "view_mode":  "graph,pivot,list",
+        "domain":  "[(\u0027mailing_type\u0027, \u0027=\u0027, \u0027mail\u0027)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  596,
+        "name":  "Stock",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.product",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027is_storable\u0027, \u0027=\u0027, True)]",
+        "context":  "{\u0027default_is_storable\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  488,
+        "name":  "Agents",
+        "type":  "ir.actions.act_window",
+        "res_model":  "im_livechat.channel.member.history",
+        "view_mode":  "pivot,graph",
+        "domain":  "[(\u0027livechat_member_type\u0027, \u0027=\u0027, \u0027agent\u0027)]",
+        "context":  "\n                {\n                    \"search_default_group_by_agent\": 1,\n                    \"search_default_filter_date_last_month\": 1,\n                    \"graph_measure\": \"__count__\",\n                    \"pivot_measures\": [\"__count\", \"response_time_hour\", \"session_duration_hour\", \"rating\", \"call_count\"],\n                    \"im_livechat_hide_partner_company\": True\n                }\n            ",
+        "tag":  null
+    },
+    {
+        "id":  709,
+        "name":  "Traces",
+        "type":  "ir.actions.act_window",
+        "res_model":  "marketing.trace",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  781,
+        "name":  "Time Off by Employee",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave",
+        "view_mode":  "list,graph,pivot,calendar,form",
+        "domain":  "[(\u0027state\u0027, \u0027!=\u0027, \u0027cancel\u0027)]",
+        "context":  "{\u0027search_default_filter_date_from\u0027: 1, \u0027search_default_group_employee\u0027: 1,\n            \u0027search_default_group_type\u0027: 1, \u0027search_default_to_approve\u0027: 1, \u0027search_default_validated\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  178,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027calendar\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  804,
+        "name":  "Refuse Reasons",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.applicant.refuse.reason",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1157,
+        "name":  "Online Sales Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.report",
+        "view_mode":  "pivot,graph",
+        "domain":  "[(\u0027website_id\u0027, \u0027!=\u0027, False)]",
+        "context":  "{\u0027search_default_confirmed\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1261,
+        "name":  "Skills Category",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.skill.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1164,
+        "name":  "Products",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.template",
+        "view_mode":  "kanban,list,form,activity",
+        "domain":  false,
+        "context":  "{\n            \u0027search_default_published\u0027: 1,\n            \u0027list_view_ref\u0027: \u0027website_sale.product_template_view_tree_website_sale\u0027,\n            \u0027kanban_view_ref\u0027: \u0027website_sale.product_template_view_kanban_website_sale\u0027\n        }",
+        "tag":  null
+    },
+    {
+        "id":  1252,
+        "name":  "Results",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.quiz.result",
+        "view_mode":  "list,pivot,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  509,
+        "name":  "Optout Reasons",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mailing.subscription.optout",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  810,
+        "name":  "Recruitment Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.applicant",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_creation_month\u0027: 1, \u0027search_default_job\u0027: 2}",
+        "tag":  null
+    },
+    {
+        "id":  992,
+        "name":  "Event Pages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.event",
+        "view_mode":  "list,kanban",
+        "domain":  false,
+        "context":  "{\u0027create_action\u0027: \u0027website_event.event_event_action_add\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  986,
+        "name":  "Tag Category",
+        "type":  "ir.actions.act_window",
+        "res_model":  "blog.tag.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1320,
+        "name":  "Migration Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "migration.report",
+        "view_mode":  "pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  410,
+        "name":  "Vendors",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_supplier\u0027: 1,\u0027res_partner_search_mode\u0027: \u0027supplier\u0027, \u0027default_is_company\u0027: True, \u0027default_supplier_rank\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  183,
+        "name":  "Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.model.category",
+        "view_mode":  "list",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1302,
+        "name":  "Routes",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.route",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1205,
+        "name":  "Job Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.job.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1370,
+        "name":  "Grievance Category",
+        "type":  "ir.actions.act_window",
+        "res_model":  "grievance.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  598,
+        "name":  "Product Variants",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.product",
+        "view_mode":  "list,form,kanban",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  966,
+        "name":  "Quotations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,kanban,form,calendar,pivot,graph,activity",
+        "domain":  false,
+        "context":  "{\u0027search_default_my_quotation\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  70,
+        "name":  "Users",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.users",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_no_share\u0027: 1, \u0027is_action_res_users\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  185,
+        "name":  "Odometers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.odometer",
+        "view_mode":  "list,form,graph",
+        "domain":  false,
+        "context":  "",
+        "tag":  null
+    },
+    {
+        "id":  194,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027fleet\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1347,
+        "name":  "Ceremonies",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.convocation.ceremony",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  905,
+        "name":  "Lead Mining Requests",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.iap.lead.mining.request",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1410,
+        "name":  "Student Withdrawal Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "student.withdrawal.analysis.wizard",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  56,
+        "name":  "Customers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[]",
+        "context":  "{\u0027res_partner_search_mode\u0027: \u0027customer\u0027, \u0027default_is_company\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1162,
+        "name":  "eCommerce Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.public.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  459,
+        "name":  "Contract Templates",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.version",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027employee_id\u0027, \u0027=\u0027, False)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1174,
+        "name":  "Alumni Group",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.alumni.group",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1380,
+        "name":  "Category",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1487,
+        "name":  "Grade Book",
+        "type":  "ir.actions.act_window",
+        "res_model":  "gradebook.gradebook",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1038,
+        "name":  "Whatsapp Business",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.business",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  79,
+        "name":  "Roles",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.users.role",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1331,
+        "name":  "Admission Registers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.admission.register",
+        "view_mode":  "kanban,form,list",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  941,
+        "name":  "Academic Term",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.academic.term",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  829,
+        "name":  "Training Attendances",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.resume.line",
+        "view_mode":  "list,kanban,form,calendar",
+        "domain":  "[(\u0027line_type_id.is_course\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1383,
+        "name":  "LMS Quiz Participation",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.quiz",
+        "view_mode":  "list",
+        "domain":  "[(\u0027lms\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  895,
+        "name":  "Student Engagement",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.engagement.metrics",
+        "view_mode":  "list,graph,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  576,
+        "name":  "stock.method_action_picking_tree_incoming",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  658,
+        "name":  "Assets",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.asset.asset",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027category_id.type\u0027, \u0027=\u0027, \u0027purchase\u0027)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1260,
+        "name":  "Scholarship Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.scholarship.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  845,
+        "name":  "Online Appointment Resource",
+        "type":  "ir.actions.act_window",
+        "res_model":  "calendar.appointment.resource",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  696,
+        "name":  "Tool Approvals",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.agent.approval",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  40,
+        "name":  "Third-Party Apps",
+        "type":  "ir.actions.act_url",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  937,
+        "name":  "Subject Registration",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.subject.registration",
+        "view_mode":  "list,form,graph,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  281,
+        "name":  "Suggested Values",
+        "type":  "ir.actions.act_window",
+        "res_model":  "survey.question.answer",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_group_by_question\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  41,
+        "name":  "Theme Store",
+        "type":  "ir.actions.act_url",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  505,
+        "name":  "Mailings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mailing.mailing",
+        "view_mode":  "list,kanban,form,calendar",
+        "domain":  "[\u0027\u0026\u0027, (\u0027mailing_type\u0027, \u0027=\u0027, \u0027mail\u0027), (\u0027automated_marketing\u0027, \u0027=\u0027, False)]",
+        "context":  "{\n                    \u0027search_default_assigned_to_me\u0027: 1,\n                    \u0027default_user_id\u0027: uid,\n                    \u0027default_mailing_type\u0027: \u0027mail\u0027,\n            }",
+        "tag":  null
+    },
+    {
+        "id":  1358,
+        "name":  "Suspended Students",
+        "type":  "ir.actions.act_window",
+        "res_model":  "suspended.student",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  736,
+        "name":  "Exchange Rate Sync Errors",
+        "type":  "ir.actions.act_window",
+        "res_model":  "exchange.rate.sync.error",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_pending\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1041,
+        "name":  "Server Action",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.server.action",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  256,
+        "name":  "Teams",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.team",
+        "view_mode":  "kanban,form",
+        "domain":  "[(\u0027use_opportunities\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  714,
+        "name":  "My Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "board.board",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027disable_toolbar\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1406,
+        "name":  "Partner Companies",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[(\u0027is_company\u0027, \u0027=\u0027, True)]",
+        "context":  "{\u0027default_is_company\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1063,
+        "name":  "Template Library",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.template.library",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  888,
+        "name":  "AI Playground",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "aio_playground"
+    },
+    {
+        "id":  55,
+        "name":  "Customers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  false,
+        "context":  "{\u0027res_partner_search_mode\u0027: \u0027customer\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1163,
+        "name":  "Product Ribbons",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.ribbon",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027create\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  984,
+        "name":  "Blogs",
+        "type":  "ir.actions.act_window",
+        "res_model":  "blog.blog",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  768,
+        "name":  "Challenges",
+        "type":  "ir.actions.act_window",
+        "res_model":  "gamification.challenge",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[(\u0027challenge_category\u0027, \u0027=\u0027, \u0027hr\u0027)]",
+        "context":  "{\u0027search_default_inprogress\u0027:True, \u0027default_inprogress\u0027:True}",
+        "tag":  null
+    },
+    {
+        "id":  671,
+        "name":  "Agent Executions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.agent.execution",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  836,
+        "name":  "Skills Inventory",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.employee.skill.report",
+        "view_mode":  "list,pivot",
+        "domain":  false,
+        "context":  "{\n            \u0027search_default_skill_type\u0027: 1,\n            \u0027search_default_skill\u0027: 2,\n        }",
+        "tag":  null
+    },
+    {
+        "id":  443,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027crm\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1319,
+        "name":  "Activity Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.activity",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1495,
+        "name":  "GradeBook",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "grade_book_grid_by_assignment"
+    },
+    {
+        "id":  851,
+        "name":  "Product Variants",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.product",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  false,
+        "context":  "{\"search_default_filter_to_purchase\": 1}",
+        "tag":  null
+    },
+    {
+        "id":  480,
+        "name":  "Chatbot",
+        "type":  "ir.actions.act_window",
+        "res_model":  "chatbot.script",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  951,
+        "name":  "Sales Analysis By Salespersons",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.report",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_User\u0027: 1, \u0027group_by\u0027: \u0027user_id\u0027, \u0027search_default_filter_order_date\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  59,
+        "name":  "Industries",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner.industry",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1137,
+        "name":  "Media Queue Requests",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.queue",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  151,
+        "name":  "Voice \u0026 Video Settings",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{\u0027dialog_size\u0027: \u0027medium\u0027, \u0027footer\u0027: false}",
+        "tag":  "mail.discuss_call_settings_action"
+    },
+    {
+        "id":  1194,
+        "name":  "Marksheet Registers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.marksheet.register",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  693,
+        "name":  "Workflows",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.workflow",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_active\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1270,
+        "name":  "Student Skill Level Name",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.skill.level.name",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  688,
+        "name":  "AI Agent Hooks",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.hook",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_active\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1165,
+        "name":  "Orders",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,form,kanban,activity",
+        "domain":  "[]",
+        "context":  "{\u0027show_sale\u0027: True, \u0027search_default_order_confirmed\u0027: 1, \u0027search_default_from_website\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1408,
+        "name":  "Student Withdrawal",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.withdrawal",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1078,
+        "name":  "Class Rooms",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.classroom",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  302,
+        "name":  "Storages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dms.storage",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  628,
+        "name":  "Website: Analytics",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  259,
+        "name":  "Activity Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.activity.type",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[\u0027|\u0027, (\u0027res_model\u0027, \u0027=\u0027, False), (\u0027res_model\u0027, \u0027in\u0027, [\u0027crm.lead\u0027, \u0027sale.order\u0027, \u0027res.partner\u0027, \u0027product.template\u0027, \u0027product.product\u0027])]",
+        "context":  "{\u0027default_res_model\u0027: \u0027crm.lead\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1512,
+        "name":  "Late Submission",
+        "type":  "ir.actions.act_window",
+        "res_model":  "late.submission",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  248,
+        "name":  "Job Functions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "queue.job.function",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1100,
+        "name":  "Batch",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.batch",
+        "view_mode":  "kanban,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  430,
+        "name":  "Lost Reasons",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.lost.reason",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  751,
+        "name":  "Ratings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "rating.rating",
+        "view_mode":  "kanban,form,list,pivot,graph",
+        "domain":  "[(\u0027consumed\u0027, \u0027=\u0027, True), (\u0027res_model\u0027, \u0027=\u0027, \u0027helpdesk.ticket\u0027)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  385,
+        "name":  "Chart of Accounts",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.account",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  590,
+        "name":  "Operations Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "stock.picking.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  375,
+        "name":  "Bills",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.move",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[(\u0027move_type\u0027, \u0027in\u0027, [\u0027in_invoice\u0027, \u0027in_refund\u0027, \u0027in_receipt\u0027])]",
+        "context":  "{\u0027search_default_in_invoice\u0027: 1, \u0027search_default_in_receipt\u0027: 1, \u0027default_move_type\u0027: \u0027in_invoice\u0027, \u0027display_account_trust\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  942,
+        "name":  "Programs",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.program",
+        "view_mode":  "list,form,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1213,
+        "name":  "Library Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.type",
+        "view_mode":  "kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  694,
+        "name":  "Workflow Steps",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.workflow.step",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  665,
+        "name":  "Vendor Batch Payments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.batch.payment",
+        "view_mode":  "list,form,kanban,activity",
+        "domain":  "[(\u0027batch_type\u0027, \u0027=\u0027, \u0027outbound\u0027)]",
+        "context":  "{\u0027search_default_open\u0027: 1, \u0027default_batch_type\u0027: \u0027outbound\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  500,
+        "name":  "Favorite Filters",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mailing.filter",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_saved_by_me\u0027: 1}\n        ",
+        "tag":  null
+    },
+    {
+        "id":  1458,
+        "name":  "Attainment Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "attainment.dashboard.record",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  192,
+        "name":  "Costs Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.cost.report",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_date_start\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  516,
+        "name":  "Dashboards",
+        "type":  "ir.actions.act_window",
+        "res_model":  "spreadsheet.dashboard.group",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  510,
+        "name":  "Opt-Out Report",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mailing.subscription",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  "[(\u0027opt_out\u0027, \u0027=\u0027, True)]",
+        "context":  "{\n            \u0027search_default_group_by_opt_out_reason_id\u0027: 1,\n        }",
+        "tag":  null
+    },
+    {
+        "id":  1269,
+        "name":  "Skill Name",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.skill.name",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1056,
+        "name":  "Whatsapp Chat",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "whatsapp_chat_dashboard"
+    },
+    {
+        "id":  1362,
+        "name":  "Student Wise",
+        "type":  "ir.actions.act_window",
+        "res_model":  "student.wise",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  463,
+        "name":  "Job Positions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.job",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\"search_default_Current\":1}",
+        "tag":  null
+    },
+    {
+        "id":  1351,
+        "name":  "Convocation Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.convocation.ceremony",
+        "view_mode":  "kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  66,
+        "name":  "Currencies",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.currency",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027active_test\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  315,
+        "name":  "Barcode Interface",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "event.event_barcode_scan_view"
+    },
+    {
+        "id":  400,
+        "name":  "Analytic Reporting",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.analytic.line",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\n                \u0027search_default_group_by_analytic_account\u0027: 1,\n                \u0027search_default_fiscal_date\u0027: 1,\n                \u0027search_default_profit_loss_accounts\u0027: 1,\n            }",
+        "tag":  null
+    },
+    {
+        "id":  1059,
+        "name":  "Whatsapp Campaign",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.campaign",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1387,
+        "name":  "Course Participation",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course.enrollment",
+        "view_mode":  "graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  475,
+        "name":  "Work Locations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.work.location",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  317,
+        "name":  "Event Stages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.stage",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  852,
+        "name":  "Requests for Quotation",
+        "type":  "ir.actions.act_window",
+        "res_model":  "purchase.order",
+        "view_mode":  "list,kanban,form,pivot,graph,calendar,activity",
+        "domain":  "[]",
+        "context":  "{\u0027quotation_only\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  890,
+        "name":  "Playground Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.playground.session",
+        "view_mode":  "list,kanban,form,pivot,graph",
+        "domain":  false,
+        "context":  "{\n            \u0027search_default_my_sessions\u0027: 1,\n            \u0027search_default_active\u0027: 1\n        }",
+        "tag":  null
+    },
+    {
+        "id":  232,
+        "name":  "Pricelists",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.pricelist",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\"default_base\":\u0027list_price\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1282,
+        "name":  "Extension Requests",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.extension",
+        "view_mode":  "list,form,graph,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1263,
+        "name":  "Skill Assessment Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.skill.assessment.line",
+        "view_mode":  "pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1272,
+        "name":  "Leave Request",
+        "type":  "ir.actions.act_window",
+        "res_model":  "student.leave.request",
+        "view_mode":  "calendar,kanban,list,form,search",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  484,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "im_livechat.conversation.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  447,
+        "name":  "Leads Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.lead",
+        "view_mode":  "graph,pivot,list",
+        "domain":  false,
+        "context":  "{\n                \u0027search_default_filter_active\u0027: 1,\n                \u0027search_default_filter_inactive\u0027: 1,\n                \u0027search_default_filter_create_date\u0027: 1,\n            }",
+        "tag":  null
+    },
+    {
+        "id":  606,
+        "name":  "Replenishment",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  1393,
+        "name":  "Exam",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.omr.exam",
+        "view_mode":  "kanban,list,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  896,
+        "name":  "Token Trend Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.token.trend.analyzer",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  830,
+        "name":  "Skill Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.skill.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1286,
+        "name":  "Thesis Evaluations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.evaluation.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1006,
+        "name":  "Student Migration",
+        "type":  "ir.actions.act_window",
+        "res_model":  "student.migrate",
+        "view_mode":  "form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1423,
+        "name":  "Rubrics Template",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.rubric.template",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  101,
+        "name":  "Working Schedules",
+        "type":  "ir.actions.act_window",
+        "res_model":  "resource.calendar",
+        "view_mode":  "list,form",
+        "domain":  "[\u0027|\u0027, (\u0027company_id\u0027, \u0027=\u0027, False), (\u0027company_id\u0027, \u0027in\u0027, allowed_company_ids)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  408,
+        "name":  "Fiscal Positions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.fiscal.position",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  831,
+        "name":  "Certifications",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.employee.skill",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027is_certification\u0027, \u0027=\u0027, True)]",
+        "context":  "{\u0027show_employee\u0027: True, \u0027search_default_group_by_type\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1138,
+        "name":  "Library Card Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.library.card.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  133,
+        "name":  "Channels",
+        "type":  "ir.actions.act_window",
+        "res_model":  "discuss.channel",
+        "view_mode":  "kanban,form",
+        "domain":  "[(\u0027channel_type\u0027, \u0027=\u0027, \u0027channel\u0027)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  504,
+        "name":  "Mailing Lists",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mailing.list",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  60,
+        "name":  "Banks",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.bank",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1135,
+        "name":  "Media Movements",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.movement",
+        "view_mode":  "list,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1071,
+        "name":  "Revenues",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.sale.report",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\n            \u0027search_default_priced_tickets\u0027: 1,\n            \u0027search_default_event_date_start\u0027: 1,\n            \u0027pivot_measures\u0027: [\u0027__count__\u0027, \u0027sale_price_untaxed\u0027, \u0027sale_price\u0027],\n        }",
+        "tag":  null
+    },
+    {
+        "id":  113,
+        "name":  "Demo Action",
+        "type":  "ir.actions.client",
+        "res_model":  "dashboard_pro.main_dashboard",
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "dashboard_kpi"
+    },
+    {
+        "id":  808,
+        "name":  "Applications",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.applicant",
+        "view_mode":  "kanban,list,form,pivot,graph,calendar,activity",
+        "domain":  false,
+        "context":  "{\u0027search_default_applicants\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  291,
+        "name":  "Files",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dms.file",
+        "view_mode":  "kanban,list,graph,pivot,form",
+        "domain":  "[(\"is_hidden\", \"=\", False)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1142,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  387,
+        "name":  "Journals",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.journal",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1501,
+        "name":  "Assignment Stages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "assignment.stage",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1003,
+        "name":  "Approval Request",
+        "type":  "ir.actions.act_window",
+        "res_model":  "multi.request",
+        "view_mode":  "search,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  788,
+        "name":  "Mandatory Days",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave.mandatory.day",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_date\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1251,
+        "name":  "Quiz",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.quiz",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1439,
+        "name":  "Attendance Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.attendance.line",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1185,
+        "name":  "Exam Rooms",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.exam.room",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1322,
+        "name":  "Admission Stages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "admission.stage",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1201,
+        "name":  "Stages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "job.post.stage",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  563,
+        "name":  "Moves History",
+        "type":  "ir.actions.act_window",
+        "res_model":  "stock.move.line",
+        "view_mode":  "list,kanban,pivot,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_done\u0027: 1, \u0027create\u0027: 0, \u0027pivot_measures\u0027: [\u0027quantity_product_uom\u0027, \u0027__count__\u0027]}",
+        "tag":  null
+    },
+    {
+        "id":  1300,
+        "name":  "Routes",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.route.line",
+        "view_mode":  "pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  376,
+        "name":  "Refunds",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.move",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[(\u0027move_type\u0027, \u0027in\u0027, [\u0027in_invoice\u0027, \u0027in_refund\u0027])]",
+        "context":  "{\u0027search_default_in_refund\u0027: 1, \u0027default_move_type\u0027: \u0027in_refund\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1298,
+        "name":  "Stops",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.stop",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1204,
+        "name":  "Job Post",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.job.post",
+        "view_mode":  "kanban,list,form,pivot,calendar,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  891,
+        "name":  "Messages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.playground.message",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1450,
+        "name":  "Forum Participation",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course",
+        "view_mode":  "graph",
+        "domain":  "[(\u0027online_course\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  861,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027purchase\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  289,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dms.tag",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_group_by_category\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  721,
+        "name":  "E-sign Template",
+        "type":  "ir.actions.act_window",
+        "res_model":  "e.sign.template",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1043,
+        "name":  "Templates",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  779,
+        "name":  "All Time Off",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave",
+        "view_mode":  "kanban,list,form,calendar,activity",
+        "domain":  "[(\u0027employee_id.company_id\u0027, \u0027in\u0027, allowed_company_ids)]",
+        "context":  "{\n            \u0027search_default_waiting_for_me\u0027: 1,\n            \u0027search_default_waiting_for_me_manager\u0027: 2,\n            \u0027search_default_current_year\u0027: 3,\n            \u0027hide_employee_name\u0027: 1,\n            }",
+        "tag":  null
+    },
+    {
+        "id":  1143,
+        "name":  "Media Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  985,
+        "name":  "Blog Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "blog.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  816,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027hr_recruitment\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1390,
+        "name":  "Generate Sheet",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.omr.template.wizard",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1335,
+        "name":  "Request Asset",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.asset.request",
+        "view_mode":  "list,form,search,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1488,
+        "name":  "Grade Book Line",
+        "type":  "ir.actions.act_window",
+        "res_model":  "gradebook.line",
+        "view_mode":  "list,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1220,
+        "name":  "Media Purchase Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.purchase",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1499,
+        "name":  "Honor Roll",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.honorroll",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  670,
+        "name":  "AI Agents",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.agent",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  930,
+        "name":  "Students",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student",
+        "view_mode":  "kanban,list,form,activity",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1332,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "admission.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  932,
+        "name":  "Courses",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course",
+        "view_mode":  "list,form,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  953,
+        "name":  "Sales Analysis By Customers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.report",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_Customer\u0027: 1, \u0027group_by\u0027: \u0027partner_id\u0027, \u0027search_default_filter_order_date\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1376,
+        "name":  "Course",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[(\u0027online_course\u0027, \u0027=\u0027, True)]",
+        "context":  "{\u0027default_online_course\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  998,
+        "name":  "Activity Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.activity.type",
+        "view_mode":  "list,form",
+        "domain":  "[\u0027|\u0027, (\u0027res_model\u0027, \u0027=\u0027, False), (\u0027res_model\u0027, \u0027=\u0027, \u0027multi.request\u0027)]",
+        "context":  "{\u0027default_res_model\u0027: \u0027multi.request\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  411,
+        "name":  "Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.journal",
+        "view_mode":  "kanban,form",
+        "domain":  "[]",
+        "context":  "{\u0027search_default_dashboard\u0027:1}",
+        "tag":  null
+    },
+    {
+        "id":  686,
+        "name":  "Guardrails",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.guardrail",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_enabled\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  278,
+        "name":  "Participants",
+        "type":  "ir.actions.act_window",
+        "res_model":  "survey.user_input",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027survey_id.survey_type\u0027, \u0027in\u0027, (\u0027assessment\u0027, \u0027custom\u0027, \u0027live_session\u0027, \u0027survey\u0027))]",
+        "context":  "{\u0027search_default_group_by_survey\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1250,
+        "name":  "Grades",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.answer.grade",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  677,
+        "name":  "AI Model Providers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.model.provider",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  421,
+        "name":  "Crm: My Pipeline",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  1140,
+        "name":  "Authors",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.author",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1359,
+        "name":  "School Offences",
+        "type":  "ir.actions.act_window",
+        "res_model":  "school.offences",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1348,
+        "name":  "Registrations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.convocation.registration",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  257,
+        "name":  "Sales Teams",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.team",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  246,
+        "name":  "Jobs",
+        "type":  "ir.actions.act_window",
+        "res_model":  "queue.job",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{\u0027search_default_wait_dependencies\u0027: 1,\n                               \u0027search_default_pending\u0027: 1,\n                               \u0027search_default_enqueued\u0027: 1,\n                               \u0027search_default_started\u0027: 1,\n                               \u0027search_default_failed\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1280,
+        "name":  "Progress Reports",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.progress",
+        "view_mode":  "list,form,graph,pivot",
+        "domain":  "[]",
+        "context":  "{\u0027search_default_group_by_thesis\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1181,
+        "name":  "Category",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.digital.library.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1015,
+        "name":  "Facilities",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.facility",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  683,
+        "name":  "Database Configurations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.database.config",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  775,
+        "name":  "Public Holidays",
+        "type":  "ir.actions.act_window",
+        "res_model":  "resource.calendar.leaves",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027resource_id\u0027, \u0027=\u0027, False)]",
+        "context":  "{\u0027search_default_filter_date\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  746,
+        "name":  "Issue Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "issue.type",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  815,
+        "name":  "Talent Pool",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.talent.pool",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  757,
+        "name":  "Expenses to Process",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.expense",
+        "view_mode":  "list,kanban,form,graph,pivot,activity",
+        "domain":  false,
+        "context":  "{\u0027searchpanel_default_state\u0027: [\u0027submitted\u0027]}",
+        "tag":  null
+    },
+    {
+        "id":  161,
+        "name":  "Blacklisted Email Addresses",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.blacklist",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  929,
+        "name":  "Students",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student",
+        "view_mode":  "kanban,list,form,activity",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  943,
+        "name":  "Program Level",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.program.level",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  826,
+        "name":  "Recruitment Plans",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.activity.plan",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027res_model\u0027, \u0027=\u0027, \u0027hr.applicant\u0027)]",
+        "context":  "{\u0027default_res_model\u0027: \u0027hr.applicant\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1316,
+        "name":  "Achievement Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.achievement",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1211,
+        "name":  "Media Unit Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.unit",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1374,
+        "name":  "Lesson",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.lesson",
+        "view_mode":  "calendar,list,form,pivot,graph",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  933,
+        "name":  "Batches",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.batch",
+        "view_mode":  "list,form,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  787,
+        "name":  "Accrual Plans",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave.accrual.plan",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  963,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027sale_management\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1451,
+        "name":  "Course Outcome",
+        "type":  "ir.actions.act_window",
+        "res_model":  "course.outcome",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  745,
+        "name":  "Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "helpdesk.team",
+        "view_mode":  "kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1357,
+        "name":  "Discipline Records",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.discipline",
+        "view_mode":  "calendar,list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  279,
+        "name":  "Detailed Answers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "survey.user_input.line",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027survey_id.survey_type\u0027, \u0027in\u0027, (\u0027assessment\u0027, \u0027custom\u0027, \u0027live_session\u0027, \u0027survey\u0027))]",
+        "context":  "{\u0027search_default_group_by_survey\u0027: True, \u0027search_default_group_by_user_input\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  778,
+        "name":  "My Time Off",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave",
+        "view_mode":  "list,form,kanban,activity",
+        "domain":  "[(\u0027user_id\u0027, \u0027=\u0027, uid)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  995,
+        "name":  "Job Pages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.job",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027create_action\u0027: \u0027/jobs/add\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  373,
+        "name":  "Credit Notes",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.move",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[(\u0027move_type\u0027, \u0027in\u0027, [\u0027out_invoice\u0027, \u0027out_refund\u0027])]",
+        "context":  "{\u0027search_default_out_refund\u0027: 1, \u0027default_move_type\u0027: \u0027out_refund\u0027, \u0027display_account_trust\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  710,
+        "name":  "Link Statistics",
+        "type":  "ir.actions.act_window",
+        "res_model":  "link.tracker",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  "[(\u0027mass_mailing_id.automated_marketing\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  247,
+        "name":  "Channels",
+        "type":  "ir.actions.act_window",
+        "res_model":  "queue.job.channel",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1112,
+        "name":  "Department",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.department",
+        "view_mode":  "kanban,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  326,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027event\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  927,
+        "name":  "Departments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.department",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  741,
+        "name":  "Tickets",
+        "type":  "ir.actions.act_window",
+        "res_model":  "helpdesk.ticket",
+        "view_mode":  "list,kanban,form,pivot",
+        "domain":  false,
+        "context":  "{\n            \u0027search_default_ticket_assigned_to_me\u0027: 1,\u0027search_default_stage_open\u0027: 1}\n        ",
+        "tag":  null
+    },
+    {
+        "id":  1027,
+        "name":  "Quotation Templates",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  680,
+        "name":  "Output Templates",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.output.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_active\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  409,
+        "name":  "Customers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_customer\u0027: 1,\u0027res_partner_search_mode\u0027: \u0027customer\u0027, \u0027default_is_company\u0027: True, \u0027default_customer_rank\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  416,
+        "name":  "Audit Trail",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.message",
+        "view_mode":  "list",
+        "domain":  "[\n            (\u0027message_type\u0027, \u0027=\u0027, \u0027notification\u0027),\n            (\u0027model\u0027, \u0027in\u0027, (\u0027account.move\u0027, \u0027account.account\u0027, \u0027account.tax\u0027, \u0027res.partner\u0027, \u0027res.company\u0027)),\n        ]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  190,
+        "name":  "Contracts",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.log.contract",
+        "view_mode":  "list,kanban,form,graph,pivot,activity",
+        "domain":  false,
+        "context":  "{\u0027search_default_open\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1212,
+        "name":  "Media Movement Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.movement",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  682,
+        "name":  "Webhook Endpoints",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.webhook.endpoint",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  297,
+        "name":  "Directories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dms.directory",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[(\"is_hidden\", \"=\", False), (\"parent_id\", \"=\", False)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  928,
+        "name":  "Contact Titles",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner.title",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  786,
+        "name":  "Allocations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave.allocation",
+        "view_mode":  "kanban,list,form,activity",
+        "domain":  "[]",
+        "context":  "{\u0027search_default_my_team\u0027: 1,\u0027search_default_approve\u0027: 2}",
+        "tag":  null
+    },
+    {
+        "id":  372,
+        "name":  "Invoices",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.move",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[(\u0027move_type\u0027, \u0027in\u0027, [\u0027out_invoice\u0027, \u0027out_refund\u0027, \u0027out_receipt\u0027])]",
+        "context":  "{\u0027search_default_out_invoice\u0027: 1, \u0027search_default_out_receipt\u0027: 1, \u0027default_move_type\u0027: \u0027out_invoice\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  511,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027mass_mailing\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1479,
+        "name":  "Grade Scale",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.grade.scale",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1117,
+        "name":  "Area",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.area",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  987,
+        "name":  "Blog Post Pages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "blog.post",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027create_action\u0027: \u0027website_blog.blog_post_action_add\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1259,
+        "name":  "Scholarships",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.scholarship",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  996,
+        "name":  "Delivery Methods",
+        "type":  "ir.actions.act_window",
+        "res_model":  "delivery.carrier",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_group_by_provider\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  280,
+        "name":  "Questions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "survey.question",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027is_page\u0027, \u0027=\u0027, False)]",
+        "context":  "{\u0027search_default_group_by_page\u0027: True, \u0027show_survey_field\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1284,
+        "name":  "Extension Reasons",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.extension.reason",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1114,
+        "name":  "Subject Registration Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.subject.registration",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  254,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1219,
+        "name":  "Media Queue Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.queue",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1422,
+        "name":  "Rubric Level",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.rubric.level",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1133,
+        "name":  "All Media",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  636,
+        "name":  "Visitors",
+        "type":  "ir.actions.act_window",
+        "res_model":  "website.visitor",
+        "view_mode":  "kanban,list,form,graph",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_last_7_days\u0027:1}",
+        "tag":  null
+    },
+    {
+        "id":  783,
+        "name":  "My Allocations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave.allocation",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[(\u0027employee_id.user_id\u0027, \u0027=\u0027, uid)]",
+        "context":  "{\u0027search_default_year\u0027: 1 , \u0027is_employee_allocation\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  316,
+        "name":  "Events",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.event",
+        "view_mode":  "kanban,calendar,list,form,pivot,graph,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1023,
+        "name":  "Parents",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.parent",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  485,
+        "name":  "Live Chat Channels",
+        "type":  "ir.actions.act_window",
+        "res_model":  "im_livechat.channel",
+        "view_mode":  "kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  864,
+        "name":  "Purchase Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "purchase.report",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\n                \u0027search_default_orders\u0027: 1,\n                \u0027search_default_filter_date_approve\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  747,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "helpdesk.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  704,
+        "name":  "Participants",
+        "type":  "ir.actions.act_window",
+        "res_model":  "marketing.participant",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  292,
+        "name":  "Files",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dms.file",
+        "view_mode":  "list",
+        "domain":  "[(\u0027require_migration\u0027, \u0027=\u0027, True), \u0027|\u0027,(\u0027active\u0027, \u0027=\u0027, False), (\u0027active\u0027, \u0027!=\u0027, False)]\n        ",
+        "context":  "{\u0027search_default_group_storage\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  744,
+        "name":  "Helpdesk Team",
+        "type":  "ir.actions.act_window",
+        "res_model":  "helpdesk.team",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1275,
+        "name":  "Student Progress Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.progression",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1178,
+        "name":  "Facilities",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.campus.facility",
+        "view_mode":  "list,form,graph,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1246,
+        "name":  "Quiz Category",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.quiz.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  981,
+        "name":  "Products",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\"search_default_filter_to_sell\":1, \"sale_multi_pricelist_product_template\": 1}",
+        "tag":  null
+    },
+    {
+        "id":  748,
+        "name":  "Stages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "helpdesk.stage",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1416,
+        "name":  "LMS Course Generator",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "lms_course_generator"
+    },
+    {
+        "id":  552,
+        "name":  "Lots / Serial Numbers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "stock.lot",
+        "view_mode":  "list,form",
+        "domain":  "[\u0027|\u0027, (\u0027location_id\u0027, \u0027=\u0027, False), (\u0027location_id.company_id\u0027, \u0027in\u0027, allowed_company_ids + [False])]",
+        "context":  "{\u0027search_default_group_by_location\u0027: True, \u0027display_complete\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  561,
+        "name":  "Warehouses",
+        "type":  "ir.actions.act_window",
+        "res_model":  "stock.warehouse",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1287,
+        "name":  "Report Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.report.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1007,
+        "name":  "Activity Logs",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.activity",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1231,
+        "name":  "Multi Location",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.company",
+        "view_mode":  "kanban",
+        "domain":  "[(\u0027parent_id\u0027,\u0027=\u0027,context.get(\u0027active_id\u0027, False))]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1508,
+        "name":  "Student Attendances",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "student_attendance_kiosk_mode"
+    },
+    {
+        "id":  968,
+        "name":  "Orders to Invoice",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,form,calendar,graph,pivot,kanban,activity",
+        "domain":  "[(\u0027invoice_status\u0027,\u0027=\u0027,\u0027to invoice\u0027)]",
+        "context":  "{\u0027create\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1139,
+        "name":  "Library Cards",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.library.card",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  638,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027website\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  461,
+        "name":  "Employment Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.contract.type",
+        "view_mode":  "list",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1293,
+        "name":  "Generate Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "generate.time.table",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  402,
+        "name":  "Invoices Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.invoice.report",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_current\u0027:1, \u0027search_default_customer\u0027: 1, \u0027group_by\u0027:[\u0027invoice_date:month\u0027]}",
+        "tag":  null
+    },
+    {
+        "id":  965,
+        "name":  "Sales Orders",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,kanban,form,calendar,pivot,graph,activity",
+        "domain":  false,
+        "context":  "{\u0027search_default_sales\u0027 : 1}",
+        "tag":  null
+    },
+    {
+        "id":  723,
+        "name":  "Sign Items ",
+        "type":  "ir.actions.act_window",
+        "res_model":  "e.sign.items",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1299,
+        "name":  "Routes",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.route.line",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  782,
+        "name":  "Time Off Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave.type",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  892,
+        "name":  "Session Analytics",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.session.analytics",
+        "view_mode":  "graph,pivot,list",
+        "domain":  false,
+        "context":  "{\u0027search_default_last_30_days\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  793,
+        "name":  "All Time Off",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave.report.calendar",
+        "view_mode":  "calendar",
+        "domain":  "[(\u0027employee_id.active\u0027,\u0027=\u0027,True)]",
+        "context":  "{\u0027hide_employee_name\u0027: 1, \u0027search_default_my_team\u0027: 1, \u0027search_default_current_year\u0027: 1,\n            \u0027search_default_validate\u0027: 1, \u0027search_default_approve\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1176,
+        "name":  "Facility Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.facility.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  180,
+        "name":  "Contacts",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  false,
+        "context":  "{\u0027default_is_company\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  134,
+        "name":  "Discuss",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "mail.action_discuss"
+    },
+    {
+        "id":  91,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027general_settings\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  676,
+        "name":  "AI Models",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.model",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  456,
+        "name":  "Employee Plans",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.activity.plan",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027res_model\u0027, \u0027=\u0027, \u0027hr.employee\u0027), \u0027|\u0027, (\u0027company_id\u0027, \u0027in\u0027, allowed_company_ids), (\u0027company_id\u0027, \u0027=\u0027, False)]",
+        "context":  "{\u0027default_res_model\u0027: \u0027hr.employee\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  654,
+        "name":  "Post Depreciation Lines",
+        "type":  "ir.actions.act_window",
+        "res_model":  "asset.depreciation.confirmation.wizard",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027asset_type\u0027: \u0027purchase\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1019,
+        "name":  "Fees Terms",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.fees.terms",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  750,
+        "name":  "Helpdesk Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "helpdesk.report",
+        "view_mode":  "graph,pivot,list",
+        "domain":  false,
+        "context":  "{\u0027search_default_team_id\u0027: 1,\n            \u0027search_default_current_year\u0027: 1}\n        ",
+        "tag":  null
+    },
+    {
+        "id":  1009,
+        "name":  "Assignments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.assignment",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  659,
+        "name":  "Asset Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.asset.category",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027type\u0027, \u0027=\u0027, \u0027purchase\u0027)]",
+        "context":  "{\u0027default_type\u0027: \u0027purchase\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  347,
+        "name":  "Customer Payments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.payment",
+        "view_mode":  "list,kanban,form,graph,activity",
+        "domain":  false,
+        "context":  "{\n                \u0027default_payment_type\u0027: \u0027inbound\u0027,\n                \u0027default_partner_type\u0027: \u0027customer\u0027,\n                \u0027search_default_inbound_filter\u0027: 1,\n                \u0027default_move_journal_types\u0027: (\u0027bank\u0027, \u0027cash\u0027),\n                \u0027display_account_trust\u0027: True,\n            }",
+        "tag":  null
+    },
+    {
+        "id":  684,
+        "name":  "Collections",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.collection",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  481,
+        "name":  "Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "discuss.channel",
+        "view_mode":  "kanban,list,pivot,graph,form",
+        "domain":  "[(\u0027livechat_channel_id\u0027, \u0027!=\u0027, None)]",
+        "context":  "\n                {\n                    \"search_default_filter_session_date\": \"custom_rated_on_last_30_days\",\n                    \"im_livechat_hide_partner_company\": True,\n                }\n            ",
+        "tag":  null
+    },
+    {
+        "id":  695,
+        "name":  "Workflow Executions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.workflow.execution",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_running\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  609,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027stock\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  725,
+        "name":  "E-sign Request",
+        "type":  "ir.actions.act_window",
+        "res_model":  "e.sign.request",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  231,
+        "name":  "Combo Choices",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.combo",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  734,
+        "name":  "Lead Generation Rule",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.lead.rule",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  803,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.applicant.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  835,
+        "name":  "Certification",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.employee.certification.report",
+        "view_mode":  "list,pivot",
+        "domain":  false,
+        "context":  "{\n            \u0027search_default_employee\u0027: 1,\n        }",
+        "tag":  null
+    },
+    {
+        "id":  110,
+        "name":  "Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dashboard_pro.main_dashboard",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  53,
+        "name":  "Companies",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.company",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027parent_id\u0027, \u0027=\u0027, False)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  255,
+        "name":  "Sales Teams",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.team",
+        "view_mode":  "kanban,form",
+        "domain":  false,
+        "context":  "{\u0027in_sales_app\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1516,
+        "name":  "Course Change Request",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.course.change.req",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1403,
+        "name":  "Student Applications",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.job.applicant",
+        "view_mode":  "kanban,list,form,graph,pivot,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1039,
+        "name":  "Whatsapp Team Assignment",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.team.assignment",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1171,
+        "name":  "Product Pages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.template",
+        "view_mode":  "list,kanban",
+        "domain":  false,
+        "context":  "{\u0027create_action\u0027: \u0027website_sale.product_product_action_add\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  58,
+        "name":  "Contact Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1334,
+        "name":  "Quiz AI Dashboard",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "quiz_ai_view"
+    },
+    {
+        "id":  817,
+        "name":  "Departments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.department",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  460,
+        "name":  "Departure Reasons",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.departure.reason",
+        "view_mode":  "list",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1288,
+        "name":  "Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.session",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1336,
+        "name":  "Request Reason",
+        "type":  "ir.actions.act_window",
+        "res_model":  "asset.request.reason",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1283,
+        "name":  "Committee Members",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.committee",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  229,
+        "name":  "Attributes",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.attribute",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  824,
+        "name":  "Emails",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.job.platform",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  758,
+        "name":  "Expenses Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.expense",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  false,
+        "context":  "{ \u0027searchpanel_default_state\u0027: [\"draft\", \"submitted\", \"approved\", \"posted\", \"in_payment\", \"paid\"] }",
+        "tag":  null
+    },
+    {
+        "id":  646,
+        "name":  "Journal Items to reconcile",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.move.line",
+        "view_mode":  "list",
+        "domain":  "[(\u0027display_type\u0027, \u0027not in\u0027, (\u0027line_section\u0027, \u0027line_subsection\u0027, \u0027line_note\u0027)), (\u0027account_id.reconcile\u0027, \u0027=\u0027, True), (\u0027full_reconcile_id\u0027, \u0027=\u0027, False)]",
+        "context":  "{\u0027auto_statement_processing\u0027: True, \u0027journal_type\u0027: \u0027general\u0027, \u0027search_default_posted_lines\u0027: True, \u0027search_default_unreconciled\u0027: True, \u0027search_default_group_by_account\u0027: True, \u0027search_default_group_by_partner\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1210,
+        "name":  "Media Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1008,
+        "name":  "Activity Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.activity.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1094,
+        "name":  "Section",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.section",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_group_by_subject_id\u0027: 0}",
+        "tag":  null
+    },
+    {
+        "id":  952,
+        "name":  "Sales Analysis By Products",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.report",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_Sales\u0027: 1, \u0027search_default_Product\u0027: 1, \u0027group_by\u0027: \u0027product_id\u0027, \u0027search_default_filter_order_date\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  181,
+        "name":  "Models",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.model",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\"search_default_groupby_brand\" : True,}",
+        "tag":  null
+    },
+    {
+        "id":  1442,
+        "name":  "Course Credit",
+        "type":  "ir.actions.act_window",
+        "res_model":  "course.credit",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1058,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  398,
+        "name":  "Products",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_to_sell\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1355,
+        "name":  "Misbehaviour Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.misbehaviour.category",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1471,
+        "name":  "Fees Plan",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.fees.plan",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_group_by_product_id\u0027: 1, \u0027search_default_group_by_status\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  393,
+        "name":  "Taxes",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.tax",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_sale\u0027: True, \u0027search_default_purchase\u0027: True, \u0027active_test\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1405,
+        "name":  "Campus Events",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.event",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[(\u0027training_event\u0027, \u0027=\u0027, True)]",
+        "context":  "{\u0027default_training_event\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1077,
+        "name":  "Admission Analysis Report",
+        "type":  "ir.actions.act_window",
+        "res_model":  "admission.analysis",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1232,
+        "name":  "Notice Group",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.notice.group",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1011,
+        "name":  "Assignment Submissions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.assignment.sub.line",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1407,
+        "name":  "Recruitment Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "training.season",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  305,
+        "name":  "General Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027dms\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  940,
+        "name":  "Academic Year",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.academic.year",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  765,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027hr_expense\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1338,
+        "name":  "Assignment Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.assignment",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1034,
+        "name":  "Forums",
+        "type":  "ir.actions.act_window",
+        "res_model":  "forum.forum",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  468,
+        "name":  "Employees",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.employee",
+        "view_mode":  "kanban,list,form,activity,graph,pivot",
+        "domain":  "[(\u0027company_id\u0027, \u0027in\u0027, allowed_company_ids)]",
+        "context":  "{\u0027chat_icon\u0027: True, \u0027searchpanel_default_company_id\u0027: allowed_company_ids[0]}",
+        "tag":  null
+    },
+    {
+        "id":  756,
+        "name":  "My Expenses",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.expense",
+        "view_mode":  "list,kanban,form,graph,pivot,activity",
+        "domain":  false,
+        "context":  "{\u0027search_default_my_open_expenses\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  64,
+        "name":  "Fed. States",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.country.state",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1306,
+        "name":  "Agreements",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.transportation.agreement",
+        "view_mode":  "list,form,pivot,calendar",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1184,
+        "name":  "Exam Attendees",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.exam.attendees",
+        "view_mode":  "list,form,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  226,
+        "name":  "Product Variants",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.product",
+        "view_mode":  "kanban,list,form,activity",
+        "domain":  false,
+        "context":  "{\"search_default_filter_to_sell\":1}",
+        "tag":  null
+    },
+    {
+        "id":  825,
+        "name":  "Activity Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.activity.type",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[\u0027|\u0027, (\u0027res_model\u0027, \u0027=\u0027, False), (\u0027res_model\u0027, \u0027=\u0027, \u0027hr.applicant\u0027)]",
+        "context":  "{\u0027default_res_model\u0027: \u0027hr.applicant\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1317,
+        "name":  "Achievement Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.achievement.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  691,
+        "name":  "AI Agents Library",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.agent.library",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1371,
+        "name":  "Grievances",
+        "type":  "ir.actions.act_window",
+        "res_model":  "grievance",
+        "view_mode":  "kanban,list,form,search,pivot,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1466,
+        "name":  "Alumni Job",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.job.post",
+        "view_mode":  "list,form,pivot,calendar,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  369,
+        "name":  "Journal Entries",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.move",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  false,
+        "context":  "{\u0027default_move_type\u0027: \u0027entry\u0027, \u0027search_default_posted\u0027:1, \u0027view_no_maturity\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  749,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027helpdesk_basic\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  436,
+        "name":  "My Activities",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.lead",
+        "view_mode":  "list,kanban,graph,pivot,calendar,form,activity",
+        "domain":  "[(\"active\", \"in\", [True, False]), (\"activity_ids.active\", \"in\", [True, False])]",
+        "context":  "\n            {\n                \u0027default_type\u0027: \u0027opportunity\u0027,\n                \u0027force_search_count\u0027: 1,\n                \u0027search_default_assigned_to_me\u0027: 1,\n            }\n            ",
+        "tag":  null
+    },
+    {
+        "id":  399,
+        "name":  "Products",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_to_purchase\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  742,
+        "name":  "Tickets",
+        "type":  "ir.actions.act_window",
+        "res_model":  "helpdesk.ticket",
+        "view_mode":  "list,kanban,form,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_stage_open\u0027: 1}\n        ",
+        "tag":  null
+    },
+    {
+        "id":  1514,
+        "name":  "Attendances",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "student_attendance_face_mode"
+    },
+    {
+        "id":  1472,
+        "name":  "Fees Plan Lines",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.fees.plan.line",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_unpaid\u0027: 1, \u0027search_default_group_by_batch\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1345,
+        "name":  "Attendance Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.attendance.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1398,
+        "name":  "Answer Sheets",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.answer.sheets",
+        "view_mode":  "pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  61,
+        "name":  "Bank Accounts",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.partner.bank",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  889,
+        "name":  "Session Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.session.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  444,
+        "name":  "Activities",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.activity.report",
+        "view_mode":  "graph,pivot,list",
+        "domain":  "[]",
+        "context":  "{\n                \u0027search_default_completion_date\u0027: 1,\n                \u0027pivot_column_groupby\u0027: [\u0027subtype_id\u0027, \u0027mail_activity_type_id\u0027],\n                \u0027pivot_row_groupby\u0027: [\u0027date:month\u0027],\n                \u0027graph_mode\u0027: \u0027bar\u0027,\n                \u0027graph_groupbys\u0027: [\u0027date:month\u0027, \u0027subtype_id\u0027],\n            }",
+        "tag":  null
+    },
+    {
+        "id":  388,
+        "name":  "Multi-ledger",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.journal.group",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  931,
+        "name":  "Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.category",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1093,
+        "name":  "Board Affiliation",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.board.affiliation",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1289,
+        "name":  "Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.session",
+        "view_mode":  "kanban,calendar,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1384,
+        "name":  "Quiz Statistics",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.quiz.result",
+        "view_mode":  "graph",
+        "domain":  "[(\u0027quiz_id.lms\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  950,
+        "name":  "Sales Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.report",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  "[(\u0027state\u0027, \u0027!=\u0027, \u0027cancel\u0027)]",
+        "context":  "{\u0027search_default_Sales\u0027:1,\u0027group_by\u0027:[], \u0027search_default_filter_order_date\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1234,
+        "name":  "Circular Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.circular.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  935,
+        "name":  "Faculties",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.faculty",
+        "view_mode":  "kanban,list,form,activity",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  314,
+        "name":  "Event Templates",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  620,
+        "name":  "Apps",
+        "type":  "ir.actions.act_window",
+        "res_model":  "ir.module.module",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[\u0027!\u0027, (\u0027name\u0027, \u0027=like\u0027, \u0027theme_%\u0027)]",
+        "context":  "{\u0027search_default_category_id\u0027: 100, \u0027searchpanel_default_category_id\u0027: 48}",
+        "tag":  null
+    },
+    {
+        "id":  1294,
+        "name":  "Generate Sessions Report",
+        "type":  "ir.actions.act_window",
+        "res_model":  "time.table.report",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  893,
+        "name":  "Agent Performance",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.agent.analytics",
+        "view_mode":  "list,graph,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  191,
+        "name":  "Services",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.log.services",
+        "view_mode":  "list,kanban,form,graph,pivot,activity",
+        "domain":  false,
+        "context":  "{\u0027search_default_groupby_service_type_id\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  681,
+        "name":  "Team Analytics",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.team.analytics",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1266,
+        "name":  "Student Skill Template",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.skill.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1010,
+        "name":  "Assignment Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "grading.assignment.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1361,
+        "name":  "Misbehaviour Type Wise",
+        "type":  "ir.actions.act_window",
+        "res_model":  "misbehaviour.type",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1244,
+        "name":  "Placement Offers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.placement.offer",
+        "view_mode":  "list,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  368,
+        "name":  "Journal Items",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.move.line",
+        "view_mode":  "list,pivot,graph,kanban",
+        "domain":  "[(\u0027display_type\u0027, \u0027not in\u0027, (\u0027line_section\u0027, \u0027line_subsection\u0027, \u0027line_note\u0027)), (\u0027parent_state\u0027, \u0027!=\u0027, \u0027cancel\u0027)]",
+        "context":  "{\u0027journal_type\u0027:\u0027general\u0027, \u0027search_default_posted\u0027:1}",
+        "tag":  null
+    },
+    {
+        "id":  1255,
+        "name":  "Question Bank Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.question.bank.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1343,
+        "name":  "Attendance Sheets",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.attendance.sheet",
+        "view_mode":  "kanban,list,form,pivot,graph",
+        "domain":  "[]",
+        "context":  "{\u0027search_default_filter_attendance_today\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1118,
+        "name":  "Specializations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.specialization",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  513,
+        "name":  "Spreadsheets",
+        "type":  "ir.actions.act_window",
+        "res_model":  "spreadsheet.spreadsheet",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1258,
+        "name":  "Scholarship Stages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "scholarship.stages",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  422,
+        "name":  "Crm: Forecast",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  1029,
+        "name":  "Forum Post Pages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "forum.post",
+        "view_mode":  "list,kanban,graph",
+        "domain":  false,
+        "context":  "{\u0027search_default_posts\u0027: 1, \u0027create_action\u0027: \u0027website_forum.forum_forum_action_add\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1001,
+        "name":  "Approval Request",
+        "type":  "ir.actions.act_window",
+        "res_model":  "multi.request",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027user_id\u0027, \u0027=\u0027, uid)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  842,
+        "name":  "Online Calendar Appointment",
+        "type":  "ir.actions.act_window",
+        "res_model":  "calendar.online.appointment",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_user_id\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1115,
+        "name":  "Student Course Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.course",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1350,
+        "name":  "Documents",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.convocation.document",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  476,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027hr\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  939,
+        "name":  "Student Course Detail",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.student.course",
+        "view_mode":  "list,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  277,
+        "name":  "Surveys",
+        "type":  "ir.actions.act_window",
+        "res_model":  "survey.survey",
+        "view_mode":  "kanban,list,form,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1061,
+        "name":  "Whatsapp Campaign Participants",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.campaign.participants",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  489,
+        "name":  "Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "im_livechat.report.channel",
+        "view_mode":  "graph,pivot",
+        "domain":  false,
+        "context":  "\n                {\n                    \"search_default_filter_date_last_month\": 1,\n                    \"pivot_measures\": [\"__count\", \"time_to_answer\", \"duration\", \"rating\", \"number_of_calls\"],\n                    \"graph_measure\": \"__count__\",\n                    \"im_livechat_hide_partner_company\": True,\n                }\n            ",
+        "tag":  null
+    },
+    {
+        "id":  637,
+        "name":  "Page Views",
+        "type":  "ir.actions.act_window",
+        "res_model":  "website.track",
+        "view_mode":  "list",
+        "domain":  false,
+        "context":  "{\u0027search_default_type_url\u0027: 1, \u0027create\u0027: False, \u0027edit\u0027: False, \u0027copy\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  791,
+        "name":  "Time Off by Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave.report",
+        "view_mode":  "graph,list,pivot",
+        "domain":  "[]",
+        "context":  "{\u0027search_default_group_type\u0027: 1, \u0027search_default_approve\u0027: 1, \u0027search_default_validated\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  632,
+        "name":  "Website Pages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "website.page",
+        "view_mode":  "list,kanban",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1147,
+        "name":  "Headers/Footers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "quotation.document",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1271,
+        "name":  "Leave Type",
+        "type":  "ir.actions.act_window",
+        "res_model":  "student.leave.type",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1242,
+        "name":  "My Circular",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.circular",
+        "view_mode":  "list,kanban,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1169,
+        "name":  "Abandoned Carts",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[(\u0027is_abandoned_cart\u0027, \u0027=\u0027, 1)]",
+        "context":  "{\u0027show_sale\u0027: True, \u0027create\u0027: False, \u0027public_partner_id\u0027: 4, \u0027search_default_recovery_email\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1253,
+        "name":  "Quiz Result Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.quiz.result",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  678,
+        "name":  "Aio Tools",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.tool",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  230,
+        "name":  "Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  63,
+        "name":  "Country Group",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.country.group",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1197,
+        "name":  "Result Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.result.line",
+        "view_mode":  "graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1481,
+        "name":  "Grade Table",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.grade.table",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  304,
+        "name":  "Access Groups",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dms.access.group",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1202,
+        "name":  "Job Applicant",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.job.applicant",
+        "view_mode":  "kanban,list,form,activity,pivot,graph",
+        "domain":  false,
+        "context":  "{\u0027default_post_id\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1305,
+        "name":  "Route Register",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.route.register",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  969,
+        "name":  "Orders to Upsell",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,form,calendar,graph,pivot,kanban,activity",
+        "domain":  "[(\u0027invoice_status\u0027,\u0027=\u0027,\u0027upselling\u0027)]",
+        "context":  "{\u0027create\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1136,
+        "name":  "Media Purchase Requests",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.media.purchase",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  184,
+        "name":  "Vehicles",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle",
+        "view_mode":  "kanban,list,form,pivot,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  724,
+        "name":  "Sign Item Roles",
+        "type":  "ir.actions.act_window",
+        "res_model":  "e.sign.item.role",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  195,
+        "name":  "Odometer Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.odometer.report",
+        "view_mode":  "graph",
+        "domain":  "[(\u0027vehicle_id.active\u0027, \u0027=\u0027, True)]",
+        "context":  "{\u0027search_default_groupby_date\u0027: 1, \u0027search_default_groupby_category\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  853,
+        "name":  "Purchase Orders",
+        "type":  "ir.actions.act_window",
+        "res_model":  "purchase.order",
+        "view_mode":  "list,kanban,form,pivot,graph,calendar,activity",
+        "domain":  "[(\u0027state\u0027,\u0027=\u0027, \u0027purchase\u0027)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  912,
+        "name":  "Onsite Courses",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.event",
+        "view_mode":  "kanban,calendar,list,form,pivot,graph,activity",
+        "domain":  "[(\u0027registration_ids\u0027, \u0027any\u0027, [(\u0027partner_id.employee\u0027, \u0027=\u0027, True)])]",
+        "context":  "{\u0027hr_skills_event_add_employee\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1141,
+        "name":  "Publishers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.publisher",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1360,
+        "name":  "Elearning Rules",
+        "type":  "ir.actions.act_window",
+        "res_model":  "elearning.rules",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1177,
+        "name":  "Facility Allocations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.facility.allocation",
+        "view_mode":  "calendar,list,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  177,
+        "name":  "Meetings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "calendar.event",
+        "view_mode":  "calendar,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1199,
+        "name":  "Health",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.health",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1105,
+        "name":  "Program",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.program",
+        "view_mode":  "kanban,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1188,
+        "name":  "Exam Sessions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.exam.session",
+        "view_mode":  "list,form,calendar,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  914,
+        "name":  "1099 Report",
+        "type":  "ir.actions.act_window",
+        "res_model":  "l10n_us_1099.wizard",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1281,
+        "name":  "Thesis Submissions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.submission",
+        "view_mode":  "list,form,graph,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1196,
+        "name":  "Result Lines",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.result.line",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  202,
+        "name":  "Badges",
+        "type":  "ir.actions.act_window",
+        "res_model":  "gamification.badge",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1207,
+        "name":  "Issue media",
+        "type":  "ir.actions.act_window",
+        "res_model":  "barcode.issue.media",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  135,
+        "name":  "Canned Responses",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.canned.response",
+        "view_mode":  "list,form,kanban",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  406,
+        "name":  "Settings",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.config.settings",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{\u0027module\u0027 : \u0027account\u0027, \u0027bin_size\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  1379,
+        "name":  "Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course.tag",
+        "view_mode":  "list",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  39,
+        "name":  "Apps",
+        "type":  "ir.actions.act_window",
+        "res_model":  "ir.module.module",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[\u0027!\u0027, (\u0027name\u0027, \u0027=like\u0027, \u0027theme_%\u0027)]",
+        "context":  "{\u0027search_default_app\u0027:1}",
+        "tag":  null
+    },
+    {
+        "id":  515,
+        "name":  "Dashboards",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "action_spreadsheet_dashboard"
+    },
+    {
+        "id":  209,
+        "name":  "Link Tracker",
+        "type":  "ir.actions.act_window",
+        "res_model":  "link.tracker",
+        "view_mode":  "list,form,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  62,
+        "name":  "Countries",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.country",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1046,
+        "name":  "Contact",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.contact",
+        "view_mode":  "list,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1075,
+        "name":  "Registration",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.admission",
+        "view_mode":  "kanban,list,form,graph,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1099,
+        "name":  "Course",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course",
+        "view_mode":  "kanban,form",
+        "domain":  "[(\u0027parent_id\u0027,\u0027=\u0027,context.get(\u0027active_id\u0027, False))]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  619,
+        "name":  "Technical Pages",
+        "type":  "ir.actions.act_window",
+        "res_model":  "website.technical.page",
+        "view_mode":  "list",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  664,
+        "name":  "Customer Batch Payments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.batch.payment",
+        "view_mode":  "list,form,kanban,activity",
+        "domain":  "[(\u0027batch_type\u0027, \u0027=\u0027, \u0027inbound\u0027)]",
+        "context":  "{\u0027search_default_open\u0027: 1, \u0027default_batch_type\u0027: \u0027inbound\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1193,
+        "name":  "Marksheet Lines",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.marksheet.line",
+        "view_mode":  "list,form,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1182,
+        "name":  "Material",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.digital.library.material",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  767,
+        "name":  "Goals History",
+        "type":  "ir.actions.act_window",
+        "res_model":  "gamification.goal",
+        "view_mode":  "list,kanban",
+        "domain":  "[(\u0027challenge_id.challenge_category\u0027, \u0027=\u0027, \u0027hr\u0027)]",
+        "context":  "{\u0027search_default_group_by_user\u0027: True, \u0027search_default_group_by_definition\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  234,
+        "name":  "Vendor Pricelists",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.supplierinfo",
+        "view_mode":  "list,form,kanban",
+        "domain":  false,
+        "context":  "{\u0027visible_product_tmpl_id\u0027: False, \u0027search_default_active_products\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  776,
+        "name":  "Dashboard",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.leave",
+        "view_mode":  "calendar,list,form,activity",
+        "domain":  "[(\u0027user_id\u0027, \u0027=\u0027, uid), (\u0027employee_id.company_id\u0027, \u0027in\u0027, allowed_company_ids)]",
+        "context":  "{\u0027short_name\u0027: 1, \u0027search_default_year\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1198,
+        "name":  "Result Templates",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.result.template",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  653,
+        "name":  "Lock Journal Entries",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.change.lock.date",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1189,
+        "name":  "Exam Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.exam.type",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  685,
+        "name":  "File Sources",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.file.source",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1326,
+        "name":  "Admission Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.admission",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1315,
+        "name":  "Achievements",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.achievement",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  290,
+        "name":  "Categories",
+        "type":  "ir.actions.act_window",
+        "res_model":  "dms.category",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_all\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  967,
+        "name":  "Quotations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,kanban,form,calendar,pivot,graph,activity",
+        "domain":  false,
+        "context":  "{\u0027search_default_my_quotation\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  1446,
+        "name":  "Admission Templates",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.admission.customtemplate",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1373,
+        "name":  "Teams",
+        "type":  "ir.actions.act_window",
+        "res_model":  "grievance.team",
+        "view_mode":  "kanban,list,form,search",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  698,
+        "name":  "Agent Evaluations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.agent.evaluation",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  759,
+        "name":  "Employee Expenses",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.expense",
+        "view_mode":  "list,kanban,form,pivot,graph",
+        "domain":  "[]",
+        "context":  "{\n                \u0027search_default_all_approved\u0027: 1,\n                \u0027search_default_all_to_pay\u0027: 1,\n            }\n            ",
+        "tag":  null
+    },
+    {
+        "id":  689,
+        "name":  "Hook Execution Logs",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.hook.log",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_last_7_days\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  136,
+        "name":  "Roles",
+        "type":  "ir.actions.act_window",
+        "res_model":  "res.role",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  795,
+        "name":  "Time off Analysis by Employee and Time Off Type",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  1048,
+        "name":  "Blocked Contacts",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.contact",
+        "view_mode":  "list,form",
+        "domain":  "[(\u0027is_blocked\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  980,
+        "name":  "Sale Order Plans",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.activity.plan",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027res_model\u0027, \u0027=\u0027, \u0027sale.order\u0027)]",
+        "context":  "{\u0027default_res_model\u0027: \u0027sale.order\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  597,
+        "name":  "Products",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.template",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{\"search_default_goods\": 1, \u0027default_is_storable\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1238,
+        "name":  "My Notice",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.notice",
+        "view_mode":  "list,kanban,form,pivot",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  577,
+        "name":  "stock.method_action_picking_tree_outgoing",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  446,
+        "name":  "Pipeline Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "crm.lead",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_opportunity\u0027: True, \u0027search_default_current\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  150,
+        "name":  "Notifications",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{\"dialog_size\": \"medium\", \"footer\": false}",
+        "tag":  "mail.discuss_notification_settings_action"
+    },
+    {
+        "id":  1192,
+        "name":  "Exams",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.exam",
+        "view_mode":  "list,form,calendar,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1183,
+        "name":  "Library Enrollment",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.digital.library.enrollment",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1339,
+        "name":  "Submission Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.assignment.sub.line",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  222,
+        "name":  "Product Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\u0027create\u0027: True}",
+        "tag":  null
+    },
+    {
+        "id":  1032,
+        "name":  "Post Close Reason",
+        "type":  "ir.actions.act_window",
+        "res_model":  "forum.post.reason",
+        "view_mode":  "list",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1024,
+        "name":  "Relationships",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.parent.relationship",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  625,
+        "name":  "Website Preview",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "website_preview"
+    },
+    {
+        "id":  1452,
+        "name":  "Program Outcome",
+        "type":  "ir.actions.act_window",
+        "res_model":  "program.outcome",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  182,
+        "name":  "Manufacturers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "fleet.vehicle.model.brand",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{\u0027search_default_with_models\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  503,
+        "name":  "Mailing List Contacts",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mailing.contact",
+        "view_mode":  "list,kanban,form,graph,pivot",
+        "domain":  false,
+        "context":  "{\u0027search_default_filter_not_email_bl\u0027: 1}",
+        "tag":  null
+    },
+    {
+        "id":  799,
+        "name":  "Degrees",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.recruitment.degree",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  554,
+        "name":  "Scrap Orders",
+        "type":  "ir.actions.act_window",
+        "res_model":  "stock.scrap",
+        "view_mode":  "list,form,kanban,pivot,graph",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  850,
+        "name":  "Products",
+        "type":  "ir.actions.act_window",
+        "res_model":  "product.template",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{\"search_default_filter_to_purchase\":1, \"purchase_product_template\": 1}",
+        "tag":  null
+    },
+    {
+        "id":  1062,
+        "name":  "Traces",
+        "type":  "ir.actions.act_window",
+        "res_model":  "whatsapp.activity.trace",
+        "view_mode":  "graph,pivot,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1279,
+        "name":  "Thesis Registrations",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.thesis.registration",
+        "view_mode":  "kanban,list,form,graph,pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  395,
+        "name":  "Payment Terms",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.payment.term",
+        "view_mode":  "list,kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  708,
+        "name":  "Campaigns",
+        "type":  "ir.actions.act_window",
+        "res_model":  "marketing.campaign",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1476,
+        "name":  "Print Grading Excel Report",
+        "type":  "ir.actions.act_window",
+        "res_model":  "grading.wizard",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  679,
+        "name":  "Aio Json Schemas",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.json.schema",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  111,
+        "name":  "My Dashboard",
+        "type":  "ir.actions.client",
+        "res_model":  "dashboard_pro.main_dashboard",
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "dashboard_kpi"
+    },
+    {
+        "id":  348,
+        "name":  "Vendor Payments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "account.payment",
+        "view_mode":  "list,kanban,form,graph,activity",
+        "domain":  false,
+        "context":  "{\n                \u0027default_payment_type\u0027: \u0027outbound\u0027,\n                \u0027default_partner_type\u0027: \u0027supplier\u0027,\n                \u0027search_default_outbound_filter\u0027: 1,\n                \u0027default_move_journal_types\u0027: (\u0027bank\u0027, \u0027cash\u0027),\n                \u0027display_account_trust\u0027: True,\n            }",
+        "tag":  null
+    },
+    {
+        "id":  894,
+        "name":  "Cost Optimization",
+        "type":  "ir.actions.act_window",
+        "res_model":  "aio.cost.optimizer",
+        "view_mode":  "form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1344,
+        "name":  "Attendance Line",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.attendance.line",
+        "view_mode":  "list,form,pivot,graph",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1401,
+        "name":  "Job Opportunities",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.activity.announcement",
+        "view_mode":  "kanban,list,form,pivot,calendar,activity",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1417,
+        "name":  "Grade Configuration",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.assign.grade.config",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1000,
+        "name":  "Approval Types",
+        "type":  "ir.actions.act_window",
+        "res_model":  "multi.approval.type",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1388,
+        "name":  "Course Profile Report",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.course",
+        "view_mode":  "pivot",
+        "domain":  "[(\u0027online_course\u0027, \u0027=\u0027, True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1435,
+        "name":  "Attendance Analysis",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.attendance.sheet",
+        "view_mode":  "pivot",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  332,
+        "name":  "Payment Providers",
+        "type":  "ir.actions.act_window",
+        "res_model":  "payment.provider",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  474,
+        "name":  "Departments",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.department",
+        "view_mode":  "kanban,list,form",
+        "domain":  "[(\"has_read_access\", \"=\", True)]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1449,
+        "name":  "OpenEduCat Action",
+        "type":  "ir.actions.client",
+        "res_model":  "dashboard_pro.main_dashboard",
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "dashboard_kpi"
+    },
+    {
+        "id":  1033,
+        "name":  "Forum Tags",
+        "type":  "ir.actions.act_window",
+        "res_model":  "forum.tag",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  328,
+        "name":  "Event Question",
+        "type":  "ir.actions.act_window",
+        "res_model":  "event.question",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1022,
+        "name":  "OnBoarding",
+        "type":  "ir.actions.act_window",
+        "res_model":  "oe.onboarding.steps",
+        "view_mode":  "kanban",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  934,
+        "name":  "Subjects",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.subject",
+        "view_mode":  "list,form",
+        "domain":  "[]",
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  483,
+        "name":  "Looking for Help",
+        "type":  "ir.actions.act_window",
+        "res_model":  "discuss.channel",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\"livechat_status\", \"=\", \"need_help\")]",
+        "context":  "\n                {\n                    \"search_default_filter_session_date\": \"custom_created_on_last_30_days\",\n                    \"im_livechat_hide_partner_company\": True,\n                }\n            ",
+        "tag":  null
+    },
+    {
+        "id":  1206,
+        "name":  "Barcode Interface",
+        "type":  "ir.actions.client",
+        "res_model":  false,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  "{}",
+        "tag":  "openeducat_library_barcode.scan_view"
+    },
+    {
+        "id":  555,
+        "name":  "Inventory",
+        "type":  "ir.actions.server",
+        "res_model":  null,
+        "view_mode":  null,
+        "domain":  null,
+        "context":  null,
+        "tag":  null
+    },
+    {
+        "id":  486,
+        "name":  "Expertise",
+        "type":  "ir.actions.act_window",
+        "res_model":  "im_livechat.expertise",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1168,
+        "name":  "Unpaid Orders",
+        "type":  "ir.actions.act_window",
+        "res_model":  "sale.order",
+        "view_mode":  "list,kanban,form,activity",
+        "domain":  "[(\u0027state\u0027, \u0027=\u0027, \u0027sent\u0027), (\u0027website_id\u0027, \u0027!=\u0027, False)]",
+        "context":  "{\u0027show_sale\u0027: True, \u0027create\u0027: False}",
+        "tag":  null
+    },
+    {
+        "id":  591,
+        "name":  "Inventory Overview",
+        "type":  "ir.actions.act_window",
+        "res_model":  "stock.picking.type",
+        "view_mode":  "kanban,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  200,
+        "name":  "Ranks",
+        "type":  "ir.actions.act_window",
+        "res_model":  "gamification.karma.rank",
+        "view_mode":  "list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  822,
+        "name":  "Job Positions",
+        "type":  "ir.actions.act_window",
+        "res_model":  "hr.job",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  442,
+        "name":  "Lead Activity Plans",
+        "type":  "ir.actions.act_window",
+        "res_model":  "mail.activity.plan",
+        "view_mode":  "list,kanban,form",
+        "domain":  "[(\u0027res_model\u0027, \u0027=\u0027, \u0027crm.lead\u0027)]",
+        "context":  "{\u0027default_res_model\u0027: \u0027crm.lead\u0027}",
+        "tag":  null
+    },
+    {
+        "id":  1245,
+        "name":  "Coordination Teams",
+        "type":  "ir.actions.act_window",
+        "res_model":  "op.placement.cell",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    },
+    {
+        "id":  1489,
+        "name":  "Grading Assignment",
+        "type":  "ir.actions.act_window",
+        "res_model":  "grading.assignment",
+        "view_mode":  "kanban,list,form",
+        "domain":  false,
+        "context":  "{}",
+        "tag":  null
+    }
+]

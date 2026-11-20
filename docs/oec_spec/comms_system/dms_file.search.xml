@@ -1,0 +1,21 @@
+<search>
+                <field name="name" filter_domain="[('name','ilike',self)]"/>
+                <filter string="All Files" name="all" domain="['|',('active', '=',  False), ('active', '!=',  False)]"/>
+                <filter string="My Files" name="filter_user" domain="[('create_uid', '=', uid)]"/>
+                <separator/>
+                <filter string="Archived Files" name="filter_active" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Creation Date" name="filter_create" date="create_date"/>
+                <filter string="Modification Date" name="filter_write" date="write_date"/>
+                <group>
+                    <filter name="group_color" string="Color" domain="[]" context="{'group_by':'color'}"/>
+                    <filter name="group_category" string="Category" domain="[]" context="{'group_by':'category_id'}"/>
+                    <separator/>
+                    <filter name="group_storage" string="Storage" domain="[]" context="{'group_by':'storage_id'}"/>
+                    <filter name="group_directory" string="Directories" domain="[]" context="{'group_by':'directory_id'}"/>
+                </group>
+                <searchpanel>
+                    <field name="directory_id" icon="fa-folder" context="{'directory_short_name': True}" enable_counters="1"/>
+                    <field name="category_id" icon="fa-users" enable_counters="1"/>
+                </searchpanel>
+            </search>

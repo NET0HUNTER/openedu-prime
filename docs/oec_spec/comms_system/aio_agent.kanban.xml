@@ -1,0 +1,78 @@
+<kanban class="o_kanban_mobile" sample="1" default_order="is_favorite desc,name">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="model_id"/>
+                <field name="collection_id"/>
+                <field name="version"/>
+                <field name="state"/>
+                <field name="icon"/>
+                <field name="is_favorite"/>
+                <field name="agent_type"/>
+                <field name="use_native_guardrails"/>
+                <field name="enable_user_memory"/>
+                <field name="reasoning_enabled"/>
+                <field name="structured_output"/>
+                <field name="guardrail_count"/>
+                <templates>
+                    <t t-name="card">
+                        <!-- Header: icon + name + favorite -->
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <field name="icon" widget="image" class="rounded-circle border" options="{'size': [40, 40]}" t-if="record.icon.raw_value"/>
+                            <div t-if="!record.icon.raw_value" class="d-flex align-items-center justify-content-center rounded-circle border bg-100" style="width:40px; height:40px; min-width:40px;">
+                                <!-- v19 view validator requires a title
+                                     attribute on standalone fa icons
+                                     (a11y check; warned otherwise). -->
+                                <i class="fa fa-robot text-primary" style="font-size:18px;" title="AI Agent"/>
+                            </div>
+                            <div class="flex-grow-1 min-w-0">
+                                <div class="d-flex align-items-center gap-1">
+                                    <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                    <strong class="text-truncate"><field name="name"/></strong>
+                                </div>
+                                <small class="text-muted text-truncate d-block">
+                                    <field name="model_id"/>
+                                    <span t-if="record.version.raw_value" class="ms-1 opacity-75">v<field name="version"/></span>
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Description (2 lines max) -->
+                        <div class="text-muted small mb-2" style="display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:2.6em;">
+                            <field name="description"/>
+                        </div>
+
+                        <!-- State + capability badges -->
+                        <div class="d-flex flex-wrap gap-1 mb-2">
+                            <field name="state" widget="badge" decoration-success="state == 'active'" decoration-warning="state == 'inactive'" decoration-danger="state == 'error'" decoration-muted="state == 'draft'"/>
+                            <span t-if="record.agent_type.raw_value === 'multi_agent'" class="badge text-bg-primary" title="Multi-Agent Team">
+                                <i class="fa fa-users me-1" title="Users"/>Team
+                            </span>
+                            <span t-if="record.collection_id.raw_value" class="badge text-bg-info" title="RAG Knowledge Base">
+                                <i class="fa fa-database me-1" title="Database"/>RAG
+                            </span>
+                            <span t-if="record.structured_output.raw_value" class="badge text-bg-dark" title="Structured JSON Output">
+                                <i class="fa fa-code me-1" title="Code"/>JSON
+                            </span>
+                            <span t-if="record.reasoning_enabled.raw_value" class="badge text-bg-warning" title="Extended Reasoning">
+                                <i class="fa fa-lightbulb-o me-1" title="Lightbulb O"/>Reason
+                            </span>
+                            <span t-if="record.use_native_guardrails.raw_value" class="badge text-bg-success" title="AI Safety Checks">
+                                <i class="fa fa-shield me-1" title="Shield"/>Safe
+                            </span>
+                            <span t-if="record.enable_user_memory.raw_value" class="badge text-bg-info" title="User Memory">
+                                <i class="fa fa-brain me-1" title="Brain"/>Memory
+                            </span>
+                        </div>
+
+                        <!-- Footer: guardrails count -->
+                        <div class="d-flex align-items-center justify-content-between border-top pt-2 mt-auto">
+                            <small class="text-muted" t-if="record.guardrail_count.raw_value">
+                                <i class="fa fa-shield me-1" title="Guardrails"/><field name="guardrail_count"/> guardrails
+                            </small>
+                            <small class="text-muted">
+                                <field name="agent_type"/>
+                            </small>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>

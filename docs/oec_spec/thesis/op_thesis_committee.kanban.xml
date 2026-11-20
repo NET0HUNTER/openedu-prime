@@ -1,0 +1,1 @@
+<kanban string="Thesis Committee Member"><templates><t t-name="card"><field name="faculty_id" on_change="1"/></t></templates></kanban>

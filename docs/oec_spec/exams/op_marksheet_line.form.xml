@@ -1,0 +1,36 @@
+﻿<form string="Marksheet Line">
+                    <header/>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="student_id" on_change="1" can_create="True" can_write="True"/>
+                    <field name="progression_id" can_create="True" can_write="True"/>
+                                <field name="total_marks" on_change="1"/>
+                                <field name="grade" invisible="evaluation_type != 'grade'"/>
+                            </group>
+                            <group>
+                                <field name="status"/>
+                                <field name="percentage" on_change="1"/>
+          <field name="gpa_count"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                                <field name="evaluation_type"/>
+                            </group>
+                        </group>
+                        <group string="Results">
+                            <field name="result_line" colspan="2" nolabel="1" on_change="1"><list string="Result Line">
+                    <field name="student_id"/>
+                    <field name="exam_id" on_change="1"/>
+                    <field name="marks" on_change="1"/>
+                    <field name="grade" invisible="evaluation_type != 'grade'"/>
+                    <field name="grade_point" on_change="1"/>
+                    <field name="credit" on_change="1"/>
+                    <field name="qp" on_change="1"/>
+                    <field name="status" on_change="1"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="evaluation_type"/>
+                </list></field>
+                        </group>
+                    </sheet>
+                </form>

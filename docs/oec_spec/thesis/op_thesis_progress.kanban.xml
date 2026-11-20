@@ -1,0 +1,1 @@
+<kanban string="Thesis Progress Report"><templates><t t-name="card"><field name="name"/></t></templates></kanban>

@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "C Programming"
+    },
+    {
+        "id":  2,
+        "display_name":  "Network Engineer"
+    },
+    {
+        "id":  3,
+        "display_name":  "Communication"
+    },
+    {
+        "id":  4,
+        "display_name":  "Time Management"
+    },
+    {
+        "id":  5,
+        "display_name":  "Story Telling"
+    }
+]

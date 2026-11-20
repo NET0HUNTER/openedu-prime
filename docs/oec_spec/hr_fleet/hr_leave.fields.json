@@ -1,0 +1,77 @@
+{
+  "fields": {
+    "holiday_status_id": {
+      "change_default": false,
+      "context": {},
+      "domain": "[\n            '|',\n                ('requires_allocation', '=', False),\n                ('has_valid_allocation', '=', True),\n        ]",
+      "groupable": true,
+      "name": "holiday_status_id",
+      "readonly": false,
+      "relation": "hr.leave.type",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Time Off Type",
+      "type": "many2one"
+    },
+    "employee_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [
+        [
+          "active",
+          "=",
+          true
+        ],
+        [
+          "company_id",
+          "in",
+          [
+            4,
+            3,
+            2,
+            1
+          ]
+        ]
+      ],
+      "groupable": true,
+      "name": "employee_id",
+      "readonly": false,
+      "relation": "hr.employee",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Employee",
+      "type": "many2one"
+    },
+    "date_from": {
+      "change_default": false,
+      "groupable": true,
+      "name": "date_from",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Start Date",
+      "type": "datetime"
+    },
+    "number_of_days": {
+      "aggregator": "sum",
+      "change_default": false,
+      "groupable": true,
+      "help": "Number of days of the time off request. Used in the calculation.",
+      "name": "number_of_days",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Duration (Days)",
+      "type": "float"
+    }
+  },
+  "has_approval_rules": false
+}

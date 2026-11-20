@@ -1,0 +1,59 @@
+<form string="Agreements">
+                    <header>
+                        <button string="Submit" invisible="state != 'draft'" class="oe_highlight" type="object" name="submit_form"/>
+                        <button name="confirm_in_progress" invisible="state not in ('submit', 'pending')" string="Confirm" type="object" class="oe_highlight"/>
+                        <button string="Agreement Confirm" class="oe_highlight" invisible="state != 'confirm'" type="object" name="agreement_confirm"/>
+                        <button name="enroll_partner" invisible="state != 'agreement'" string="Enroll" type="object" class="oe_highlight"/>
+                        <button name="confirm_rejected" invisible="state not in ('confirm', 'confirm_pending')" string="Reject" type="object"/>
+                        <button name="confirm_pending" invisible="state != 'submit'" string="Pending" type="object"/>
+                        <button name="confirm_cancel" string="Cancel" type="object"/>
+                        <button name="confirm_to_draft" string="Draft" invisible="state not in ('pending', 'reject', 'cancel')" type="object"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="partner_id" can_create="True" can_write="True"/>
+                                <field name="route_id" can_create="True" can_write="True"/>
+                                <field name="plan_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="date"/>
+                                <field name="prev_invoice_date"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="route_register_id" domain="[('state', 'in', ['gathering'])]" on_change="1" can_create="True" can_write="True"/>
+                                <field name="stop_id" can_create="True" can_write="True"/>
+                                <field name="expires_after"/>
+                                <field name="end_date"/>
+                                <field name="next_invoice_date"/>
+                            </group>
+                        </group>
+                        <group string="Bill and Accounts">
+                            <group>
+                                <field name="bill"/>
+                            </group>
+                            <group>
+                                <field name="bill_selection"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Transportation Fees Collection">
+                                <field name="transportation_fees_detail_ids" nolabel="1">
+                                    <list editable="top">
+                                        <field name="date"/>
+                                        <field name="currency_id" invisible="1"/>
+                                        <field name="amount" widget="monetary"/>
+                                        <field name="product_id" invisible="1" can_create="True" can_write="True"/>
+                                        <field name="invoice_id" invisible="1" on_change="1" can_create="True" can_write="True"/>
+                                        <field name="state"/>
+                                        <field name="invoice_state"/>
+                                        <field name="company_id" optional="show" on_change="1" can_create="True" can_write="True"/>
+                                        <button string="Create Invoice" class="oe_highlight" invisible="state != 'draft'" type="object" name="get_invoice"/>
+                                        <button string="View Invoice" invisible="state != 'invoice'" type="object" name="action_get_invoice"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>

@@ -1,0 +1,38 @@
+<kanban default_group_by="state" quick_create="false" sample="1">
+                <field name="name" on_change="1"/>
+                <field name="state"/>
+                <templates>
+                    <t t-name="card">
+                        <main class="oe_kanban_global_click d-flex flex-column gap-2 p-1 position-relative bg-white rounded border-0 o_automated_marketing_campaign_kanban">
+                            
+                            <!-- Header -->
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <h5 class="mb-0 fw-bold text-primary text-truncate pe-2" t-att-title="record.name.value" style="font-size: 1.15rem;">
+                                    <field name="name" on_change="1"/>
+                                </h5>
+                                <span class="badge bg-light text-secondary rounded-pill border px-2 py-1 shadow-sm flex-shrink-0">
+                                    <i class="fa fa-users me-1" title="Participants"/> <field name="total_participant_count"/> Total
+                                </span>
+                            </div>
+                            
+                            <!-- Participant Breakdown -->
+                            <div class="d-flex justify-content-between align-items-end mt-2">
+                                <div class="d-flex flex-column">
+                                    <span class="text-uppercase fw-bold text-muted mb-1" style="letter-spacing: 0.5px; font-size: 0.7rem;">Completed</span>
+                                    <span class="fs-5 fw-bolder text-success lh-1"><field name="completed_participant_count"/></span>
+                                </div>
+                                <div class="d-flex flex-column text-end">
+                                    <span class="text-uppercase fw-bold text-muted mb-1" style="letter-spacing: 0.5px; font-size: 0.7rem;">Running</span>
+                                    <span class="fs-5 fw-bolder text-primary lh-1"><field name="running_participant_count"/></span>
+                                </div>
+                            </div>
+
+                            <!-- Progress Bar -->
+                            <div class="progress mt-2 rounded-pill bg-light border border-light-subtle shadow-inner" style="height: 10px;">
+                                <div class="progress-bar bg-success" role="progressbar" t-attf-style="width: {{ record.total_participant_count.raw_value ? (record.completed_participant_count.raw_value / record.total_participant_count.raw_value * 100) : 0 }}%;"/>
+                                <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated opacity-75" role="progressbar" t-attf-style="width: {{ record.total_participant_count.raw_value ? (record.running_participant_count.raw_value / record.total_participant_count.raw_value * 100) : 0 }}%;"/>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

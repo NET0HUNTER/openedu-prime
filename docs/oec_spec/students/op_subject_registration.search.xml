@@ -1,0 +1,11 @@
+﻿<search string="Course Registration">
+                    <field name="student_id"/>
+                    <field name="course_id"/>
+                    <field name="batch_id"/>
+                    <newline/>
+                    <group>
+                        <filter name="group_by_course" string="Course" domain="[]" context="{'group_by':'course_id'}"/>
+                        <filter name="group_by_batch" string="Batch" domain="[]" context="{'group_by':'batch_id'}"/>
+                        <filter name="group_by_status" string="Status" domain="[]" context="{'group_by':'state'}"/>
+                    </group>
+                </search>

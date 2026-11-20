@@ -1,0 +1,56 @@
+{
+  "fields": {
+    "journal_id": {
+      "change_default": false,
+      "context": {},
+      "domain": "(company_id and ['|', ('company_id', '=', False), ('company_id', 'parent_of', [company_id])] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', '')]) + ([])",
+      "groupable": true,
+      "name": "journal_id",
+      "readonly": false,
+      "relation": "account.journal",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Journal",
+      "type": "many2one"
+    },
+    "amount": {
+      "aggregator": "sum",
+      "change_default": false,
+      "currency_field": "currency_id",
+      "groupable": true,
+      "name": "amount",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Amount",
+      "type": "monetary"
+    },
+    "payment_type": {
+      "change_default": false,
+      "groupable": true,
+      "name": "payment_type",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "selection": [
+        [
+          "outbound",
+          "Send"
+        ],
+        [
+          "inbound",
+          "Receive"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Payment Type",
+      "type": "selection"
+    }
+  },
+  "has_approval_rules": false
+}

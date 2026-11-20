@@ -1,0 +1,20 @@
+{
+  "fields": {
+    "registration_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "registration_id",
+      "readonly": false,
+      "relation": "op.thesis.registration",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Thesis Registration",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

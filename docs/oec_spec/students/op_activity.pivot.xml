@@ -1,0 +1,4 @@
+﻿<pivot string="Activity Pivot">
+                    <field name="student_id" type="row"/>
+                    <field name="type_id" type="col"/>
+                </pivot>

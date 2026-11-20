@@ -1,0 +1,45 @@
+﻿<form string="Marksheet Register">
+                    <header>
+                        <button name="action_validate" invisible="state != 'draft'" string="Validate Marksheet" type="object" class="oe_highlight"/>
+                        <button name="act_draft" invisible="state != 'cancelled'" string="Set to Draft" type="object"/>
+                        <button name="act_cancel" invisible="state != 'draft'" type="object" string="Cancel"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,validated,cancelled"/>
+                    </header>
+                    <sheet>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="generated_by" can_create="True" can_write="True"/>
+                                <field name="total_pass"/>
+                                <field name="result_template_id" can_create="True" can_write="True"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="exam_session_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="generated_date"/>
+                                <field name="total_failed"/>
+                            </group>
+                        </group>
+                        <separator string="Marksheets" colspan="4"/>
+                        <group colspan="4">
+                            <field name="marksheet_line" colspan="2" nolabel="1" on_change="1"><list string="Marksheet Line">
+                    <field name="student_id" on_change="1"/>
+                    <field name="total_marks" on_change="1"/>
+                    <field name="percentage" on_change="1"/>
+          <field name="gpa_count"/>
+           <field name="total_points" string="Total Points" optional="hide" on_change="1"/>
+                    <field name="grade" invisible="evaluation_type != 'grade'"/>
+                    <field name="status" on_change="1"/>
+                    <field name="progression_id" optional="hide"/>
+                    <field name="exam_name" optional="hide"/>
+                    <field name="exam_type" optional="hide"/>
+                    <field name="grand_total" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                    <field name="evaluation_type"/>
+                </list></field>
+                        </group>
+                    </sheet>
+                   <chatter/>
+                </form>

@@ -1,0 +1,35 @@
+{
+  "fields": {
+    "stage_id": {
+      "change_default": false,
+      "context": {},
+      "domain": "['|', ('job_ids', '=', False), ('job_ids', '=', job_id)]",
+      "groupable": true,
+      "name": "stage_id",
+      "readonly": false,
+      "relation": "hr.recruitment.stage",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Stage",
+      "type": "many2one"
+    },
+    "job_id": {
+      "change_default": false,
+      "context": {},
+      "domain": "company_id and [('company_id', '=', company_id)] or []",
+      "groupable": true,
+      "name": "job_id",
+      "readonly": false,
+      "relation": "hr.job",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Job Position",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

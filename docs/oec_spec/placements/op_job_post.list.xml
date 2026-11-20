@@ -1,0 +1,19 @@
+<list>
+                <field name="name"/>
+                <field name="job_post"/>
+                <field name="street" placeholder="Street..." class="o_address_street"/>
+                <field name="city" placeholder="City" optional="hide"/>
+                <field name="state_id" placeholder="State" optional="hide"/>
+                <field name="currency_id" optional="hide"/>
+                <field name="salary_from" widget="monetary"/>
+                <field name="salary_upto" widget="monetary"/>
+                <field name="payable_at"/>
+                <field name="employment_type" optional="hide"/>
+                <field name="skill_ids" widget="many2many_tags" optional="hide"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="expected_employees" optional="hide"/>
+                <field name="created_by" optional="hide"/>
+                <field name="company_id" optional="show" on_change="1"/>
+                <field name="department_id"/>
+            </list>

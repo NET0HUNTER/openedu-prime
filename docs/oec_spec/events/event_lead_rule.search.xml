@@ -1,0 +1,7 @@
+<search string="Search Lead Generation Rules">
+                <field name="name" string="Name"/>
+                <separator/>
+                <filter string="Archived" name="filter_inactive" domain="[('active', '=', False)]"/>
+                <filter string="Creation Type" name="filter_lead_creation_basis" context="{'group_by': 'lead_creation_basis'}"/>
+                <filter string="Trigger Type" name="filter_lead_creation_trigger" context="{'group_by': 'lead_creation_trigger'}"/>
+            </search>

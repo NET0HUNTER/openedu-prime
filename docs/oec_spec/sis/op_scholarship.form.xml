@@ -1,0 +1,37 @@
+﻿<form string="Scholarship">
+                    <header>
+                        <field name="scholarship_stages_id" widget="statusbar" options="{'clickable': '1', 'name': 'name'}" statusbar_visible="scholarship_stages_id" can_create="True" can_write="True"/>
+
+                    </header>
+
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" type="object" name="make_invoices" icon="fa-pencil-square-o" string="Invoice">
+                            </button>
+                        </div>
+                        <field name="active" invisible="1"/>
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group class="mt32">
+                            <!--                            <field name="sponsor_id"/>-->
+                            <group>
+                                <field name="student_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="course_id" on_change="1" can_create="True" can_write="True"/>
+                                <field name="amount"/>
+                                <field name="company_id" optional="show" can_create="True" can_write="True"/>
+                            </group>
+                            <group>
+                                <field name="type_id" can_create="True" can_write="True"/>
+                                <field name="batch_id" domain="[('course_id', '=', course_id)]" can_create="True" can_write="True"/>
+                                <field name="sponsor_id" can_create="True" can_write="True"/>
+                                <field name="invoice_id" readonly="1"/>
+                            </group>
+                            <!--                            <field name="scholarship_stages_id"/>-->
+                        </group>
+                    </sheet>
+                    <chatter/>
+
+                <field name="student_courses" invisible="True" readonly="True" data-used-by="domain=&quot;[('id', 'in', student_courses)]&quot; (field,course_id)"/>
+</form>

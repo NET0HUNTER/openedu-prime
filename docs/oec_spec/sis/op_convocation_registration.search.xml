@@ -1,0 +1,13 @@
+﻿<search>
+                <field name="name"/>
+                <field name="ceremony_id"/>
+                <field name="student_id"/>
+                <filter string="Draft" name="draft" domain="[('state','=','draft')]"/>
+                <filter string="Registered" name="registered" domain="[('state','=','registered')]"/>
+                <filter string="Attended" name="done" domain="[('state','=','done')]"/>
+                <filter string="Cancelled" name="cancelled" domain="[('state','=','cancelled')]"/>
+                <group>
+                    <filter string="Ceremony" name="ceremony" context="{'group_by':'ceremony_id'}"/>
+                    <filter string="Status" name="status" context="{'group_by':'state'}"/>
+                </group>
+            </search>

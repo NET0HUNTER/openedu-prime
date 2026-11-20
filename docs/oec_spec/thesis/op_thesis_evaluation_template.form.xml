@@ -1,0 +1,25 @@
+<form string="Thesis Evaluation">
+                <header>
+                    <button name="action_set_draft" type="object" string="Set Draft" invisible="state != 'in_use' or has_grading_history" class="oe_highlight"/>
+                    <button name="action_set_in_use" type="object" string="Set In Use" invisible="state != 'draft'" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,in_use"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name" readonly="state == 'in_use'"/>
+                        <field name="total_marks" readonly="state == 'in_use'"/>
+                    </group>
+                    <notebook>
+                        <page string="Parameters" name="rubric_element_line">
+                            <field name="parameter_line" readonly="state == 'in_use'">
+                                <list editable="bottom">
+                                    <field name="name"/>
+                                    <field name="max_marks"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            <field name="has_grading_history" invisible="True" readonly="True" data-used-by="invisible=&quot;state != 'in_use' or has_grading_history&quot; (button,action_set_draft)"/>
+</form>

@@ -1,0 +1,87 @@
+<form string="Account">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_open_related_taxes" type="object" icon="fa-bars" invisible="related_taxes_amount == 0">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="related_taxes_amount"/>
+                                    </span>
+                                    <span class="o_stat_text">
+                                        Taxes
+                                    </span>
+                                </div>
+                            </button>
+                            <button class="oe_stat_button" name="account.action_move_line_select" type="action" icon="fa-bars">
+                                <div class="o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="current_balance"/>
+                                    </span>
+                                    <span class="o_stat_text">
+                                        Balance
+                                    </span>
+                                </div>
+                            </button>
+                        </div>
+                        <div>
+                            <h1 style="font-size: 1.9rem;">
+                                <div class="row">
+                                    <div class="col col-md-8">
+                                        <label for="name" string="Account Name"/>
+                                        <div>
+                                            <field name="name" placeholder="e.g. Current Assets" style="width:80% !important;" on_change="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-md-auto">
+                                        <label for="code" string="Code"/>
+                                        <div>
+                                            <field name="placeholder_code" invisible="1"/>
+                                            <field name="code" placeholder="e.g. 101000" class="oe_inline" options="{'placeholder_field': 'placeholder_code'}" on_change="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </h1>
+                        </div>
+                        <notebook>
+                            <page name="accounting" string="Accounting">
+                                <group>
+                                    <group>
+                                        <field name="account_type" widget="account_type_selection" on_change="1"/>
+                                        <field name="tax_ids" widget="many2many_tax_tags" invisible="account_type == 'off_balance'" options="{'no_quick_create': True}" can_create="True" can_write="True"/>
+                                        <field name="tag_ids" widget="many2many_tags" domain="[('applicability', '=', 'accounts')]" context="{'default_applicability': 'accounts'}" options="{'no_create_edit': True}" can_create="True" can_write="True"/>
+                <field name="account_stock_variation_id" invisible="account_type != 'asset_current'" can_create="True" can_write="True"/>
+                <field name="account_stock_expense_id" invisible="1" placeholder="For Perpetual Continental Only" can_create="True" can_write="True" column_invisible="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="internal_group" invisible="1" readonly="1"/>
+                                        
+                <label for="reconcile" invisible="account_type in ('asset_cash', 'liability_credit_card', 'off_balance')"/>
+                <div invisible="account_type in ('asset_cash', 'liability_credit_card', 'off_balance')">
+                    <field name="reconcile"/>
+                    <button name="action_open_reconcile" class="oe_link" type="object" string=" -&gt; Reconcile" invisible="not reconcile"/>
+                </div>
+                                        <field name="active" widget="boolean_toggle"/>
+                                        <field name="group_id" invisible="1" column_invisible="1"/>
+                                        <field name="company_ids" widget="many2many_tags" options="{'no_create': True}" can_create="True" can_write="True"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page name="Description">
+                                <field name="description"/>
+                            </page>
+                            <page name="mapping" string="Mapping" invisible="not display_mapping_tab">
+                                <field name="code_mapping_ids" nolabel="1">
+                                    <list editable="bottom" create="False" delete="False">
+                                        <field name="company_id" force_save="1" can_create="True" can_write="True"/>
+                                        <field name="code"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <!-- Chatter -->
+                    <chatter/>
+                <field name="company_ids" invisible="True" readonly="True" data-used-by="domain=&quot;(company_ids and ['|', ('company_id', '=', False), ('company_id', 'parent_of', company_ids)] or ['|', ('company_id', '=', False), ('company_id', 'parent_of', '')]) + ([])&quot; (field,tax_ids)"/>
+<field name="display_mapping_tab" invisible="True" readonly="True" data-used-by="invisible='not display_mapping_tab' (page,mapping)"/>
+</form>

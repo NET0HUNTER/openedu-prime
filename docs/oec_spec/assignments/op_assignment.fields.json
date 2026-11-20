@@ -1,0 +1,51 @@
+{
+  "fields": {
+    "state": {
+      "change_default": false,
+      "groupable": true,
+      "name": "state",
+      "readonly": false,
+      "required": true,
+      "searchable": true,
+      "selection": [
+        [
+          "draft",
+          "Draft"
+        ],
+        [
+          "publish",
+          "Published"
+        ],
+        [
+          "finish",
+          "Finished"
+        ],
+        [
+          "cancel",
+          "Cancel"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Status",
+      "type": "selection"
+    },
+    "course_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "course_id",
+      "readonly": false,
+      "related": "grading_assignment_id.course_id",
+      "relation": "op.course",
+      "required": true,
+      "searchable": true,
+      "sortable": true,
+      "store": false,
+      "string": "Course",
+      "type": "many2one"
+    }
+  },
+  "has_approval_rules": false
+}

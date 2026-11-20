@@ -1,0 +1,4 @@
+<pivot string="Job Post Records">
+                <field name="job_post" type="col"/>
+                <field name="city" type="row"/>
+            </pivot>

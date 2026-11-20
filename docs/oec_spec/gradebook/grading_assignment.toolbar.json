@@ -1,0 +1,10 @@
+﻿{
+    "action":  [
+                   {
+                       "id":  1490,
+                       "name":  "Create Gradebook Lines",
+                       "binding_view_types":  "list,form",
+                       "sequence":  5
+                   }
+               ]
+}

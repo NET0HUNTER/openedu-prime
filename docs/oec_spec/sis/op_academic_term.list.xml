@@ -1,0 +1,8 @@
+﻿<list string="Academic Term">
+                    <field name="name"/>
+                    <field name="term_start_date"/>
+                    <field name="term_end_date"/>
+                    <field name="parent_term"/>
+                    <field name="academic_year_id" optional="hide"/>
+                    <field name="company_id" optional="show"/>
+                </list>

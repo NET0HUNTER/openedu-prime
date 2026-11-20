@@ -1,0 +1,22 @@
+﻿[
+    {
+        "id":  1,
+        "display_name":  "BCA - Cloud Computing"
+    },
+    {
+        "id":  2,
+        "display_name":  "MCA - Big Data Analytics"
+    },
+    {
+        "id":  3,
+        "display_name":  "B.Com - Accounting and Finance"
+    },
+    {
+        "id":  4,
+        "display_name":  "BA - Psychology"
+    },
+    {
+        "id":  5,
+        "display_name":  "B.Tech - Civil Engineering"
+    }
+]

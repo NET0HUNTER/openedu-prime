@@ -1,0 +1,62 @@
+﻿<form string="Convocation Registration">
+                <header>
+                    <button name="action_submit" string="Registered" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button name="action_approve" string="Attended" type="object" class="oe_highlight" invisible="state != 'registered'"/>
+                    <button name="action_cancel" string="Cancel" type="object" invisible="state not in ('draft', 'registered')"/>
+                    <button name="action_draft" string="Reset to Draft" type="object" invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,registered,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="action_view_convocation_guest_register" type="object" icon="fa-folder-open-o">
+                            <field string="Guests" name="total_guests" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="ceremony_id" can_create="True" can_write="True"/>
+                            <field name="student_id" on_change="1" can_create="True" can_write="True"/>
+                            <field name="program_id" can_create="True" can_write="True"/>
+                            <field name="registration_date"/>
+                            <field name="attendance"/>
+                        </group>
+                        <group>
+                            <field name="email"/>
+                            <field name="mobile"/>
+                            <field name="parent_id" can_create="True" can_write="True"/>
+                            <field name="total_guests"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Guests" name="guests">
+                            <field name="guest_ids" context="{'default_registration_id': id}" on_change="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="relationship"/>
+                                    <field name="email"/>
+                                    <field name="mobile"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Student Documents" name="student_documents">
+                            <field name="student_document_line_ids" context="{'default_registration_id': id}">
+                                <list editable="bottom">
+                                    <field name="document_type"/>
+                                    <field name="file" filename="file_name" widget="binary"/>
+                                    <field name="file_name" invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Notes" name="notes">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>

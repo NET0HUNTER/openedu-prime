@@ -1,0 +1,8 @@
+<list string="Payment Providers" create="false">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code" invisible="1" column_invisible="1"/>
+                <field name="state" on_change="1"/>
+                <field name="available_country_ids" widget="many2many_tags" optional="hide"/>
+                <field name="company_id" optional="show" on_change="1"/>
+            </list>

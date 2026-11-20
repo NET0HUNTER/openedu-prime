@@ -1,0 +1,92 @@
+﻿<kanban string="Admission Register" class="o_slide_kanban o_slide_channel_kanban" banner_route="/onboarding/openeducat_admission_onboarding_panel" sample="1">
+                <field name="color"/>
+                <field name="state"/>
+                <field name="draft_count"/>
+                <field name="online_count"/>
+                <field name="confirm_count"/>
+                <field name="done_count"/>
+                <field name="admission_count"/>
+                <templates>
+                    <t t-name="card">
+                        <widget name="web_ribbon" title="Draft" bg_color="bg-info text-white" invisible="state != 'draft'"/>
+                        <widget name="web_ribbon" title="Confirmed" bg_color="text-bg-primary" invisible="state != 'confirm'"/>
+                        <widget name="web_ribbon" title="Published" bg_color="custom-color-ribbon" invisible="state != 'application'"/>
+                        <widget name="web_ribbon" title="Admission" bg_color="admission-ribbon" invisible="state != 'admission'"/>
+                        <widget name="web_ribbon" title="Done" bg_color="text-bg-success" invisible="state != 'done'"/>
+                        <widget name="web_ribbon" title="Cancelled" bg_color="text-bg-danger" invisible="state != 'cancel'"/>
+                        <main class="d-flex flex-column gap-2 p-2 position-relative">
+
+                            <div class="o_kanban_card_content d-flex flex-column gap-2">
+                                <!-- Title -->
+                                <div class="pe-4" style="max-width: 85%;">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <field name="is_favorite" widget="boolean_favorite" nolabel="1"/>
+                                        <h5 class="fw-bold text-primary mb-0 text-truncate" style="font-size: 1.15rem; line-height: 1.3;" t-att-title="record.name.value">
+                                            <field name="name"/>
+                                        </h5>
+                                    </div>
+                                </div>
+
+                                <!-- Meta info -->
+                                <div class="d-flex flex-column gap-1 mb-1">
+                                    <div class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-book me-2 text-muted" style="width: 14px;" title="Course"/>
+                                        <span><field name="course_id"/></span>
+                                    </div>
+                                    <div t-if="record.start_date.raw_value" class="d-flex align-items-center text-truncate small text-muted">
+                                        <i class="fa fa-calendar me-2 text-muted" style="width: 14px;" title="Dates"/>
+                                        <span>
+                                            <field name="start_date"/>
+                                            <t t-if="record.end_date.raw_value">
+                                                <span class="mx-1">-</span>
+                                                <field name="end_date"/>
+                                            </t>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Stat buttons row — thesis style -->
+                                <div class="d-flex gap-1 mt-1">
+                                    <a name="1327" type="action" role="button" class="btn bg-light rounded text-decoration-none p-2 align-items-center justify-content-between h-100 border border-light-subtle d-flex flex-grow-1 text-muted o_admission_stat_btn" style="font-size: 12px; min-width: 0; white-space: nowrap;">
+                                        <div class="d-flex align-items-center gap-1" style="min-width: 0;">
+                                            <i class="fa fa-pencil-square-o text-dark flex-shrink-0" style="font-size: 0.8125rem;" title="Draft"/>
+                                            <span class="text-truncate">Draft</span>
+                                        </div>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold flex-shrink-0 ms-2" style="font-size: 11px; padding: 3px 6px;"><field name="draft_count"/></span>
+                                    </a>
+                                    <a name="1328" type="action" role="button" class="btn bg-light rounded text-decoration-none p-2 align-items-center justify-content-between h-100 border border-light-subtle d-flex flex-grow-1 text-muted o_admission_stat_btn" style="font-size: 12px; min-width: 0; white-space: nowrap;">
+                                        <div class="d-flex align-items-center gap-1" style="min-width: 0;">
+                                            <i class="fa fa-check-circle-o text-dark flex-shrink-0" style="font-size: 0.8125rem;" title="Confirmed"/>
+                                            <span class="text-truncate">Confirm</span>
+                                        </div>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold flex-shrink-0 ms-2" style="font-size: 11px; padding: 3px 6px;"><field name="confirm_count"/></span>
+                                    </a>
+                                    <a name="1329" type="action" role="button" class="btn bg-light rounded text-decoration-none p-2 align-items-center justify-content-between h-100 border border-light-subtle d-flex flex-grow-1 text-muted o_admission_stat_btn" style="font-size: 12px; min-width: 0; white-space: nowrap;">
+                                        <div class="d-flex align-items-center gap-1" style="min-width: 0;">
+                                            <i class="fa fa-graduation-cap text-dark flex-shrink-0" style="font-size: 0.8125rem;" title="Enrolled"/>
+                                            <span class="text-truncate">Enroll</span>
+                                        </div>
+                                        <span class="badge rounded-pill bg-dark-subtle text-dark fw-bold flex-shrink-0 ms-2" style="font-size: 11px; padding: 3px 6px;"><field name="done_count"/></span>
+                                    </a>
+                                </div>
+                            </div>
+                <div class="row g-0 flex-nowrap mt-2 border-top pt-2 mx-n2 px-3">
+                    <div class="d-flex col-6"/>
+                    <div class="o_link_trackers col-6 text-end">
+                        <a class="oe_kanban_action" name="open_template" href="#" type="object">
+                            <i class="fa fa-fw fa-external-link" role="img"/>
+                            Template
+                        </a>
+                    </div>
+                </div>
+
+                            <!-- View Applications button -->
+                            <div class="d-flex mt-auto pt-2 border-top">
+                                <button class="btn btn-primary w-100 py-2 d-flex align-items-center justify-content-center gap-1 fw-bold" name="action_view_applications" type="object">
+                                     <i class="fa fa-files-o me-2"/>Applications (<t t-esc="record.admission_count.raw_value"/>)
+                                 </button>
+                            </div>
+                        </main>
+                    </t>
+                </templates>
+            </kanban>

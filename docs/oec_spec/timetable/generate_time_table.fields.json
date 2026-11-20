@@ -1,0 +1,135 @@
+﻿{
+    "id":  {
+               "readonly":  true,
+               "required":  false,
+               "string":  "ID",
+               "type":  "integer"
+           },
+    "display_name":  {
+                         "readonly":  true,
+                         "required":  false,
+                         "string":  "Display Name",
+                         "type":  "char"
+                     },
+    "course_id":  {
+                      "readonly":  false,
+                      "relation":  "op.course",
+                      "required":  true,
+                      "string":  "Course",
+                      "type":  "many2one"
+                  },
+    "batch_id":  {
+                     "readonly":  false,
+                     "relation":  "op.batch",
+                     "required":  true,
+                     "string":  "Batch",
+                     "type":  "many2one"
+                 },
+    "time_table_lines":  {
+                             "readonly":  false,
+                             "relation":  "gen.time.table.line",
+                             "required":  false,
+                             "string":  "Time Table Lines",
+                             "type":  "one2many"
+                         },
+    "time_table_lines_1":  {
+                               "readonly":  false,
+                               "relation":  "gen.time.table.line",
+                               "required":  false,
+                               "string":  "Time Table Lines1",
+                               "type":  "one2many"
+                           },
+    "time_table_lines_2":  {
+                               "readonly":  false,
+                               "relation":  "gen.time.table.line",
+                               "required":  false,
+                               "string":  "Time Table Lines2",
+                               "type":  "one2many"
+                           },
+    "time_table_lines_3":  {
+                               "readonly":  false,
+                               "relation":  "gen.time.table.line",
+                               "required":  false,
+                               "string":  "Time Table Lines3",
+                               "type":  "one2many"
+                           },
+    "time_table_lines_4":  {
+                               "readonly":  false,
+                               "relation":  "gen.time.table.line",
+                               "required":  false,
+                               "string":  "Time Table Lines4",
+                               "type":  "one2many"
+                           },
+    "time_table_lines_5":  {
+                               "readonly":  false,
+                               "relation":  "gen.time.table.line",
+                               "required":  false,
+                               "string":  "Time Table Lines5",
+                               "type":  "one2many"
+                           },
+    "time_table_lines_6":  {
+                               "readonly":  false,
+                               "relation":  "gen.time.table.line",
+                               "required":  false,
+                               "string":  "Time Table Lines6",
+                               "type":  "one2many"
+                           },
+    "time_table_lines_7":  {
+                               "readonly":  false,
+                               "relation":  "gen.time.table.line",
+                               "required":  false,
+                               "string":  "Time Table Lines7",
+                               "type":  "one2many"
+                           },
+    "start_date":  {
+                       "readonly":  false,
+                       "required":  true,
+                       "string":  "Start Date",
+                       "type":  "date"
+                   },
+    "end_date":  {
+                     "readonly":  false,
+                     "required":  true,
+                     "string":  "End Date",
+                     "type":  "date"
+                 },
+    "create_uid":  {
+                       "readonly":  true,
+                       "relation":  "res.users",
+                       "required":  false,
+                       "string":  "Created by",
+                       "type":  "many2one"
+                   },
+    "create_date":  {
+                        "readonly":  true,
+                        "required":  false,
+                        "string":  "Created on",
+                        "type":  "datetime"
+                    },
+    "write_uid":  {
+                      "readonly":  true,
+                      "relation":  "res.users",
+                      "required":  false,
+                      "string":  "Last Updated by",
+                      "type":  "many2one"
+                  },
+    "write_date":  {
+                       "readonly":  true,
+                       "required":  false,
+                       "string":  "Last Updated on",
+                       "type":  "datetime"
+                   },
+    "name":  {
+                 "readonly":  false,
+                 "required":  false,
+                 "string":  "name",
+                 "type":  "char"
+             },
+    "skip_conflicts":  {
+                           "help":  "If enabled, sessions that overlap an existing session for the same course and batch are silently skipped instead of raising an error. A notification at the end lists what was skipped.",
+                           "readonly":  false,
+                           "required":  false,
+                           "string":  "Skip Conflicts",
+                           "type":  "boolean"
+                       }
+}

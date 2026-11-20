@@ -1,0 +1,79 @@
+<form string="Event Category">
+               <sheet>
+                    <div class="oe_title" name="event_type_title">
+                        <label for="name" string="Event Template"/>
+                        <h1><field name="name" placeholder="e.g. Online Conferences" class="mb-2"/></h1>
+                    </div>
+                    <span name="website_menu">
+                        <label for="website_menu" string="Website Submenu" class="me-1"/>
+                        <field name="website_menu" class="me-3" on_change="1"/>
+                    </span>
+                    <span name="community_menu" invisible="1">
+                        <label for="community_menu" string="Community" class="me-1"/>
+                        <field name="community_menu" class="me-3"/>
+                    </span>
+                   <group>
+                       <group>
+                           <field name="default_timezone" class="w-100"/>
+                           <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_quick_create': True}" can_create="True" can_write="True"/>
+                       </group>
+                       <group>
+                           <label for="has_seats_limitation" string="Limit Registrations"/>
+                           <div>
+                               <field name="has_seats_limitation" on_change="1"/>
+                               <span invisible="not has_seats_limitation" required="not has_seats_limitation">
+                                   to <field name="seats_max" class="oe_inline o_input_9ch"/>
+                                   Attendees
+                               </span>
+                           </div>
+                       </group>
+                   </group>
+
+                   <notebook>
+                       <page string="Tickets" name="page_tickets">
+                           <field name="event_type_ticket_ids" class="w-100" context="{                                      'list_view_ref': 'event.event_type_ticket_view_tree_from_type',                                      'form_view_ref': 'event.event_type_ticket_view_form_from_type'                                   }"><list string="Event Template Tickets" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="product_id" context="{                         'default_type': 'service',                         'default_service_tracking': 'event',                     }" on_change="1" can_create="True" can_write="True"/>
+                <field name="name"/>
+                <field name="description" optional="hide"/>
+                <field name="price"/>
+                <field name="seats_max" on_change="1"/>
+                <field name="seats_limited"/>
+            </list></field>
+                       </page>
+                       <page string="Communication" name="event_type_communication">
+                           <field name="event_type_mail_ids" class="w-100">
+                               <list string="Communication" editable="bottom">
+                                   <field name="template_ref" options="{'no_quick_create': True}" context="{'filter_template_on_event': True, 'default_model': 'event.registration'}" widget="EventMailTemplateReferenceField"/>
+                                   <field name="interval_nbr" readonly="interval_unit == 'now'"/>
+                                   <field name="interval_unit"/>
+                                    <field name="interval_type"/>
+                               </list>
+                           </field>
+                       </page>
+                        <page string="Questions" name="page_questions">
+                            <field name="question_ids" class="w-100" domain="[('is_reusable', '=', True)]" context="{'list_view_ref': 'event.event_question_view_list_add'}" can_create="True" can_write="True">
+                                <list sample="1">
+                                    <field name="title"/>
+                                    <field name="is_mandatory_answer" string="Mandatory"/>
+                                    <field name="once_per_order" string="Once per Order"/>
+                                    <field name="question_type" on_change="1"/>
+                                    <field name="answer_ids" widget="many2many_tags" invisible="question_type != 'simple_choice'"/>
+                                    <field name="is_default" optional="hide" on_change="1"/>
+                                    <field name="is_reusable" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                       <page string="Notes" name="notes">
+                           <group>
+                                <label for="note" string="Note"/>
+                                <br/>
+                                <field nolabel="1" colspan="2" name="note" placeholder="Add some internal notes (to do lists, contact info, ...)"/>
+                                <label for="ticket_instructions" string="Ticket Instructions"/>
+                                <br/>
+                                <field nolabel="1" colspan="2" name="ticket_instructions" placeholder="e.g. How to get to your event, door closing time, ..."/>
+                            </group>
+                       </page>
+                   </notebook>
+                </sheet>
+            </form>

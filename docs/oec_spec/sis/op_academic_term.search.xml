@@ -1,0 +1,5 @@
+﻿<search string="Academic Term">
+                    <field name="name"/>
+                    <field name="term_start_date"/>
+                    <field name="term_end_date"/>
+                </search>

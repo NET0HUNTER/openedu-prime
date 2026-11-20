@@ -1,0 +1,4 @@
+<pivot string="Purchase Request">
+                    <field name="requested_id" type="row"/>
+                    <field name="name" type="col"/>
+                </pivot>

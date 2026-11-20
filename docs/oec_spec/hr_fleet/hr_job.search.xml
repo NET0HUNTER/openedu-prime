@@ -1,0 +1,23 @@
+<search string="Jobs">
+                    <field name="name" string="Job Position"/>
+                    <field name="department_id" operator="child_of"/>
+                <filter string="My Favorites" name="my_favorite_jobs" domain="[('favorite_user_ids', 'in', uid)]"/>
+                <searchpanel class="w-auto">
+                    <field name="company_id" icon="fa-building" enable_counters="1"/>
+                    <field name="department_id" icon="fa-users" enable_counters="1"/>
+                </searchpanel>
+                <filter string="My Job Positions" name="my_positions" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                    <separator/>
+                <filter name="published" string="Published" domain="[('is_published', '=', True)]"/>
+                <separator name="published_separator"/>
+                    
+                    <separator/>
+                    <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+                    <group>
+                        <filter string="Department" name="department" domain="[]" context="{'group_by': 'department_id'}"/>
+                        <filter string="Company" name="company" domain="[]" context="{'group_by': 'company_id'}"/>
+                        <filter string="Employment Type" name="employment_type" domain="[]" context="{'group_by': 'contract_type_id'}"/>
+                <filter string="Published" name="groupby_published" domain="[]" context="{'group_by': 'is_published'}"/>
+                    </group>
+                </search>

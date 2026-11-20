@@ -1,0 +1,5 @@
+﻿<search string="Grievance Team Search">
+                <field name="name"/>
+                <field name="team_leader"/>
+                <field name="grievance_category_id"/>
+            </search>

@@ -1,0 +1,8 @@
+﻿<list string="Program">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="min_unit_load" optional="hide"/>
+                    <field name="max_unit_load" optional="hide"/>
+                    <field name="department_id"/>
+                    <field name="company_id"/>
+                </list>

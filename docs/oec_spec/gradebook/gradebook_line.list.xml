@@ -1,0 +1,20 @@
+﻿<list editable="top" decoration-danger="assignment_archived" create="false">
+                    <field name="gradebook_id" readonly="state == 'publish'" can_create="True" can_write="True"/>
+                    <field name="subject_id" readonly="state == 'publish'" can_create="True" can_write="True"/>
+                    <field name="grade_assigment_id" readonly="state == 'publish'" on_change="1" can_create="True" can_write="True"/>
+                    <field name="marks" invisible="hide != False" readonly="state_hide == True" on_change="1"/>
+                    <field name="obtained_marks"/>
+                    <field name="grade_table_line_id" domain="[('grade_table_id', '=', grade_table_id)]" invisible="hide != True" readonly="state_hide == True" on_change="1" can_create="True" can_write="True"/>
+                    <field name="percentage" force_save="1"/>
+                    <field name="academic_year_id" optional="hide" readonly="state == 'publish'" on_change="1" can_create="True" can_write="True"/>
+                    <field name="academic_term_id" optional="hide" readonly="state == 'publish'" can_create="True" can_write="True"/>
+                    <field name="course_id" optional="hide" readonly="state == 'publish'" can_create="True" can_write="True"/>
+                    <field name="assignment_type_id" optional="hide" readonly="state == 'publish'" on_change="1" can_create="True" can_write="True"/>
+                    <field name="state" optional="hide" string="Status" readonly="state == 'publish'"/>
+                    <field name="company_id" optional="show" can_create="True" can_write="True"/>
+
+                <field name="assignment_archived" column_invisible="True" readonly="True" data-used-by="decoration-danger='assignment_archived' (list,None)"/>
+<field name="hide" column_invisible="True" readonly="True" data-used-by="invisible='hide != True' (field,grade_table_line_id)"/>
+<field name="state_hide" column_invisible="True" readonly="True" data-used-by="readonly='state_hide == True' (field,grade_table_line_id)"/>
+<field name="grade_table_id" column_invisible="True" readonly="True" data-used-by="domain=&quot;[('grade_table_id', '=', grade_table_id)]&quot; (field,grade_table_line_id)"/>
+</list>

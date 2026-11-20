@@ -1,0 +1,66 @@
+{
+  "fields": {
+    "id": {
+      "change_default": false,
+      "groupable": true,
+      "name": "id",
+      "readonly": true,
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "ID",
+      "type": "integer"
+    },
+    "quiz_id": {
+      "change_default": false,
+      "context": {},
+      "domain": [],
+      "groupable": true,
+      "name": "quiz_id",
+      "readonly": false,
+      "relation": "op.quiz",
+      "required": false,
+      "searchable": true,
+      "sortable": true,
+      "store": true,
+      "string": "Quiz",
+      "type": "many2one"
+    },
+    "state": {
+      "change_default": false,
+      "groupable": true,
+      "name": "state",
+      "readonly": false,
+      "required": false,
+      "searchable": true,
+      "selection": [
+        [
+          "open",
+          "In-Progress"
+        ],
+        [
+          "hold",
+          "Hold"
+        ],
+        [
+          "submit",
+          "Submit"
+        ],
+        [
+          "asses",
+          "To Asses"
+        ],
+        [
+          "done",
+          "Done"
+        ]
+      ],
+      "sortable": true,
+      "store": true,
+      "string": "Status",
+      "type": "selection"
+    }
+  },
+  "has_approval_rules": false
+}
