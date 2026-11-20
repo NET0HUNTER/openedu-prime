@@ -45,7 +45,7 @@ export class Store {
   }
 
   save(): void {
-    if (this.batchDepth > 0 || process.env.VITEST) return;
+    if (this.batchDepth > 0 || process.env.VITEST || process.env.NODE_ENV === 'test') return;
     fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(DB_FILE, JSON.stringify(this.state, null, 2), 'utf8');
   }

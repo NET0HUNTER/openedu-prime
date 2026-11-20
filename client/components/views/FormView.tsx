@@ -1253,7 +1253,7 @@ export const FormView: React.FC<FormViewProps> = ({
                   </div>
                   <div className="min-w-0">
                     <div className="flex items-center gap-2">
-                      <span className="font-semibold text-slate-800">{m.author_id__label || 'OpenEduCat Bot'}</span>
+                      <span className="font-semibold text-slate-800">{m.author_id__label || 'SabiEdu Bot'}</span>
                       <span className="text-[11px] text-slate-400">{formatDateTime(m.date)}</span>
                     </div>
                     <div className="text-slate-700 mt-0.5 leading-snug">{m.body}</div>

@@ -76,7 +76,7 @@ export const LoginScreen: React.FC = () => {
                   );
                 })}
               </div>
-              <div className="text-[11px] text-slate-400">Demo password: <span className="font-mono text-slate-500">OpenEdu@2026</span></div>
+              <div className="text-[11px] text-slate-400">Demo password: <span className="font-mono text-slate-500">SabiEdu@2026</span></div>
             </div>
           )}
 

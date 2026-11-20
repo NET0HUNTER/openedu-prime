@@ -439,7 +439,7 @@ export const TopNavbar: React.FC = () => {
             onClick={() => setOpenDrop(openDrop === 'company' ? null : 'company')}
             className="flex items-center gap-1 px-2 py-1 rounded hover:bg-black/5 text-slate-800 font-normal text-[13px] max-w-[170px]"
           >
-            <span className="truncate">{activeCompany?.code || activeCompany?.name || 'OpenEduCat'}</span>
+            <span className="truncate">{activeCompany?.code || activeCompany?.name || 'SabiEdu'}</span>
           </button>
 
           {openDrop === 'company' && (

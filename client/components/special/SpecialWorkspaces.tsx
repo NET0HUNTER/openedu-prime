@@ -792,7 +792,7 @@ export const SettingsPanelView: React.FC = () => {
               </div>
               <div className="p-5 grid grid-cols-1 md:grid-cols-2 gap-6 border-b border-slate-200">
                 <div className="border-l-2 border-slate-200 pl-4 space-y-1.5">
-                  <div className="font-bold text-slate-800 text-[13px]">{activeCompany?.name || 'OpenEduCat'}</div>
+                  <div className="font-bold text-slate-800 text-[13px]">{activeCompany?.name || 'SabiEdu'}</div>
                   <div className="text-slate-500 leading-snug">
                     {activeCompany?.street && <div>{activeCompany.street}</div>}
                     <div>{[activeCompany?.city, activeCompany?.country || (seedProfile === 'oshwal' ? 'Kenya' : 'United States')].filter(Boolean).join(', ')}</div>

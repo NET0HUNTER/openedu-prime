@@ -30,8 +30,8 @@
 
 ### 2. Installation
 ```bash
-git clone https://github.com/NET0HUNTER/openedu-prime.git
-cd openedu-prime
+git clone https://github.com/NET0HUNTER/openedu-prime.git sabiedu
+cd sabiedu
 npm install
 ```
 
