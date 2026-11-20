@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import nodemailer from 'nodemailer';
 import { store } from './store.js';
@@ -19,6 +20,81 @@ export interface SmtpConfig {
   pass: string;
   fromName: string;
   fromEmail: string;
+}
+
+const LOOPBACK_HOSTS = new Set(['localhost', '127.0.0.1', '::1', '[::1]', '0.0.0.0']);
+
+function isLoopbackHost(hostname: string): boolean {
+  const clean = hostname.trim().toLowerCase().replace(/^\[|\]$/g, '');
+  return !clean || LOOPBACK_HOSTS.has(clean) || clean.startsWith('127.');
+}
+
+function scoreNetworkInterface(name: string, address: string): number {
+  let score = 0;
+  const lower = name.toLowerCase();
+  if (/wi-?fi|wlan|ethernet|eth\d|en\d/.test(lower)) score += 40;
+  if (/vethernet|wsl|hyper-v|docker|vbox|vmware|tailscale|zerotier|tun|tap|utun|loopback/.test(lower)) {
+    score -= 100;
+  }
+  if (address.startsWith('192.168.')) score += 30;
+  else if (address.startsWith('10.')) score += 20;
+  else if (/^172\.(1[6-9]|2\d|3[0-1])\./.test(address)) score += 10;
+  return score;
+}
+
+/**
+ * Returns the primary LAN IPv4 address for cross-device testing (prioritizing Wi-Fi/Ethernet
+ * private ranges over virtual adapters such as Hyper-V, WSL, or Tailscale).
+ */
+export function detectLanIpv4(): string | null {
+  const nets = os.networkInterfaces();
+  const candidates: { address: string; score: number }[] = [];
+  for (const [name, entries] of Object.entries(nets)) {
+    for (const entry of entries || []) {
+      const isV4 = entry.family === 'IPv4' || (entry as { family?: unknown }).family === 4;
+      if (!isV4 || entry.internal) continue;
+      candidates.push({ address: entry.address, score: scoreNetworkInterface(name, entry.address) });
+    }
+  }
+  candidates.sort((a, b) => b.score - a.score);
+  return candidates[0]?.address ?? null;
+}
+
+/**
+ * Resolves a browser-reachable origin for email action links (e.g., password setup URLs).
+ * Rewrites loopback origins (`localhost` / `127.0.0.1`) to `APP_URL` or the detected LAN IPv4
+ * while preserving the port so links open cleanly from other laptops on the same network.
+ */
+export function resolvePublicOrigin(requestedOrigin?: string): string {
+  const envUrl = String(process.env.APP_URL || process.env.PUBLIC_URL || '').trim().replace(/\/$/, '');
+  const raw = String(requestedOrigin || '').trim().replace(/\/$/, '');
+  const tryParse = (u: string): URL | null => {
+    if (!u) return null;
+    try { return new URL(u); } catch { return null; }
+  };
+
+  const parsedReq = tryParse(raw);
+  if (parsedReq && !isLoopbackHost(parsedReq.hostname)) {
+    return `${parsedReq.protocol}//${parsedReq.host}`;
+  }
+
+  const parsedEnv = tryParse(envUrl);
+  if (parsedEnv && !isLoopbackHost(parsedEnv.hostname)) {
+    return `${parsedEnv.protocol}//${parsedEnv.host}`;
+  }
+
+  const lanIp = detectLanIpv4();
+  if (parsedReq) {
+    if (lanIp) {
+      const portPart = parsedReq.port ? `:${parsedReq.port}` : '';
+      return `${parsedReq.protocol}//${lanIp}${portPart}`;
+    }
+    return `${parsedReq.protocol}//${parsedReq.host}`;
+  }
+
+  const fallbackPort = String(process.env.FRONTEND_PORT || process.env.PORT || '4100');
+  if (lanIp) return `http://${lanIp}:${fallbackPort}`;
+  return `http://localhost:${fallbackPort}`;
 }
 
 export function readLocalSecrets(): Record<string, string> {

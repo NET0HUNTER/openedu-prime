@@ -3,6 +3,7 @@ import request from 'supertest';
 import { createApp } from '../server/index.js';
 import { seedOshwal } from '../server/seeds/oshwal.js';
 import { store } from '../server/store.js';
+import { detectLanIpv4, resolvePublicOrigin } from '../server/integrations.js';
 import { getReportsForModel, checkModelAccess } from '../shared/meta/index.js';
 
 describe('OpenEduCat Reports Engine, Downloads & RBAC Security Hierarchy', () => {
@@ -377,6 +378,17 @@ describe('OpenEduCat Reports Engine, Downloads & RBAC Security Hierarchy', () =>
 
     const rawUser = store.byId('res.users', uNoPw.body.record.id)!;
     expect(typeof rawUser.reset_token).toBe('string');
+
+    const lanIp = detectLanIpv4();
+    const expectedOrigin = resolvePublicOrigin('http://localhost:5175');
+    if (lanIp) {
+      expect(expectedOrigin).toBe(`http://${lanIp}:5175`);
+      expect(expectedOrigin).not.toContain('localhost');
+    }
+    await new Promise((r) => setTimeout(r, 30));
+    const outboxReset = store.all('comm.outbox').find((o) => o.to === 'invite@oshwalacademy.sc.ke' && String(o.body || '').includes(String(rawUser.reset_token)));
+    expect(outboxReset).toBeDefined();
+    expect(String(outboxReset?.body || '')).toContain(`${expectedOrigin}/web/reset_password?token=${encodeURIComponent(String(rawUser.reset_token))}`);
 
     const completeReset = await request(app)
       .post('/api/v1/auth/reset-password')

@@ -21,6 +21,7 @@ import { buildOpenApiSpec } from './openapi.js';
 import {
   dispatchEmailAsync,
   exportExamBoardEdi,
+  resolvePublicOrigin,
   resolveSmtpConfig,
   sendWhatsAppMessage,
   testSmtpConnection,
@@ -264,10 +265,11 @@ export function createApiRouter(): Router {
 
   r.post('/api/v1/auth/request-reset', (req, res) => {
     const { login, origin } = req.body ?? {};
+    const requestOrigin = origin || req.get('origin') || (req.get('host') ? `${req.protocol}://${req.get('host')}` : undefined);
     const user = store.all('res.users').find((u) => String(u.login).toLowerCase() === String(login ?? '').trim().toLowerCase());
     if (user && user.active !== false && String(user.login || '').includes('@')) {
       try {
-        executeMethod('res.users', 'send_reset_email', user.id, { origin }, user.id);
+        executeMethod('res.users', 'send_reset_email', user.id, { origin: requestOrigin }, user.id);
       } catch {
         // fail silently to avoid user enumeration
       }
@@ -496,7 +498,11 @@ export function createApiRouter(): Router {
           return res.status(403).json({ error: `Access Denied: Portal role '${user.role}' cannot execute '${model}.${method}'.` });
         }
       }
-      const result = executeMethod(model, method, body.id ? Number(body.id) : undefined, body.args ?? {}, user?.id ?? 1);
+      const methodArgs =
+        model === 'res.users' && method === 'send_reset_email' && !(body.args && body.args.origin)
+          ? { ...(body.args ?? {}), origin: req.get('origin') || (req.get('host') ? `${req.protocol}://${req.get('host')}` : undefined) }
+          : (body.args ?? {});
+      const result = executeMethod(model, method, body.id ? Number(body.id) : undefined, methodArgs, user?.id ?? 1);
       return res.json(result);
     } catch (err: any) {
       return res.status(400).json({ error: err?.message ?? 'RPC Error' });
@@ -1137,6 +1143,8 @@ export function createApiRouter(): Router {
 
   r.get('/api/v1/integrations/email/preview/:template', (req, res) => {
     const tpl = String(req.params.template || 'admission_confirmation') as EmailTemplateKind;
+    const reqOrigin = req.get('origin') || req.get('referer') || (req.get('host') ? `${req.protocol}://${req.get('host')}` : undefined);
+    const previewBase = resolvePublicOrigin(reqOrigin);
     const samples: Record<EmailTemplateKind, Parameters<typeof renderProfessionalEmail>[1]> = {
       admission_confirmation: {
         recipientName: 'Mr. & Mrs. Patel',
@@ -1165,7 +1173,7 @@ export function createApiRouter(): Router {
           { label: 'Tuition Invoice', value: 'INV/2027/0012 (KES 345,000)' },
         ],
         ctaLabel: 'Open Student Portal',
-        ctaUrl: 'http://localhost:5175/my',
+        ctaUrl: `${previewBase}/my`,
       },
       portal_credentials: {
         recipientName: 'Mrs. Priya Shah',
@@ -1185,7 +1193,7 @@ export function createApiRouter(): Router {
           { label: 'Expires In', value: '24 Hours' },
         ],
         ctaLabel: 'Set My Password',
-        ctaUrl: 'http://localhost:5175/web/reset_password?token=demo-token',
+        ctaUrl: `${previewBase}/web/reset_password?token=demo-token`,
       },
       fee_invoice: {
         recipientName: 'Mr. Rajesh Shah',

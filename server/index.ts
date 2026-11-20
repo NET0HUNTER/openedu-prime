@@ -6,6 +6,7 @@ import { store } from './store.js';
 import { seedOshwal } from './seeds/oshwal.js';
 import { createApiRouter } from './routes.js';
 import { startCronScheduler } from './cron.js';
+import { detectLanIpv4 } from './integrations.js';
 
 function loadLocalEnv() {
   if (process.env.VITEST) return;
@@ -51,7 +52,9 @@ if (isMain) {
   const port = Number(process.env.PORT ?? 4100);
   const app = createApp();
   app.listen(port, '0.0.0.0', () => {
-    console.log(`SabiEdu ERP API listening on http://0.0.0.0:${port} (OpenAPI docs: http://localhost:${port}/api/docs)`);
+    const lanIp = detectLanIpv4();
+    const lanNote = lanIp ? ` | LAN: http://${lanIp}:${port}` : '';
+    console.log(`SabiEdu ERP API listening on http://0.0.0.0:${port}${lanNote} (OpenAPI docs: http://localhost:${port}/api/docs)`);
     startCronScheduler();
   });
 }

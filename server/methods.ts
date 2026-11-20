@@ -1,6 +1,6 @@
 import { MODEL_MAP } from '../shared/meta/index.js';
 import { generateResetToken, hashPassword } from './auth.js';
-import { dispatchEmailAsync } from './integrations.js';
+import { dispatchEmailAsync, resolvePublicOrigin } from './integrations.js';
 import { store, type Rec } from './store.js';
 
 export interface MethodResult {
@@ -1813,7 +1813,7 @@ export function executeMethod(model: string, method: string, id: number | undefi
       const { token, expiresAt } = generateResetToken();
       targetUser.reset_token = token;
       targetUser.reset_token_expires = expiresAt;
-      const origin = String(args.origin || process.env.APP_URL || 'http://localhost:5175').replace(/\/$/, '');
+      const origin = resolvePublicOrigin(typeof args.origin === 'string' ? args.origin : undefined);
       const resetUrl = `${origin}/web/reset_password?token=${encodeURIComponent(token)}`;
       dispatchEmailAsync({
         to: String(targetUser.login),
