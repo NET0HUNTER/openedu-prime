@@ -373,7 +373,50 @@ export function createApiRouter(): Router {
         if (body.id) {
           return res.json({ record: store.write(model, Number(body.id), vals, user?.id ?? 1) });
         }
-        return res.status(201).json({ record: store.create(model, vals, user?.id ?? 1) });
+        const created = store.create(model, vals, user?.id ?? 1);
+        if (model === 'mail.message' && vals.res_model && vals.res_id) {
+          const targetModel = String(vals.res_model);
+          const targetId = Number(vals.res_id);
+          const target = store.byId(targetModel, targetId);
+          if (target) {
+            const partner = target.partner_id ? store.byId('res.partner', Number(target.partner_id)) : undefined;
+            const student = target.student_id ? store.byId('op.student', Number(target.student_id)) : undefined;
+            const recName = store.displayName(targetModel, target);
+            if (vals.message_type === 'comment') {
+              const recipientEmail =
+                target.email ||
+                (targetModel === 'res.users' && String(target.login || '').includes('@') ? target.login : undefined) ||
+                partner?.email ||
+                student?.email;
+              if (recipientEmail && String(recipientEmail).includes('@')) {
+                dispatchEmailAsync({
+                  to: String(recipientEmail),
+                  recipientName: recName,
+                  subject: `Message regarding ${recName} — ${MODEL_MAP[targetModel]?.string || targetModel}`,
+                  template: 'general_notice',
+                  context: {
+                    title: `New Message: ${recName}`,
+                    bodyParagraphs: [String(vals.body || '')],
+                    summaryRows: [
+                      { label: 'Record', value: recName },
+                      { label: 'Sent By', value: String(user?.name || 'Administrator') },
+                    ],
+                    companyId: Number(target.company_id || 1),
+                  },
+                  resModel: targetModel,
+                  resId: targetId,
+                  userId: user?.id ?? 1,
+                });
+              }
+            } else if (vals.message_type === 'whatsapp') {
+              const phone = target.phone || target.mobile || partner?.phone || student?.phone;
+              if (phone) {
+                void sendWhatsAppMessage(String(phone), String(vals.body || ''), recName, targetModel, targetId);
+              }
+            }
+          }
+        }
+        return res.status(201).json({ record: created });
       }
       if (method === 'onchange') {
         const vals = { ...(body.vals ?? {}) };

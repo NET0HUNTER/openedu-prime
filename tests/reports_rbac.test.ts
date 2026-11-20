@@ -388,5 +388,23 @@ describe('OpenEduCat Reports Engine, Downloads & RBAC Security Hierarchy', () =>
       .post('/api/v1/auth/login')
       .send({ login: 'invite@oshwalacademy.sc.ke', password: 'NewUserPass99' });
     expect(loginAfterReset.status).toBe(200);
+
+    // 5. Chatter 'Send message' (comment) on res.users dispatches HTML email to outbox
+    const msgRes = await request(app)
+      .post('/api/v1/dataset/call_kw/mail.message/create')
+      .set('X-User-Id', '1')
+      .send({
+        vals: {
+          res_model: 'res.users',
+          res_id: uNoPw.body.record.id,
+          body: 'Hello Simon, welcome aboard!',
+          message_type: 'comment',
+        },
+      });
+    expect(msgRes.status).toBe(201);
+    await new Promise((r) => setTimeout(r, 30));
+    const chatterOutbox = store.all('comm.outbox').find((o) => o.to === 'invite@oshwalacademy.sc.ke' && String(o.body).includes('Hello Simon, welcome aboard!'));
+    expect(chatterOutbox).toBeDefined();
+    expect(chatterOutbox!.body_html).toContain('<!DOCTYPE html>');
   });
 });

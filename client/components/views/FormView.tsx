@@ -224,13 +224,17 @@ export const FormView: React.FC<FormViewProps> = ({
 
   const postChatter = async () => {
     if (!recordId || !chatterText.trim()) return;
+    const modeUsed = chatterMode || 'comment';
     await callKw('mail.message', 'create', {
-      vals: { res_model: modelDef.name, res_id: recordId, body: chatterText.trim(), message_type: chatterMode || 'comment' },
+      vals: { res_model: modelDef.name, res_id: recordId, body: chatterText.trim(), message_type: modeUsed },
     });
     setChatterText('');
     setChatterMode(null);
     const read = await callKw(modelDef.name, 'web_read', { id: recordId });
     setMessages(read.messages ?? []);
+    if (modeUsed === 'comment') showToast('Message logged & queued for email delivery.');
+    else if (modeUsed === 'whatsapp') showToast('WhatsApp message queued.');
+    else showToast('Internal note logged.');
   };
 
   const canWrite = checkModelAccess(modelDef.name, (user?.role || 'admin') as any, recordId ? 'write' : 'create').allowed;

@@ -3,7 +3,7 @@
   "nextIds": {
     "res.company": 7,
     "res.config.settings": 2,
-    "res.users": 7,
+    "res.users": 8,
     "res.users.role": 7,
     "op.board.affiliation": 3,
     "res.partner": 4,
@@ -17,12 +17,12 @@
     "res.partner.bank": 2,
     "res.lang": 4,
     "ir.cron": 12,
-    "queue.job": 389,
+    "queue.job": 401,
     "queue.job.channel": 1,
     "queue.job.function": 2,
-    "mail.message": 295,
-    "mail.activity": 3,
-    "comm.outbox": 1,
+    "mail.message": 311,
+    "mail.activity": 5,
+    "comm.outbox": 6,
     "payment.transaction": 3,
     "ir.module.module": 66,
     "dashboard.kpi": 6,
@@ -809,7 +809,9 @@
         ],
         "role_id": 6,
         "name": "Simon",
-        "password_set": false
+        "password_set": false,
+        "reset_token": "jXSrm03na3U9F82yYJJhwyJclEIZbd6S",
+        "reset_token_expires": "2026-11-21T12:17:44.793Z"
       }
     ],
     "res.users.role": [
@@ -999,7 +1001,7 @@
         "description": "Processes async OMR grading, AI course/quiz generation, and bulk fee invoices.",
         "active": true,
         "last_result": "Executed queue_job.worker_heartbeat",
-        "last_run": "2026-11-20 12:13"
+        "last_run": "2026-11-20 12:24"
       },
       {
         "id": 2,
@@ -1055,7 +1057,8 @@
         "model": "event.event",
         "description": "Opens attendance for Paid Specialist Clubs & Tue/Thu Teacher-Led Clubs.",
         "active": true,
-        "last_result": "Ready (Scheduled)"
+        "last_result": "Executed intervals.primary_clubs_transition",
+        "last_run": "2026-11-20 12:20"
       },
       {
         "id": 7,
@@ -6933,6 +6936,186 @@
         "date_done": "2026-11-20 12:13",
         "exec_time": 4,
         "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 389,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:14",
+        "date_done": "2026-11-20 12:14",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 390,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:15",
+        "date_done": "2026-11-20 12:15",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 391,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:16",
+        "date_done": "2026-11-20 12:16",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 392,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:17",
+        "date_done": "2026-11-20 12:17",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 393,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:18",
+        "date_done": "2026-11-20 12:18",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 394,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:19",
+        "date_done": "2026-11-20 12:19",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 395,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:20",
+        "date_done": "2026-11-20 12:20",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 396,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Primary Paid Clubs Transition (15:20–16:20)",
+        "method": "intervals.primary_clubs_transition",
+        "channel": "root.timetable",
+        "cron_id": 6,
+        "state": "done",
+        "date_created": "2026-11-20 12:20",
+        "date_done": "2026-11-20 12:20",
+        "exec_time": 4,
+        "result": "Executed intervals.primary_clubs_transition"
+      },
+      {
+        "id": 397,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:21",
+        "date_done": "2026-11-20 12:21",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 398,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:22",
+        "date_done": "2026-11-20 12:22",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 399,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:23",
+        "date_done": "2026-11-20 12:23",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 400,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:24",
+        "date_done": "2026-11-20 12:24",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
       }
     ],
     "queue.job.channel": [],
@@ -6944,6 +7127,114 @@
       }
     ],
     "mail.message": [
+      {
+        "id": 309,
+        "res_model": "mail.activity",
+        "res_id": 4,
+        "body": "Activity created.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:22"
+      },
+      {
+        "id": 307,
+        "res_model": "res.users",
+        "res_id": 4,
+        "body": "Allowed Campuses: 4 → 4",
+        "author_id": 1,
+        "message_type": "tracking",
+        "date": "2026-11-20 12:21"
+      },
+      {
+        "id": 306,
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Allowed Campuses: 1,2,3,4,5,6 → 1,2,3,4,5,6",
+        "author_id": 1,
+        "message_type": "tracking",
+        "date": "2026-11-20 12:20"
+      },
+      {
+        "id": 304,
+        "res_model": "mail.activity",
+        "res_id": 3,
+        "body": "Activity created.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:20"
+      },
+      {
+        "id": 302,
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Password setup/reset email dispatched to simon24njoroge@gmail.com.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:17"
+      },
+      {
+        "id": 301,
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Password setup/reset email dispatched to simon24njoroge@gmail.com.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:17"
+      },
+      {
+        "id": 300,
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Allowed Campuses: 1,2,3,4,5,6 → 1,2,3,4,5,6",
+        "author_id": 1,
+        "message_type": "tracking",
+        "date": "2026-11-20 12:17"
+      },
+      {
+        "id": 299,
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Password setup/reset email dispatched to simon24njoroge@gmail.com.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:16"
+      },
+      {
+        "id": 298,
+        "res_model": "res.users",
+        "res_id": 7,
+        "body": "Password setup/reset email dispatched to tpw@oshwalacademy.sc.ke.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:15"
+      },
+      {
+        "id": 297,
+        "res_model": "res.users",
+        "res_id": 7,
+        "body": "Password updated securely for tpw@oshwalacademy.sc.ke.",
+        "author_id": 1,
+        "message_type": "tracking",
+        "date": "2026-11-20 12:15"
+      },
+      {
+        "id": 296,
+        "res_model": "res.users",
+        "res_id": 7,
+        "body": "User created.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:14"
+      },
+      {
+        "id": 295,
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Password setup/reset email dispatched to simon24njoroge@gmail.com.",
+        "author_id": 1,
+        "message_type": "notification",
+        "date": "2026-11-20 12:13"
+      },
       {
         "id": 294,
         "res_model": "res.users",
@@ -9588,6 +9879,38 @@
         "res_id": 1,
         "body": "hhhjjj",
         "message_type": "whatsapp"
+      },
+      {
+        "id": 303,
+        "date": "2026-11-20 12:18",
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Hello",
+        "message_type": "comment"
+      },
+      {
+        "id": 305,
+        "date": "2026-11-20 12:20",
+        "res_model": "res.users",
+        "res_id": 6,
+        "body": "Scheduled To-Do: User Matrix  (Due Nov 20, 2026)",
+        "message_type": "note"
+      },
+      {
+        "id": 308,
+        "date": "2026-11-20 12:21",
+        "res_model": "res.users",
+        "res_id": 4,
+        "body": "Pay fee",
+        "message_type": "comment"
+      },
+      {
+        "id": 310,
+        "date": "2026-11-20 12:22",
+        "res_model": "res.users",
+        "res_id": 4,
+        "body": "To-Do done: To-Do",
+        "message_type": "note"
       }
     ],
     "mail.activity": [
@@ -9610,9 +9933,110 @@
         "res_id": 1,
         "activity_type": "todo",
         "user_id": 2
+      },
+      {
+        "id": 3,
+        "activity_type": "todo",
+        "res_model": "res.users",
+        "res_id": 6,
+        "summary": "User Matrix ",
+        "date_deadline": "2026-11-20",
+        "note": "Review all roles ",
+        "state": "planned"
+      },
+      {
+        "id": 4,
+        "activity_type": "todo",
+        "res_model": "res.users",
+        "res_id": 4,
+        "summary": "To-Do",
+        "date_deadline": "2026-11-20",
+        "note": "",
+        "state": "done"
       }
     ],
-    "comm.outbox": [],
+    "comm.outbox": [
+      {
+        "id": 1,
+        "date": "2026-11-20 12:13",
+        "to": "simon24njoroge@gmail.com",
+        "recipient_name": "Simon",
+        "channel": "email",
+        "subject": "Set Up / Reset Your OpenEdu Prime Password",
+        "body": "OpenEduCat Classic Blue — Set Up Your Account Password\n\nDear Simon,\n\nAn account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).\nClick the button below to choose a private password and sign in.\n\nSummary:\n• User Account: Simon\n• Login Email: simon24njoroge@gmail.com\n• Link Valid For: 24 Hours\n\nSecurity Notice: If you did not request this email, please ignore it or notify your Campus IT Administrator.\n\nSet My Password: http://localhost:4100/web/reset_password?token=8KgAQBHYRcJc_XfUyQajqAzesEEvh1aQ\n\nWarm regards,\nOpenEduCat Classic Blue (+254 142 645 861 | enquiries@oerb.org)",
+        "body_html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Set Up Your Account Password</title>\n</head>\n<body style=\"margin:0;padding:0;background-color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased;\">\n  <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f1f5f9;padding:28px 14px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width:640px;background-color:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(15,23,42,0.06);\">\n          <!-- Institutional Brand Header -->\n          <tr>\n            <td style=\"background-color:#1565C0;padding:22px 28px;border-bottom:4px solid #F59E0B;\">\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n                <tr>\n                  <td style=\"vertical-align:middle;\">\n                    <div style=\"font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.2px;\">OpenEduCat Classic Blue</div>\n                    <div style=\"font-size:12px;color:#cbd5e1;margin-top:3px;\">Compass for Life Skills — Inspiring and Growing Unique Greatness</div>\n                  </td>\n                  <td align=\"right\" style=\"vertical-align:middle;\">\n                    <span style=\"display:inline-block;padding:4px 10px;border-radius:999px;background-color:#7c3aed;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;\">\n                      ACCOUNT SECURITY\n                    </span>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Email Title Banner -->\n          <tr>\n            <td style=\"padding:26px 28px 10px 28px;\">\n              <div style=\"font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:#1565C0;margin-bottom:6px;\">\n                OpenEdu Prime Identity &amp; Access\n              </div>\n              <h1 style=\"margin:0;font-size:22px;font-weight:700;line-height:1.3;color:#0f172a;\">\n                Set Up Your Account Password\n              </h1>\n            </td>\n          </tr>\n\n          <!-- Main Content -->\n          <tr>\n            <td style=\"padding:12px 28px 28px 28px;\">\n              <p style=\"margin:0 0 14px 0;font-size:15px;font-weight:600;color:#1e293b;\">\n                Dear Simon,\n              </p>\n              <p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">An account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).</p>\n<p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">Click the button below to choose a private password and sign in.</p>\n              \n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;border:1px solid #e2e8f0;border-radius:8px;border-collapse:separate;overflow:hidden;background:#f8fafc;\">\n          <tbody>\n            \n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">User Account</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">Simon</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">Login Email</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">simon24njoroge@gmail.com</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:none;\">Link Valid For</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:none;\">24 Hours</td>\n              </tr>\n          </tbody>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;background:#fef2f2;border-left:4px solid #ef4444;border-radius:6px;\">\n          <tr>\n            <td style=\"padding:14px 16px;\">\n              <div style=\"font-size:13px;font-weight:700;color:#991b1b;margin-bottom:4px;\">Security Notice</div>\n              <div style=\"font-size:13px;line-height:1.5;color:#7f1d1d;\">If you did not request this email, please ignore it or notify your Campus IT Administrator.</div>\n            </td>\n          </tr>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:22px 0 8px 0;\">\n          <tr>\n            <td align=\"center\" bgcolor=\"#1565C0\" style=\"border-radius:6px;\">\n              <a href=\"http://localhost:4100/web/reset_password?token=8KgAQBHYRcJc_XfUyQajqAzesEEvh1aQ\" target=\"_blank\" style=\"display:inline-block;padding:12px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:6px;\">\n                Set My Password &rarr;\n              </a>\n            </td>\n          </tr>\n        </table>\n              <p style=\"margin:24px 0 0 0;font-size:13px;line-height:1.6;color:#64748b;\">\n                Warm regards,<br />\n                <strong style=\"color:#1e293b;\">OpenEduCat Classic Blue</strong><br />\n                First Parklands Avenue, Off Mpaka Road, Parklands, Nairobi · Tel: +254 142 645 861\n              </p>\n            </td>\n          </tr>\n\n          <!-- Legal / Footer Bar -->\n          <tr>\n            <td style=\"background-color:#f8fafc;padding:16px 28px;border-top:1px solid #e2e8f0;text-align:center;\">\n              <div style=\"font-size:11px;color:#64748b;line-height:1.5;\">\n                Oshwal Education &amp; Relief Board · P.O. Box 49633 - 00100 Nairobi, Kenya · Registered Educational Trust #1941<br />\n                Contact: <a href=\"mailto:enquiries@oerb.org\" style=\"color:#1565C0;text-decoration:none;\">enquiries@oerb.org</a> ·\n                <a href=\"https://www.oshwalacademy.sc.ke\" style=\"color:#1565C0;text-decoration:none;\">https://www.oshwalacademy.sc.ke</a>\n              </div>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "res_model": "res.users",
+        "res_id": 6,
+        "provider": "simulate",
+        "provider_ref": "email_sim_1795176831994",
+        "state": "sent",
+        "company_id": 1
+      },
+      {
+        "id": 2,
+        "date": "2026-11-20 12:15",
+        "to": "tpw@oshwalacademy.sc.ke",
+        "recipient_name": "Test Password User",
+        "channel": "email",
+        "subject": "Set Up / Reset Your OpenEdu Prime Password",
+        "body": "OpenEduCat Classic Blue — Set Up Your Account Password\n\nDear Test Password User,\n\nAn account password setup / reset link has been generated for your OpenEdu Prime account (tpw@oshwalacademy.sc.ke).\nClick the button below to choose a private password and sign in.\n\nSummary:\n• User Account: Test Password User\n• Login Email: tpw@oshwalacademy.sc.ke\n• Link Valid For: 24 Hours\n\nSecurity Notice: If you did not request this email, please ignore it or notify your Campus IT Administrator.\n\nSet My Password: http://localhost:5175/web/reset_password?token=axbNcRZLJfREzAMrXtFFwWpFnpUSpRMp\n\nWarm regards,\nOpenEduCat Classic Blue (+254 142 645 861 | enquiries@oerb.org)",
+        "body_html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Set Up Your Account Password</title>\n</head>\n<body style=\"margin:0;padding:0;background-color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased;\">\n  <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f1f5f9;padding:28px 14px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width:640px;background-color:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(15,23,42,0.06);\">\n          <!-- Institutional Brand Header -->\n          <tr>\n            <td style=\"background-color:#1565C0;padding:22px 28px;border-bottom:4px solid #F59E0B;\">\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n                <tr>\n                  <td style=\"vertical-align:middle;\">\n                    <div style=\"font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.2px;\">OpenEduCat Classic Blue</div>\n                    <div style=\"font-size:12px;color:#cbd5e1;margin-top:3px;\">Compass for Life Skills — Inspiring and Growing Unique Greatness</div>\n                  </td>\n                  <td align=\"right\" style=\"vertical-align:middle;\">\n                    <span style=\"display:inline-block;padding:4px 10px;border-radius:999px;background-color:#7c3aed;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;\">\n                      ACCOUNT SECURITY\n                    </span>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Email Title Banner -->\n          <tr>\n            <td style=\"padding:26px 28px 10px 28px;\">\n              <div style=\"font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:#1565C0;margin-bottom:6px;\">\n                OpenEdu Prime Identity &amp; Access\n              </div>\n              <h1 style=\"margin:0;font-size:22px;font-weight:700;line-height:1.3;color:#0f172a;\">\n                Set Up Your Account Password\n              </h1>\n            </td>\n          </tr>\n\n          <!-- Main Content -->\n          <tr>\n            <td style=\"padding:12px 28px 28px 28px;\">\n              <p style=\"margin:0 0 14px 0;font-size:15px;font-weight:600;color:#1e293b;\">\n                Dear Test Password User,\n              </p>\n              <p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">An account password setup / reset link has been generated for your OpenEdu Prime account (tpw@oshwalacademy.sc.ke).</p>\n<p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">Click the button below to choose a private password and sign in.</p>\n              \n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;border:1px solid #e2e8f0;border-radius:8px;border-collapse:separate;overflow:hidden;background:#f8fafc;\">\n          <tbody>\n            \n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">User Account</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">Test Password User</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">Login Email</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">tpw@oshwalacademy.sc.ke</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:none;\">Link Valid For</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:none;\">24 Hours</td>\n              </tr>\n          </tbody>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;background:#fef2f2;border-left:4px solid #ef4444;border-radius:6px;\">\n          <tr>\n            <td style=\"padding:14px 16px;\">\n              <div style=\"font-size:13px;font-weight:700;color:#991b1b;margin-bottom:4px;\">Security Notice</div>\n              <div style=\"font-size:13px;line-height:1.5;color:#7f1d1d;\">If you did not request this email, please ignore it or notify your Campus IT Administrator.</div>\n            </td>\n          </tr>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:22px 0 8px 0;\">\n          <tr>\n            <td align=\"center\" bgcolor=\"#1565C0\" style=\"border-radius:6px;\">\n              <a href=\"http://localhost:5175/web/reset_password?token=axbNcRZLJfREzAMrXtFFwWpFnpUSpRMp\" target=\"_blank\" style=\"display:inline-block;padding:12px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:6px;\">\n                Set My Password &rarr;\n              </a>\n            </td>\n          </tr>\n        </table>\n              <p style=\"margin:24px 0 0 0;font-size:13px;line-height:1.6;color:#64748b;\">\n                Warm regards,<br />\n                <strong style=\"color:#1e293b;\">OpenEduCat Classic Blue</strong><br />\n                First Parklands Avenue, Off Mpaka Road, Parklands, Nairobi · Tel: +254 142 645 861\n              </p>\n            </td>\n          </tr>\n\n          <!-- Legal / Footer Bar -->\n          <tr>\n            <td style=\"background-color:#f8fafc;padding:16px 28px;border-top:1px solid #e2e8f0;text-align:center;\">\n              <div style=\"font-size:11px;color:#64748b;line-height:1.5;\">\n                Oshwal Education &amp; Relief Board · P.O. Box 49633 - 00100 Nairobi, Kenya · Registered Educational Trust #1941<br />\n                Contact: <a href=\"mailto:enquiries@oerb.org\" style=\"color:#1565C0;text-decoration:none;\">enquiries@oerb.org</a> ·\n                <a href=\"https://www.oshwalacademy.sc.ke\" style=\"color:#1565C0;text-decoration:none;\">https://www.oshwalacademy.sc.ke</a>\n              </div>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "res_model": "res.users",
+        "res_id": 7,
+        "provider": "simulate",
+        "provider_ref": "email_sim_1795176919983",
+        "state": "sent",
+        "company_id": 1
+      },
+      {
+        "id": 3,
+        "date": "2026-11-20 12:16",
+        "to": "simon24njoroge@gmail.com",
+        "recipient_name": "Simon",
+        "channel": "email",
+        "subject": "Set Up / Reset Your OpenEdu Prime Password",
+        "body": "OpenEduCat Classic Blue — Set Up Your Account Password\n\nDear Simon,\n\nAn account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).\nClick the button below to choose a private password and sign in.\n\nSummary:\n• User Account: Simon\n• Login Email: simon24njoroge@gmail.com\n• Link Valid For: 24 Hours\n\nSecurity Notice: If you did not request this email, please ignore it or notify your Campus IT Administrator.\n\nSet My Password: http://192.168.1.55:5175/web/reset_password?token=le-RkOm1diEMvCxQxs-IIOgicUHu_Ejr\n\nWarm regards,\nOpenEduCat Classic Blue (+254 142 645 861 | enquiries@oerb.org)",
+        "body_html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Set Up Your Account Password</title>\n</head>\n<body style=\"margin:0;padding:0;background-color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased;\">\n  <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f1f5f9;padding:28px 14px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width:640px;background-color:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(15,23,42,0.06);\">\n          <!-- Institutional Brand Header -->\n          <tr>\n            <td style=\"background-color:#1565C0;padding:22px 28px;border-bottom:4px solid #F59E0B;\">\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n                <tr>\n                  <td style=\"vertical-align:middle;\">\n                    <div style=\"font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.2px;\">OpenEduCat Classic Blue</div>\n                    <div style=\"font-size:12px;color:#cbd5e1;margin-top:3px;\">Compass for Life Skills — Inspiring and Growing Unique Greatness</div>\n                  </td>\n                  <td align=\"right\" style=\"vertical-align:middle;\">\n                    <span style=\"display:inline-block;padding:4px 10px;border-radius:999px;background-color:#7c3aed;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;\">\n                      ACCOUNT SECURITY\n                    </span>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Email Title Banner -->\n          <tr>\n            <td style=\"padding:26px 28px 10px 28px;\">\n              <div style=\"font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:#1565C0;margin-bottom:6px;\">\n                OpenEdu Prime Identity &amp; Access\n              </div>\n              <h1 style=\"margin:0;font-size:22px;font-weight:700;line-height:1.3;color:#0f172a;\">\n                Set Up Your Account Password\n              </h1>\n            </td>\n          </tr>\n\n          <!-- Main Content -->\n          <tr>\n            <td style=\"padding:12px 28px 28px 28px;\">\n              <p style=\"margin:0 0 14px 0;font-size:15px;font-weight:600;color:#1e293b;\">\n                Dear Simon,\n              </p>\n              <p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">An account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).</p>\n<p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">Click the button below to choose a private password and sign in.</p>\n              \n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;border:1px solid #e2e8f0;border-radius:8px;border-collapse:separate;overflow:hidden;background:#f8fafc;\">\n          <tbody>\n            \n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">User Account</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">Simon</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">Login Email</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">simon24njoroge@gmail.com</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:none;\">Link Valid For</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:none;\">24 Hours</td>\n              </tr>\n          </tbody>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;background:#fef2f2;border-left:4px solid #ef4444;border-radius:6px;\">\n          <tr>\n            <td style=\"padding:14px 16px;\">\n              <div style=\"font-size:13px;font-weight:700;color:#991b1b;margin-bottom:4px;\">Security Notice</div>\n              <div style=\"font-size:13px;line-height:1.5;color:#7f1d1d;\">If you did not request this email, please ignore it or notify your Campus IT Administrator.</div>\n            </td>\n          </tr>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:22px 0 8px 0;\">\n          <tr>\n            <td align=\"center\" bgcolor=\"#1565C0\" style=\"border-radius:6px;\">\n              <a href=\"http://192.168.1.55:5175/web/reset_password?token=le-RkOm1diEMvCxQxs-IIOgicUHu_Ejr\" target=\"_blank\" style=\"display:inline-block;padding:12px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:6px;\">\n                Set My Password &rarr;\n              </a>\n            </td>\n          </tr>\n        </table>\n              <p style=\"margin:24px 0 0 0;font-size:13px;line-height:1.6;color:#64748b;\">\n                Warm regards,<br />\n                <strong style=\"color:#1e293b;\">OpenEduCat Classic Blue</strong><br />\n                First Parklands Avenue, Off Mpaka Road, Parklands, Nairobi · Tel: +254 142 645 861\n              </p>\n            </td>\n          </tr>\n\n          <!-- Legal / Footer Bar -->\n          <tr>\n            <td style=\"background-color:#f8fafc;padding:16px 28px;border-top:1px solid #e2e8f0;text-align:center;\">\n              <div style=\"font-size:11px;color:#64748b;line-height:1.5;\">\n                Oshwal Education &amp; Relief Board · P.O. Box 49633 - 00100 Nairobi, Kenya · Registered Educational Trust #1941<br />\n                Contact: <a href=\"mailto:enquiries@oerb.org\" style=\"color:#1565C0;text-decoration:none;\">enquiries@oerb.org</a> ·\n                <a href=\"https://www.oshwalacademy.sc.ke\" style=\"color:#1565C0;text-decoration:none;\">https://www.oshwalacademy.sc.ke</a>\n              </div>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "res_model": "res.users",
+        "res_id": 6,
+        "provider": "simulate",
+        "provider_ref": "email_sim_1795176983991",
+        "state": "sent",
+        "company_id": 1
+      },
+      {
+        "id": 4,
+        "date": "2026-11-20 12:17",
+        "to": "simon24njoroge@gmail.com",
+        "recipient_name": "Simon",
+        "channel": "email",
+        "subject": "Set Up / Reset Your OpenEdu Prime Password",
+        "body": "OpenEduCat Classic Blue — Set Up Your Account Password\n\nDear Simon,\n\nAn account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).\nClick the button below to choose a private password and sign in.\n\nSummary:\n• User Account: Simon\n• Login Email: simon24njoroge@gmail.com\n• Link Valid For: 24 Hours\n\nSecurity Notice: If you did not request this email, please ignore it or notify your Campus IT Administrator.\n\nSet My Password: http://192.168.1.55:5175/web/reset_password?token=Pfzqp-hqGzn4-F7Uvy0as2Hy3ujLydep\n\nWarm regards,\nOpenEduCat Classic Blue (+254 142 645 861 | enquiries@oerb.org)",
+        "body_html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Set Up Your Account Password</title>\n</head>\n<body style=\"margin:0;padding:0;background-color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased;\">\n  <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f1f5f9;padding:28px 14px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width:640px;background-color:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(15,23,42,0.06);\">\n          <!-- Institutional Brand Header -->\n          <tr>\n            <td style=\"background-color:#1565C0;padding:22px 28px;border-bottom:4px solid #F59E0B;\">\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n                <tr>\n                  <td style=\"vertical-align:middle;\">\n                    <div style=\"font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.2px;\">OpenEduCat Classic Blue</div>\n                    <div style=\"font-size:12px;color:#cbd5e1;margin-top:3px;\">Compass for Life Skills — Inspiring and Growing Unique Greatness</div>\n                  </td>\n                  <td align=\"right\" style=\"vertical-align:middle;\">\n                    <span style=\"display:inline-block;padding:4px 10px;border-radius:999px;background-color:#7c3aed;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;\">\n                      ACCOUNT SECURITY\n                    </span>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Email Title Banner -->\n          <tr>\n            <td style=\"padding:26px 28px 10px 28px;\">\n              <div style=\"font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:#1565C0;margin-bottom:6px;\">\n                OpenEdu Prime Identity &amp; Access\n              </div>\n              <h1 style=\"margin:0;font-size:22px;font-weight:700;line-height:1.3;color:#0f172a;\">\n                Set Up Your Account Password\n              </h1>\n            </td>\n          </tr>\n\n          <!-- Main Content -->\n          <tr>\n            <td style=\"padding:12px 28px 28px 28px;\">\n              <p style=\"margin:0 0 14px 0;font-size:15px;font-weight:600;color:#1e293b;\">\n                Dear Simon,\n              </p>\n              <p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">An account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).</p>\n<p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">Click the button below to choose a private password and sign in.</p>\n              \n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;border:1px solid #e2e8f0;border-radius:8px;border-collapse:separate;overflow:hidden;background:#f8fafc;\">\n          <tbody>\n            \n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">User Account</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">Simon</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">Login Email</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">simon24njoroge@gmail.com</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:none;\">Link Valid For</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:none;\">24 Hours</td>\n              </tr>\n          </tbody>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;background:#fef2f2;border-left:4px solid #ef4444;border-radius:6px;\">\n          <tr>\n            <td style=\"padding:14px 16px;\">\n              <div style=\"font-size:13px;font-weight:700;color:#991b1b;margin-bottom:4px;\">Security Notice</div>\n              <div style=\"font-size:13px;line-height:1.5;color:#7f1d1d;\">If you did not request this email, please ignore it or notify your Campus IT Administrator.</div>\n            </td>\n          </tr>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:22px 0 8px 0;\">\n          <tr>\n            <td align=\"center\" bgcolor=\"#1565C0\" style=\"border-radius:6px;\">\n              <a href=\"http://192.168.1.55:5175/web/reset_password?token=Pfzqp-hqGzn4-F7Uvy0as2Hy3ujLydep\" target=\"_blank\" style=\"display:inline-block;padding:12px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:6px;\">\n                Set My Password &rarr;\n              </a>\n            </td>\n          </tr>\n        </table>\n              <p style=\"margin:24px 0 0 0;font-size:13px;line-height:1.6;color:#64748b;\">\n                Warm regards,<br />\n                <strong style=\"color:#1e293b;\">OpenEduCat Classic Blue</strong><br />\n                First Parklands Avenue, Off Mpaka Road, Parklands, Nairobi · Tel: +254 142 645 861\n              </p>\n            </td>\n          </tr>\n\n          <!-- Legal / Footer Bar -->\n          <tr>\n            <td style=\"background-color:#f8fafc;padding:16px 28px;border-top:1px solid #e2e8f0;text-align:center;\">\n              <div style=\"font-size:11px;color:#64748b;line-height:1.5;\">\n                Oshwal Education &amp; Relief Board · P.O. Box 49633 - 00100 Nairobi, Kenya · Registered Educational Trust #1941<br />\n                Contact: <a href=\"mailto:enquiries@oerb.org\" style=\"color:#1565C0;text-decoration:none;\">enquiries@oerb.org</a> ·\n                <a href=\"https://www.oshwalacademy.sc.ke\" style=\"color:#1565C0;text-decoration:none;\">https://www.oshwalacademy.sc.ke</a>\n              </div>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "res_model": "res.users",
+        "res_id": 6,
+        "provider": "simulate",
+        "provider_ref": "email_sim_1795177058641",
+        "state": "sent",
+        "company_id": 1
+      },
+      {
+        "id": 5,
+        "date": "2026-11-20 12:17",
+        "to": "simon24njoroge@gmail.com",
+        "recipient_name": "Simon",
+        "channel": "email",
+        "subject": "Set Up / Reset Your OpenEdu Prime Password",
+        "body": "OpenEduCat Classic Blue — Set Up Your Account Password\n\nDear Simon,\n\nAn account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).\nClick the button below to choose a private password and sign in.\n\nSummary:\n• User Account: Simon\n• Login Email: simon24njoroge@gmail.com\n• Link Valid For: 24 Hours\n\nSecurity Notice: If you did not request this email, please ignore it or notify your Campus IT Administrator.\n\nSet My Password: http://192.168.1.55:5175/web/reset_password?token=jXSrm03na3U9F82yYJJhwyJclEIZbd6S\n\nWarm regards,\nOpenEduCat Classic Blue (+254 142 645 861 | enquiries@oerb.org)",
+        "body_html": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Set Up Your Account Password</title>\n</head>\n<body style=\"margin:0;padding:0;background-color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased;\">\n  <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"background-color:#f1f5f9;padding:28px 14px;\">\n    <tr>\n      <td align=\"center\">\n        <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"max-width:640px;background-color:#ffffff;border-radius:10px;overflow:hidden;border:1px solid #e2e8f0;box-shadow:0 4px 16px rgba(15,23,42,0.06);\">\n          <!-- Institutional Brand Header -->\n          <tr>\n            <td style=\"background-color:#1565C0;padding:22px 28px;border-bottom:4px solid #F59E0B;\">\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\">\n                <tr>\n                  <td style=\"vertical-align:middle;\">\n                    <div style=\"font-size:18px;font-weight:700;color:#ffffff;letter-spacing:-0.2px;\">OpenEduCat Classic Blue</div>\n                    <div style=\"font-size:12px;color:#cbd5e1;margin-top:3px;\">Compass for Life Skills — Inspiring and Growing Unique Greatness</div>\n                  </td>\n                  <td align=\"right\" style=\"vertical-align:middle;\">\n                    <span style=\"display:inline-block;padding:4px 10px;border-radius:999px;background-color:#7c3aed;color:#ffffff;font-size:10px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;\">\n                      ACCOUNT SECURITY\n                    </span>\n                  </td>\n                </tr>\n              </table>\n            </td>\n          </tr>\n\n          <!-- Email Title Banner -->\n          <tr>\n            <td style=\"padding:26px 28px 10px 28px;\">\n              <div style=\"font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.6px;color:#1565C0;margin-bottom:6px;\">\n                OpenEdu Prime Identity &amp; Access\n              </div>\n              <h1 style=\"margin:0;font-size:22px;font-weight:700;line-height:1.3;color:#0f172a;\">\n                Set Up Your Account Password\n              </h1>\n            </td>\n          </tr>\n\n          <!-- Main Content -->\n          <tr>\n            <td style=\"padding:12px 28px 28px 28px;\">\n              <p style=\"margin:0 0 14px 0;font-size:15px;font-weight:600;color:#1e293b;\">\n                Dear Simon,\n              </p>\n              <p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">An account password setup / reset link has been generated for your OpenEdu Prime account (simon24njoroge@gmail.com).</p>\n<p style=\"margin:0 0 14px 0;font-size:15px;line-height:1.6;color:#334155;\">Click the button below to choose a private password and sign in.</p>\n              \n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;border:1px solid #e2e8f0;border-radius:8px;border-collapse:separate;overflow:hidden;background:#f8fafc;\">\n          <tbody>\n            \n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">User Account</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">Simon</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:1px solid #e2e8f0;\">Login Email</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:1px solid #e2e8f0;\">simon24njoroge@gmail.com</td>\n              </tr>\n              <tr>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:600;color:#475569;width:38%;border-bottom:none;\">Link Valid For</td>\n                <td style=\"padding:10px 16px;font-size:13px;font-weight:500;color:#0f172a;text-align:right;border-bottom:none;\">24 Hours</td>\n              </tr>\n          </tbody>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" style=\"margin:18px 0;background:#fef2f2;border-left:4px solid #ef4444;border-radius:6px;\">\n          <tr>\n            <td style=\"padding:14px 16px;\">\n              <div style=\"font-size:13px;font-weight:700;color:#991b1b;margin-bottom:4px;\">Security Notice</div>\n              <div style=\"font-size:13px;line-height:1.5;color:#7f1d1d;\">If you did not request this email, please ignore it or notify your Campus IT Administrator.</div>\n            </td>\n          </tr>\n        </table>\n              <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:22px 0 8px 0;\">\n          <tr>\n            <td align=\"center\" bgcolor=\"#1565C0\" style=\"border-radius:6px;\">\n              <a href=\"http://192.168.1.55:5175/web/reset_password?token=jXSrm03na3U9F82yYJJhwyJclEIZbd6S\" target=\"_blank\" style=\"display:inline-block;padding:12px 26px;font-size:14px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:6px;\">\n                Set My Password &rarr;\n              </a>\n            </td>\n          </tr>\n        </table>\n              <p style=\"margin:24px 0 0 0;font-size:13px;line-height:1.6;color:#64748b;\">\n                Warm regards,<br />\n                <strong style=\"color:#1e293b;\">OpenEduCat Classic Blue</strong><br />\n                First Parklands Avenue, Off Mpaka Road, Parklands, Nairobi · Tel: +254 142 645 861\n              </p>\n            </td>\n          </tr>\n\n          <!-- Legal / Footer Bar -->\n          <tr>\n            <td style=\"background-color:#f8fafc;padding:16px 28px;border-top:1px solid #e2e8f0;text-align:center;\">\n              <div style=\"font-size:11px;color:#64748b;line-height:1.5;\">\n                Oshwal Education &amp; Relief Board · P.O. Box 49633 - 00100 Nairobi, Kenya · Registered Educational Trust #1941<br />\n                Contact: <a href=\"mailto:enquiries@oerb.org\" style=\"color:#1565C0;text-decoration:none;\">enquiries@oerb.org</a> ·\n                <a href=\"https://www.oshwalacademy.sc.ke\" style=\"color:#1565C0;text-decoration:none;\">https://www.oshwalacademy.sc.ke</a>\n              </div>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+        "res_model": "res.users",
+        "res_id": 6,
+        "provider": "simulate",
+        "provider_ref": "email_sim_1795177064794",
+        "state": "sent",
+        "company_id": 1
+      }
+    ],
     "payment.transaction": [
       {
         "id": 1,

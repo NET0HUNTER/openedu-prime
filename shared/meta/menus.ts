@@ -928,6 +928,7 @@ export const APPS: AppDef[] = [
       { label: 'Board Affiliation', model: 'op.board.affiliation', group: 'Users & Companies' },
       { label: 'Payment Providers', model: 'payment.provider', group: 'Technical' },
       { label: 'Payment Transactions', model: 'payment.transaction', group: 'Technical' },
+      { label: 'Outgoing Emails / Messages', model: 'comm.outbox', group: 'Technical' },
       { label: 'Scheduled Intervals (ir.cron)', model: 'ir.cron', group: 'Technical' },
     ],
   },
