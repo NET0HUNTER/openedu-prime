@@ -1,5 +1,19 @@
 import { Router, type Request, type Response } from 'express';
-import { ALL_MODELS, APPS, MODEL_MAP, PORTAL_CARDS, PUBLIC_ROUTES, MODEL_REPORTS, findReportByIdOrAction, checkModelAccess, type Role } from '../shared/meta/index.js';
+import {
+  ALL_MODELS,
+  APPS,
+  MODEL_MAP,
+  PORTAL_CARDS,
+  PUBLIC_ROUTES,
+  MODEL_REPORTS,
+  findReportByIdOrAction,
+  checkModelAccess,
+  evaluateRecordRuleWrite,
+  filterRowsByRecordRules,
+  type IrModelAccess,
+  type IrRule,
+  type Role,
+} from '../shared/meta/index.js';
 import { store } from './store.js';
 import { executeMethod, runCronJob } from './methods.js';
 import { buildOpenApiSpec } from './openapi.js';
@@ -35,6 +49,26 @@ function portalFilter(model: string, user: Record<string, any> | undefined): Rec
     return { [def.portal.studentField]: Number(user.student_id) };
   }
   return undefined;
+}
+
+function resolveUserSecurity(user: Record<string, any> | undefined) {
+  const roles = store.all('res.users.role');
+  const roleRecord = user?.role_id
+    ? store.byId('res.users.role', Number(user.role_id))
+    : roles.find((r) => r.base_role === user?.role && r.active !== false);
+  const baseRole = (roleRecord?.base_role || user?.role || 'admin') as Role;
+  const accessLines = roleRecord
+    ? (store.all('ir.model.access').filter((l) => Number(l.role_id) === roleRecord.id) as unknown as IrModelAccess[])
+    : [];
+  const rules = roleRecord
+    ? (store.all('ir.rule').filter((r) => Number(r.role_id) === roleRecord.id) as unknown as IrRule[])
+    : [];
+  return {
+    baseRole,
+    roleName: roleRecord?.name ? String(roleRecord.name) : baseRole,
+    accessLines,
+    rules,
+  };
 }
 
 export function createApiRouter(): Router {
@@ -120,11 +154,30 @@ export function createApiRouter(): Router {
 
   r.get('/api/v1/meta/menus', (req, res) => {
     const user = getActiveUser(req);
-    const role = (user?.role ?? 'admin') as Role;
+    const sec = resolveUserSecurity(user);
+    const role = sec.baseRole;
     const apps = role === 'student' || role === 'parent'
       ? []
-      : APPS.filter((a) => a.roles.includes(role as 'admin' | 'faculty' | 'backoffice'));
-    res.json({ role, apps, publicRoutes: PUBLIC_ROUTES, portalCards: PORTAL_CARDS });
+      : APPS.filter((a) => a.roles.includes(role as 'admin' | 'faculty' | 'backoffice'))
+          .map((a) => {
+            const visibleMenus = a.menus.filter((m) => {
+              if (!m.model) return true;
+              return checkModelAccess(m.model, role, 'read', { accessLines: sec.accessLines, roleName: sec.roleName }).allowed;
+            });
+            return { ...a, menus: visibleMenus };
+          })
+          .filter((a) => {
+            if (a.defaultModel) {
+              const canOpenDefault = checkModelAccess(a.defaultModel, role, 'read', { accessLines: sec.accessLines, roleName: sec.roleName }).allowed;
+              if (!canOpenDefault) return false;
+            }
+            const origApp = APPS.find((orig) => orig.id === a.id);
+            const hadModelMenus = origApp?.menus.some((m) => Boolean(m.model));
+            const hasModelMenusLeft = a.menus.some((m) => Boolean(m.model));
+            if (hadModelMenus && !hasModelMenusLeft) return false;
+            return true;
+          });
+    res.json({ role, roleName: sec.roleName, apps, publicRoutes: PUBLIC_ROUTES, portalCards: PORTAL_CARDS });
   });
 
   r.get('/api/v1/meta/models', (_req, res) => {
@@ -137,7 +190,8 @@ export function createApiRouter(): Router {
 
   r.post('/api/v1/settings', (req, res) => {
     const user = getActiveUser(req);
-    const acc = checkModelAccess('res.config.settings', user?.role, 'write');
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess('res.config.settings', sec.baseRole, 'write', { accessLines: sec.accessLines, roleName: sec.roleName });
     if (!acc.allowed) return res.status(403).json({ error: acc.reason });
     const existing = store.getSettings();
     const updated = store.write('res.config.settings', existing.id, req.body ?? {}, user?.id ?? 1);
@@ -164,21 +218,32 @@ export function createApiRouter(): Router {
       const method = String(req.params.method);
       if (!MODEL_MAP[model]) return res.status(404).json({ error: `Unknown model ${model}` });
       const user = getActiveUser(req);
+      const sec = resolveUserSecurity(user);
       const companyIds = parseCompanyIds(req);
       const body = req.body ?? {};
       const pDomain = portalFilter(model, user);
       const mergedDomain = { ...(body.domain ?? {}), ...(pDomain ?? {}) };
 
       if (method === 'search_read') {
-        return res.json(store.searchRead(model, { domain: mergedDomain, companyIds, search: body.search, limit: body.limit, offset: body.offset }));
+        const acc = checkModelAccess(model, sec.baseRole, 'read', { accessLines: sec.accessLines, roleName: sec.roleName });
+        if (!acc.allowed) return res.status(403).json({ error: acc.reason });
+        const result = store.searchRead(model, { domain: mergedDomain, companyIds, search: body.search, limit: body.limit, offset: body.offset });
+        const filtered = filterRowsByRecordRules(model, user, result.records, sec.rules);
+        return res.json({ records: filtered, total: filtered.length === result.records.length ? result.total : filtered.length });
       }
       if (method === 'read_group') {
+        const acc = checkModelAccess(model, sec.baseRole, 'read', { accessLines: sec.accessLines, roleName: sec.roleName });
+        if (!acc.allowed) return res.status(403).json({ error: acc.reason });
         const groupBy = String(body.groupBy ?? MODEL_MAP[model].stageField ?? 'company_id');
         return res.json({ groups: store.readGroup(model, groupBy, { domain: mergedDomain, companyIds, search: body.search }) });
       }
       if (method === 'web_read') {
+        const acc = checkModelAccess(model, sec.baseRole, 'read', { accessLines: sec.accessLines, roleName: sec.roleName });
+        if (!acc.allowed) return res.status(403).json({ error: acc.reason });
         const rec = store.byId(model, Number(body.id));
         if (!rec) return res.status(404).json({ error: 'Record not found' });
+        const ruleCheck = evaluateRecordRuleWrite(model, 'read', user, rec, sec.rules);
+        if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
         const messages = store.all('mail.message').filter((m) => m.res_model === model && Number(m.res_id) === rec.id)
           .map((m) => store.hydrate('mail.message', m));
         const activities = store.all('mail.activity').filter((a) => a.res_model === model && Number(a.res_id) === rec.id)
@@ -187,9 +252,12 @@ export function createApiRouter(): Router {
       }
       if (method === 'web_save' || method === 'create' || method === 'write') {
         const action = body.id ? 'write' : 'create';
-        const acc = checkModelAccess(model, user?.role, action);
+        const acc = checkModelAccess(model, sec.baseRole, action, { accessLines: sec.accessLines, roleName: sec.roleName });
         if (!acc.allowed) return res.status(403).json({ error: acc.reason });
         const vals = { ...(body.vals ?? {}) };
+        const existingRec = body.id ? store.byId(model, Number(body.id)) : vals;
+        const ruleCheck = evaluateRecordRuleWrite(model, action, user, existingRec, sec.rules);
+        if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
         if ((user?.role === 'student' || user?.role === 'parent') && user?.student_id) {
           const def = MODEL_MAP[model];
           if (def?.portal?.studentField && !vals[def.portal.studentField]) {
@@ -210,7 +278,17 @@ export function createApiRouter(): Router {
       if (method === 'onchange') {
         const vals = { ...(body.vals ?? {}) };
         const patch: Record<string, unknown> = {};
-        if (model === 'op.admission' && vals.register_id) {
+        if (model === 'res.users' && vals.role_id) {
+          const roleRec = store.byId('res.users.role', Number(vals.role_id));
+          if (roleRec?.base_role) patch.role = roleRec.base_role;
+        } else if ((model === 'ir.model.access' || model === 'ir.rule') && vals.model_id) {
+          const mRec = store.byId('ir.model', Number(vals.model_id));
+          if (mRec) {
+            patch.model_name = mRec.model;
+            if (model === 'ir.model.access') patch.module_group = mRec.app_category;
+            if (!vals.name) patch.name = mRec.name;
+          }
+        } else if (model === 'op.admission' && vals.register_id) {
           const reg = store.byId('op.admission.register', Number(vals.register_id));
           if (reg) {
             if (reg.course_id) patch.course_id = reg.course_id;
@@ -248,17 +326,20 @@ export function createApiRouter(): Router {
         return res.json({ value: patch });
       }
       if (method === 'unlink') {
-        const acc = checkModelAccess(model, user?.role, 'unlink');
+        const acc = checkModelAccess(model, sec.baseRole, 'unlink', { accessLines: sec.accessLines, roleName: sec.roleName });
         if (!acc.allowed) return res.status(403).json({ error: acc.reason });
+        const existingRec = store.byId(model, Number(body.id));
+        const ruleCheck = evaluateRecordRuleWrite(model, 'unlink', user, existingRec, sec.rules);
+        if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
         return res.json({ deleted: store.unlink(model, Number(body.id)) });
       }
       if (method === 'copy') {
-        const acc = checkModelAccess(model, user?.role, 'create');
+        const acc = checkModelAccess(model, sec.baseRole, 'create', { accessLines: sec.accessLines, roleName: sec.roleName });
         if (!acc.allowed) return res.status(403).json({ error: acc.reason });
         return res.status(201).json({ record: store.copy(model, Number(body.id), user?.id ?? 1) });
       }
       if (method === 'name_search') {
-        const { records } = store.searchRead(model, { companyIds, search: body.search, limit: 25 });
+        const { records } = store.searchRead(model, { companyIds, search: body.search, limit: model === 'ir.model' ? 500 : 25 });
         return res.json({ options: records.map((r) => ({ id: r.id, label: r.display_name })) });
       }
       if (user?.role === 'student' || user?.role === 'parent') {
@@ -284,42 +365,65 @@ export function createApiRouter(): Router {
     const model = String(req.params.slug).replace(/-/g, '.');
     if (!MODEL_MAP[model]) return res.status(404).json({ error: 'Unknown model' });
     const user = getActiveUser(req);
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess(model, sec.baseRole, 'read', { accessLines: sec.accessLines, roleName: sec.roleName });
+    if (!acc.allowed) return res.status(403).json({ error: acc.reason });
     const companyIds = parseCompanyIds(req);
-    res.json(store.searchRead(model, { domain: portalFilter(model, user), companyIds, search: typeof req.query.search === 'string' ? req.query.search : undefined }));
+    const result = store.searchRead(model, { domain: portalFilter(model, user), companyIds, search: typeof req.query.search === 'string' ? req.query.search : undefined });
+    const filtered = filterRowsByRecordRules(model, user, result.records, sec.rules);
+    res.json({ records: filtered, total: filtered.length === result.records.length ? result.total : filtered.length });
   });
   r.post('/api/v1/models/:slug', (req, res) => {
     const model = String(req.params.slug).replace(/-/g, '.');
     if (!MODEL_MAP[model]) return res.status(404).json({ error: 'Unknown model' });
     const user = getActiveUser(req);
-    const acc = checkModelAccess(model, user?.role, 'create');
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess(model, sec.baseRole, 'create', { accessLines: sec.accessLines, roleName: sec.roleName });
     if (!acc.allowed) return res.status(403).json({ error: acc.reason });
+    const ruleCheck = evaluateRecordRuleWrite(model, 'create', user, req.body ?? {}, sec.rules);
+    if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
     const rec = store.create(model, req.body ?? {}, user?.id ?? 1);
     res.status(201).json({ record: rec });
   });
   r.get('/api/v1/models/:slug/:id', (req, res) => {
     const model = String(req.params.slug).replace(/-/g, '.');
+    const user = getActiveUser(req);
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess(model, sec.baseRole, 'read', { accessLines: sec.accessLines, roleName: sec.roleName });
+    if (!acc.allowed) return res.status(403).json({ error: acc.reason });
     const rec = store.byId(model, Number(req.params.id));
     if (!rec) return res.status(404).json({ error: 'Not found' });
+    const ruleCheck = evaluateRecordRuleWrite(model, 'read', user, rec, sec.rules);
+    if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
     res.json({ record: store.hydrate(model, rec) });
   });
   r.patch('/api/v1/models/:slug/:id', (req, res) => {
     const model = String(req.params.slug).replace(/-/g, '.');
     const user = getActiveUser(req);
-    const acc = checkModelAccess(model, user?.role, 'write');
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess(model, sec.baseRole, 'write', { accessLines: sec.accessLines, roleName: sec.roleName });
     if (!acc.allowed) return res.status(403).json({ error: acc.reason });
+    const rec = store.byId(model, Number(req.params.id));
+    const ruleCheck = evaluateRecordRuleWrite(model, 'write', user, rec, sec.rules);
+    if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
     res.json({ record: store.write(model, Number(req.params.id), req.body ?? {}, user?.id ?? 1) });
   });
   r.delete('/api/v1/models/:slug/:id', (req, res) => {
     const model = String(req.params.slug).replace(/-/g, '.');
     const user = getActiveUser(req);
-    const acc = checkModelAccess(model, user?.role, 'unlink');
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess(model, sec.baseRole, 'unlink', { accessLines: sec.accessLines, roleName: sec.roleName });
     if (!acc.allowed) return res.status(403).json({ error: acc.reason });
+    const rec = store.byId(model, Number(req.params.id));
+    const ruleCheck = evaluateRecordRuleWrite(model, 'unlink', user, rec, sec.rules);
+    if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
     res.json({ deleted: store.unlink(model, Number(req.params.id)) });
   });
   r.post('/api/v1/models/:slug/:id/copy', (req, res) => {
     const model = String(req.params.slug).replace(/-/g, '.');
     const user = getActiveUser(req);
-    const acc = checkModelAccess(model, user?.role, 'create');
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess(model, sec.baseRole, 'create', { accessLines: sec.accessLines, roleName: sec.roleName });
     if (!acc.allowed) return res.status(403).json({ error: acc.reason });
     res.status(201).json({ record: store.copy(model, Number(req.params.id), user?.id ?? 1) });
   });

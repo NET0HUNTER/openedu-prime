@@ -12,9 +12,22 @@ export function seedOshwal(): void {
   c('res.lang', { name: 'English (UK)', code: 'en_GB', iso_code: 'en', active: true });
   c('res.lang', { name: 'Swahili / Kiswahili', code: 'sw_KE', iso_code: 'sw', active: true });
 
-  c('res.users.role', { name: 'School Administrator', code: 'ROLE-ADMIN', model_access_count: 145, rules_count: 32, comment: 'Full multi-campus ERP access across OERB.', active: true });
-  c('res.users.role', { name: 'Academic Faculty & Teacher', code: 'ROLE-FACULTY', model_access_count: 68, rules_count: 18, comment: 'Classroom, grading, attendance, LMS & timetable access.', active: true });
-  c('res.users.role', { name: 'Finance & Backoffice Officer', code: 'ROLE-BACKOFFICE', model_access_count: 54, rules_count: 14, comment: 'Accounting, fee invoicing, payroll, HR & compliance access.', active: true });
+  store.syncSystemModelsCatalog();
+  const rAdmin = c('res.users.role', { name: 'School Administrator', code: 'ROLE-ADMIN', base_role: 'admin', comment: 'Full multi-campus ERP access across OERB.', active: true });
+  const rFaculty = c('res.users.role', { name: 'Academic Faculty & Teacher', code: 'ROLE-FACULTY', base_role: 'faculty', comment: 'Classroom, grading, attendance, LMS & timetable access.', active: true });
+  const rBackoffice = c('res.users.role', { name: 'Finance & Backoffice Officer', code: 'ROLE-BACKOFFICE', base_role: 'backoffice', comment: 'Accounting, fee invoicing, payroll, HR & compliance access.', active: true });
+  const rTeacherClean = c('res.users.role', { name: 'Classroom Teacher (No HR)', code: 'ROLE-TEACHER', base_role: 'faculty', comment: 'Classroom teaching, attendance & grading with HR & Payroll unchecked.', active: true });
+  const rHr = c('res.users.role', { name: 'HR & People Officer', code: 'ROLE-HR', base_role: 'backoffice', comment: 'Employee contracts, leave approvals, skills & payroll access.', active: true });
+  const rLibrarian = c('res.users.role', { name: 'Campus Librarian', code: 'ROLE-LIBRARIAN', base_role: 'faculty', comment: 'Library books, barcode media issue & overdue fines with HR & Exams unchecked.', active: true });
+  // Configure Classroom Teacher: uncheck HR & Payroll models safely
+  for (const line of store.all('ir.model.access').filter((l) => Number(l.role_id) === rTeacherClean.id && String(l.module_group) === 'HR & Payroll')) {
+    store.write('ir.model.access', line.id, { perm_read: false, perm_write: false, perm_create: false, perm_unlink: false }, 1, false);
+  }
+  // Configure Campus Librarian: keep Library & Core open, uncheck HR & Payroll + Exams
+  for (const line of store.all('ir.model.access').filter((l) => Number(l.role_id) === rLibrarian.id && (String(l.module_group) === 'HR & Payroll' || String(l.module_group) === 'Exams & Gradebook'))) {
+    store.write('ir.model.access', line.id, { perm_read: false, perm_write: false, perm_create: false, perm_unlink: false }, 1, false);
+  }
+  void rAdmin; void rFaculty; void rBackoffice; void rHr;
 
   c('op.board.affiliation', { name: 'Cambridge Assessment International Education (CAIE)', code: 'CAIE-KE042', note: 'Accredited Cambridge International School for Primary, Lower Secondary, IGCSE & AS/A-Level.' });
   c('op.board.affiliation', { name: 'Pearson Edexcel & BTEC International', code: 'EDEXCEL-BTEC', note: 'Approved Centre for International GCSE, International A-Level (IAL) & BTEC Level 3.' });
@@ -849,5 +862,6 @@ export function seedOshwal(): void {
   void wb1;
 
   seedInstalledModules(c);
+  store.ensureSecurityBootstrap();
   void jt1;
 }

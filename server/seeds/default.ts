@@ -6,6 +6,10 @@ export function seedDefault(): void {
   const c = (model: string, vals: Record<string, unknown>) => store.create(model, vals, 1, false);
 
   c('res.country', { name: 'United States', code: 'US' });
+  store.syncSystemModelsCatalog();
+  c('res.users.role', { name: 'School Administrator', code: 'ROLE-ADMIN', base_role: 'admin', comment: 'Full ERP administration privileges.', active: true });
+  c('res.users.role', { name: 'Faculty & Teacher', code: 'ROLE-FACULTY', base_role: 'faculty', comment: 'Academic classroom, LMS, grading and timetable access.', active: true });
+  c('res.users.role', { name: 'Backoffice & Finance', code: 'ROLE-BACKOFFICE', base_role: 'backoffice', comment: 'Admissions, student records and billing.', active: true });
   const theme = {
     theme_primary: '#1565C0', theme_primary_dark: '#0D47A1', theme_accent: '#714B67', theme_gold: '#F59E0B',
     theme_card_1: '#FCE4EC', theme_card_2: '#E8EAF6', theme_surface_1: '#FFFFFF', theme_surface_2: '#E3F2FD',
@@ -71,4 +75,5 @@ export function seedDefault(): void {
   c('op.department', { name: 'Engineering', code: 'ENG', company_id: co.id });
   c('op.media.type', { name: 'Course Books', code: 'CB', company_id: co.id });
   seedInstalledModules(c);
+  store.ensureSecurityBootstrap();
 }

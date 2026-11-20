@@ -1661,6 +1661,18 @@ export function executeMethod(model: string, method: string, id: number | undefi
       return { record: updated, message: `Created quotation ${so.name} from opportunity.` };
     }
 
+    case 'res.users.role.sync_base_permissions': {
+      const role = store.byId('res.users.role', id!);
+      if (!role) throw new Error('Role not found');
+      const baseRole = (role.base_role || 'faculty') as 'admin' | 'faculty' | 'backoffice' | 'student' | 'parent';
+      store.populateRolePermissions(role.id, baseRole, true);
+      const updated = store.hydrate('res.users.role', store.byId('res.users.role', role.id)!);
+      return {
+        record: updated,
+        message: `Synced ${updated.model_access_count} model access rights and ${updated.rules_count} record rules from Base Profile '${baseRole}'.`,
+      };
+    }
+
     default: {
       if (btn?.to && id !== undefined && def.stageField) {
         const vals: Record<string, unknown> = { [def.stageField]: btn.to };

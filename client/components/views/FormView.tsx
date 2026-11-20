@@ -35,6 +35,7 @@ export const FormView: React.FC<FormViewProps> = ({
   const [focusedDateField, setFocusedDateField] = useState<string | null>(null);
   const [inlineDrafts, setInlineDrafts] = useState<Record<string, Record<string, any>>>({});
   const [addingLineFor, setAddingLineFor] = useState<string | null>(null);
+  const [o2mFilters, setO2mFilters] = useState<Record<string, string>>({});
   const [showActivityModal, setShowActivityModal] = useState(false);
   const [activityForm, setActivityForm] = useState({ activity_type: 'To-Do', summary: 'To-Do', date_deadline: new Date().toISOString().slice(0, 10), note: '' });
   const [showPayModal, setShowPayModal] = useState(false);
@@ -83,7 +84,12 @@ export const FormView: React.FC<FormViewProps> = ({
         else if (f.default === 'true') init[f.name] = true;
         else if (f.default === 'false') init[f.name] = false;
         else if (f.default !== undefined) {
-          init[f.name] = f.type === 'integer' || f.type === 'float' || f.type === 'monetary' ? Number(f.default) : f.default;
+          if (f.type === 'integer' || f.type === 'float' || f.type === 'monetary') {
+            const parsed = Number(f.default);
+            init[f.name] = Number.isNaN(parsed) ? 0 : parsed;
+          } else {
+            init[f.name] = f.default;
+          }
         }
       }
       setForm(init);
@@ -396,9 +402,34 @@ export const FormView: React.FC<FormViewProps> = ({
     if (f.type === 'one2many') {
       const rows: Rec[] = Array.isArray(val) ? val : [];
       const relDef = models[f.relation!];
-      const cols = relDef?.list.filter((c) => c !== f.inverse).slice(0, 6) ?? ['id', 'name'];
+      const cols = relDef?.list.filter((c) => c !== f.inverse).slice(0, 8) ?? ['id', 'name'];
       const draft = inlineDrafts[f.name] ?? {};
       const isAdding = addingLineFor === f.name;
+      const filterText = (o2mFilters[f.name] ?? '').trim().toLowerCase();
+      const visibleRows = filterText
+        ? rows.filter((row) =>
+            cols.some((c) => String(row[`${c}__label`] ?? row[c] ?? '').toLowerCase().includes(filterText)) ||
+            String(row.model_name ?? '').toLowerCase().includes(filterText),
+          )
+        : rows;
+
+      const bulkToggleAccess = async (enable: boolean) => {
+        if (!f.relation || f.relation !== 'ir.model.access' || !recordId) return;
+        try {
+          await Promise.all(
+            visibleRows.map((row) =>
+              callKw('ir.model.access', 'write', {
+                id: row.id,
+                vals: { perm_read: enable, perm_write: enable, perm_create: enable, perm_unlink: enable },
+              }),
+            ),
+          );
+          await loadRecord(recordId);
+          showToast(`${enable ? 'Enabled' : 'Disabled'} ${visibleRows.length} model rule(s).`);
+        } catch (err: any) {
+          showToast(err.message || 'Bulk update failed', 'error');
+        }
+      };
 
       const addLine = async () => {
         if (!f.relation || !f.inverse) return;
@@ -433,15 +464,49 @@ export const FormView: React.FC<FormViewProps> = ({
       };
 
       return (
-        <div className="border border-slate-200 rounded overflow-x-auto bg-white">
+        <div className="border border-slate-200 rounded bg-white">
+          {(rows.length > 6 || f.relation === 'ir.model.access' || f.relation === 'ir.rule') && (
+            <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-2 bg-slate-50 border-b border-slate-200">
+              <input
+                type="text"
+                value={o2mFilters[f.name] ?? ''}
+                onChange={(e) => setO2mFilters((p) => ({ ...p, [f.name]: e.target.value }))}
+                placeholder={f.relation === 'ir.model.access' ? 'Filter models or modules (e.g. hr, library, student)...' : 'Filter rules...'}
+                className="px-2.5 py-1 text-xs border border-slate-300 rounded bg-white w-72 max-w-full focus:outline-none focus:border-[var(--oe-brand-primary)]"
+              />
+              <div className="flex items-center gap-2 text-[11px]">
+                <span className="text-slate-500">{visibleRows.length} of {rows.length}</span>
+                {f.relation === 'ir.model.access' && !ro && recordId && visibleRows.length > 0 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() => bulkToggleAccess(true)}
+                      className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-700 font-medium hover:bg-emerald-100"
+                    >
+                      Check Visible
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => bulkToggleAccess(false)}
+                      className="px-2 py-0.5 rounded bg-rose-50 border border-rose-200 text-rose-700 font-medium hover:bg-rose-100"
+                    >
+                      Uncheck Visible
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          )}
+          <div className={rows.length > 10 ? 'max-h-[420px] overflow-auto' : 'overflow-x-auto'}>
           <table className="w-full text-left text-xs">
-            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600">
+            <thead className="bg-slate-50 border-b border-slate-200 text-slate-600 sticky top-0 z-10">
               <tr>
                 {cols.map((c) => {
                   const cf = relDef?.fields[c];
                   const isNum = cf?.type === 'monetary' || cf?.type === 'float' || cf?.type === 'integer';
+                  const isBool = cf?.type === 'boolean';
                   return (
-                    <th key={c} className={`px-3 py-2 font-semibold ${isNum ? 'text-right' : ''}`}>
+                    <th key={c} className={`px-3 py-2 font-semibold ${isNum ? 'text-right' : isBool ? 'text-center' : ''}`}>
                       {cf?.string || c}
                     </th>
                   );
@@ -450,10 +515,10 @@ export const FormView: React.FC<FormViewProps> = ({
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
-              {rows.length === 0 && !isAdding ? (
+              {visibleRows.length === 0 && !isAdding ? (
                 <tr><td colSpan={cols.length + 1} className="px-3 py-3 text-center text-slate-400">No records</td></tr>
               ) : (
-                rows.map((row) => (
+                visibleRows.map((row) => (
                   <tr key={row.id} className="hover:bg-slate-50">
                     {cols.map((c) => {
                       const cf = relDef?.fields[c];
@@ -467,11 +532,36 @@ export const FormView: React.FC<FormViewProps> = ({
                               disabled={ro}
                               onChange={async (e) => {
                                 if (!f.relation) return;
-                                await callKw(f.relation, 'write', { id: row.id, vals: { [c]: e.target.checked } });
-                                await loadRecord(recordId);
+                                try {
+                                  await callKw(f.relation, 'write', { id: row.id, vals: { [c]: e.target.checked } });
+                                  await loadRecord(recordId);
+                                } catch (err: any) {
+                                  showToast(err.message || 'Permission update failed', 'error');
+                                }
                               }}
                               className="rounded accent-[var(--oe-brand-primary)] cursor-pointer"
                             />
+                          </td>
+                        );
+                      }
+                      if (cf?.type === 'selection' && cf.selection && f.relation === 'ir.rule' && !ro) {
+                        return (
+                          <td key={c} className="px-2 py-1.5">
+                            <select
+                              value={row[c] ?? cf.selection[0]?.[0] ?? ''}
+                              onChange={async (e) => {
+                                try {
+                                  await callKw('ir.rule', 'write', { id: row.id, vals: { [c]: e.target.value } });
+                                  await loadRecord(recordId);
+                                  showToast('Rule scope updated');
+                                } catch (err: any) {
+                                  showToast(err.message || 'Update failed', 'error');
+                                }
+                              }}
+                              className="px-2 py-0.5 text-xs border border-slate-200 rounded bg-white text-slate-700"
+                            >
+                              {cf.selection.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+                            </select>
                           </td>
                         );
                       }
@@ -573,6 +663,7 @@ export const FormView: React.FC<FormViewProps> = ({
               )}
             </tbody>
           </table>
+          </div>
           {!ro && !isAdding && canWrite && (
             <div className="px-3 py-1.5 border-t border-slate-100 bg-slate-50/50">
               <button

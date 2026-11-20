@@ -49,19 +49,56 @@ export const coreModels = [
     tabs: 'Terminology:term_program,term_course,term_batch,term_subject,term_faculty,term_student|Academic Rules:academic_year_start_month,withdrawal_notice_days,library_fine_per_day,compliance_warning_days,attendance_absentee_alert,absentee_channel|Payments (M-Pesa):mpesa_env,mpesa_consumer_key,mpesa_consumer_secret,mpesa_shortcode,mpesa_passkey,mpesa_callback_url,etims_enabled|Messaging:whatsapp_provider,whatsapp_token,whatsapp_phone_number_id,sms_provider,sms_username,sms_api_key,sms_sender_id,email_provider,smtp_host,smtp_port,smtp_user|AI & Meetings:ai_provider,ai_api_key,ai_model,meeting_provider,meeting_api_key,exam_board_edi|SSO & Webhooks:sso_provider,sso_client_id,sso_issuer_url,webhook_url,webhook_secret|Website:website_title,website_tagline,public_admissions_open,demo_logins',
     views: 'form,list',
   }),
+  M('ir.model', 'Model', {
+    nocompany: true,
+    f: `name:char!:Model Label; model:char!:Technical Name; app_category:char:Module; is_core_infra:bool:Core Shell Protected=false`,
+    list: 'name,model,app_category,is_core_infra',
+    views: 'list,form',
+    panel: 'app_category',
+  }),
   M('res.users', 'User', {
     nocompany: true,
-    f: `name:char!; login:char!; role:sel(admin=Administrator|faculty=Faculty|backoffice=Backoffice|student=Student (Portal)|parent=Parent (Portal))!=backoffice;
+    f: `name:char!; login:char!; role:sel(admin=Administrator|faculty=Faculty|backoffice=Backoffice|student=Student (Portal)|parent=Parent (Portal))!:Base Profile=backoffice;
+        role_id:m2o(res.users.role):Job Role;
         image:image; student_id:m2o(op.student); parent_id:m2o(op.parent); faculty_id:m2o(op.faculty); employee_id:m2o(hr.employee);
         company_id:m2o(res.company):Default Campus; company_ids:m2m(res.company):Allowed Campuses; is_demo:bool:Demo Login; lang:char=en_US; active:bool=true`,
-    list: 'name,login,role,company_id,is_demo,active',
+    list: 'name,login,role_id,role,company_id,is_demo,active',
     views: 'list,kanban,form',
   }),
   M('res.users.role', 'User Role', {
     nocompany: true,
-    f: `name:char!; code:char; model_access_count:integer=12; rules_count:integer=8;
-        comment:text:Internal Notes; active:bool=true`,
-    list: 'name,code,model_access_count,rules_count,active',
+    f: `name:char!; code:char;
+        base_role:sel(admin=Administrator|faculty=Faculty|backoffice=Backoffice|student=Student (Portal)|parent=Parent (Portal))!:Base Profile=faculty;
+        model_access_count:integer~:Model Access Count=0; rules_count:integer~:Rules Count=0;
+        comment:text:Internal Notes; active:bool=true;
+        access_ids:o2m(ir.model.access,role_id):Access Rights;
+        rule_ids:o2m(ir.rule,role_id):Record Rules;
+        user_ids:o2m(res.users,role_id):Assigned Users`,
+    list: 'name,code,base_role,model_access_count,rules_count,active',
+    buttons: 'sync_base_permissions:!Sync / Reset from Base Role:*@',
+    tabs: 'Access Rights:access_ids|Record Rules:rule_ids|Assigned Users:user_ids|Notes:comment',
+    views: 'list,form',
+  }),
+  M('ir.model.access', 'Access Right', {
+    nocompany: true,
+    f: `name:char!; role_id:m2o(res.users.role)!:Role; model_id:m2o(ir.model)!:Model;
+        model_name:char~:Technical Model; module_group:char~:Module;
+        perm_read:bool:Read=true; perm_write:bool:Write=false; perm_create:bool:Create=false; perm_unlink:bool:Delete=false;
+        active:bool=true`,
+    list: 'model_id,module_group,perm_read,perm_write,perm_create,perm_unlink,active,role_id,name',
+    panel: 'module_group',
+    views: 'list,form',
+  }),
+  M('ir.rule', 'Record Rule', {
+    nocompany: true,
+    f: `name:char!; role_id:m2o(res.users.role)!:Role; model_id:m2o(ir.model)!:Model;
+        model_name:char~:Technical Model;
+        scope_preset:sel(all=All Records|own_campus=Own Campus Only|own_records=Own Created/Assigned Records|assigned_faculty=Assigned Classes & Sessions|protect_posted=Block Delete on Posted Records):Scope Preset=own_campus;
+        domain_force:char:Custom Filter JSON;
+        perm_read:bool:Read=true; perm_write:bool:Write=true; perm_create:bool:Create=true; perm_unlink:bool:Delete=false;
+        global:bool:Global Rule=false; active:bool=true`,
+    list: 'name,model_id,scope_preset,perm_read,perm_write,perm_create,perm_unlink,active,role_id',
+    panel: 'scope_preset',
     views: 'list,form',
   }),
   M('op.board.affiliation', 'Board Affiliation', {

@@ -1,6 +1,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { MODEL_MAP, type ModelDef } from '../shared/meta/index.js';
+import {
+  ALL_MODELS,
+  CORE_SAFE_READ_MODELS,
+  MODEL_MAP,
+  buildDefaultAccessBlueprint,
+  buildDefaultRuleBlueprint,
+  classifyModelGroup,
+  type ModelDef,
+  type Role,
+} from '../shared/meta/index.js';
 
 export type Rec = Record<string, any> & { id: number };
 
@@ -15,6 +24,17 @@ const DB_FILE = path.join(DATA_DIR, 'db.json');
 
 export class Store {
   private state: DbState = { seedProfile: 'oshwal', nextIds: {}, tables: {} };
+  private batchDepth = 0;
+
+  withBatch<T>(fn: () => T): T {
+    this.batchDepth++;
+    try {
+      return fn();
+    } finally {
+      this.batchDepth--;
+      if (this.batchDepth === 0) this.save();
+    }
+  }
 
   load(): boolean {
     if (!fs.existsSync(DB_FILE)) return false;
@@ -24,6 +44,7 @@ export class Store {
   }
 
   save(): void {
+    if (this.batchDepth > 0 || process.env.VITEST) return;
     fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(DB_FILE, JSON.stringify(this.state, null, 2), 'utf8');
   }
@@ -325,6 +346,14 @@ export class Store {
     if (model === 'account.move.line') {
       rec.price_subtotal = Number(rec.quantity ?? 1) * Number(rec.price_unit ?? 0);
     }
+    if ((model === 'ir.model.access' || model === 'ir.rule') && rec.model_id) {
+      const mRec = this.byId('ir.model', Number(rec.model_id));
+      if (mRec) {
+        rec.model_name = mRec.model;
+        if (model === 'ir.model.access') rec.module_group = mRec.app_category || classifyModelGroup(String(mRec.model));
+        if (!rec.name) rec.name = `${mRec.name} (${mRec.model})`;
+      }
+    }
 
     this.all(model).push(rec);
     if (def) {
@@ -339,6 +368,15 @@ export class Store {
         }
       }
     }
+    if (model === 'res.users.role' && !Array.isArray(vals.access_ids)) {
+      const hasLines = this.all('ir.model.access').some((l) => Number(l.role_id) === id);
+      if (!hasLines) {
+        this.populateRolePermissions(id, (rec.base_role || 'faculty') as Role, false);
+      }
+    }
+    if ((model === 'ir.model.access' || model === 'ir.rule') && rec.role_id) {
+      this.recomputeRoleCounts(Number(rec.role_id));
+    }
     if (model === 'account.move.line' && logChatter && rec.move_id) {
       this.recomputeInvoiceTotals(Number(rec.move_id));
     }
@@ -350,6 +388,150 @@ export class Store {
     }
     this.save();
     return this.hydrate(model, rec);
+  }
+
+  syncSystemModelsCatalog(): void {
+    const existing = this.all('ir.model');
+    const byModelName = new Map(existing.map((r) => [String(r.model), r]));
+    let changed = false;
+    for (const def of ALL_MODELS) {
+      const cat = classifyModelGroup(def.name);
+      const isCore = CORE_SAFE_READ_MODELS.has(def.name);
+      const found = byModelName.get(def.name);
+      if (!found) {
+        const id = this.nextId('ir.model');
+        existing.push({
+          id,
+          name: def.string,
+          model: def.name,
+          app_category: cat,
+          is_core_infra: isCore,
+          create_date: new Date().toISOString(),
+          write_date: new Date().toISOString(),
+        });
+        changed = true;
+      } else if (found.app_category !== cat || found.is_core_infra !== isCore) {
+        found.app_category = cat;
+        found.is_core_infra = isCore;
+        changed = true;
+      }
+    }
+    if (changed) this.save();
+  }
+
+  recomputeRoleCounts(roleId: number): void {
+    const role = this.byId('res.users.role', roleId);
+    if (!role) return;
+    const accessCount = this.all('ir.model.access').filter(
+      (l) => Number(l.role_id) === roleId && l.active !== false && (l.perm_read || l.perm_write || l.perm_create || l.perm_unlink),
+    ).length;
+    const rulesCount = this.all('ir.rule').filter(
+      (r) => Number(r.role_id) === roleId && r.active !== false,
+    ).length;
+    role.model_access_count = accessCount;
+    role.rules_count = rulesCount;
+  }
+
+  populateRolePermissions(roleId: number, baseRole: Role, resetExisting = false): void {
+    this.syncSystemModelsCatalog();
+    const role = this.byId('res.users.role', roleId);
+    if (!role) return;
+    const modelRecords = this.all('ir.model');
+    const modelIdByName = new Map(modelRecords.map((m) => [String(m.model), m.id]));
+
+    if (resetExisting) {
+      this.state.tables['ir.model.access'] = this.all('ir.model.access').filter((l) => Number(l.role_id) !== roleId);
+      this.state.tables['ir.rule'] = this.all('ir.rule').filter((r) => Number(r.role_id) !== roleId);
+    }
+
+    const existingAccess = new Set(
+      this.all('ir.model.access')
+        .filter((l) => Number(l.role_id) === roleId)
+        .map((l) => String(l.model_name)),
+    );
+    const accessBlueprint = buildDefaultAccessBlueprint(baseRole, ALL_MODELS);
+    const accessTable = this.all('ir.model.access');
+    for (const bp of accessBlueprint) {
+      if (existingAccess.has(bp.model_name)) continue;
+      const mid = modelIdByName.get(bp.model_name);
+      accessTable.push({
+        id: this.nextId('ir.model.access'),
+        name: `${bp.model_label} (${role.code || baseRole})`,
+        role_id: roleId,
+        model_id: mid,
+        model_name: bp.model_name,
+        module_group: bp.module_group,
+        perm_read: bp.perm_read,
+        perm_write: bp.perm_write,
+        perm_create: bp.perm_create,
+        perm_unlink: bp.perm_unlink,
+        active: true,
+        create_date: new Date().toISOString(),
+        write_date: new Date().toISOString(),
+      });
+    }
+
+    const existingRules = new Set(
+      this.all('ir.rule')
+        .filter((r) => Number(r.role_id) === roleId)
+        .map((r) => String(r.name)),
+    );
+    const ruleBlueprint = buildDefaultRuleBlueprint(baseRole);
+    const ruleTable = this.all('ir.rule');
+    for (const rp of ruleBlueprint) {
+      if (existingRules.has(rp.name)) continue;
+      const mid = modelIdByName.get(rp.model_name);
+      ruleTable.push({
+        id: this.nextId('ir.rule'),
+        name: rp.name,
+        role_id: roleId,
+        model_id: mid,
+        model_name: rp.model_name,
+        scope_preset: rp.scope_preset,
+        perm_read: rp.perm_read,
+        perm_write: rp.perm_write,
+        perm_create: rp.perm_create,
+        perm_unlink: rp.perm_unlink,
+        global: rp.global,
+        active: true,
+        create_date: new Date().toISOString(),
+        write_date: new Date().toISOString(),
+      });
+    }
+
+    this.recomputeRoleCounts(roleId);
+    this.save();
+  }
+
+  ensureSecurityBootstrap(): void {
+    this.syncSystemModelsCatalog();
+    const roles = this.all('res.users.role');
+    const roleIds = new Set(roles.map((r) => r.id));
+    this.state.tables['ir.model.access'] = this.all('ir.model.access').filter((l) => roleIds.has(Number(l.role_id)));
+    this.state.tables['ir.rule'] = this.all('ir.rule').filter((r) => roleIds.has(Number(r.role_id)));
+    for (const r of roles) {
+      if (!r.base_role) {
+        const code = String(r.code || '').toUpperCase();
+        const name = String(r.name || '').toLowerCase();
+        if (code.includes('ADMIN') || name.includes('admin')) r.base_role = 'admin';
+        else if (code.includes('FACULTY') || name.includes('faculty') || name.includes('teacher')) r.base_role = 'faculty';
+        else r.base_role = 'backoffice';
+      }
+      const hasAccess = this.all('ir.model.access').some((l) => Number(l.role_id) === r.id);
+      if (!hasAccess) {
+        this.populateRolePermissions(r.id, (r.base_role || 'faculty') as Role, false);
+      } else {
+        this.recomputeRoleCounts(r.id);
+      }
+    }
+    const users = this.all('res.users');
+    for (const u of users) {
+      if (!u.role_id && u.role) {
+        const matched = roles.find((r) => r.base_role === u.role);
+        if (matched) u.role_id = matched.id;
+      }
+    }
+    this.save();
   }
 
   private recomputeInvoiceTotals(moveId: number): void {
@@ -399,6 +581,20 @@ export class Store {
       rec.price_subtotal = Number(rec.quantity ?? 1) * Number(rec.price_unit ?? 0);
       if (rec.move_id) this.recomputeInvoiceTotals(Number(rec.move_id));
     }
+    if ((model === 'ir.model.access' || model === 'ir.rule') && rec.model_id) {
+      const mRec = this.byId('ir.model', Number(rec.model_id));
+      if (mRec) {
+        rec.model_name = mRec.model;
+        if (model === 'ir.model.access') rec.module_group = mRec.app_category || classifyModelGroup(String(mRec.model));
+      }
+    }
+    if ((model === 'ir.model.access' || model === 'ir.rule') && rec.role_id) {
+      this.recomputeRoleCounts(Number(rec.role_id));
+    }
+    if (model === 'res.users' && vals.role_id !== undefined && rec.role_id) {
+      const roleRec = this.byId('res.users.role', Number(rec.role_id));
+      if (roleRec?.base_role) rec.role = roleRec.base_role;
+    }
     if (model === 'op.course.enrollment.line' && rec.enrollment_id) {
       this.recomputeEnrollmentProgress(Number(rec.enrollment_id));
     }
@@ -421,6 +617,13 @@ export class Store {
     list.splice(idx, 1);
     if (model === 'account.move.line' && removed?.move_id) {
       this.recomputeInvoiceTotals(Number(removed.move_id));
+    }
+    if ((model === 'ir.model.access' || model === 'ir.rule') && removed?.role_id) {
+      this.recomputeRoleCounts(Number(removed.role_id));
+    }
+    if (model === 'res.users.role') {
+      this.state.tables['ir.model.access'] = this.all('ir.model.access').filter((l) => Number(l.role_id) !== Number(id));
+      this.state.tables['ir.rule'] = this.all('ir.rule').filter((r) => Number(r.role_id) !== Number(id));
     }
     this.save();
     return true;

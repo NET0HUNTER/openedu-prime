@@ -187,4 +187,95 @@ describe('OpenEduCat Reports Engine, Downloads & RBAC Security Hierarchy', () =>
     expect(res.headers['content-disposition']).toContain('.xlsx');
     expect((res.body as Buffer).slice(0, 2).toString('ascii')).toBe('PK');
   });
+
+  it('auto-populates all models & rules on new sub-role, recomputes counts, hides unchecked modules, and enforces 403', async () => {
+    // 1. Create a custom sub-role under base_role = 'faculty'
+    const roleRes = await request(app)
+      .post('/api/v1/dataset/call_kw/res.users.role/web_save')
+      .set('X-User-Id', '1')
+      .send({ vals: { name: 'IGCSE Science Teacher', code: 'ROLE-SCI', base_role: 'faculty' } });
+    expect(roleRes.status).toBe(201);
+    const customRole = roleRes.body.record;
+    expect(customRole.model_access_count).toBeGreaterThan(50);
+    expect(customRole.rules_count).toBeGreaterThanOrEqual(4);
+    expect(Array.isArray(customRole.access_ids)).toBe(true);
+    expect(Array.isArray(customRole.rule_ids)).toBe(true);
+
+    // 2. Uncheck HR models for this Teacher role (perm_read = false on hr.employee, hr.leave, etc.)
+    const hrLines = customRole.access_ids.filter((l: any) => l.module_group === 'HR & Payroll');
+    expect(hrLines.length).toBeGreaterThanOrEqual(2);
+    for (const hl of hrLines) {
+      const wRes = await request(app)
+        .post('/api/v1/dataset/call_kw/ir.model.access/write')
+        .set('X-User-Id', '1')
+        .send({ id: hl.id, vals: { perm_read: false, perm_write: false, perm_create: false, perm_unlink: false } });
+      expect(wRes.status).toBe(200);
+    }
+
+    // Re-read role and verify model_access_count decreased automatically
+    const rereadRole = await request(app)
+      .post('/api/v1/dataset/call_kw/res.users.role/web_read')
+      .set('X-User-Id', '1')
+      .send({ id: customRole.id });
+    expect(rereadRole.body.record.model_access_count).toBe(customRole.model_access_count - hrLines.length);
+
+    // 3. Create a user bound to this custom Teacher role
+    const uRes = await request(app)
+      .post('/api/v1/dataset/call_kw/res.users/web_save')
+      .set('X-User-Id', '1')
+      .send({ vals: { name: 'Teacher Jane', login: 'tjane@oshwalacademy.sc.ke', role_id: customRole.id, role: 'faculty', company_id: 4 } });
+    expect(uRes.status).toBe(201);
+    const teacherUser = uRes.body.record;
+
+    // 4. Verify Human Resources app is dynamically hidden from Teacher Jane's menus, while Attendance & LMS remain visible
+    const menuRes = await request(app)
+      .get('/api/v1/meta/menus')
+      .set('X-User-Id', String(teacherUser.id));
+    expect(menuRes.status).toBe(200);
+    const appIds = menuRes.body.apps.map((a: any) => a.id);
+    expect(appIds).not.toContain('hr');
+    expect(appIds).toContain('attendance');
+    expect(appIds).toContain('lms');
+
+    // 5. Verify Teacher Jane gets 403 Forbidden on hr.employee search_read, while op.session & res.company succeed
+    const hrBlocked = await request(app)
+      .post('/api/v1/dataset/call_kw/hr.employee/search_read')
+      .set('X-User-Id', String(teacherUser.id))
+      .send({});
+    expect(hrBlocked.status).toBe(403);
+    expect(hrBlocked.body.error).toContain('ir.model.access');
+
+    const sessionOk = await request(app)
+      .post('/api/v1/dataset/call_kw/op.session/search_read')
+      .set('X-User-Id', String(teacherUser.id))
+      .send({});
+    expect(sessionOk.status).toBe(200);
+
+    const campusSafe = await request(app)
+      .post('/api/v1/dataset/call_kw/res.company/search_read')
+      .set('X-User-Id', String(teacherUser.id))
+      .send({});
+    expect(campusSafe.status).toBe(200);
+  });
+
+  it('enforces ir.rule protect_posted and exposes standalone security tables', async () => {
+    // Backoffice user cannot delete a posted invoice due to ir.rule protect_posted
+    const backofficeUser = store.all('res.users').find((u) => u.role === 'backoffice')!;
+    const postedInv = store.all('account.move').find((m) => m.state === 'posted')!;
+    const delRes = await request(app)
+      .delete(`/api/v1/models/account-move/${postedInv.id}`)
+      .set('X-User-Id', String(backofficeUser.id));
+    expect(delRes.status).toBe(403);
+    expect(delRes.body.error).toContain('Access Denied');
+
+    // Standalone Admin endpoints return Access Rights, Record Rules, and Models
+    const accessList = await request(app).get('/api/v1/models/ir-model-access').set('X-User-Id', '1');
+    expect(accessList.status).toBe(200);
+    expect(accessList.body.total).toBeGreaterThan(100);
+    expect(accessList.body.records.length).toBe(80);
+
+    const ruleList = await request(app).get('/api/v1/models/ir-rule').set('X-User-Id', '1');
+    expect(ruleList.status).toBe(200);
+    expect(ruleList.body.records.length).toBeGreaterThan(5);
+  });
 });

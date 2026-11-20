@@ -11,6 +11,7 @@ export function createApp() {
   if (!store.load()) {
     seedOshwal();
   }
+  store.ensureSecurityBootstrap();
   const app = express();
   app.use(cors());
   app.use(express.json({ limit: '5mb' }));
