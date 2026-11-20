@@ -388,6 +388,18 @@ export const FormView: React.FC<FormViewProps> = ({
         </div>
       );
     }
+    if (f.type === 'html' && modelDef.name === 'comm.outbox' && typeof val === 'string' && val.trim().startsWith('<')) {
+      return (
+        <div className="border border-slate-200 rounded overflow-hidden bg-slate-50">
+          <iframe
+            title="Formatted Email Preview"
+            srcDoc={val}
+            sandbox=""
+            className="w-full h-[460px] border-0 bg-white"
+          />
+        </div>
+      );
+    }
     if (f.type === 'text' || f.type === 'html') {
       return (
         <textarea

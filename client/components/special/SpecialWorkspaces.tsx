@@ -3,6 +3,7 @@ import {
   Building2, GraduationCap, Landmark, ShieldAlert, Clock, Send, Bot,
   CheckCircle2, Download, CalendarClock, ScanLine, RefreshCw, Users, Globe, ExternalLink,
   Upload, X, Trash2, FileText, Share2, Star, Bookmark, ChevronsLeft, ChevronsRight,
+  Eye, EyeOff, Mail,
 } from 'lucide-react';
 import { apiFetch, callKw } from '../../lib/api';
 import { useErp } from '../../context/ErpContext';
@@ -551,6 +552,13 @@ export const SettingsPanelView: React.FC = () => {
   const [q, setQ] = useState('');
   const [showLayoutModal, setShowLayoutModal] = useState(false);
   const [previewTick, setPreviewTick] = useState(0);
+  const [showSmtpPass, setShowSmtpPass] = useState(false);
+  const [smtpTestEmail, setSmtpTestEmail] = useState('');
+  const [smtpTesting, setSmtpTesting] = useState(false);
+  const [previewEmailTpl, setPreviewEmailTpl] = useState<string | null>(null);
+  useEffect(() => {
+    setForm(settings);
+  }, [settings]);
   const [layoutDraft, setLayoutDraft] = useState<Record<string, any>>({
     external_report_layout_id: 'light',
     font: 'lato',
@@ -616,7 +624,11 @@ export const SettingsPanelView: React.FC = () => {
   };
 
   const save = async () => {
-    await callKw('res.config.settings', 'write', { id: form.id || 1, vals: form });
+    const res = await apiFetch<{ settings: Record<string, any> }>('/api/v1/settings', {
+      method: 'POST',
+      body: JSON.stringify(form),
+    });
+    if (res.settings) setForm(res.settings);
     await refreshSession();
     showToast('Settings saved');
   };
@@ -952,22 +964,126 @@ export const SettingsPanelView: React.FC = () => {
                     Test SMS Gateway
                   </button>
                 </div>
-                <div className="border-l-2 border-slate-200 pl-3 space-y-1.5">
-                  <div className="font-semibold text-slate-800">Email Relay (SMTP Host / Port)</div>
-                  <div className="flex gap-2 max-w-xs">
-                    <input value={form.smtp_host ?? ''} placeholder="smtp.oshwalacademy.sc.ke" onChange={(e) => setForm({ ...form, smtp_host: e.target.value })} className="oe-input flex-1 border-b border-slate-200" />
-                    <input type="number" value={form.smtp_port ?? 587} onChange={(e) => setForm({ ...form, smtp_port: Number(e.target.value) })} className="oe-input w-20 border-b border-slate-200" />
+                <div className="border-l-2 border-[var(--oe-brand-primary)] pl-3 space-y-2 md:col-span-2 bg-slate-50/60 p-3 rounded">
+                  <div className="flex items-center justify-between">
+                    <div className="font-semibold text-slate-800 flex items-center gap-1.5">
+                      <Mail size={14} className="text-[var(--oe-brand-primary)]" />
+                      <span>Configurable Email Relay (SMTP) &amp; HTML Templates</span>
+                    </div>
+                    <span className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${form.smtp_pass_configured ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'}`}>
+                      {form.smtp_pass_configured ? 'SMTP Password Saved Securely' : 'No SMTP Password Saved'}
+                    </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={async () => {
-                      const res = await apiFetch<{ message: string }>('/api/v1/integrations/test', { method: 'POST', body: JSON.stringify({ kind: 'email' }) });
-                      showToast(res.message);
-                    }}
-                    className="px-2.5 py-1 rounded border border-slate-300 text-slate-700 hover:bg-slate-50 font-medium"
-                  >
-                    Test SMTP Connection
-                  </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                    <div>
+                      <label className="block text-[11px] font-medium text-slate-600 mb-0.5">Email Provider</label>
+                      <select value={form.email_provider ?? 'simulate'} onChange={(e) => setForm({ ...form, email_provider: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1">
+                        <option value="simulate">Local Simulation Outbox</option>
+                        <option value="smtp">Live SMTP Relay</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-medium text-slate-600 mb-0.5">SMTP Host</label>
+                      <input value={form.smtp_host ?? ''} placeholder="smtp.gmail.com" onChange={(e) => setForm({ ...form, smtp_host: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1" />
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="w-24">
+                        <label className="block text-[11px] font-medium text-slate-600 mb-0.5">Port</label>
+                        <input type="number" value={form.smtp_port ?? 587} onChange={(e) => setForm({ ...form, smtp_port: Number(e.target.value) })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1" />
+                      </div>
+                      <div className="flex-1">
+                        <label className="block text-[11px] font-medium text-slate-600 mb-0.5">Encryption</label>
+                        <select value={form.smtp_encryption ?? 'starttls'} onChange={(e) => setForm({ ...form, smtp_encryption: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1">
+                          <option value="starttls">STARTTLS (587)</option>
+                          <option value="ssl">SSL/TLS (465)</option>
+                          <option value="none">None</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-[11px] font-medium text-slate-600 mb-0.5">SMTP Username / Email Address</label>
+                      <input value={form.smtp_user ?? ''} placeholder="your-school@gmail.com" onChange={(e) => setForm({ ...form, smtp_user: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1" />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-medium text-slate-600 mb-0.5">SMTP Password / App Password</label>
+                      <div className="relative flex items-center">
+                        <input
+                          type={showSmtpPass ? 'text' : 'password'}
+                          value={form.smtp_pass ?? ''}
+                          placeholder={form.smtp_pass_configured ? '•••••••• (leave blank to keep current)' : 'Enter Gmail App Password or SMTP Password'}
+                          onChange={(e) => setForm({ ...form, smtp_pass: e.target.value })}
+                          className="oe-input border border-slate-200 bg-white rounded px-2 py-1 pr-8"
+                        />
+                        <button type="button" onClick={() => setShowSmtpPass((v) => !v)} className="absolute right-2 text-slate-400 hover:text-slate-700" title="Show/Hide Password">
+                          {showSmtpPass ? <EyeOff size={13} /> : <Eye size={13} />}
+                        </button>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-medium text-slate-600 mb-0.5">Sender Display Name</label>
+                      <input value={form.smtp_from_name ?? ''} placeholder="OpenEdu Prime — Oshwal Academy" onChange={(e) => setForm({ ...form, smtp_from_name: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1" />
+                    </div>
+                    <div>
+                      <label className="block text-[11px] font-medium text-slate-600 mb-0.5">From / Reply-To Email</label>
+                      <input value={form.smtp_from_email ?? ''} placeholder="admissions@oshwalacademy.sc.ke" onChange={(e) => setForm({ ...form, smtp_from_email: e.target.value })} className="oe-input border border-slate-200 bg-white rounded px-2 py-1" />
+                    </div>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200">
+                    <input
+                      value={smtpTestEmail}
+                      onChange={(e) => setSmtpTestEmail(e.target.value)}
+                      placeholder="Recipient email for live test (optional)..."
+                      className="oe-input border border-slate-200 bg-white rounded px-2.5 py-1 w-64 max-w-full"
+                    />
+                    <button
+                      type="button"
+                      disabled={smtpTesting}
+                      onClick={async () => {
+                        setSmtpTesting(true);
+                        try {
+                          await save();
+                          const res = await apiFetch<{ ok: boolean; message: string }>('/api/v1/integrations/email/test', {
+                            method: 'POST',
+                            body: JSON.stringify({ to: smtpTestEmail }),
+                          });
+                          showToast(res.message, res.ok ? 'success' : 'error');
+                        } catch (err: any) {
+                          showToast(err?.message || 'SMTP check failed', 'error');
+                        } finally {
+                          setSmtpTesting(false);
+                        }
+                      }}
+                      className="px-3 py-1 rounded bg-[var(--oe-brand-primary)] text-white hover:bg-[var(--oe-brand-primary-dark)] font-medium disabled:opacity-60"
+                    >
+                      {smtpTesting ? 'Testing SMTP...' : 'Save & Test SMTP Connection'}
+                    </button>
+                  </div>
+                  <div className="pt-2">
+                    <div className="text-[11px] font-semibold text-slate-600 mb-1.5">Branded HTML Email Templates (Preview All Purposes):</div>
+                    <div className="flex flex-wrap gap-1.5">
+                      {[
+                        ['admission_confirmation', 'Admission Received'],
+                        ['student_enrollment', 'Student Enrolment'],
+                        ['portal_credentials', 'Portal Credentials'],
+                        ['fee_invoice', 'Fee Invoice'],
+                        ['absentee_alert', 'Absentee Alert'],
+                        ['event_badge', 'Event Pass'],
+                        ['campaign_newsletter', 'Newsletter'],
+                        ['smtp_test', 'SMTP Verified'],
+                      ].map(([tplId, tplLabel]) => (
+                        <button
+                          key={tplId}
+                          type="button"
+                          onClick={() => setPreviewEmailTpl(tplId)}
+                          className="px-2.5 py-1 rounded bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 text-[11px] font-medium"
+                        >
+                          Preview: {tplLabel}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
                 <div className="border-l-2 border-slate-200 pl-3 space-y-1">
                   <div className="font-semibold text-slate-800">Website Title & Portal Demo Logins</div>
@@ -1085,6 +1201,28 @@ export const SettingsPanelView: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Branded HTML Email Template Live Preview Modal */}
+      {previewEmailTpl && (
+        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="bg-white rounded shadow-2xl w-full max-w-[780px] h-[85vh] border border-[#dee2e6] flex flex-col overflow-hidden text-xs">
+            <div className="px-5 py-3 border-b border-[#dee2e6] flex items-center justify-between bg-white">
+              <div className="flex items-center gap-2">
+                <Mail size={15} className="text-[var(--oe-brand-primary)]" />
+                <h3 className="font-bold text-[14px] text-[#212529]">HTML Email Template Preview — {previewEmailTpl}</h3>
+              </div>
+              <button onClick={() => setPreviewEmailTpl(null)} className="p-1 rounded hover:bg-slate-100 text-slate-500">
+                <X size={16} />
+              </button>
+            </div>
+            <iframe
+              title="HTML Email Preview"
+              src={`/api/v1/integrations/email/preview/${previewEmailTpl}`}
+              className="flex-1 w-full bg-slate-100 border-0"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Live QWeb Configure Your Document Layout Modal (Odoo 19 base.view_base_document_layout) */}
       {showLayoutModal && (

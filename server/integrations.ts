@@ -1,4 +1,224 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import nodemailer from 'nodemailer';
 import { store } from './store.js';
+import {
+  renderProfessionalEmail,
+  type EmailRenderContext,
+  type EmailTemplateKind,
+} from './email_templates.js';
+
+const SECRETS_FILE = path.resolve(process.cwd(), 'server', 'data', '.secrets.json');
+
+export interface SmtpConfig {
+  provider: string;
+  host: string;
+  port: number;
+  encryption: 'starttls' | 'ssl' | 'none';
+  user: string;
+  pass: string;
+  fromName: string;
+  fromEmail: string;
+}
+
+export function readLocalSecrets(): Record<string, string> {
+  try {
+    if (!fs.existsSync(SECRETS_FILE)) return {};
+    const parsed = JSON.parse(fs.readFileSync(SECRETS_FILE, 'utf8'));
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+export function writeLocalSecrets(patch: Record<string, string | undefined>): void {
+  if (process.env.VITEST) return;
+  const cur = readLocalSecrets();
+  for (const [k, v] of Object.entries(patch)) {
+    if (v === undefined) continue;
+    if (v === '') delete cur[k];
+    else cur[k] = v;
+  }
+  fs.mkdirSync(path.dirname(SECRETS_FILE), { recursive: true });
+  fs.writeFileSync(SECRETS_FILE, JSON.stringify(cur, null, 2), 'utf8');
+}
+
+export function resolveSmtpConfig(): SmtpConfig {
+  const s = store.getSettings();
+  const secrets = readLocalSecrets();
+  const host = String(s.smtp_host || process.env.SMTP_HOST || 'smtp.gmail.com').trim();
+  const port = Number(s.smtp_port || process.env.SMTP_PORT || 587);
+  const encryption = String(
+    s.smtp_encryption || process.env.SMTP_ENCRYPTION || (port === 465 ? 'ssl' : 'starttls'),
+  ) as SmtpConfig['encryption'];
+  const user = String(s.smtp_user || secrets.smtp_user || process.env.SMTP_USER || '').trim();
+  const pass = String(secrets.smtp_pass || process.env.SMTP_PASS || '').trim();
+  const fromName = String(s.smtp_from_name || process.env.SMTP_FROM_NAME || 'OpenEdu Prime').trim();
+  const fromEmail = String(s.smtp_from_email || process.env.SMTP_FROM_EMAIL || user || 'noreply@openedu.local').trim();
+  const provider = String(s.email_provider || process.env.EMAIL_PROVIDER || 'simulate').trim();
+  return { provider, host, port, encryption, user, pass, fromName, fromEmail };
+}
+
+function createSmtpTransport(cfg: SmtpConfig) {
+  return nodemailer.createTransport({
+    host: cfg.host,
+    port: cfg.port,
+    secure: cfg.encryption === 'ssl' || cfg.port === 465,
+    requireTLS: cfg.encryption === 'starttls',
+    auth: cfg.user && cfg.pass ? { user: cfg.user, pass: cfg.pass } : undefined,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
+  });
+}
+
+export async function testSmtpConnection(testTo?: string): Promise<{
+  ok: boolean;
+  message: string;
+  messageId?: string;
+  configured: boolean;
+}> {
+  const cfg = resolveSmtpConfig();
+  if (!cfg.host) {
+    return { ok: false, configured: false, message: 'SMTP Host is not configured.' };
+  }
+  if (!cfg.user || !cfg.pass) {
+    return {
+      ok: false,
+      configured: false,
+      message: `SMTP Host (${cfg.host}:${cfg.port}) saved, but ${!cfg.user ? 'SMTP Username/Email' : 'SMTP Password'} is missing. Enter it under Settings → Messaging to send live emails.`,
+    };
+  }
+  if (process.env.VITEST) {
+    return { ok: true, configured: true, message: `SMTP transport ready (${cfg.host}:${cfg.port} as ${cfg.user}).` };
+  }
+  try {
+    const transporter = createSmtpTransport(cfg);
+    await transporter.verify();
+    if (testTo && testTo.includes('@')) {
+      const { html, text } = renderProfessionalEmail('smtp_test', {
+        recipientName: 'System Administrator',
+        title: 'SMTP Relay Connected & Verified',
+        bodyParagraphs: [
+          'This automated verification email confirms that your OpenEdu Prime School ERP SMTP configuration is live and delivering branded HTML communications.',
+          'All admissions updates, student enrollments, tuition invoices, portal invitations, and absentee alerts will now be delivered using this relay.',
+        ],
+        summaryRows: [
+          { label: 'SMTP Server', value: `${cfg.host}:${cfg.port}` },
+          { label: 'Encryption', value: cfg.encryption.toUpperCase() },
+          { label: 'Authenticated Account', value: cfg.user },
+          { label: 'Sender Identity', value: `${cfg.fromName} <${cfg.fromEmail}>` },
+        ],
+        calloutTitle: 'Ready for Production',
+        calloutText: 'No passwords are committed to source control; credentials are managed dynamically via your Settings configuration.',
+      });
+      const info = await transporter.sendMail({
+        from: `"${cfg.fromName}" <${cfg.fromEmail}>`,
+        to: testTo,
+        subject: 'OpenEdu Prime — SMTP Connection & HTML Template Verified',
+        html,
+        text,
+      });
+      store.create('comm.outbox', {
+        to: testTo,
+        recipient_name: 'SMTP Verification Test',
+        channel: 'email',
+        subject: 'OpenEdu Prime — SMTP Connection & HTML Template Verified',
+        body: text,
+        body_html: html,
+        provider: 'smtp',
+        provider_ref: info.messageId,
+        state: 'sent',
+      });
+      return {
+        ok: true,
+        configured: true,
+        messageId: info.messageId,
+        message: `Live SMTP verified (${cfg.host}:${cfg.port}) and test HTML email sent to ${testTo} (ID: ${info.messageId}).`,
+      };
+    }
+    return {
+      ok: true,
+      configured: true,
+      message: `Live SMTP handshake verified (${cfg.host}:${cfg.port} as ${cfg.user}).`,
+    };
+  } catch (err: any) {
+    return {
+      ok: false,
+      configured: true,
+      message: `SMTP connection failed (${cfg.host}:${cfg.port}): ${err?.message || 'Authentication or network error'}`,
+    };
+  }
+}
+
+export async function sendTemplatedEmail(opts: {
+  to: string;
+  recipientName?: string;
+  subject: string;
+  template: EmailTemplateKind;
+  context: EmailRenderContext;
+  resModel?: string;
+  resId?: number;
+  userId?: number;
+}) {
+  const cfg = resolveSmtpConfig();
+  const { html, text } = renderProfessionalEmail(opts.template, {
+    recipientName: opts.recipientName,
+    ...opts.context,
+  });
+
+  const outbox = store.create(
+    'comm.outbox',
+    {
+      to: opts.to,
+      recipient_name: opts.recipientName || opts.to,
+      channel: 'email',
+      subject: opts.subject,
+      body: text,
+      body_html: html,
+      res_model: opts.resModel,
+      res_id: opts.resId,
+      provider: cfg.provider === 'smtp' ? 'smtp' : 'simulate',
+      provider_ref: cfg.provider === 'smtp' ? 'pending_smtp' : `email_sim_${Date.now()}`,
+      state: cfg.provider === 'smtp' ? 'queued' : 'sent',
+      company_id: opts.context.companyId,
+    },
+    opts.userId ?? 1,
+    false,
+  );
+
+  if (cfg.provider === 'smtp' && cfg.host && cfg.user && cfg.pass && opts.to.includes('@') && !process.env.VITEST) {
+    try {
+      const transporter = createSmtpTransport(cfg);
+      const info = await transporter.sendMail({
+        from: `"${cfg.fromName}" <${cfg.fromEmail}>`,
+        to: opts.to,
+        subject: opts.subject,
+        html,
+        text,
+      });
+      return store.write('comm.outbox', outbox.id, {
+        state: 'sent',
+        provider: 'smtp',
+        provider_ref: info.messageId,
+      }, opts.userId ?? 1, false);
+    } catch (err: any) {
+      return store.write('comm.outbox', outbox.id, {
+        state: 'failed',
+        provider: 'smtp',
+        error: err?.message || 'SMTP delivery failed',
+      }, opts.userId ?? 1, false);
+    }
+  }
+
+  return outbox;
+}
+
+export function dispatchEmailAsync(opts: Parameters<typeof sendTemplatedEmail>[0]): void {
+  void sendTemplatedEmail(opts).catch(() => {
+    // Outbox record logs delivery state cleanly without blocking synchronous workflows
+  });
+}
 
 export async function triggerMpesaStkPush(opts: { phone: string; amount: number; move_id?: number; student_id?: number; accountRef?: string }) {
   const settings = store.getSettings();

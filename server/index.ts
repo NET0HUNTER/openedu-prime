@@ -7,7 +7,26 @@ import { seedOshwal } from './seeds/oshwal.js';
 import { createApiRouter } from './routes.js';
 import { startCronScheduler } from './cron.js';
 
+function loadLocalEnv() {
+  if (process.env.VITEST) return;
+  const envPath = path.resolve(process.cwd(), '.env');
+  if (!fs.existsSync(envPath)) return;
+  for (const rawLine of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('#')) continue;
+    const eqIdx = line.indexOf('=');
+    if (eqIdx === -1) continue;
+    const key = line.slice(0, eqIdx).trim();
+    let val = line.slice(eqIdx + 1).trim();
+    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+      val = val.slice(1, -1);
+    }
+    if (key && !(key in process.env)) process.env[key] = val;
+  }
+}
+
 export function createApp() {
+  loadLocalEnv();
   if (!store.load()) {
     seedOshwal();
   }

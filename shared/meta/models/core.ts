@@ -39,14 +39,17 @@ export const coreModels = [
         mpesa_callback_url:char:Callback URL;
         whatsapp_provider:sel(simulate=Simulation|meta_cloud=Meta WhatsApp Cloud API)=simulate; whatsapp_token:char; whatsapp_phone_number_id:char;
         sms_provider:sel(simulate=Simulation|africastalking=Africa's Talking)=simulate; sms_username:char; sms_api_key:char; sms_sender_id:char;
-        email_provider:sel(simulate=Simulation|smtp=SMTP)=simulate; smtp_host:char; smtp_port:integer=587; smtp_user:char;
+        email_provider:sel(simulate=Simulation|smtp=SMTP):Email Provider=simulate; smtp_host:char:SMTP Host=smtp.gmail.com; smtp_port:integer:SMTP Port=587;
+        smtp_encryption:sel(starttls=STARTTLS (587)|ssl=SSL/TLS (465)|none=None):SMTP Encryption=starttls;
+        smtp_user:char:SMTP Username / Email; smtp_pass:char:SMTP Password / App Password;
+        smtp_from_name:char:Sender Display Name; smtp_from_email:char:Sender From Email;
         ai_provider:sel(none=Disabled|openai=OpenAI|gemini=Google Gemini)=none; ai_api_key:char; ai_model:char;
         meeting_provider:sel(none=None|google_meet=Google Meet|teams=Microsoft Teams|zoom=Zoom|bbb=BigBlueButton)=none; meeting_api_key:char;
         sso_provider:sel(none=Disabled|google=Google Workspace OAuth2|microsoft=Microsoft Entra ID|saml=SAML 2.0)=none; sso_client_id:char; sso_issuer_url:char;
         webhook_url:char; webhook_secret:char;
         etims_enabled:bool:KRA eTIMS Invoicing; exam_board_edi:bool:Exam Board EDI Export;
         website_title:char; website_tagline:char; public_admissions_open:bool=true; demo_logins:bool:Show Demo Login Buttons=true`,
-    tabs: 'Terminology:term_program,term_course,term_batch,term_subject,term_faculty,term_student|Academic Rules:academic_year_start_month,withdrawal_notice_days,library_fine_per_day,compliance_warning_days,attendance_absentee_alert,absentee_channel|Payments (M-Pesa):mpesa_env,mpesa_consumer_key,mpesa_consumer_secret,mpesa_shortcode,mpesa_passkey,mpesa_callback_url,etims_enabled|Messaging:whatsapp_provider,whatsapp_token,whatsapp_phone_number_id,sms_provider,sms_username,sms_api_key,sms_sender_id,email_provider,smtp_host,smtp_port,smtp_user|AI & Meetings:ai_provider,ai_api_key,ai_model,meeting_provider,meeting_api_key,exam_board_edi|SSO & Webhooks:sso_provider,sso_client_id,sso_issuer_url,webhook_url,webhook_secret|Website:website_title,website_tagline,public_admissions_open,demo_logins',
+    tabs: 'Terminology:term_program,term_course,term_batch,term_subject,term_faculty,term_student|Academic Rules:academic_year_start_month,withdrawal_notice_days,library_fine_per_day,compliance_warning_days,attendance_absentee_alert,absentee_channel|Payments (M-Pesa):mpesa_env,mpesa_consumer_key,mpesa_consumer_secret,mpesa_shortcode,mpesa_passkey,mpesa_callback_url,etims_enabled|Messaging:whatsapp_provider,whatsapp_token,whatsapp_phone_number_id,sms_provider,sms_username,sms_api_key,sms_sender_id,email_provider,smtp_host,smtp_port,smtp_encryption,smtp_user,smtp_pass,smtp_from_name,smtp_from_email|AI & Meetings:ai_provider,ai_api_key,ai_model,meeting_provider,meeting_api_key,exam_board_edi|SSO & Webhooks:sso_provider,sso_client_id,sso_issuer_url,webhook_url,webhook_secret|Website:website_title,website_tagline,public_admissions_open,demo_logins',
     views: 'form,list',
   }),
   M('ir.model', 'Model', {
@@ -169,10 +172,11 @@ export const coreModels = [
   }),
   M('comm.outbox', 'Outgoing Message', {
     f: `to:char!:Recipient; recipient_name:char; channel:sel(whatsapp=WhatsApp|sms=SMS|email=Email)!=whatsapp;
-        subject:char; body:text; res_model:char; res_id:integer; provider:char~; provider_ref:char~;
+        subject:char; body:text; body_html:html:Formatted HTML Preview; res_model:char; res_id:integer; provider:char~; provider_ref:char~;
         state:sel(queued=Queued|sent=Sent|delivered=Delivered|failed=Failed)=queued; error:char~; date:datetime=now`,
     list: 'date,channel,to,recipient_name,subject,state,provider',
     buttons: 'retry:Retry:failed@',
+    tabs: 'HTML Preview:body_html|Plain Text:body',
   }),
   M('payment.transaction', 'Payment Transaction', {
     f: `reference:char!; provider:sel(mpesa=M-Pesa|bank=Bank|card=Card)=mpesa; phone:char; amount:money!;

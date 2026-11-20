@@ -17,7 +17,16 @@ import {
 import { store } from './store.js';
 import { executeMethod, runCronJob } from './methods.js';
 import { buildOpenApiSpec } from './openapi.js';
-import { exportExamBoardEdi, sendWhatsAppMessage, triggerMpesaStkPush } from './integrations.js';
+import {
+  dispatchEmailAsync,
+  exportExamBoardEdi,
+  resolveSmtpConfig,
+  sendWhatsAppMessage,
+  testSmtpConnection,
+  triggerMpesaStkPush,
+  writeLocalSecrets,
+} from './integrations.js';
+import { renderProfessionalEmail, type EmailTemplateKind } from './email_templates.js';
 import { seedOshwal } from './seeds/oshwal.js';
 import { seedDefault } from './seeds/default.js';
 import {
@@ -135,10 +144,27 @@ export function createApiRouter(): Router {
 </html>`);
   });
 
+  function getSafeSettings() {
+    const s = store.getSettings();
+    const smtp = resolveSmtpConfig();
+    return {
+      ...s,
+      email_provider: smtp.provider,
+      smtp_host: smtp.host,
+      smtp_port: smtp.port,
+      smtp_encryption: smtp.encryption,
+      smtp_user: smtp.user,
+      smtp_from_name: smtp.fromName,
+      smtp_from_email: smtp.fromEmail,
+      smtp_pass: '',
+      smtp_pass_configured: Boolean(smtp.pass),
+    };
+  }
+
   r.get('/api/v1/meta/session', (req, res) => {
     const user = getActiveUser(req);
     const companies = store.all('res.company');
-    const settings = store.getSettings();
+    const settings = getSafeSettings();
     const demoUsers = store.all('res.users').filter((u) => u.is_demo);
     const unreadMessages = store.all('mail.message').length;
     const pendingActivities = store.all('mail.activity').filter((a) => a.state === 'planned').length;
@@ -185,7 +211,7 @@ export function createApiRouter(): Router {
   });
 
   r.get('/api/v1/settings', (_req, res) => {
-    res.json({ settings: store.getSettings() });
+    res.json({ settings: getSafeSettings() });
   });
 
   r.post('/api/v1/settings', (req, res) => {
@@ -194,8 +220,14 @@ export function createApiRouter(): Router {
     const acc = checkModelAccess('res.config.settings', sec.baseRole, 'write', { accessLines: sec.accessLines, roleName: sec.roleName });
     if (!acc.allowed) return res.status(403).json({ error: acc.reason });
     const existing = store.getSettings();
-    const updated = store.write('res.config.settings', existing.id, req.body ?? {}, user?.id ?? 1);
-    res.json({ settings: updated });
+    const payload = { ...(req.body ?? {}) };
+    if (typeof payload.smtp_pass === 'string' && payload.smtp_pass.trim() !== '') {
+      writeLocalSecrets({ smtp_pass: payload.smtp_pass.trim() });
+    }
+    delete payload.smtp_pass;
+    delete payload.smtp_pass_configured;
+    store.write('res.config.settings', existing.id, payload, user?.id ?? 1);
+    res.json({ settings: getSafeSettings() });
   });
 
   r.post('/api/v1/auth/demo-login', (req, res) => {
@@ -255,6 +287,13 @@ export function createApiRouter(): Router {
         const acc = checkModelAccess(model, sec.baseRole, action, { accessLines: sec.accessLines, roleName: sec.roleName });
         if (!acc.allowed) return res.status(403).json({ error: acc.reason });
         const vals = { ...(body.vals ?? {}) };
+        if (model === 'res.config.settings') {
+          if (typeof vals.smtp_pass === 'string' && vals.smtp_pass.trim() !== '') {
+            writeLocalSecrets({ smtp_pass: vals.smtp_pass.trim() });
+          }
+          delete vals.smtp_pass;
+          delete vals.smtp_pass_configured;
+        }
         const existingRec = body.id ? store.byId(model, Number(body.id)) : vals;
         const ruleCheck = evaluateRecordRuleWrite(model, action, user, existingRec, sec.rules);
         if (!ruleCheck.allowed) return res.status(403).json({ error: ruleCheck.reason });
@@ -824,6 +863,31 @@ export function createApiRouter(): Router {
       state: 'online',
       company_id: course?.company_id ?? 1,
     });
+    if (adm.email && String(adm.email).includes('@')) {
+      const fullName = [adm.first_name, adm.middle_name, adm.last_name].filter(Boolean).join(' ');
+      dispatchEmailAsync({
+        to: String(adm.email),
+        recipientName: fullName,
+        subject: `Application Received — ${adm.application_number || 'Online Intake'}`,
+        template: 'admission_confirmation',
+        context: {
+          title: 'Admission Application Received',
+          bodyParagraphs: [
+            `Thank you for applying to ${course?.name || 'our campus'} for the upcoming intake.`,
+            'Our Admissions Registrar has logged your online submission and will contact you shortly to schedule an assessment and parent interview.',
+          ],
+          summaryRows: [
+            { label: 'Applicant Name', value: fullName },
+            { label: 'Application Ref', value: String(adm.application_number || `APP/${adm.id}`) },
+            { label: 'Year Group / Course', value: String(course?.name || 'Academic Intake') },
+            { label: 'Status', value: 'Online Submission Received' },
+          ],
+          companyId: Number(adm.company_id || 1),
+        },
+        resModel: 'op.admission',
+        resId: adm.id,
+      });
+    }
     res.status(201).json({ application: adm });
   });
 
@@ -904,9 +968,17 @@ export function createApiRouter(): Router {
   });
 
   // Integration Test Connection Adapter
-  r.post('/api/v1/integrations/test', (req, res) => {
-    const { kind } = req.body ?? {};
+  r.post('/api/v1/integrations/test', async (req, res) => {
+    const { kind, to } = req.body ?? {};
     const s = store.getSettings();
+    if (String(kind) === 'email') {
+      const cfg = resolveSmtpConfig();
+      if (cfg.provider === 'smtp') {
+        const result = await testSmtpConnection(typeof to === 'string' ? to : undefined);
+        return res.json(result);
+      }
+      return res.json({ ok: true, message: 'Built-in Email Outbox Simulation active (switch Email Provider to Live SMTP Relay to send real emails).' });
+    }
     const tests: Record<string, { ok: boolean; message: string }> = {
       mpesa: {
         ok: true,
@@ -923,12 +995,6 @@ export function createApiRouter(): Router {
       sms: {
         ok: true,
         message: `SMS Gateway (${s.sms_provider || 'simulate'}) healthy. Sender ID: ${s.sms_sender_id || 'OERB'}.`,
-      },
-      email: {
-        ok: true,
-        message: s.email_provider === 'smtp'
-          ? `SMTP Relay verified (${s.smtp_host || 'smtp.school.ke'}:${s.smtp_port || 587}).`
-          : 'Built-in Email Outbox Dispatcher active and healthy.',
       },
       meetings: {
         ok: true,
@@ -953,6 +1019,112 @@ export function createApiRouter(): Router {
     };
     const resObj = tests[String(kind)] ?? { ok: true, message: `Integration adapter '${kind}' verified.` };
     res.json(resObj);
+  });
+
+  r.post('/api/v1/integrations/email/test', async (req, res) => {
+    const user = getActiveUser(req);
+    const sec = resolveUserSecurity(user);
+    const acc = checkModelAccess('res.config.settings', sec.baseRole, 'write', { accessLines: sec.accessLines, roleName: sec.roleName });
+    if (!acc.allowed) return res.status(403).json({ error: acc.reason });
+    const to = typeof req.body?.to === 'string' ? req.body.to.trim() : undefined;
+    const result = await testSmtpConnection(to);
+    res.status(result.ok ? 200 : 400).json(result);
+  });
+
+  r.get('/api/v1/integrations/email/preview/:template', (req, res) => {
+    const tpl = String(req.params.template || 'admission_confirmation') as EmailTemplateKind;
+    const samples: Record<EmailTemplateKind, Parameters<typeof renderProfessionalEmail>[1]> = {
+      admission_confirmation: {
+        recipientName: 'Mr. & Mrs. Patel',
+        title: 'Admission Application Received — APP/2027/0104',
+        bodyParagraphs: [
+          'Thank you for submitting an online admission application for Year 10 — IGCSE (KS4).',
+          'Our Admissions Office will review your supporting documents and schedule an interview shortly.',
+        ],
+        summaryRows: [
+          { label: 'Applicant', value: 'Aarav Patel' },
+          { label: 'Year Group', value: 'Year 10 — IGCSE (KS4)' },
+          { label: 'Status', value: 'Submitted for Review' },
+        ],
+        calloutTitle: 'Important',
+        calloutText: 'Please bring a copy of the latest academic transcript to your campus interview.',
+      },
+      student_enrollment: {
+        recipientName: 'Aarav Patel',
+        title: 'Welcome & Official Enrolment Confirmation',
+        bodyParagraphs: [
+          'Congratulations! Your enrolment into Year 10 — Stream East is officially confirmed.',
+        ],
+        summaryRows: [
+          { label: 'GR Number', value: 'OAN/2027/0048' },
+          { label: 'Cohort', value: 'Year 10 — Stream East' },
+          { label: 'Tuition Invoice', value: 'INV/2027/0012 (KES 345,000)' },
+        ],
+        ctaLabel: 'Open Student Portal',
+        ctaUrl: 'http://localhost:5175/my',
+      },
+      portal_credentials: {
+        recipientName: 'Mrs. Priya Shah',
+        title: 'Your Parent Portal Account is Ready',
+        bodyParagraphs: ['Sign in to view report cards, attendance updates, and M-Pesa tuition billing.'],
+        summaryRows: [
+          { label: 'Login Email', value: 'parent@oshwalacademy.sc.ke' },
+          { label: 'Assigned Role', value: 'Parent / Legal Guardian' },
+        ],
+      },
+      fee_invoice: {
+        recipientName: 'Mr. Rajesh Shah',
+        title: 'Fee Statement: INV/2027/0009',
+        bodyParagraphs: ['Please find your Term 2 tuition statement below. Settle cleanly via M-Pesa Paybill 522522.'],
+        summaryRows: [
+          { label: 'Invoice Ref', value: 'INV/2027/0009' },
+          { label: 'Due Date', value: '2027-01-15' },
+          { label: 'Balance Due', value: 'KES 345,000' },
+        ],
+        calloutTitle: 'M-Pesa Paybill Instructions',
+        calloutText: 'Paybill: 522522 · Account: OAN/2027/0048',
+      },
+      absentee_alert: {
+        recipientName: 'Mrs. Priya Shah',
+        title: 'Unexcused Absence Notice — Aarav Shah',
+        bodyParagraphs: ['Aarav Shah was marked Absent during morning roll-call today. Please submit a leave note if excused.'],
+        summaryRows: [
+          { label: 'Date', value: '2026-11-20' },
+          { label: 'Class', value: 'Year 10 — Stream East' },
+        ],
+      },
+      event_badge: {
+        recipientName: 'Dr. Kavita Mehta',
+        title: 'Confirmed Event Pass: Annual Science Symposium',
+        bodyParagraphs: ['Present this pass at the Parklands Campus reception desk on arrival.'],
+        summaryRows: [
+          { label: 'Badge Code', value: 'EVT-0018' },
+          { label: 'Venue', value: 'Junior High Main Hall' },
+        ],
+      },
+      campaign_newsletter: {
+        recipientName: 'OERB Parents & Guardians',
+        title: 'Term 2 Academic Calendar & Cambridge IGCSE Circular',
+        rawHtmlBody: '<p>Dear Parents, Term 2 commences on <strong>January 8, 2027</strong>. Please ensure all subject choices and transport renewals are finalized via the Parent Portal.</p>',
+      },
+      smtp_test: {
+        recipientName: 'System Administrator',
+        title: 'SMTP Relay Connected & Verified',
+        bodyParagraphs: ['Your OpenEdu Prime SMTP configuration is active and rendering branded HTML emails.'],
+        summaryRows: [
+          { label: 'Relay', value: 'smtp.gmail.com:587 (STARTTLS)' },
+          { label: 'Status', value: 'Verified & Live' },
+        ],
+      },
+      general_notice: {
+        recipientName: 'Campus Community',
+        title: 'Official Campus Announcement',
+        bodyParagraphs: ['This is a sample formatted HTML school notification.'],
+      },
+    };
+    const ctx = samples[tpl] ?? samples.general_notice;
+    const { html } = renderProfessionalEmail(tpl, ctx);
+    res.type('html').send(html);
   });
 
   // AI LMS Course & Quiz Generator Endpoints

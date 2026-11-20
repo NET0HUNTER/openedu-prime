@@ -278,4 +278,49 @@ describe('OpenEduCat Reports Engine, Downloads & RBAC Security Hierarchy', () =>
     expect(ruleList.status).toBe(200);
     expect(ruleList.body.records.length).toBeGreaterThan(5);
   });
+
+  it('supports configurable SMTP settings without leaking passwords and renders branded HTML emails across workflows', async () => {
+    // 1. Update configurable SMTP settings via /api/v1/settings
+    const saveRes = await request(app)
+      .post('/api/v1/settings')
+      .set('X-User-Id', '1')
+      .send({
+        email_provider: 'smtp',
+        smtp_host: 'smtp.gmail.com',
+        smtp_port: 587,
+        smtp_encryption: 'starttls',
+        smtp_user: 'admissions@oshwalacademy.sc.ke',
+        smtp_pass: 'secret-test-password',
+        smtp_from_name: 'Oshwal Academy Admissions',
+      });
+    expect(saveRes.status).toBe(200);
+    expect(saveRes.body.settings.smtp_host).toBe('smtp.gmail.com');
+    expect(saveRes.body.settings.smtp_user).toBe('admissions@oshwalacademy.sc.ke');
+    // Password must never be returned in plaintext API responses or stored on store settings
+    expect(saveRes.body.settings.smtp_pass).toBe('');
+    expect(store.getSettings().smtp_pass).toBeUndefined();
+
+    // 2. HTML Email preview renders institutional branding & summary cards
+    const prevRes = await request(app).get('/api/v1/integrations/email/preview/fee_invoice');
+    expect(prevRes.status).toBe(200);
+    expect(prevRes.headers['content-type']).toContain('text/html');
+    expect(prevRes.text).toContain('<!DOCTYPE html>');
+    expect(prevRes.text).toContain('M-Pesa Paybill Instructions');
+
+    // 3. Invoice send workflow logs formatted HTML email in comm.outbox
+    const inv = store.all('account.move')[0];
+    const sendRes = await request(app)
+      .post('/api/v1/dataset/call_kw/account.move/send_invoice')
+      .set('X-User-Id', '1')
+      .send({ id: inv.id });
+    expect(sendRes.status).toBe(200);
+
+    // Give async fire-and-forget dispatch a short tick
+    await new Promise((r) => setTimeout(r, 30));
+    const emailRows = store.all('comm.outbox').filter((m) => m.channel === 'email' && m.res_model === 'account.move');
+    expect(emailRows.length).toBeGreaterThanOrEqual(1);
+    const latest = emailRows[emailRows.length - 1];
+    expect(latest.body_html).toContain('<!DOCTYPE html>');
+    expect(latest.body_html).toContain(String(inv.name));
+  });
 });

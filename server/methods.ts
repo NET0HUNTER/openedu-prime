@@ -1,4 +1,5 @@
 import { MODEL_MAP } from '../shared/meta/index.js';
+import { dispatchEmailAsync } from './integrations.js';
 import { store, type Rec } from './store.js';
 
 export interface MethodResult {
@@ -6,6 +7,40 @@ export interface MethodResult {
   message?: string;
   redirect?: { model: string; id?: number };
   data?: unknown;
+}
+
+function sendInvoiceEmail(inv: Rec, userId: number) {
+  const partner = inv.partner_id ? store.byId('res.partner', Number(inv.partner_id)) : undefined;
+  const student = inv.student_id ? store.byId('op.student', Number(inv.student_id)) : undefined;
+  const to = String(partner?.email || student?.email || 'parent@example.com');
+  const amount = Number(inv.amount_residual ?? inv.amount_total ?? 0);
+  dispatchEmailAsync({
+    to,
+    recipientName: String(partner?.name || 'Parent / Guardian'),
+    subject: `Fee Invoice ${inv.name} — Payment Statement`,
+    template: 'fee_invoice',
+    context: {
+      title: `Fee Statement: ${inv.name}`,
+      bodyParagraphs: [
+        `Please find your itemized tuition and school fees statement for ${inv.line_description || 'Tuition & Campus Fees'}.`,
+        'You can settle this balance directly through the Parent Portal via M-Pesa Express (STK Push) or Bank Transfer.',
+      ],
+      summaryRows: [
+        { label: 'Invoice Number', value: String(inv.name || `#${inv.id}`) },
+        ...(student ? [{ label: 'Student', value: `${store.displayName('op.student', student)} (${student.gr_no || ''})` }] : []),
+        { label: 'Due Date', value: String(inv.invoice_date_due || 'Upon Receipt') },
+        { label: 'Amount Due', value: `KES ${amount.toLocaleString()}` },
+      ],
+      calloutTitle: 'Payment Instructions',
+      calloutText: 'M-Pesa Paybill: 522522 · Use Student GR Number or Invoice Reference as Account Number.',
+      companyId: Number(inv.company_id || 1),
+    },
+    resModel: 'account.move',
+    resId: inv.id,
+    userId,
+  });
+  store.logMessage('account.move', inv.id, `HTML Invoice ${inv.name} dispatched to ${to}.`, userId, 'notification');
+  return { record: store.hydrate('account.move', inv), message: `Invoice ${inv.name} sent to ${to}.` };
 }
 
 export function executeMethod(model: string, method: string, id: number | undefined, args: Record<string, unknown> = {}, userId = 1): MethodResult {
@@ -74,6 +109,34 @@ export function executeMethod(model: string, method: string, id: number | undefi
       const updated = store.write('op.admission', adm.id, {
         state: 'done', stage_id: doneStage ? doneStage.id : adm.stage_id, is_student: true, student_id: student.id, partner_id: partner.id, admission_date: new Date().toISOString().slice(0, 10),
       }, userId);
+      const courseRec = adm.course_id ? store.byId('op.course', Number(adm.course_id)) : undefined;
+      if (adm.email) {
+        dispatchEmailAsync({
+          to: String(adm.email),
+          recipientName: fullName,
+          subject: `Welcome & Official Enrolment Confirmation (${student.gr_no})`,
+          template: 'student_enrollment',
+          context: {
+            title: `Congratulations, ${fullName}!`,
+            bodyParagraphs: [
+              `We are delighted to confirm that your admission has been finalized and ${fullName} is now officially enrolled.`,
+              'Your student profile, library card, tuition invoice, and Student Portal credentials have been provisioned below.',
+            ],
+            summaryRows: [
+              { label: 'Student GR Number', value: String(student.gr_no) },
+              { label: 'Year Group / Course', value: String(courseRec?.name || 'Enrolled Cohort') },
+              { label: 'Portal Login', value: String(studentUser.login) },
+              { label: 'Fee Invoice', value: `${inv.name} (KES ${tuition.toLocaleString()})` },
+            ],
+            calloutTitle: 'Next Steps',
+            calloutText: 'Sign in to the Student Portal to view your timetable, download reading lists, and settle tuition fees.',
+            companyId: Number(adm.company_id || 1),
+          },
+          resModel: 'op.admission',
+          resId: adm.id,
+          userId,
+        });
+      }
       return { record: updated, message: `Student ${fullName} enrolled (${student.gr_no}), fee invoice ${inv.name} posted, and portal user created (${studentUser.login}).` };
     }
 
@@ -95,6 +158,29 @@ export function executeMethod(model: string, method: string, id: number | undefi
         active: true,
       }, userId);
       const updated = store.write('op.parent', parent.id, { user_id: user.id }, userId);
+      if (String(login).includes('@')) {
+        dispatchEmailAsync({
+          to: String(login),
+          recipientName: String(parent.name),
+          subject: 'Your Parent Portal Account is Ready',
+          template: 'portal_credentials',
+          context: {
+            title: 'Parent Portal Invitation',
+            bodyParagraphs: [
+              'Your Parent / Legal Guardian portal account is now active. Use it to track live attendance alerts, download report cards, and settle tuition invoices via M-Pesa.',
+            ],
+            summaryRows: [
+              { label: 'Account Name', value: String(parent.name) },
+              { label: 'Portal Login', value: String(login) },
+              { label: 'Assigned Role', value: 'Parent / Guardian Portal' },
+            ],
+            companyId: Number(parent.company_id || 1),
+          },
+          resModel: 'op.parent',
+          resId: parent.id,
+          userId,
+        });
+      }
       return { record: updated, message: `Created portal user ${login} linked to Parent profile.` };
     }
 
@@ -117,6 +203,29 @@ export function executeMethod(model: string, method: string, id: number | undefi
         active: true,
       }, userId);
       const updated = store.write('op.faculty', fac.id, { user_id: user.id }, userId);
+      if (String(login).includes('@')) {
+        dispatchEmailAsync({
+          to: String(login),
+          recipientName: fullName,
+          subject: 'Your Faculty ERP Access Account is Ready',
+          template: 'portal_credentials',
+          context: {
+            title: 'Faculty Workspace Invitation',
+            bodyParagraphs: [
+              'Your Faculty teaching workspace has been activated. Sign in to view your class timetable, record daily attendance, post LMS lessons, and enter gradebook marks.',
+            ],
+            summaryRows: [
+              { label: 'Faculty Member', value: fullName },
+              { label: 'Login Email', value: String(login) },
+              { label: 'Role', value: 'Academic Faculty' },
+            ],
+            companyId: Number(fac.company_id || 1),
+          },
+          resModel: 'op.faculty',
+          resId: fac.id,
+          userId,
+        });
+      }
       return { record: updated, message: `Created user ${login} with Faculty role.` };
     }
 
@@ -267,14 +376,42 @@ export function executeMethod(model: string, method: string, id: number | undefi
         for (const line of absentLines) {
           const student = store.byId('op.student', Number(line.student_id));
           if (student) {
-            store.create('comm.outbox', {
-              to: student.phone || '+254700000000',
-              recipient_name: `Parent of ${store.displayName('op.student', student)}`,
-              channel: settings.absentee_channel || 'whatsapp',
-              subject: 'Morning Roll-Call Absence Alert',
-              body: `Dear Parent, ${store.displayName('op.student', student)} was marked Absent (Unexcused) on ${sheet.attendance_date}. Please reply or submit a leave note via the Parent Portal.`,
-              res_model: 'op.attendance.sheet', res_id: id, provider: settings.whatsapp_provider || 'simulate', state: 'sent', company_id: sheet.company_id,
-            }, userId);
+            const stuName = store.displayName('op.student', student);
+            if (settings.absentee_channel === 'email' && student.email) {
+              dispatchEmailAsync({
+                to: String(student.email),
+                recipientName: `Parent / Guardian of ${stuName}`,
+                subject: `Attendance Alert: ${stuName} Marked Absent (${sheet.attendance_date})`,
+                template: 'absentee_alert',
+                context: {
+                  title: `Unexcused Absence Notice — ${stuName}`,
+                  bodyParagraphs: [
+                    `${stuName} was recorded as Absent (Unexcused) during roll-call on ${sheet.attendance_date}.`,
+                    'If your child is unwell or has an approved reason, kindly submit an absence note via the Parent Portal.',
+                  ],
+                  summaryRows: [
+                    { label: 'Student', value: `${stuName} (${student.gr_no || ''})` },
+                    { label: 'Date', value: String(sheet.attendance_date || 'Today') },
+                    { label: 'Attendance Sheet', value: String(sheet.name || `#${sheet.id}`) },
+                  ],
+                  calloutTitle: 'Action Required',
+                  calloutText: 'Log in to the Parent Portal or contact the Campus Pastoral Office immediately.',
+                  companyId: Number(sheet.company_id || 1),
+                },
+                resModel: 'op.attendance.sheet',
+                resId: id,
+                userId,
+              });
+            } else {
+              store.create('comm.outbox', {
+                to: student.phone || '+254700000000',
+                recipient_name: `Parent of ${stuName}`,
+                channel: settings.absentee_channel || 'whatsapp',
+                subject: 'Morning Roll-Call Absence Alert',
+                body: `Dear Parent, ${stuName} was marked Absent (Unexcused) on ${sheet.attendance_date}. Please reply or submit a leave note via the Parent Portal.`,
+                res_model: 'op.attendance.sheet', res_id: id, provider: settings.whatsapp_provider || 'simulate', state: 'sent', company_id: sheet.company_id,
+              }, userId);
+            }
             alerts++;
           }
         }
@@ -448,20 +585,7 @@ export function executeMethod(model: string, method: string, id: number | undefi
     case 'account.move.send_invoice': {
       const inv = store.byId('account.move', id!);
       if (!inv) throw new Error('Invoice not found');
-      const partner = inv.partner_id ? store.byId('res.partner', Number(inv.partner_id)) : undefined;
-      store.create('comm.outbox', {
-        to: partner?.email || partner?.phone || 'parent@example.com',
-        recipient_name: partner?.name || 'Customer',
-        channel: 'email',
-        subject: `Invoice ${inv.name}`,
-        body: `Please find attached fee invoice ${inv.name} (${inv.line_description || 'Tuition & Fees'}).`,
-        res_model: 'account.move',
-        res_id: inv.id,
-        state: 'sent',
-        company_id: inv.company_id,
-      }, userId);
-      store.logMessage('account.move', inv.id, `Invoice ${inv.name} sent to ${partner?.email || partner?.name || 'customer'}.`, userId, 'notification');
-      return { record: store.hydrate('account.move', inv), message: `Invoice ${inv.name} sent to customer.` };
+      return sendInvoiceEmail(inv, userId);
     }
 
     case 'account.move.action_register_payment': {
@@ -524,20 +648,7 @@ export function executeMethod(model: string, method: string, id: number | undefi
     case 'account.move.action_invoice_sent': {
       const inv = store.byId('account.move', id!);
       if (!inv) throw new Error('Invoice not found');
-      const partner = inv.partner_id ? store.byId('res.partner', Number(inv.partner_id)) : undefined;
-      store.create('comm.outbox', {
-        to: partner?.email || partner?.phone || 'parent@example.com',
-        recipient_name: partner?.name || 'Customer',
-        channel: 'email',
-        subject: `Invoice ${inv.name}`,
-        body: `Please find attached fee invoice ${inv.name} (${inv.line_description || 'Tuition & Fees'}).`,
-        res_model: 'account.move',
-        res_id: inv.id,
-        state: 'sent',
-        company_id: inv.company_id,
-      }, userId);
-      store.logMessage('account.move', inv.id, `Invoice ${inv.name} sent to ${partner?.email || partner?.name || 'customer'}.`, userId, 'notification');
-      return { record: store.hydrate('account.move', inv), message: `Invoice ${inv.name} sent to customer.` };
+      return sendInvoiceEmail(inv, userId);
     }
 
     case 'account.move.action_print_pdf': {
@@ -665,18 +776,21 @@ export function executeMethod(model: string, method: string, id: number | undefi
         sent_count: Number(mail.sent_count ?? 145),
         open_rate: Number(mail.open_rate ?? 68),
       }, userId);
-      store.create('comm.outbox', {
+      dispatchEmailAsync({
         to: String(mail.target_audience || 'All Enrolled Parents'),
-        recipient_name: String(mail.target_audience || 'Parents'),
-        channel: 'email',
-        subject: mail.subject,
-        body: String(mail.body_html || mail.subject),
-        res_model: 'mailing.mailing',
-        res_id: mail.id,
-        state: 'sent',
-        company_id: mail.company_id,
-      }, userId);
-      return { record: updated, message: `Email campaign "${mail.subject}" launched and delivered.` };
+        recipientName: String(mail.target_audience || 'Parents & Guardians'),
+        subject: String(mail.subject || 'Official Campus Newsletter'),
+        template: 'campaign_newsletter',
+        context: {
+          title: String(mail.subject || 'School Circular'),
+          rawHtmlBody: String(mail.body_html || `<p>${mail.subject || ''}</p>`),
+          companyId: Number(mail.company_id || 1),
+        },
+        resModel: 'mailing.mailing',
+        resId: mail.id,
+        userId,
+      });
+      return { record: updated, message: `Email campaign "${mail.subject}" launched and formatted in HTML.` };
     }
 
     case 'whatsapp.campaign.action_start_campaign':
@@ -1409,18 +1523,29 @@ export function executeMethod(model: string, method: string, id: number | undefi
     case 'event.registration.action_send_badge_email': {
       const reg = store.byId('event.registration', id!);
       if (!reg) throw new Error('Event registration not found');
-      store.create('comm.outbox', {
-        to: reg.email || 'attendee@example.com',
-        recipient_name: reg.name,
-        channel: 'email',
-        subject: `Event Pass & Badge — ${reg.name}`,
-        body: `Your registration badge for event #${reg.event_id} is ready.`,
-        res_model: 'event.registration',
-        res_id: reg.id,
-        state: 'sent',
-        company_id: reg.company_id,
-      }, userId);
-      return { record: store.hydrate('event.registration', reg), message: `Badge email sent to ${reg.email}.` };
+      const evt = reg.event_id ? store.byId('event.event', Number(reg.event_id)) : undefined;
+      dispatchEmailAsync({
+        to: String(reg.email || 'attendee@example.com'),
+        recipientName: String(reg.name || 'Guest'),
+        subject: `Event Pass & Badge — ${evt?.name || reg.name}`,
+        template: 'event_badge',
+        context: {
+          title: `Confirmed Event Pass: ${evt?.name || 'Campus Event'}`,
+          bodyParagraphs: [
+            'Your registration is confirmed. Present this digital pass at the campus welcome desk upon arrival.',
+          ],
+          summaryRows: [
+            { label: 'Attendee Name', value: String(reg.name || 'Guest') },
+            { label: 'Event', value: String(evt?.name || `Event #${reg.event_id}`) },
+            { label: 'Registration Ref', value: `EVT-${String(reg.id).padStart(4, '0')}` },
+          ],
+          companyId: Number(reg.company_id || 1),
+        },
+        resModel: 'event.registration',
+        resId: reg.id,
+        userId,
+      });
+      return { record: store.hydrate('event.registration', reg), message: `HTML Badge email sent to ${reg.email}.` };
     }
 
     case 'op.job.applicant.action_offer': {
