@@ -179,6 +179,7 @@ export const academicModels = [
         library_card_id:m2o(op.library.card); bio_data:html:Bio; user_id:m2o(res.users); company_id:m2o(res.company);
         course_count:integer=0; subject_count:integer=0; assignment_count:integer=0; session_count:integer=0`,
     smart: 'Courses:op.course:faculty_id; Subjects:op.subject:#faculty_subject_ids; Assignment:op.assignment:faculty_id; Time Table:op.session:faculty_id; Sessions:op.session:faculty_id; Health:op.health:faculty_id; Media:op.media.movement:faculty_id',
+    buttons: 'create_faculty_user:Create Faculty User:*@',
     views: 'kanban,list,form',
     panel: 'main_department_id',
     kanban: { title: 'first_name', sub: 'email,main_department_id' },

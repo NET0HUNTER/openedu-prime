@@ -61,10 +61,63 @@ export function executeMethod(model: string, method: string, id: number | undefi
         price_unit: tuition,
       }, userId, false);
       const doneStage = store.all('admission.stage').find((s) => s.state === 'done');
+      const studentUser = store.create('res.users', {
+        name: fullName,
+        login: adm.email || `student.${student.gr_no.toLowerCase()}@oshwalacademy.sc.ke`,
+        role: 'student',
+        student_id: student.id,
+        company_id: adm.company_id || 1,
+        company_ids: adm.company_id ? [Number(adm.company_id)] : [1],
+        active: true,
+      }, userId);
+      store.write('op.student', student.id, { user_id: studentUser.id }, userId);
       const updated = store.write('op.admission', adm.id, {
         state: 'done', stage_id: doneStage ? doneStage.id : adm.stage_id, is_student: true, student_id: student.id, partner_id: partner.id, admission_date: new Date().toISOString().slice(0, 10),
       }, userId);
-      return { record: updated, message: `Student ${fullName} enrolled (${student.gr_no}) and fee invoice ${inv.name} posted.` };
+      return { record: updated, message: `Student ${fullName} enrolled (${student.gr_no}), fee invoice ${inv.name} posted, and portal user created (${studentUser.login}).` };
+    }
+
+    case 'op.parent.create_parent_user': {
+      const parent = store.byId('op.parent', id!);
+      if (!parent) throw new Error('Parent not found');
+      if (parent.user_id) {
+        const existing = store.byId('res.users', Number(parent.user_id));
+        return { message: `Parent already has user account: ${existing?.login || 'Active'}` };
+      }
+      const login = parent.email || `parent${parent.id}@oshwalacademy.sc.ke`;
+      const user = store.create('res.users', {
+        name: parent.name,
+        login,
+        role: 'parent',
+        parent_id: parent.id,
+        company_id: parent.company_id || 1,
+        company_ids: parent.company_id ? [Number(parent.company_id)] : [1],
+        active: true,
+      }, userId);
+      const updated = store.write('op.parent', parent.id, { user_id: user.id }, userId);
+      return { record: updated, message: `Created portal user ${login} linked to Parent profile.` };
+    }
+
+    case 'op.faculty.create_faculty_user': {
+      const fac = store.byId('op.faculty', id!);
+      if (!fac) throw new Error('Faculty not found');
+      if (fac.user_id) {
+        const existing = store.byId('res.users', Number(fac.user_id));
+        return { message: `Faculty already has user account: ${existing?.login || 'Active'}` };
+      }
+      const fullName = [fac.first_name, fac.middle_name, fac.last_name].filter(Boolean).join(' ');
+      const login = fac.email || `faculty${fac.id}@oshwalacademy.sc.ke`;
+      const user = store.create('res.users', {
+        name: fullName,
+        login,
+        role: 'faculty',
+        faculty_id: fac.id,
+        company_id: fac.company_id || 1,
+        company_ids: fac.company_id ? [Number(fac.company_id)] : [1],
+        active: true,
+      }, userId);
+      const updated = store.write('op.faculty', fac.id, { user_id: user.id }, userId);
+      return { record: updated, message: `Created user ${login} with Faculty role.` };
     }
 
     case 'op.subject.registration.action_submitted':
