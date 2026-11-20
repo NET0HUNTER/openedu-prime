@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { hashPassword, sanitizeUserRecord } from './auth.js';
 import {
   ALL_MODELS,
   CORE_SAFE_READ_MODELS,
@@ -254,6 +255,9 @@ export class Store {
         out._partner_address = [p.street, p.city, ctry].filter(Boolean).join(', ');
       }
     }
+    if (model === 'res.users') {
+      return sanitizeUserRecord(out);
+    }
     return out;
   }
 
@@ -345,6 +349,15 @@ export class Store {
     }
     if (model === 'account.move.line') {
       rec.price_subtotal = Number(rec.quantity ?? 1) * Number(rec.price_unit ?? 0);
+    }
+    if (model === 'res.users') {
+      if (typeof rec.initial_password === 'string' && rec.initial_password.trim() !== '') {
+        rec.password_hash = hashPassword(rec.initial_password.trim());
+      } else if (rec.is_demo && !rec.password_hash) {
+        rec.password_hash = hashPassword('OpenEdu@2026');
+      }
+      delete rec.initial_password;
+      rec.password_set = Boolean(rec.password_hash);
     }
     if ((model === 'ir.model.access' || model === 'ir.rule') && rec.model_id) {
       const mRec = this.byId('ir.model', Number(rec.model_id));
@@ -530,6 +543,10 @@ export class Store {
         const matched = roles.find((r) => r.base_role === u.role);
         if (matched) u.role_id = matched.id;
       }
+      if (u.is_demo && !u.password_hash) {
+        u.password_hash = hashPassword('OpenEdu@2026');
+      }
+      u.password_set = Boolean(u.password_hash);
     }
     this.save();
   }
@@ -570,6 +587,14 @@ export class Store {
     const diffs: string[] = [];
     for (const [k, v] of Object.entries(vals)) {
       if (k === 'id' || k === 'display_name' || k === '_smart_counts' || k.endsWith('__label') || k.endsWith('__labels')) continue;
+      if (model === 'res.users' && k === 'initial_password') {
+        if (typeof v === 'string' && v.trim() !== '') {
+          rec.password_hash = hashPassword(v.trim());
+          rec.password_set = true;
+          diffs.push('Password: updated securely');
+        }
+        continue;
+      }
       if (def?.fields[k]?.type === 'one2many') continue;
       if (rec[k] !== v) {
         const label = def?.fields[k]?.string ?? k;

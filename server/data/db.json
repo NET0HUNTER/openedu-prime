@@ -17,7 +17,7 @@
     "res.partner.bank": 2,
     "res.lang": 4,
     "ir.cron": 12,
-    "queue.job": 372,
+    "queue.job": 389,
     "queue.job.channel": 1,
     "queue.job.function": 2,
     "mail.message": 295,
@@ -715,7 +715,9 @@
           6
         ],
         "is_demo": true,
-        "role_id": 1
+        "role_id": 1,
+        "password_hash": "scrypt$6b35e684b63f9d6210b4028b1a3c4507$97c08badc28c70f6ca9cf3d8d123a895bd3cb8be17ec21dba987017a76f3d01860607919747536b506ff77e42b71a0950e6683b600bd700881f337ba58fb3a55",
+        "password_set": true
       },
       {
         "id": 2,
@@ -732,7 +734,9 @@
           5
         ],
         "is_demo": true,
-        "role_id": 2
+        "role_id": 2,
+        "password_hash": "scrypt$08c2b87f9d70e159918a8009ff9764ae$f847939b589b5cebba51ecc6ace96e6cecd78f661dfc56ba9462af599af7b2db95c79bab893160aaa04c0cf7afbe5dec5d7526eb5453381d337e11d402564afc",
+        "password_set": true
       },
       {
         "id": 3,
@@ -752,7 +756,9 @@
           6
         ],
         "is_demo": true,
-        "role_id": 3
+        "role_id": 3,
+        "password_hash": "scrypt$343c6f8f2e1a069262237c14f25b309b$114e156c737610dba4bf00de685ef09bd0f45e00b851a9ab155f3fa464a2edc8f2f577d0547c0d9effd898ce98a1cd4839b4ef8ef62b0a7e8f94bcf6fd33b3c8",
+        "password_set": true
       },
       {
         "id": 4,
@@ -766,7 +772,9 @@
         "company_ids": [
           4
         ],
-        "is_demo": true
+        "is_demo": true,
+        "password_hash": "scrypt$e2a2d53d74d155509b76f80f2a2d2909$93615cb90b41ebb3f455991a45ab688868007a063d7cd77865f717c8e53c7f44eadd9e8473d0d8e96d5565a008165ed7f320b1dba99aa844f9047eb7a2c10ad6",
+        "password_set": true
       },
       {
         "id": 5,
@@ -781,7 +789,9 @@
         "company_ids": [
           4
         ],
-        "is_demo": true
+        "is_demo": true,
+        "password_hash": "scrypt$b39908e8d6d3e91e487f5ad4d14cd1a6$3480e90445b7d5db093a34a183f585d602d9b251ae51dafd7c939e54c2d82616a4decdf2ffb4e4f43ee4c4a77301dc33a8637c6f64837ea06c765cc2bd853a96",
+        "password_set": true
       },
       {
         "id": 6,
@@ -798,7 +808,8 @@
           6
         ],
         "role_id": 6,
-        "name": "Simon"
+        "name": "Simon",
+        "password_set": false
       }
     ],
     "res.users.role": [
@@ -988,7 +999,7 @@
         "description": "Processes async OMR grading, AI course/quiz generation, and bulk fee invoices.",
         "active": true,
         "last_result": "Executed queue_job.worker_heartbeat",
-        "last_run": "2026-11-20 11:57"
+        "last_run": "2026-11-20 12:13"
       },
       {
         "id": 2,
@@ -1032,7 +1043,8 @@
         "model": "op.session",
         "description": "Closes 08:00–15:00 Nursery & IED sessions and triggers early bus manifest.",
         "active": true,
-        "last_result": "Ready (Scheduled)"
+        "last_result": "Executed intervals.nursery_ied_dismissal",
+        "last_run": "2026-11-20 12:00"
       },
       {
         "id": 6,
@@ -6664,6 +6676,261 @@
         "state": "done",
         "date_created": "2026-11-20 11:57",
         "date_done": "2026-11-20 11:57",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 372,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 11:58",
+        "date_done": "2026-11-20 11:58",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 373,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 11:59",
+        "date_done": "2026-11-20 11:59",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 374,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:00",
+        "date_done": "2026-11-20 12:00",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 375,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Nursery & IED 15:00 Dismissal Interval",
+        "method": "intervals.nursery_ied_dismissal",
+        "channel": "root.timetable",
+        "cron_id": 5,
+        "state": "done",
+        "date_created": "2026-11-20 12:00",
+        "date_done": "2026-11-20 12:00",
+        "exec_time": 4,
+        "result": "Executed intervals.nursery_ied_dismissal"
+      },
+      {
+        "id": 376,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:01",
+        "date_done": "2026-11-20 12:01",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 377,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:02",
+        "date_done": "2026-11-20 12:02",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 378,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:03",
+        "date_done": "2026-11-20 12:03",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 379,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:04",
+        "date_done": "2026-11-20 12:04",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 380,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:05",
+        "date_done": "2026-11-20 12:05",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 381,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:06",
+        "date_done": "2026-11-20 12:06",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 382,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:07",
+        "date_done": "2026-11-20 12:07",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 383,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:08",
+        "date_done": "2026-11-20 12:08",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 384,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:09",
+        "date_done": "2026-11-20 12:09",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 385,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:10",
+        "date_done": "2026-11-20 12:10",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 386,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:11",
+        "date_done": "2026-11-20 12:11",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 387,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:12",
+        "date_done": "2026-11-20 12:12",
+        "exec_time": 4,
+        "result": "Executed queue_job.worker_heartbeat"
+      },
+      {
+        "id": 388,
+        "priority": 10,
+        "retry": 0,
+        "max_retries": 5,
+        "name": "Queue Job Worker Heartbeat",
+        "method": "queue_job.worker_heartbeat",
+        "channel": "root",
+        "cron_id": 1,
+        "state": "done",
+        "date_created": "2026-11-20 12:13",
+        "date_done": "2026-11-20 12:13",
         "exec_time": 4,
         "result": "Executed queue_job.worker_heartbeat"
       }

@@ -15,6 +15,7 @@ import {
   type Role,
 } from '../shared/meta/index.js';
 import { store } from './store.js';
+import { hashPassword, sanitizeUserRecord, verifyPassword } from './auth.js';
 import { executeMethod, runCronJob } from './methods.js';
 import { buildOpenApiSpec } from './openapi.js';
 import {
@@ -165,12 +166,12 @@ export function createApiRouter(): Router {
     const user = getActiveUser(req);
     const companies = store.all('res.company');
     const settings = getSafeSettings();
-    const demoUsers = store.all('res.users').filter((u) => u.is_demo);
+    const demoUsers = store.all('res.users').filter((u) => u.is_demo).map((u) => sanitizeUserRecord(u));
     const unreadMessages = store.all('mail.message').length;
     const pendingActivities = store.all('mail.activity').filter((a) => a.state === 'planned').length;
     res.json({
       seedProfile: store.getSeedProfile(),
-      user,
+      user: user ? sanitizeUserRecord(user) : null,
       demoUsers,
       companies,
       settings,
@@ -234,14 +235,74 @@ export function createApiRouter(): Router {
     const { role } = req.body ?? {};
     const user = store.all('res.users').find((u) => u.role === role) ?? store.all('res.users')[0];
     if (!user) return res.status(404).json({ error: 'Demo user not found' });
-    res.json({ user, redirect: user.role === 'student' || user.role === 'parent' ? '/my' : '/openeducat/apps_menu' });
+    res.json({
+      user: sanitizeUserRecord(user),
+      redirect: user.role === 'student' || user.role === 'parent' ? '/my' : '/openeducat/apps_menu',
+    });
   });
 
   r.post('/api/v1/auth/login', (req, res) => {
-    const { login } = req.body ?? {};
-    const user = store.all('res.users').find((u) => String(u.login).toLowerCase() === String(login ?? '').toLowerCase());
-    if (!user) return res.status(401).json({ error: 'Invalid credentials. Use one of the demo role accounts.' });
-    res.json({ user, redirect: user.role === 'student' || user.role === 'parent' ? '/my' : '/openeducat/apps_menu' });
+    const { login, password } = req.body ?? {};
+    const user = store.all('res.users').find((u) => String(u.login).toLowerCase() === String(login ?? '').trim().toLowerCase());
+    if (!user) return res.status(401).json({ error: 'Invalid email or password.' });
+    if (user.active === false) {
+      return res.status(403).json({ error: 'This user account has been deactivated. Contact your System Administrator.' });
+    }
+    if (!user.password_hash) {
+      return res.status(401).json({ error: 'Password not configured for this account. Ask an administrator to set a password or click Reset Password.' });
+    }
+    if (!password || !verifyPassword(String(password), String(user.password_hash))) {
+      return res.status(401).json({ error: 'Invalid email or password.' });
+    }
+    user.last_login = new Date().toISOString().slice(0, 16).replace('T', ' ');
+    store.save();
+    res.json({
+      user: sanitizeUserRecord(user),
+      redirect: user.role === 'student' || user.role === 'parent' ? '/my' : '/openeducat/apps_menu',
+    });
+  });
+
+  r.post('/api/v1/auth/request-reset', (req, res) => {
+    const { login, origin } = req.body ?? {};
+    const user = store.all('res.users').find((u) => String(u.login).toLowerCase() === String(login ?? '').trim().toLowerCase());
+    if (user && user.active !== false && String(user.login || '').includes('@')) {
+      try {
+        executeMethod('res.users', 'send_reset_email', user.id, { origin }, user.id);
+      } catch {
+        // fail silently to avoid user enumeration
+      }
+    }
+    res.json({ ok: true, message: 'If an account matches that email, a password setup link has been dispatched.' });
+  });
+
+  r.post('/api/v1/auth/reset-password', (req, res) => {
+    const { token, password } = req.body ?? {};
+    if (!token || typeof token !== 'string') {
+      return res.status(400).json({ error: 'Missing password reset token.' });
+    }
+    const user = store.all('res.users').find((u) => u.reset_token === token);
+    if (!user) {
+      return res.status(400).json({ error: 'Invalid or already used password reset link.' });
+    }
+    if (user.reset_token_expires && new Date(String(user.reset_token_expires)).getTime() < Date.now()) {
+      return res.status(400).json({ error: 'This password setup link has expired. Please request a new one.' });
+    }
+    try {
+      user.password_hash = hashPassword(String(password || ''));
+    } catch (err: any) {
+      return res.status(400).json({ error: err?.message || 'Invalid password.' });
+    }
+    user.password_set = true;
+    delete user.reset_token;
+    delete user.reset_token_expires;
+    user.last_login = new Date().toISOString().slice(0, 16).replace('T', ' ');
+    store.logMessage('res.users', user.id, `Password set via reset token by ${user.login}.`, user.id, 'tracking');
+    store.save();
+    res.json({
+      user: sanitizeUserRecord(user),
+      redirect: user.role === 'student' || user.role === 'parent' ? '/my' : '/openeducat/apps_menu',
+      message: 'Password set successfully.',
+    });
   });
 
   r.post('/api/v1/dataset/call_kw/:model/:method', (req, res) => {
@@ -1071,6 +1132,17 @@ export function createApiRouter(): Router {
           { label: 'Login Email', value: 'parent@oshwalacademy.sc.ke' },
           { label: 'Assigned Role', value: 'Parent / Legal Guardian' },
         ],
+      },
+      password_reset: {
+        recipientName: 'Mrs. Jane Mwangi',
+        title: 'Set Up Your Account Password',
+        bodyParagraphs: ['Click the button below to choose a private password and activate your OpenEdu Prime workspace login.'],
+        summaryRows: [
+          { label: 'Login Email', value: 'jmwangi@oshwalacademy.sc.ke' },
+          { label: 'Expires In', value: '24 Hours' },
+        ],
+        ctaLabel: 'Set My Password',
+        ctaUrl: 'http://localhost:5175/web/reset_password?token=demo-token',
       },
       fee_invoice: {
         recipientName: 'Mr. Rajesh Shah',

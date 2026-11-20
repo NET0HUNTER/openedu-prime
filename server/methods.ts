@@ -1,4 +1,5 @@
 import { MODEL_MAP } from '../shared/meta/index.js';
+import { generateResetToken, hashPassword } from './auth.js';
 import { dispatchEmailAsync } from './integrations.js';
 import { store, type Rec } from './store.js';
 
@@ -1784,6 +1785,68 @@ export function executeMethod(model: string, method: string, id: number | undefi
         quotation_count: Number(lead.quotation_count ?? 0) + 1,
       }, userId);
       return { record: updated, message: `Created quotation ${so.name} from opportunity.` };
+    }
+
+    case 'res.users.set_password': {
+      const targetUser = store.byId('res.users', id!);
+      if (!targetUser) throw new Error('User not found');
+      const plain = String(args.password || '');
+      const hashed = hashPassword(plain);
+      targetUser.password_hash = hashed;
+      targetUser.password_set = true;
+      delete targetUser.reset_token;
+      delete targetUser.reset_token_expires;
+      store.logMessage('res.users', targetUser.id, `Password updated securely for ${targetUser.login}.`, userId, 'tracking');
+      store.save();
+      return {
+        record: store.hydrate('res.users', targetUser),
+        message: `Password updated securely for ${targetUser.name} (${targetUser.login}).`,
+      };
+    }
+
+    case 'res.users.send_reset_email': {
+      const targetUser = store.byId('res.users', id!);
+      if (!targetUser) throw new Error('User not found');
+      if (!String(targetUser.login || '').includes('@')) {
+        throw new Error('User login must be a valid email address to dispatch a password setup link.');
+      }
+      const { token, expiresAt } = generateResetToken();
+      targetUser.reset_token = token;
+      targetUser.reset_token_expires = expiresAt;
+      const origin = String(args.origin || process.env.APP_URL || 'http://localhost:5175').replace(/\/$/, '');
+      const resetUrl = `${origin}/web/reset_password?token=${encodeURIComponent(token)}`;
+      dispatchEmailAsync({
+        to: String(targetUser.login),
+        recipientName: String(targetUser.name),
+        subject: 'Set Up / Reset Your OpenEdu Prime Password',
+        template: 'password_reset',
+        context: {
+          title: 'Set Up Your Account Password',
+          bodyParagraphs: [
+            `An account password setup / reset link has been generated for your OpenEdu Prime account (${targetUser.login}).`,
+            'Click the button below to choose a private password and sign in.',
+          ],
+          summaryRows: [
+            { label: 'User Account', value: String(targetUser.name) },
+            { label: 'Login Email', value: String(targetUser.login) },
+            { label: 'Link Valid For', value: '24 Hours' },
+          ],
+          ctaLabel: 'Set My Password',
+          ctaUrl: resetUrl,
+          calloutTitle: 'Security Notice',
+          calloutText: 'If you did not request this email, please ignore it or notify your Campus IT Administrator.',
+          companyId: Number(targetUser.company_id || 1),
+        },
+        resModel: 'res.users',
+        resId: targetUser.id,
+        userId,
+      });
+      store.logMessage('res.users', targetUser.id, `Password setup/reset email dispatched to ${targetUser.login}.`, userId, 'notification');
+      store.save();
+      return {
+        record: store.hydrate('res.users', targetUser),
+        message: `Password setup email dispatched to ${targetUser.login}.`,
+      };
     }
 
     case 'res.users.role.sync_base_permissions': {

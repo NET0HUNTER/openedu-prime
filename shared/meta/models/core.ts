@@ -63,9 +63,12 @@ export const coreModels = [
     nocompany: true,
     f: `name:char!; login:char!; role:sel(admin=Administrator|faculty=Faculty|backoffice=Backoffice|student=Student (Portal)|parent=Parent (Portal))!:Base Profile=backoffice;
         role_id:m2o(res.users.role):Job Role;
+        initial_password:char:Initial Password (Optional);
+        password_set:bool~:Password Configured=false; last_login:datetime~:Last Login;
         image:image; student_id:m2o(op.student); parent_id:m2o(op.parent); faculty_id:m2o(op.faculty); employee_id:m2o(hr.employee);
         company_id:m2o(res.company):Default Campus; company_ids:m2m(res.company):Allowed Campuses; is_demo:bool:Demo Login; lang:char=en_US; active:bool=true`,
-    list: 'name,login,role_id,role,company_id,is_demo,active',
+    list: 'name,login,role_id,role,company_id,password_set,is_demo,active',
+    buttons: 'set_password:!Change / Set Password:*@; send_reset_email:Send Password Setup Email:*@',
     views: 'list,kanban,form',
   }),
   M('res.users.role', 'User Role', {

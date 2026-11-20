@@ -323,4 +323,70 @@ describe('OpenEduCat Reports Engine, Downloads & RBAC Security Hierarchy', () =>
     expect(latest.body_html).toContain('<!DOCTYPE html>');
     expect(latest.body_html).toContain(String(inv.name));
   });
+
+  it('hashes user passwords with scrypt, enforces login verification, and handles password setup/reset tokens', async () => {
+    // 1. Create a user with an initial password
+    const uRes = await request(app)
+      .post('/api/v1/dataset/call_kw/res.users/web_save')
+      .set('X-User-Id', '1')
+      .send({
+        vals: {
+          name: 'Bursar Test',
+          login: 'bursar.test@oshwalacademy.sc.ke',
+          role: 'backoffice',
+          initial_password: 'StrongPassword!23',
+        },
+      });
+    expect(uRes.status).toBe(201);
+    const createdUser = uRes.body.record;
+    expect(createdUser.password_set).toBe(true);
+    expect(createdUser.password_hash).toBeUndefined();
+    expect(createdUser.initial_password).toBeUndefined();
+
+    // 2. Wrong password -> 401
+    const badLogin = await request(app)
+      .post('/api/v1/auth/login')
+      .send({ login: 'bursar.test@oshwalacademy.sc.ke', password: 'WrongPassword' });
+    expect(badLogin.status).toBe(401);
+
+    // 3. Correct password -> 200 & sanitized user
+    const goodLogin = await request(app)
+      .post('/api/v1/auth/login')
+      .send({ login: 'bursar.test@oshwalacademy.sc.ke', password: 'StrongPassword!23' });
+    expect(goodLogin.status).toBe(200);
+    expect(goodLogin.body.user.login).toBe('bursar.test@oshwalacademy.sc.ke');
+    expect(goodLogin.body.user.password_hash).toBeUndefined();
+
+    // 4. Send Password Setup Email + Reset Token completion
+    const uNoPw = await request(app)
+      .post('/api/v1/dataset/call_kw/res.users/web_save')
+      .set('X-User-Id', '1')
+      .send({ vals: { name: 'Teacher Invite', login: 'invite@oshwalacademy.sc.ke', role: 'faculty' } });
+    expect(uNoPw.body.record.password_set).toBe(false);
+
+    const noPwLogin = await request(app)
+      .post('/api/v1/auth/login')
+      .send({ login: 'invite@oshwalacademy.sc.ke', password: 'anything' });
+    expect(noPwLogin.status).toBe(401);
+
+    const resetDispatch = await request(app)
+      .post('/api/v1/dataset/call_kw/res.users/send_reset_email')
+      .set('X-User-Id', '1')
+      .send({ id: uNoPw.body.record.id, args: { origin: 'http://localhost:5175' } });
+    expect(resetDispatch.status).toBe(200);
+
+    const rawUser = store.byId('res.users', uNoPw.body.record.id)!;
+    expect(typeof rawUser.reset_token).toBe('string');
+
+    const completeReset = await request(app)
+      .post('/api/v1/auth/reset-password')
+      .send({ token: rawUser.reset_token, password: 'NewUserPass99' });
+    expect(completeReset.status).toBe(200);
+    expect(completeReset.body.user.password_set).toBe(true);
+
+    const loginAfterReset = await request(app)
+      .post('/api/v1/auth/login')
+      .send({ login: 'invite@oshwalacademy.sc.ke', password: 'NewUserPass99' });
+    expect(loginAfterReset.status).toBe(200);
+  });
 });

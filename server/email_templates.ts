@@ -4,6 +4,7 @@ export type EmailTemplateKind =
   | 'admission_confirmation'
   | 'student_enrollment'
   | 'portal_credentials'
+  | 'password_reset'
   | 'fee_invoice'
   | 'absentee_alert'
   | 'event_badge'
@@ -97,6 +98,15 @@ function buildTemplatePreset(kind: EmailTemplateKind, ctx: EmailRenderContext): 
         title: ctx.title || 'Your OpenEdu Prime Account is Ready',
         subtitle: ctx.subtitle || 'Digital Campus & Portal Identity',
         calloutTone: 'info',
+        ...ctx,
+      };
+    case 'password_reset':
+      return {
+        badge: 'ACCOUNT SECURITY',
+        badgeColor: '#7c3aed',
+        title: ctx.title || 'Set Up / Reset Your Password',
+        subtitle: ctx.subtitle || 'OpenEdu Prime Identity & Access',
+        calloutTone: 'warning',
         ...ctx,
       };
     case 'fee_invoice':

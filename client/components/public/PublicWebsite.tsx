@@ -8,17 +8,39 @@ import { useErp } from '../../context/ErpContext';
 import { apiFetch, callKw } from '../../lib/api';
 
 export const LoginScreen: React.FC = () => {
-  const { companies, settings, loginAsDemo, loginWithEmail, navigate, showToast } = useErp();
+  const { settings, loginAsDemo, loginWithEmail, completePasswordReset, navigate, showToast } = useErp();
+  const urlToken = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('token') || '' : '';
+  const [mode, setMode] = useState<'login' | 'request_reset' | 'reset_token'>(urlToken ? 'reset_token' : 'login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPw, setShowPw] = useState(false);
-
-  const hq = companies[0];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await loginWithEmail(email);
+      if (mode === 'reset_token') {
+        if (password.length < 6) {
+          showToast('Password must be at least 6 characters long.', 'error');
+          return;
+        }
+        if (password !== confirmPassword) {
+          showToast('Passwords do not match.', 'error');
+          return;
+        }
+        await completePasswordReset(urlToken, password);
+        return;
+      }
+      if (mode === 'request_reset') {
+        const res = await apiFetch<{ message: string }>('/api/v1/auth/request-reset', {
+          method: 'POST',
+          body: JSON.stringify({ login: email, origin: window.location.origin }),
+        });
+        showToast(res.message || 'Password setup email dispatched.');
+        setMode('login');
+        return;
+      }
+      await loginWithEmail(email, password);
     } catch (err: any) {
       showToast(err.message, 'error');
     }
@@ -30,7 +52,7 @@ export const LoginScreen: React.FC = () => {
       <main className="flex-1 flex items-center justify-center px-4 py-14">
         {/* Exact centered login layout matching step_6_shot_1.png */}
         <div className="w-full max-w-[300px] space-y-4">
-          {settings.demo_logins !== false && (
+          {mode === 'login' && settings.demo_logins !== false && (
             <div className="text-center space-y-1.5">
               <div className="text-[12.5px] text-slate-600">Login as</div>
               <div className="flex flex-wrap justify-center gap-1">
@@ -54,9 +76,75 @@ export const LoginScreen: React.FC = () => {
                   );
                 })}
               </div>
+              <div className="text-[11px] text-slate-400">Demo password: <span className="font-mono text-slate-500">OpenEdu@2026</span></div>
             </div>
           )}
 
+          {mode === 'reset_token' && (
+            <form onSubmit={handleSubmit} className="space-y-3 text-[13px]">
+              <h2 className="text-base font-bold text-slate-800 text-center">Set Your Account Password</h2>
+              <div>
+                <label className="block font-medium text-slate-700 mb-1">New Password</label>
+                <input
+                  type={showPw ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  minLength={6}
+                  placeholder="Minimum 6 characters"
+                  className="w-full px-3 py-1.5 border border-slate-300 rounded focus:outline-none focus:border-[var(--oe-brand-primary)]"
+                />
+              </div>
+              <div>
+                <label className="block font-medium text-slate-700 mb-1">Confirm Password</label>
+                <input
+                  type={showPw ? 'text' : 'password'}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  minLength={6}
+                  placeholder="Re-enter password"
+                  className="w-full px-3 py-1.5 border border-slate-300 rounded focus:outline-none focus:border-[var(--oe-brand-primary)]"
+                />
+              </div>
+              <button type="submit" className="w-full py-2 rounded font-medium text-white bg-[var(--oe-brand-primary)] hover:bg-[var(--oe-brand-primary-dark)]">
+                Set Password &amp; Sign In
+              </button>
+              <div className="text-center">
+                <button type="button" onClick={() => setMode('login')} className="text-[12px] text-[var(--oe-brand-primary)] hover:underline">
+                  Back to Login
+                </button>
+              </div>
+            </form>
+          )}
+
+          {mode === 'request_reset' && (
+            <form onSubmit={handleSubmit} className="space-y-3 text-[13px]">
+              <h2 className="text-base font-bold text-slate-800 text-center">Reset Password</h2>
+              <p className="text-xs text-slate-500 text-center">Enter your account login email to receive a password setup link.</p>
+              <div>
+                <label className="block font-medium text-slate-700 mb-1">Account Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Enter your email"
+                  className="w-full px-3 py-1.5 border border-slate-300 rounded focus:outline-none focus:border-[var(--oe-brand-primary)]"
+                />
+              </div>
+              <button type="submit" className="w-full py-2 rounded font-medium text-white bg-[var(--oe-brand-primary)] hover:bg-[var(--oe-brand-primary-dark)]">
+                Send Password Reset Email
+              </button>
+              <div className="text-center">
+                <button type="button" onClick={() => setMode('login')} className="text-[12px] text-[var(--oe-brand-primary)] hover:underline">
+                  Back to Login
+                </button>
+              </div>
+            </form>
+          )}
+
+          {mode === 'login' && (
           <form onSubmit={handleSubmit} className="space-y-3 text-[13px]">
             <div>
               <label className="block font-medium text-slate-700 mb-1">Email</label>
@@ -72,7 +160,7 @@ export const LoginScreen: React.FC = () => {
             <div>
               <div className="flex justify-between mb-1">
                 <label className="font-medium text-slate-700">Password</label>
-                <button type="button" onClick={() => showToast('Password reset link queued to your email.')} className="text-[12px] text-[var(--oe-brand-primary)] hover:underline">
+                <button type="button" onClick={() => setMode('request_reset')} className="text-[12px] text-[var(--oe-brand-primary)] hover:underline">
                   Reset Password
                 </button>
               </div>
@@ -114,6 +202,7 @@ export const LoginScreen: React.FC = () => {
               <QrCode size={14} /> Use a Passkey
             </button>
           </form>
+          )}
         </div>
       </main>
       <PublicFooter />

@@ -40,7 +40,8 @@ interface ErpSessionContextValue {
   toggleCompany: (id: number) => void;
   selectAllCompanies: () => void;
   loginAsDemo: (role: Role) => Promise<void>;
-  loginWithEmail: (login: string) => Promise<void>;
+  loginWithEmail: (login: string, password?: string) => Promise<void>;
+  completePasswordReset: (token: string, password: string) => Promise<void>;
   logout: () => void;
   refreshSession: () => Promise<void>;
   term: (word: string) => string;
@@ -84,7 +85,7 @@ export const ErpProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [toast, setToast] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const parseRouteFromLocation = (): RouteState => {
     const p = window.location.pathname;
-    if (p === '/web/login') return { area: 'login', publicPath: '/' };
+    if (p === '/web/login' || p === '/web/reset_password') return { area: 'login', publicPath: '/' };
     if (p.startsWith('/my')) return { area: 'portal', publicPath: '/' };
     if (p.startsWith('/openeducat')) {
       const searchParams = new URLSearchParams(window.location.search);
@@ -268,14 +269,26 @@ export const ErpProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     else navigate({ area: 'apps' });
   }, [loadForUser, navigate, showToast]);
 
-  const loginWithEmail = useCallback(async (login: string) => {
+  const loginWithEmail = useCallback(async (login: string, password?: string) => {
     const res = await apiFetch<{ user: Record<string, any>; redirect: string }>('/api/v1/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ login }),
+      body: JSON.stringify({ login, password }),
     });
     localStorage.setItem('oe_uid', String(res.user.id));
     await loadForUser(res.user.id);
     showToast(`Welcome, ${res.user.name}`);
+    if (res.redirect === '/my') navigate({ area: 'portal' });
+    else navigate({ area: 'apps' });
+  }, [loadForUser, navigate, showToast]);
+
+  const completePasswordReset = useCallback(async (token: string, password: string) => {
+    const res = await apiFetch<{ user: Record<string, any>; redirect: string; message?: string }>('/api/v1/auth/reset-password', {
+      method: 'POST',
+      body: JSON.stringify({ token, password }),
+    });
+    localStorage.setItem('oe_uid', String(res.user.id));
+    await loadForUser(res.user.id);
+    showToast(res.message || `Password updated! Welcome, ${res.user.name}`);
     if (res.redirect === '/my') navigate({ area: 'portal' });
     else navigate({ area: 'apps' });
   }, [loadForUser, navigate, showToast]);
@@ -308,7 +321,7 @@ export const ErpProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       loading, seedProfile, user, demoUsers, companies, selectedCompanyIds, activeCompany, settings, systray,
       apps, models, portalCards, publicRoutes, route, viewEditorOpen, themeDrawerOpen, toast,
       setViewEditorOpen, setThemeDrawerOpen, showToast, navigate, openApp, openModel,
-      toggleCompany, selectAllCompanies, loginAsDemo, loginWithEmail, logout, refreshSession, term, currencyCode,
+      toggleCompany, selectAllCompanies, loginAsDemo, loginWithEmail, completePasswordReset, logout, refreshSession, term, currencyCode,
     }}>
       {children}
     </ErpContext.Provider>

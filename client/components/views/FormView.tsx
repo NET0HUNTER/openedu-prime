@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   Trash2, Star, Mail, Phone, Search, Paperclip, Users, Bot, Smile, Maximize2,
-  CheckSquare, Upload, Smartphone, PlayCircle,
+  CheckSquare, Upload, Smartphone, PlayCircle, X,
 } from 'lucide-react';
 import { getReportsForModel, checkModelAccess, type FieldDef, type ModelDef } from '@shared/meta/index';
 import { apiFetch, callKw } from '../../lib/api';
@@ -49,6 +49,8 @@ export const FormView: React.FC<FormViewProps> = ({
   const [chatterSearchOpen, setChatterSearchOpen] = useState(false);
   const [chatterQuery, setChatterQuery] = useState('');
   const [chatterExpanded, setChatterExpanded] = useState(false);
+  const [showSetPwModal, setShowSetPwModal] = useState(false);
+  const [pwDraft, setPwDraft] = useState({ password: '', confirm: '' });
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -192,8 +194,16 @@ export const FormView: React.FC<FormViewProps> = ({
       setShowQuizModal(true);
       return;
     }
+    if (method === 'set_password' && modelDef.name === 'res.users') {
+      setPwDraft({ password: '', confirm: '' });
+      setShowSetPwModal(true);
+      return;
+    }
     try {
-      const res = await callKw(modelDef.name, method, { id: recordId });
+      const actionArgs = method === 'send_reset_email' && modelDef.name === 'res.users'
+        ? { origin: window.location.origin }
+        : undefined;
+      const res = await callKw(modelDef.name, method, { id: recordId, args: actionArgs });
       if (res.record) setForm(res.record);
       onDirtyChange?.(false);
       if (res.message) showToast(res.message);
@@ -728,7 +738,16 @@ export const FormView: React.FC<FormViewProps> = ({
       <div className="flex items-center gap-1">
         {f.type === 'monetary' && <span className="text-[11px] text-slate-500">{currencyCode}</span>}
         <input
-          type={f.type === 'date' ? 'date' : f.type === 'integer' || f.type === 'float' || f.type === 'monetary' ? 'number' : 'text'}
+          type={
+            f.name === 'initial_password' || f.name === 'smtp_pass'
+              ? 'password'
+              : f.type === 'date'
+              ? 'date'
+              : f.type === 'integer' || f.type === 'float' || f.type === 'monetary'
+              ? 'number'
+              : 'text'
+          }
+          placeholder={f.name === 'initial_password' ? 'Set initial password (min 6 chars, optional)' : undefined}
           autoFocus={focusedDateField === f.name}
           onBlur={() => setFocusedDateField(null)}
           disabled={ro}
@@ -1608,6 +1627,70 @@ export const FormView: React.FC<FormViewProps> = ({
               </div>
             </div>
             <iframe id="qweb-print-frame" srcDoc={printPreviewHtml} title="QWeb Report Preview" className="flex-1 w-full bg-white border-0" />
+          </div>
+        </div>
+      )}
+      {/* Set / Change User Password Modal */}
+      {showSetPwModal && (
+        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="bg-white rounded shadow-2xl w-full max-w-[440px] border border-slate-200 overflow-hidden text-xs">
+            <div className="px-5 py-3.5 border-b border-slate-200 flex items-center justify-between">
+              <h4 className="font-bold text-[15px] text-slate-900">Set / Change Password — {form.name || form.login}</h4>
+              <button type="button" onClick={() => setShowSetPwModal(false)} className="text-slate-400 hover:text-slate-600"><X size={16} /></button>
+            </div>
+            <div className="p-5 space-y-3">
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">New Password</label>
+                <input
+                  type="password"
+                  value={pwDraft.password}
+                  onChange={(e) => setPwDraft((p) => ({ ...p, password: e.target.value }))}
+                  placeholder="Minimum 6 characters"
+                  className="w-full px-3 py-1.5 border border-slate-300 rounded focus:outline-none focus:border-[var(--oe-brand-primary)]"
+                />
+              </div>
+              <div>
+                <label className="block font-semibold text-slate-700 mb-1">Confirm Password</label>
+                <input
+                  type="password"
+                  value={pwDraft.confirm}
+                  onChange={(e) => setPwDraft((p) => ({ ...p, confirm: e.target.value }))}
+                  placeholder="Re-enter new password"
+                  className="w-full px-3 py-1.5 border border-slate-300 rounded focus:outline-none focus:border-[var(--oe-brand-primary)]"
+                />
+              </div>
+            </div>
+            <div className="px-5 py-3 bg-slate-50 border-t border-slate-200 flex justify-end gap-2">
+              <button type="button" onClick={() => setShowSetPwModal(false)} className="px-3.5 py-1.5 rounded bg-white border border-slate-300 text-slate-700 font-semibold">
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={async () => {
+                  if (pwDraft.password.length < 6) {
+                    showToast('Password must be at least 6 characters long.', 'error');
+                    return;
+                  }
+                  if (pwDraft.password !== pwDraft.confirm) {
+                    showToast('Passwords do not match.', 'error');
+                    return;
+                  }
+                  try {
+                    const res = await callKw('res.users', 'set_password', { id: recordId, args: { password: pwDraft.password } });
+                    if (res.record) setForm(res.record);
+                    setShowSetPwModal(false);
+                    showToast(res.message || 'Password updated.');
+                    const read = await callKw('res.users', 'web_read', { id: recordId });
+                    setMessages(read.messages ?? []);
+                  } catch (err: any) {
+                    showToast(err?.message || 'Failed to update password', 'error');
+                  }
+                }}
+                className="px-4 py-1.5 rounded bg-[var(--oe-brand-primary)] text-white font-semibold"
+              >
+                Save Password
+              </button>
+            </div>
           </div>
         </div>
       )}
